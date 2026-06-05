@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+
+# Env / secrets
+.env
+.env.*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Claude Code
+.claude/worktrees/
+
+# Local previews / screenshots
+mobile_screenshots/
+temporary_screenshots/
+.playwright-mcp/
