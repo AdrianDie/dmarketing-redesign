@@ -24,6 +24,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/motion@11.11.9/dist/motion.js"></script>
   <link href="images/favicon.png" rel="shortcut icon" type="image/x-icon" />
+  <script>try{if(sessionStorage.getItem('dm_pre'))document.documentElement.classList.add('no-preloader');else sessionStorage.setItem('dm_pre','1');}catch(e){}</script>
 
   <style>
     body { font-family: 'Inter', sans-serif; background: #FAFAFA; color: #09090B; }
@@ -99,6 +100,7 @@
 
     /* Preloader (Webflow-regler — kopiert fra dietrichsmarketing.webflow.css) */
     :root { --preloader-secondary: #0339f8; }
+    html.no-preloader .preloader { display: none !important; }
     .preloader {
       z-index: 99999;
       flex-direction: column;
