@@ -163,6 +163,14 @@
             <input type="tel" name="Telefon" placeholder="123 45 678" autocomplete="tel" />
           </label>
           <label class="field">
+            <span>Bedrift</span>
+            <input type="text" name="Bedrift" placeholder="Bedriftens navn" autocomplete="organization" />
+          </label>
+          <label class="field">
+            <span>Nåværende nettside</span>
+            <input type="text" name="Nettside" placeholder="dittfirma.no (om du har en)" inputmode="url" />
+          </label>
+          <label class="field">
             <span>Melding <em>*</em></span>
             <textarea name="Melding" placeholder="Skriv meldingen din her" required></textarea>
           </label>
@@ -208,6 +216,9 @@
 
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script src="app.js?v=18" defer></script>
+  <!-- Lead -> dashboard via Supabase. Lim inn url + anonKey for å aktivere.
+       Tomt = av: skjemaet sender til e-post (formsubmit) som før. -->
+  <script>window.DM_SUPABASE = { url: "", anonKey: "", table: "leads" };</script>
+  <script src="app.js?v=20" defer></script>
 </body>
 </html>
