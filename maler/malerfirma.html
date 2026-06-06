@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FargeVerk — Malerfirma i [By]</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Bricolage Grotesque', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: '#15803D',
+            'brand-light': '#16A34A',
+            'brand-soft': '#DCFCE7',
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Bricolage+Grotesque:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/motion@11.11.9/dist/motion.js"></script>
+
+  <style>
+    * { -webkit-font-smoothing: antialiased; }
+    body { font-family: 'Inter', sans-serif; background: #fff; color: #0F172A; }
+    .f-display { font-family: 'Bricolage Grotesque', sans-serif; }
+    .swatch-circle { transition: transform .25s ease, box-shadow .25s ease; cursor: pointer; }
+    .swatch-circle:hover { transform: scale(1.08) rotate(-2deg); box-shadow: 0 12px 32px rgba(0,0,0,0.18); }
+    .paint-stroke { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'><path d='M0,30 Q50,5 100,30 T200,30' stroke='rgba(255,255,255,0.18)' stroke-width='2' fill='none'/></svg>"); background-repeat: repeat-x; }
+
+    #nav { transition: background .25s, box-shadow .25s; }
+    #nav.scrolled { background: rgba(255,255,255,.92); backdrop-filter: blur(16px); box-shadow: 0 1px 0 #E2E8F0; }
+
+    .bg-grid {
+      background-color: #fff;
+      background-image:
+        linear-gradient(rgba(226,232,240,.6) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(226,232,240,.6) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    .bento {
+      background: #fff;
+      border: 1px solid #E2E8F0;
+      border-radius: 20px;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .bento:hover { box-shadow: 0 12px 40px rgba(21,128,61,.10); transform: translateY(-3px); }
+
+    .glass-img { position: relative; border-radius: 20px; overflow: hidden; }
+    .glass-img::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 50%, rgba(15,23,42,.32));
+      pointer-events: none;
+    }
+
+    .step-line::after {
+      content: '';
+      position: absolute;
+      top: 18px; left: calc(50% + 22px);
+      width: calc(100% - 44px); height: 1px;
+      background: #E2E8F0;
+    }
+    @media(max-width:767px){ .step-line::after{ display:none; } }
+  </style>
+  <link href="../images/favicon.png" rel="shortcut icon" type="image/x-icon">
+</head>
+<body>
+
+<!-- ─── NAV ─────────────────────────────────────────────── -->
+<nav id="nav" class="fixed top-0 inset-x-0 z-50">
+  <div class="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
+    <a href="#" class="f-display font-bold text-[15px] tracking-tight text-slate-900">
+      Farge<span class="text-brand">Verk</span>
+    </a>
+    <div class="hidden md:flex items-center gap-7 text-[13px] font-medium text-slate-500">
+      <a href="#tjenester" class="hover:text-slate-900 transition-colors">Tjenester</a>
+      <a href="#om"        class="hover:text-slate-900 transition-colors">Om oss</a>
+      <a href="#prosess"   class="hover:text-slate-900 transition-colors">Prosess</a>
+      <a href="#kontakt"   class="hover:text-slate-900 transition-colors">Kontakt</a>
+    </div>
+    <a href="#kontakt"
+       class="bg-brand text-white text-[13px] font-semibold px-4 py-2 rounded-lg hover:bg-brand-light transition-colors">
+      Få befaring
+    </a>
+  </div>
+</nav>
+
+<!-- ─── HERO — Split-screen: fargefelt + innhold ──────────── -->
+<section class="relative pt-14 overflow-hidden">
+  <div class="grid md:grid-cols-2 min-h-[640px]">
+    <!-- LEFT: gradient fargefelt med store fargesirkler -->
+    <div class="relative flex items-end overflow-hidden paint-stroke" style="background:linear-gradient(135deg,#0D5C2C 0%,#15803D 60%,#16A34A 100%);">
+      <!-- Floating swatches -->
+      <div class="absolute top-12 left-10 w-24 h-24 rounded-full swatch-circle shadow-2xl" style="background:#FBBF24;"></div>
+      <div class="absolute top-32 right-16 w-16 h-16 rounded-full swatch-circle shadow-2xl" style="background:#F87171;"></div>
+      <div class="absolute bottom-44 left-24 w-20 h-20 rounded-full swatch-circle shadow-2xl" style="background:#60A5FA;"></div>
+      <div class="absolute top-20 right-44 w-12 h-12 rounded-full swatch-circle shadow-2xl" style="background:#F3F4F6;"></div>
+      <div class="absolute bottom-20 right-10 w-28 h-28 rounded-full swatch-circle shadow-2xl" style="background:#1E293B;"></div>
+      <!-- Text bottom-left -->
+      <div data-animate class="relative z-10 px-12 pb-16 max-w-md">
+        <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md border border-white/20 text-[11px] font-semibold text-white/90 uppercase tracking-widest px-3 py-1.5 rounded-full mb-7">
+          <span class="w-1.5 h-1.5 rounded-full bg-amber-300 inline-block"></span>
+          [By]s lokale malerfirma
+        </div>
+        <h1 class="f-display font-extrabold text-5xl md:text-6xl text-white leading-[0.95] mb-5" style="letter-spacing:-0.035em">
+          Ferdig malt —<br/>
+          <span class="italic font-medium" style="color:#FBBF24">i tide, til avtalt pris.</span>
+        </h1>
+        <p class="text-white/80 text-[15px] leading-relaxed">
+          17 år med pensel og rull i [By]. Innvendig, utvendig, sparkling — vi rydder hver dag og leverer på avtalt dag.
+        </p>
+      </div>
+    </div>
+
+    <!-- RIGHT: hvit, innhold + mini-galleri -->
+    <div class="relative bg-white px-10 md:px-16 py-20 flex flex-col justify-center">
+      <p data-animate class="text-[12px] font-semibold tracking-widest uppercase text-brand mb-5">FargeVerk · Siden 2007</p>
+      <h2 data-animate class="f-display font-extrabold text-3xl text-slate-900 mb-5 leading-tight" style="letter-spacing:-0.02em">
+        Du velger farge.<br/>Vi tar resten.
+      </h2>
+      <p data-animate class="text-slate-500 text-[15px] leading-relaxed mb-7 max-w-md">
+        Autorisert malerfirma med 5 års garanti på alt arbeid. Gratis NCS-fargerådgivning ved oppdrag over 10 000 kr.
+      </p>
+
+      <div data-animate class="flex flex-col sm:flex-row gap-3 mb-9">
+        <a href="#kontakt"
+           class="bg-brand text-white f-display font-semibold px-6 py-3.5 rounded-xl text-[14px] hover:bg-brand-light hover:shadow-[0_0_30px_rgba(21,128,61,.30)] hover:scale-[1.02] transition-all text-center">
+          Få fastpris-tilbud
+        </a>
+        <a href="tel:+4712345678"
+           class="inline-flex items-center justify-center gap-2 border border-slate-200 text-slate-700 f-display font-semibold px-6 py-3.5 rounded-xl text-[14px] hover:border-slate-400 transition-all">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.66A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          123 45 678
+        </a>
+      </div>
+
+      <!-- Mini-galleri 3 thumbnails -->
+      <div data-animate class="grid grid-cols-3 gap-2.5">
+        <div class="aspect-square rounded-lg overflow-hidden">
+          <img src="bilder/malerfirma/vegg-1.jpg" onerror="this.src='https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=400&q=80'" alt="Vegg malt" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"/>
+        </div>
+        <div class="aspect-square rounded-lg overflow-hidden">
+          <img src="bilder/malerfirma/vegg-2.jpg" onerror="this.src='https://images.unsplash.com/photo-1503602642458-232111445657?w=400&q=80'" alt="Maler-detalj" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"/>
+        </div>
+        <div class="aspect-square rounded-lg overflow-hidden">
+          <img src="bilder/malerfirma/vegg-3.jpg" onerror="this.src='https://images.unsplash.com/photo-1604147495798-57beb5d6af73?w=400&q=80'" alt="Pensel" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"/>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-5 mt-7 text-[12px] text-slate-500">
+        <span class="flex items-center gap-1.5">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="2"><path d="M9 12l2 2 4-4"/></svg>
+          Mesterbrev
+        </span>
+        <span class="flex items-center gap-1.5">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="2"><path d="M12 8v4l3 3"/></svg>
+          5 års garanti
+        </span>
+        <span class="flex items-center gap-1.5">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="2"><path d="M11 2l1 5h5l-4 3 1 5-4-3-4 3 1-5-4-3h5z"/></svg>
+          4.9 — 110+
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── NCS-FARGEKART ─────────────────────────────────────── -->
+<section id="fargekart" class="py-20 px-6 bg-white">
+  <div class="max-w-6xl mx-auto">
+    <div data-animate class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+      <div>
+        <p class="text-[12px] font-semibold tracking-widest uppercase text-brand mb-3">NCS-fargekart 2026</p>
+        <h2 class="f-display font-extrabold text-4xl text-slate-900 leading-tight" style="letter-spacing:-0.03em">Årets utvalgte farger</h2>
+      </div>
+      <p class="text-[14px] text-slate-500 max-w-sm leading-relaxed">Vi følger Norsk Standard (NCS). Klikk en farge for å se den på vegg — eller bestill gratis prøveboks levert hjem.</p>
+    </div>
+
+    <div data-stagger class="grid grid-cols-4 md:grid-cols-8 gap-4">
+      <div class="text-center">
+        <div class="aspect-square rounded-xl swatch-circle shadow-md mb-3" style="background:#F5F0E6"></div>
+        <div class="text-[11px] font-mono text-slate-500 uppercase tracking-wide">S 0505-Y20R</div>
+        <div class="text-[12px] font-medium text-slate-900 mt-0.5">Linfrø</div>
+      </div>
+      <div class="text-center">
+        <div class="aspect-square rounded-xl swatch-circle shadow-md mb-3" style="background:#D8DCC0"></div>
+        <div class="text-[11px] font-mono text-slate-500 uppercase tracking-wide">S 2010-G50Y</div>
+        <div class="text-[12px] font-medium text-slate-900 mt-0.5">Salvie</div>
+      </div>
+      <div class="text-center">
+        <div class="aspect-square rounded-xl swatch-circle shadow-md mb-3" style="background:#5C7A8C"></div>
+        <div class="text-[11px] font-mono text-slate-500 uppercase tracking-wide">S 5020-B</div>
+        <div class="text-[12px] font-medium text-slate-900 mt-0.5">Fjord</div>
+      </div>
+      <div class="text-center">
+        <div class="aspect-square rounded-xl swatch-circle shadow-md mb-3" style="background:#C2876A"></div>
+        <div class="text-[11px] font-mono text-slate-500 uppercase tracking-wide">S 3030-Y50R</div>
+        <div class="text-[12px] font-medium text-slate-900 mt-0.5">Terracotta</div>
+      </div>
+      <div class="text-center">
+        <div class="aspect-square rounded-xl swatch-circle shadow-md mb-3" style="background:#2B3140"></div>
+        <div class="text-[11px] font-mono text-slate-500 uppercase tracking-wide">S 8010-R90B</div>
+        <div class="text-[12px] font-medium text-slate-900 mt-0.5">Midnatt</div>
+      </div>
+      <div class="text-center">
+        <div class="aspect-square rounded-xl swatch-circle shadow-md mb-3" style="background:#E8E4DC"></div>
+        <div class="text-[11px] font-mono text-slate-500 uppercase tracking-wide">S 1502-Y</div>
+        <div class="text-[12px] font-medium text-slate-900 mt-0.5">Kalk</div>
+      </div>
+      <div class="text-center">
+        <div class="aspect-square rounded-xl swatch-circle shadow-md mb-3" style="background:#7C8763"></div>
+        <div class="text-[11px] font-mono text-slate-500 uppercase tracking-wide">S 5020-G50Y</div>
+        <div class="text-[12px] font-medium text-slate-900 mt-0.5">Olivengrønn</div>
+      </div>
+      <div class="text-center">
+        <div class="aspect-square rounded-xl swatch-circle shadow-md mb-3 border border-slate-200" style="background:#FAFAFA"></div>
+        <div class="text-[11px] font-mono text-slate-500 uppercase tracking-wide">S 0500-N</div>
+        <div class="text-[12px] font-medium text-slate-900 mt-0.5">Ren hvit</div>
+      </div>
+    </div>
+
+    <div data-animate class="mt-10 flex flex-wrap items-center gap-4 text-[13px] text-slate-500">
+      <a href="#kontakt" class="inline-flex items-center gap-2 bg-brand-soft text-brand font-semibold px-4 py-2 rounded-lg text-[13px] hover:bg-green-100 transition-colors">
+        Bestill gratis prøveboks
+        <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      </a>
+      <span>Alle farger inkluderer test-rull og pensel — vi anbefaler å se prøven på din vegg i 24 timer før du bestemmer deg.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── STATS ─────────────────────────────────────────────── -->
+<section class="border-y border-slate-100">
+  <div class="max-w-6xl mx-auto px-6 py-10">
+    <div data-stagger class="grid grid-cols-2 md:grid-cols-4 gap-10">
+      <div class="text-center">
+        <div class="f-display font-extrabold text-[42px] text-brand leading-none">17+</div>
+        <div class="text-[13px] text-slate-400 mt-2">År med erfaring</div>
+      </div>
+      <div class="text-center">
+        <div class="f-display font-extrabold text-[42px] text-brand leading-none">820+</div>
+        <div class="text-[13px] text-slate-400 mt-2">Oppdrag fullført</div>
+      </div>
+      <div class="text-center">
+        <div class="f-display font-extrabold text-[42px] text-brand leading-none">4.9</div>
+        <div class="text-[13px] text-slate-400 mt-2">Google-snitt</div>
+      </div>
+      <div class="text-center">
+        <div class="f-display font-extrabold text-[42px] text-brand leading-none">5 år</div>
+        <div class="text-[13px] text-slate-400 mt-2">Garanti på arbeid</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TJENESTER ─────────────────────────────────────────── -->
+<section id="tjenester" class="py-28 px-6">
+  <div class="max-w-6xl mx-auto">
+
+    <div data-animate class="mb-14">
+      <p class="text-[12px] font-semibold tracking-widest uppercase text-brand mb-3">Tjenester</p>
+      <h2 class="f-display font-extrabold text-4xl tracking-tight text-slate-900">
+        Alt du trenger av maler
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mb-4">
+      <div data-animate class="bento md:col-span-8 p-9 relative overflow-hidden">
+        <div class="absolute inset-0 rounded-[20px]" style="background: linear-gradient(135deg, #DCFCE7 0%, #fff 60%)"></div>
+        <div class="relative">
+          <div class="inline-flex items-center gap-2 text-[11px] font-semibold text-green-700 bg-green-50 border border-green-100 px-3 py-1.5 rounded-full mb-5">
+            <span class="w-1.5 h-1.5 rounded-full bg-green-500 inline-block"></span>
+            Mest bestilt
+          </div>
+          <h3 class="f-display font-bold text-2xl text-slate-900 mb-3">Innvendig maling</h3>
+          <p class="text-slate-500 text-[14px] leading-relaxed max-w-sm mb-7">
+            Full renovering eller ett rom — vi grundsparker, maler to strøk og rydder etter oss. Fast pris fra 110 kr/m².
+          </p>
+          <a href="#kontakt"
+             class="inline-flex items-center gap-2 bg-brand text-white text-[13px] font-semibold px-5 py-2.5 rounded-lg hover:bg-brand-light transition-colors">
+            Få gratis befaring →
+          </a>
+        </div>
+      </div>
+
+      <div data-animate class="bento md:col-span-4 p-8">
+        <div class="w-10 h-10 bg-brand-soft rounded-xl flex items-center justify-center mb-5">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3 class="f-display font-bold text-[17px] text-slate-900 mb-2">Utvendig maling</h3>
+        <p class="text-slate-500 text-[13px] leading-relaxed">Fasadebehandling, vindskier og vinduer. Vi bruker kun godkjente værherdige produkter.</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+      <div data-animate class="bento p-8">
+        <div class="w-10 h-10 bg-brand-soft rounded-xl flex items-center justify-center mb-5">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="1.8"><path d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+        </div>
+        <h3 class="f-display font-bold text-[17px] text-slate-900 mb-2">Tapetsering</h3>
+        <p class="text-slate-500 text-[13px] leading-relaxed">Alle typer tapet — fra enkelt mønster til tungt naturmateriale. Fra 150 kr/m².</p>
+      </div>
+
+      <div data-animate class="bento p-8">
+        <div class="w-10 h-10 bg-brand-soft rounded-xl flex items-center justify-center mb-5">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="1.8"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <h3 class="f-display font-bold text-[17px] text-slate-900 mb-2">Sparkling & overflate</h3>
+        <p class="text-slate-500 text-[13px] leading-relaxed">Grunnarbeider som faktisk holder. Vi gjør det ordentlig fra starten.</p>
+      </div>
+
+      <div data-animate class="bento p-8">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-5" style="background:rgba(59,130,246,.08)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.8"><path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"/></svg>
+        </div>
+        <h3 class="f-display font-bold text-[17px] text-slate-900 mb-2">Bad & kjøkken</h3>
+        <p class="text-slate-500 text-[13px] leading-relaxed">Fuktbestandig behandling og spesialmaling for våtrom. Godkjent for bad.</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+      <div data-animate class="bento md:col-span-4 p-8">
+        <div class="w-10 h-10 bg-brand-soft rounded-xl flex items-center justify-center mb-5">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </div>
+        <h3 class="f-display font-bold text-[17px] text-slate-900 mb-2">Fargerådgivning</h3>
+        <p class="text-slate-500 text-[13px] leading-relaxed">NCS-sertifisert rådgiver hjelper deg med fargevalg. Gratis for oppdrag over 10 000 kr.</p>
+      </div>
+
+      <div data-animate class="bento md:col-span-8 p-9 relative overflow-hidden" style="background: linear-gradient(135deg, #DCFCE7 0%, #F0FDF4 60%, #fff 100%)">
+        <div class="relative">
+          <span class="inline-flex text-[11px] font-semibold text-brand bg-white border border-green-200 px-3 py-1.5 rounded-full mb-5">
+            Næring & borettslag
+          </span>
+          <h3 class="f-display font-bold text-2xl text-slate-900 mb-3">Næringsbygg & kontorer</h3>
+          <p class="text-slate-500 text-[14px] leading-relaxed max-w-sm mb-7">Rekkevidde og kapasitet til store prosjekter. Fast avtale for borettslag, kontor og næringsbygg.</p>
+          <a href="#kontakt" class="inline-flex items-center gap-2 bg-brand text-white text-[13px] font-semibold px-5 py-2.5 rounded-lg hover:bg-brand-light transition-colors">
+            Ta kontakt →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── OM OSS ─────────────────────────────────────────────── -->
+<section id="om" class="py-28 px-6" style="background:#F8FAFC">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-20 items-center">
+      <div data-animate class="order-2 md:order-1">
+        <div class="glass-img aspect-[4/3]">
+          <img
+            src="bilder/malerfirma/maler-main.jpg"
+            onerror="this.src='https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?w=900&q=80'"
+            alt="FargeVerk team"
+            class="w-full h-full object-cover"
+          />
+          <div class="absolute bottom-5 left-5 right-5 z-10"
+               style="background:rgba(255,255,255,.82); backdrop-filter:blur(16px); border:1px solid rgba(255,255,255,.9); border-radius:14px; padding:16px;">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-brand rounded-full flex items-center justify-center text-white f-display font-bold text-sm flex-shrink-0">HA</div>
+              <div class="flex-1">
+                <div class="f-display font-semibold text-[13px] text-slate-900">Henrik Andersen</div>
+                <div class="text-[12px] text-slate-500">Daglig leder & malermesterbrev</div>
+              </div>
+              <div class="text-brand f-display font-bold text-[13px]">4.9 ★</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="order-1 md:order-2">
+        <div data-animate>
+          <p class="text-[12px] font-semibold tracking-widest uppercase text-brand mb-3">Om oss</p>
+          <h2 class="f-display font-extrabold text-4xl tracking-tight text-slate-900 mb-6" style="letter-spacing:-.03em">
+            Lokal malermester<br/>siden 2008
+          </h2>
+          <p class="text-slate-500 text-[16px] leading-relaxed mb-5">
+            FargeVerk er et team på 8 malere med malermesterbrev som har jobbet i [By]-regionen i 17 år. Vi kjenner bygningstyper, utfordringer og materialene som faktisk holder.
+          </p>
+          <p class="text-slate-500 text-[14px] leading-relaxed mb-8">
+            Alle oppdrag leveres med skriftlig garanti. Vi tildekker, beskytter og rydder etter oss. Fast pris — alltid. Ingen overraskelser på fakturaen.
+          </p>
+          <div class="grid grid-cols-2 gap-3">
+            <div class="border border-slate-200 rounded-2xl p-5">
+              <div class="f-display font-extrabold text-[28px] text-brand leading-none">820+</div>
+              <div class="text-[12px] text-slate-400 mt-1">Oppdrag fullført</div>
+            </div>
+            <div class="border border-slate-200 rounded-2xl p-5">
+              <div class="f-display font-extrabold text-[28px] text-brand leading-none">4.9 ★</div>
+              <div class="text-[12px] text-slate-400 mt-1">Google-snitt</div>
+            </div>
+            <div class="border border-slate-200 rounded-2xl p-5">
+              <div class="f-display font-extrabold text-[28px] text-brand leading-none">17 år</div>
+              <div class="text-[12px] text-slate-400 mt-1">I bransjen</div>
+            </div>
+            <div class="border border-slate-200 rounded-2xl p-5">
+              <div class="f-display font-extrabold text-[28px] text-brand leading-none">5 år</div>
+              <div class="text-[12px] text-slate-400 mt-1">Garanti</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROSESS ───────────────────────────────────────────── -->
+<section id="prosess" class="py-28 px-6">
+  <div class="max-w-5xl mx-auto">
+    <div data-animate class="text-center mb-16">
+      <p class="text-[12px] font-semibold tracking-widest uppercase text-brand mb-3">Prosess</p>
+      <h2 class="f-display font-extrabold text-4xl tracking-tight text-slate-900" style="letter-spacing:-.03em">
+        Fra befaring til ferdig rom
+      </h2>
+    </div>
+    <div data-stagger class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div class="relative step-line text-center">
+        <div class="w-9 h-9 bg-brand text-white f-display font-bold text-[15px] rounded-full flex items-center justify-center mx-auto mb-5">1</div>
+        <h3 class="f-display font-semibold text-[15px] text-slate-900 mb-2">Gratis befaring</h3>
+        <p class="text-slate-500 text-[13px] leading-relaxed">Vi ser på overflater og rom. Ingen skjulte avgifter.</p>
+      </div>
+      <div class="relative step-line text-center">
+        <div class="w-9 h-9 bg-brand text-white f-display font-bold text-[15px] rounded-full flex items-center justify-center mx-auto mb-5">2</div>
+        <h3 class="f-display font-semibold text-[15px] text-slate-900 mb-2">Fargevalg & tilbud</h3>
+        <p class="text-slate-500 text-[13px] leading-relaxed">Vi hjelper med farger og sender fastpristilbud innen 24 timer.</p>
+      </div>
+      <div class="relative step-line text-center">
+        <div class="w-9 h-9 bg-brand text-white f-display font-bold text-[15px] rounded-full flex items-center justify-center mx-auto mb-5">3</div>
+        <h3 class="f-display font-semibold text-[15px] text-slate-900 mb-2">Utførelse</h3>
+        <p class="text-slate-500 text-[13px] leading-relaxed">Ryddig arbeid med tildekking. To strøk, ingen snarveier.</p>
+      </div>
+      <div class="text-center">
+        <div class="w-9 h-9 bg-brand text-white f-display font-bold text-[15px] rounded-full flex items-center justify-center mx-auto mb-5">4</div>
+        <h3 class="f-display font-semibold text-[15px] text-slate-900 mb-2">Garanti & avlevering</h3>
+        <p class="text-slate-500 text-[13px] leading-relaxed">Skriftlig 5 års garanti. Vi rydder og du er fornøyd.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ANMELDELSER ───────────────────────────────────────── -->
+<section class="py-28 px-6" style="background:#F8FAFC">
+  <div class="max-w-6xl mx-auto">
+    <div data-animate class="text-center mb-14">
+      <p class="text-[12px] font-semibold tracking-widest uppercase text-brand mb-3">Anmeldelser</p>
+      <h2 class="f-display font-extrabold text-4xl tracking-tight text-slate-900" style="letter-spacing:-.03em">Hva kundene sier</h2>
+      <div class="flex items-center justify-center gap-2 mt-5">
+        <span class="text-yellow-400 text-lg">★★★★★</span>
+        <span class="text-[13px] text-slate-400">4.9 / 5 basert på 110 Google-anmeldelser</span>
+      </div>
+    </div>
+    <div data-stagger class="grid md:grid-cols-3 gap-5">
+      <div class="bento p-7">
+        <div class="text-yellow-400 text-[13px] mb-4">★★★★★</div>
+        <p class="text-slate-600 text-[13px] leading-relaxed mb-5">"Maling av hele leiligheten på tre dager. Perfekt resultat, og de ryddet bedre enn de fant det. Anbefales på det sterkeste!"</p>
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-[11px] font-semibold text-slate-500">KH</div>
+          <div>
+            <div class="text-[13px] font-medium text-slate-900">Kjersti Haugen</div>
+            <div class="text-[11px] text-slate-400">Huseier, [By]</div>
+          </div>
+        </div>
+      </div>
+      <div class="bento p-7">
+        <div class="text-yellow-400 text-[13px] mb-4">★★★★★</div>
+        <p class="text-slate-600 text-[13px] leading-relaxed mb-5">"Utvendig maling av enebolig. Grundig sparkling av gammelt trevirke, perfekt ferdig resultat. Fast pris som lovet."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-[11px] font-semibold text-slate-500">TO</div>
+          <div>
+            <div class="text-[13px] font-medium text-slate-900">Tor Olsen</div>
+            <div class="text-[11px] text-slate-400">Privatperson, [By]</div>
+          </div>
+        </div>
+      </div>
+      <div class="bento p-7">
+        <div class="text-yellow-400 text-[13px] mb-4">★★★★★</div>
+        <p class="text-slate-600 text-[13px] leading-relaxed mb-5">"FargeVerk maler kontorbygget vårt hvert annet år. Profesjonelle, ryddige og alltid innen budsjett. Fast leverandør."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-[11px] font-semibold text-slate-500">LB</div>
+          <div>
+            <div class="text-[13px] font-medium text-slate-900">Line Berg</div>
+            <div class="text-[11px] text-slate-400">Driftsleder, næringsbygg</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── KONTAKT ───────────────────────────────────────────── -->
+<section id="kontakt" class="py-28 px-6">
+  <div class="max-w-5xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-20 items-start">
+      <div data-animate>
+        <p class="text-[12px] font-semibold tracking-widest uppercase text-brand mb-3">Kontakt</p>
+        <h2 class="f-display font-extrabold text-4xl tracking-tight text-slate-900 mb-5" style="letter-spacing:-.03em">Klar for befaring?</h2>
+        <p class="text-slate-500 text-[15px] leading-relaxed mb-10">Fyll ut skjema — vi kontakter deg innen 24 timer for å avtale gratis befaring.</p>
+        <div class="space-y-5">
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 border border-slate-200 rounded-xl flex items-center justify-center flex-shrink-0">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.66A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="text-[11px] text-slate-400 uppercase tracking-wide">Telefon</div>
+              <div class="f-display font-semibold text-[15px] text-slate-900">123 45 678</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 border border-slate-200 rounded-xl flex items-center justify-center flex-shrink-0">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </div>
+            <div>
+              <div class="text-[11px] text-slate-400 uppercase tracking-wide">E-post</div>
+              <div class="f-display font-semibold text-[15px] text-slate-900">kontakt@fargeverk.no</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 border border-slate-200 rounded-xl flex items-center justify-center flex-shrink-0">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>
+            </div>
+            <div>
+              <div class="text-[11px] text-slate-400 uppercase tracking-wide">Adresse</div>
+              <div class="f-display font-semibold text-[15px] text-slate-900">Eksempelgata 12, [By]</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div data-animate>
+        <form class="border border-slate-200 rounded-2xl p-8 space-y-4 bg-white">
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-[11px] font-semibold text-slate-500 uppercase tracking-wide mb-2">Fornavn</label>
+              <input type="text" placeholder="Ola" class="w-full border border-slate-200 rounded-xl px-4 py-3 text-[14px] text-slate-900 placeholder-slate-300 focus:outline-none focus:border-brand focus:ring-2 focus:ring-green-100 transition-all" />
+            </div>
+            <div>
+              <label class="block text-[11px] font-semibold text-slate-500 uppercase tracking-wide mb-2">Etternavn</label>
+              <input type="text" placeholder="Nordmann" class="w-full border border-slate-200 rounded-xl px-4 py-3 text-[14px] text-slate-900 placeholder-slate-300 focus:outline-none focus:border-brand focus:ring-2 focus:ring-green-100 transition-all" />
+            </div>
+          </div>
+          <div>
+            <label class="block text-[11px] font-semibold text-slate-500 uppercase tracking-wide mb-2">Telefon</label>
+            <input type="tel" placeholder="123 45 678" class="w-full border border-slate-200 rounded-xl px-4 py-3 text-[14px] text-slate-900 placeholder-slate-300 focus:outline-none focus:border-brand focus:ring-2 focus:ring-green-100 transition-all" />
+          </div>
+          <div>
+            <label class="block text-[11px] font-semibold text-slate-500 uppercase tracking-wide mb-2">Hva trenger du?</label>
+            <select class="w-full border border-slate-200 rounded-xl px-4 py-3 text-[14px] text-slate-500 focus:outline-none focus:border-brand transition-all">
+              <option>Velg tjeneste...</option>
+              <option>Innvendig maling</option>
+              <option>Utvendig maling</option>
+              <option>Tapetsering</option>
+              <option>Sparkling & overflate</option>
+              <option>Bad & kjøkken</option>
+              <option>Fargerådgivning</option>
+              <option>Næringsbygg</option>
+              <option>Annet</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-[11px] font-semibold text-slate-500 uppercase tracking-wide mb-2">Beskriv oppdraget</label>
+            <textarea rows="3" placeholder="Fortell kort om hva du trenger..." class="w-full border border-slate-200 rounded-xl px-4 py-3 text-[14px] text-slate-900 placeholder-slate-300 focus:outline-none focus:border-brand focus:ring-2 focus:ring-green-100 transition-all resize-none"></textarea>
+          </div>
+          <button type="submit" class="w-full bg-brand text-white f-display font-semibold py-3.5 rounded-xl text-[14px] hover:bg-brand-light hover:shadow-[0_0_24px_rgba(21,128,61,.25)] hover:scale-[1.01] transition-all">
+            Send forespørsel →
+          </button>
+          <p class="text-[12px] text-slate-400 text-center">Vi kontakter deg innen 24 timer</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────────── -->
+<footer style="background:#0F172A" class="text-white py-16 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-4 gap-10 mb-12">
+      <div class="md:col-span-2">
+        <div class="f-display font-bold text-[18px] mb-3">Farge<span style="color:#16A34A">Verk</span></div>
+        <p class="text-[13px] leading-relaxed max-w-xs" style="color:rgba(255,255,255,.45)">Autorisert malermester i [By] siden 2008. Malermesterbrev og 5 års garanti.</p>
+      </div>
+      <div>
+        <div class="text-[11px] font-semibold tracking-widest uppercase mb-4" style="color:rgba(255,255,255,.3)">Tjenester</div>
+        <ul class="space-y-2 text-[13px]" style="color:rgba(255,255,255,.55)">
+          <li><a href="#" class="hover:text-white transition-colors">Innvendig maling</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Utvendig maling</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Tapetsering</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Sparkling</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Fargerådgivning</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="text-[11px] font-semibold tracking-widest uppercase mb-4" style="color:rgba(255,255,255,.3)">Kontakt</div>
+        <ul class="space-y-2 text-[13px]" style="color:rgba(255,255,255,.55)">
+          <li>123 45 678</li>
+          <li>kontakt@fargeverk.no</li>
+          <li>Eksempelgata 12, [By]</li>
+          <li class="pt-2 text-[12px]" style="color:rgba(255,255,255,.25)">Org.nr: 123 456 789</li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t pt-6 flex flex-col sm:flex-row justify-between items-center gap-3" style="border-color:rgba(255,255,255,.08)">
+      <div class="text-[12px]" style="color:rgba(255,255,255,.25)">© 2025 FargeVerk AS</div>
+      <div class="flex gap-5 text-[12px]" style="color:rgba(255,255,255,.25)">
+        <a href="#" class="hover:text-white/60 transition-colors">Personvern</a>
+        <a href="#" class="hover:text-white/60 transition-colors">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 24);
+  });
+  window.addEventListener('load', () => {
+    if (typeof Motion === 'undefined') return;
+    const { inView, animate } = Motion;
+    inView('[data-animate]', ({ target }) => {
+      animate(target, { opacity: [0, 1], y: [28, 0] }, { duration: 0.55, easing: [0.25, 0.46, 0.45, 0.94] });
+    });
+    inView('[data-stagger]', ({ target }) => {
+      animate(target.querySelectorAll(':scope > *'), { opacity: [0, 1], y: [20, 0] }, { duration: 0.4, delay: animate.stagger(0.09) });
+    });
+  });
+</script>
+</body>
+</html>
