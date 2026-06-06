@@ -60,9 +60,9 @@ p { margin: 0; }
    nabobokstavenes konturstreker hverandre og ser rotete ut. */
 .outline {
   color: transparent;
-  -webkit-text-stroke: 1.2px var(--ink);
-  letter-spacing: 0.05em;
-  word-spacing: 0.22em;
+  -webkit-text-stroke: 1.4px var(--ink);
+  font-weight: 600;            /* lettere vekt = ren kontur (som .outline-primary paa dmarketing.no) */
+  letter-spacing: 0.01em;
 }
 .outline.on-dark { -webkit-text-stroke-color: #fff; }
 
