@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FargeVerk — Malerfirma i [By]</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{fontFamily:{display:['Bricolage Grotesque','sans-serif'],body:['Inter','sans-serif']},colors:{brand:'#15803D','brand-light':'#16A34A','brand-soft':'#DCFCE7'}}}}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Bricolage+Grotesque:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/motion@11.11.9/dist/motion.js"></script>
+  <link href="../../images/favicon.png" rel="shortcut icon" type="image/x-icon">
+  <style>
+    *{-webkit-font-smoothing:antialiased}body{font-family:'Inter',sans-serif;background:#fff;color:#0F172A}.f-display{font-family:'Bricolage Grotesque',sans-serif}
+    #nav{transition:background .25s,box-shadow .25s}#nav.scrolled{background:rgba(255,255,255,.92);backdrop-filter:blur(16px);box-shadow:0 1px 0 #E2E8F0}
+    .bg-grid{background-color:#FAFAFA;background-image:linear-gradient(rgba(21,128,61,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(21,128,61,.06) 1px,transparent 1px);background-size:40px 40px}
+    .bento{background:#fff;border:1px solid #E2E8F0;border-radius:20px;transition:box-shadow .2s,transform .2s}.bento:hover{box-shadow:0 12px 40px rgba(21,128,61,.10);transform:translateY(-3px)}
+    .glass-img{position:relative;border-radius:20px;overflow:hidden}.glass-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(15,23,42,.28));pointer-events:none}
+    .step-line::after{content:'';position:absolute;top:18px;left:calc(50% + 22px);width:calc(100% - 44px);height:1px;background:#E2E8F0}
+    @media(max-width:767px){.step-line::after{display:none}}
+    .nav-active{color:#0F172A !important;font-weight:600}
+  </style>
+</head>
+<body>
+
+<nav id="nav" class="fixed top-0 inset-x-0 z-50">
+  <div class="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
+    <a href="/" class="f-display font-bold text-[15px] tracking-tight text-slate-900">Farge<span class="text-brand">Verk</span></a>
+    <div class="hidden md:flex items-center gap-7 text-[13px] font-medium text-slate-500">
+      <a href="/"     class="hover:text-slate-900 transition-colors nav-active">Hjem</a>
+      <a href="tjenester" class="hover:text-slate-900 transition-colors">Tjenester</a>
+      <a href="om-oss"    class="hover:text-slate-900 transition-colors">Om oss</a>
+      <a href="kontakt"   class="hover:text-slate-900 transition-colors">Kontakt</a>
+    </div>
+    <a href="kontakt" class="bg-brand text-white text-[13px] font-semibold px-4 py-2 rounded-lg hover:bg-brand-light transition-colors">Få befaring</a>
+  </div>
+</nav>
+
+<!-- HERO — Full-bleed bilde med glass-kort (type B) -->
+<section class="relative min-h-screen flex items-end overflow-hidden pt-14">
+  <img src="../bilder/malerfirma/hero.jpg"
+       onerror="this.src='https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=1600&q=85'"
+       alt="Ferdig malt rom"
+       class="absolute inset-0 w-full h-full object-cover" />
+  <div class="absolute inset-0" style="background:linear-gradient(to bottom,rgba(15,23,42,0.10) 0%,rgba(13,92,44,0.30) 60%,rgba(13,92,44,0.65) 100%);"></div>
+
+  <!-- Glassmorphism content card -->
+  <div class="relative z-10 max-w-6xl mx-auto px-6 pb-16 w-full">
+    <div data-animate class="max-w-xl rounded-3xl p-10 shadow-2xl" style="background:rgba(255,255,255,0.94);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,0.9);">
+      <p class="text-[12px] font-semibold tracking-widest uppercase text-brand mb-4">FargeVerk · [By]s lokale malerfirma</p>
+      <h1 class="f-display font-extrabold text-4xl md:text-5xl text-slate-900 leading-[1.05] mb-5" style="letter-spacing:-0.025em;">
+        Maler som leverer<br/><span class="italic" style="color:#15803D">rene resultat.</span>
+      </h1>
+      <p class="text-slate-500 text-[15px] leading-relaxed mb-7 max-w-md">Innvendig, utvendig, tapetsering og sparkling — alltid fast pris og 5 års garanti på alt arbeid.</p>
+
+      <div class="flex flex-col sm:flex-row gap-3 mb-7">
+        <a href="kontakt" class="bg-brand text-white f-display font-semibold px-6 py-3 rounded-xl text-[14px] hover:bg-brand-light transition-all hover:scale-[1.02] text-center">Få fastpris-tilbud</a>
+        <a href="tjenester" class="inline-flex items-center justify-center gap-2 border border-slate-200 text-slate-700 font-semibold px-6 py-3 rounded-xl text-[14px] hover:border-slate-400 transition-all">Se tjenester</a>
+      </div>
+
+      <div class="flex flex-wrap gap-x-5 gap-y-2 pt-5 border-t border-slate-100 text-[12px] text-slate-500">
+        <span class="flex items-center gap-1.5"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Mesterbrev</span>
+        <span class="flex items-center gap-1.5"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>5 års garanti</span>
+        <span class="flex items-center gap-1.5"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Tilbud innen 24t</span>
+        <span class="flex items-center gap-1.5"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>4.9 — 110+ anmeldelser</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating fargesvatch-strip -->
+  <div class="absolute top-24 right-10 hidden lg:flex flex-col gap-3" data-animate>
+    <div class="rounded-full w-14 h-14 shadow-2xl border-2 border-white" style="background:#F5F0E6;"></div>
+    <div class="rounded-full w-14 h-14 shadow-2xl border-2 border-white" style="background:#5C7A8C;"></div>
+    <div class="rounded-full w-14 h-14 shadow-2xl border-2 border-white" style="background:#C2876A;"></div>
+    <div class="rounded-full w-14 h-14 shadow-2xl border-2 border-white" style="background:#7C8763;"></div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="border-y border-slate-100" style="background:#FAFAFA">
+  <div class="max-w-6xl mx-auto px-6 py-8 grid grid-cols-2 md:grid-cols-4 gap-8 text-center" data-stagger>
+    <div><div class="f-display font-extrabold text-[36px] text-brand" style="letter-spacing:-.03em">800+</div><div class="text-[12px] text-slate-400 uppercase tracking-wide mt-1">Prosjekter</div></div>
+    <div><div class="f-display font-extrabold text-[36px] text-slate-900" style="letter-spacing:-.03em">4.9★</div><div class="text-[12px] text-slate-400 uppercase tracking-wide mt-1">Google-snitt</div></div>
+    <div><div class="f-display font-extrabold text-[36px] text-slate-900" style="letter-spacing:-.03em">12</div><div class="text-[12px] text-slate-400 uppercase tracking-wide mt-1">År i bransjen</div></div>
+    <div><div class="f-display font-extrabold text-[36px] text-slate-900" style="letter-spacing:-.03em">5 år</div><div class="text-[12px] text-slate-400 uppercase tracking-wide mt-1">Garanti</div></div>
+  </div>
+</div>
+
+<!-- TJENESTER BENTO -->
+<section class="py-24 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div data-animate class="mb-12 flex items-end justify-between">
+      <div>
+        <p class="text-[12px] font-semibold tracking-widest uppercase text-brand mb-3">Tjenester</p>
+        <h2 class="f-display font-extrabold text-4xl text-slate-900" style="letter-spacing:-.03em">Alt fra puss til fasade</h2>
+      </div>
+      <a href="tjenester" class="hidden md:inline-flex items-center gap-1.5 text-[13px] font-semibold text-brand hover:underline">Se alle tjenester →</a>
+    </div>
+    <div class="grid grid-cols-12 gap-5" data-stagger>
+
+      <!-- Innvendig maling — stor -->
+      <div class="bento col-span-12 md:col-span-8 p-8 flex gap-8 items-center">
+        <div class="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0" style="background:#DCFCE7">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div>
+          <div class="inline-flex text-[11px] font-semibold text-brand bg-brand-soft border border-green-100 px-2.5 py-1 rounded-full mb-3">Mest populært</div>
+          <h3 class="f-display font-bold text-[22px] text-slate-900 mb-2">Innvendig maling</h3>
+          <p class="text-slate-500 text-[14px] leading-relaxed max-w-md">Stue, soverom, kjøkken og bad. Vi dekker møbler og gulv, gjør grundig forarbeid og leverer et resultat som holder i mange år.</p>
+        </div>
+        <div class="ml-auto flex-shrink-0 hidden md:block">
+          <div class="f-display font-bold text-[28px] text-brand">Tilbud</div>
+          <div class="text-[12px] text-slate-400 mt-1">gratis befaring</div>
+        </div>
+      </div>
+
+      <!-- Utvendig maling -->
+      <div class="bento col-span-12 md:col-span-4 p-7">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:#DCFCE7">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <h3 class="f-display font-bold text-[18px] text-slate-900 mb-2">Utvendig maling</h3>
+        <p class="text-slate-500 text-[13px] leading-relaxed">Fasade, vindskier og kledning. Riktig forbehandling er nøkkelen — vi gjør det som varer.</p>
+      </div>
+
+      <!-- Tapetsering -->
+      <div class="bento col-span-12 md:col-span-4 p-7">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:#DCFCE7">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="1.8"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </div>
+        <h3 class="f-display font-bold text-[18px] text-slate-900 mb-2">Tapetsering</h3>
+        <p class="text-slate-500 text-[13px] leading-relaxed">Vinyl, papir, tekstil og strukturtapet. Vi hjelper deg velge mønster og legger det perfekt.</p>
+      </div>
+
+      <!-- Sparkling -->
+      <div class="bento col-span-12 md:col-span-4 p-7">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(21,128,61,.08)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="1.8"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        </div>
+        <h3 class="f-display font-bold text-[18px] text-slate-900 mb-2">Sparkling & pussing</h3>
+        <p class="text-slate-500 text-[13px] leading-relaxed">Sprekker, riper og ujevnheter forsvinner. Vi klargjør overflaten for et perfekt sluttresultat.</p>
+      </div>
+
+      <!-- Fargerådgivning -->
+      <div class="bento col-span-12 md:col-span-4 p-7">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(21,128,61,.08)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="1.8"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 22c-4.97 0-9-2.686-9-6 0-2 2-3.5 4-4"/></svg>
+        </div>
+        <h3 class="f-display font-bold text-[18px] text-slate-900 mb-2">Fargerådgivning</h3>
+        <p class="text-slate-500 text-[13px] leading-relaxed">Usikker på farge? Vi hjelper deg finne en palett som passer boligen og lyset.</p>
+      </div>
+
+      <!-- Rehabilitering -->
+      <div class="bento col-span-12 md:col-span-4 p-7">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(21,128,61,.08)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="1.8"><path d="M2 20h20M17 20v-7M7 20v-7M12 20V8M22 8l-10-6L2 8"/></svg>
+        </div>
+        <h3 class="f-display font-bold text-[18px] text-slate-900 mb-2">Rehabilitering</h3>
+        <p class="text-slate-500 text-[13px] leading-relaxed">Totaloppussing av fasade eller hele boligen. Vi koordinerer og tar ansvar for hele prosjektet.</p>
+      </div>
+
+    </div>
+    <div class="mt-6 md:hidden text-center">
+      <a href="tjenester" class="inline-flex items-center gap-1.5 text-[13px] font-semibold text-brand hover:underline">Se alle tjenester →</a>
+    </div>
+  </div>
+</section>
+
+<!-- OM OSS SPLIT -->
+<section class="py-24 px-6" style="background:#FAFAFA">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+    <div data-animate class="glass-img aspect-[4/3]">
+      <img src="../bilder/maler/maler.jpg"
+           onerror="this.src='https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=800&q=80'"
+           alt="FargeVerk malere" class="w-full h-full object-cover" />
+    </div>
+    <div data-animate>
+      <p class="text-[12px] font-semibold tracking-widest uppercase text-brand mb-4">Om oss</p>
+      <h2 class="f-display font-extrabold text-4xl text-slate-900 mb-6" style="letter-spacing:-.03em">Vi er like nøye på forarbeidet som på sluttresultatet</h2>
+      <p class="text-slate-500 text-[15px] leading-relaxed mb-5">FargeVerk ble startet av to malermestere som ønsket å gjøre det skikkelig. Det betyr grundig forarbeid, kvalitetsmaling og rydding etter oss.</p>
+      <p class="text-slate-500 text-[14px] leading-relaxed mb-8">Vi har mesterbrev og gir 5 års garanti på alt arbeid. Ingen skjulte kostnader — det vi sier i tilbudet er det du betaler.</p>
+      <a href="om-oss" class="inline-flex items-center gap-2 text-[14px] font-semibold text-brand hover:underline">Møt teamet →</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROSESS -->
+<section class="py-24 px-6">
+  <div class="max-w-5xl mx-auto">
+    <div data-animate class="text-center mb-16">
+      <p class="text-[12px] font-semibold tracking-widest uppercase text-brand mb-3">Fremgangsmåte</p>
+      <h2 class="f-display font-extrabold text-4xl text-slate-900" style="letter-spacing:-.03em">Enkelt fra start til slutt</h2>
+    </div>
+    <div class="grid md:grid-cols-4 gap-8" data-stagger>
+      <div class="relative text-center step-line">
+        <div class="w-10 h-10 rounded-full bg-brand text-white f-display font-bold text-[16px] flex items-center justify-center mx-auto mb-5">1</div>
+        <h3 class="f-display font-bold text-[16px] text-slate-900 mb-2">Befaring</h3>
+        <p class="text-slate-400 text-[13px] leading-relaxed">Vi kommer hjem til deg og ser på jobben. Gratis og uforpliktende.</p>
+      </div>
+      <div class="relative text-center step-line">
+        <div class="w-10 h-10 rounded-full bg-brand text-white f-display font-bold text-[16px] flex items-center justify-center mx-auto mb-5">2</div>
+        <h3 class="f-display font-bold text-[16px] text-slate-900 mb-2">Tilbud</h3>
+        <p class="text-slate-400 text-[13px] leading-relaxed">Skriftlig fastpristilbud innen 24 timer. Ingen overraskelser.</p>
+      </div>
+      <div class="relative text-center step-line">
+        <div class="w-10 h-10 rounded-full bg-brand text-white f-display font-bold text-[16px] flex items-center justify-center mx-auto mb-5">3</div>
+        <h3 class="f-display font-bold text-[16px] text-slate-900 mb-2">Utførelse</h3>
+        <p class="text-slate-400 text-[13px] leading-relaxed">Grundig forarbeid, kvalitetsmaling og ryddige håndverkere.</p>
+      </div>
+      <div class="text-center">
+        <div class="w-10 h-10 rounded-full bg-brand text-white f-display font-bold text-[16px] flex items-center justify-center mx-auto mb-5">4</div>
+        <h3 class="f-display font-bold text-[16px] text-slate-900 mb-2">Overtakelse</h3>
+        <p class="text-slate-400 text-[13px] leading-relaxed">Vi går gjennom jobben sammen. Alt ryddet, 5 års garanti.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANMELDELSER -->
+<section class="py-24 px-6" style="background:#FAFAFA">
+  <div class="max-w-6xl mx-auto">
+    <div data-animate class="text-center mb-12">
+      <p class="text-[12px] font-semibold tracking-widest uppercase text-brand mb-3">Kunder</p>
+      <h2 class="f-display font-extrabold text-4xl text-slate-900" style="letter-spacing:-.03em">Hva naboene sier</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5" data-stagger>
+      <div class="bg-white border border-slate-100 rounded-2xl p-7">
+        <div class="flex gap-1 mb-4 text-amber-400">★★★★★</div>
+        <p class="text-slate-600 text-[14px] leading-relaxed mb-5">«Fantastisk resultat! Grundig forarbeid og veldig ryddige. Stuen ser ut som ny. Vil absolutt bruke dem igjen.»</p>
+        <div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-brand-soft flex items-center justify-center f-display font-bold text-brand text-[13px]">AH</div><div><div class="f-display font-semibold text-[13px] text-slate-900">Anne H.</div><div class="text-[11px] text-slate-400">Innvendig maling</div></div></div>
+      </div>
+      <div class="bg-white border border-slate-100 rounded-2xl p-7">
+        <div class="flex gap-1 mb-4 text-amber-400">★★★★★</div>
+        <p class="text-slate-600 text-[14px] leading-relaxed mb-5">«Huset ser 20 år yngre ut. Nøye forbehandling av fasaden, og de holdt seg til tilbudet på krona. Imponerende arbeid.»</p>
+        <div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-brand-soft flex items-center justify-center f-display font-bold text-brand text-[13px]">RB</div><div><div class="f-display font-semibold text-[13px] text-slate-900">Rolf B.</div><div class="text-[11px] text-slate-400">Utvendig maling</div></div></div>
+      </div>
+      <div class="bg-white border border-slate-100 rounded-2xl p-7">
+        <div class="flex gap-1 mb-4 text-amber-400">★★★★★</div>
+        <p class="text-slate-600 text-[14px] leading-relaxed mb-5">«Hjalp oss velge farge også — noe vi slet lenge med. Resultatet ble mye bedre enn vi hadde forestilt oss. Anbefales!»</p>
+        <div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-brand-soft flex items-center justify-center f-display font-bold text-brand text-[13px]">KN</div><div><div class="f-display font-semibold text-[13px] text-slate-900">Kari N.</div><div class="text-[11px] text-slate-400">Fargerådgivning + maling</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DARK CTA -->
+<section class="py-20 px-6" style="background:#0F172A">
+  <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+    <div data-animate>
+      <h2 class="f-display font-extrabold text-3xl text-white mb-2" style="letter-spacing:-.03em">Klar for et friskere hjem?</h2>
+      <p class="text-slate-400 text-[15px]">Gratis befaring og tilbud innen 24 timer.</p>
+    </div>
+    <div class="flex gap-3 flex-shrink-0">
+      <a href="kontakt" class="bg-brand text-white f-display font-semibold px-6 py-3.5 rounded-xl text-[14px] hover:bg-brand-light transition-colors">Få gratis befaring</a>
+      <a href="tel:+4712345678" class="bg-white/10 border border-white/20 text-white f-display font-semibold px-6 py-3.5 rounded-xl text-[14px] hover:bg-white/20 transition-colors">Ring 123 45 678</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#0F172A" class="text-white py-16 px-6 border-t border-white/5">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-4 gap-10 mb-12">
+      <div class="md:col-span-2">
+        <div class="f-display font-bold text-[18px] mb-3">Farge<span style="color:#16A34A">Verk</span></div>
+        <p class="text-[13px] leading-relaxed max-w-xs" style="color:rgba(255,255,255,.45)">Malermester i [By] siden 2013.</p>
+      </div>
+      <div>
+        <div class="text-[11px] font-semibold tracking-widest uppercase mb-4" style="color:rgba(255,255,255,.3)">Sider</div>
+        <ul class="space-y-2 text-[13px]" style="color:rgba(255,255,255,.55)">
+          <li><a href="/"     class="hover:text-white transition-colors">Hjem</a></li>
+          <li><a href="tjenester" class="hover:text-white transition-colors">Tjenester</a></li>
+          <li><a href="om-oss"   class="hover:text-white transition-colors">Om oss</a></li>
+          <li><a href="kontakt"  class="hover:text-white transition-colors">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="text-[11px] font-semibold tracking-widest uppercase mb-4" style="color:rgba(255,255,255,.3)">Kontakt</div>
+        <ul class="space-y-2 text-[13px]" style="color:rgba(255,255,255,.55)">
+          <li>123 45 678</li><li>kontakt@fargeverk.no</li><li>Eksempelgata 12, [By]</li>
+          <li class="pt-2 text-[12px]" style="color:rgba(255,255,255,.25)">Org.nr: 123 456 789</li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t pt-6 flex flex-col sm:flex-row justify-between items-center gap-3" style="border-color:rgba(255,255,255,.08)">
+      <div class="text-[12px]" style="color:rgba(255,255,255,.25)">© 2025 FargeVerk AS</div>
+      <div class="flex gap-5 text-[12px]" style="color:rgba(255,255,255,.25)"><a href="#" class="hover:text-white/60">Personvern</a><a href="#" class="hover:text-white/60">Cookies</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 24); });
+  window.addEventListener('load', () => {
+    if (typeof Motion === 'undefined') return;
+    const { inView, animate } = Motion;
+    inView('[data-animate]', ({ target }) => { animate(target, { opacity:[0,1], y:[28,0] }, { duration:.55, easing:[.25,.46,.45,.94] }); });
+    inView('[data-stagger]', ({ target }) => { animate(target.querySelectorAll(':scope > *'), { opacity:[0,1], y:[20,0] }, { duration:.4, delay:animate.stagger(.09) }); });
+  });
+</script>
+</body>
+</html>

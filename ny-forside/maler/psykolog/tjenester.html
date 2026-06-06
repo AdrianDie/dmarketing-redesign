@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tjenester — Samtaletid</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{fontFamily:{display:['Newsreader','sans-serif'],body:['Inter','sans-serif']},colors:{brand:'#0E7490','brand-light':'#0891B2','brand-soft':'#ECFEFF'}}}}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/motion@11.11.9/dist/motion.js"></script>
+  <link href="../../images/favicon.png" rel="shortcut icon" type="image/x-icon">
+  <style>
+    *{-webkit-font-smoothing:antialiased}body{font-family:'Inter',sans-serif;background:#fff;color:#0F172A}.f-display{font-family:'Newsreader',sans-serif}
+    #nav{transition:background .25s,box-shadow .25s}#nav.scrolled{background:rgba(255,255,255,.92);backdrop-filter:blur(16px);box-shadow:0 1px 0 #E2E8F0}
+    .svc-block{border:1px solid #E2E8F0;border-radius:20px;overflow:hidden;transition:box-shadow .2s}.svc-block:hover{box-shadow:0 8px 32px rgba(14,116,144,.08)}
+    .include-item{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #F1F5F9;font-size:13px;color:#475569}.include-item:last-child{border-bottom:none}
+    .faq-item{border-bottom:1px solid #E2E8F0;padding:20px 0}
+    .price-tag{background:#ECFEFF;color:#0E7490;font-family:'Newsreader',sans-serif;font-weight:700;font-size:13px;padding:6px 14px;border-radius:999px;display:inline-block}
+  </style>
+</head>
+<body>
+
+<nav id="nav" class="fixed top-0 inset-x-0 z-50">
+  <div class="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
+    <a href="/" class="f-display font-bold text-[15px] tracking-tight text-slate-900">Samtale<span class="text-brand">tid</span></a>
+    <div class="hidden md:flex items-center gap-7 text-[13px] font-medium text-slate-500">
+      <a href="/"     class="hover:text-slate-900 transition-colors">Hjem</a>
+      <a href="tjenester" class="hover:text-slate-900 transition-colors text-slate-900 font-semibold">Tjenester</a>
+      <a href="om-oss"    class="hover:text-slate-900 transition-colors">Om oss</a>
+      <a href="kontakt"   class="hover:text-slate-900 transition-colors">Kontakt</a>
+    </div>
+    <a href="kontakt" class="bg-brand text-white text-[13px] font-semibold px-4 py-2 rounded-lg hover:bg-brand-light transition-colors">Book time</a>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="pt-28 pb-16 px-6" style="background:linear-gradient(to bottom,#ECFEFF,#fff)">
+  <div class="max-w-6xl mx-auto">
+    <div data-animate>
+      <a href="/" class="inline-flex items-center gap-1.5 text-[12px] text-slate-400 hover:text-brand transition-colors mb-6">
+        <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>Tilbake til forsiden
+      </a>
+      <p class="text-[12px] font-semibold tracking-widest uppercase text-brand mb-3">Tjenester</p>
+      <h1 class="f-display font-extrabold text-5xl tracking-tight text-slate-900 mb-5" style="letter-spacing:-.04em">Profesjonell hjelp<br/>for alle livets faser</h1>
+      <p class="text-[16px] text-slate-500 max-w-xl leading-relaxed">Alle samtaler er underlagt lovpålagt taushetsplikt. Trygge, konfidensielle rammer — ingen venteliste.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INDIVIDUALTERAPI — FEATURED -->
+<section class="py-8 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div data-animate class="svc-block" style="background:linear-gradient(135deg,#ECFEFF,#fff)">
+      <div class="grid md:grid-cols-2 gap-0">
+        <div class="p-10">
+          <div class="inline-flex items-center gap-2 text-[11px] font-semibold text-brand bg-brand-soft border border-cyan-200 px-3 py-1.5 rounded-full mb-5">Mest brukt</div>
+          <h2 class="f-display font-extrabold text-3xl text-slate-900 mb-4" style="letter-spacing:-.03em">Individualterapi</h2>
+          <p class="text-slate-500 text-[15px] leading-relaxed mb-6">Angst, depresjon, stress, relasjonsproblemer, sorg eller livskriser — vi hjelper deg med kognitiv atferdsterapi (KAT) og andre evidensbaserte metoder.</p>
+          <div class="mb-8">
+            <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Autorisert psykolog</div>
+            <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Lovpålagt taushetsplikt</div>
+            <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Time tilgjengelig innen 1 uke</div>
+            <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Video- eller fysisk time</div>
+          </div>
+          <a href="kontakt" class="inline-flex items-center gap-2 bg-brand text-white f-display font-semibold px-6 py-3.5 rounded-xl text-[14px] hover:bg-brand-light transition-colors">Book første time</a>
+        </div>
+        <div class="relative hidden md:block">
+          <img src="../bilder/psykolog/terapi.jpg"
+               onerror="this.src='https://images.unsplash.com/photo-1573497620053-ea5300f94f21?w=700&q=80'"
+               alt="Individualterapi" class="w-full h-full object-cover" style="min-height:340px;" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES GRID -->
+<section class="py-6 px-6">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-6">
+
+    <div data-animate class="svc-block p-8">
+      <div class="flex items-start justify-between mb-5">
+        <div class="w-12 h-12 bg-brand-soft rounded-xl flex items-center justify-center">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E7490" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75M9 7a4 4 0 100 8 4 4 0 000-8z"/></svg>
+        </div>
+        <span class="price-tag">1 800 kr / 50 min</span>
+      </div>
+      <h3 class="f-display font-bold text-xl text-slate-900 mb-3">Parterapi</h3>
+      <p class="text-slate-500 text-[14px] leading-relaxed mb-5">Kommunikasjonsproblemer, konflikter, utroskap eller livsendrende beslutninger. Vi jobber med paret som enhet for å styrke relasjonen.</p>
+      <div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Begge partnere deltar</div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>EFT- og Gottman-metoden</div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Kan kombineres med individuelle timer</div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Nøytral og trygg ramme</div>
+      </div>
+    </div>
+
+    <div data-animate class="svc-block p-8">
+      <div class="flex items-start justify-between mb-5">
+        <div class="w-12 h-12 bg-brand-soft rounded-xl flex items-center justify-center">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E7490" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <span class="price-tag">1 500 kr / 50 min</span>
+      </div>
+      <h3 class="f-display font-bold text-xl text-slate-900 mb-3">Familieterapi</h3>
+      <p class="text-slate-500 text-[14px] leading-relaxed mb-5">Familier i krise, skilsmisse, adopsjon eller utfordrende ungdomstid. Vi jobber med familiesystemet for å styrke bånd og kommunikasjon.</p>
+      <div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Hele familien deltar</div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Systemisk familieterapeutisk tilnærming</div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>60–90 minutters sesjoner</div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Samarbeid med skoler/PPT ved behov</div>
+      </div>
+    </div>
+
+    <div data-animate class="svc-block p-8">
+      <div class="flex items-start justify-between mb-5">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(14,116,144,.08)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E7490" stroke-width="1.8"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 15v-4m0-4h.01"/></svg>
+        </div>
+        <span class="price-tag">1 200 kr / 50 min</span>
+      </div>
+      <h3 class="f-display font-bold text-xl text-slate-900 mb-3">Barneterapi</h3>
+      <p class="text-slate-500 text-[14px] leading-relaxed mb-5">Terapi for barn og unge (5–18 år) med angst, ADHD-vansker, mobbeerfaringer, sorg eller atferdsproblemer. Tilpasset alder og modenhet.</p>
+      <div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Lek- og samtaleterapi</div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Foreldreveiledning inkludert</div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Samarbeid med skole/BUP ved behov</div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Aldersjustert tilnærming</div>
+      </div>
+    </div>
+
+    <div data-animate class="svc-block p-8">
+      <div class="flex items-start justify-between mb-5">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(14,116,144,.08)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E7490" stroke-width="1.8"><path d="M22 11.08V12a10 10 0 11-5.93-9.14M22 4L12 14.01l-3-3"/></svg>
+        </div>
+        <span class="price-tag">1 600 kr / 50 min</span>
+      </div>
+      <h3 class="f-display font-bold text-xl text-slate-900 mb-3">Krisehjelp</h3>
+      <p class="text-slate-500 text-[14px] leading-relaxed mb-5">Plutselig krise, traumatisk hendelse eller akutt psykisk stress. Vi prioriterer deg og kan tilby time innen 24–48 timer.</p>
+      <div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Prioritert time innen 24–48 timer</div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Stabilisering og krisehåndtering</div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Overgang til regulær terapi</div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Tilgjengelig for videokonsultasjon</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEDRIFTSPSYKOLOG — WIDE -->
+<section class="py-6 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div data-animate class="svc-block p-10" style="background:linear-gradient(135deg,#ECFEFF,#F0FDFF 60%,#fff 100%)">
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <span class="inline-flex text-[11px] font-semibold text-brand bg-white border border-cyan-200 px-3 py-1.5 rounded-full mb-5">Bedriftsavtale</span>
+          <h3 class="f-display font-extrabold text-3xl text-slate-900 mb-4" style="letter-spacing:-.03em">Bedriftspsykolog</h3>
+          <p class="text-slate-500 text-[15px] leading-relaxed mb-6">Fast psykologavtale for bedrifter. Ansatte får rask tilgang til profesjonell hjelp — uten venteliste og med full taushetsplikt. Reduserer sykefravær og øker trivsel.</p>
+          <a href="kontakt" class="inline-flex items-center gap-2 bg-brand text-white f-display font-semibold px-6 py-3 rounded-xl text-[14px] hover:bg-brand-light transition-colors">Ta kontakt →</a>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-white border border-cyan-100 rounded-2xl p-5 text-center"><div class="f-display font-extrabold text-[28px] text-brand">↓30%</div><div class="text-[12px] text-slate-400 mt-1">Sykefravær*</div></div>
+          <div class="bg-white border border-cyan-100 rounded-2xl p-5 text-center"><div class="f-display font-extrabold text-[28px] text-brand">Fast</div><div class="text-[12px] text-slate-400 mt-1">Månedspris</div></div>
+          <div class="bg-white border border-cyan-100 rounded-2xl p-5 text-center"><div class="f-display font-extrabold text-[28px] text-brand">Anon</div><div class="text-[12px] text-slate-400 mt-1">Fullt konfidensielt</div></div>
+          <div class="bg-white border border-cyan-100 rounded-2xl p-5 text-center"><div class="f-display font-extrabold text-[28px] text-brand">1 uke</div><div class="text-[12px] text-slate-400 mt-1">Maks ventetid</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRISLISTE -->
+<section class="py-20 px-6" style="background:#F8FAFC">
+  <div class="max-w-4xl mx-auto">
+    <div data-animate class="text-center mb-12">
+      <p class="text-[12px] font-semibold tracking-widest uppercase text-brand mb-3">Priser</p>
+      <h2 class="f-display font-extrabold text-4xl tracking-tight text-slate-900" style="letter-spacing:-.03em">Priser per time</h2>
+      <p class="text-slate-500 text-[14px] mt-3">Alle priser inkl. mva. Bestill gratis 20-minutters avklaringssamtale.</p>
+    </div>
+    <div data-stagger class="bg-white border border-slate-200 rounded-2xl overflow-hidden">
+      <div class="grid grid-cols-3 text-[11px] font-semibold uppercase tracking-widest text-slate-400 px-6 py-3 border-b border-slate-100" style="background:#FAFAFA">
+        <span>Tjeneste</span><span class="text-center">Varighet</span><span class="text-right">Pris</span>
+      </div>
+      <div class="divide-y divide-slate-50">
+        <div class="grid grid-cols-3 px-6 py-4 items-center"><span class="f-display font-semibold text-slate-900 text-[14px]">Individualterapi</span><span class="text-center text-[13px] text-slate-400">50 min</span><span class="text-right f-display font-bold text-slate-900">1 600 kr</span></div>
+        <div class="grid grid-cols-3 px-6 py-4 items-center"><span class="f-display font-semibold text-slate-900 text-[14px]">Parterapi</span><span class="text-center text-[13px] text-slate-400">50 min</span><span class="text-right f-display font-bold text-slate-900">1 800 kr</span></div>
+        <div class="grid grid-cols-3 px-6 py-4 items-center"><span class="f-display font-semibold text-slate-900 text-[14px]">Familieterapi</span><span class="text-center text-[13px] text-slate-400">60–90 min</span><span class="text-right f-display font-bold text-slate-900">1 500 kr</span></div>
+        <div class="grid grid-cols-3 px-6 py-4 items-center"><span class="f-display font-semibold text-slate-900 text-[14px]">Barneterapi</span><span class="text-center text-[13px] text-slate-400">50 min</span><span class="text-right f-display font-bold text-slate-900">1 200 kr</span></div>
+        <div class="grid grid-cols-3 px-6 py-4 items-center" style="background:#ECFEFF"><span class="f-display font-bold text-brand text-[14px]">Avklaringssamtale ⭐</span><span class="text-center text-[13px] text-slate-400">20 min</span><span class="text-right f-display font-bold text-brand">Gratis</span></div>
+        <div class="grid grid-cols-3 px-6 py-4 items-center"><span class="f-display font-semibold text-slate-900 text-[14px]">Bedriftsavtale</span><span class="text-center text-[13px] text-slate-400">Fast</span><span class="text-right f-display font-bold text-slate-900">Pris på forespørsel</span></div>
+      </div>
+    </div>
+    <p class="text-[12px] text-slate-400 mt-4 text-center">* Egenandel kan dekkes av helseforsikring. Spør arbeidsgiveren din.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="py-20 px-6">
+  <div class="max-w-3xl mx-auto">
+    <div data-animate class="text-center mb-12">
+      <p class="text-[12px] font-semibold tracking-widest uppercase text-brand mb-3">FAQ</p>
+      <h2 class="f-display font-extrabold text-4xl tracking-tight text-slate-900" style="letter-spacing:-.03em">Vanlige spørsmål</h2>
+    </div>
+    <div data-stagger>
+      <div class="faq-item"><h3 class="f-display font-semibold text-[16px] text-slate-900 mb-2">Er alt jeg sier konfidensielt?</h3><p class="text-slate-500 text-[14px] leading-relaxed">Ja. Psykologer er underlagt lovpålagt taushetsplikt (helsepersonelloven §21). Ingen informasjon deles uten ditt eksplisitte samtykke.</p></div>
+      <div class="faq-item"><h3 class="f-display font-semibold text-[16px] text-slate-900 mb-2">Trenger jeg henvisning fra lege?</h3><p class="text-slate-500 text-[14px] leading-relaxed">Nei, du trenger ikke henvisning for å gå til privatpraktiserende psykolog. Du kan bestille time direkte.</p></div>
+      <div class="faq-item"><h3 class="f-display font-semibold text-[16px] text-slate-900 mb-2">Kan jeg bruke helseforsikringen?</h3><p class="text-slate-500 text-[14px] leading-relaxed">Vi samarbeider med de fleste helseforsikringsselskaper. Sjekk med din forsikringsgiver for dekning — i mange tilfeller dekkes alle eller de fleste timer.</p></div>
+      <div class="faq-item"><h3 class="f-display font-semibold text-[16px] text-slate-900 mb-2">Tilbyr dere videokonsultasjon?</h3><p class="text-slate-500 text-[14px] leading-relaxed">Ja. Vi har videosamtaler via sikker, GDPR-godkjent plattform. Like effektivt som fysisk møte for de aller fleste.</p></div>
+      <div class="faq-item"><h3 class="f-display font-semibold text-[16px] text-slate-900 mb-2">Hvor mange timer trenger jeg vanligvis?</h3><p class="text-slate-500 text-[14px] leading-relaxed">Det varierer. Korttidsterapi er typisk 8–12 timer. Langvarige utfordringer krever gjerne mer. Vi setter alltid opp en plan sammen etter første time.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-20 px-6" style="background:#0F172A">
+  <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+    <div data-animate><h2 class="f-display font-extrabold text-3xl text-white mb-2" style="letter-spacing:-.03em">Ta det første steget</h2><p class="text-slate-400 text-[15px]">Gratis avklaringssamtale — ingen venteliste.</p></div>
+    <div class="flex gap-3 flex-shrink-0">
+      <a href="kontakt" class="bg-brand text-white f-display font-semibold px-6 py-3.5 rounded-xl text-[14px] hover:bg-brand-light transition-colors">Book time</a>
+      <a href="tel:+4712345678" class="bg-white/10 border border-white/20 text-white f-display font-semibold px-6 py-3.5 rounded-xl text-[14px] hover:bg-white/20 transition-colors">Ring 123 45 678</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#0F172A" class="text-white py-16 px-6 border-t border-white/5">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-4 gap-10 mb-12">
+      <div class="md:col-span-2"><div class="f-display font-bold text-[18px] mb-3">Samtale<span style="color:#0891B2">tid</span></div><p class="text-[13px] leading-relaxed max-w-xs" style="color:rgba(255,255,255,.45)">Autorisert psykolog i [By] — ingen venteliste.</p></div>
+      <div><div class="text-[11px] font-semibold tracking-widest uppercase mb-4" style="color:rgba(255,255,255,.3)">Sider</div><ul class="space-y-2 text-[13px]" style="color:rgba(255,255,255,.55)"><li><a href="/" class="hover:text-white transition-colors">Hjem</a></li><li><a href="tjenester" class="hover:text-white transition-colors">Tjenester</a></li><li><a href="om-oss" class="hover:text-white transition-colors">Om oss</a></li><li><a href="kontakt" class="hover:text-white transition-colors">Kontakt</a></li></ul></div>
+      <div><div class="text-[11px] font-semibold tracking-widest uppercase mb-4" style="color:rgba(255,255,255,.3)">Kontakt</div><ul class="space-y-2 text-[13px]" style="color:rgba(255,255,255,.55)"><li>123 45 678</li><li>time@samtaletid.no</li><li>Eksempelgata 12, [By]</li><li class="pt-2 text-[12px]" style="color:rgba(255,255,255,.25)">Org.nr: 123 456 789</li></ul></div>
+    </div>
+    <div class="border-t pt-6 flex flex-col sm:flex-row justify-between items-center gap-3" style="border-color:rgba(255,255,255,.08)">
+      <div class="text-[12px]" style="color:rgba(255,255,255,.25)">© 2025 Samtaletid AS</div>
+      <div class="flex gap-5 text-[12px]" style="color:rgba(255,255,255,.25)"><a href="#" class="hover:text-white/60">Personvern</a><a href="#" class="hover:text-white/60">Cookies</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 24); });
+  window.addEventListener('load', () => {
+    if (typeof Motion === 'undefined') return;
+    const { inView, animate } = Motion;
+    inView('[data-animate]', ({ target }) => { animate(target, { opacity:[0,1], y:[28,0] }, { duration:.55, easing:[.25,.46,.45,.94] }); });
+    inView('[data-stagger]', ({ target }) => { animate(target.querySelectorAll(':scope > *'), { opacity:[0,1], y:[20,0] }, { duration:.4, delay:animate.stagger(.09) }); });
+  });
+</script>
+</body>
+</html>

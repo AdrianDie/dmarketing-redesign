@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tjenester — RørMester</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { display:['Outfit','sans-serif'], body:['Inter','sans-serif'] },
+        colors: { brand:'#0F4C81', 'brand-light':'#1E6DB5' }
+      }}
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/motion@11.11.9/dist/motion.js"></script>
+  <link href="../../images/favicon.png" rel="shortcut icon" type="image/x-icon">
+  <style>
+    * { -webkit-font-smoothing:antialiased; }
+    body { font-family:'Inter',sans-serif; background:#FAFAFA; color:#09090B; }
+    .f-display { font-family:'Outfit',sans-serif; }
+    #nav { transition:background .3s,box-shadow .3s; }
+    #nav.scrolled { background:rgba(255,255,255,.9); backdrop-filter:blur(12px); box-shadow:0 1px 0 #E4E4E7; }
+    @keyframes pulse-ring { 0%{box-shadow:0 0 0 0 rgba(220,38,38,.4)} 70%{box-shadow:0 0 0 12px rgba(220,38,38,0)} 100%{box-shadow:0 0 0 0 rgba(220,38,38,0)} }
+    .pulse { animation:pulse-ring 2s infinite; }
+    .svc-block { background:#fff; border:1px solid #E4E4E7; border-radius:20px; overflow:hidden; transition:box-shadow .2s; }
+    .svc-block:hover { box-shadow:0 8px 32px rgba(15,76,129,.08); }
+    .include-item { display:flex; align-items:center; gap:10px; padding:8px 0; border-bottom:1px solid #F4F4F5; font-size:13px; color:#52525B; }
+    .include-item:last-child { border-bottom:none; }
+    .faq-item { border-bottom:1px solid #E4E4E7; padding:20px 0; }
+    .price-tag { background:rgba(15,76,129,.08); color:#0F4C81; font-family:'Outfit',sans-serif; font-weight:700; font-size:13px; padding:6px 14px; border-radius:999px; display:inline-block; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav" class="fixed top-0 left-0 right-0 z-50">
+  <div class="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
+    <a href="/" class="f-display font-bold text-lg tracking-tight text-[#09090B]">Rør<span style="color:#0F4C81">Mester</span></a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-600">
+      <a href="/"     class="hover:text-[#09090B] transition-colors">Hjem</a>
+      <a href="tjenester" class="text-[#09090B] font-semibold">Tjenester</a>
+      <a href="om-oss"   class="hover:text-[#09090B] transition-colors">Om oss</a>
+      <a href="kontakt"  class="hover:text-[#09090B] transition-colors">Kontakt</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="tel:+4712345678" class="hidden sm:flex items-center gap-2 bg-red-600 text-white text-sm font-semibold px-4 py-2 rounded-lg pulse hover:bg-red-700 transition-colors">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.66A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Vannlekkasje? Ring nå
+      </a>
+      <a href="kontakt" class="bg-[#0F4C81] text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-[#1E6DB5] transition-colors">Få tilbud</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="pt-28 pb-14 px-6 bg-white">
+  <div class="max-w-6xl mx-auto">
+    <div data-animate>
+      <a href="/" class="inline-flex items-center gap-1.5 text-xs text-zinc-400 hover:text-brand transition-colors mb-6" style="color:#6b7280">
+        <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>Tilbake til forsiden
+      </a>
+      <p class="text-sm font-semibold tracking-widest uppercase mb-3" style="color:#0F4C81">Tjenester</p>
+      <h1 class="f-display font-extrabold text-5xl tracking-tight text-[#09090B] mb-4" style="letter-spacing:-.03em">Alle rørleggertjenester<br/>i [By]</h1>
+      <p class="text-base text-zinc-500 max-w-xl leading-relaxed">Fastpris på alle oppdrag. Alltid skriftlig tilbud — aldri overraskelser på regningen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AKUTT -->
+<section class="py-6 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div data-animate class="svc-block" style="background:linear-gradient(135deg,#FFF5F5,#fff)">
+      <div class="grid md:grid-cols-2">
+        <div class="p-10">
+          <span class="inline-flex items-center gap-2 bg-red-50 text-red-600 text-xs font-semibold px-3 py-1.5 rounded-full mb-5 pulse"><span class="w-1.5 h-1.5 bg-red-500 rounded-full"></span>24/7 tilgjengelig</span>
+          <h2 class="f-display font-extrabold text-3xl text-[#09090B] mb-4" style="letter-spacing:-.03em">Akutt rørlegger</h2>
+          <p class="text-zinc-500 text-[15px] leading-relaxed mb-6">Vannlekkasje, sprukket rør eller oversvillt toalett? Vi er på plass innen 90 minutter — kvelder, netter og helger inkludert.</p>
+          <div class="mb-8">
+            <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Utrykning innen 90 min i [By]sentrum</div>
+            <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Tilgjengelig 365 dager</div>
+            <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Flat utrykningstakst — ingen skjulte kostnader</div>
+            <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Rapport sendt per e-post etterpå</div>
+          </div>
+          <a href="tel:+4712345678" class="inline-flex items-center gap-2 bg-red-600 text-white f-display font-semibold px-6 py-3.5 rounded-xl text-sm hover:bg-red-700 transition-colors">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.66A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            Ring 123 45 678
+          </a>
+        </div>
+        <div class="hidden md:block relative">
+          <img src="../bilder/rorlegger/azka-rayhansyah-DByY8MbE9OE-unsplash.jpg"
+               onerror="this.src='https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=700&q=80'"
+               alt="Akutt rørlegger" class="w-full h-full object-cover" style="min-height:340px;" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GRID SERVICES -->
+<section class="py-6 px-6">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-6">
+
+    <!-- Baderom -->
+    <div data-animate class="svc-block p-8">
+      <div class="flex items-start justify-between mb-5">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(15,76,129,.08)">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#0F4C81" stroke-width="1.8"><path d="M4 12h16M4 12a2 2 0 01-2-2V6a2 2 0 012-2h16a2 2 0 012 2v4a2 2 0 01-2 2M4 12v7a1 1 0 001 1h14a1 1 0 001-1v-7"/></svg>
+        </div>
+        <span class="price-tag">fra 14 900 kr</span>
+      </div>
+      <h3 class="f-display font-bold text-xl text-[#09090B] mb-3">Baderomsrenovering</h3>
+      <p class="text-zinc-500 text-sm leading-relaxed mb-5">Komplett montasje fra start til slutt. Vi tar hånd om alt rørarbeid — du velger utstyr, vi sørger for at det virker.</p>
+      <div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Servant, toalett, dusj og badekar</div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Gulvvarmeopplegg tilgjengelig</div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Fotodokumentasjon av sluttresultat</div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Ryddig og punktlig utførelse</div>
+      </div>
+    </div>
+
+    <!-- Varmtvann -->
+    <div data-animate class="svc-block p-8">
+      <div class="flex items-start justify-between mb-5">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(15,76,129,.08)">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#0F4C81" stroke-width="1.8"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <span class="price-tag">fra 5 900 kr</span>
+      </div>
+      <h3 class="f-display font-bold text-xl text-[#09090B] mb-3">Varmtvannstank</h3>
+      <p class="text-zinc-500 text-sm leading-relaxed mb-5">Bytte av gammel bereder eller installasjon av ny. Vi hjelper deg velge riktig kapasitet og type for din bolig.</p>
+      <div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>El-bereder, varmepumpe og kombiberedere</div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Demontering og avhending av gammel tank</div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Trykkprøving og lekkasjetest</div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Anbefaling av riktig størrelse</div>
+      </div>
+    </div>
+
+    <!-- Avløp -->
+    <div data-animate class="svc-block p-8">
+      <div class="flex items-start justify-between mb-5">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(15,76,129,.08)">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#0F4C81" stroke-width="1.8"><path d="M12 22V12M12 12C12 7 7 4 3 6M12 12c0-5 5-8 9-6"/></svg>
+        </div>
+        <span class="price-tag">fra 1 900 kr</span>
+      </div>
+      <h3 class="f-display font-bold text-xl text-[#09090B] mb-3">Avløp & kloakk</h3>
+      <p class="text-zinc-500 text-sm leading-relaxed mb-5">Tette avløp, lukt fra sluk eller problemer med kloakk. Vi finner årsaken og utbedrer — ikke bare spyler videre.</p>
+      <div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Rørinspeksjon med kamera</div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Høytrykksspyling</div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Utskifting av skadet rør</div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Røyktesting for lekkasjesporing</div>
+      </div>
+    </div>
+
+    <!-- Kjøkken -->
+    <div data-animate class="svc-block p-8">
+      <div class="flex items-start justify-between mb-5">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(15,76,129,.08)">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#0F4C81" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+        </div>
+        <span class="price-tag">fra 3 500 kr</span>
+      </div>
+      <h3 class="f-display font-bold text-xl text-[#09090B] mb-3">Kjøkken & vaskerom</h3>
+      <p class="text-zinc-500 text-sm leading-relaxed mb-5">Oppkobling av oppvaskmaskin, kjøleskap med ismaskin, vask og vaskemaskin. Nytt kjøkken? Vi tar røropplegget.</p>
+      <div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Oppvaskmaskin, vaskemaskin</div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Ny kjøkkenvask og blandebatteri</div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Lekkasjestopp og backventiler</div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Ferdig dokumentert</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Serviceavtale -->
+<section class="py-6 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div data-animate class="svc-block p-10" style="background:#0F172A;color:white">
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <span class="inline-block text-xs font-semibold px-3 py-1.5 rounded-full mb-5" style="background:rgba(255,255,255,.1);color:rgba(147,197,253,1)">Bedrift & borettslag</span>
+          <h3 class="f-display font-extrabold text-3xl text-white mb-4" style="letter-spacing:-.03em">Serviceavtale</h3>
+          <p class="text-[15px] leading-relaxed mb-6" style="color:rgba(255,255,255,.6)">Fast rørlegger for bedrifter, borettslag og eiendomsforvaltere. Faste priser, prioritert respons og én fast kontaktperson hele året.</p>
+          <a href="kontakt" class="inline-flex items-center gap-2 f-display font-semibold px-6 py-3 rounded-xl text-sm" style="background:rgba(255,255,255,.1);color:white;border:1px solid rgba(255,255,255,.2)">Be om serviceavtale →</a>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="rounded-xl p-5 text-center" style="background:rgba(255,255,255,.07)"><div class="f-display font-extrabold text-[26px] text-white">90 min</div><div class="text-xs mt-1" style="color:rgba(255,255,255,.4)">Maks responstid</div></div>
+          <div class="rounded-xl p-5 text-center" style="background:rgba(255,255,255,.07)"><div class="f-display font-extrabold text-[26px] text-white">Fast</div><div class="text-xs mt-1" style="color:rgba(255,255,255,.4)">Pris per år</div></div>
+          <div class="rounded-xl p-5 text-center" style="background:rgba(255,255,255,.07)"><div class="f-display font-extrabold text-[26px] text-white">24/7</div><div class="text-xs mt-1" style="color:rgba(255,255,255,.4)">Beredskap</div></div>
+          <div class="rounded-xl p-5 text-center" style="background:rgba(255,255,255,.07)"><div class="f-display font-extrabold text-[26px] text-white">1</div><div class="text-xs mt-1" style="color:rgba(255,255,255,.4)">Dedikert kontakt</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRISLISTE -->
+<section class="py-20 px-6 bg-white">
+  <div class="max-w-4xl mx-auto">
+    <div data-animate class="text-center mb-12">
+      <p class="text-sm font-semibold tracking-widest uppercase mb-3" style="color:#0F4C81">Priser</p>
+      <h2 class="f-display font-bold text-4xl tracking-tight text-[#09090B]">Faste priser</h2>
+      <p class="text-zinc-400 text-sm mt-3">Alle priser eks. mva. Tilbud tilpasses ditt oppdrag.</p>
+    </div>
+    <div data-stagger class="bg-[#FAFAFA] border border-zinc-200 rounded-2xl overflow-hidden">
+      <div class="grid grid-cols-3 text-xs font-semibold uppercase tracking-widest text-zinc-400 px-6 py-3 border-b border-zinc-100 bg-zinc-50">
+        <span>Tjeneste</span><span class="text-center">Type</span><span class="text-right">Pris</span>
+      </div>
+      <div class="divide-y divide-zinc-50">
+        <div class="grid grid-cols-3 px-6 py-4 items-center bg-white"><span class="f-display font-semibold text-[#09090B] text-sm">Timepris</span><span class="text-center text-xs text-zinc-400">Per time</span><span class="text-right f-display font-bold text-[#09090B]">950 kr/t</span></div>
+        <div class="grid grid-cols-3 px-6 py-4 items-center bg-white"><span class="f-display font-semibold text-[#09090B] text-sm">Akutt utrykning</span><span class="text-center text-xs text-zinc-400">Flat sats</span><span class="text-right f-display font-bold text-[#09090B]">1 490 kr</span></div>
+        <div class="grid grid-cols-3 px-6 py-4 items-center bg-white"><span class="f-display font-semibold text-[#09090B] text-sm">Baderom (komplett)</span><span class="text-center text-xs text-zinc-400">Fastpris</span><span class="text-right f-display font-bold text-[#09090B]">fra 14 900 kr</span></div>
+        <div class="grid grid-cols-3 px-6 py-4 items-center" style="background:rgba(15,76,129,.03)"><span class="f-display font-bold text-sm" style="color:#0F4C81">Varmtvannstank ⭐</span><span class="text-center text-xs text-zinc-400">Fastpris</span><span class="text-right f-display font-bold" style="color:#0F4C81">fra 5 900 kr</span></div>
+        <div class="grid grid-cols-3 px-6 py-4 items-center bg-white"><span class="f-display font-semibold text-[#09090B] text-sm">Avløpsspyling</span><span class="text-center text-xs text-zinc-400">Fastpris</span><span class="text-right f-display font-bold text-[#09090B]">fra 1 900 kr</span></div>
+        <div class="grid grid-cols-3 px-6 py-4 items-center bg-white"><span class="f-display font-semibold text-[#09090B] text-sm">Kjøkken / vaskerom</span><span class="text-center text-xs text-zinc-400">Fastpris</span><span class="text-right f-display font-bold text-[#09090B]">fra 3 500 kr</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="py-20 px-6 bg-[#F8FAFC]">
+  <div class="max-w-3xl mx-auto">
+    <div data-animate class="text-center mb-12">
+      <p class="text-sm font-semibold tracking-widest uppercase mb-3" style="color:#0F4C81">FAQ</p>
+      <h2 class="f-display font-bold text-4xl tracking-tight text-[#09090B]">Vanlige spørsmål</h2>
+    </div>
+    <div data-stagger>
+      <div class="faq-item"><h3 class="f-display font-semibold text-base text-[#09090B] mb-2">Hva gjør jeg ved akutt vannlekkasje?</h3><p class="text-zinc-500 text-sm leading-relaxed">Steng hovedkrana øyeblikkelig (oftest under kjøkkenbenken eller i kjelleren). Ring oss på 123 45 678 — vi er på vei.</p></div>
+      <div class="faq-item"><h3 class="f-display font-semibold text-base text-[#09090B] mb-2">Er befaring gratis?</h3><p class="text-zinc-500 text-sm leading-relaxed">Ja. Befaring og skriftlig tilbud er alltid gratis og uforpliktende. Vi gir deg en fast pris — ikke et estimat.</p></div>
+      <div class="faq-item"><h3 class="f-display font-semibold text-base text-[#09090B] mb-2">Trenger jeg å kjøpe utstyr selv?</h3><p class="text-zinc-500 text-sm leading-relaxed">Nei. Vi leverer alt materiell vi trenger. Dersom du har egne blandebatterier eller utstyr kan vi selvfølgelig montere det.</p></div>
+      <div class="faq-item"><h3 class="f-display font-semibold text-base text-[#09090B] mb-2">Gir dere garanti?</h3><p class="text-zinc-500 text-sm leading-relaxed">Ja — 5 år garanti på alt rørleggerarbeid. Vi er mesterbrev-sertifiserte og forsikret.</p></div>
+      <div class="faq-item"><h3 class="f-display font-semibold text-base text-[#09090B] mb-2">Hva dekker forsikringen min?</h3><p class="text-zinc-500 text-sm leading-relaxed">En vannlekkasje kan dekkes av innbo- eller bygningsforsikring. Vi hjelper deg dokumentere skaden for forsikringsselskapet.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-20 px-6" style="background:#0F172A">
+  <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+    <div data-animate>
+      <h2 class="f-display font-bold text-3xl text-white mb-2">Klar for gratis tilbud?</h2>
+      <p class="text-zinc-400 text-[15px]">Vi svarer innen 2 timer på hverdager.</p>
+    </div>
+    <div class="flex gap-3 flex-shrink-0">
+      <a href="kontakt" class="bg-[#0F4C81] text-white f-display font-semibold px-6 py-3.5 rounded-xl text-sm hover:bg-[#1E6DB5] transition-colors">Få gratis tilbud</a>
+      <a href="tel:+4712345678" class="bg-red-600 text-white f-display font-semibold px-6 py-3.5 rounded-xl text-sm hover:bg-red-700 transition-colors pulse">Ring nå</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-[#0F172A] text-white py-16 px-6 border-t border-white/5">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-4 gap-10 mb-12">
+      <div class="md:col-span-2"><div class="f-display font-bold text-xl mb-3">Rør<span style="color:#1E6DB5">Mester</span></div><p class="text-sm leading-relaxed max-w-xs" style="color:rgba(255,255,255,.5)">Sertifisert rørlegger i [By] siden 2013.</p><a href="tel:+4712345678" class="inline-flex items-center gap-2 mt-5 bg-red-600 text-white text-xs font-semibold px-4 py-2 rounded-lg hover:bg-red-700 transition-colors pulse">Ring ved akutt — 123 45 678</a></div>
+      <div><div class="text-xs font-semibold tracking-widest uppercase mb-4" style="color:rgba(255,255,255,.3)">Sider</div><ul class="space-y-2 text-sm" style="color:rgba(255,255,255,.6)"><li><a href="/" class="hover:text-white">Hjem</a></li><li><a href="tjenester" class="hover:text-white">Tjenester</a></li><li><a href="om-oss" class="hover:text-white">Om oss</a></li><li><a href="kontakt" class="hover:text-white">Kontakt</a></li></ul></div>
+      <div><div class="text-xs font-semibold tracking-widest uppercase mb-4" style="color:rgba(255,255,255,.3)">Kontakt</div><ul class="space-y-2 text-sm" style="color:rgba(255,255,255,.6)"><li>123 45 678</li><li>hei@rormester.no</li><li>Eksempelgata 5, [By]</li><li class="pt-2 text-xs" style="color:rgba(255,255,255,.3)">Org.nr: 987 654 321</li></ul></div>
+    </div>
+    <div class="border-t pt-6 flex flex-col sm:flex-row justify-between items-center gap-3" style="border-color:rgba(255,255,255,.1)">
+      <div class="text-xs" style="color:rgba(255,255,255,.3)">© 2025 RørMester AS.</div>
+      <div class="flex gap-4 text-xs" style="color:rgba(255,255,255,.3)"><a href="#" class="hover:text-white/60">Personvern</a><a href="#" class="hover:text-white/60">Cookies</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); });
+  window.addEventListener('load', () => {
+    if (typeof Motion === 'undefined') return;
+    const { inView, animate } = Motion;
+    inView('[data-animate]', ({ target }) => { animate(target, { opacity:[0,1], y:[24,0] }, { duration:.5, easing:[.25,.46,.45,.94] }); });
+    inView('[data-stagger]', ({ target }) => { animate(target.querySelectorAll(':scope > *'), { opacity:[0,1], y:[20,0] }, { duration:.4, delay:animate.stagger(.08) }); });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kontakt — TreVerk</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{fontFamily:{display:['Fraunces','sans-serif'],body:['Inter','sans-serif']},colors:{brand:'#B45309','brand-light':'#D97706','brand-soft':'#FEF3C7'}}}}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/motion@11.11.9/dist/motion.js"></script>
+  <link href="../../images/favicon.png" rel="shortcut icon" type="image/x-icon">
+  <style>
+    *{-webkit-font-smoothing:antialiased}body{font-family:'Inter',sans-serif;background:#fff;color:#0F172A}.f-display{font-family:'Fraunces',sans-serif}
+    #nav{transition:background .25s,box-shadow .25s}#nav.scrolled{background:rgba(255,255,255,.92);backdrop-filter:blur(16px);box-shadow:0 1px 0 #E2E8F0}
+    input,textarea,select{width:100%;border:1px solid #E2E8F0;border-radius:12px;padding:12px 16px;font-size:14px;color:#0F172A;font-family:'Inter',sans-serif;transition:border-color .2s,box-shadow .2s;outline:none;background:#fff}
+    input:focus,textarea:focus,select:focus{border-color:#B45309;box-shadow:0 0 0 3px rgba(180,83,9,.08)}
+    label{display:block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:#94A3B8;margin-bottom:6px}
+    .contact-pill{display:flex;align-items:center;gap:14px;padding:16px 20px;border:1px solid #E2E8F0;border-radius:14px;transition:border-color .2s,box-shadow .2s}.contact-pill:hover{border-color:#B45309;box-shadow:0 4px 16px rgba(180,83,9,.08)}
+    .faq-item{border-bottom:1px solid #F1F5F9;padding:18px 0}
+    .map-placeholder{background:#F8FAFC;border:1px solid #E2E8F0;border-radius:16px;height:280px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+  </style>
+</head>
+<body>
+
+<nav id="nav" class="fixed top-0 inset-x-0 z-50">
+  <div class="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
+    <a href="/" class="f-display font-bold text-[15px] tracking-tight text-slate-900">Tre<span class="text-brand">Verk</span></a>
+    <div class="hidden md:flex items-center gap-7 text-[13px] font-medium text-slate-500">
+      <a href="/"     class="hover:text-slate-900 transition-colors">Hjem</a>
+      <a href="tjenester" class="hover:text-slate-900 transition-colors">Tjenester</a>
+      <a href="om-oss"    class="hover:text-slate-900 transition-colors">Om oss</a>
+      <a href="kontakt"   class="hover:text-slate-900 transition-colors text-slate-900 font-semibold">Kontakt</a>
+    </div>
+    <a href="kontakt" class="bg-brand text-white text-[13px] font-semibold px-4 py-2 rounded-lg hover:bg-brand-light transition-colors">Få befaring</a>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="pt-28 pb-10 px-6" style="background:linear-gradient(to bottom,#FFFBEB,#fff)">
+  <div class="max-w-6xl mx-auto">
+    <div data-animate>
+      <p class="text-[12px] font-semibold tracking-widest uppercase text-brand mb-3">Kontakt</p>
+      <h1 class="f-display font-extrabold text-5xl tracking-tight text-slate-900 mb-4" style="letter-spacing:-.04em">Få gratis befaring</h1>
+      <p class="text-[16px] text-slate-500 max-w-lg leading-relaxed">Fyll ut skjemaet — vi kontakter deg innen 24 timer med skriftlig fastpristilbud. Ingen bindende avtale.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN CONTACT SPLIT -->
+<section class="py-10 px-6">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-5 gap-16 items-start">
+
+    <div class="md:col-span-2 space-y-5" data-animate>
+      <a href="tel:+4712345678" class="contact-pill block no-underline">
+        <div class="w-10 h-10 bg-brand-soft rounded-xl flex items-center justify-center flex-shrink-0">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.66A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <div><div class="text-[11px] text-slate-400 uppercase tracking-wide">Telefon</div><div class="f-display font-bold text-[16px] text-slate-900">123 45 678</div></div>
+      </a>
+      <a href="mailto:kontakt@treverk.no" class="contact-pill block no-underline" style="text-decoration:none;">
+        <div class="w-10 h-10 bg-brand-soft rounded-xl flex items-center justify-center flex-shrink-0">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        </div>
+        <div><div class="text-[11px] text-slate-400 uppercase tracking-wide">E-post</div><div class="f-display font-bold text-[15px] text-slate-900">kontakt@treverk.no</div></div>
+      </a>
+      <div class="contact-pill">
+        <div class="w-10 h-10 bg-brand-soft rounded-xl flex items-center justify-center flex-shrink-0">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>
+        </div>
+        <div><div class="text-[11px] text-slate-400 uppercase tracking-wide">Adresse</div><div class="f-display font-bold text-[15px] text-slate-900">Eksempelgata 12, [By]</div></div>
+      </div>
+      <div class="border border-slate-200 rounded-2xl p-6">
+        <h3 class="f-display font-semibold text-[14px] text-slate-900 mb-4">Åpningstider</h3>
+        <div class="space-y-2">
+          <div class="flex justify-between text-[13px]"><span class="text-slate-500">Mandag – fredag</span><span class="f-display font-semibold text-slate-900">07:00 – 17:00</span></div>
+          <div class="flex justify-between text-[13px]"><span class="text-slate-500">Lørdag</span><span class="f-display font-semibold text-slate-900">08:00 – 14:00</span></div>
+          <div class="flex justify-between text-[13px]"><span class="text-slate-500">Søndag</span><span class="text-slate-400">Stengt</span></div>
+        </div>
+        <div class="mt-4 pt-4 border-t border-slate-100 flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span>
+          <span class="text-[12px] text-slate-500">Gratis befaring — svar innen <strong class="text-slate-900">24 timer</strong></span>
+        </div>
+      </div>
+      <div class="map-placeholder">
+        <svg width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="#94A3B8" stroke-width="1.5"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>
+        <span class="text-[13px] text-slate-400 font-medium">Eksempelgata 12, [By]</span>
+        <span class="text-[12px] text-slate-300">Kart vises her</span>
+      </div>
+    </div>
+
+    <div class="md:col-span-3" data-animate>
+      <form class="border border-slate-200 rounded-2xl p-8 space-y-5 bg-white">
+        <div class="grid grid-cols-2 gap-4">
+          <div><label>Fornavn</label><input type="text" placeholder="Ola" /></div>
+          <div><label>Etternavn</label><input type="text" placeholder="Nordmann" /></div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div><label>Telefon</label><input type="tel" placeholder="123 45 678" /></div>
+          <div><label>E-post</label><input type="email" placeholder="ola@eksempel.no" /></div>
+        </div>
+        <div><label>Adresse for oppdraget</label><input type="text" placeholder="Gateveien 1, [By]" /></div>
+        <div>
+          <label>Hva trenger du hjelp med?</label>
+          <select>
+            <option value="">Velg tjeneste...</option>
+            <option>Kjøkkenrehabilitering</option>
+            <option>Badrehabilitering</option>
+            <option>Tilbygg / utvidelse</option>
+            <option>Terrasse / balkong</option>
+            <option>Innredning / skap</option>
+            <option>Takarbeid</option>
+            <option>Annet</option>
+          </select>
+        </div>
+        <div><label>Beskriv oppdraget</label><textarea rows="4" placeholder="Fortell kort hva du trenger — jo mer detaljer, desto raskere kan vi gi deg et tilbud..."></textarea></div>
+        <div>
+          <label>Ønsket tidspunkt</label>
+          <select>
+            <option value="">Når passer det?</option>
+            <option>Så snart som mulig</option>
+            <option>Innen denne måneden</option>
+            <option>Neste måned</option>
+            <option>Fleksibel / planlegger</option>
+          </select>
+        </div>
+        <button type="submit" class="w-full bg-brand text-white f-display font-semibold py-4 rounded-xl text-[14px] hover:bg-brand-light hover:shadow-[0_0_24px_rgba(180,83,9,.3)] hover:scale-[1.01] transition-all">Send forespørsel →</button>
+        <p class="text-[12px] text-slate-400 text-center">Vi svarer innen 24 timer. Befaring er alltid gratis og uforpliktende.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="py-20 px-6" style="background:#F8FAFC">
+  <div class="max-w-3xl mx-auto">
+    <div data-animate class="text-center mb-12">
+      <p class="text-[12px] font-semibold tracking-widest uppercase text-brand mb-3">FAQ</p>
+      <h2 class="f-display font-extrabold text-3xl tracking-tight text-slate-900" style="letter-spacing:-.03em">Vanlige spørsmål</h2>
+    </div>
+    <div data-stagger>
+      <div class="faq-item"><h3 class="f-display font-semibold text-[15px] text-slate-900 mb-2">Er befaringen virkelig gratis?</h3><p class="text-slate-500 text-[13px] leading-relaxed">Ja, alltid. Vi kommer hjem til deg, ser på jobben og sender tilbud uten kostnad. Ingen forpliktelse.</p></div>
+      <div class="faq-item"><h3 class="f-display font-semibold text-[15px] text-slate-900 mb-2">Hvor lang tid tar det fra kontakt til oppstart?</h3><p class="text-slate-500 text-[13px] leading-relaxed">Tilbud innen 24 timer etter befaring. Oppstart avhenger av kapasitet — vanligvis 1–3 uker.</p></div>
+      <div class="faq-item"><h3 class="f-display font-semibold text-[15px] text-slate-900 mb-2">Kan jeg sende bilder for å få et foreløpig estimat?</h3><p class="text-slate-500 text-[13px] leading-relaxed">Ja! Send bilder og beskrivelse i skjemaet. For mange oppdrag kan vi gi et grovt estimat uten befaring.</p></div>
+      <div class="faq-item"><h3 class="f-display font-semibold text-[15px] text-slate-900 mb-2">Hvilket område dekker dere?</h3><p class="text-slate-500 text-[13px] leading-relaxed">Vi dekker [By] og omegnskommunene. Ring oss for å avklare om vi kan hjelpe deg.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#0F172A" class="text-white py-16 px-6 border-t border-white/5">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-4 gap-10 mb-12">
+      <div class="md:col-span-2"><div class="f-display font-bold text-[18px] mb-3">Tre<span style="color:#D97706">Verk</span></div><p class="text-[13px] leading-relaxed max-w-xs" style="color:rgba(255,255,255,.45)">Snekker i [By] med mesterbrev og 5 års garanti.</p></div>
+      <div><div class="text-[11px] font-semibold tracking-widest uppercase mb-4" style="color:rgba(255,255,255,.3)">Sider</div><ul class="space-y-2 text-[13px]" style="color:rgba(255,255,255,.55)"><li><a href="/" class="hover:text-white transition-colors">Hjem</a></li><li><a href="tjenester" class="hover:text-white transition-colors">Tjenester</a></li><li><a href="om-oss" class="hover:text-white transition-colors">Om oss</a></li><li><a href="kontakt" class="hover:text-white transition-colors">Kontakt</a></li></ul></div>
+      <div><div class="text-[11px] font-semibold tracking-widest uppercase mb-4" style="color:rgba(255,255,255,.3)">Kontakt</div><ul class="space-y-2 text-[13px]" style="color:rgba(255,255,255,.55)"><li>123 45 678</li><li>kontakt@treverk.no</li><li>Eksempelgata 12, [By]</li><li class="pt-2 text-[12px]" style="color:rgba(255,255,255,.25)">Org.nr: 123 456 789</li></ul></div>
+    </div>
+    <div class="border-t pt-6 flex flex-col sm:flex-row justify-between items-center gap-3" style="border-color:rgba(255,255,255,.08)">
+      <div class="text-[12px]" style="color:rgba(255,255,255,.25)">© 2025 TreVerk AS</div>
+      <div class="flex gap-5 text-[12px]" style="color:rgba(255,255,255,.25)"><a href="#" class="hover:text-white/60">Personvern</a><a href="#" class="hover:text-white/60">Cookies</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 24); });
+  window.addEventListener('load', () => {
+    if (typeof Motion === 'undefined') return;
+    const { inView, animate } = Motion;
+    inView('[data-animate]', ({ target }) => { animate(target, { opacity:[0,1], y:[28,0] }, { duration:.55, easing:[.25,.46,.45,.94] }); });
+    inView('[data-stagger]', ({ target }) => { animate(target.querySelectorAll(':scope > *'), { opacity:[0,1], y:[20,0] }, { duration:.4, delay:animate.stagger(.09) }); });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Salon Mira — Frisør i [By]</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Cormorant Garamond', 'serif'],
+            body: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/motion@11.11.9/dist/motion.js"></script>
+  <style>
+    :root { --brand: #2D2D2D; }
+    body { font-family: 'Inter', sans-serif; background: #FAFAFA; color: #09090B; }
+    .font-display { font-family: 'Cormorant Garamond', serif; }
+    #nav { transition: background 0.3s, box-shadow 0.3s; }
+    #nav.scrolled { background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); box-shadow: 0 1px 0 #E4E4E7; }
+    /* Nav CTA — to forhåndsdefinerte tilstander (unngår Tailwind CDN re-injeksjon) */
+    #nav-cta {
+      font-size: 0.875rem; font-weight: 500;
+      padding: 0.5rem 1rem; border-radius: 0.5rem;
+      transition: background 0.3s, color 0.3s;
+      text-decoration: none;
+    }
+    #nav-cta.cta-light { background: #fff; color: #09090B; }
+    #nav-cta.cta-light:hover { background: #f4f4f5; }
+    #nav-cta.cta-dark  { background: #09090B; color: #fff; }
+    #nav-cta.cta-dark:hover  { background: #27272a; }
+    .card-hover { transition: box-shadow 0.2s, transform 0.2s; }
+    .card-hover:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.10); transform: translateY(-2px); }
+    .glass { background: rgba(255,255,255,0.78); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.85); }
+
+    /* Masonry gallery */
+    .masonry {
+      columns: 3;
+      column-gap: 1rem;
+    }
+    .masonry-item {
+      break-inside: avoid;
+      margin-bottom: 1rem;
+    }
+    @media (max-width: 767px) {
+      .masonry { columns: 2; }
+    }
+    @media (max-width: 480px) {
+      .masonry { columns: 1; }
+    }
+
+    /* Hero full-bleed */
+    .hero-overlay {
+      background: linear-gradient(
+        to bottom,
+        rgba(250,250,250,0.15) 0%,
+        rgba(0,0,0,0.25) 60%,
+        rgba(0,0,0,0.55) 100%
+      );
+    }
+  </style>
+  <link href="../images/favicon.png" rel="shortcut icon" type="image/x-icon">
+</head>
+<body>
+
+<!-- NAV — transparent over hero -->
+<nav id="nav" class="fixed top-0 left-0 right-0 z-50">
+  <div class="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
+    <a href="#" class="font-display font-semibold text-xl tracking-wide text-white nav-logo" id="nav-logo">Salon Mira</a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-white/80 nav-links" id="nav-links">
+      <a href="#tjenester" class="hover:text-white transition-colors">Tjenester</a>
+      <a href="#galleri" class="hover:text-white transition-colors">Galleri</a>
+      <a href="#team" class="hover:text-white transition-colors">Teamet</a>
+      <a href="#kontakt" class="hover:text-white transition-colors">Book time</a>
+    </div>
+    <a href="#kontakt" id="nav-cta" class="cta-light">
+      Book nå
+    </a>
+  </div>
+</nav>
+
+<!-- HERO — Fullbredde bilde med glassmorphism overlay -->
+<section class="relative h-screen flex items-end overflow-hidden">
+  <img
+    src="bilder/frisor/hero.jpg"
+    onerror="this.src='https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1600&q=85'"
+    alt="Salon Mira"
+    class="absolute inset-0 w-full h-full object-cover object-center"
+  />
+  <div class="hero-overlay absolute inset-0"></div>
+
+  <!-- Glassmorphism text card -->
+  <div class="relative z-10 max-w-6xl mx-auto px-6 pb-16 w-full">
+    <div data-animate class="max-w-lg">
+      <div class="glass rounded-2xl p-8 shadow-2xl">
+        <p class="text-sm font-medium tracking-widest uppercase mb-2 text-zinc-500">[By]s mest populære salong</p>
+        <h1 class="font-display text-5xl font-semibold text-[#09090B] leading-tight mb-4" style="letter-spacing:-0.02em">
+          Håret ditt.<br/><em>Din stil.</em>
+        </h1>
+        <p class="text-zinc-500 text-sm leading-relaxed mb-6">Salon Mira er en moderne og rustfri frisørsalong i hjertet av [By]. Vi spesialiserer oss på klipp, farge og behandlinger tilpasset deg.</p>
+        <div class="flex gap-3">
+          <a href="#kontakt" class="bg-[#09090B] text-white font-medium px-5 py-2.5 rounded-lg text-sm hover:bg-zinc-800 transition-colors">
+            Book time
+          </a>
+          <a href="#tjenester" class="border border-zinc-200 text-[#09090B] font-medium px-5 py-2.5 rounded-lg text-sm hover:border-zinc-400 transition-colors">
+            Se tjenester
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="bg-white border-b border-zinc-100">
+  <div class="max-w-6xl mx-auto px-6 py-8">
+    <div data-stagger class="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div class="text-center">
+        <div class="font-display font-semibold text-4xl text-[#09090B]">8+</div>
+        <div class="text-sm text-zinc-500 mt-1">År i [By]</div>
+      </div>
+      <div class="text-center">
+        <div class="font-display font-semibold text-4xl text-[#09090B]">4.9★</div>
+        <div class="text-sm text-zinc-500 mt-1">Google-snitt</div>
+      </div>
+      <div class="text-center">
+        <div class="font-display font-semibold text-4xl text-[#09090B]">6</div>
+        <div class="text-sm text-zinc-500 mt-1">Frisører</div>
+      </div>
+      <div class="text-center">
+        <div class="font-display font-semibold text-4xl text-[#09090B]">3 000+</div>
+        <div class="text-sm text-zinc-500 mt-1">Fornøyde kunder</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TJENESTER -->
+<section id="tjenester" class="py-24 px-6 bg-[#FAFAFA]">
+  <div class="max-w-6xl mx-auto">
+    <div data-animate class="mb-12">
+      <p class="text-sm font-medium tracking-widest uppercase text-zinc-400 mb-3">Tjenester</p>
+      <h2 class="font-display text-4xl font-semibold text-[#09090B]" style="letter-spacing:-0.02em">Hva vi tilbyr</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+
+      <!-- Stor: Dame klipp + farge — 8 cols -->
+      <div data-animate class="card-hover md:col-span-8 bg-white border border-zinc-100 rounded-2xl overflow-hidden">
+        <div class="grid md:grid-cols-2 h-full">
+          <div class="p-8 flex flex-col justify-between">
+            <div>
+              <span class="inline-flex items-center bg-zinc-50 border border-zinc-100 text-xs font-medium text-zinc-500 px-3 py-1.5 rounded-full mb-5">Mest bestilt</span>
+              <h3 class="font-display text-2xl font-semibold mb-3">Dame — klipp & farge</h3>
+              <p class="text-zinc-500 text-sm leading-relaxed">Klipp, farge og styling tilpasset dine ønsker. Vi bruker kun profesjonelle produkter.</p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-zinc-100 flex items-center justify-between">
+              <span class="text-sm font-medium text-[#09090B]">Fra 790 kr</span>
+              <a href="#kontakt" class="text-sm font-medium text-[#09090B] hover:underline">Book →</a>
+            </div>
+          </div>
+          <div class="aspect-auto overflow-hidden">
+            <img
+              src="bilder/frisor/galleri-1.jpg"
+              onerror="this.src='https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80'"
+              alt="Damebehandling"
+              class="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Herre klipp — 4 cols -->
+      <div data-animate class="card-hover md:col-span-4 bg-white border border-zinc-100 rounded-2xl p-8 flex flex-col justify-between">
+        <div>
+          <div class="font-display text-xl font-semibold mb-2">Herrebehandling</div>
+          <p class="text-zinc-500 text-sm leading-relaxed">Klipp og styling for alle hårtyper. Inkl. nakkeklipp og finish.</p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-zinc-100 flex items-center justify-between">
+          <span class="text-sm font-medium">Fra 450 kr</span>
+          <a href="#kontakt" class="text-sm font-medium hover:underline">Book →</a>
+        </div>
+      </div>
+
+      <!-- Balayage — 4 cols -->
+      <div data-animate class="card-hover md:col-span-4 bg-white border border-zinc-100 rounded-2xl p-8 flex flex-col justify-between">
+        <div>
+          <div class="font-display text-xl font-semibold mb-2">Balayage & highlights</div>
+          <p class="text-zinc-500 text-sm leading-relaxed">Håndmalt lystekning for naturlig og solkysst resultat. Tidkrevende — men verdt det.</p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-zinc-100 flex items-center justify-between">
+          <span class="text-sm font-medium">Fra 1 590 kr</span>
+          <a href="#kontakt" class="text-sm font-medium hover:underline">Book →</a>
+        </div>
+      </div>
+
+      <!-- Behandling — 4 cols -->
+      <div data-animate class="card-hover md:col-span-4 bg-white border border-zinc-100 rounded-2xl p-8 flex flex-col justify-between">
+        <div>
+          <div class="font-display text-xl font-semibold mb-2">Hårbehandling</div>
+          <p class="text-zinc-500 text-sm leading-relaxed">Keratinbehandling, proteinmaske og gjenoppbygging for skadet og farget hår.</p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-zinc-100 flex items-center justify-between">
+          <span class="text-sm font-medium">Fra 690 kr</span>
+          <a href="#kontakt" class="text-sm font-medium hover:underline">Book →</a>
+        </div>
+      </div>
+
+      <!-- Brud — 8 cols, dark editorial -->
+      <div data-animate class="card-hover md:col-span-8 rounded-2xl p-8 overflow-hidden relative" style="background:#09090B; color:white;">
+        <div class="absolute inset-0 opacity-10" style="background-image:url('https://images.unsplash.com/photo-1607779097040-26e80aa78e66?w=1200&q=50'); background-size:cover; background-position:center;"></div>
+        <div class="relative">
+          <span class="inline-flex text-xs font-medium px-3 py-1.5 rounded-full mb-5" style="background:rgba(255,255,255,0.12); color:rgba(255,255,255,0.8)">Bryllup & event</span>
+          <h3 class="font-display text-2xl font-semibold mb-3">Brud & oppusset</h3>
+          <p class="text-sm leading-relaxed mb-6" style="color:rgba(255,255,255,0.6)">Komplett brudestyling inkl. prøvetime. Vi reiser også til lokalet — kontakt for pris.</p>
+          <a href="#kontakt" class="inline-flex items-center gap-2 text-white text-sm font-medium border rounded-lg px-5 py-2.5 transition-colors" style="border-color:rgba(255,255,255,0.2); hover:background:rgba(255,255,255,0.1)">
+            Kontakt oss for pakke →
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- GALLERI — Masonry -->
+<section id="galleri" class="py-24 px-6 bg-white border-t border-zinc-100">
+  <div class="max-w-6xl mx-auto">
+    <div data-animate class="text-center mb-12">
+      <p class="text-sm font-medium tracking-widest uppercase text-zinc-400 mb-3">Galleri</p>
+      <h2 class="font-display text-4xl font-semibold text-[#09090B]" style="letter-spacing:-0.02em">Arbeidene våre</h2>
+    </div>
+    <div class="masonry" data-animate>
+      <div class="masonry-item rounded-xl overflow-hidden">
+        <img src="bilder/frisor/galleri-1.jpg" onerror="this.src='https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=500&q=75'" alt="Galleri 1" class="w-full object-cover" />
+      </div>
+      <div class="masonry-item rounded-xl overflow-hidden">
+        <img src="bilder/frisor/galleri-2.jpg" onerror="this.src='https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=500&q=75'" alt="Galleri 2" class="w-full object-cover" />
+      </div>
+      <div class="masonry-item rounded-xl overflow-hidden">
+        <img src="bilder/frisor/galleri-3.jpg" onerror="this.src='https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?w=500&q=75'" alt="Galleri 3" class="w-full object-cover" />
+      </div>
+      <div class="masonry-item rounded-xl overflow-hidden">
+        <img src="bilder/frisor/galleri-4.jpg" onerror="this.src='https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=500&q=75'" alt="Galleri 4" class="w-full object-cover" />
+      </div>
+      <div class="masonry-item rounded-xl overflow-hidden">
+        <img src="bilder/frisor/galleri-5.jpg" onerror="this.src='https://images.unsplash.com/photo-1562322140-8baeececf3df?w=500&q=75'" alt="Galleri 5" class="w-full object-cover" />
+      </div>
+      <div class="masonry-item rounded-xl overflow-hidden">
+        <img src="bilder/frisor/galleri-6.jpg" onerror="this.src='https://images.unsplash.com/photo-1519735777090-ec97162dc266?w=500&q=75'" alt="Galleri 6" class="w-full object-cover" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team" class="py-24 px-6 bg-[#FAFAFA] border-t border-zinc-100">
+  <div class="max-w-6xl mx-auto">
+    <div data-animate class="mb-12">
+      <p class="text-sm font-medium tracking-widest uppercase text-zinc-400 mb-3">Teamet</p>
+      <h2 class="font-display text-4xl font-semibold text-[#09090B]" style="letter-spacing:-0.02em">Møt frisørene</h2>
+    </div>
+    <div data-stagger class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div class="card-hover bg-white border border-zinc-100 rounded-2xl overflow-hidden">
+        <div class="aspect-[3/4] overflow-hidden">
+          <img src="bilder/frisor/team-1.jpg" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&q=80'" alt="Mira" class="w-full h-full object-cover object-top" />
+        </div>
+        <div class="p-5">
+          <div class="font-display text-lg font-semibold">Mira Andersen</div>
+          <div class="text-sm text-zinc-400 mt-0.5">Daglig leder & senior frisør</div>
+          <div class="text-xs text-zinc-300 mt-2">Spesialitet: Farge & balayage</div>
+        </div>
+      </div>
+      <div class="card-hover bg-white border border-zinc-100 rounded-2xl overflow-hidden">
+        <div class="aspect-[3/4] overflow-hidden">
+          <img src="bilder/frisor/team-2.jpg" onerror="this.src='https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=500&q=80'" alt="Sofia" class="w-full h-full object-cover object-top" />
+        </div>
+        <div class="p-5">
+          <div class="font-display text-lg font-semibold">Sofia Lindberg</div>
+          <div class="text-sm text-zinc-400 mt-0.5">Senior frisør</div>
+          <div class="text-xs text-zinc-300 mt-2">Spesialitet: Bryllup & oppusset</div>
+        </div>
+      </div>
+      <div class="card-hover bg-white border border-zinc-100 rounded-2xl overflow-hidden">
+        <div class="aspect-[3/4] overflow-hidden">
+          <img src="bilder/frisor/team-3.jpg" onerror="this.src='https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=500&q=80'" alt="Julie" class="w-full h-full object-cover object-top" />
+        </div>
+        <div class="p-5">
+          <div class="font-display text-lg font-semibold">Julie Kvist</div>
+          <div class="text-sm text-zinc-400 mt-0.5">Frisør</div>
+          <div class="text-xs text-zinc-300 mt-2">Spesialitet: Klipp & styling</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANMELDELSER -->
+<section class="py-24 px-6 bg-white border-t border-zinc-100">
+  <div class="max-w-6xl mx-auto">
+    <div data-animate class="text-center mb-12">
+      <h2 class="font-display text-4xl font-semibold text-[#09090B]" style="letter-spacing:-0.02em">Hva kundene sier</h2>
+      <div class="flex items-center justify-center gap-2 mt-4">
+        <span class="text-yellow-400 text-xl">★★★★★</span>
+        <span class="text-zinc-400 text-sm">4.9 / 5 — 200+ Google-anmeldelser</span>
+      </div>
+    </div>
+    <div data-stagger class="grid md:grid-cols-3 gap-6">
+      <div class="card-hover bg-white border border-zinc-100 rounded-2xl p-6">
+        <div class="text-yellow-400 text-sm mb-3">★★★★★</div>
+        <p class="text-zinc-600 text-sm leading-relaxed mb-4 italic">"Mira er en kunstner! Har aldri vært så fornøyd med håret mitt. Nydelig salong og trygg atmosfære."</p>
+        <div class="font-medium text-sm">Emma Lund</div>
+        <div class="text-xs text-zinc-400">Fast kunde</div>
+      </div>
+      <div class="card-hover bg-white border border-zinc-100 rounded-2xl p-6">
+        <div class="text-yellow-400 text-sm mb-3">★★★★★</div>
+        <p class="text-zinc-600 text-sm leading-relaxed mb-4 italic">"Balayagen jeg fikk er fantastisk. Eksakt det jeg ønsket meg og mer til. Booker alltid hos Salon Mira!"</p>
+        <div class="font-medium text-sm">Sara Torp</div>
+        <div class="text-xs text-zinc-400">Fast kunde</div>
+      </div>
+      <div class="card-hover bg-white border border-zinc-100 rounded-2xl p-6">
+        <div class="text-yellow-400 text-sm mb-3">★★★★★</div>
+        <p class="text-zinc-600 text-sm leading-relaxed mb-4 italic">"Jonas er den beste herrefrisøren jeg har vært hos. Alltid på tid, alltid bra resultat. 10/10."</p>
+        <div class="font-medium text-sm">Marcus Holm</div>
+        <div class="text-xs text-zinc-400">Fast kunde</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT / BOOKING -->
+<section id="kontakt" class="py-24 px-6 bg-[#FAFAFA] border-t border-zinc-100">
+  <div class="max-w-5xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-16 items-start">
+      <div data-animate>
+        <p class="text-sm font-medium tracking-widest uppercase text-zinc-400 mb-3">Book time</p>
+        <h2 class="font-display text-4xl font-semibold text-[#09090B] mb-4" style="letter-spacing:-0.02em">Vi gleder oss til å møte deg</h2>
+        <p class="text-zinc-500 leading-relaxed mb-8">Book via skjema, ring oss, eller send oss en melding på Instagram. Vi svarer raskt!</p>
+        <div class="space-y-4 text-sm">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 bg-white border border-zinc-200 rounded-lg flex items-center justify-center">
+              <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="#09090B" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.66A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="text-zinc-400 text-xs">Telefon</div>
+              <div class="font-medium text-[#09090B]">123 45 678</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 bg-white border border-zinc-200 rounded-lg flex items-center justify-center">
+              <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="#09090B" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <div>
+              <div class="text-zinc-400 text-xs">Åpningstider</div>
+              <div class="font-medium text-[#09090B]">Tir–lør 09:00–18:00</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 bg-white border border-zinc-200 rounded-lg flex items-center justify-center">
+              <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="#09090B" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>
+            </div>
+            <div>
+              <div class="text-zinc-400 text-xs">Adresse</div>
+              <div class="font-medium text-[#09090B]">Stilgata 8, [By]</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-animate>
+        <form class="bg-white border border-zinc-200 rounded-2xl p-8 space-y-4">
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-medium text-zinc-500 mb-1.5">Navn</label>
+              <input type="text" placeholder="Ditt navn" class="w-full border border-zinc-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-zinc-500 transition-colors" />
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-zinc-500 mb-1.5">Telefon</label>
+              <input type="tel" placeholder="123 45 678" class="w-full border border-zinc-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-zinc-500 transition-colors" />
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-zinc-500 mb-1.5">Behandling</label>
+            <select class="w-full border border-zinc-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none text-zinc-600">
+              <option>Velg behandling...</option>
+              <option>Damebehandling (klipp & styling)</option>
+              <option>Klipp & farge (komplett)</option>
+              <option>Balayage / highlights</option>
+              <option>Herrebehandling</option>
+              <option>Hårbehandling</option>
+              <option>Brud & oppusset</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-zinc-500 mb-1.5">Ønsket dato/tid</label>
+            <input type="text" placeholder="F.eks. Onsdag ettermiddag" class="w-full border border-zinc-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-zinc-500 transition-colors" />
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-zinc-500 mb-1.5">Melding (valgfri)</label>
+            <textarea rows="3" placeholder="Fortell oss litt om hva du ønsker..." class="w-full border border-zinc-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-zinc-500 transition-colors resize-none"></textarea>
+          </div>
+          <button type="submit" class="w-full bg-[#09090B] text-white font-medium py-3 rounded-lg text-sm hover:bg-zinc-800 transition-all hover:scale-[1.01]">
+            Send bookingforespørsel →
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-[#0F172A] text-white py-16 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-4 gap-10 mb-12">
+      <div class="md:col-span-2">
+        <div class="font-display text-xl font-semibold mb-3">Salon Mira</div>
+        <p class="text-sm leading-relaxed max-w-xs" style="color:rgba(255,255,255,0.5)">Moderne frisørsalong i [By]. Spesialiserte i farge, klipp og hårbehandlinger.</p>
+        <div class="flex gap-3 mt-5 text-xs text-white/40">
+          <span>Tir–lør 09:00–18:00</span>
+          <span>·</span>
+          <span>Stilgata 8</span>
+        </div>
+      </div>
+      <div>
+        <div class="text-xs font-medium tracking-widest uppercase mb-4" style="color:rgba(255,255,255,0.3)">Tjenester</div>
+        <ul class="space-y-2 text-sm" style="color:rgba(255,255,255,0.6)">
+          <li><a href="#" class="hover:text-white transition-colors">Damebehandling</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Herrebehandling</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Balayage</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Brud & event</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="text-xs font-medium tracking-widest uppercase mb-4" style="color:rgba(255,255,255,0.3)">Kontakt</div>
+        <ul class="space-y-2 text-sm" style="color:rgba(255,255,255,0.6)">
+          <li>123 45 678</li>
+          <li>@salonmira</li>
+          <li>Stilgata 8, [By]</li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t pt-6 flex flex-col sm:flex-row justify-between items-center gap-3" style="border-color:rgba(255,255,255,0.1)">
+      <div class="text-xs" style="color:rgba(255,255,255,0.3)">© 2025 Salon Mira. Alle rettigheter reservert.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  const navLogo = document.getElementById('nav-logo');
+  const navLinks = document.getElementById('nav-links');
+  const navCta = document.getElementById('nav-cta');
+
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY > 80;
+    nav.classList.toggle('scrolled', scrolled);
+    navLogo.style.color = scrolled ? '#09090B' : 'white';
+    navLinks.style.color = scrolled ? '#52525B' : 'rgba(255,255,255,0.8)';
+    navCta.classList.toggle('cta-dark', scrolled);
+    navCta.classList.toggle('cta-light', !scrolled);
+  }, { passive: true });
+
+  window.addEventListener('load', () => {
+    if (typeof Motion === 'undefined') return;
+    const { inView, animate } = Motion;
+    inView('[data-animate]', ({ target }) => {
+      animate(target, { opacity: [0,1], y: [24,0] }, { duration: 0.5, easing: [0.25,0.46,0.45,0.94] });
+    });
+    inView('[data-stagger]', ({ target }) => {
+      animate(target.querySelectorAll(':scope > *'), { opacity: [0,1], y: [20,0] }, { duration: 0.4, delay: animate.stagger(0.08) });
+    });
+  });
+</script>
+</body>
+</html>
