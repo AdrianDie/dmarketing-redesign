@@ -49,6 +49,13 @@
       background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
       background-size: 24px 24px;
     }
+    .video-frame {
+      aspect-ratio: 16 / 9; width: 100%;
+      border-radius: 1rem; overflow: hidden;
+      box-shadow: 0 24px 60px -12px rgba(9,9,11,0.18), 0 0 0 1px rgba(9,9,11,0.04);
+      background: #09090B;
+    }
+    .video-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
     .card-hover { transition: box-shadow 0.2s, transform 0.2s; }
     .card-hover:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.10); transform: translateY(-2px); }
     .glow-cta { transition: all 0.18s ease; }
@@ -350,7 +357,7 @@
   <!-- ============================================== -->
   <section class="menu-wrap">
     <div class="navbar-2">
-      <a href="/" class="logo-link-wrapper brand-3">
+      <a href="index.html" class="logo-link-wrapper brand-3">
         <div class="logo-text-container">
           <h1 class="heading-6 logo-1">Dietrichs</h1>
           <h1 class="heading-6 logo-2">marketing</h1>
@@ -377,21 +384,21 @@
     <div class="nav__bg"></div>
     <div class="container-4">
       <div class="nav-items">
-        <a href="/" class="nav-item">
+        <a href="index.html" class="nav-item">
           <div class="nav-item-number">01</div>
           <div class="special-text-wrapper">
             <div class="nav-item-text">Forside</div>
             <div class="nav-item-text-full">Forside</div>
           </div>
         </a>
-        <a href="tjenester" class="nav-item">
+        <a href="https://dmarketing.no/tjenester" class="nav-item">
           <div class="nav-item-number">02</div>
           <div class="special-text-wrapper">
             <div class="nav-item-text">Tjenester</div>
             <div class="nav-item-text-full">Tjenester</div>
           </div>
         </a>
-        <a href="kontakt" class="nav-item">
+        <a href="kontakt.html" class="nav-item">
           <div class="nav-item-number">03</div>
           <div class="special-text-wrapper">
             <div class="nav-item-text">Kontakt</div>
@@ -405,7 +412,7 @@
             <div class="nav-item-text-full">Maler</div>
           </div>
         </a>
-        <a href="ai-nettsider" class="nav-item">
+        <a href="ai-nettsider.html" class="nav-item">
           <div class="nav-item-number">05</div>
           <div class="special-text-wrapper">
             <div class="nav-item-text">AI-nettsider</div>
@@ -447,7 +454,7 @@
 
           <!-- CTA: Se demo-video -->
           <div class="flex justify-center">
-            <a href="demo"
+            <a href="#demo-video"
                class="inline-flex items-center justify-center gap-2 bg-blue-600 text-white font-semibold px-7 py-4 rounded-xl text-base glow-cta whitespace-nowrap">
               Se demo-video
               <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
@@ -474,6 +481,23 @@
       </div>
     </div>
   </header>
+
+  <!-- ============================================== -->
+  <!-- DEMO-VIDEO                                      -->
+  <!-- ============================================== -->
+  <section id="demo-video" class="px-6 pb-24 md:pb-32 bg-[#FAFAFA] scroll-mt-24">
+    <div class="max-w-[1000px] mx-auto -mt-10 md:-mt-16">
+      <div data-animate class="video-frame">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/P-21OZgu-RM?rel=0&modestbranding=1"
+          title="AI-nettsider demo"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+    </div>
+  </section>
 
   <!-- ============================================== -->
   <!-- SEKSJON 2: MAGIEN (sniktitt — chat-illustrasjon) -->
@@ -522,7 +546,7 @@
       </div>
 
       <div data-animate class="text-center mt-12">
-        <a href="demo"
+        <a href="#demo-video"
            class="inline-flex items-center gap-2 bg-blue-600 text-white font-semibold px-7 py-4 rounded-xl text-base glow-cta">
           Se demo-video
           <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
@@ -860,7 +884,7 @@
               <span>0 kr i månedlige driftskostnader</span>
             </li>
           </ul>
-          <a href="demo" class="block text-center border border-zinc-300 text-[#09090B] font-semibold py-3 rounded-xl text-sm hover:border-blue-600 hover:text-blue-600 transition-colors">
+          <a href="#demo-video" class="block text-center border border-zinc-300 text-[#09090B] font-semibold py-3 rounded-xl text-sm hover:border-blue-600 hover:text-blue-600 transition-colors">
             Se demo-video
           </a>
         </div>
@@ -901,7 +925,7 @@
               <span>Ferdig lansert på ditt eget domene</span>
             </li>
           </ul>
-          <a href="demo" class="block text-center border border-zinc-300 text-[#09090B] font-semibold py-3 rounded-xl text-sm hover:border-blue-600 hover:text-blue-600 transition-colors">
+          <a href="#demo-video" class="block text-center border border-zinc-300 text-[#09090B] font-semibold py-3 rounded-xl text-sm hover:border-blue-600 hover:text-blue-600 transition-colors">
             Se demo-video
           </a>
         </div>
@@ -949,7 +973,7 @@
               <span><strong class="text-white">Trygghetsgaranti:</strong> 1 mnd. gratis support</span>
             </li>
           </ul>
-          <a href="demo" class="block text-center bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3 rounded-xl text-sm transition-colors glow-cta">
+          <a href="#demo-video" class="block text-center bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3 rounded-xl text-sm transition-colors glow-cta">
             Se demo-video
           </a>
         </div>
@@ -990,7 +1014,7 @@
               <span>Dedikert utviklingstid og prosjektleder</span>
             </li>
           </ul>
-          <a href="demo" class="block text-center border border-zinc-300 text-[#09090B] font-semibold py-3 rounded-xl text-sm hover:border-blue-600 hover:text-blue-600 transition-colors">
+          <a href="#demo-video" class="block text-center border border-zinc-300 text-[#09090B] font-semibold py-3 rounded-xl text-sm hover:border-blue-600 hover:text-blue-600 transition-colors">
             Se demo-video
           </a>
         </div>
@@ -1071,7 +1095,7 @@
         </p>
 
         <div class="flex justify-center">
-          <a href="demo"
+          <a href="#demo-video"
              class="inline-flex items-center justify-center gap-2 bg-white text-[#0B1F4A] font-semibold px-7 py-4 rounded-xl text-base glow-cta-light whitespace-nowrap">
             Se demo-video
             <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
@@ -1094,7 +1118,7 @@
   <!-- FLOATING CTA -->
   <div id="floating-cta"
        style="position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);z-index:999;opacity:0;transition:opacity 0.35s,transform 0.35s;pointer-events:none;">
-    <a href="demo"
+    <a href="#demo-video"
        style="display:inline-flex;align-items:center;gap:10px;background:#1D4ED8;color:#fff;font-family:'Inter',sans-serif;font-weight:600;font-size:14px;padding:14px 24px;border-radius:50px;box-shadow:0 8px 32px rgba(29,78,216,0.4);text-decoration:none;white-space:nowrap;">
       <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       Se demo-video
