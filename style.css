@@ -64,7 +64,7 @@ p { margin: 0; }
    Lett vekt (600) gir i tillegg luft i bokstavene. */
 .outline {
   color: var(--paper);
-  -webkit-text-stroke: 1.5px var(--ink);
+  -webkit-text-stroke: 2.6px var(--ink);
   paint-order: stroke fill;
   font-weight: 600;
   letter-spacing: 0.01em;
@@ -126,9 +126,9 @@ p { margin: 0; }
   font-size: clamp(17px, 2.2vw, 22px); color: var(--ink);
 }
 .brand span {
-  font-weight: 600; text-transform: uppercase; letter-spacing: 0.045em;
+  font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em;
   font-size: clamp(17px, 2.2vw, 22px);
-  color: transparent; -webkit-text-stroke: 0.9px var(--ink);
+  color: var(--paper); -webkit-text-stroke: 1.7px var(--ink); paint-order: stroke fill;
 }
 .nav-links { display: flex; align-items: center; gap: 32px; }
 .nav-links a.navlink {
@@ -357,7 +357,7 @@ p { margin: 0; }
 /* ---------- FOOTER ---------- */
 .footer { background: var(--ink); color: #fff; padding: clamp(48px,7vh,80px) 0 36px; }
 .footer .f-top { display:flex; flex-wrap:wrap; justify-content:space-between; gap:30px; padding-bottom:40px; border-bottom:1px solid rgba(255,255,255,0.1); }
-.footer .brand b { color:#fff; } .footer .brand span { -webkit-text-stroke-color:#fff; }
+.footer .brand b { color:#fff; } .footer .brand span { color: var(--ink); -webkit-text-stroke-color:#fff; }
 .footer .f-tag { color: rgba(255,255,255,0.6); max-width: 34ch; margin-top:14px; font-size:0.92rem; }
 .footer .f-links { display:flex; gap:40px; flex-wrap:wrap; }
 .footer .f-col h5 { font-size:0.72rem; text-transform:uppercase; letter-spacing:0.16em; color:rgba(255,255,255,0.45); font-weight:600; margin:0 0 14px; }
