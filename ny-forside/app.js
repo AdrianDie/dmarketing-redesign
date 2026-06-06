@@ -5,6 +5,16 @@
 
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ---------- Preloader (akkurat samme som ai-nettsider) ---------- */
+  window.addEventListener('load', function () {
+    var pre = document.getElementById('preloader');
+    if (!pre) return;
+    requestAnimationFrame(function () {
+      setTimeout(function () { pre.classList.add('is-done'); }, 50);
+    });
+    setTimeout(function () { pre.style.display = 'none'; }, 2200);
+  });
+
   /* ---------- NAV: skygge/blur ved scroll ---------- */
   var nav = document.getElementById('nav');
   function onScroll() {
