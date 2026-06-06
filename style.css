@@ -301,7 +301,7 @@ p { margin: 0; }
 .pay-item p { margin-top:6px; font-size:0.82rem; }
 
 /* ---------- TEAM ---------- */
-.team-grid { display:grid; grid-template-columns: repeat(3,1fr); gap:20px; }
+.team-grid { display:grid; grid-template-columns: repeat(4,1fr); gap:20px; }
 .member { background:#fff; border:1px solid var(--line); border-radius:var(--r-lg); padding:28px; box-shadow:var(--shadow-sm); }
 .member .avatar {
   width:104px; height:104px; border-radius:50%; object-fit:cover; object-position:center top;
@@ -361,6 +361,7 @@ p { margin: 0; }
 @media (max-width: 1080px) {
   .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 34px 24px; }
   .price-grid { grid-template-columns: repeat(2, 1fr); }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
   .mal-grid { grid-template-columns: repeat(3, 1fr); }
   .pay-note { grid-template-columns: 1fr; }
   .pay-items { grid-template-columns: repeat(3,1fr); }
@@ -373,7 +374,6 @@ p { margin: 0; }
   .chat { margin: 0 auto; }
   .steps { grid-template-columns: 1fr; }
   .freedoms { grid-template-columns: 1fr; }
-  .team-grid { grid-template-columns: 1fr; }
   .nav-links { display: none; }
   .nav-links.open {
     display: flex; flex-direction: column; align-items: flex-start; gap: 18px;
@@ -391,6 +391,7 @@ p { margin: 0; }
 @media (max-width: 620px) {
   body { font-size: 16px; }
   .price-grid { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: 1fr; }
   .mal-grid { grid-template-columns: repeat(2, 1fr); }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .pay-items { grid-template-columns: 1fr; }
