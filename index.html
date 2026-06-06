@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Schibsted+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=12" />
+  <link rel="stylesheet" href="style.css?v=14" />
 </head>
 <body>
 
@@ -23,19 +23,34 @@
     <a href="#top" class="brand" aria-label="Dietrichs Marketing">
       <b>Dietrichs</b><span>marketing</span>
     </a>
-    <nav class="nav-links" id="navLinks">
-      <a class="navlink" href="#hvordan">Hvordan</a>
-      <a class="navlink" href="#maler">Maler</a>
-      <a class="navlink" href="#priser">Priser</a>
-      <a class="navlink" href="#team">Team</a>
-      <a class="btn btn-primary" href="#se-demo">Se demo-video
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-      </a>
-    </nav>
-    <button class="nav-toggle" id="navToggle" aria-label="Åpne meny" aria-expanded="false">
-      Meny <span class="bars"><i></i><i></i><i></i></span>
+    <button class="menu-btn" id="menuBtn" aria-label="Åpne meny" aria-expanded="false">
+      <span class="menu-word menu-open-word">Meny</span>
+      <span class="menu-word menu-close-word">Lukk</span>
+      <span class="menu-ico"><i></i><i></i></span>
     </button>
   </header>
+
+  <!-- Fullskjerm-meny (hentet fra eksisterende dmarketing.no) -->
+  <div class="menu-overlay" id="menuOverlay" aria-hidden="true">
+    <nav class="menu-items">
+      <a class="menu-item" href="https://dmarketing.no/">
+        <span class="mi-num">01</span>
+        <span class="mi-clip"><span class="mi-a">Forside</span><span class="mi-b">Forside</span></span>
+      </a>
+      <a class="menu-item" href="https://dmarketing.no/ai-nettsider">
+        <span class="mi-num">02</span>
+        <span class="mi-clip"><span class="mi-a">AI-nettsider</span><span class="mi-b">AI-nettsider</span></span>
+      </a>
+      <a class="menu-item" href="https://dmarketing.no/maler">
+        <span class="mi-num">03</span>
+        <span class="mi-clip"><span class="mi-a">Maler</span><span class="mi-b">Maler</span></span>
+      </a>
+      <a class="menu-item" href="https://dmarketing.no/kontakt">
+        <span class="mi-num">04</span>
+        <span class="mi-clip"><span class="mi-a">Kontakt</span><span class="mi-b">Kontakt</span></span>
+      </a>
+    </nav>
+  </div>
 
   <span id="top"></span>
 
@@ -48,7 +63,7 @@
       <h1 class="hero-title display reveal">
         <span class="line">Kutt alle kostnader</span>
         <span class="line accent">for nettsiden.</span>
-        <span class="line outline">Eier alt selv.</span>
+        <span class="line outline">Få full kontroll selv.</span>
       </h1>
       <div class="hero-bottom">
         <div class="hero-foot">
@@ -62,7 +77,7 @@
             Vi bygger en lynrask, AI-klar nettside du styrer helt selv. Oppdater innholdet på <strong>60&nbsp;sekunder</strong>, uten kode, uten byrå, uten faste månedsavgifter.
           </p>
           <div class="hero-cta reveal">
-            <a class="btn btn-primary" href="#se-demo">Se demo-video
+            <a class="btn btn-primary" href="https://dmarketing.no/demo">Se demo-video
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
             </a>
             <a class="btn btn-ghost" href="#priser">Se priser</a>
@@ -89,7 +104,7 @@
           <p class="reveal" style="margin-top:22px; color:var(--ink-soft); font-size:1.08rem; max-width:46ch;">
             Du forteller AI-en hva som skal endres på vanlig norsk. Den skriver koden og publiserer. Live på under ett minutt, helt uten å vente på et byrå.
           </p>
-          <a class="btn btn-primary reveal" style="margin-top:30px;" href="#se-demo">Se hele demoen
+          <a class="btn btn-primary reveal" style="margin-top:30px;" href="https://dmarketing.no/demo">Se hele demoen
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
         </div>
@@ -196,16 +211,16 @@
         <p class="reveal" style="color:var(--ink-soft); max-width:40ch;">16 designvariasjoner, én eller fire sider. Tilpasset håndverk, helse, regnskap og service. Klar på 3 til 5 dager.</p>
       </div>
       <div class="mal-grid">
-        <a class="mal reveal" href="#se-demo"><span class="mn">01</span><span class="mt">Rørlegger</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
-        <a class="mal reveal" href="#se-demo"><span class="mn">02</span><span class="mt">Elektriker</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
-        <a class="mal reveal" href="#se-demo"><span class="mn">03</span><span class="mt">Snekker</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
-        <a class="mal reveal" href="#se-demo"><span class="mn">04</span><span class="mt">Malerfirma</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
-        <a class="mal reveal" href="#se-demo"><span class="mn">05</span><span class="mt">Bilverksted</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
-        <a class="mal reveal" href="#se-demo"><span class="mn">06</span><span class="mt">Tannlege</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
-        <a class="mal reveal" href="#se-demo"><span class="mn">07</span><span class="mt">Psykolog</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
-        <a class="mal reveal" href="#se-demo"><span class="mn">08</span><span class="mt">Regnskap</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
-        <a class="mal reveal" href="#se-demo"><span class="mn">09</span><span class="mt">Frisør</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
-        <a class="mal more reveal" href="#se-demo"><span class="mn">+ Flere</span><span class="mt">Barber og din bransje</span></a>
+        <a class="mal reveal" href="https://dmarketing.no/demo"><span class="mn">01</span><span class="mt">Rørlegger</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        <a class="mal reveal" href="https://dmarketing.no/demo"><span class="mn">02</span><span class="mt">Elektriker</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        <a class="mal reveal" href="https://dmarketing.no/demo"><span class="mn">03</span><span class="mt">Snekker</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        <a class="mal reveal" href="https://dmarketing.no/demo"><span class="mn">04</span><span class="mt">Malerfirma</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        <a class="mal reveal" href="https://dmarketing.no/demo"><span class="mn">05</span><span class="mt">Bilverksted</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        <a class="mal reveal" href="https://dmarketing.no/demo"><span class="mn">06</span><span class="mt">Tannlege</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        <a class="mal reveal" href="https://dmarketing.no/demo"><span class="mn">07</span><span class="mt">Psykolog</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        <a class="mal reveal" href="https://dmarketing.no/demo"><span class="mn">08</span><span class="mt">Regnskap</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        <a class="mal reveal" href="https://dmarketing.no/demo"><span class="mn">09</span><span class="mt">Frisør</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        <a class="mal more reveal" href="https://dmarketing.no/demo"><span class="mn">+ Flere</span><span class="mt">Barber og din bransje</span></a>
       </div>
     </div>
   </section>
@@ -230,7 +245,7 @@
             <li class="feat-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Videokurs: sett det opp selv</li>
             <li class="feat-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>0&nbsp;kr i månedlige driftskostnader</li>
           </ul>
-          <a class="btn btn-ghost" href="#se-demo">Se demo-video</a>
+          <a class="btn btn-ghost" href="https://dmarketing.no/demo">Se demo-video</a>
         </div>
 
         <div class="price reveal">
@@ -244,7 +259,7 @@
             <li class="feat-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Tilpasset merkevare og SEO-oppsett</li>
             <li class="feat-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Lansert på ditt eget domene</li>
           </ul>
-          <a class="btn btn-ghost" href="#se-demo">Se demo-video</a>
+          <a class="btn btn-ghost" href="https://dmarketing.no/demo">Se demo-video</a>
         </div>
 
         <div class="price feat reveal">
@@ -259,7 +274,7 @@
             <li class="feat-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Skreddersydd AI matet med din bedrift</li>
             <li class="feat-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Trygghetsgaranti: 1 mnd. gratis support</li>
           </ul>
-          <a class="btn btn-primary" href="#se-demo">Se demo-video</a>
+          <a class="btn btn-primary" href="https://dmarketing.no/demo">Se demo-video</a>
         </div>
 
         <div class="price reveal">
@@ -273,7 +288,7 @@
             <li class="feat-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Skjemaer koblet rett til ditt CRM</li>
             <li class="feat-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Dedikert utviklingstid og prosjektleder</li>
           </ul>
-          <a class="btn btn-ghost" href="#se-demo">Se demo-video</a>
+          <a class="btn btn-ghost" href="https://dmarketing.no/demo">Se demo-video</a>
         </div>
 
       </div>
@@ -368,10 +383,10 @@
       <h2 class="display reveal" style="margin-top:18px;">Klar til å se<br><span class="outline on-dark">fremtidens nettside?</span></h2>
       <p class="reveal">Se demo-videoen og oppdag hvordan du kan eie alt selv, uten faste byråkostnader.</p>
       <div class="hero-cta reveal">
-        <a class="btn btn-light" href="../ai-nettsider.html">Se demo-video
+        <a class="btn btn-light" href="https://dmarketing.no/demo">Se demo-video
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
-        <a class="btn btn-ghost-light" href="../kontakt.html">Ta kontakt</a>
+        <a class="btn btn-ghost-light" href="https://dmarketing.no/kontakt">Ta kontakt</a>
       </div>
     </div>
   </section>
@@ -394,8 +409,8 @@
           </div>
           <div class="f-col">
             <h5>Kom i gang</h5>
-            <a href="#se-demo">Se demo-video</a>
-            <a href="../kontakt.html">Ta kontakt</a>
+            <a href="https://dmarketing.no/demo">Se demo-video</a>
+            <a href="https://dmarketing.no/kontakt">Ta kontakt</a>
           </div>
         </div>
       </div>
@@ -408,6 +423,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script src="app.js" defer></script>
+  <script src="app.js?v=13" defer></script>
 </body>
 </html>

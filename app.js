@@ -14,19 +14,25 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  /* ---------- Mobilmeny ---------- */
-  var toggle = document.getElementById('navToggle');
-  var links = document.getElementById('navLinks');
-  if (toggle && links) {
-    toggle.addEventListener('click', function () {
-      var open = links.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  /* ---------- Fullskjerm-meny ---------- */
+  var menuBtn = document.getElementById('menuBtn');
+  var overlay = document.getElementById('menuOverlay');
+  if (menuBtn && overlay) {
+    function setMenu(open) {
+      document.body.classList.toggle('menu-open', open);
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      menuBtn.setAttribute('aria-label', open ? 'Lukk meny' : 'Åpne meny');
+      overlay.setAttribute('aria-hidden', open ? 'false' : 'true');
+      document.body.style.overflow = open ? 'hidden' : '';
+    }
+    menuBtn.addEventListener('click', function () {
+      setMenu(!document.body.classList.contains('menu-open'));
     });
-    links.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', function () {
-        links.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-      });
+    overlay.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () { setMenu(false); });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && document.body.classList.contains('menu-open')) setMenu(false);
     });
   }
 
