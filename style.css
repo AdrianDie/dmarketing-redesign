@@ -304,13 +304,13 @@ p { margin: 0; }
 .team-grid { display:grid; grid-template-columns: repeat(3,1fr); gap:20px; }
 .member { background:#fff; border:1px solid var(--line); border-radius:var(--r-lg); padding:28px; box-shadow:var(--shadow-sm); }
 .member .avatar {
-  width:104px; height:104px; border-radius:22px; object-fit:cover; object-position:center top;
+  width:104px; height:104px; border-radius:50%; object-fit:cover; object-position:center top;
   border:1px solid var(--line); background: var(--paper-2);
   filter: grayscale(100%) contrast(1.04);
   box-shadow: 0 0 0 5px var(--cobalt-050);
 }
 .member .mono {
-  width:104px; height:104px; border-radius:22px; background: var(--cobalt); color:#fff;
+  width:104px; height:104px; border-radius:50%; background: var(--cobalt); color:#fff;
   display:flex; align-items:center; justify-content:center; font-weight:800; font-size:2.1rem; letter-spacing:-0.02em;
 }
 .member h3 { font-size:1.25rem; font-weight:700; text-transform:none; letter-spacing:-0.01em; margin-top:20px; }
