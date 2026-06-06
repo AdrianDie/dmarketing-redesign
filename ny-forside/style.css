@@ -58,13 +58,18 @@ p { margin: 0; }
 /* outline-ord (Veloce-aktig kontur).
    Egen, litt romsligere sporing: med stram negativ tracking krysser
    nabobokstavenes konturstreker hverandre og ser rotete ut. */
+/* Ren kontur-teknikk: ugjennomsiktig fyll i bakgrunnsfargen + paint-order
+   slik at fyllet dekker den indre halvdelen av streken og alle interne
+   kryssinger. Da ser man kun den skarpe ytterkanten = ren outline.
+   Lett vekt (600) gir i tillegg luft i bokstavene. */
 .outline {
-  color: transparent;
-  -webkit-text-stroke: 1.4px var(--ink);
-  font-weight: 600;            /* lettere vekt = ren kontur (som .outline-primary paa dmarketing.no) */
+  color: var(--paper);
+  -webkit-text-stroke: 1.5px var(--ink);
+  paint-order: stroke fill;
+  font-weight: 600;
   letter-spacing: 0.01em;
 }
-.outline.on-dark { -webkit-text-stroke-color: #fff; }
+.outline.on-dark { color: var(--cobalt); -webkit-text-stroke-color: #fff; }
 
 /* nummerert seksjons-label: 001 / AI-NETTSIDER */
 .label {
