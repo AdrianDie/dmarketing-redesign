@@ -46,6 +46,36 @@
     });
   }
 
+  /* ---------- Lead -> Supabase (config-styrt, ikke-blokkerende) ----------
+     Sender skjema-innsendinger til dashboard-databasen NÅR window.DM_SUPABASE
+     er fylt ut (url + anonKey). Tomt = av. preventDefault kalles ALDRI, så
+     skjemaet sender alltid til formsubmit (e-postvarsel) som før. */
+  (function () {
+    var form = document.querySelector('.contact-form');
+    var sb = window.DM_SUPABASE;
+    if (!form || !sb || !sb.url || !sb.anonKey) return;
+    form.addEventListener('submit', function () {
+      try {
+        var val = function (n) { var el = form.querySelector('[name="' + n + '"]'); return el ? el.value.trim() : ''; };
+        var payload = {
+          navn: val('Navn'), bedrift: val('Bedrift'), epost: val('Epost'),
+          telefon: val('Telefon'), nettside: val('Nettside'), melding: val('Melding'),
+          type: 'ai-nettsider', status: 'ny', kilde: 'kontaktskjema'
+        };
+        fetch(sb.url.replace(/\/+$/, '') + '/rest/v1/' + (sb.table || 'leads'), {
+          method: 'POST', keepalive: true,
+          headers: {
+            'apikey': sb.anonKey,
+            'Authorization': 'Bearer ' + sb.anonKey,
+            'Content-Type': 'application/json',
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify(payload)
+        }).catch(function () {});
+      } catch (e) {}
+    });
+  })();
+
   /* ---------- Redusert bevegelse: vis alt, hopp over animasjon ---------- */
   if (reduce || typeof gsap === 'undefined') {
     document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('revealed'); });
