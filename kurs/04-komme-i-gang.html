@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>04: Komme i gang første gang | AI-nettsider Kurs</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { theme: { extend: { fontFamily: { display: ['Archivo', 'sans-serif'], body: ['Inter', 'sans-serif'] }, colors: { ink: '#09090B', brand: '#2563EB', navy: '#0B1F4A' } } } }</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="../images/favicon.png" rel="shortcut icon" type="image/x-icon" />
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script src="/kurs/auth.js"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #FAFAFA; color: #09090B; }
+    .font-display { font-family: 'Archivo', sans-serif; }
+    .badge { font-family: 'JetBrains Mono', 'Courier New', monospace; }
+    .prose-custom h2 { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 1.875rem; line-height: 1.2; margin-top: 2.5rem; margin-bottom: 1rem; letter-spacing: -0.02em; }
+    .prose-custom h3 { font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 1.25rem; margin-top: 2rem; margin-bottom: 0.75rem; }
+    .prose-custom p { font-size: 1.0625rem; line-height: 1.7; color: #3F3F46; margin-bottom: 1.25rem; }
+    .prose-custom ul, .prose-custom ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+    .prose-custom ul li, .prose-custom ol li { font-size: 1.0625rem; line-height: 1.7; color: #3F3F46; margin-bottom: 0.5rem; }
+    .prose-custom ul li { list-style-type: disc; }
+    .prose-custom ol li { list-style-type: decimal; }
+    .prose-custom strong { color: #09090B; }
+    .prose-custom code { background: #F4F4F5; padding: 0.15rem 0.4rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
+    .callout { background: #EFF6FF; border-left: 3px solid #2563EB; padding: 1.25rem 1.5rem; border-radius: 0.5rem; margin: 1.5rem 0; }
+    .callout p { margin-bottom: 0; color: #1E3A8A; }
+    .callout-warn { background: #FEF3C7; border-left-color: #D97706; }
+    .callout-warn p { color: #78350F; }
+    .callout-ok { background: #F0FDF4; border-left-color: #16A34A; }
+    .callout-ok p { color: #14532D; }
+    /* "Forklart enkelt"-boks — gjenbrukes for vanskelige ord */
+    .explain { background: #F5F3FF; border: 1px solid #DDD6FE; border-left: 3px solid #7C3AED; border-radius: 0.5rem; padding: 1.25rem 1.5rem; margin: 1.5rem 0; }
+    .explain .explain-label { display: inline-flex; align-items: center; gap: 0.4rem; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: #6D28D9; margin-bottom: 0.5rem; }
+    .explain p { font-size: 1rem; line-height: 1.65; color: #3F2C66; margin-bottom: 0; }
+    .explain p + p { margin-top: 0.75rem; }
+    .explain strong { color: #4C1D95; }
+    .explain code { background: #EDE9FE; }
+    .step { background: white; border: 1px solid #E4E4E7; border-radius: 1rem; padding: 1.5rem; margin: 1rem 0; display: flex; gap: 1rem; }
+    .step-num { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 2rem; color: #2563EB; line-height: 1; flex-shrink: 0; }
+    .step-content h3 { margin-top: 0 !important; }
+    .step-content p { margin-bottom: 0.5rem; }
+  </style>
+</head>
+<body>
+  <script>window.DIETRICHS_MENU_CONFIG = { basePath: '../' };</script>
+  <script src="../components/dietrichs-menu.js" defer></script>
+
+  <header class="py-14 md:py-20 px-6 border-b border-zinc-100">
+    <div class="max-w-3xl mx-auto">
+      <div class="flex items-center gap-3 mb-5">
+        <a href="./" class="text-xs font-semibold uppercase tracking-widest text-zinc-500 hover:text-blue-600">← Alle moduler</a>
+        <span class="text-zinc-300">/</span>
+        <span class="badge text-xs text-zinc-400">MODUL 04</span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-blue-600">Oppsett</span>
+      </div>
+      <h1 class="font-display font-extrabold text-4xl md:text-6xl tracking-[-0.03em] text-ink leading-[1.05] mb-5">
+        Komme i gang første gang
+      </h1>
+      <p class="text-lg md:text-xl text-zinc-600 leading-relaxed">
+        Fra mottatt velkomst-e-post til ditt første "hei" til Claude. ~15 minutter.
+      </p>
+    </div>
+  </header>
+
+
+  <article class="px-6 py-12 md:py-16">
+    <div class="max-w-3xl mx-auto prose-custom">
+
+      <div class="explain not-prose">
+        <span class="explain-label">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M12 16v-4M12 8h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Forklart enkelt: Hva er en «prompt»?
+        </span>
+        <p>En <strong>«prompt»</strong> er rett og slett <strong>meldingen du skriver til Claude</strong> — altså hva du ber den om. Du skriver den på helt vanlig norsk, slik du ville sagt det til en kollega. Det er ikke kode, og du kan formulere deg akkurat som du vil.</p>
+        <p>Vi bruker ordet «prompt» gjennom hele kurset, men det betyr bare «beskjeden din til Claude». Møter du flere ord du ikke kjenner? Slå dem opp i <a href="ordliste" class="font-semibold text-blue-700 underline decoration-blue-300 hover:decoration-blue-600">ordlisten</a>.</p>
+      </div>
+
+      <h2>Hva du skal ende opp med</h2>
+      <p>Etter denne modulen har du:</p>
+      <ul>
+        <li>Tilgang til din egen <strong>GitHub-konto</strong> (en gratis nettside der alle filene til nettsiden din lagres trygt)</li>
+        <li>Tilgang til <strong>Claude</strong> med din bedrift lagt inn på forhånd</li>
+        <li><strong>Cloudflare Pages</strong> koblet til prosjektet (Cloudflare-tjenesten som viser nettsiden din fram på internett)</li>
+        <li>Gjort din første test-endring og sett den live</li>
+      </ul>
+
+      <p>Vi forklarer hvert ord underveis. Det er fire nye begreper i denne modulen — <strong>repo</strong>, <strong>dashboard</strong>, <strong>prosjekt</strong> og <strong>prompt</strong> — og du møter en «Forklart enkelt»-boks for hvert av dem. Trenger du en rask oppslagsbok, finner du alt i <a href="ordliste" class="font-semibold text-blue-700 underline decoration-blue-300 hover:decoration-blue-600">ordlisten</a>.</p>
+
+      <h2>Steg-for-steg</h2>
+
+      <div class="step not-prose">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3 class="font-display font-bold text-lg mb-2">Sjekk velkomst-e-posten fra oss</h3>
+          <p class="text-zinc-600 text-sm">Du fikk en e-post fra <strong>adrian@dmarketing.no</strong> da prosjektet ble levert. Den inneholder tre lenker: <strong>GitHub-repo</strong>, <strong>Claude-tilgang</strong> og <strong>Cloudflare-dashboard</strong>. Hvis du ikke finner den: sjekk søppelpost, eller send oss melding så sender vi på nytt.</p>
+        </div>
+      </div>
+
+      <div class="explain not-prose">
+        <span class="explain-label">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M12 16v-4M12 8h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Forklart enkelt: «repo» og «dashboard»
+        </span>
+        <p>Et <strong>«repo»</strong> (uttales «rippo», kortform for det engelske <em>repository</em>) er rett og slett <strong>mappen der alle filene til nettsiden din ligger samlet</strong>. Et <strong>GitHub-repo</strong> er denne mappen lagret trygt på GitHub. Du trenger ikke gjøre noe inni den selv — Claude gjør jobben.</p>
+        <p>Et <strong>«dashboard»</strong> er bare en <strong>kontroll-side du logger inn på</strong> — en oversiktsside med knapper og statuser. <strong>Cloudflare-dashboard</strong> er altså bare innloggingssiden hos Cloudflare der du kan se hvordan det går med nettsiden din.</p>
+      </div>
+
+      <div class="step not-prose">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3 class="font-display font-bold text-lg mb-2">Aksepter GitHub-invitasjonen</h3>
+          <p class="text-zinc-600 text-sm">Klikk "Aksepter invitasjon" i e-posten. Hvis du ikke har GitHub-konto fra før, viser GitHub deg et lite skjema når du klikker: skriv inn samme e-post som du ga oss, velg et passord, og trykk for å bekrefte. Det er gratis og tar omtrent ett minutt.</p>
+        </div>
+      </div>
+
+      <div class="step not-prose">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3 class="font-display font-bold text-lg mb-2">Logg inn på Claude</h3>
+          <p class="text-zinc-600 text-sm">Gå til <code>claude.ai</code>, logg inn med Google eller e-post. Du har fått tilgang til et eget <strong>«prosjekt»</strong> (på engelsk heter det «Project») — en egen arbeidsplass inne i Claude som allerede vet alt om bedriften din. Klikk på invitasjonen for å åpne den.</p>
+        </div>
+      </div>
+
+      <div class="step not-prose">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h3 class="font-display font-bold text-lg mb-2">Test første prompt (din første melding til Claude)</h3>
+          <p class="text-zinc-600 text-sm">I Claude-prosjektet skriver du i tekstfeltet: <code>Vis meg hvilke sider nettstedet har</code>. Claude vil liste opp filene. Hvis du ser navn som <code>index.html</code> og <code>tjenester.html</code> — perfekt, alt fungerer. (<code>index.html</code> er alltid <strong>forsiden</strong>, og <code>tjenester.html</code> er tjeneste-siden. «.html» betyr bare at det er en nettside-fil.)</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        <p><strong>Viktig:</strong> Setningene i de grå boksene over (som «Vis meg hvilke sider nettstedet har») er <strong>helt vanlige norske setninger du skriver fritt</strong> — ikke kode, og du trenger ikke treffe dem ordrett. Skriv slik du ville snakket. Navn med «.html» (som <code>index.html</code>) er derimot <strong>filnavn Claude viser deg</strong> — dem skriver du ikke selv.</p>
+      </div>
+
+      <div class="step not-prose">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h3 class="font-display font-bold text-lg mb-2">Gjør en test-endring</h3>
+          <p class="text-zinc-600 text-sm">Skriv: <code>Bytt telefonnummeret i bunnen til 12 34 56 78 (det er bare en test, vi setter tilbake)</code>. Claude foreslår endringen, du klikker «godkjenn», og den lagres. Cloudflare «bygger» så siden automatisk — det betyr bare at maskinen setter sammen den ferdige nettsiden av filene dine. Du gjør ingenting selv.</p>
+        </div>
+      </div>
+
+      <div class="step not-prose">
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <h3 class="font-display font-bold text-lg mb-2">Sjekk at det er live</h3>
+          <p class="text-zinc-600 text-sm">Vent 30–90 sekunder. Åpne din egen nettside på nytt og trykk <strong>Ctrl + Shift + R</strong> (forklart rett under). Du skal se det nye telefonnummeret. Si til Claude: <code>Sett telefonen tilbake til [riktig nummer]</code> for å rydde.</p>
+        </div>
+      </div>
+
+      <div class="explain not-prose">
+        <span class="explain-label">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M12 16v-4M12 8h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Forklart enkelt: cache og «hard reload» (Ctrl + Shift + R)
+        </span>
+        <p>Nettleseren din husker den gamle versjonen av siden for å spare tid. Denne lagrede kopien kalles <strong>«cache»</strong>. Det er praktisk til vanlig, men irriterende når du nettopp har endret noe — for da kan du fortsatt se den gamle versjonen.</p>
+        <p>For å tvinge nettleseren til å hente den <strong>aller nyeste</strong> versjonen, trykker du <strong>Ctrl + Shift + R</strong> (Windows) eller <strong>Cmd + Shift + R</strong> (Mac) samtidig. Dette kalles en <strong>«hard reload»</strong> — altså «last siden helt på nytt». Bruk det hver gang du lurer på om du ser den ferskeste versjonen.</p>
+      </div>
+
+      <div class="callout">
+        <p>Gratulerer — du har nå gjort din første endring. Resten av kurset er bare variasjoner av denne flyten.</p>
+      </div>
+
+      <h2>Vanlige problemer ved første oppsett</h2>
+
+      <h3>Jeg får ikke logget inn på Claude</h3>
+      <p>Sjekk at du bruker samme e-post som invitasjonen ble sendt til. Hvis du fortsatt har problemer, send oss en melding så genererer vi ny invitasjon.</p>
+
+      <h3>GitHub spør om kredittkort</h3>
+      <p>GitHub er gratis for det vi trenger. Hvis det spør om betaling, har du sannsynligvis havnet på «Pro»-nivået (det betalte) ved et uhell — bytt tilbake til <strong>«Free»</strong> (gratis). «Tier» er bare det engelske ordet for «nivå».</p>
+
+      <h3>Endringen vises ikke selv etter 5 minutter</h3>
+      <p>Tre vanlige grunner: <strong>(1)</strong> Nettleseren viser fortsatt den gamle, lagrede versjonen (cache) — gjør en hard reload med <code>Ctrl + Shift + R</code> (se forklaringen lenger oppe). <strong>(2)</strong> Claude lagret ikke — sjekk at du klikket «godkjenn». <strong>(3)</strong> Cloudflare fikk ikke bygget den nye siden — gå til Cloudflare-dashboardet (kontroll-siden du logget inn på) og se i listen om byggingen gikk galt. Står det <code>Failed</code> i rødt, gikk byggingen feil — da kan du sende oss en melding så hjelper vi deg.</p>
+
+      <div class="callout callout-warn">
+        <p><strong>Tips:</strong> Lagre alle de tre lenkene (GitHub, Claude, Cloudflare) i bokmerker. Du kommer til å bruke dem ofte.</p>
+      </div>
+
+    </div>
+  </article>
+
+  <nav class="border-t border-zinc-200 bg-white py-8 px-6">
+    <div class="max-w-3xl mx-auto flex justify-between items-center">
+      <a href="03-overgangen" class="text-sm text-zinc-500 hover:text-blue-600 flex items-center gap-2"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>03: Overgangen</a>
+      <a href="05-oppdatere-innhold" class="inline-flex items-center gap-2 bg-blue-600 text-white font-semibold px-5 py-3 rounded-lg hover:bg-blue-500 transition-colors text-sm">Modul 05: Oppdatere innhold<svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+    </div>
+  </nav>
+  <footer class="bg-[#0F172A] text-white py-6 px-6"><div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-sm text-white/40"><div>© 2026 Dietrichs Marketing</div><div>Org.nr 932 612 583</div><div id="kurs-user-info"></div></div></footer>
+</body>
+</html>

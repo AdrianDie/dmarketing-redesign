@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>01: Velkommen og oversikt | AI-nettsider Kurs</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { display: ['Archivo', 'sans-serif'], body: ['Inter', 'sans-serif'] },
+        colors: { ink: '#09090B', brand: '#2563EB', navy: '#0B1F4A' }
+      } }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="../images/favicon.png" rel="shortcut icon" type="image/x-icon" />
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script src="/kurs/auth.js"></script>
+
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #FAFAFA; color: #09090B; }
+    .font-display { font-family: 'Archivo', sans-serif; }
+    .badge { font-family: 'JetBrains Mono', 'Courier New', monospace; }
+    .prose-custom h2 { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 1.875rem; line-height: 1.2; margin-top: 2.5rem; margin-bottom: 1rem; letter-spacing: -0.02em; }
+    .prose-custom h3 { font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 1.25rem; margin-top: 2rem; margin-bottom: 0.75rem; }
+    .prose-custom p { font-size: 1.0625rem; line-height: 1.7; color: #3F3F46; margin-bottom: 1.25rem; }
+    .prose-custom ul { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+    .prose-custom ul li { font-size: 1.0625rem; line-height: 1.7; color: #3F3F46; margin-bottom: 0.5rem; list-style-type: disc; }
+    .prose-custom strong { color: #09090B; }
+    .prose-custom code { background: #F4F4F5; padding: 0.15rem 0.4rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
+    .callout {
+      background: #EFF6FF; border-left: 3px solid #2563EB;
+      padding: 1.25rem 1.5rem; border-radius: 0.5rem; margin: 1.5rem 0;
+    }
+    .callout p { margin-bottom: 0; color: #1E3A8A; }
+  </style>
+</head>
+<body>
+
+  <script>window.DIETRICHS_MENU_CONFIG = { basePath: '../' };</script>
+  <script src="../components/dietrichs-menu.js" defer></script>
+
+  <!-- Module hero -->
+  <header class="py-14 md:py-20 px-6 border-b border-zinc-100">
+    <div class="max-w-3xl mx-auto">
+      <div class="flex items-center gap-3 mb-5">
+        <a href="./" class="text-xs font-semibold uppercase tracking-widest text-zinc-500 hover:text-blue-600">← Alle moduler</a>
+        <span class="text-zinc-300">/</span>
+        <span class="badge text-xs text-zinc-400">MODUL 01</span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-blue-600">Intro</span>
+      </div>
+      <h1 class="font-display font-extrabold text-4xl md:text-6xl tracking-[-0.03em] text-ink leading-[1.05] mb-5">
+        Velkommen og oversikt
+      </h1>
+      <p class="text-lg md:text-xl text-zinc-600 leading-relaxed">
+        Hva du lærer i kurset, og hvorfor AI-nettsider er annerledes enn alt du har sett før.
+      </p>
+    </div>
+  </header>
+
+
+  <!-- Content -->
+  <article class="px-6 py-12 md:py-16">
+    <div class="max-w-3xl mx-auto prose-custom">
+
+      <h2>Hva du lærer i kurset</h2>
+      <p>
+        Dette kurset tar deg fra <strong>aldri har rørt en nettside før</strong> til at du kan oppdatere innhold, legge til nye sider, og styre hele bedriften din digitalt — alt selv. Uten å betale en byrå-faktura hver måned.
+      </p>
+      <p>
+        Kurset består av 13 moduler, delt i tre deler:
+      </p>
+      <ul>
+        <li><strong>Del 1 (modul 1–6):</strong> Hva systemet er, overgangen fra dagens nettside, og hvordan komme i gang.</li>
+        <li><strong>Del 2 (modul 7–11):</strong> Daglig drift — oppdatere, bygge nye sider, SEO, publisering og feilsøking.</li>
+        <li><strong>Del 3 (modul 12–13):</strong> Avansert: integrasjoner og hva 100 % eierskap betyr i praksis.</li>
+      </ul>
+
+      <h2>Hvorfor AI-nettsider er annerledes</h2>
+      <p>
+        Tradisjonelle byråer ber deg om å sende inn endringer per e-post. Du venter to dager. Du betaler 800 kr for en åpningstid-endring. Du eier ikke nettsiden — de gjør.
+      </p>
+      <p>
+        AI-nettsider snur dette på hodet:
+      </p>
+      <ul>
+        <li><strong>Du eier alt.</strong> Koden ligger på din egen GitHub-konto (GitHub er et trygt nettsted der filene til nettsiden din lagres — tenk på det som en privat Dropbox-mappe; vi forklarer det i modul 02). <li>
+        <li><strong>Claude oppdaterer nettsiden for deg.</strong> Claude er en privat AI-assistent som kjenner bedriften din. Du skriver "endre fredag-åpningstid til 8–14" på vanlig norsk — så er det live på 30 sekunder. <em>(Hva er AI og Claude? Det forklarer vi enkelt i modul 02.)</em></li>
+        <li><strong>0 kr i månedsavgift til oss.</strong> Du betaler bare for selve oppsettet.</li>
+      </ul>
+
+      <div class="callout">
+        <p><strong>Tenk på det slik:</strong> det er forskjellen mellom å leie og å eie. Vi gir deg nøklene, så er det din bedrift, ditt domene, ditt innhold.</p>
+      </div>
+
+      <h2>Hva du trenger for å starte</h2>
+      <ul>
+        <li>En datamaskin (Windows eller Mac, ingen krav til kraftig PC)</li>
+        <li>Tilgang til e-posten din (du har fått en velkomst-e-post fra oss)</li>
+        <li>Vilje til å skrive til en AI som om den var en kollega</li>
+      </ul>
+
+      <h2>Hvordan du tar kurset</h2>
+      <p>
+        Du kan ta hver modul i ditt eget tempo. Hver modul er kort og praktisk, med tekst, bilder og enkle forklaringer. Du trenger ingen forkunnskaper — vi forklarer alt underveis, og møter du et ord du ikke kjenner, kan du slå det opp i <a href="ordliste" class="text-blue-600 underline">ordlisten</a>.
+      </p>
+      <p>
+        Etter modul 04 har du gjort din første endring på din egen side. Etter modul 11 vet du nok til å drive helt selv. Modul 12 og 13 er for de som vil grave dypt og lære alt.
+      </p>
+
+      <h2>Et raskt eksempel før vi starter</h2>
+      <p>
+        Senere i dag — etter modul 03 — kommer du til å skrive noe som dette i en chat:
+      </p>
+      <ul>
+        <li><code>Endre telefonnummeret i bunnen til 99 88 77 66</code></li>
+        <li><code>Legg til en ny tjeneste-seksjon: "Akutt-utrykning 24/7"</code></li>
+        <li><code>Gjør hero-bildet på forsiden mindre på mobil</code></li>
+      </ul>
+      <p>
+        Og det skjer. Live. Uten å vente på noen.
+      </p>
+
+      <div class="callout">
+        <p>Klar? Trykk på <strong>Neste modul</strong> nedenfor for å lære hvordan systemet er bygget — så du forstår hva du faktisk holder på med.</p>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- Module nav -->
+  <nav class="border-t border-zinc-200 bg-white py-8 px-6">
+    <div class="max-w-3xl mx-auto flex justify-between items-center">
+      <a href="./" class="text-sm text-zinc-500 hover:text-blue-600 flex items-center gap-2">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Tilbake til oversikt
+      </a>
+      <a href="02-hvordan-fungerer-det" class="inline-flex items-center gap-2 bg-blue-600 text-white font-semibold px-5 py-3 rounded-lg hover:bg-blue-500 transition-colors text-sm">
+        Modul 02: Hvordan det fungerer
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </nav>
+
+  <footer class="bg-[#0F172A] text-white py-6 px-6">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-sm text-white/40">
+      <div>© 2026 Dietrichs Marketing</div>
+      <div>Org.nr 932 612 583</div>
+      <div id="kurs-user-info"></div>
+    </div>
+  </footer>
+
+</body>
+</html>

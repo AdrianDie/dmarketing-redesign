@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>12: Avanserte integrasjoner | AI-nettsider Kurs</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { theme: { extend: { fontFamily: { display: ['Archivo', 'sans-serif'], body: ['Inter', 'sans-serif'] }, colors: { ink: '#09090B', brand: '#2563EB', navy: '#0B1F4A' } } } }</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="../images/favicon.png" rel="shortcut icon" type="image/x-icon" />
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script src="/kurs/auth.js"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #FAFAFA; color: #09090B; }
+    .font-display { font-family: 'Archivo', sans-serif; }
+    .badge { font-family: 'JetBrains Mono', 'Courier New', monospace; }
+    .prose-custom h2 { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 1.875rem; line-height: 1.2; margin-top: 2.5rem; margin-bottom: 1rem; letter-spacing: -0.02em; }
+    .prose-custom h3 { font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 1.25rem; margin-top: 2rem; margin-bottom: 0.75rem; }
+    .prose-custom p { font-size: 1.0625rem; line-height: 1.7; color: #3F3F46; margin-bottom: 1.25rem; }
+    .prose-custom ul, .prose-custom ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+    .prose-custom li { font-size: 1.0625rem; line-height: 1.7; color: #3F3F46; margin-bottom: 0.5rem; }
+    .prose-custom ul li { list-style-type: disc; }
+    .prose-custom ol li { list-style-type: decimal; }
+    .prose-custom strong { color: #09090B; }
+    .prose-custom code { background: #F4F4F5; padding: 0.15rem 0.4rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
+    .callout { background: #EFF6FF; border-left: 3px solid #2563EB; padding: 1.25rem 1.5rem; border-radius: 0.5rem; margin: 1.5rem 0; }
+    .callout p { margin-bottom: 0; color: #1E3A8A; }
+    .prompt-example { background: #F4F4F5; border-radius: 0.5rem; padding: 1rem 1.25rem; margin: 0.75rem 0; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: #18181B; white-space: pre-wrap; }
+    .integration { background: white; border: 1px solid #E4E4E7; border-radius: 1rem; padding: 1.5rem; margin: 1.25rem 0; }
+    .integration h3 { margin-top: 0 !important; }
+    .integration .meta { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
+    .integration .pill { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.25rem 0.625rem; border-radius: 1rem; font-weight: 600; }
+    .pill-tier { background: #DBEAFE; color: #1E40AF; }
+    .pill-cost { background: #ECFDF5; color: #065F46; }
+    .pill-time { background: #FEF3C7; color: #78350F; }
+  </style>
+</head>
+<body>
+  <script>window.DIETRICHS_MENU_CONFIG = { basePath: '../' };</script>
+  <script src="../components/dietrichs-menu.js" defer></script>
+
+  <header class="py-14 md:py-20 px-6 border-b border-zinc-100">
+    <div class="max-w-3xl mx-auto">
+      <div class="flex items-center gap-3 mb-5">
+        <a href="./" class="text-xs font-semibold uppercase tracking-widest text-zinc-500 hover:text-blue-600">← Alle moduler</a>
+        <span class="text-zinc-300">/</span>
+        <span class="badge text-xs text-zinc-400">MODUL 12</span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-blue-600">Avansert · Autopilot Pro+</span>
+      </div>
+      <h1 class="font-display font-extrabold text-4xl md:text-6xl tracking-[-0.03em] text-ink leading-[1.05] mb-5">
+        Avanserte integrasjoner
+      </h1>
+      <p class="text-lg md:text-xl text-zinc-600 leading-relaxed">
+        Booking, Google Maps, skjemaer til CRM, sosiale feeds. Hva du trenger og hva du IKKE trenger.
+      </p>
+    </div>
+  </header>
+
+
+  <article class="px-6 py-12 md:py-16">
+    <div class="max-w-3xl mx-auto prose-custom">
+
+      <div class="callout">
+        <p><strong>Forklart enkelt: Hva er en integrasjon?</strong> En «integrasjon» betyr å koble en annen tjeneste inn i nettsiden din — for eksempel et bookingsystem der folk bestiller time selv, et Google-kart som viser hvor du holder til, eller et kontaktskjema som sender e-post til deg. Du «limer» altså en ferdig funksjon fra et annet firma inn på siden, så du slipper å lage den selv. Møter du et ord du ikke kjenner her, kan du slå det opp i <a href="ordliste" class="text-blue-600 underline">ordlisten</a>.</p>
+      </div>
+
+      <h2>Tenk deg om før du kobler på noe nytt</h2>
+      <p>Hver integrasjon gjør deg litt avhengig av et annet firma. Hvis den tjenesten slutter å virke eller setter opp prisen, merker du det. Så spør deg selv:</p>
+      <ul>
+        <li>Trenger jeg dette nå, eller er det bare «kjekt å ha»?</li>
+        <li>Hva koster det hvis bedriften min vokser? Mange tjenester er gratis når du har få kunder, men blir dyre når du får mange.</li>
+        <li>Kan jeg få dataene mine ut igjen hvis jeg slutter å bruke tjenesten?</li>
+      </ul>
+
+      <h2>De vanligste integrasjonene — de mest nyttige først</h2>
+
+      <p>Under hver tjeneste står det en grå boks med et eksempel på hva du kan skrive til Claude. Det er helt vanlig norsk — du kan formulere det med dine egne ord. «Bygg inn» (på engelsk «embed») betyr bare å legge en funksjon fra et annet firma rett inn på siden din.</p>
+
+      <div class="integration not-prose">
+        <div class="meta">
+          <span class="pill pill-tier">Anbefalt for alle</span>
+          <span class="pill pill-cost">Gratis</span>
+          <span class="pill pill-time">~10 min å sette opp</span>
+        </div>
+        <h3 class="font-display font-bold text-xl">Google-kart på siden (Google Maps)</h3>
+        <p class="text-zinc-600 mt-2">Et lite kart som viser hvor du holder til, bygget inn på kontakt-siden. Gjør det lettere for folk å finne deg — og hjelper deg å dukke opp når noen googler etter bedrifter i ditt område.</p>
+        <p class="font-semibold text-sm mt-3">Slik ber du Claude om det:</p>
+        <div class="prompt-example">Embed Google Maps på kontakt-siden, sentrert på adressen vår [adresse].
+Pin med bedriftens navn. Responsive (full bredde på mobil).</div>
+      </div>
+
+      <div class="integration not-prose">
+        <div class="meta">
+          <span class="pill pill-tier">Anbefalt for service-bedrifter</span>
+          <span class="pill pill-cost">Gratis (Calendly) eller fra 100 kr/mnd (norske)</span>
+          <span class="pill pill-time">~15 min</span>
+        </div>
+        <h3 class="font-display font-bold text-xl">Bookingsystem — la kunder bestille tid selv</h3>
+        <p class="text-zinc-600 mt-2">Lar kundene bestille time direkte på nettsiden, uten å ringe deg. Calendly er det enkleste å komme i gang med. Bookis og Bokio er norske alternativer.</p>
+        <p class="font-semibold text-sm mt-3">Slik ber du Claude om det:</p>
+        <div class="prompt-example">Embed Calendly-bookingen min (https://calendly.com/...) på en ny side: /book-time.
+Knapp i header som peker dit. Sett "Book gratis 15 min"-CTA på forsiden.</div>
+      </div>
+
+      <div class="integration not-prose">
+        <div class="meta">
+          <span class="pill pill-tier">Trenger e-post-skjema?</span>
+          <span class="pill pill-cost">Gratis (under 50/mnd)</span>
+          <span class="pill pill-time">~10 min</span>
+        </div>
+        <h3 class="font-display font-bold text-xl">Kontaktskjema som sender e-post (Formspree)</h3>
+        <p class="text-zinc-600 mt-2">Et skjema der besøkende skriver navn og melding, og det havner rett i innboksen din. Formspree er det enkleste — du slipper å sette opp noe teknisk selv.</p>
+        <p class="font-semibold text-sm mt-3">Slik ber du Claude om det:</p>
+        <div class="prompt-example">Sett opp kontakt-skjemaet med Formspree:
+1. Felt: navn, e-post, melding
+2. Send til adrian@dmarketing.no
+3. Vis "Takk!"-melding etter sending
+4. Legg inn en usynlig spam-felle (honeypot) som stopper søppelpost</div>
+      </div>
+
+      <div class="integration not-prose">
+        <div class="meta">
+          <span class="pill pill-tier">Avansert</span>
+          <span class="pill pill-cost">CRM-priser (HubSpot fra 0, Pipedrive fra ~150 kr/mnd)</span>
+          <span class="pill pill-time">~30 min</span>
+        </div>
+        <h3 class="font-display font-bold text-xl">Skjema → kundekartotek (HubSpot, Pipedrive)</h3>
+        <p class="text-zinc-600 mt-2">Et CRM er et «kundekartotek» — et system som holder orden på kunder og henvendelser. Hver gang noen fyller ut skjemaet, dukker de opp der som en «lead», altså en mulig ny kunde som har tatt kontakt. Nyttig hvis du får mange henvendelser å holde styr på. HubSpot og Pipedrive er to vanlige slike systemer.</p>
+        <p class="font-semibold text-sm mt-3">Slik ber du Claude om det:</p>
+        <div class="prompt-example">Koble kontakt-skjemaet til HubSpot, så hver henvendelse
+havner i kundekartoteket mitt merket "fra-nettsiden".
+(Claude ordner den tekniske koblingen.)</div>
+      </div>
+
+      <div class="integration not-prose">
+        <div class="meta">
+          <span class="pill pill-tier">Avansert</span>
+          <span class="pill pill-cost">Gratis (Instagram, Facebook Embed)</span>
+          <span class="pill pill-time">~20 min</span>
+        </div>
+        <h3 class="font-display font-bold text-xl">Vis Instagram-bildene dine på siden</h3>
+        <p class="text-zinc-600 mt-2">De siste bildene dine fra Instagram dukker opp automatisk på forsiden. Da ser siden alltid «levende» ut — uten at du trenger å oppdatere noe selv.</p>
+        <p class="font-semibold text-sm mt-3">Slik ber du Claude om det:</p>
+        <div class="prompt-example">Bygg inn de 6 siste Instagram-bildene mine på forsiden,
+mellom toppfeltet og tjenestene. (Claude velger riktig metode.)</div>
+      </div>
+
+      <div class="integration not-prose">
+        <div class="meta">
+          <span class="pill pill-tier">SEO/sporing</span>
+          <span class="pill pill-cost">Gratis</span>
+          <span class="pill pill-time">~5 min</span>
+        </div>
+        <h3 class="font-display font-bold text-xl">Statistikk fra Google (Analytics + Search Console)</h3>
+        <p class="text-zinc-600 mt-2"><strong>Google Analytics</strong> viser deg hvor mange som besøker siden, hvilke sider de ser på, og hva de klikker på. <strong>Google Search Console</strong> viser hva folk faktisk googler for å finne deg. Begge er gratis. Du logger inn hos Google og får en kode (den starter med «G-») som Claude legger inn på siden for deg.</p>
+        <p class="font-semibold text-sm mt-3">Slik ber du Claude om det:</p>
+        <div class="prompt-example">Legg inn Google Analytics på alle sider — koden min er G-XXXXXX.
+Koble også til Google Search Console.
+Legg til et cookie-banner som spør om samtykke til sporing.</div>
+      </div>
+
+      <div class="integration not-prose">
+        <div class="meta">
+          <span class="pill pill-tier">For e-handel</span>
+          <span class="pill pill-cost">2.4 % + 1.80 kr per transaksjon (Stripe)</span>
+          <span class="pill pill-time">~1 time</span>
+        </div>
+        <h3 class="font-display font-bold text-xl">Ta betalt på siden (Stripe)</h3>
+        <p class="text-zinc-600 mt-2">Stripe er en betalingsløsning som lar deg ta imot kortbetaling på nettsiden — for eksempel for å selge et produkt eller ta forskuddsbetaling for en tjeneste. Med Stripes betalingslenker trenger du ingen kode; du lager en betalingsknapp, og Claude legger den inn der du vil ha den.</p>
+      </div>
+
+      <h2>Hva du IKKE trenger</h2>
+      <ul>
+        <li><strong>Live-chat (en liten chat-boks i hjørnet, som Intercom eller Drift):</strong> bare nyttig hvis du har noen som faktisk sitter klar til å svare med en gang. Ellers blir kunden skuffet. Bruk heller e-post.</li>
+        <li><strong>Egne cookie-banner-tjenester (Cookiebot, OneTrust):</strong> for en liten side holder det med et enkelt banner Claude lager for deg.</li>
+        <li><strong>«AI-chatbot på siden»:</strong> 95 % av småbedrifter trenger ikke dette. Det forvirrer ofte mer enn det hjelper.</li>
+        <li><strong>Sprett-opp-vindu som ber om e-postadressen (newsletter-popup):</strong> kundene hater dem. Bruk heller en rolig liten boks nederst på siden.</li>
+      </ul>
+
+      <h2>Sikkerhet og personvern</h2>
+      <p>Hver integrasjon kan samle inn opplysninger om de som besøker siden din. Derfor må du:</p>
+      <ul>
+        <li>Skrive i personvernerklæringen hvilke tjenester som samler inn data (for eksempel Google Analytics).</li>
+        <li>Spørre besøkende om lov før du slår på sporing og cookies som ikke er strengt nødvendige.</li>
+        <li>Ha en <strong>databehandleravtale</strong> med tjenesten hvis den lagrer opplysninger om norske besøkende. Det er en helt vanlig standardavtale om personvern — de fleste tjenester har en ferdig mal du bare signerer.</li>
+      </ul>
+
+      <p>Hver gang du legger til en ny integrasjon, kan du be Claude oppdatere personvernerklæringen for deg:</p>
+      <div class="prompt-example">Jeg har nettopp lagt til Google Analytics og Calendly.
+Oppdater personvernerklæringen med disse to tjenestene:
+hva de samler inn, hvor lenge det lagres, og lenke til deres egne erklæringer.</div>
+
+      <div class="callout">
+        <p><strong>Neste steg:</strong> I siste modul ser vi på hva «100 % eierskap» egentlig betyr i praksis — og hvordan du enkelt flytter alt sammen hvis du en dag vil bytte leverandør.</p>
+      </div>
+
+    </div>
+  </article>
+
+  <nav class="border-t border-zinc-200 bg-white py-8 px-6">
+    <div class="max-w-3xl mx-auto flex justify-between items-center">
+      <a href="11-feilsoking" class="text-sm text-zinc-500 hover:text-blue-600 flex items-center gap-2"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>11: Feilsøking</a>
+      <a href="13-eierskap" class="inline-flex items-center gap-2 bg-blue-600 text-white font-semibold px-5 py-3 rounded-lg hover:bg-blue-500 transition-colors text-sm">Modul 13: Eierskap<svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+    </div>
+  </nav>
+  <footer class="bg-[#0F172A] text-white py-6 px-6"><div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-sm text-white/40"><div>© 2026 Dietrichs Marketing</div><div>Org.nr 932 612 583</div><div id="kurs-user-info"></div></div></footer>
+</body>
+</html>

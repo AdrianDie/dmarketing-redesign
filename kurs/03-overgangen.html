@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>03: Overgangen — fra dagens nettside til den nye | AI-nettsider Kurs</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { theme: { extend: { fontFamily: { display: ['Archivo', 'sans-serif'], body: ['Inter', 'sans-serif'] }, colors: { ink: '#09090B', brand: '#2563EB', navy: '#0B1F4A' } } } }</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="../images/favicon.png" rel="shortcut icon" type="image/x-icon" />
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script src="/kurs/auth.js"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #FAFAFA; color: #09090B; }
+    .font-display { font-family: 'Archivo', sans-serif; }
+    .badge { font-family: 'JetBrains Mono', 'Courier New', monospace; }
+    .prose-custom h2 { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 1.875rem; line-height: 1.2; margin-top: 2.5rem; margin-bottom: 1rem; letter-spacing: -0.02em; }
+    .prose-custom h3 { font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 1.25rem; margin-top: 2rem; margin-bottom: 0.75rem; }
+    .prose-custom p { font-size: 1.0625rem; line-height: 1.7; color: #3F3F46; margin-bottom: 1.25rem; }
+    .prose-custom ul, .prose-custom ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+    .prose-custom ul li, .prose-custom ol li { font-size: 1.0625rem; line-height: 1.7; color: #3F3F46; margin-bottom: 0.5rem; }
+    .prose-custom ul li { list-style-type: disc; }
+    .prose-custom ol li { list-style-type: decimal; }
+    .prose-custom strong { color: #09090B; }
+    .prose-custom code { background: #F4F4F5; padding: 0.15rem 0.4rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
+    .callout { background: #EFF6FF; border-left: 3px solid #2563EB; padding: 1.25rem 1.5rem; border-radius: 0.5rem; margin: 1.5rem 0; }
+    .callout p { margin-bottom: 0; color: #1E3A8A; }
+    .callout-warn { background: #FEF3C7; border-left-color: #D97706; }
+    .callout-warn p { color: #78350F; }
+    .callout-ok { background: #F0FDF4; border-left-color: #16A34A; }
+    .callout-ok p { color: #14532D; }
+    .step { background: white; border: 1px solid #E4E4E7; border-radius: 1rem; padding: 1.5rem; margin: 1rem 0; display: flex; gap: 1rem; }
+    .step-num { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 2rem; color: #2563EB; line-height: 1; flex-shrink: 0; }
+    .step-content h3 { margin-top: 0 !important; }
+    .step-content p { margin-bottom: 0.5rem; }
+    /* Skjermbilde-plassholder (byttes ut med ekte <img> når bildet er tatt) */
+    .shot { border: 2px dashed #CBD5E1; border-radius: 0.75rem; background: #F8FAFC; padding: 1.75rem 1.5rem; margin: 1.5rem 0; }
+    .shot .lbl { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #2563EB; display: block; margin-bottom: 0.4rem; }
+    .shot .desc { font-size: 14px; line-height: 1.55; color: #64748B; }
+  </style>
+</head>
+<body>
+  <script>window.DIETRICHS_MENU_CONFIG = { basePath: '../' };</script>
+  <script src="../components/dietrichs-menu.js" defer></script>
+
+  <header class="py-14 md:py-20 px-6 border-b border-zinc-100">
+    <div class="max-w-3xl mx-auto">
+      <div class="flex items-center gap-3 mb-5">
+        <a href="./" class="text-xs font-semibold uppercase tracking-widest text-zinc-500 hover:text-blue-600">← Alle moduler</a>
+        <span class="text-zinc-300">/</span>
+        <span class="badge text-xs text-zinc-400">MODUL 03</span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-blue-600">Overgangen</span>
+      </div>
+      <h1 class="font-display font-extrabold text-4xl md:text-6xl tracking-[-0.03em] text-ink leading-[1.05] mb-5">
+        Fra dagens nettside til den nye
+      </h1>
+      <p class="text-lg md:text-xl text-zinc-600 leading-relaxed">
+        Du har allerede en nettside i dag. Her er nøyaktig hva som skjer når vi flytter deg over til den nye løsningen — uten at noe forsvinner og uten nedetid.
+      </p>
+    </div>
+  </header>
+
+  <article class="px-6 py-12 md:py-16">
+    <div class="max-w-3xl mx-auto prose-custom">
+
+      <div class="callout">
+        <p><strong>Hva denne modulen dekker:</strong> hvor du står i dag, de to måtene vi kan flytte deg over på, hva vi trenger fra deg, og hvordan domenet og e-posten din følger med — trygt. Etter dette er du klar for selve verktøyene (modul 04). Møter du et ord du ikke kjenner underveis, kan du alltid slå det opp i <a href="ordliste" class="text-blue-600 underline">ordlisten</a>.</p>
+      </div>
+
+      <!-- Diagram: Overgangen (kopiert fra _diagrammer.html) -->
+      <figure class="not-prose my-8 rounded-2xl border border-zinc-200 bg-white p-6 md:p-8">
+        <div style="max-width:600px; margin:0 auto;">
+          <svg viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Overgangen: din side i dag flyttes til en ny side på samme domene. Domene og e-post følger med, uten nedetid." style="width:100%; height:auto; display:block;">
+            <defs>
+              <marker id="moveArrow" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+                <path d="M0,0 L7,3 L0,6 Z" fill="#2563EB" />
+              </marker>
+            </defs>
+
+            <!-- LEFT: Din side i dag -->
+            <g>
+              <rect x="24" y="58" width="190" height="150" rx="14" fill="#F4F4F5" stroke="#E4E4E7" stroke-width="1.5" />
+              <!-- old browser window -->
+              <rect x="52" y="84" width="134" height="92" rx="8" fill="#FFFFFF" stroke="#D4D4D8" stroke-width="1.5" />
+              <rect x="52" y="84" width="134" height="20" rx="8" fill="#E4E4E7" />
+              <circle cx="63" cy="94" r="2.4" fill="#A1A1AA" />
+              <circle cx="71" cy="94" r="2.4" fill="#A1A1AA" />
+              <circle cx="79" cy="94" r="2.4" fill="#A1A1AA" />
+              <rect x="64" y="116" width="80" height="7" rx="3.5" fill="#D4D4D8" />
+              <rect x="64" y="130" width="110" height="5" rx="2.5" fill="#E4E4E7" />
+              <rect x="64" y="141" width="110" height="5" rx="2.5" fill="#E4E4E7" />
+              <rect x="64" y="152" width="64" height="5" rx="2.5" fill="#E4E4E7" />
+              <text x="119" y="232" text-anchor="middle" font-size="14" font-weight="700" fill="#09090B">Din side i dag</text>
+              <text x="119" y="251" text-anchor="middle" font-size="11" fill="#71717A">treg og vanskelig å endre</text>
+            </g>
+
+            <!-- MIDDLE: move arrow -->
+            <line x1="232" y1="133" x2="368" y2="133" stroke="#2563EB" stroke-width="2.5" marker-end="url(#moveArrow)" />
+            <rect x="252" y="112" width="96" height="26" rx="13" fill="#EFF6FF" />
+            <text x="300" y="129" text-anchor="middle" font-size="12" font-weight="600" fill="#2563EB">vi flytter den</text>
+
+            <!-- RIGHT: Ny side -->
+            <g>
+              <rect x="386" y="58" width="190" height="150" rx="14" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.8" />
+              <!-- new browser window -->
+              <rect x="414" y="84" width="134" height="92" rx="8" fill="#FFFFFF" stroke="#BFDBFE" stroke-width="1.5" />
+              <rect x="414" y="84" width="134" height="20" rx="8" fill="#2563EB" />
+              <circle cx="425" cy="94" r="2.4" fill="#FFFFFF" />
+              <circle cx="433" cy="94" r="2.4" fill="#FFFFFF" />
+              <circle cx="441" cy="94" r="2.4" fill="#FFFFFF" />
+              <rect x="426" y="116" width="80" height="7" rx="3.5" fill="#2563EB" />
+              <rect x="426" y="130" width="110" height="5" rx="2.5" fill="#DBEAFE" />
+              <rect x="426" y="141" width="110" height="5" rx="2.5" fill="#DBEAFE" />
+              <rect x="426" y="152" width="64" height="5" rx="2.5" fill="#DBEAFE" />
+              <text x="481" y="232" text-anchor="middle" font-size="14" font-weight="700" fill="#09090B">Ny side</text>
+              <text x="481" y="251" text-anchor="middle" font-size="11" fill="#71717A">rask, og du endrer den selv</text>
+            </g>
+
+            <!-- BOTTOM: følger med-banner -->
+            <g>
+              <rect x="120" y="271" width="360" height="24" rx="12" fill="#DCFCE7" />
+              <!-- check -->
+              <circle cx="142" cy="283" r="7.5" fill="#16A34A" />
+              <path d="M138.5 283 l2.5 2.5 4 -4.5" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              <text x="300" y="287" text-anchor="middle" font-size="11.5" font-weight="600" fill="#166534">Samme domene og e-post følger med — uten nedetid</text>
+            </g>
+          </svg>
+        </div>
+        <figcaption class="text-center text-sm text-zinc-500 mt-4">Vi flytter siden din til et nytt, raskere fundament. Domenet og e-posten følger med — uten nedetid.</figcaption>
+      </figure>
+
+      <h2>Hvor du står i dag</h2>
+      <p>
+        Akkurat nå har du sannsynligvis en nettside hos en leverandør som <strong>Wix, Squarespace, WordPress</strong> eller et lokalt webbyrå. Den fortsetter å fungere helt som normalt gjennom hele overgangen — <strong>vi bytter ikke om på noe før den nye siden er ferdig og testet.</strong>
+      </p>
+      <p>
+        Domenet ditt — altså nettadressen folk skriver for å finne deg, f.eks. <code>dittfirma.no</code> — beholder du. Det er <em>ditt</em> — vi flytter bare hvor det peker, når tiden er inne.
+      </p>
+
+      <h2>To veier inn</h2>
+      <p>Det er to måter å komme over på. Du har allerede valgt én av dem sammen med oss:</p>
+
+      <div class="step not-prose">
+        <div class="step-num">A</div>
+        <div class="step-content">
+          <h3 class="font-display font-bold text-lg mb-2">Vi flytter den eksisterende siden din</h3>
+          <p class="text-zinc-600 text-sm">Vi henter ut innholdet, bildene og strukturen fra dagens side og setter det opp på nytt i den nye løsningen. Design og merkevare beholdes. Ønsker du justeringer underveis, bygger vi dem inn samtidig.</p>
+        </div>
+      </div>
+
+      <div class="step not-prose">
+        <div class="step-num">B</div>
+        <div class="step-content">
+          <h3 class="font-display font-bold text-lg mb-2">Vi bygger en ny side fra mal</h3>
+          <p class="text-zinc-600 text-sm">Du velger en bransjetilpasset mal, og vi legger inn ditt innhold, dine bilder og dine farger. Malen er bare utgangspunktet — egne tilpasninger utover den bygger vi inn. Klar på opptil 4 virkedager.</p>
+        </div>
+      </div>
+
+      <h2>Hva vi trenger fra deg</h2>
+      <p>Jo tidligere vi får dette, jo raskere blir du live:</p>
+      <ul>
+        <li><strong>Innhold og bilder</strong> du vil ha med (eller bekreftelse på at vi kan bruke det som finnes på dagens side).</li>
+        <li><strong>Logo, farger og fonter</strong> — hvis du har en merkevareprofil.</li>
+        <li><strong>Ønskede endringer</strong> — samle dem og send dem så tidlig som mulig, så får vi alt gjort i én jobb.</li>
+        <li><strong>Tilgang til domenet</strong> — innlogging hos den som administrerer domenet ditt (ofte ditt webhotell). Vi viser deg nøyaktig hvor du finner det.</li>
+      </ul>
+
+      <div class="shot">
+        <span class="lbl">Skjermbilde</span>
+        <span class="desc">Innloggingssiden hos domene-/webhotell-leverandøren din (f.eks. domeneoversikten), med domenet ditt synlig — så kunden kjenner igjen hvor de skal.</span>
+      </div>
+
+      <h2>Hva vi gjør (det tekniske — kort fortalt)</h2>
+      <p>Du trenger ikke gjøre noe av dette selv. Det er bare greit å vite hva som skjer bak kulissene:</p>
+      <ol>
+        <li><strong>Henter ut</strong> innhold og bilder fra dagens side.</li>
+        <li><strong>Bygger</strong> den nye siden i et lynraskt system (Astro) — den du skal lære å oppdatere selv.</li>
+        <li><strong>Legger</strong> den på din egen GitHub- og Cloudflare-konto, som <em>du</em> eier 100 %.</li>
+        <li><strong>Tester</strong> alt på en midlertidig adresse før vi rører domenet ditt.</li>
+      </ol>
+
+      <h2>Domene- og e-post-overgangen</h2>
+      <p>
+        Dette er det eneste steget som «flytter» noe — og det gjøres kontrollert. Vi peker domenet ditt til den nye siden via DNS. For deg som besøker siden skjer det sømløst; den nye siden tar over på samme adresse.
+      </p>
+
+      <div class="callout">
+        <p><strong>Forklart enkelt: Hva er DNS?</strong> DNS er internettets adressebok. Den forteller nettleseren hvilken datamaskin som skal vise fram nettsiden når noen skriver <code>dittfirma.no</code>. Vi endrer bare hvilken adresse boken peker til — som å sette opp en ny adresse i en GPS. Du trenger ikke gjøre dette selv.</p>
+      </div>
+
+      <div class="callout callout-ok">
+        <p><strong>E-posten din berøres ikke.</strong> Vi flytter kun web-pekerne. E-posten din fortsetter å virke nøyaktig som før — vi rører ikke noe av e-post-oppsettet ditt, uansett hvilken e-postløsning du bruker (for eksempel Microsoft 365 eller Google Workspace, eller noe annet). Du sender og mottar e-post som vanlig gjennom hele overgangen.</p>
+      </div>
+
+      <div class="shot">
+        <span class="lbl">Skjermbilde</span>
+        <span class="desc">DNS-/navnetjener-innstillingene for domenet (før og etter), med web-pekerne markert og e-post-radene tydelig urørt.</span>
+      </div>
+
+      <div class="callout callout-warn">
+        <p><strong>Ikke si opp den gamle siden ennå.</strong> Vent til den nye er bekreftet live og du har sett at alt fungerer (se sjekklisten nedenfor). Da — og først da — kan den gamle trygt avsluttes.</p>
+      </div>
+
+      <h2>SEO og Google-plasseringen din bevares</h2>
+      <p>
+        En vanlig bekymring er: «mister jeg plasseringen min i Google?» Nei. Vi kartlegger de gamle adressene (URL-ene) og setter opp automatiske <strong>videresendinger</strong> der det trengs — det vil si at gamle lenker fortsatt fører folk og Google til riktig sted, selv om siden har flyttet. Slik beholder du <strong>rangeringen</strong> din, altså plasseringen i Googles søkeresultater.
+      </p>
+
+      <h2>Go-live — slik vet du at du er over</h2>
+      <p>Når vi sier «du er live», sjekker vi sammen:</p>
+      <ul>
+        <li>Den nye siden vises på ditt eget domene (<code>dittfirma.no</code>).</li>
+        <li>Den har hengelås (HTTPS/sikker tilkobling).</li>
+        <li>Mobil og desktop ser riktig ut.</li>
+        <li>Skjema, kart og knapper fungerer.</li>
+        <li>E-posten din sender og mottar som normalt.</li>
+      </ul>
+
+      <div class="shot">
+        <span class="lbl">Skjermbilde</span>
+        <span class="desc">Den nye siden åpnet i nettleseren på kundens eget domene, med hengelåsen i adressefeltet synlig — beviset på at overgangen er fullført.</span>
+      </div>
+
+      <h2>Når kan du si opp den gamle løsningen?</h2>
+      <p>
+        Når alle punktene over er bekreftet, og du har latt det gå noen dager for å være helt trygg, kan du si opp den gamle nettsideleverandøren. <strong>Domenet beholder du uansett</strong> — det er bare den gamle hosting-/sideabonnementet du avslutter. Vi hjelper deg gjerne med å vurdere når det er trygt.
+      </p>
+
+      <div class="callout">
+        <p><strong>Neste steg:</strong> Nå som du er over på den nye løsningen, skal du logge inn for første gang og gjøre din aller første endring. Det er nettopp det modul 04 handler om.</p>
+      </div>
+
+      <details class="not-prose mt-8 rounded-xl border border-zinc-200 bg-white p-5">
+        <summary class="cursor-pointer font-display font-semibold text-ink">📸 Skjermbilde-liste (for oss som lager modulen)</summary>
+        <ol class="mt-3 text-sm text-zinc-600" style="padding-left:1.25rem; list-style:decimal;">
+          <li>Domene-/webhotell-innlogging med domenet synlig (under «Hva vi trenger fra deg»).</li>
+          <li>DNS/navnetjener-innstillinger før+etter, web-pekere markert, e-post urørt (under «Domene- og e-post-overgangen»).</li>
+          <li>Ny side live på eget domene med HTTPS-hengelås synlig (under «Go-live»).</li>
+        </ol>
+      </details>
+
+    </div>
+  </article>
+
+  <!-- NAV -->
+  <nav class="border-t border-zinc-100 px-6 py-8">
+    <div class="max-w-3xl mx-auto flex items-center justify-between gap-4">
+      <a href="02-hvordan-fungerer-det" class="text-sm text-zinc-500 hover:text-blue-600 flex items-center gap-2"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>02: Hvordan fungerer det</a>
+      <a href="04-komme-i-gang" class="inline-flex items-center gap-2 bg-blue-600 text-white font-semibold px-5 py-3 rounded-lg hover:bg-blue-500 transition-colors text-sm">Modul 04: Komme i gang<svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+    </div>
+  </nav>
+  <footer class="bg-[#0F172A] text-white py-6 px-6"><div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-sm text-white/40"><div>© 2026 Dietrichs Marketing</div><div>Org.nr 932 612 583</div><div id="kurs-user-info"></div></div></footer>
+
+</body>
+</html>

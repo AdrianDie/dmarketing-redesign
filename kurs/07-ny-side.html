@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>07: Lage en ny side | AI-nettsider Kurs</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { theme: { extend: { fontFamily: { display: ['Archivo', 'sans-serif'], body: ['Inter', 'sans-serif'] }, colors: { ink: '#09090B', brand: '#2563EB', navy: '#0B1F4A' } } } }</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="../images/favicon.png" rel="shortcut icon" type="image/x-icon" />
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script src="/kurs/auth.js"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #FAFAFA; color: #09090B; }
+    .font-display { font-family: 'Archivo', sans-serif; }
+    .badge { font-family: 'JetBrains Mono', 'Courier New', monospace; }
+    .prose-custom h2 { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 1.875rem; line-height: 1.2; margin-top: 2.5rem; margin-bottom: 1rem; letter-spacing: -0.02em; }
+    .prose-custom h3 { font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 1.25rem; margin-top: 2rem; margin-bottom: 0.75rem; }
+    .prose-custom p { font-size: 1.0625rem; line-height: 1.7; color: #3F3F46; margin-bottom: 1.25rem; }
+    .prose-custom ul, .prose-custom ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+    .prose-custom li { font-size: 1.0625rem; line-height: 1.7; color: #3F3F46; margin-bottom: 0.5rem; }
+    .prose-custom ul li { list-style-type: disc; }
+    .prose-custom ol li { list-style-type: decimal; }
+    .prose-custom strong { color: #09090B; }
+    .prose-custom code { background: #F4F4F5; padding: 0.15rem 0.4rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
+    .callout { background: #EFF6FF; border-left: 3px solid #2563EB; padding: 1.25rem 1.5rem; border-radius: 0.5rem; margin: 1.5rem 0; }
+    .callout p { margin-bottom: 0; color: #1E3A8A; }
+    .callout-ok { background: #F0FDF4; border-left-color: #16A34A; }
+    .callout-ok p { color: #14532D; }
+    .prompt-example { background: #F4F4F5; border-radius: 0.5rem; padding: 1rem 1.25rem; margin: 0.75rem 0; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: #18181B; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <script>window.DIETRICHS_MENU_CONFIG = { basePath: '../' };</script>
+  <script src="../components/dietrichs-menu.js" defer></script>
+
+  <header class="py-14 md:py-20 px-6 border-b border-zinc-100">
+    <div class="max-w-3xl mx-auto">
+      <div class="flex items-center gap-3 mb-5">
+        <a href="./" class="text-xs font-semibold uppercase tracking-widest text-zinc-500 hover:text-blue-600">← Alle moduler</a>
+        <span class="text-zinc-300">/</span>
+        <span class="badge text-xs text-zinc-400">MODUL 07</span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-blue-600">Drift</span>
+      </div>
+      <h1 class="font-display font-extrabold text-4xl md:text-6xl tracking-[-0.03em] text-ink leading-[1.05] mb-5">
+        Lage en ny side
+      </h1>
+      <p class="text-lg md:text-xl text-zinc-600 leading-relaxed">
+        Tjeneste-side, kampanje-side, blogg-innlegg, "om oss"-side — be Claude bygge basert på eksisterende stil.
+      </p>
+    </div>
+  </header>
+
+
+  <article class="px-6 py-12 md:py-16">
+    <div class="max-w-3xl mx-auto prose-custom">
+
+      <h2>Når lage en ny side?</h2>
+      <ul>
+        <li><strong>Ny tjeneste</strong> — du har lagt til "Døgnservice" og vil ha egen side med detaljer</li>
+        <li><strong>Kampanje</strong> — sommerprisene 2026, eller "Bestill før 1. juni og få 20 % rabatt"</li>
+        <li><strong>Blogg-innlegg</strong> — for SEO, ekspertise, eller bare for å fortelle</li>
+        <li><strong>Landingsside for Google Ads</strong> — en egen, fokusert side du sender folk til fra en annonse, slik at siden matcher akkurat det annonsen lovet</li>
+        <li><strong>"Om oss" eller "Karriere"</strong> — institusjonelle sider</li>
+      </ul>
+
+      <div class="callout">
+        <p><strong>Forklart enkelt: et par ord du møter her.</strong> <strong>Landingsside</strong> = en egen, fokusert side du sender folk til fra en annonse — den handler bare om én ting. <strong>Google Ads</strong> = betalte annonser som vises helt øverst i Google-søk når noen søker etter det du tilbyr. Møter du flere ukjente ord underveis, slå dem opp i <a href="ordliste" class="text-blue-600 underline">ordlisten</a>.</p>
+      </div>
+
+      <h2>Aller viktigst: hold stilen lik resten av nettstedet</h2>
+      <p>Når du lager en ny side, er det én ting som betyr mer enn alt annet: at den nye siden <strong>ser ut som om den alltid har vært en del av nettsiden din</strong>. Samme farger, samme fonter, samme knapper, samme «følelse». En side som stikker seg ut og ser annerledes ut, virker billig — selv om innholdet er bra.</p>
+
+      <div class="callout callout-ok">
+        <p><strong>Den gode nyheten: dette skjer nesten av seg selv.</strong> Nettsiden din kom med en innebygd <strong>stilguide</strong> — en liten oppskrift som beskriver akkurat dine farger, fonter (skrifttypene siden bruker) og knappestiler. Claude-en din er allerede satt opp med den. Så når du ber om en ny side, matcher den stilen automatisk. Du trenger ikke kunne noe om design.</p>
+      </div>
+
+      <div class="callout">
+        <p><strong>Forklart enkelt: hva er en «stilguide»?</strong> Tenk på det som en oppskrift på «sånn ser nettsiden vår ut» — hvilken blåfarge, hvilken font på overskriftene, hvordan knappene ser ut. Vi laget den da vi bygde siden din, og den ligger lagret sammen med nettsiden. Den sørger for at alt du lager senere passer inn. Du trenger aldri å åpne eller endre den selv.</p>
+      </div>
+
+      <p>Du kan likevel hjelpe Claude å treffe enda bedre på første forsøk med to enkle grep:</p>
+      <ul>
+        <li><strong>Pek på en side du liker.</strong> «Bruk samme stil som tjeneste-sidene mine» eller «samme stil som forsiden». Da har Claude en konkret mal å kopiere.</li>
+        <li><strong>Be den følge stilguiden.</strong> Et trygt tillegg i enhver «lag ny side»-prompt: <em>«Følg stilguiden og hold samme stil som resten av nettstedet.»</em></li>
+      </ul>
+
+      <p>Og hvis en ny side likevel ser litt «på siden av» ut, sier du bare fra:</p>
+      <div class="prompt-example">Den nye siden ser litt annerledes ut enn resten. Gjør den lik de andre sidene — samme farger, fonter og knappestil. Følg stilguiden.</div>
+
+      <h3>Slik får du stilen inn i din egen Claude</h3>
+      <p>Stilguiden finnes også som en «skill». <strong>En «skill» er en ekstra ferdighet du gir Claude</strong> — en liten fil som lærer den noe helt spesifikt. Her lærer den nøyaktig hvordan akkurat din nettside skal se ut, så den treffer stilen hver gang.</p>
+
+      <div class="callout callout-ok">
+        <p><strong>Du har den allerede — du trenger ikke gjøre noe.</strong> Skillen fulgte med nettsiden din, og Claude-en din bruker den automatisk. Resten her er bare hvis du en dag vil bruke stilen i en <em>annen</em> Claude.</p>
+      </div>
+
+      <p>Skulle du starte en fersk Claude (eller bytte til ChatGPT), gir du den stilen på under ett minutt:</p>
+      <ul>
+        <li><strong>Bruker du Claude Code:</strong> filen ligger allerede i prosjektet ditt (i mappen <code>.claude/skills/nettside-stil/</code>), og Claude finner den helt selv. Vil du ha stilen i alle prosjektene dine, kopierer du den mappen til <code>.claude/skills/</code> i hjemmemappen din.</li>
+        <li><strong>Bruker du vanlig Claude på claude.ai:</strong> åpne prosjektet ditt og last opp filen <code>SKILL.md</code> (eller lim inn teksten) som kunnskap. Vi har allerede gjort dette for deg — så til vanlig trenger du ikke røre det.</li>
+        <li><strong>Helt ny Claude eller ChatGPT:</strong> last opp den ene filen <code>SKILL.md</code>, eller lim innholdet øverst i chatten og skriv <em>«Følg denne stilen på alt du lager»</em>. Ferdig.</li>
+      </ul>
+      <p>Finner du ikke filen? Be oss sende den på nytt — det tar oss to minutter.</p>
+
+      <h2>Beste prompt-mønster</h2>
+      <p>Den beste tilnærmingen er å gi Claude en eksisterende side som referanse:</p>
+      <div class="prompt-example">Lag en ny side: tjenester/akutt-rorleggervakt.html
+
+Bruk samme stil og struktur som tjenester/standard-service.html.
+
+Innhold:
+- Hero: "Akutt rørleggervakt — 24/7 i Stavanger"
+- Underoverskrift: "Rør sprakk midt på natten? Vi rykker ut."
+- 3 hovedpunkter: 30-min responstid, fastpris, ingen tillegg på helg
+- Pris-tabell: Ut-rykning kveld (kr 1 500), Natt (kr 2 200), Helg (kr 1 800)
+- CTA (handlingsknapp): Telefonknapp + skjema
+
+Språkstil: profesjonell men trygg. Norsk. Ikke for mye emoji.</div>
+
+      <div class="callout">
+        <p><strong>Du trenger ikke finne på filnavn selv.</strong> Skråstreken og <code>.html</code> i <code>tjenester/akutt-rorleggervakt.html</code> ser teknisk ut, men du trenger ikke skjønne det. Du kan like gjerne bare skrive <em>«Lag en ny tjeneste-side om akutt rørleggervakt»</em> — så finner Claude ut av både navn og hvor filen skal ligge helt selv. Vi viser detaljert filnavn her bare så du ser at det er mulig å være presis hvis du vil.</p>
+      </div>
+
+      <h2>Hvor mye detaljer trengs i prompten?</h2>
+      <p>Det avhenger av hvor strenge ønsker du har. Tre nivåer:</p>
+
+      <h3>Minimalt (Claude tar friheter)</h3>
+      <div class="prompt-example">Lag en ny tjeneste-side om "Akutt rørleggervakt 24/7" i Stavanger. Bruk samme stil som de andre tjeneste-sidene.</div>
+
+      <h3>Middels (anbefales)</h3>
+      <div class="prompt-example">Lag en ny tjeneste-side om "Akutt rørleggervakt 24/7" i Stavanger. Inkluder:
+- Hero med tittel + 1 setning
+- 3 punkter om hva vi tilbyr
+- Pris-info (kveld/natt/helg)
+- CTA: telefonknapp øverst og skjema nederst
+
+Bruk samme stil som tjenester/standard-service.html.</div>
+
+      <h3>Detaljert (når du har klar tekst)</h3>
+      <div class="prompt-example">Lag en ny side på tjenester/akutt-rorleggervakt.html med dette eksakt innholdet:
+
+[full tekst og struktur ...]</div>
+
+      <h2>Etter at siden er laget</h2>
+      <p>Claude vil typisk:</p>
+      <ol>
+        <li>Lage filen på riktig sted (du trenger ikke vite hvor — Claude ordner det)</li>
+        <li>Foreslå å legge til lenke i menyen</li>
+        <li>Oppdatere "sitemap" — en liste over alle sidene dine som hjelper Google å finne dem. Claude gjør dette automatisk, så du trenger ikke tenke på det.</li>
+        <li>Be deg sjekke at alt ser riktig ut før publisering</li>
+      </ol>
+
+      <p>Du kan be om justeringer:</p>
+      <div class="prompt-example">Heroen ser litt mørkt ut. Bytt til lys bakgrunn.</div>
+      <div class="prompt-example">Pris-tabellen mangler "fra"-pris. Legg til.</div>
+      <div class="prompt-example">CTA "Ring nå" er for liten på mobil. Gjør den større.</div>
+
+      <h2>Lenke fra menyen</h2>
+      <p>En ny side er ubrukelig hvis ingen finner den. Be Claude:</p>
+      <div class="prompt-example">Legg til lenke til den nye akutt-siden i hovedmenyen, mellom "Tjenester" og "Kontakt".</div>
+
+      <p>Eller hvis du vil ha det i et undermeny:</p>
+      <div class="prompt-example">Lag en undermeny under "Tjenester" som inkluderer alle 6 tjeneste-sidene.</div>
+
+      <h2>Mal: blogginnlegg</h2>
+      <p>Hvis du vil ha jevnlig SEO-innhold (anbefalt for Google Ads-resultater):</p>
+      <div class="prompt-example">Lag et blogginnlegg "Slik finner du en ærlig rørlegger i Stavanger" på blogg/aerlig-roerlegger-stavanger.html.
+
+Mål: SEO på "rørlegger Stavanger". Lengde: ca 1000 ord.
+
+Inkluder:
+- Innledning som beskriver problemet (vanskelig å vite hvem man kan stole på)
+- 5 tegn på en god rørlegger
+- 3 røde flagg
+- Avslutning med CTA om å ringe oss
+
+Bruk H2 og H3 logisk for SEO. Inkluder bilde i toppen.</div>
+
+      <div class="callout">
+        <p>I neste modul lærer du SEO-grunnleggende — slik at sidene du lager faktisk dukker opp i Google.</p>
+      </div>
+
+    </div>
+  </article>
+
+  <nav class="border-t border-zinc-200 bg-white py-8 px-6">
+    <div class="max-w-3xl mx-auto flex justify-between items-center">
+      <a href="06-bytte-bilder" class="text-sm text-zinc-500 hover:text-blue-600 flex items-center gap-2"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>06: Bytte bilder</a>
+      <a href="08-seo" class="inline-flex items-center gap-2 bg-blue-600 text-white font-semibold px-5 py-3 rounded-lg hover:bg-blue-500 transition-colors text-sm">Modul 08: SEO<svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+    </div>
+  </nav>
+  <footer class="bg-[#0F172A] text-white py-6 px-6"><div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-sm text-white/40"><div>© 2026 Dietrichs Marketing</div><div>Org.nr 932 612 583</div><div id="kurs-user-info"></div></div></footer>
+</body>
+</html>

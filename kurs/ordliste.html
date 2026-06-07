@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ordliste — alle de tekniske ordene forklart enkelt | AI-nettsider Kurs</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { theme: { extend: { fontFamily: { display: ['Archivo', 'sans-serif'], body: ['Inter', 'sans-serif'] }, colors: { ink: '#09090B', brand: '#2563EB', navy: '#0B1F4A' } } } }</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="../images/favicon.png" rel="shortcut icon" type="image/x-icon" />
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script src="/kurs/auth.js"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #FAFAFA; color: #09090B; }
+    .font-display { font-family: 'Archivo', sans-serif; }
+    .badge { font-family: 'JetBrains Mono', 'Courier New', monospace; }
+    .prose-custom h2 { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 1.875rem; line-height: 1.2; margin-top: 2.5rem; margin-bottom: 1rem; letter-spacing: -0.02em; }
+    .prose-custom h3 { font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 1.25rem; margin-top: 2rem; margin-bottom: 0.75rem; }
+    .prose-custom p { font-size: 1.0625rem; line-height: 1.7; color: #3F3F46; margin-bottom: 1.25rem; }
+    .prose-custom ul, .prose-custom ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+    .prose-custom ul li, .prose-custom ol li { font-size: 1.0625rem; line-height: 1.7; color: #3F3F46; margin-bottom: 0.5rem; }
+    .prose-custom ul li { list-style-type: disc; }
+    .prose-custom ol li { list-style-type: decimal; }
+    .prose-custom strong { color: #09090B; }
+    .prose-custom code { background: #F4F4F5; padding: 0.15rem 0.4rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
+    .callout { background: #EFF6FF; border-left: 3px solid #2563EB; padding: 1.25rem 1.5rem; border-radius: 0.5rem; margin: 1.5rem 0; }
+    .callout p { margin-bottom: 0; color: #1E3A8A; }
+    .callout-warn { background: #FEF3C7; border-left-color: #D97706; }
+    .callout-warn p { color: #78350F; }
+
+    /* Ordliste-kort */
+    .term-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+    @media (min-width: 768px) { .term-grid { grid-template-columns: 1fr 1fr; } }
+    .term-card {
+      background: #fff;
+      border: 1px solid #E4E4E7;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.18s ease, transform 0.18s ease, border-color 0.18s ease;
+    }
+    .term-card:hover {
+      box-shadow: 0 16px 40px -16px rgba(37,99,235,0.22);
+      transform: translateY(-2px);
+      border-color: #BFDBFE;
+    }
+    .term-head { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.85rem; }
+    .term-icon {
+      flex-shrink: 0;
+      width: 2.5rem; height: 2.5rem;
+      border-radius: 0.75rem;
+      background: #EFF6FF;
+      color: #2563EB;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .term-icon svg { width: 1.35rem; height: 1.35rem; }
+    .term-name { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 1.15rem; color: #09090B; line-height: 1.15; letter-spacing: -0.01em; }
+    .term-def { font-size: 0.975rem; line-height: 1.6; color: #3F3F46; margin: 0; }
+    .term-def code { background: #F4F4F5; padding: 0.1rem 0.35rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.88em; }
+    .term-analogy {
+      margin-top: 1rem;
+      background: #F8FAFC;
+      border: 1px dashed #CBD5E1;
+      border-radius: 0.75rem;
+      padding: 0.85rem 1rem;
+      font-size: 0.925rem;
+      line-height: 1.55;
+      color: #475569;
+    }
+    .term-analogy strong { color: #2563EB; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <script>window.DIETRICHS_MENU_CONFIG = { basePath: '../' };</script>
+  <script src="../components/dietrichs-menu.js" defer></script>
+
+  <header class="py-14 md:py-20 px-6 border-b border-zinc-100">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex items-center gap-3 mb-5">
+        <a href="./" class="text-xs font-semibold uppercase tracking-widest text-zinc-500 hover:text-blue-600">← Alle moduler</a>
+        <span class="text-zinc-300">/</span>
+        <span class="badge text-xs text-zinc-400">ORDLISTE</span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-blue-600">Oppslagsverk</span>
+      </div>
+      <h1 class="font-display font-extrabold text-4xl md:text-6xl tracking-[-0.03em] text-ink leading-[1.05] mb-5">
+        Ordliste
+      </h1>
+      <p class="text-lg md:text-xl text-zinc-600 leading-relaxed">
+        Møter du et ord du ikke kjenner? Slå det opp her. Alle de tekniske ordene fra kurset — forklart i dødssimpelt norsk, med et hverdagslig eksempel til hvert.
+      </p>
+    </div>
+  </header>
+
+  <article class="px-6 py-12 md:py-16">
+    <div class="max-w-4xl mx-auto">
+
+      <div class="callout mb-10">
+        <p><strong>Slapp av — du trenger ikke pugge noe av dette.</strong> Du klarer deg fint i kurset uten å kunne et eneste av disse ordene utenat. Denne siden er bare her hvis du blir nysgjerrig eller møter et ord underveis og tenker «hva betyr egentlig det?».</p>
+      </div>
+
+      <div class="term-grid">
+
+        <!-- AI -->
+        <div class="term-card">
+          <div class="term-head">
+            <div class="term-icon">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><rect x="5" y="7" width="14" height="12" rx="2"/><path d="M12 7V4M9 4h6M9 13h.01M15 13h.01M2 12h3M19 12h3"/></svg>
+            </div>
+            <div class="term-name">AI</div>
+          </div>
+          <p class="term-def">Kunstig intelligens — et dataprogram som forstår vanlig språk og kan svare, skrive og løse oppgaver nesten som et menneske. Du snakker til det med vanlige ord, ikke med koder.</p>
+          <div class="term-analogy"><strong>💡 Tenk på det som...</strong> en superflink praktikant som aldri blir sliten. Du forklarer hva du vil ha, og den gjør jobben — men du må sjekke at resultatet ble bra.</div>
+        </div>
+
+        <!-- Claude -->
+        <div class="term-card">
+          <div class="term-head">
+            <div class="term-icon">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M12 3a9 9 0 0 0-9 9c0 4 3 7 5 8l4-4 4 4c2-1 5-4 5-8a9 9 0 0 0-9-9Z"/><path d="M9 11h.01M15 11h.01"/></svg>
+            </div>
+            <div class="term-name">Claude</div>
+          </div>
+          <p class="term-def">AI-en du faktisk snakker med i dette kurset. Du skriver hva du vil endre på nettsiden din i vanlig norsk, og Claude gjør jobben for deg.</p>
+          <div class="term-analogy"><strong>💡 Tenk på det som...</strong> en webdesigner du har på chat. Du sier «bytt bildet på forsiden», og den fikser det — uten at du må kunne noe teknisk selv.</div>
+        </div>
+
+        <!-- Claude Code -->
+        <div class="term-card">
+          <div class="term-head">
+            <div class="term-icon">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M8 9l-3 3 3 3M16 9l3 3-3 3M13 6l-2 12"/></svg>
+            </div>
+            <div class="term-name">Claude Code</div>
+          </div>
+          <p class="term-def">En spesialversjon av Claude som ikke bare prater, men faktisk har hendene på selve nettsiden — den kan åpne, endre og lagre filene dine direkte.</p>
+          <div class="term-analogy"><strong>💡 Tenk på det som...</strong> forskjellen på en håndverker som forklarer deg hva du bør gjøre, og en som tar på seg arbeidshanskene og gjør det selv. Claude Code gjør det selv.</div>
+        </div>
+
+        <!-- prompt -->
+        <div class="term-card">
+          <div class="term-head">
+            <div class="term-icon">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16v11H8l-4 4V5Z"/><path d="M8 10h8M8 13h5"/></svg>
+            </div>
+            <div class="term-name">Prompt</div>
+          </div>
+          <p class="term-def">Beskjeden du skriver til AI-en. Altså det du ber den om å gjøre — for eksempel «Bytt telefonnummeret i bunnen til 12 34 56 78».</p>
+          <div class="term-analogy"><strong>💡 Tenk på det som...</strong> en bestilling i kassa. Jo tydeligere du sier hva du vil ha, jo større sjanse for at du får akkurat det. «En kaffe» vs. «en stor kaffe med havremelk».</div>
+        </div>
+
+        <!-- GitHub -->
+        <div class="term-card">
+          <div class="term-head">
+            <div class="term-icon">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M9 19c-4 1.5-4-2-6-2.5M15 21v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.3 4.3 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.5 11.5 0 0 0-6 0C6.3 2.1 5.3 2.4 5.3 2.4a4.3 4.3 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 8.8c0 4.6 2.7 5.7 5.5 6-.4.4-.4.8-.5 1.5V21"/></svg>
+            </div>
+            <div class="term-name">GitHub</div>
+          </div>
+          <p class="term-def">Stedet på nettet der alle filene til nettsiden din bor og oppbevares trygt. Hver eneste endring blir lagret med dato, så ingenting forsvinner.</p>
+          <div class="term-analogy"><strong>💡 Tenk på det som...</strong> et arkivskap med kopimaskin. Alt ligger trygt på ett sted, og hver versjon tas vare på — så du alltid kan finne tilbake til hvordan ting var før.</div>
+        </div>
+
+        <!-- repository -->
+        <div class="term-card">
+          <div class="term-head">
+            <div class="term-icon">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M3 7l1.5-3h15L21 7M3 7h18v13H3V7Z"/><path d="M7 11h10M7 15h6"/></svg>
+            </div>
+            <div class="term-name">Repository (repo)</div>
+          </div>
+          <p class="term-def">Selve mappa på GitHub der akkurat din nettside ligger. Alle filene, bildene og teksten til siden din samlet på ett sted.</p>
+          <div class="term-analogy"><strong>💡 Tenk på det som...</strong> en ringperm merket med firmanavnet ditt. Inni ligger alt som hører til nettsiden din — og bare din. Naboens nettside har sin egen perm.</div>
+        </div>
+
+        <!-- commit -->
+        <div class="term-card">
+          <div class="term-head">
+            <div class="term-icon">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M3 12h6M15 12h6"/></svg>
+            </div>
+            <div class="term-name">Commit</div>
+          </div>
+          <p class="term-def">Et lagringspunkt. Hver gang en endring lagres, lages en «commit» med en liten beskrivelse av hva som ble gjort — som et bokmerke i historikken.</p>
+          <div class="term-analogy"><strong>💡 Tenk på det som...</strong> å trykke «lagre» i et spill. Du får et punkt du alltid kan gå tilbake til hvis noe går galt senere.</div>
+        </div>
+
+        <!-- Cloudflare -->
+        <div class="term-card">
+          <div class="term-head">
+            <div class="term-icon">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M6 17h11a3 3 0 0 0 .5-5.96A5 5 0 0 0 8 10.5 3.5 3.5 0 0 0 6 17Z"/></svg>
+            </div>
+            <div class="term-name">Cloudflare</div>
+          </div>
+          <p class="term-def">Selskapet som sørger for at nettsiden din lastes lynraskt og holdes trygg mot angrep — uansett hvor i verden besøkende kommer fra.</p>
+          <div class="term-analogy"><strong>💡 Tenk på det som...</strong> en vakt og en speditør i ett. Den passer på at uvedkommende ikke slipper inn, og at siden din leveres kjapt til alle som banker på.</div>
+        </div>
+
+        <!-- Cloudflare Pages -->
+        <div class="term-card">
+          <div class="term-head">
+            <div class="term-icon">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M6 3h9l3 3v15H6V3Z"/><path d="M14 3v4h4M9 13h6M9 16h4"/></svg>
+            </div>
+            <div class="term-name">Cloudflare Pages</div>
+          </div>
+          <p class="term-def">Tjenesten fra Cloudflare som faktisk viser nettsiden din ut på internett. Når en endring lagres, bygger den siden på nytt og legger den live helt automatisk.</p>
+          <div class="term-analogy"><strong>💡 Tenk på det som...</strong> en automatisk trykkpresse. Du gjør en endring, og den trykker opp den nye versjonen og henger den i vinduet — uten at du løfter en finger.</div>
+        </div>
+
+        <!-- Astro -->
+        <div class="term-card">
+          <div class="term-head">
+            <div class="term-icon">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M12 2l5 16-5-3-5 3 5-16Z"/><path d="M9 20h6"/></svg>
+            </div>
+            <div class="term-name">Astro</div>
+          </div>
+          <p class="term-def">Det tekniske systemet nettsiden din er bygget med. Det er valgt fordi det gjør sider veldig raske å laste — noe både besøkende og Google liker.</p>
+          <div class="term-analogy"><strong>💡 Tenk på det som...</strong> motoren i en bil. Du trenger ikke vite hvordan den fungerer for å kjøre — du merker bare at det går fort og smidig.</div>
+        </div>
+
+        <!-- domene -->
+        <div class="term-card">
+          <div class="term-head">
+            <div class="term-icon">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18"/></svg>
+            </div>
+            <div class="term-name">Domene</div>
+          </div>
+          <p class="term-def">Adressen til nettsiden din, som <code>dittfirma.no</code>. Det er det folk skriver inn i nettleseren for å finne deg.</p>
+          <div class="term-analogy"><strong>💡 Tenk på det som...</strong> gateadressen til butikken din. Akkurat som en bedrift har en gateadresse, har nettsiden din en domeneadresse folk bruker for å komme frem til deg.</div>
+        </div>
+
+        <!-- DNS -->
+        <div class="term-card">
+          <div class="term-head">
+            <div class="term-icon">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M21 10H3M21 10l-4-6H7L3 10M5 10v10h14V10"/><path d="M9 14h6"/></svg>
+            </div>
+            <div class="term-name">DNS</div>
+          </div>
+          <p class="term-def">Systemet som kobler domeneadressen din til riktig nettside. Når noen skriver <code>dittfirma.no</code>, er det DNS som vet hvor selve siden ligger.</p>
+          <div class="term-analogy"><strong>💡 Tenk på det som...</strong> en telefonkatalog. Du slår opp et navn (domenet), og katalogen forteller deg nummeret (hvor siden faktisk bor) — så samtalen kobles til rett sted.</div>
+        </div>
+
+        <!-- navnetjenere -->
+        <div class="term-card">
+          <div class="term-head">
+            <div class="term-icon">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="6" rx="1"/><rect x="4" y="14" width="16" height="6" rx="1"/><path d="M7 7h.01M7 17h.01"/></svg>
+            </div>
+            <div class="term-name">Navnetjenere</div>
+          </div>
+          <p class="term-def">De «hovedkontorene» som styrer DNS-en for domenet ditt — altså hvem som har ansvaret for å vise veien til nettsiden din. Vanligvis settes de opp én gang og blir stående.</p>
+          <div class="term-analogy"><strong>💡 Tenk på det som...</strong> hvilket sentralbord telefonkatalogen din ligger hos. Bytter du sentralbord, må alle oppslag gå dit i stedet — derfor settes dette opp nøye og forsiktig.</div>
+        </div>
+
+        <!-- hosting / webhotell -->
+        <div class="term-card">
+          <div class="term-head">
+            <div class="term-icon">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18M7 14h6"/></svg>
+            </div>
+            <div class="term-name">Hosting / webhotell</div>
+          </div>
+          <p class="term-def">Plassen på en datamaskin (en server) der nettsiden din faktisk ligger lagret og er tilgjengelig døgnet rundt. Uten hosting hadde ingen kunnet besøke siden.</p>
+          <div class="term-analogy"><strong>💡 Tenk på det som...</strong> å leie lokalet butikken din står i. Domenet er adressen, men hostingen er selve lokalet der varene faktisk står utstilt for kundene.</div>
+        </div>
+
+        <!-- deploy / publisere -->
+        <div class="term-card">
+          <div class="term-head">
+            <div class="term-icon">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M12 3v12M7 8l5-5 5 5"/><path d="M5 17v3h14v-3"/></svg>
+            </div>
+            <div class="term-name">Deploy / publisere</div>
+          </div>
+          <p class="term-def">Å gjøre en endring synlig for alle på den ekte nettsiden. Når noe er «deployet» eller «publisert», ser besøkende den nye versjonen.</p>
+          <div class="term-analogy"><strong>💡 Tenk på det som...</strong> å henge opp et nytt skilt i butikkvinduet. Helt til du henger det opp, er det bare du som vet om det. Etterpå ser alle som går forbi det.</div>
+        </div>
+
+        <!-- HTML / kode -->
+        <div class="term-card">
+          <div class="term-head">
+            <div class="term-icon">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M14 5l-4 14"/></svg>
+            </div>
+            <div class="term-name">HTML / kode</div>
+          </div>
+          <p class="term-def">Selve «byggematerialet» en nettside er laget av — teksten bak kulissene som forteller nettleseren hva som skal vises hvor. Du trenger aldri skrive dette selv; AI-en gjør det.</p>
+          <div class="term-analogy"><strong>💡 Tenk på det som...</strong> byggetegningen til et hus. Du bor i huset uten å lese tegningen — men håndverkeren (AI-en) bruker den for å vite hvor veggene og vinduene skal stå.</div>
+        </div>
+
+        <!-- preview -->
+        <div class="term-card">
+          <div class="term-head">
+            <div class="term-icon">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <div class="term-name">Preview</div>
+          </div>
+          <p class="term-def">En forhåndsvisning. Du får se hvordan en endring kommer til å se ut <em>før</em> den legges ut for alle — på en privat adresse bare du har tilgang til.</p>
+          <div class="term-analogy"><strong>💡 Tenk på det som...</strong> å prøve klærne i prøverommet før du kjøper. Du ser hvordan det blir, og kan ombestemme deg — uten at noen andre har sett deg ennå.</div>
+        </div>
+
+        <!-- rollback -->
+        <div class="term-card">
+          <div class="term-head">
+            <div class="term-icon">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M3 8a9 9 0 1 1-1 6"/><path d="M3 4v4h4"/></svg>
+            </div>
+            <div class="term-name">Rollback</div>
+          </div>
+          <p class="term-def">Å rulle tilbake til en tidligere versjon av nettsiden. Angret du på en endring, eller gikk noe galt? Du kan alltid hoppe tilbake til slik det var før.</p>
+          <div class="term-analogy"><strong>💡 Tenk på det som...</strong> «angre»-knappen (Ctrl+Z) i et tekstdokument — men for hele nettsiden. Ingenting er noensinne ødelagt for godt.</div>
+        </div>
+
+        <!-- SEO -->
+        <div class="term-card">
+          <div class="term-head">
+            <div class="term-icon">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+            </div>
+            <div class="term-name">SEO</div>
+          </div>
+          <p class="term-def">Alt som gjør at folk lettere finner nettsiden din når de søker på Google. Riktige ord, raske sider og god struktur hjelper deg opp i søkeresultatene.</p>
+          <div class="term-analogy"><strong>💡 Tenk på det som...</strong> hvor synlig butikken din er i gata. God SEO er som å ligge i hovedgata med tydelig skilt — i stedet for i en bortgjemt bakgate ingen finner.</div>
+        </div>
+
+        <!-- integrasjon -->
+        <div class="term-card">
+          <div class="term-head">
+            <div class="term-icon">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><rect x="3" y="9" width="7" height="6" rx="1"/><rect x="14" y="9" width="7" height="6" rx="1"/><path d="M10 12h4"/></svg>
+            </div>
+            <div class="term-name">Integrasjon</div>
+          </div>
+          <p class="term-def">Når nettsiden din kobles sammen med en annen tjeneste, så de snakker med hverandre — for eksempel et bestillingsskjema, et kart, eller nyhetsbrev-påmelding.</p>
+          <div class="term-analogy"><strong>💡 Tenk på det som...</strong> å koble en ny maskin til strømnettet. Den fungerte fint alene, men når du plugger den inn, jobber den sammen med resten av huset.</div>
+        </div>
+
+        <!-- HTTPS / hengelås -->
+        <div class="term-card">
+          <div class="term-head">
+            <div class="term-icon">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/><path d="M12 15v2"/></svg>
+            </div>
+            <div class="term-name">HTTPS / hengelås</div>
+          </div>
+          <p class="term-def">Den lille hengelåsen du ser ved siden av adressen i nettleseren. Den betyr at forbindelsen til siden din er kryptert og trygg — at ingen kan snappe opp det som sendes.</p>
+          <div class="term-analogy"><strong>💡 Tenk på det som...</strong> en forseglet konvolutt i stedet for et åpent postkort. Innholdet kommer trygt frem uten at noen underveis kan lese det. Besøkende stoler mer på siden din når låsen er der.</div>
+        </div>
+
+        <!-- Stilguide / designsystem -->
+        <div class="term-card">
+          <div class="term-head">
+            <div class="term-icon">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M12 3v18"/><path d="M5 7h14M5 12h9M5 17h6"/><circle cx="18" cy="15" r="2.5"/></svg>
+            </div>
+            <div class="term-name">Stilguide / designsystem</div>
+          </div>
+          <p class="term-def">Oppskriften på hvordan nettsiden din ser ut — fargene, fontene og knappestilene dine. Den fulgte med da vi bygde siden, og ligger lagret sammen med den. Claude-en din kjenner den, så nye sider du lager matcher resten automatisk. Du trenger aldri å åpne eller endre den selv.</p>
+          <div class="term-analogy"><strong>💡 Tenk på det som...</strong> husreglene for stilen din. En ny medarbeider som får dem utdelt, lager ting som passer inn fra dag én — uten å måtte gjette hvordan «huset» ser ut.</div>
+        </div>
+
+        <!-- Skill -->
+        <div class="term-card">
+          <div class="term-head">
+            <div class="term-icon">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M12 2l2.5 5 5.5.8-4 3.9.9 5.5L12 20l-4.9 2.6.9-5.5-4-3.9 5.5-.8L12 2Z"/></svg>
+            </div>
+            <div class="term-name">Skill</div>
+          </div>
+          <p class="term-def">En ekstra ferdighet du gir Claude — en liten fil som lærer den noe helt spesifikt. Stilguiden din finnes for eksempel som en skill, så Claude vet hvordan nettsiden din skal se ut når den lager noe nytt.</p>
+          <div class="term-analogy"><strong>💡 Tenk på det som...</strong> en app du installerer på telefonen for å gi den en ny funksjon. Du legger den til én gang, og så kan Claude det for alltid.</div>
+        </div>
+
+      </div>
+
+      <div class="callout callout-warn mt-12">
+        <p><strong>Fant du ikke ordet du lette etter?</strong> Send oss en melding, så forklarer vi det — og legger det gjerne til her. Ingen spørsmål er for «dumme»; alle har vært nybegynnere.</p>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- NAV -->
+  <nav class="border-t border-zinc-100 px-6 py-8">
+    <div class="max-w-4xl mx-auto flex items-center justify-between gap-4">
+      <a href="./" class="text-sm text-zinc-500 hover:text-blue-600 flex items-center gap-2"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Alle moduler</a>
+      <a href="01-velkommen" class="inline-flex items-center gap-2 bg-blue-600 text-white font-semibold px-5 py-3 rounded-lg hover:bg-blue-500 transition-colors text-sm">Start kurset: Modul 01<svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+    </div>
+  </nav>
+
+  <footer class="bg-[#0F172A] text-white py-6 px-6"><div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-sm text-white/40"><div>© 2026 Dietrichs Marketing</div><div>Org.nr 932 612 583</div><div id="kurs-user-info"></div></div></footer>
+</body>
+</html>

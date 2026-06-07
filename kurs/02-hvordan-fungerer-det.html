@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>02: Hvordan AI-nettsider fungerer | AI-nettsider Kurs</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { fontFamily: { display: ['Archivo', 'sans-serif'], body: ['Inter', 'sans-serif'] }, colors: { ink: '#09090B', brand: '#2563EB', navy: '#0B1F4A' } } } }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="../images/favicon.png" rel="shortcut icon" type="image/x-icon" />
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script src="/kurs/auth.js"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #FAFAFA; color: #09090B; }
+    .font-display { font-family: 'Archivo', sans-serif; }
+    .badge { font-family: 'JetBrains Mono', 'Courier New', monospace; }
+    .prose-custom h2 { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 1.875rem; line-height: 1.2; margin-top: 2.5rem; margin-bottom: 1rem; letter-spacing: -0.02em; }
+    .prose-custom h3 { font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 1.25rem; margin-top: 2rem; margin-bottom: 0.75rem; }
+    .prose-custom p { font-size: 1.0625rem; line-height: 1.7; color: #3F3F46; margin-bottom: 1.25rem; }
+    .prose-custom ul, .prose-custom ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+    .prose-custom ul li, .prose-custom ol li { font-size: 1.0625rem; line-height: 1.7; color: #3F3F46; margin-bottom: 0.5rem; }
+    .prose-custom ul li { list-style-type: disc; }
+    .prose-custom ol li { list-style-type: decimal; }
+    .prose-custom strong { color: #09090B; }
+    .prose-custom em { font-style: italic; }
+    .prose-custom code { background: #F4F4F5; padding: 0.15rem 0.4rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
+    .callout { background: #EFF6FF; border-left: 3px solid #2563EB; padding: 1.25rem 1.5rem; border-radius: 0.5rem; margin: 1.5rem 0; }
+    .callout p { margin-bottom: 0; color: #1E3A8A; }
+    .callout-warn { background: #FEF3C7; border-left-color: #D97706; }
+    .callout-warn p { color: #78350F; }
+    .callout-ok { background: #F0FDF4; border-left-color: #16A34A; }
+    .callout-ok p { color: #14532D; }
+    .step { background: white; border: 1px solid #E4E4E7; border-radius: 1rem; padding: 1.5rem; margin: 1rem 0; display: flex; gap: 1rem; }
+    .step-num { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 2rem; color: #2563EB; line-height: 1; flex-shrink: 0; }
+    .step-content h3 { margin-top: 0 !important; }
+    .step-content p { margin-bottom: 0.5rem; }
+    .stack-card { background: white; border: 1px solid #E4E4E7; border-radius: 1rem; padding: 1.5rem; }
+    .diagram-figure { background: #FFFFFF; border: 1px solid #E4E4E7; border-radius: 1rem; padding: 1.75rem 1.5rem; margin: 2rem 0; }
+    .diagram-figure .svg-wrap { width: 100%; max-width: 600px; margin: 0 auto; }
+    .diagram-figure svg { width: 100%; height: auto; display: block; }
+  </style>
+</head>
+<body>
+  <script>window.DIETRICHS_MENU_CONFIG = { basePath: '../' };</script>
+  <script src="../components/dietrichs-menu.js" defer></script>
+
+  <header class="py-14 md:py-20 px-6 border-b border-zinc-100">
+    <div class="max-w-3xl mx-auto">
+      <div class="flex items-center gap-3 mb-5">
+        <a href="./" class="text-xs font-semibold uppercase tracking-widest text-zinc-500 hover:text-blue-600">← Alle moduler</a>
+        <span class="text-zinc-300">/</span>
+        <span class="badge text-xs text-zinc-400">MODUL 02</span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-blue-600">Konsept</span>
+      </div>
+      <h1 class="font-display font-extrabold text-4xl md:text-6xl tracking-[-0.03em] text-ink leading-[1.05] mb-5">
+        Hvordan AI-nettsider fungerer
+      </h1>
+      <p class="text-lg md:text-xl text-zinc-600 leading-relaxed">
+        Tre teknologier som spiller sammen. Du trenger ikke å forstå dem dypt, men det hjelper å vite hva som er hva.
+      </p>
+    </div>
+  </header>
+
+
+  <article class="px-6 py-12 md:py-16">
+    <div class="max-w-3xl mx-auto prose-custom">
+
+      <!-- ============================================================= -->
+      <!-- DEL 1: Hva er AI? Hva er Claude? (forklart fra bunnen)         -->
+      <!-- ============================================================= -->
+
+      <div class="callout">
+        <p><strong>Hva denne modulen dekker:</strong> de to ordene du kommer til å høre hele veien — <strong>«AI»</strong> og <strong>«Claude»</strong>. Når du forstår disse to tingene, gir resten av kurset mening. Vi forklarer det helt fra bunnen. Du trenger null teknisk bakgrunn.</p>
+      </div>
+
+      <h2>Hva er AI?</h2>
+      <p>
+        AI står for <strong>«kunstig intelligens»</strong> (på engelsk: <em>artificial intelligence</em>). Det høres avansert ut, men ideen er enkel:
+      </p>
+      <p>
+        <strong>AI er programvare som har lest enormt mye — og som derfor kan forstå vanlig språk og hjelpe deg med oppgaver.</strong> Du skriver til den på helt vanlig norsk, akkurat som du ville skrevet til en kollega. Du trenger ikke kunne kode. Du trenger ikke kunne noe teknisk i det hele tatt.
+      </p>
+      <p>
+        Tenk på det sånn: et menneske som har lest tusenvis av bøker, brev og nettsider blir flink til å skrive, forklare og svare på spørsmål. AI har «lest» mer tekst enn ett menneske rekker i tusen liv. Derfor er den god til å hjelpe deg med språk: skrive, forklare, oppsummere, oversette — og gjøre praktiske oppgaver du ber om.
+      </p>
+
+      <div class="callout callout-ok">
+        <p><strong>Kort sagt:</strong> AI er en flink hjelper du snakker med på vanlig norsk. Den forstår hva du mener, og gjør jobben for deg.</p>
+      </div>
+
+      <h3>Du har sannsynligvis allerede brukt AI</h3>
+      <p>
+        Hvis du noen gang har skrevet et spørsmål i Google og fått et ferdig svar øverst, brukt autoforslag når du skriver SMS, eller snakket til mobilen («Hei Siri»), har du allerede vært borti AI. Forskjellen nå er at AI har blitt så god at den kan gjøre <em>ordentlige</em> oppgaver for deg — ikke bare gjette neste ord.
+      </p>
+
+      <h2>Hva er Claude?</h2>
+      <p>
+        <strong>Claude</strong> (uttales «klådd», med stum «e») er navnet på en bestemt AI. Den er laget av et selskap som heter Anthropic. Det finnes flere slike AI-er der ute — du har kanskje hørt om ChatGPT — og Claude er en av de beste.
+      </p>
+      <p>
+        Den enkleste måten å tenke på Claude er:
+      </p>
+
+      <div class="callout">
+        <p><strong>Claude er som en veldig smart assistent du chatter med.</strong> Du skriver hva du trenger, og den svarer — og hjelper deg med å få det gjort. Som å sende en melding til en kollega som alltid er på jobb, alltid har tid, og aldri blir sur.</p>
+      </div>
+
+      <p>
+        Du skriver til Claude i et lite tekstfelt, omtrent som en chat på Messenger eller SMS. Du forteller den hva du vil ha gjort med vanlige ord. Den svarer på vanlige ord. Det er hele greia.
+      </p>
+
+      <!-- VISUELT ELEMENT 1: "Du → Claude → Nettsiden"-flyt -->
+      <div class="not-prose" style="margin: 2rem 0;">
+        <svg viewBox="0 0 720 200" width="100%" role="img"
+             aria-label="Flyt: Du skriver til Claude. Claude jobber. Nettsiden din blir oppdatert."
+             style="max-width: 720px; height: auto; font-family: 'Inter', sans-serif;">
+          <!-- DU -->
+          <g>
+            <rect x="20" y="50" width="160" height="100" rx="16" fill="#FFFFFF" stroke="#E4E4E7" stroke-width="2"/>
+            <circle cx="100" cy="86" r="14" fill="#2563EB"/>
+            <path d="M78 122 q22 -24 44 0" fill="none" stroke="#2563EB" stroke-width="5" stroke-linecap="round"/>
+            <text x="100" y="140" text-anchor="middle" font-size="15" font-weight="700" fill="#09090B">DU</text>
+          </g>
+          <!-- pil 1 -->
+          <g>
+            <line x1="186" y1="100" x2="262" y2="100" stroke="#A1A1AA" stroke-width="3"/>
+            <path d="M262 100 l-10 -6 v12 z" fill="#A1A1AA"/>
+            <text x="224" y="88" text-anchor="middle" font-size="11" fill="#71717A">skriver</text>
+          </g>
+          <!-- CLAUDE -->
+          <g>
+            <rect x="270" y="50" width="160" height="100" rx="16" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"/>
+            <rect x="328" y="74" width="44" height="30" rx="8" fill="#2563EB"/>
+            <path d="M338 104 l0 10 l10 -10 z" fill="#2563EB"/>
+            <circle cx="340" cy="89" r="2.6" fill="#FFFFFF"/>
+            <circle cx="350" cy="89" r="2.6" fill="#FFFFFF"/>
+            <circle cx="360" cy="89" r="2.6" fill="#FFFFFF"/>
+            <text x="350" y="140" text-anchor="middle" font-size="15" font-weight="700" fill="#1E3A8A">CLAUDE</text>
+          </g>
+          <!-- pil 2 -->
+          <g>
+            <line x1="436" y1="100" x2="512" y2="100" stroke="#A1A1AA" stroke-width="3"/>
+            <path d="M512 100 l-10 -6 v12 z" fill="#A1A1AA"/>
+            <text x="474" y="88" text-anchor="middle" font-size="11" fill="#71717A">jobber</text>
+          </g>
+          <!-- NETTSIDEN -->
+          <g>
+            <rect x="520" y="50" width="180" height="100" rx="16" fill="#FFFFFF" stroke="#E4E4E7" stroke-width="2"/>
+            <rect x="556" y="72" width="108" height="48" rx="6" fill="#F4F4F5" stroke="#16A34A" stroke-width="2"/>
+            <line x1="556" y1="84" x2="664" y2="84" stroke="#16A34A" stroke-width="2"/>
+            <circle cx="563" cy="78" r="2" fill="#16A34A"/>
+            <circle cx="571" cy="78" r="2" fill="#16A34A"/>
+            <circle cx="579" cy="78" r="2" fill="#16A34A"/>
+            <text x="610" y="140" text-anchor="middle" font-size="14" font-weight="700" fill="#14532D">NETTSIDEN DIN</text>
+            <text x="610" y="108" text-anchor="middle" font-size="11" fill="#16A34A">oppdatert ✓</text>
+          </g>
+        </svg>
+        <p style="text-align:center; font-size:13px; color:#71717A; margin-top:0.5rem;">
+          Du skriver hva du vil ha → Claude gjør jobben → nettsiden din blir oppdatert. Du gjør bare det første steget.
+        </p>
+      </div>
+
+      <h2>To slags Claude: «vanlig Claude» og «Claude Code»</h2>
+      <p>
+        Dette er en viktig forskjell, og den er enklere enn den høres ut. Det finnes to måter å bruke Claude på.
+      </p>
+
+      <div class="step not-prose">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3 class="font-display font-bold text-lg mb-2">«Vanlig Claude» — du chatter, og kopierer svaret selv</h3>
+          <p class="text-zinc-600 text-sm">Du skriver et spørsmål, og Claude svarer i chatten. Vil du bruke svaret — for eksempel en ny tekst til nettsiden — må du <strong>kopiere det selv</strong> og lime det inn der det skal. Claude gir deg svaret, men du gjør det siste håndgrepet. Tenk på en kollega som skriver et utkast og rekker det over bordet til deg: «Her, sett dette inn.»</p>
+        </div>
+      </div>
+
+      <div class="step not-prose">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3 class="font-display font-bold text-lg mb-2">«Claude Code» — jobber direkte i filene dine og publiserer selv</h3>
+          <p class="text-zinc-600 text-sm">Her gjør Claude hele jobben. Du sier «bytt overskriften på forsiden til …», og Claude <strong>går inn i nettsiden din, gjør endringen og publiserer den</strong> — uten at du trenger å kopiere eller lime noe. Samme kollega, men nå har de fått nøkkelen til kontoret og kan rydde på pulten din selv. Det er denne typen du skal lære å bruke i dette kurset.</p>
+        </div>
+      </div>
+
+      <div class="callout callout-ok">
+        <p><strong>Den enkle huskeregelen:</strong> Vanlig Claude <em>forteller</em> deg hva som skal gjøres. Claude Code <em>gjør det</em>. I dette kurset bruker vi Claude Code — så du slipper å kopiere og lime.</p>
+      </div>
+
+      <h2>Hvorfor er dette en stor sak for deg?</h2>
+      <p>
+        Tenk på hvordan det er i dag når du vil endre noe lite på nettsiden din — bytte et bilde, oppdatere åpningstidene, fikse en skrivefeil, legge til et tilbud før helga.
+      </p>
+      <p>
+        Du må som regel <strong>ringe eller maile et webbyrå</strong> (firmaet som lager og styrer nettsider for andre), forklare hva du vil ha, vente på svar, kanskje vente noen dager — og ofte <strong>betale for hver lille endring</strong>. En skrivefeil kan koste deg en time, en e-post fram og tilbake, og en faktura.
+      </p>
+      <p>
+        Med Claude skriver du bare hva du vil ha gjort, og det er gjort. <strong>Med en gang. Når som helst. Uten å spørre noen om lov.</strong> Du er ikke lenger avhengig av et byrå for hver minste ting. Du eier nettsiden din, og du styrer den selv.
+      </p>
+
+      <!-- VISUELT ELEMENT 2: "Før / Etter"-illustrasjon -->
+      <div class="not-prose" style="margin: 2rem 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+        <!-- FØR -->
+        <div style="background:#FEF3C7; border-left:3px solid #D97706; border-radius:0.5rem; padding:1.25rem 1.25rem 1rem;">
+          <svg viewBox="0 0 80 80" width="56" height="56" role="img" aria-label="Telefon og klokke" style="display:block; margin-bottom:0.6rem;">
+            <path d="M22 18 q-4 0 -4 6 q0 22 18 36 q14 11 22 6 q3 -2 1 -6 l-6 -10 q-2 -3 -5 -1 l-4 3 q-8 -5 -13 -14 l3 -4 q2 -3 -1 -5 l-9 -6 q-1 -1 -2 -1 z" fill="#D97706"/>
+            <circle cx="58" cy="24" r="13" fill="#FFFFFF" stroke="#D97706" stroke-width="3"/>
+            <line x1="58" y1="24" x2="58" y2="16" stroke="#D97706" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="58" y1="24" x2="64" y2="27" stroke="#D97706" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <p style="font-family:'Archivo',sans-serif; font-weight:700; font-size:0.8rem; letter-spacing:0.06em; text-transform:uppercase; color:#92400E; margin:0 0 0.35rem;">Før</p>
+          <p style="font-size:0.95rem; line-height:1.55; color:#78350F; margin:0;">Du ringer eller mailer byrået, forklarer endringen, venter på svar — kanskje i dagevis — og betaler for jobben.</p>
+        </div>
+        <!-- ETTER -->
+        <div style="background:#F0FDF4; border-left:3px solid #16A34A; border-radius:0.5rem; padding:1.25rem 1.25rem 1rem;">
+          <svg viewBox="0 0 80 80" width="56" height="56" role="img" aria-label="Chat-boble med hake" style="display:block; margin-bottom:0.6rem;">
+            <rect x="14" y="16" width="52" height="38" rx="10" fill="#16A34A"/>
+            <path d="M26 54 l0 12 l12 -12 z" fill="#16A34A"/>
+            <path d="M28 34 l8 8 l16 -16" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <p style="font-family:'Archivo',sans-serif; font-weight:700; font-size:0.8rem; letter-spacing:0.06em; text-transform:uppercase; color:#15803D; margin:0 0 0.35rem;">Etter</p>
+          <p style="font-size:0.95rem; line-height:1.55; color:#14532D; margin:0;">Du skriver én melding til Claude — «bytt åpningstidene til …» — og det er gjort. Med en gang. Ingen venting, ingen ekstra faktura.</p>
+        </div>
+      </div>
+
+      <h2>Du trenger ikke å forstå teknikken</h2>
+      <p>
+        Her er det viktigste å ta med seg, og det vi vil at du skal puste rolig over:
+      </p>
+
+      <div class="callout">
+        <p><strong>Du trenger IKKE å forstå hvordan AI fungerer teknisk — bare hvordan du snakker med den.</strong> Du kjører bil uten å kunne bygge en motor. Du bruker mobilen uten å kunne lage en app. På akkurat samme måte bruker du Claude uten å vite noe om hva som skjer på innsiden. Det eneste du trenger å lære, er hvordan du forklarer tydelig hva du vil ha — og det øver vi på, steg for steg, resten av kurset.</p>
+      </div>
+
+      <div class="callout callout-warn">
+        <p><strong>Føler du deg usikker akkurat nå? Helt normalt.</strong> Alle synes dette er rart de første minuttene — helt til de prøver. Du kommer ikke til å ødelegge noe ved å skrive til Claude. Det verste som kan skje er at du må be den prøve på nytt, akkurat som med en kollega. Vi tar det rolig herfra.</p>
+      </div>
+
+      <div class="callout callout-ok">
+        <p><strong>Oppsummert:</strong> AI er en flink hjelper du snakker med på vanlig norsk. Claude er én slik hjelper — en av de beste. «Claude Code» er versjonen som faktisk gjør endringene på nettsiden din for deg, så du slipper å være avhengig av et byrå. Og du trenger ikke kunne noe teknisk — bare hvordan du sier hva du vil ha. Nå er du klar for å se hvordan det fungerer i praksis.</p>
+      </div>
+
+      <p>
+        Møter du et ord du ikke kjenner underveis i kurset? Slå det opp i <a href="ordliste" class="text-blue-600 underline font-medium">ordlisten</a> — der forklarer vi alle de tekniske ordene på vanlig norsk.
+      </p>
+
+      <!-- ============================================================= -->
+      <!-- DEL 2: De tre verktøyene (det tekniske — nå som du forstår AI) -->
+      <!-- ============================================================= -->
+
+      <h2>Tre lag, tre verktøy</h2>
+      <p>Du har akkurat lært det viktigste: at du snakker med Claude på vanlig norsk. Men bak kulissene jobber Claude sammen med to andre verktøy. Du trenger aldri å åpne eller forstå dem — det er <strong>Claude som bruker dem for deg</strong>. Det hjelper bare å vite hva som er hva, så ingenting virker mystisk. Nettsiden din er bygget av tre verktøy som hver har én jobb:</p>
+
+      <div class="grid sm:grid-cols-3 gap-4 my-8 not-prose">
+        <div class="stack-card">
+          <div class="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center mb-3">
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#2563EB" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+          </div>
+          <h3 class="font-display font-bold text-base mb-1">Astro</h3>
+          <p class="text-sm text-zinc-600">Verktøyet som setter sammen nettsiden din til ferdige sider. (Som ovnen i et bakeri.)</p>
+        </div>
+        <div class="stack-card">
+          <div class="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center mb-3">
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#2563EB" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          </div>
+          <h3 class="font-display font-bold text-base mb-1">Claude</h3>
+          <p class="text-sm text-zinc-600">Hjelperen du chatter med. Den redigerer siden på din kommando.</p>
+        </div>
+        <div class="stack-card">
+          <div class="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center mb-3">
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#2563EB" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <h3 class="font-display font-bold text-base mb-1">Cloudflare</h3>
+          <p class="text-sm text-zinc-600">Datamaskinene ute på internett som viser fram siden din til alle besøkende, lynraskt. (Butikken som selger brødet.)</p>
+        </div>
+      </div>
+
+      <div class="callout callout-ok">
+        <p><strong>Forklart enkelt — «HTML»:</strong> Når du hører ordet «HTML», er det bare «språket» nettsider er skrevet i — selve materialet en nettside er laget av. Du trenger aldri å se eller røre det selv. Claude tar seg av det.</p>
+      </div>
+
+      <!-- DIAGRAM: De tre verktøyene -->
+      <div class="diagram-figure not-prose">
+        <div class="svg-wrap">
+          <svg viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="De tre verktøyene: Astro lager nettsiden, Claude er hjelperen du chatter med, Cloudflare legger den ut på nett.">
+            <defs>
+              <marker id="arrow1" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto" markerUnits="strokeWidth">
+                <path d="M0,0 L7,3 L0,6 Z" fill="#71717A" />
+              </marker>
+            </defs>
+            <!-- Connecting arrows -->
+            <line x1="180" y1="135" x2="218" y2="135" stroke="#71717A" stroke-width="2" marker-end="url(#arrow1)" />
+            <line x1="382" y1="135" x2="420" y2="135" stroke="#71717A" stroke-width="2" marker-end="url(#arrow1)" />
+            <!-- Box 1: Astro -->
+            <g>
+              <rect x="20" y="70" width="160" height="130" rx="16" fill="#FFFFFF" stroke="#E4E4E7" stroke-width="1.5" />
+              <circle cx="100" cy="108" r="22" fill="#EFF6FF" />
+              <rect x="91" y="98" width="18" height="22" rx="2.5" fill="#2563EB" />
+              <rect x="95" y="103" width="10" height="1.8" rx="0.9" fill="#FFFFFF" />
+              <rect x="95" y="107.5" width="10" height="1.8" rx="0.9" fill="#FFFFFF" />
+              <rect x="95" y="112" width="6" height="1.8" rx="0.9" fill="#FFFFFF" />
+              <text x="100" y="152" text-anchor="middle" font-size="16" font-weight="700" fill="#09090B">Astro</text>
+              <text x="100" y="174" text-anchor="middle" font-size="11.5" fill="#71717A">nettsiden din</text>
+            </g>
+            <!-- Box 2: Claude -->
+            <g>
+              <rect x="220" y="70" width="160" height="130" rx="16" fill="#FFFFFF" stroke="#E4E4E7" stroke-width="1.5" />
+              <circle cx="300" cy="108" r="22" fill="#EFF6FF" />
+              <path d="M289 99 h22 a4 4 0 0 1 4 4 v11 a4 4 0 0 1 -4 4 h-13 l-7 6 v-6 h-2 a4 4 0 0 1 -4 -4 v-11 a4 4 0 0 1 4 -4 z" fill="#2563EB" />
+              <circle cx="296" cy="109" r="1.6" fill="#FFFFFF" />
+              <circle cx="302" cy="109" r="1.6" fill="#FFFFFF" />
+              <circle cx="308" cy="109" r="1.6" fill="#FFFFFF" />
+              <text x="300" y="152" text-anchor="middle" font-size="16" font-weight="700" fill="#09090B">Claude</text>
+              <text x="300" y="174" text-anchor="middle" font-size="11.5" fill="#71717A">hjelperen du chatter med</text>
+            </g>
+            <!-- Box 3: Cloudflare -->
+            <g>
+              <rect x="420" y="70" width="160" height="130" rx="16" fill="#FFFFFF" stroke="#E4E4E7" stroke-width="1.5" />
+              <circle cx="500" cy="108" r="22" fill="#EFF6FF" />
+              <path d="M489 114 a8 8 0 0 1 1 -15.8 a9 9 0 0 1 17 1.5 a6 6 0 0 1 -1 14.3 z" fill="#2563EB" />
+              <text x="500" y="152" text-anchor="middle" font-size="16" font-weight="700" fill="#09090B">Cloudflare</text>
+              <text x="500" y="174" text-anchor="middle" font-size="11.5" fill="#71717A">legger den ut på nett</text>
+            </g>
+            <!-- Arrow labels -->
+            <text x="199" y="123" text-anchor="middle" font-size="10.5" fill="#71717A">endrer</text>
+            <text x="401" y="123" text-anchor="middle" font-size="10.5" fill="#71717A">sender</text>
+            <!-- Bottom summary -->
+            <text x="300" y="248" text-anchor="middle" font-size="13" font-weight="600" fill="#0B1F4A">Du chatter med Claude — Claude endrer Astro-siden — Cloudflare viser den fram.</text>
+            <text x="300" y="278" text-anchor="middle" font-size="11.5" fill="#71717A">Du trenger ikke åpne eller forstå noen av dem. Du bare snakker.</text>
+          </svg>
+        </div>
+      </div>
+
+      <h2>Slik henger de sammen</h2>
+      <p>Tenk på det som tre roller i en bakeri-analogi:</p>
+      <ul>
+        <li><strong>Astro = ovnen.</strong> Den tar inn råvarer (tekst, bilder, oppskrifter) og baker dem til ferdige nettsider.</li>
+        <li><strong>Claude = bakeren.</strong> Den følger oppskriften, men tar også bestillinger fra deg ("ekstra rosin", "mindre salt").</li>
+        <li><strong>Cloudflare = butikken.</strong> Den selger brødet til alle som kommer innom — verden over, raskt og kjølig.</li>
+      </ul>
+
+      <div class="callout callout-ok">
+        <p><strong>Forklart enkelt — å «bygge» en nettside:</strong> Å «bygge» betyr bare at maskinen setter sammen alle bitene (tekst, bilder, design) til de ferdige sidene folk ser — akkurat som ovnen baker råvarene til brød. Det skjer automatisk på noen sekunder hver gang du endrer noe. Du gjør ingenting selv.</p>
+      </div>
+
+      <h2>Hva skjer når du gir Claude en oppgave</h2>
+      <p>Du sier: <code>"Endre åpningstid fredag til 08–14"</code>. Slik flyter det:</p>
+      <ol class="space-y-3 my-6 list-decimal pl-6 text-zinc-700">
+        <li><strong>Claude leser nettsiden din</strong> (filene som inneholder tekst og struktur).</li>
+        <li><strong>Claude finner riktig sted</strong> (åpningstid-blokken på forsiden eller kontakt-siden).</li>
+        <li><strong>Claude foreslår endring</strong> og bekrefter — du godkjenner.</li>
+        <li><strong>Endringen lagres på GitHub</strong> (din konto, din kode).</li>
+        <li><strong>Cloudflare bygger ny versjon</strong> av siden (~30–60 sek).</li>
+        <li><strong>Live</strong>: alle som besøker siden ser den nye åpningstiden.</li>
+      </ol>
+
+      <div class="callout callout-ok">
+        <p><strong>Forklart enkelt — «GitHub»:</strong> GitHub er en gratis nettside der nettsidens filer lagres trygt — tenk på det som en privat Dropbox-mappe, bare for nettsiden din. Den ligger «i skyen», som bare betyr <em>på internett, ikke på din egen PC</em>. Du eier kontoen, og du trenger sjelden å åpne den selv — Claude lagrer der for deg.</p>
+      </div>
+
+      <div class="callout">
+        <p><strong>Hele prosessen tar 30–90 sekunder.</strong> Sammenlign med "send e-post til byrå → vente to dager → faktura på 800 kr".</p>
+      </div>
+
+      <h2>Hva betyr "100 % eierskap"</h2>
+      <ul>
+        <li><strong>Filene ligger på din GitHub-konto.</strong> Hvis du sier opp samarbeidet, beholder du alt.</li>
+        <li><strong>Domenet er ditt.</strong> Domenet er nettadressen din, f.eks. <code>dittfirma.no</code>. Du har en konto hos firmaet du «leier» adressen fra (kalles en domeneleverandør, for eksempel Domeneshop).</li>
+        <li><strong>Stedet siden «bor» er ditt.</strong> Cloudflare-kontoen står på din e-post.</li>
+        <li><strong>AI-en er din.</strong> Du har en egen Claude som allerede vet alt om bedriften din.</li>
+      </ul>
+      <p>Hvis du vil flytte til et annet byrå i fremtiden, kan du det — uten å miste noe.</p>
+
+      <h2>Hva må du forstå for å bruke kurset</h2>
+      <p>
+        Veldig lite teknisk. Du trenger ikke å vite hvordan Astro fungerer for å bruke den, akkurat som du ikke trenger å vite hvordan motoren i bilen er bygget for å kjøre. Men det kan være kjekt å forstå at:
+      </p>
+      <ul>
+        <li>Tekst og bilder ligger som vanlige <strong>filer</strong> — omtrent som dokumenter og bilder i en mappe på PC-en din</li>
+        <li>Filene ligger på <strong>GitHub</strong> (en mappe på internett, ikke på din egen PC)</li>
+        <li>Cloudflare <strong>bygger</strong> nettsiden på nytt hver gang en fil endrer seg — automatisk, på sekunder</li>
+        <li>Claude er bare en chat — du <strong>snakker</strong> med den, så endrer den filene</li>
+      </ul>
+
+      <div class="callout">
+        <p>I neste modul ser vi på selve overgangen — fra nettsiden du har i dag til den nye løsningen, og hvordan domenet og e-posten flytter over uten nedetid.</p>
+      </div>
+
+    </div>
+  </article>
+
+  <nav class="border-t border-zinc-200 bg-white py-8 px-6">
+    <div class="max-w-3xl mx-auto flex justify-between items-center">
+      <a href="01-velkommen" class="text-sm text-zinc-500 hover:text-blue-600 flex items-center gap-2">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        01: Velkommen
+      </a>
+      <a href="03-overgangen" class="inline-flex items-center gap-2 bg-blue-600 text-white font-semibold px-5 py-3 rounded-lg hover:bg-blue-500 transition-colors text-sm">
+        Modul 03: Overgangen
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </nav>
+  <footer class="bg-[#0F172A] text-white py-6 px-6"><div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-sm text-white/40"><div>© 2026 Dietrichs Marketing</div><div>Org.nr 932 612 583</div><div id="kurs-user-info"></div></div></footer>
+</body>
+</html>

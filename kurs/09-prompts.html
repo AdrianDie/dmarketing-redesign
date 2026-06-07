@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>09: Effektive AI-prompts | AI-nettsider Kurs</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { theme: { extend: { fontFamily: { display: ['Archivo', 'sans-serif'], body: ['Inter', 'sans-serif'] }, colors: { ink: '#09090B', brand: '#2563EB', navy: '#0B1F4A' } } } }</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="../images/favicon.png" rel="shortcut icon" type="image/x-icon" />
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script src="/kurs/auth.js"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #FAFAFA; color: #09090B; }
+    .font-display { font-family: 'Archivo', sans-serif; }
+    .badge { font-family: 'JetBrains Mono', 'Courier New', monospace; }
+    .prose-custom h2 { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 1.875rem; line-height: 1.2; margin-top: 2.5rem; margin-bottom: 1rem; letter-spacing: -0.02em; }
+    .prose-custom h3 { font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 1.25rem; margin-top: 2rem; margin-bottom: 0.75rem; }
+    .prose-custom p { font-size: 1.0625rem; line-height: 1.7; color: #3F3F46; margin-bottom: 1.25rem; }
+    .prose-custom ul, .prose-custom ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+    .prose-custom li { font-size: 1.0625rem; line-height: 1.7; color: #3F3F46; margin-bottom: 0.5rem; }
+    .prose-custom ul li { list-style-type: disc; }
+    .prose-custom ol li { list-style-type: decimal; }
+    .prose-custom strong { color: #09090B; }
+    .prose-custom code { background: #F4F4F5; padding: 0.15rem 0.4rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
+    .callout { background: #EFF6FF; border-left: 3px solid #2563EB; padding: 1.25rem 1.5rem; border-radius: 0.5rem; margin: 1.5rem 0; }
+    .callout p { margin-bottom: 0; color: #1E3A8A; }
+    .prompt-good, .prompt-bad { border-radius: 0.5rem; padding: 1rem 1.25rem; margin: 0.75rem 0; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; white-space: pre-wrap; }
+    .prompt-good { background: #ECFDF5; border-left: 3px solid #10B981; color: #064E3B; }
+    .prompt-bad { background: #FEF2F2; border-left: 3px solid #EF4444; color: #7F1D1D; }
+    .prompt-label { display: block; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.5rem; }
+    .prompt-good .prompt-label { color: #047857; }
+    .prompt-bad .prompt-label { color: #DC2626; }
+  </style>
+</head>
+<body>
+  <script>window.DIETRICHS_MENU_CONFIG = { basePath: '../' };</script>
+  <script src="../components/dietrichs-menu.js" defer></script>
+
+  <header class="py-14 md:py-20 px-6 border-b border-zinc-100">
+    <div class="max-w-3xl mx-auto">
+      <div class="flex items-center gap-3 mb-5">
+        <a href="./" class="text-xs font-semibold uppercase tracking-widest text-zinc-500 hover:text-blue-600">← Alle moduler</a>
+        <span class="text-zinc-300">/</span>
+        <span class="badge text-xs text-zinc-400">MODUL 09</span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-blue-600">Drift</span>
+      </div>
+      <h1 class="font-display font-extrabold text-4xl md:text-6xl tracking-[-0.03em] text-ink leading-[1.05] mb-5">
+        Effektive AI-prompts
+      </h1>
+      <p class="text-lg md:text-xl text-zinc-600 leading-relaxed">
+        Forskjellen på 5 minutter og 50 minutter med Claude er hvordan du formulerer deg. Her er mønstrene som fungerer.
+      </p>
+    </div>
+  </header>
+
+
+  <article class="px-6 py-12 md:py-16">
+    <div class="max-w-3xl mx-auto prose-custom">
+
+      <div class="callout">
+        <p><strong>Forklart enkelt: Hva er en «prompt»?</strong> En prompt er rett og slett meldingen du skriver til Claude — beskjeden om hva du vil ha gjort, på vanlig norsk. Du skriver den i et tekstfelt, omtrent som å sende en melding til en kollega. Denne modulen handler om hvordan du skriver slike beskjeder så Claude treffer på første forsøk. Møter du andre ord du ikke kjenner, kan du slå dem opp i <a href="ordliste" class="text-blue-600 underline">ordlisten</a>.</p>
+      </div>
+
+      <h2>Tre ingredienser i en god prompt</h2>
+      <ol>
+        <li><strong>HVOR:</strong> hvilken side / seksjon / element</li>
+        <li><strong>HVA:</strong> nøyaktig endring du vil ha</li>
+        <li><strong>HVORFOR:</strong> kontekst som hjelper Claude ta riktige beslutninger (valgfritt)</li>
+      </ol>
+
+      <h2>Bra vs dårlig — eksempler</h2>
+
+      <h3>Eksempel 1: endre tekst</h3>
+      <div class="prompt-bad"><span class="prompt-label">✗ For vag</span>Endre teksten</div>
+      <div class="prompt-good"><span class="prompt-label">✓ Bra prompt</span>På forsiden, endre H1-overskriften fra "Velkommen til oss" til "Norges raskeste rørlegger i Stavanger". Husk å sjekke at den fortsatt passer på mobil.</div>
+
+      <h3>Eksempel 2: endre farge</h3>
+      <div class="prompt-bad"><span class="prompt-label">✗ For vag</span>Bytt fargen til rød</div>
+      <div class="prompt-good"><span class="prompt-label">✓ Bra prompt</span>På "Book time"-knappen i headeren: bytt bakgrunnsfargen fra blå til rød. Behold hvit tekst. (Vil du være helt nøyaktig, kan du oppgi fargekoder — for eksempel blå #2563EB til rød #DC2626 — men du kan også bare skrive "gjør knappen rød". Claude skjønner begge deler.)</div>
+
+      <h3>Eksempel 3: legge til seksjon</h3>
+      <div class="prompt-bad"><span class="prompt-label">✗ For vag</span>Legg til en seksjon om garantier</div>
+      <div class="prompt-good"><span class="prompt-label">✓ Bra prompt</span>Legg til en ny seksjon på forsiden, mellom hero og tjenester:
+
+Tittel: "Vår garanti"
+3 punkter:
+- 30-dagers utskiftningsgaranti
+- Fastpris uten skjulte gebyrer
+- Døgn-bemannet kundeservice
+
+Bruk samme kort-stil som på tjenester-seksjonen.</div>
+
+      <h2>Mønstre for ulike oppgaver</h2>
+
+      <h3>Mønster: Konkret endring</h3>
+      <p><strong>Mal:</strong> "I [filnavn], endre [element] fra [gammelt] til [nytt]. [Eventuelle ekstra krav]."</p>
+
+      <h3>Mønster: Be om forslag før gjennomføring</h3>
+      <div class="prompt-good"><span class="prompt-label">✓ Bra prompt</span>Foreslå 3 alternative formuleringer av hero-overskriften på forsiden. Den nåværende er "Velkommen til oss" — vi vil noe mer SEO-vennlig som inkluderer "rørlegger Stavanger". Ikke endre noe ennå, bare vis forslag.</div>
+
+      <h3>Mønster: Fiks alt på én gang</h3>
+      <div class="prompt-good"><span class="prompt-label">✓ Bra prompt</span>Bytt telefonnummeret 12 34 56 78 → 99 88 77 66 OVERALT på nettsiden. List opp alle stedene du finner det først så jeg kan godkjenne, så endre alle samtidig.</div>
+
+      <h3>Mønster: Lag noe nytt</h3>
+      <p>Se modul 07 for komplette eksempler på "Lag en ny side"-prompts.</p>
+
+      <h2>Be om forklaring når du er usikker</h2>
+      <div class="prompt-good"><span class="prompt-label">✓ Bra prompt</span>Hvorfor er det dårlig SEO å ha samme tittel på forsiden og kontakt-siden? Forklar i 2-3 setninger.</div>
+      <div class="prompt-good"><span class="prompt-label">✓ Bra prompt</span>Forklar forskjellen på H1 og H2 — og hvorfor jeg bare skal ha én H1 per side.</div>
+      <p>Claude er en dyktig forklarer. Bruk det.</p>
+
+      <h2>Vanlige feil</h2>
+
+      <h3>Feil 1: For vag prompt</h3>
+      <div class="prompt-bad"><span class="prompt-label">✗ For vag</span>Gjør siden bedre</div>
+      <p>Hva betyr "bedre"? Raskere? Penere? Mer SEO-vennlig? Vær spesifikk.</p>
+
+      <h3>Feil 2: For mange ting i én prompt</h3>
+      <div class="prompt-bad"><span class="prompt-label">✗ For mye på én gang</span>Endre hero-bildet, skriv om tjenestene, legg til kontakt-skjema, oppdater priser, og lag ny om-oss-side</div>
+      <p>Del opp. Én oppgave om gangen. Da kan du verifisere hver i tur.</p>
+
+      <h3>Feil 3: Ikke gi referanse</h3>
+      <div class="prompt-bad"><span class="prompt-label">✗ For vag</span>Lag siden i samme stil</div>
+      <p>Samme stil som hva? Pek på en konkret side, eller be den følge stilguiden din (oppskriften på hvordan nettsiden din ser ut, som fulgte med siden — se modul 07):</p>
+      <div class="prompt-good"><span class="prompt-label">✓ Bra prompt</span>Lag siden i samme stil som tjenester/elektriker.html. Følg stilguiden.</div>
+
+      <h3>Feil 4: Glem å se på resultatet</h3>
+      <p>Når Claude har gjort noe, sjekk live-siden i nettleser (Ctrl+Shift+R for hard reload). Ikke bare anta at "ferdig" betyr "bra".</p>
+
+      <h2>Be om angre / revert</h2>
+      <p>Hvis du gjorde noe du ikke skulle:</p>
+      <div class="prompt-good"><span class="prompt-label">✓ Bra prompt</span>Reverter den siste endringen. Sett siden tilbake til hvordan den var før.</div>
+      <p>Eller mer presist, hvis du bare vil angre én bestemt ting:</p>
+      <div class="prompt-good"><span class="prompt-label">✓ Bra prompt</span>På forsiden, sett H1 tilbake til "Velkommen til oss" — behold resten.</div>
+
+      <h2>Tone of voice</h2>
+      <p>Si det til Claude rett ut hvilken stil du vil ha:</p>
+      <div class="prompt-good"><span class="prompt-label">✓ Bra prompt</span>Skriv om "Om oss"-siden i en mer personlig tone. Bruk "vi" og "du", ikke "selskapet" og "kunden". Norsk, direkte, ingen byråkrati-språk.</div>
+
+      <h2>Sju tips som gjør deg trygg med Claude</h2>
+      <p>Småtriksene som skiller en som «bare prøver» fra en som får til akkurat det de vil:</p>
+      <ol>
+        <li><strong>Én oppgave om gangen.</strong> Be om én ting, sjekk at den ble bra, og gå videre. Da er det lett å se hva som skjedde — og lett å angre hvis noe ble feil.</li>
+        <li><strong>Be om en plan før du sier ja.</strong> Skriv <em>«vis meg hva du vil endre før du gjør det»</em>. Da ser du forslaget først og kan justere før noe blir publisert.</li>
+        <li><strong>Lim inn et skjermbilde.</strong> Claude kan se bilder. Ser noe rart ut, ta et skjermbilde og lim det rett inn i chatten — ofte raskere enn å forklare med ord. Skriv f.eks. <em>«dette ser feil ut — hva er galt?»</em></li>
+        <li><strong>Be om flere forslag.</strong> <em>«Gi meg 3 forslag til overskrift, så velger jeg ett.»</em> Du trenger ikke treffe perfekt selv — la Claude foreslå, og plukk det beste.</li>
+        <li><strong>Fortell hva målet er, ikke bare oppgaven.</strong> <em>«Dette er en kampanjeside; målet er at folk ringer for en gratis befaring.»</em> Da tar Claude bedre valg enn om den bare får «lag en side».</li>
+        <li><strong>Be Claude dobbeltsjekke seg selv.</strong> <em>«Gikk du gjennom alle sidene? Står telefonnummeret likt overalt?»</em> Claude er flink til å rette egne glipp når du ber den se etter.</li>
+        <li><strong>Blir noe rotete: start en ny samtale.</strong> En ny oppgave fortjener en ny chat. Lange samtaler kan bli forvirrende — en frisk start gir ofte et bedre svar.</li>
+      </ol>
+
+      <div class="callout">
+        <p><strong>Den viktigste vanen:</strong> blir noe feil, så <strong>angre</strong> heller enn å lappe videre. Si <em>«angre den siste endringen»</em> og prøv på nytt med en tydeligere beskjed — det er nesten alltid raskere enn å fikse en fiks på en fiks.</p>
+      </div>
+
+      <div class="callout">
+        <p>I neste modul (modul 10) ser vi på hva som faktisk skjer når du publiserer — så du forstår hvorfor det noen ganger tar 30 sek og andre ganger feiler.</p>
+      </div>
+
+    </div>
+  </article>
+
+  <nav class="border-t border-zinc-200 bg-white py-8 px-6">
+    <div class="max-w-3xl mx-auto flex justify-between items-center">
+      <a href="08-seo" class="text-sm text-zinc-500 hover:text-blue-600 flex items-center gap-2"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>08: SEO</a>
+      <a href="10-publisere" class="inline-flex items-center gap-2 bg-blue-600 text-white font-semibold px-5 py-3 rounded-lg hover:bg-blue-500 transition-colors text-sm">Modul 10: Publisere<svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+    </div>
+  </nav>
+  <footer class="bg-[#0F172A] text-white py-6 px-6"><div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-sm text-white/40"><div>© 2026 Dietrichs Marketing</div><div>Org.nr 932 612 583</div><div id="kurs-user-info"></div></div></footer>
+</body>
+</html>

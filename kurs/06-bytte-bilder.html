@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>06: Bytte bilder | AI-nettsider Kurs</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { theme: { extend: { fontFamily: { display: ['Archivo', 'sans-serif'], body: ['Inter', 'sans-serif'] }, colors: { ink: '#09090B', brand: '#2563EB', navy: '#0B1F4A' } } } }</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="../images/favicon.png" rel="shortcut icon" type="image/x-icon" />
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script src="/kurs/auth.js"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #FAFAFA; color: #09090B; }
+    .font-display { font-family: 'Archivo', sans-serif; }
+    .badge { font-family: 'JetBrains Mono', 'Courier New', monospace; }
+    .prose-custom h2 { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 1.875rem; line-height: 1.2; margin-top: 2.5rem; margin-bottom: 1rem; letter-spacing: -0.02em; }
+    .prose-custom h3 { font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 1.25rem; margin-top: 2rem; margin-bottom: 0.75rem; }
+    .prose-custom p { font-size: 1.0625rem; line-height: 1.7; color: #3F3F46; margin-bottom: 1.25rem; }
+    .prose-custom ul, .prose-custom ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+    .prose-custom li { font-size: 1.0625rem; line-height: 1.7; color: #3F3F46; margin-bottom: 0.5rem; }
+    .prose-custom ul li { list-style-type: disc; }
+    .prose-custom ol li { list-style-type: decimal; }
+    .prose-custom strong { color: #09090B; }
+    .prose-custom code { background: #F4F4F5; padding: 0.15rem 0.4rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
+    .callout { background: #EFF6FF; border-left: 3px solid #2563EB; padding: 1.25rem 1.5rem; border-radius: 0.5rem; margin: 1.5rem 0; }
+    .callout p { margin-bottom: 0; color: #1E3A8A; }
+    .callout-warn { background: #FEF3C7; border-left-color: #D97706; }
+    .callout-warn p { color: #78350F; }
+    .callout-ok { background: #F0FDF4; border-left-color: #16A34A; }
+    .callout-ok p { color: #14532D; }
+    .prompt-example { background: #F4F4F5; border-radius: 0.5rem; padding: 1rem 1.25rem; margin: 0.75rem 0; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: #18181B; }
+    .spec-table { background: white; border: 1px solid #E4E4E7; border-radius: 0.75rem; overflow: hidden; margin: 1.5rem 0; }
+    .spec-row { display: grid; grid-template-columns: 1fr 2fr; gap: 1rem; padding: 0.875rem 1.25rem; border-bottom: 1px solid #F4F4F5; }
+    .spec-row:last-child { border-bottom: none; }
+    .spec-row dt { font-weight: 600; color: #09090B; font-size: 0.95rem; }
+    .spec-row dd { color: #3F3F46; font-size: 0.95rem; }
+  </style>
+</head>
+<body>
+  <script>window.DIETRICHS_MENU_CONFIG = { basePath: '../' };</script>
+  <script src="../components/dietrichs-menu.js" defer></script>
+
+  <header class="py-14 md:py-20 px-6 border-b border-zinc-100">
+    <div class="max-w-3xl mx-auto">
+      <div class="flex items-center gap-3 mb-5">
+        <a href="./" class="text-xs font-semibold uppercase tracking-widest text-zinc-500 hover:text-blue-600">← Alle moduler</a>
+        <span class="text-zinc-300">/</span>
+        <span class="badge text-xs text-zinc-400">MODUL 06</span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-blue-600">Daglig bruk</span>
+      </div>
+      <h1 class="font-display font-extrabold text-4xl md:text-6xl tracking-[-0.03em] text-ink leading-[1.05] mb-5">
+        Bytte bilder
+      </h1>
+      <p class="text-lg md:text-xl text-zinc-600 leading-relaxed">
+        Hvilke formater å bruke, hvordan beskjære, og hvordan be Claude bytte bildet uten at siden blir treg.
+      </p>
+    </div>
+  </header>
+
+
+  <article class="px-6 py-12 md:py-16">
+    <div class="max-w-3xl mx-auto prose-custom">
+
+      <h2>Bilde-spesifikasjoner i kort</h2>
+      <dl class="spec-table not-prose">
+        <div class="spec-row"><dt>Format</dt><dd>JPG eller WebP. Aldri PNG for foto.</dd></div>
+        <div class="spec-row"><dt>Maks bredde</dt><dd>2000 piksler (større blir bare større filstørrelse, ingen synlig forskjell)</dd></div>
+        <div class="spec-row"><dt>Maks filstørrelse</dt><dd>500 KB ideelt, 2 MB max</dd></div>
+        <div class="spec-row"><dt>Forhold</dt><dd>Bredde delt på høyde: 16:9 for hero, 4:3 eller 1:1 for tjenester/team</dd></div>
+        <div class="spec-row"><dt>Kvalitet</dt><dd>JPG: 80 % er nok. WebP: 75 %.</dd></div>
+        <div class="spec-row"><dt>Filnavn</dt><dd>Korte, beskrivende, små bokstaver, bindestreker. <code>roerlegger-stavanger-team.jpg</code></dd></div>
+      </dl>
+
+      <div class="callout callout-ok">
+        <p><strong>Forklart enkelt: hva betyr formatene?</strong> Et bilde kan lagres på flere måter («formater»). Du ser hvilket det er på bokstavene helt bakerst i filnavnet:</p>
+        <ul style="margin-top:0.75rem;">
+          <li><strong>JPG</strong> = det vanligste bildeformatet, fint for foto.</li>
+          <li><strong>WebP</strong> = et nyere format som gir mindre filer, så siden laster raskere. Best hvis du kan.</li>
+          <li><strong>PNG</strong> = best for logoer og grafikk med skarpe kanter, men dårlig for foto fordi filene blir veldig store (derfor: aldri PNG for foto).</li>
+          <li><strong>SVG</strong> = et logo-format som aldri blir uskarpt, uansett hvor stort eller lite det vises.</li>
+        </ul>
+      </div>
+
+      <div class="callout">
+        <p><strong>Forklart enkelt: piksler og filstørrelse.</strong> <strong>Piksler</strong> er de bittesmå punktene et bilde er bygd opp av — «2000 piksler bredt» betyr rett og slett at bildet er 2000 punkter på tvers. <strong>Filstørrelse</strong> (målt i KB og MB, der 1 MB = 1000 KB) sier hvor «tungt» bildet er å laste ned; jo større tall, jo tregere side. Du ser begge tallene ved å høyreklikke på bildefilen → «Egenskaper» (Windows) eller «Vis info» (Mac). Et bilde rett fra mobilen er ofte 3–5 MB — altfor stort. Lenger ned viser vi hvordan du krymper det.</p>
+      </div>
+
+      <h2>Slik bytter du et bilde</h2>
+      <p>Det er to måter:</p>
+
+      <h3>Metode 1: Last opp i chatten</h3>
+      <p>Dra og slipp bildet rett inn i Claude-chatten. Skriv: <code>Bytt hero-bildet på forsiden med dette bildet</code>. Claude håndterer:</p>
+      <ul>
+        <li>Lagring i riktig mappe</li>
+        <li>Riktig filnavn</li>
+        <li>Passer på at siden henter inn det riktige bildet der det skal vises</li>
+        <li>Foreslå eller skrive ny <code>alt</code>-tekst (en kort beskrivelse av bildet — for SEO og tilgjengelighet). SEO er det som gjør at siden dukker opp i Google — mer om det i modul 08.</li>
+      </ul>
+
+      <h3>Metode 2: Beskrivelse</h3>
+      <p>Hvis du har bildet et annet sted, gi Claude en URL eller beskrivelse:</p>
+      <div class="prompt-example">Last ned bildet fra https://drive.google.com/... og bruk det som hero på tjenester-siden. Alt-tekst: "rørlegger på vei til oppdrag i Stavanger".</div>
+
+      <h2>Optimalisere før opplasting</h2>
+      <p>Hvis bildet er stort (mer enn 2 MB), bør du gjøre det mindre først. Det kalles å «komprimere» — altså å krympe filen så den blir lettere å laste, uten at bildet ser dårligere ut. Du trenger ikke installere noe: alle de tre verktøyene under er gratis nettsider du bare åpner i nettleseren, drar bildet inn i, og laster ned en mindre versjon fra.</p>
+      <ul>
+        <li><strong>Squoosh.app</strong> — dra bildet inn, last ned som JPG eller WebP</li>
+        <li><strong>TinyPNG / TinyJPG</strong> — krymper filen uten synlig kvalitetstap</li>
+        <li><strong>iLoveIMG</strong> — flere bilder samtidig, og kan beskjære (klippe til) bildet også</li>
+      </ul>
+
+      <div class="callout">
+        <p><strong>Hvorfor det betyr noe:</strong> En stor nettside (mange tunge bilder) får dårligere Google-rangering og mister besøkende. 2 MB-bilder × 10 bilder = 20 MB nedlasting per besøk. På mobil med dårlig dekning er det smertefullt.</p>
+      </div>
+
+      <h2>Beskjæring og forhold</h2>
+      <p>Å «beskjære» betyr å klippe til bildet — for eksempel gjøre det bredere og lavere, eller helt firkantet. Claude kan ikke beskjære bilder for deg, så du må gjøre det selv før du laster det opp (verktøyet iLoveIMG over kan gjøre det gratis). «Forhold» er hvor bredt bildet er i forhold til hvor høyt det er, skrevet som to tall, f.eks. 16:9 (bredt) eller 1:1 (kvadrat). Anbefalte forhold:</p>
+      <ul>
+        <li><strong>Hero-bilde (det store bildet øverst på forsiden):</strong> 16:9 (f.eks. 1920×1080). Plass nok til logo og meny over.</li>
+        <li><strong>Tjeneste-kort:</strong> 4:3 (f.eks. 800×600). Standard kort-bilde.</li>
+        <li><strong>Team / portrett:</strong> 1:1 (f.eks. 600×600). Kvadrat fungerer i alle oppsett.</li>
+        <li><strong>Logo:</strong> SVG hvis mulig (skalerer perfekt). Ellers PNG med transparent bakgrunn.</li>
+      </ul>
+
+      <h2>Alt-tekst (viktig for SEO og tilgjengelighet)</h2>
+      <p>Alt-tekst er en kort beskrivelse av bildet. Den brukes av:</p>
+      <ul>
+        <li><strong>Google</strong> for å forstå bildet (gir SEO-poeng)</li>
+        <li><strong>Skjermlesere</strong> for blinde brukere</li>
+        <li><strong>Browsere når bilder ikke laster</strong></li>
+      </ul>
+
+      <p>Bra alt-tekst:</p>
+      <ul>
+        <li>"Rørlegger med verktøy reparerer kjøkkensluk i Stavanger"</li>
+        <li>"Adrian Dietrichs, daglig leder i Dietrichs Marketing, foran kontoret"</li>
+      </ul>
+
+      <p>Dårlig alt-tekst:</p>
+      <ul>
+        <li>"Bilde" ❌</li>
+        <li>"IMG_4517.jpg" ❌</li>
+        <li>"Bilde av rørlegger" (for generisk) ❌</li>
+      </ul>
+
+      <h2>Stock-bilder vs egne bilder</h2>
+      <p>Egne bilder er nesten alltid bedre. Stock-bilder ser generic ut og besøkende merker det. Men hvis du må bruke stock:</p>
+      <ul>
+        <li><strong>Unsplash, Pexels, Pixabay</strong> — gratis, ingen kreditering nødvendig</li>
+        <li>Velg ikke det aller mest populære bildet (de har du sett 100 ganger)</li>
+        <li>Bruk filtre og fargejusteringer for å gjøre dem mindre generiske</li>
+      </ul>
+
+      <div class="callout callout-warn">
+        <p><strong>Aldri bruk Google-bilde-søk-resultater direkte.</strong> Det er nesten alltid opphavsrettsbeskyttet (copyright) — altså eid av noen andre. Du kan bli saksøkt.</p>
+      </div>
+
+      <p>Møter du et ord du ikke kjenner — som «hero», «alt-tekst» eller «SEO» — kan du alltid slå det opp i <a href="ordliste" class="text-blue-600 underline">ordlisten</a>.</p>
+
+    </div>
+  </article>
+
+  <nav class="border-t border-zinc-200 bg-white py-8 px-6">
+    <div class="max-w-3xl mx-auto flex justify-between items-center">
+      <a href="05-oppdatere-innhold" class="text-sm text-zinc-500 hover:text-blue-600 flex items-center gap-2"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>05: Oppdatere innhold</a>
+      <a href="07-ny-side" class="inline-flex items-center gap-2 bg-blue-600 text-white font-semibold px-5 py-3 rounded-lg hover:bg-blue-500 transition-colors text-sm">Modul 07: Lage ny side<svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+    </div>
+  </nav>
+  <footer class="bg-[#0F172A] text-white py-6 px-6"><div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-sm text-white/40"><div>© 2026 Dietrichs Marketing</div><div>Org.nr 932 612 583</div><div id="kurs-user-info"></div></div></footer>
+</body>
+</html>

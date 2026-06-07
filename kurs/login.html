@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Logg inn — AI-nettsider Kurs</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { display: ['Archivo', 'sans-serif'] },
+        colors: { ink: '#09090B', brand: '#2563EB', navy: '#0B1F4A' }
+      }}
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="../images/favicon.png" rel="shortcut icon" type="image/x-icon" />
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #FAFAFA; color: #09090B; }
+    .font-display { font-family: 'Archivo', sans-serif; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center px-6">
+
+  <div class="w-full max-w-sm text-center">
+    <div class="mb-8">
+      <a href="/" class="text-sm font-medium text-zinc-500 hover:text-blue-600 transition-colors">
+        ← Dietrichs Marketing
+      </a>
+    </div>
+
+    <div class="mb-4">
+      <span class="inline-flex items-center gap-2 bg-white border border-zinc-200 text-xs font-medium text-zinc-600 px-3 py-1.5 rounded-full shadow-sm">
+        <span class="w-1.5 h-1.5 rounded-full bg-blue-600 inline-block"></span>
+        AI-nettsider Kurs · 13 moduler
+      </span>
+    </div>
+
+    <h1 class="font-display font-extrabold text-3xl tracking-[-0.03em] text-ink mb-3">
+      Logg inn for å fortsette
+    </h1>
+    <p class="text-zinc-500 text-sm mb-8 leading-relaxed">
+      Kurset er kun tilgjengelig for kunder av Dietrichs Marketing.<br>
+      Du logger inn med eposten du brukte da du ble opprettet som kunde.
+    </p>
+
+    <button
+      onclick="netlifyIdentity.open('login')"
+      class="w-full bg-blue-600 text-white font-semibold py-3.5 px-6 rounded-xl hover:bg-blue-500 transition-colors text-sm">
+      Logg inn
+    </button>
+
+    <p class="mt-5 text-xs text-zinc-400 leading-relaxed">
+      Glemt passord? Klikk «Logg inn» og velg «Glemt passord».<br>
+      Ingen konto? Ta kontakt med Dietrichs Marketing.
+    </p>
+  </div>
+
+  <script>
+    netlifyIdentity.on('init', function (user) {
+      if (user) window.location.replace('/kurs/');
+    });
+    netlifyIdentity.on('login', function () {
+      window.location.replace('/kurs/');
+    });
+  </script>
+</body>
+</html>

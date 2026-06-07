@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>11: Feilsøking | AI-nettsider Kurs</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { theme: { extend: { fontFamily: { display: ['Archivo', 'sans-serif'], body: ['Inter', 'sans-serif'] }, colors: { ink: '#09090B', brand: '#2563EB', navy: '#0B1F4A' } } } }</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="../images/favicon.png" rel="shortcut icon" type="image/x-icon" />
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script src="/kurs/auth.js"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #FAFAFA; color: #09090B; }
+    .font-display { font-family: 'Archivo', sans-serif; }
+    .badge { font-family: 'JetBrains Mono', 'Courier New', monospace; }
+    .prose-custom h2 { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 1.875rem; line-height: 1.2; margin-top: 2.5rem; margin-bottom: 1rem; letter-spacing: -0.02em; }
+    .prose-custom h3 { font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 1.25rem; margin-top: 2rem; margin-bottom: 0.75rem; }
+    .prose-custom p { font-size: 1.0625rem; line-height: 1.7; color: #3F3F46; margin-bottom: 1.25rem; }
+    .prose-custom ul, .prose-custom ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+    .prose-custom li { font-size: 1.0625rem; line-height: 1.7; color: #3F3F46; margin-bottom: 0.5rem; }
+    .prose-custom ul li { list-style-type: disc; }
+    .prose-custom ol li { list-style-type: decimal; }
+    .prose-custom strong { color: #09090B; }
+    .prose-custom code { background: #F4F4F5; padding: 0.15rem 0.4rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
+    .callout { background: #EFF6FF; border-left: 3px solid #2563EB; padding: 1.25rem 1.5rem; border-radius: 0.5rem; margin: 1.5rem 0; }
+    .callout p { margin-bottom: 0; color: #1E3A8A; }
+    .problem { background: white; border: 1px solid #E4E4E7; border-radius: 1rem; padding: 1.5rem; margin: 1.25rem 0; }
+    .problem h3 { margin-top: 0 !important; color: #DC2626; font-size: 1.125rem !important; }
+    .problem .label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #71717A; margin-bottom: 0.5rem; }
+    .problem .fix { background: #ECFDF5; border-left: 3px solid #10B981; padding: 0.75rem 1rem; border-radius: 0.375rem; margin-top: 0.75rem; }
+    .problem .fix p { margin-bottom: 0; color: #064E3B; font-size: 0.95rem; }
+  </style>
+</head>
+<body>
+  <script>window.DIETRICHS_MENU_CONFIG = { basePath: '../' };</script>
+  <script src="../components/dietrichs-menu.js" defer></script>
+
+  <header class="py-14 md:py-20 px-6 border-b border-zinc-100">
+    <div class="max-w-3xl mx-auto">
+      <div class="flex items-center gap-3 mb-5">
+        <a href="./" class="text-xs font-semibold uppercase tracking-widest text-zinc-500 hover:text-blue-600">← Alle moduler</a>
+        <span class="text-zinc-300">/</span>
+        <span class="badge text-xs text-zinc-400">MODUL 11</span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-blue-600">Drift</span>
+      </div>
+      <h1 class="font-display font-extrabold text-4xl md:text-6xl tracking-[-0.03em] text-ink leading-[1.05] mb-5">
+        Feilsøking
+      </h1>
+      <p class="text-lg md:text-xl text-zinc-600 leading-relaxed">
+        De 10 vanligste problemene du vil møte, og hvordan løse dem på 5 minutter.
+      </p>
+    </div>
+  </header>
+
+
+  <article class="px-6 py-12 md:py-16">
+    <div class="max-w-3xl mx-auto prose-custom">
+
+      <div class="callout">
+        <p><strong>Hva denne modulen dekker:</strong> de 10 vanligste problemene du kan møte, og en enkel «fix» til hvert. I de fleste tilfellene løser du det ved å be Claude om hjelp — du trenger ikke kunne noe teknisk selv. Møter du et ord du ikke kjenner, kan du slå det opp i <a href="ordliste" class="text-blue-600 underline">ordlisten</a>.</p>
+      </div>
+
+      <h2>Først: prøv dette ALLTID først</h2>
+      <ol>
+        <li><strong>Hard reload:</strong> Ctrl+Shift+R (Win) / Cmd+Shift+R (Mac). Løser ~40 % av "siden ser feil ut"-problemer.</li>
+        <li><strong>Sjekk Cloudflare-dashboard:</strong> bygde nettsiden ferdig? Eller står det "Failed"?</li>
+        <li><strong>Sjekk i privat-modus / inkognito:</strong> luker ut cache- og cookie-problemer.</li>
+        <li><strong>Sjekk på mobil OG desktop:</strong> noen ganger ser ulikt på de to.</li>
+      </ol>
+
+      <h2>Vanligste problemer</h2>
+
+      <div class="problem not-prose">
+        <p class="label">Problem 1</p>
+        <h3>Endringen vises ikke selv etter 5 minutter</h3>
+        <p class="text-zinc-600 text-sm mt-2">Du gjorde en endring, ventet, hard-reloadet, men ser fortsatt gammel versjon.</p>
+        <div class="fix">
+          <p><strong>Fix:</strong> 1) Sjekk Cloudflare → siste deployment status. 2) Hvis "Success" men du ser gammelt: prøv inkognito-vindu. 3) Hvis fortsatt gammelt: be Claude verifisere at filen faktisk har endringen (<code>vis meg innholdet i tjenester.html</code>).</p>
+        </div>
+      </div>
+
+      <div class="problem not-prose">
+        <p class="label">Problem 2</p>
+        <h3>Bilde lastes ikke (404)</h3>
+        <p class="text-zinc-600 text-sm mt-2">Et bilde vises som ødelagt-symbol eller bare blank. («404» er nettleserens måte å si «denne filen finnes ikke (lenger)» — du har sikkert sett en «404 – siden finnes ikke»-side før.)</p>
+        <div class="fix">
+          <p><strong>Fix:</strong> Be Claude: <code>Sjekk at bildet [navn] finnes i riktig mappe og at siden henter inn det riktige bildet.</code> Vanligste årsak: bildet ble flyttet, eller filnavnet ble endret.</p>
+        </div>
+      </div>
+
+      <div class="problem not-prose">
+        <p class="label">Problem 3</p>
+        <h3>Lenke gir 404 — siden finnes ikke</h3>
+        <p class="text-zinc-600 text-sm mt-2">Du klikker på en meny-lenke, men får "siden finnes ikke".</p>
+        <div class="fix">
+          <p><strong>Fix:</strong> Be Claude: <code>Sjekk at lenken [href] peker til riktig fil. Hvis filen er flyttet, finn ny path.</code> Vanlig: filen ble omdøpt, men lenken peker fortsatt til gammelt navn.</p>
+        </div>
+      </div>
+
+      <div class="problem not-prose">
+        <p class="label">Problem 4</p>
+        <h3>Cloudflare-build feiler ("Build failed")</h3>
+        <p class="text-zinc-600 text-sm mt-2">Cloudflare-dashboardet viser rødt "Failed".</p>
+        <div class="fix">
+          <p><strong>Fix:</strong> Klikk på den feilede publiseringen, og finn knappen "View build logs" (det betyr «vis bygge-loggen» — selve den tekniske feilmeldingen fra da siden ble satt sammen). Kopier hele feilmeldingen, lim den inn til Claude og si: <code>Cloudflare-build feiler med denne feilmeldingen: [lim inn]. Hva er galt og hvordan fikser jeg det?</code></p>
+        </div>
+      </div>
+
+      <div class="problem not-prose">
+        <p class="label">Problem 5</p>
+        <h3>Mobil-versjon ser annerledes ut enn forventet</h3>
+        <p class="text-zinc-600 text-sm mt-2">Tekst er for stor, knapp er for liten, layout brytes.</p>
+        <div class="fix">
+          <p><strong>Fix:</strong> Si til Claude: <code>På mobil ser [problem-beskrivelse] feil ut. Fiks det uten å endre hvordan det ser ut på PC.</code> Du trenger ikke vite hvordan det gjøres teknisk — Claude vet hvilke innstillinger som styrer mobilvisningen.</p>
+        </div>
+      </div>
+
+      <div class="problem not-prose">
+        <p class="label">Problem 6</p>
+        <h3>Skjema sender ikke til e-post</h3>
+        <p class="text-zinc-600 text-sm mt-2">Brukere fyller ut kontakt-skjema, men du får aldri e-post.</p>
+        <div class="fix">
+          <p><strong>Fix:</strong> Skjemaet må være koblet til en e-post-tjeneste (for eksempel Formspree eller Brevo) for at meldingene skal komme fram. Be Claude: <code>Sjekk at kontakt-skjemaet er riktig koblet opp, så meldingene faktisk sendes til e-posten min.</code> Test gjerne ved å sende et test-skjema til deg selv.</p>
+        </div>
+      </div>
+
+      <div class="problem not-prose">
+        <p class="label">Problem 7</p>
+        <h3>Claude forstår ikke hva jeg vil</h3>
+        <p class="text-zinc-600 text-sm mt-2">Du har bedt om noe, men resultatet er ikke det du tenkte.</p>
+        <div class="fix">
+          <p><strong>Fix:</strong> Vær mer spesifikk. Se modul 09 om effektive prompts. Inkluder: HVOR (hvilken side, hvilken seksjon), HVA (eksakt tekst eller bilde), HVORFOR (kontekst). Hvis du har bilde av hvordan det SKAL se ut, last opp.</p>
+        </div>
+      </div>
+
+      <div class="problem not-prose">
+        <p class="label">Problem 8</p>
+        <h3>Domenet peker ikke til siden</h3>
+        <p class="text-zinc-600 text-sm mt-2">DNS-konfigurasjon er feil — siden er live på Cloudflare, men domenet ditt viser noe annet.</p>
+        <div class="fix">
+          <p><strong>Fix:</strong> Hvis domenet ditt ikke viser den nye siden, er det nesten alltid noe med DNS-innstillingene (det vi gikk gjennom i modul 03 — internettets «adressebok»). Dette er lett å gjøre feil, så her anbefaler vi: kontakt oss, så fikser vi det sammen.</p>
+        </div>
+      </div>
+
+      <div class="problem not-prose">
+        <p class="label">Problem 9</p>
+        <h3>Side er treg å laste</h3>
+        <p class="text-zinc-600 text-sm mt-2">Tar 3+ sekunder å laste siden.</p>
+        <div class="fix">
+          <p><strong>Fix:</strong> Mest sannsynlig: tunge bilder. Be Claude: <code>List alle bilder på siden og deres filstørrelse. Hvilke er over 500 KB?</code> Optimaliser disse (se modul 06). Vil du måle farten, kan du bruke det gratis verktøyet «Google PageSpeed Insights» (søk det opp, lim inn nettadressen din, så får du en fart-score og konkrete tips).</p>
+        </div>
+      </div>
+
+      <div class="problem not-prose">
+        <p class="label">Problem 10</p>
+        <h3>Jeg gjorde noe og hele siden er ødelagt</h3>
+        <p class="text-zinc-600 text-sm mt-2">Endring brakk noe — flere ting fungerer ikke nå.</p>
+        <div class="fix">
+          <p><strong>Fix:</strong> ROLLBACK. To måter: 1) Be Claude <code>Reverter de siste 3 endringene, sett siden tilbake til hvordan den var i går.</code> 2) Cloudflare → siste vellykkede deployment → Rollback. Live om 5 sek. Ingen permanent skade.</p>
+        </div>
+      </div>
+
+      <h2>Når du faktisk trenger oss</h2>
+      <p>Du har AI-nettsider i tier som inkluderer 1 måned gratis support. Etter det:</p>
+      <ul>
+        <li><strong>Sikkerhetsproblemer:</strong> alltid kontakt oss</li>
+        <li><strong>DNS / domene-trøbbel:</strong> ofte behov for ekspert</li>
+        <li><strong>Større layout-endringer:</strong> hvis Claude er fast, kan vi ofte hjelpe på 30 min</li>
+        <li><strong>Oppgraderinger av Astro/Cloudflare:</strong> sjelden, men trenger ekspert</li>
+      </ul>
+
+      <div class="callout">
+        <p>I de neste modulene ser vi på avanserte integrasjoner (modul 12) og hva 100 % eierskap betyr — inkludert hvordan flytte til en helt annen leverandør hvis du vil (modul 13).</p>
+      </div>
+
+    </div>
+  </article>
+
+  <nav class="border-t border-zinc-200 bg-white py-8 px-6">
+    <div class="max-w-3xl mx-auto flex justify-between items-center">
+      <a href="10-publisere" class="text-sm text-zinc-500 hover:text-blue-600 flex items-center gap-2"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>10: Publisere</a>
+      <a href="12-integrasjoner" class="inline-flex items-center gap-2 bg-blue-600 text-white font-semibold px-5 py-3 rounded-lg hover:bg-blue-500 transition-colors text-sm">Modul 12: Integrasjoner<svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+    </div>
+  </nav>
+  <footer class="bg-[#0F172A] text-white py-6 px-6"><div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-sm text-white/40"><div>© 2026 Dietrichs Marketing</div><div>Org.nr 932 612 583</div><div id="kurs-user-info"></div></div></footer>
+</body>
+</html>

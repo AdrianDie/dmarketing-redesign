@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>08: SEO-grunnleggende | AI-nettsider Kurs</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { theme: { extend: { fontFamily: { display: ['Archivo', 'sans-serif'], body: ['Inter', 'sans-serif'] }, colors: { ink: '#09090B', brand: '#2563EB', navy: '#0B1F4A' } } } }</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="../images/favicon.png" rel="shortcut icon" type="image/x-icon" />
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script src="/kurs/auth.js"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #FAFAFA; color: #09090B; }
+    .font-display { font-family: 'Archivo', sans-serif; }
+    .badge { font-family: 'JetBrains Mono', 'Courier New', monospace; }
+    .prose-custom h2 { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 1.875rem; line-height: 1.2; margin-top: 2.5rem; margin-bottom: 1rem; letter-spacing: -0.02em; }
+    .prose-custom h3 { font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 1.25rem; margin-top: 2rem; margin-bottom: 0.75rem; }
+    .prose-custom p { font-size: 1.0625rem; line-height: 1.7; color: #3F3F46; margin-bottom: 1.25rem; }
+    .prose-custom ul, .prose-custom ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+    .prose-custom li { font-size: 1.0625rem; line-height: 1.7; color: #3F3F46; margin-bottom: 0.5rem; }
+    .prose-custom ul li { list-style-type: disc; }
+    .prose-custom ol li { list-style-type: decimal; }
+    .prose-custom strong { color: #09090B; }
+    .prose-custom code { background: #F4F4F5; padding: 0.15rem 0.4rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
+    .callout { background: #EFF6FF; border-left: 3px solid #2563EB; padding: 1.25rem 1.5rem; border-radius: 0.5rem; margin: 1.5rem 0; }
+    .callout p { margin-bottom: 0; color: #1E3A8A; }
+    .prompt-example { background: #F4F4F5; border-radius: 0.5rem; padding: 1rem 1.25rem; margin: 0.75rem 0; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: #18181B; white-space: pre-wrap; }
+    .checklist { background: white; border: 1px solid #E4E4E7; border-radius: 0.75rem; padding: 1.5rem; margin: 1.5rem 0; }
+    .checklist li { margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative; list-style: none !important; }
+    .checklist li::before { content: "✓"; position: absolute; left: 0; color: #16a34a; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <script>window.DIETRICHS_MENU_CONFIG = { basePath: '../' };</script>
+  <script src="../components/dietrichs-menu.js" defer></script>
+
+  <header class="py-14 md:py-20 px-6 border-b border-zinc-100">
+    <div class="max-w-3xl mx-auto">
+      <div class="flex items-center gap-3 mb-5">
+        <a href="./" class="text-xs font-semibold uppercase tracking-widest text-zinc-500 hover:text-blue-600">← Alle moduler</a>
+        <span class="text-zinc-300">/</span>
+        <span class="badge text-xs text-zinc-400">MODUL 08</span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-blue-600">Drift</span>
+      </div>
+      <h1 class="font-display font-extrabold text-4xl md:text-6xl tracking-[-0.03em] text-ink leading-[1.05] mb-5">
+        SEO-grunnleggende
+      </h1>
+      <p class="text-lg md:text-xl text-zinc-600 leading-relaxed">
+        Title, meta-description, overskrifter, sitemap. Hva er nok for å bli funnet på Google?
+      </p>
+    </div>
+  </header>
+
+
+  <article class="px-6 py-12 md:py-16">
+    <div class="max-w-3xl mx-auto prose-custom">
+
+      <div class="callout">
+        <p><strong>Forklart enkelt: Hva er SEO?</strong> SEO står for "Search Engine Optimization" — søkemotoroptimalisering. På vanlig norsk: alt du gjør for at nettsiden din skal dukke høyere opp når folk googler etter det du tilbyr. Jo bedre SEO, jo flere finner deg gratis via Google. Møter du et ord du ikke kjenner i denne modulen, slå det opp i <a href="ordliste" class="text-blue-600 underline">ordlisten</a>.</p>
+      </div>
+
+      <h2>Det viktigste først</h2>
+      <p>SEO på 5 minutter:</p>
+      <ol>
+        <li>Hver side har en god <strong>title</strong> (den klikkbare blå tittelen i Google) — under 60 tegn</li>
+        <li>Hver side har en god <strong>meta-description</strong> (den lille teksten under tittelen i Google) — under 160 tegn</li>
+        <li>Hver side har én <strong>H1</strong> — den aller største overskriften øverst, altså hovedtittelen på siden</li>
+        <li>Bilder har <strong>alt-tekst</strong> (en kort tekst som beskriver bildet)</li>
+        <li>Sitemap finnes — det lages helt automatisk, du trenger ikke gjøre noe</li>
+      </ol>
+      <p>Hvis du har de fem, er du i topp 30 % av norske småbedrifter på SEO-grunnlag.</p>
+
+      <h2>Title — det viktigste</h2>
+      <p>Title er det Google viser som klikkbar lenke i søkeresultatet. Den skal:</p>
+      <ul>
+        <li>Inneholde det viktigste søkeordet ditt (f.eks. "rørlegger Stavanger")</li>
+        <li>Beskrive konkret hva siden tilbyr</li>
+        <li>Være under 60 tegn (ellers kuttes den i Google)</li>
+        <li>Være unik per side (ikke samme tittel på alle)</li>
+      </ul>
+
+      <p>Bra titler:</p>
+      <ul>
+        <li>"Rørlegger Stavanger — 24/7 vakt og fastpris | RørFix AS"</li>
+        <li>"Akutt rørleggervakt døgnet rundt — RørFix Stavanger"</li>
+      </ul>
+
+      <p>Dårlige titler:</p>
+      <ul>
+        <li>"Velkommen" (sier ingenting)</li>
+        <li>"Hjem" (sier ingenting)</li>
+        <li>"RørFix - Den beste rørleggeren i hele verden, super-rask, fastpris..." (for lang)</li>
+      </ul>
+
+      <h2>Meta-description — det andre du leser i Google</h2>
+      <p>Meta-description er teksten under tittelen i Google. Selv om det ikke direkte rangerer, øker en god description klikk-raten din.</p>
+      <ul>
+        <li>Under 160 tegn</li>
+        <li>Inkluder en CTA ("Ring nå", "Be om tilbud", "Sjekk åpningstider")</li>
+        <li>Skriv som om det er en mini-annonse</li>
+      </ul>
+
+      <p>Bra eksempler:</p>
+      <ul>
+        <li>"Akutt rørlegger i Stavanger? Vi rykker ut innen 30 min, døgnet rundt. Fastpris, garantert ærlig. Ring 99 88 77 66."</li>
+      </ul>
+
+      <h2>Slik be Claude SEO-optimalisere en side</h2>
+      <div class="prompt-example">SEO-optimaliser tjenester-siden:
+
+1. Sjekk at title er under 60 tegn og inneholder "rørlegger Stavanger"
+2. Foreslå en bedre meta-description (under 160 tegn) som inkluderer CTA
+3. Sjekk at det er KUN én H1 på siden, og at den er hovedbudskapet
+4. Sjekk at alle bilder har alt-tekst
+5. Foreslå 2-3 forbedringer i selve teksten for SEO
+
+Vis meg forslag før du publiserer.</div>
+
+      <p><strong>Hvorfor bare én H1?</strong> Google bruker den ene store overskriften (H1) til å forstå hva siden handler om. Har du flere, blir det uklart hva som er hovedbudskapet — derfor bør det være nøyaktig én per side. Resten av overskriftene blir mindre (H2, H3) og fungerer som underoverskrifter.</p>
+
+      <h2>Lokal SEO (viktigst for håndverkere/lokale tjenester)</h2>
+      <p>Hvis du opererer i et bestemt område, er <strong>lokal SEO</strong> nøkkelen:</p>
+      <ul>
+        <li><strong>Google Business Profile</strong> (gratis bedriftsside hos Google, lager du på <code>business.google.com</code>) — kommer ikke fra nettsiden, men er tett koblet til</li>
+        <li><strong>Samme firmainfo over alt:</strong> sørg for at firmanavn, adresse og telefonnummer står HELT likt på nettsiden, Google Business, Facebook, gulesider.no og lignende. Google blir forvirret hvis det er små forskjeller. (Fagfolk kaller dette "NAP-konsistens" — Navn, Adresse, Telefon.)</li>
+        <li><strong>Stedsnavn i title</strong> ("Rørlegger Stavanger" — ikke bare "Rørlegger")</li>
+        <li><strong>Bygg inn Google Maps</strong> på kontakt-siden (modul 12)</li>
+      </ul>
+
+      <h2>Innhold som rangerer</h2>
+      <p>Google liker:</p>
+      <ul>
+        <li><strong>Lengde:</strong> minst 300 ord per "viktig" side, helst 800–1500 for blogg-innlegg</li>
+        <li><strong>Originalitet:</strong> ikke kopier fra konkurrenter</li>
+        <li><strong>Faktiske svar:</strong> hva koster det? Hvor lang tid? Hvor er dere?</li>
+        <li><strong>Oppdateringer:</strong> sider som oppdateres en gang i blant rangerer bedre enn statiske</li>
+      </ul>
+
+      <h2>SEO-sjekkliste per side</h2>
+      <ul class="checklist not-prose">
+        <li>Title under 60 tegn med viktigste søkeord</li>
+        <li>Meta-description under 160 tegn med CTA</li>
+        <li>Én H1 per side</li>
+        <li>Alle bilder har alt-tekst</li>
+        <li>Lenker bruker meningsfull tekst (ikke "klikk her")</li>
+        <li>Nettadressen er kort og beskrivende (<code>/rorlegger-stavanger</code>, ikke <code>/page?id=23</code>) — altså en adresse et menneske kan lese, ikke en med rare tegn og tall</li>
+        <li>Mobil-vennlig — fungerer like fint på telefon som på PC (allerede innebygd for deg)</li>
+        <li>Lastes raskt (allerede tatt hånd om for deg)</li>
+      </ul>
+
+      <div class="callout">
+        <p><strong>Pro-tips:</strong> Ikke obsess over SEO de første månedene. Fokuser på godt innhold som faktisk hjelper kundene dine. Google er dyktig på å belønne det.</p>
+      </div>
+
+    </div>
+  </article>
+
+  <nav class="border-t border-zinc-200 bg-white py-8 px-6">
+    <div class="max-w-3xl mx-auto flex justify-between items-center">
+      <a href="07-ny-side" class="text-sm text-zinc-500 hover:text-blue-600 flex items-center gap-2"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>07: Lage ny side</a>
+      <a href="09-prompts" class="inline-flex items-center gap-2 bg-blue-600 text-white font-semibold px-5 py-3 rounded-lg hover:bg-blue-500 transition-colors text-sm">Modul 09: AI-prompts<svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+    </div>
+  </nav>
+  <footer class="bg-[#0F172A] text-white py-6 px-6"><div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-sm text-white/40"><div>© 2026 Dietrichs Marketing</div><div>Org.nr 932 612 583</div><div id="kurs-user-info"></div></div></footer>
+</body>
+</html>

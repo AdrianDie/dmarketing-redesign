@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>10: Publisere endringer | AI-nettsider Kurs</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { theme: { extend: { fontFamily: { display: ['Archivo', 'sans-serif'], body: ['Inter', 'sans-serif'] }, colors: { ink: '#09090B', brand: '#2563EB', navy: '#0B1F4A' } } } }</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="../images/favicon.png" rel="shortcut icon" type="image/x-icon" />
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script src="/kurs/auth.js"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #FAFAFA; color: #09090B; }
+    .font-display { font-family: 'Archivo', sans-serif; }
+    .badge { font-family: 'JetBrains Mono', 'Courier New', monospace; }
+    .prose-custom h2 { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 1.875rem; line-height: 1.2; margin-top: 2.5rem; margin-bottom: 1rem; letter-spacing: -0.02em; }
+    .prose-custom h3 { font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 1.25rem; margin-top: 2rem; margin-bottom: 0.75rem; }
+    .prose-custom p { font-size: 1.0625rem; line-height: 1.7; color: #3F3F46; margin-bottom: 1.25rem; }
+    .prose-custom ul, .prose-custom ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+    .prose-custom li { font-size: 1.0625rem; line-height: 1.7; color: #3F3F46; margin-bottom: 0.5rem; }
+    .prose-custom ul li { list-style-type: disc; }
+    .prose-custom ol li { list-style-type: decimal; }
+    .prose-custom strong { color: #09090B; }
+    .prose-custom code { background: #F4F4F5; padding: 0.15rem 0.4rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
+    .callout { background: #EFF6FF; border-left: 3px solid #2563EB; padding: 1.25rem 1.5rem; border-radius: 0.5rem; margin: 1.5rem 0; }
+    .callout p { margin-bottom: 0; color: #1E3A8A; }
+    .callout-warn { background: #FEF3C7; border-left-color: #D97706; }
+    .callout-warn p { color: #78350F; }
+    .callout-ok { background: #F0FDF4; border-left-color: #16A34A; }
+    .callout-ok p { color: #14532D; }
+    .svg-wrap { width: 100%; max-width: 600px; margin: 1.5rem auto; }
+    .svg-wrap svg { width: 100%; height: auto; display: block; }
+    .flow-step { display: flex; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid #F4F4F5; }
+    .flow-step:last-child { border-bottom: none; }
+    .flow-num { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 1.25rem; color: #2563EB; line-height: 1; flex-shrink: 0; width: 2rem; }
+    .flow-content h3 { margin-top: 0 !important; margin-bottom: 0.25rem !important; font-size: 1rem !important; }
+    .flow-content p { font-size: 0.95rem !important; margin-bottom: 0 !important; }
+  </style>
+</head>
+<body>
+  <script>window.DIETRICHS_MENU_CONFIG = { basePath: '../' };</script>
+  <script src="../components/dietrichs-menu.js" defer></script>
+
+  <header class="py-14 md:py-20 px-6 border-b border-zinc-100">
+    <div class="max-w-3xl mx-auto">
+      <div class="flex items-center gap-3 mb-5">
+        <a href="./" class="text-xs font-semibold uppercase tracking-widest text-zinc-500 hover:text-blue-600">← Alle moduler</a>
+        <span class="text-zinc-300">/</span>
+        <span class="badge text-xs text-zinc-400">MODUL 10</span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-blue-600">Drift</span>
+      </div>
+      <h1 class="font-display font-extrabold text-4xl md:text-6xl tracking-[-0.03em] text-ink leading-[1.05] mb-5">
+        Publisere endringer
+      </h1>
+      <p class="text-lg md:text-xl text-zinc-600 leading-relaxed">
+        Hvordan en endring havner ute på nettsiden helt av seg selv — og hva du gjør i de sjeldne tilfellene noe går galt.
+      </p>
+    </div>
+  </header>
+
+
+  <article class="px-6 py-12 md:py-16">
+    <div class="max-w-3xl mx-auto prose-custom">
+
+      <div class="callout">
+        <p><strong>Det korte svaret:</strong> du gjør ingenting. Når Claude har gjort en endring, går den helt av seg selv ut på nettsiden din i løpet av rundt halvannet minutt. Du trenger ikke trykke "publiser", lagre eller lære deg noe teknisk. Møter du et ord du ikke kjenner, kan du alltid slå det opp i <a href="ordliste" class="text-blue-600 underline">ordlisten</a>.</p>
+      </div>
+
+      <h2>Slik går en endring fra chat til ferdig nettside</h2>
+      <p>Fra du sier hva du vil i chatten, til det er ute på nett — slik ser hele reisen ut:</p>
+
+      <div class="svg-wrap">
+        <svg viewBox="0 0 600 230" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Tidslinje: chat, lagre, bygge, live — hele veien tar omtrent 90 sekunder.">
+          <!-- Timeline base line -->
+          <line x1="70" y1="115" x2="530" y2="115" stroke="#E4E4E7" stroke-width="3" />
+          <line x1="70" y1="115" x2="530" y2="115" stroke="#2563EB" stroke-width="3" stroke-dasharray="2 0" opacity="0.25" />
+
+          <!-- Step 1: Chat -->
+          <g>
+            <circle cx="70" cy="115" r="13" fill="#2563EB" />
+            <path d="M64 110 h11 a2.5 2.5 0 0 1 2.5 2.5 v5 a2.5 2.5 0 0 1 -2.5 2.5 h-7 l-4 3 v-3 a2.5 2.5 0 0 1 -2.5 -2.5 v-5 a2.5 2.5 0 0 1 2.5 -2.5 z" fill="#FFFFFF" />
+            <text x="70" y="152" text-anchor="middle" font-size="13" font-weight="700" fill="#09090B">Chat</text>
+            <text x="70" y="170" text-anchor="middle" font-size="10.5" fill="#71717A">du sier det</text>
+          </g>
+
+          <!-- Step 2: Lagre -->
+          <g>
+            <circle cx="223" cy="115" r="13" fill="#2563EB" />
+            <rect x="216" y="108" width="14" height="14" rx="2.5" fill="#FFFFFF" />
+            <rect x="219" y="108" width="8" height="5" fill="#2563EB" />
+            <rect x="219.5" y="116" width="7" height="4.5" rx="1" fill="#2563EB" />
+            <text x="223" y="152" text-anchor="middle" font-size="13" font-weight="700" fill="#09090B">Lagre</text>
+            <text x="223" y="170" text-anchor="middle" font-size="10.5" fill="#71717A">Claude lagrer</text>
+          </g>
+
+          <!-- Step 3: Bygge -->
+          <g>
+            <circle cx="377" cy="115" r="13" fill="#2563EB" />
+            <g fill="#FFFFFF">
+              <circle cx="377" cy="115" r="6.5" />
+            </g>
+            <circle cx="377" cy="115" r="2.6" fill="#2563EB" />
+            <g stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round">
+              <line x1="377" y1="105" x2="377" y2="108.5" />
+              <line x1="377" y1="121.5" x2="377" y2="125" />
+              <line x1="367" y1="115" x2="370.5" y2="115" />
+              <line x1="383.5" y1="115" x2="387" y2="115" />
+            </g>
+            <text x="377" y="152" text-anchor="middle" font-size="13" font-weight="700" fill="#09090B">Bygge</text>
+            <text x="377" y="170" text-anchor="middle" font-size="10.5" fill="#71717A">automatisk</text>
+          </g>
+
+          <!-- Step 4: Live -->
+          <g>
+            <circle cx="530" cy="115" r="15" fill="#16A34A" />
+            <path d="M523 115 l4.5 4.5 8 -9" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+            <text x="530" y="153" text-anchor="middle" font-size="13" font-weight="700" fill="#09090B">Live</text>
+            <text x="530" y="171" text-anchor="middle" font-size="10.5" fill="#16A34A">ute på nett</text>
+          </g>
+
+          <!-- ~90 sekunder bracket -->
+          <path d="M70 78 v-8 h460 v8" fill="none" stroke="#0B1F4A" stroke-width="1.5" />
+          <rect x="245" y="48" width="110" height="26" rx="13" fill="#0B1F4A" />
+          <text x="300" y="65" text-anchor="middle" font-size="12.5" font-weight="700" fill="#FFFFFF">~90 sekunder</text>
+
+          <!-- footer note -->
+          <text x="300" y="206" text-anchor="middle" font-size="11.5" fill="#71717A">Du venter ikke på noen. Det skjer av seg selv mens du tar en slurk kaffe.</text>
+        </svg>
+      </div>
+
+      <p>Total tid: <strong>30 sekunder til ~2 minutter</strong>, avhengig av hvor stor endringen er. Mens dette skjer kan du bare lukke chatten og gå videre — Claude trenger deg ikke for resten.</p>
+
+      <h2>Det som skjer bak kulissene</h2>
+
+      <div class="callout">
+        <p><strong>Dette trenger du IKKE å lese for å bruke nettsiden.</strong> Det er bare for de nysgjerrige som vil vite hva som egentlig skjer bak kulissene. Vil du heller hoppe over teknikken, gå rett til <a href="#hvis-bygget-feiler" class="text-blue-600 underline">«Hvis bygget feiler»</a> eller <a href="#rollback" class="text-blue-600 underline">«Gå tilbake til forrige versjon»</a> lenger ned.</p>
+      </div>
+
+      <p>For deg som vil titte under panseret: her er de fire stegene, forklart i klartekst.</p>
+
+      <div class="not-prose bg-white border border-zinc-200 rounded-2xl p-6 my-6">
+        <div class="flow-step">
+          <div class="flow-num">1</div>
+          <div class="flow-content">
+            <h3>Claude lagrer endringen</h3>
+            <p class="text-zinc-600">Claude lagrer endringen og sender den opp til GitHub — den private mappen på nett der alle filene til nettsiden din ligger samlet. (Utviklere kaller dette å «committe» — lagre en versjon — og «pushe» — sende den opp til GitHub. Men du trenger aldri å gjøre det selv.)</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">2</div>
+          <div class="flow-content">
+            <h3>GitHub tar imot</h3>
+            <p class="text-zinc-600">Endringen lagres på din konto som ett nytt steg. Hvert slikt steg kalles en «commit» — tenk på det som et bilde av nettsiden på et bestemt tidspunkt. GitHub husker hvert eneste, så du kan alltid gå tilbake.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">3</div>
+          <div class="flow-content">
+            <h3>Cloudflare får automatisk beskjed</h3>
+            <p class="text-zinc-600">Cloudflare (datamaskinene som viser fram nettsiden din til besøkende) får automatisk vite at det finnes en ny versjon. Ingen knapp å trykke.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">4</div>
+          <div class="flow-content">
+            <h3>Nettsiden bygges og blir live</h3>
+            <p class="text-zinc-600">Maskinen setter automatisk sammen alle bitene — tekst, bilder og design — til de ferdige sidene folk ser. Dette kalles å «bygge», og tar ~30–60 sekunder. Så kopieres siden til hundrevis av datamaskiner verden rundt, så den laster lynraskt uansett hvor besøkeren bor.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>Hvor du kan se status</h2>
+
+      <p>Du <em>kan</em> selv se at en endring er på vei ut, hvis du vil. Men du <em>må</em> ikke — alt går av seg selv.</p>
+
+      <h3>Cloudflare-oversikten</h3>
+      <p>Logg inn på <code>dash.cloudflare.com</code> → Pages → prosjektet ditt. Dette er en oversiktsside (et «dashboard») der du ser hver gang nettsiden har blitt oppdatert:</p>
+      <ul>
+        <li>En liste over alle oppdateringer. I Cloudflare-menyen heter de «deployments» — du kan tenke «publisering» (at en ny versjon av siden legges ut).</li>
+        <li>Status på hver: <strong>«Building»</strong> (holder på), <strong>«Success»</strong> (gikk bra) eller <strong>«Failed»</strong> (noe gikk galt).</li>
+        <li>Hvor lang tid hver oppdatering tok.</li>
+      </ul>
+
+      <h3>Historikken på GitHub</h3>
+      <p>På din GitHub-side finner du en liste over hver eneste endring som er gjort på nettsiden. Hvert steg (en «commit») har en kort beskrivelse av hva som ble endret (Claude skriver disse selv), klokkeslett, og hvilke filer det gjaldt. Fint hvis du vil bla tilbake og se hva som skjedde når.</p>
+
+      <h2 id="hvis-bygget-feiler">Hvis bygget feiler</h2>
+      <p>Noen ganger klarer ikke maskinen å sette sammen siden — da sier vi at «bygget feilet». Cloudflare gir deg en feilmelding. Du trenger ikke forstå den; bare lim den inn til Claude, så ordner Claude resten. De vanligste er:</p>
+
+      <h3>«Cannot find module»</h3>
+      <p>En liten byggekloss mangler. Si til Claude: <em>«Bygget feilet med 'cannot find module' — kan du fikse det?»</em> Claude legger den manglende biten på plass og prøver igjen.</p>
+
+      <h3>«Syntax error»</h3>
+      <p>Claude kom i skade for å skrive noe som ikke var helt riktig. Si til Claude: <em>«Bygget feilet med en syntax error — se på filen og rett den.»</em></p>
+
+      <div class="callout callout-ok">
+        <p><strong>Bra nytt:</strong> hvis et bygg feiler, går nettsiden din <strong>IKKE</strong> ned. Den siste versjonen som fungerte blir liggende ute helt til en ny versjon er ferdig og godkjent. Du kan prøve igjen så mange ganger du vil — besøkende merker ingenting.</p>
+      </div>
+
+      <h2 id="rollback">Gå tilbake til forrige versjon</h2>
+      <p>Angret du på en endring? Det er to enkle måter å skru tiden tilbake på:</p>
+
+      <h3>Måte 1: Be Claude angre</h3>
+      <p>Si rett og slett: <em>«Angre den siste endringen.»</em> Siden går tilbake til slik den var før, på under et minutt. Ingen varig skade.</p>
+
+      <h3>Måte 2: Cloudflares «angre»-knapp</h3>
+      <p>Inne i Cloudflare-oversikten finner du den forrige versjonen som fungerte, og klikker <strong>«Rollback to this deployment»</strong> (= «gå tilbake til denne versjonen»). Siden er tilbake på ca. 5 sekunder. Praktisk hvis du raskt vil teste om noe gikk galt.</p>
+
+      <h2>«Jeg ser jo ikke endringen min!»</h2>
+      <p>Noen ganger ser nettsiden lik ut selv etter at endringen er live. Som regel er det fordi <strong>din egen nettleser viser deg en gammel, husket versjon</strong> for å spare tid. (Det kalles «cache» — at nettleseren husker siden fra sist.) Selve nettsiden er allerede oppdatert for alle andre.</p>
+
+      <p>Slik tvinger du fram den nyeste versjonen med en gang:</p>
+      <ul>
+        <li>Trykk <strong>Ctrl + Shift + R</strong> (Windows) eller <strong>Cmd + Shift + R</strong> (Mac) samtidig. Dette henter siden helt på nytt.</li>
+        <li>Eller åpne siden i et privat / inkognito-vindu.</li>
+        <li>Eller legg til <code>?nocache=1</code> helt bakerst i nettadressen (f.eks. <code>dittfirma.no/?nocache=1</code>) — det lurer nettleseren til å hente den ferskeste versjonen.</li>
+      </ul>
+
+      <h2>Hvis du vil prøve noe uten å gjøre det offentlig</h2>
+      <p>Noen ganger vil du teste en idé før den vises for alle. Da kan du be Claude lage en <strong>privat test-versjon</strong> av siden som bare du ser — den blir ikke offentlig før du gir grønt lys.</p>
+      <ul>
+        <li>Si til Claude: <em>«Lag denne siden som en privat forhåndsvisning først — ikke publiser den ennå.»</em></li>
+        <li>Claude gir deg en egen lenke du kan åpne og se på i fred. Liker du det, sier du bare ifra, så blir det live.</li>
+      </ul>
+
+      <div class="callout">
+        <p>I neste modul går vi gjennom de mest vanlige problemene du møter i drift, og hvordan du løser dem på 5 minutter.</p>
+      </div>
+
+    </div>
+  </article>
+
+  <nav class="border-t border-zinc-200 bg-white py-8 px-6">
+    <div class="max-w-3xl mx-auto flex justify-between items-center">
+      <a href="09-prompts" class="text-sm text-zinc-500 hover:text-blue-600 flex items-center gap-2"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>09: AI-prompts</a>
+      <a href="11-feilsoking" class="inline-flex items-center gap-2 bg-blue-600 text-white font-semibold px-5 py-3 rounded-lg hover:bg-blue-500 transition-colors text-sm">Modul 11: Feilsøking<svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+    </div>
+  </nav>
+  <footer class="bg-[#0F172A] text-white py-6 px-6"><div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-sm text-white/40"><div>© 2026 Dietrichs Marketing</div><div>Org.nr 932 612 583</div><div id="kurs-user-info"></div></div></footer>
+</body>
+</html>

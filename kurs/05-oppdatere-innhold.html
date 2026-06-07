@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>05: Oppdatere tekst og innhold | AI-nettsider Kurs</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { theme: { extend: { fontFamily: { display: ['Archivo', 'sans-serif'], body: ['Inter', 'sans-serif'] }, colors: { ink: '#09090B', brand: '#2563EB', navy: '#0B1F4A' } } } }</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="../images/favicon.png" rel="shortcut icon" type="image/x-icon" />
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script src="/kurs/auth.js"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #FAFAFA; color: #09090B; }
+    .font-display { font-family: 'Archivo', sans-serif; }
+    .badge { font-family: 'JetBrains Mono', 'Courier New', monospace; }
+    .prose-custom h2 { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 1.875rem; line-height: 1.2; margin-top: 2.5rem; margin-bottom: 1rem; letter-spacing: -0.02em; }
+    .prose-custom h3 { font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 1.25rem; margin-top: 2rem; margin-bottom: 0.75rem; }
+    .prose-custom p { font-size: 1.0625rem; line-height: 1.7; color: #3F3F46; margin-bottom: 1.25rem; }
+    .prose-custom ul, .prose-custom ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+    .prose-custom li { font-size: 1.0625rem; line-height: 1.7; color: #3F3F46; margin-bottom: 0.5rem; }
+    .prose-custom ul li { list-style-type: disc; }
+    .prose-custom ol li { list-style-type: decimal; }
+    .prose-custom strong { color: #09090B; }
+    .prose-custom code { background: #F4F4F5; padding: 0.15rem 0.4rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
+    .callout { background: #EFF6FF; border-left: 3px solid #2563EB; padding: 1.25rem 1.5rem; border-radius: 0.5rem; margin: 1.5rem 0; }
+    .callout p { margin-bottom: 0; color: #1E3A8A; }
+    .callout-warn { background: #FEF3C7; border-left-color: #D97706; }
+    .callout-warn p { color: #78350F; }
+    .callout-ok { background: #F0FDF4; border-left-color: #16A34A; }
+    .callout-ok p { color: #14532D; }
+    .prompt-example { background: #F4F4F5; border-radius: 0.5rem; padding: 1rem 1.25rem; margin: 0.75rem 0; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: #18181B; }
+  </style>
+</head>
+<body>
+  <script>window.DIETRICHS_MENU_CONFIG = { basePath: '../' };</script>
+  <script src="../components/dietrichs-menu.js" defer></script>
+
+  <header class="py-14 md:py-20 px-6 border-b border-zinc-100">
+    <div class="max-w-3xl mx-auto">
+      <div class="flex items-center gap-3 mb-5">
+        <a href="./" class="text-xs font-semibold uppercase tracking-widest text-zinc-500 hover:text-blue-600">← Alle moduler</a>
+        <span class="text-zinc-300">/</span>
+        <span class="badge text-xs text-zinc-400">MODUL 05</span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-blue-600">Daglig bruk</span>
+      </div>
+      <h1 class="font-display font-extrabold text-4xl md:text-6xl tracking-[-0.03em] text-ink leading-[1.05] mb-5">
+        Oppdatere tekst og innhold
+      </h1>
+      <p class="text-lg md:text-xl text-zinc-600 leading-relaxed">
+        Endre overskrifter, brødtekst, åpningstider, telefon, priser. 90 % av oppdateringer er av denne typen.
+      </p>
+    </div>
+  </header>
+
+
+  <article class="px-6 py-12 md:py-16">
+    <div class="max-w-3xl mx-auto prose-custom">
+
+      <div class="callout">
+        <p><strong>Forklart enkelt: noen ord vi bruker.</strong> I denne modulen møter du fire ord fra «nettside-verdenen». Her er de på vanlig norsk:</p>
+        <ul style="margin-top:0.75rem;">
+          <li><strong>Hero</strong> = det store toppfeltet øverst på forsiden — det første folk ser, ofte med et stort bilde og en stor overskrift. (Vi sier også «toppbanner».)</li>
+          <li><strong>H1</strong> = den aller største overskriften øverst på siden, altså hovedtittelen. (H2 og H3 er mindre underoverskrifter.)</li>
+          <li><strong>Footer</strong> = bunnfeltet helt nederst på siden, der kontaktinfo og «© firmanavn» ofte står. (Vi sier også «bunnen».)</li>
+          <li><strong>CTA</strong> = en handlingsknapp som «Ring nå» eller «Bestill tid». (Står for «call to action», men du kan bare tenke «handlingsknapp».)</li>
+        </ul>
+        <p style="margin-top:0.75rem;">Du trenger ikke pugge disse — du kan alltid bare skrive «den store overskriften øverst» eller «knappen» til Claude, så skjønner den det. Møter du flere ord du ikke kjenner, slå dem opp i <a href="ordliste" class="text-blue-600 underline">ordlisten</a>.</p>
+      </div>
+
+      <h2>Tre regler for gode prompts</h2>
+      <ol>
+        <li><strong>Vær konkret om HVOR.</strong> "Endre teksten på forsiden" er upresist. "Endre H1-overskriften på forsiden, der det står 'Velkommen'" er bra.</li>
+        <li><strong>Vær konkret om HVA.</strong> Skriv den NYE teksten i prompten. Ikke be Claude finne på den selv (med mindre du vil ha forslag).</li>
+        <li><strong>Si BEKREFTELSE før publisering.</strong> Vil du se forslag før det går live? Si: <code>vis meg endringen først, ikke publiser</code>.</li>
+      </ol>
+
+      <h2>Eksempel-prompts som fungerer</h2>
+
+      <h3>Endre tekst</h3>
+      <div class="prompt-example">Endre overskriften på forsiden fra "Velkommen til oss" til "Norges raskeste rørlegger i [By]"</div>
+
+      <h3>Endre kontaktinfo</h3>
+      <div class="prompt-example">Bytt telefonnummeret i footer fra 12 34 56 78 til 99 88 77 66. Sjekk om det står andre steder også.</div>
+
+      <h3>Endre åpningstider</h3>
+      <div class="prompt-example">Oppdater åpningstidene på kontakt-siden:
+Mandag–torsdag 08–16
+Fredag 08–14
+Lørdag stengt</div>
+
+      <h3>Endre priser</h3>
+      <div class="prompt-example">Bytt prisen på "Service-pakke Standard" fra 1 990 kr til 2 290 kr. Husk å sjekke om prisen står på flere steder (footer, prislister, FAQ).</div>
+
+      <h2>Slik fungerer flyten</h2>
+      <ol>
+        <li>Du sender prompten i Claude</li>
+        <li>Claude leser sidene og finner alle steder der teksten står</li>
+        <li>Claude svarer med en oppsummering: "Jeg vil endre disse 3 stedene: ..."</li>
+        <li>Du svarer enten <code>godkjent</code> eller <code>nei, bare det første stedet</code></li>
+        <li>Claude lagrer, Cloudflare bygger, live på 30–90 sek</li>
+      </ol>
+
+      <div class="callout">
+        <p><strong>Pro-tips:</strong> Hvis Claude finner teksten på 5 ulike steder, betyr det ofte at du har inkonsistens i innholdet. Be Claude oppsummere ALLE forekomster så du kan rydde i én slynge.</p>
+      </div>
+
+      <h2>Hvor finner jeg hvilken tekst</h2>
+      <p>Du trenger ikke huske dette — Claude finner det selv. Men hvis du vil ha en grov oversikt:</p>
+      <ul>
+        <li><strong>Hero-tekst</strong> (teksten i toppfeltet): alltid på forsiden</li>
+        <li><strong>Tjenestebeskrivelser:</strong> tjenester-siden, ofte også på forsiden</li>
+        <li><strong>Åpningstider:</strong> kontakt-siden + ofte i footer (bunnen)</li>
+        <li><strong>Telefonnummer:</strong> footer (bunnen) på alle sider, handlingsknappen øverst (hero-CTA), kontakt-siden</li>
+        <li><strong>Priser:</strong> ofte på flere steder — alltid be Claude sjekke alt</li>
+      </ul>
+
+      <h2>Vanlige feil</h2>
+
+      <h3>Du ber om endring, men teksten finnes flere steder</h3>
+      <p>Hvis du sier "endre 'Velkommen' til 'Hei'" og Claude finner ordet 30 ganger på siden, blir det rot. Vær mer spesifikk: "Endre H1-overskriften på forsiden ..." eller gi mer kontekst.</p>
+
+      <h3>Du glemmer å nevne mobile-versjon</h3>
+      <p>De fleste tekster er like på desktop (vanlig PC- eller Mac-skjerm) og mobil, men noen ganger har de ulik formulering for å spare plass. Hvis du vil endre begge, si: <code>... gjelder begge versjoner (desktop og mobil)</code>.</p>
+
+      <h3>Du publiserer noe du ikke ville</h3>
+      <p>Si til Claude: <code>angre den siste endringen</code>. Siden går tilbake til slik den var før, på rundt 30 sekunder. Ingen permanent skade — du kan alltid angre.</p>
+
+      <div class="callout">
+        <p>I neste modul ser vi på det andre du oppdaterer ofte: bilder.</p>
+      </div>
+
+    </div>
+  </article>
+
+  <nav class="border-t border-zinc-200 bg-white py-8 px-6">
+    <div class="max-w-3xl mx-auto flex justify-between items-center">
+      <a href="04-komme-i-gang" class="text-sm text-zinc-500 hover:text-blue-600 flex items-center gap-2"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>04: Komme i gang</a>
+      <a href="06-bytte-bilder" class="inline-flex items-center gap-2 bg-blue-600 text-white font-semibold px-5 py-3 rounded-lg hover:bg-blue-500 transition-colors text-sm">Modul 06: Bytte bilder<svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+    </div>
+  </nav>
+  <footer class="bg-[#0F172A] text-white py-6 px-6"><div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-sm text-white/40"><div>© 2026 Dietrichs Marketing</div><div>Org.nr 932 612 583</div><div id="kurs-user-info"></div></div></footer>
+</body>
+</html>
