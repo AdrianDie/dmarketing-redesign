@@ -103,6 +103,16 @@
         <p><strong>Slapp av — du trenger ikke pugge noe av dette.</strong> Du klarer deg fint i kurset uten å kunne et eneste av disse ordene utenat. Denne siden er bare her hvis du blir nysgjerrig eller møter et ord underveis og tenker «hva betyr egentlig det?».</p>
       </div>
 
+      <!-- Search -->
+      <div class="mb-8 relative">
+        <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-400 pointer-events-none" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input id="ordliste-search" type="text" placeholder="Søk etter et ord…" autocomplete="off"
+          style="width:100%;padding:12px 16px 12px 40px;background:white;border:1.5px solid #E4E4E7;border-radius:12px;font-size:14px;font-family:Inter,sans-serif;color:#09090B;outline:none;transition:border-color 0.15s,box-shadow 0.15s;"
+          onfocus="this.style.borderColor='#2563EB';this.style.boxShadow='0 0 0 3px rgba(37,99,235,0.12)'"
+          onblur="this.style.borderColor='#E4E4E7';this.style.boxShadow='none'" />
+      </div>
+      <p id="ordliste-empty" class="hidden text-center text-zinc-500 text-sm py-8">Ingen ord funnet for «<span id="ordliste-query"></span>».</p>
+
       <div class="term-grid">
 
         <!-- AI -->
@@ -399,5 +409,28 @@
   </nav>
 
   <footer class="bg-[#0F172A] text-white py-6 px-6"><div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-sm text-white/40"><div>© 2026 Dietrichs Marketing</div><div>Org.nr 932 612 583</div><div id="kurs-user-info"></div></div></footer>
+
+  <script>
+    (function () {
+      var input = document.getElementById('ordliste-search');
+      var empty = document.getElementById('ordliste-empty');
+      var querySpan = document.getElementById('ordliste-query');
+      var cards = document.querySelectorAll('.term-card');
+      if (!input) return;
+      input.addEventListener('input', function () {
+        var q = this.value.trim().toLowerCase();
+        var visible = 0;
+        cards.forEach(function (card) {
+          var name = (card.querySelector('.term-name') || {}).textContent || '';
+          var def  = (card.querySelector('.term-def')  || {}).textContent || '';
+          var hit  = !q || (name + ' ' + def).toLowerCase().includes(q);
+          card.style.display = hit ? '' : 'none';
+          if (hit) visible++;
+        });
+        querySpan.textContent = this.value;
+        empty.classList.toggle('hidden', visible > 0 || !q);
+      });
+    })();
+  </script>
 </body>
 </html>
