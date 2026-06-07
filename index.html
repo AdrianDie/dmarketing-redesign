@@ -93,6 +93,12 @@
       }
     }
   </style>
+  <!-- Netlify Identity: håndterer invite/confirm-lenker fra epost -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    netlifyIdentity.on('invite', function() { window.location.replace('/kurs/login'); });
+    netlifyIdentity.on('login', function() { window.location.replace('/kurs/'); });
+  </script>
 </head>
 <body class="body-3">
   <div style="display:flex" class="preloader-wrapper">
