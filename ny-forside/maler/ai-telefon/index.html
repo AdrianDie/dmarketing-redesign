@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI-telefonsvarer for håndverksbedrifter — Dietrichs Marketing</title>
+  <meta name="description" content="Mist aldri en jobb fordi du er opptatt. AI-telefonsvarer som tar samtaler, kvalifiserer kunder og booker direkte i kalenderen din. 1 990 kr/mnd." />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Manrope', 'sans-serif'],
+            body:    ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand:      '#0EA5E9',
+            'brand-dark':'#0284C7',
+            'brand-soft':'#E0F2FE',
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/motion@11.11.9/dist/motion.js"></script>
+
+  <style>
+    * { -webkit-font-smoothing: antialiased; }
+    body { font-family: 'Inter', sans-serif; background: #fff; color: #0F172A; }
+    .f-display { font-family: 'Manrope', sans-serif; }
+
+    #nav { transition: background .25s, box-shadow .25s; }
+    #nav.scrolled { background: rgba(255,255,255,.95); backdrop-filter: blur(16px); box-shadow: 0 1px 0 #E2E8F0; }
+
+    /* Hero dark section */
+    .hero-dark {
+      background: #0F172A;
+      background-image:
+        radial-gradient(ellipse 70% 50% at 50% -10%, rgba(14,165,233,.18) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 80% 100%, rgba(14,165,233,.08) 0%, transparent 60%);
+    }
+
+    @keyframes pulse-ring {
+      0%   { box-shadow: 0 0 0 0 rgba(14,165,233,.5); }
+      70%  { box-shadow: 0 0 0 14px rgba(14,165,233,0); }
+      100% { box-shadow: 0 0 0 0 rgba(14,165,233,0); }
+    }
+    .pulse-brand { animation: pulse-ring 2.5s infinite; }
+
+    /* Phone mockup */
+    .phone-screen {
+      background: #1E293B;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+      padding: 20px;
+    }
+
+    /* Bento */
+    .bento {
+      background: #fff;
+      border: 1px solid #E2E8F0;
+      border-radius: 20px;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .bento:hover { box-shadow: 0 12px 40px rgba(14,165,233,.10); transform: translateY(-3px); }
+
+    /* Step line */
+    .step-line::after {
+      content: '';
+      position: absolute;
+      top: 20px; left: calc(50% + 26px);
+      width: calc(100% - 52px); height: 1px;
+      background: linear-gradient(90deg, #E2E8F0, transparent);
+    }
+    @media(max-width:767px){ .step-line::after{ display:none; } }
+
+    /* FAQ */
+    details summary { cursor: pointer; list-style: none; }
+    details summary::-webkit-details-marker { display: none; }
+    details[open] .chevron { transform: rotate(180deg); }
+    .chevron { transition: transform .2s; }
+
+    /* Mobile menu */
+    #mobile-menu { display: none; }
+    #mobile-menu.open { display: block; }
+
+    /* Floating CTA */
+    #floating-cta {
+      position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(80px);
+      z-index: 999; opacity: 0; transition: opacity .35s, transform .35s; pointer-events: none;
+    }
+    #floating-cta.visible { opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: auto; }
+
+    /* Waveform animation */
+    @keyframes wave {
+      0%, 100% { height: 4px; }
+      50% { height: 20px; }
+    }
+    .wave-bar { animation: wave 1.2s ease-in-out infinite; }
+    .wave-bar:nth-child(2) { animation-delay: .15s; }
+    .wave-bar:nth-child(3) { animation-delay: .30s; }
+    .wave-bar:nth-child(4) { animation-delay: .45s; }
+    .wave-bar:nth-child(5) { animation-delay: .30s; }
+    .wave-bar:nth-child(6) { animation-delay: .15s; }
+    .wave-bar:nth-child(7) { animation-delay: 0s; }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAV ─────────────────────────────────────────────── -->
+<nav id="nav" class="fixed top-0 inset-x-0 z-50">
+  <div class="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
+    <a href="https://dmarketing.no" class="f-display font-bold text-[15px] tracking-tight text-slate-900">
+      Dietrichs<span class="text-brand">Marketing</span>
+    </a>
+    <div class="hidden md:flex items-center gap-7 text-[13px] font-medium text-slate-500">
+      <a href="#hvordan" class="hover:text-slate-900 transition-colors">Hvordan det virker</a>
+      <a href="#priser"  class="hover:text-slate-900 transition-colors">Pris</a>
+      <a href="#faq"     class="hover:text-slate-900 transition-colors">Spørsmål</a>
+    </div>
+    <div class="flex items-center gap-2">
+      <a href="#kontakt"
+         class="bg-brand text-white text-[13px] font-semibold px-4 py-2 rounded-lg hover:bg-brand-dark transition-colors f-display">
+        Book demo
+      </a>
+      <button id="hamburger" aria-label="Åpne meny" class="md:hidden flex flex-col gap-1.5 p-2 ml-1">
+        <span class="w-5 h-0.5 bg-slate-700 block"></span>
+        <span class="w-5 h-0.5 bg-slate-700 block"></span>
+        <span class="w-4 h-0.5 bg-slate-700 block"></span>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="md:hidden border-t border-slate-100" style="background:rgba(255,255,255,.97);backdrop-filter:blur(16px)">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-1">
+      <a href="#hvordan" class="mobile-link py-3 text-[15px] font-medium text-slate-700 border-b border-slate-100">Hvordan det virker</a>
+      <a href="#priser"  class="mobile-link py-3 text-[15px] font-medium text-slate-700 border-b border-slate-100">Pris</a>
+      <a href="#faq"     class="mobile-link py-3 text-[15px] font-medium text-slate-700">Spørsmål</a>
+      <a href="#kontakt" class="mt-3 bg-brand text-white f-display font-semibold py-3.5 rounded-xl text-[14px] text-center">Book demo →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ─── HERO ─────────────────────────────────────────────── -->
+<section class="hero-dark relative overflow-hidden">
+  <div class="relative max-w-6xl mx-auto px-6 pt-36 pb-28">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Left: Text -->
+      <div>
+        <div data-animate class="inline-flex items-center gap-2 bg-white/8 border border-white/12 text-[12px] font-medium text-sky-300 px-4 py-2 rounded-full mb-8">
+          <span class="w-1.5 h-1.5 rounded-full bg-sky-400 inline-block pulse-brand"></span>
+          AI-telefonsvarer — klar på 3 dager
+        </div>
+
+        <h1 data-animate class="f-display font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-white leading-[1.05] mb-6" style="letter-spacing:-0.03em">
+          Mist aldri en jobb<br/>
+          <span class="text-brand">fordi du er opptatt</span>
+        </h1>
+
+        <p data-animate class="text-lg text-slate-400 leading-relaxed mb-4 max-w-lg">
+          En norsktalende AI tar telefonen når du ikke kan. Den kvalifiserer kunden, svarer på spørsmål og booker direkte i kalenderen din.
+        </p>
+
+        <!-- Regnestykke-pill -->
+        <div data-animate class="inline-block bg-amber-500/10 border border-amber-500/20 rounded-xl px-4 py-3 mb-10 text-sm text-amber-300">
+          <span class="font-semibold">Regnestykket:</span> 1 mistet samtale/uke × 8 000 kr jobb = <span class="font-bold text-amber-200">32 000 kr tapt per måned</span>
+        </div>
+
+        <div data-animate class="flex flex-col sm:flex-row gap-3">
+          <a href="#kontakt"
+             class="bg-brand text-white f-display font-semibold px-8 py-4 rounded-xl text-[15px] hover:bg-brand-dark hover:shadow-[0_0_30px_rgba(14,165,233,.4)] hover:scale-[1.02] transition-all text-center">
+            Book gratis demo
+          </a>
+          <a href="#hvordan"
+             class="inline-flex items-center justify-center gap-2 border border-white/15 text-slate-300 f-display font-semibold px-8 py-4 rounded-xl text-[15px] hover:border-white/30 hover:text-white transition-all">
+            Hør AI-en i aksjon
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+          </a>
+        </div>
+
+        <!-- Trust row -->
+        <div data-animate class="flex flex-wrap gap-5 mt-10 text-[13px] text-slate-500">
+          <span class="flex items-center gap-2">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            Ingen bindingstid
+          </span>
+          <span class="flex items-center gap-2">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Oppe 24/7
+          </span>
+          <span class="flex items-center gap-2">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            Norsk stemme
+          </span>
+          <span class="flex items-center gap-2">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            Klar på 3 dager
+          </span>
+        </div>
+      </div>
+
+      <!-- Right: Phone mockup -->
+      <div data-animate class="hidden lg:flex justify-center">
+        <div class="relative">
+          <!-- Glow -->
+          <div class="absolute inset-0 rounded-3xl" style="background: radial-gradient(circle at 50% 50%, rgba(14,165,233,.25) 0%, transparent 70%); filter: blur(40px);"></div>
+          <!-- Mockup card -->
+          <div class="relative phone-screen w-72">
+            <!-- Status bar -->
+            <div class="flex items-center justify-between mb-4 text-slate-500 text-[11px]">
+              <span>12:47</span>
+              <div class="flex items-center gap-1">
+                <!-- Waveform (AI speaking) -->
+                <div class="flex items-end gap-0.5 h-5">
+                  <div class="wave-bar w-1 bg-sky-400 rounded-full"></div>
+                  <div class="wave-bar w-1 bg-sky-400 rounded-full"></div>
+                  <div class="wave-bar w-1 bg-sky-400 rounded-full"></div>
+                  <div class="wave-bar w-1 bg-sky-400 rounded-full"></div>
+                  <div class="wave-bar w-1 bg-sky-400 rounded-full"></div>
+                  <div class="wave-bar w-1 bg-sky-400 rounded-full"></div>
+                  <div class="wave-bar w-1 bg-sky-400 rounded-full"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Incoming call -->
+            <div class="flex items-center gap-3 mb-5 pb-5 border-b border-white/8">
+              <div class="w-10 h-10 rounded-full bg-sky-500/20 flex items-center justify-center flex-shrink-0">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.66A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              </div>
+              <div>
+                <p class="text-white text-[13px] font-semibold">Innkommende samtale</p>
+                <p class="text-slate-400 text-[11px]">+47 456 78 901 · Håndteres av AI</p>
+              </div>
+            </div>
+
+            <!-- Chat transcript -->
+            <div class="space-y-3 text-[12px]">
+              <div class="flex gap-2">
+                <div class="w-6 h-6 rounded-full bg-sky-500/20 flex-shrink-0 flex items-center justify-center">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="#0EA5E9"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"/></svg>
+                </div>
+                <div class="bg-slate-700/60 rounded-2xl rounded-tl-sm px-3 py-2 text-slate-300 max-w-[200px]">
+                  Hei! Du har ringt til Rørlegger Hansen. Hvordan kan jeg hjelpe?
+                </div>
+              </div>
+              <div class="flex gap-2 justify-end">
+                <div class="bg-sky-500/20 rounded-2xl rounded-tr-sm px-3 py-2 text-sky-200 max-w-[180px] text-right">
+                  Jeg har vannlekkasje på kjøkkenet, haster!
+                </div>
+              </div>
+              <div class="flex gap-2">
+                <div class="w-6 h-6 rounded-full bg-sky-500/20 flex-shrink-0 flex items-center justify-center">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="#0EA5E9"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"/></svg>
+                </div>
+                <div class="bg-slate-700/60 rounded-2xl rounded-tl-sm px-3 py-2 text-slate-300 max-w-[200px]">
+                  Forstår — jeg varsler håndverkeren nå og booker deg inn. Hva er adressen?
+                </div>
+              </div>
+
+              <!-- Typing indicator -->
+              <div class="flex gap-2 justify-end items-center">
+                <span class="text-slate-600 text-[11px]">Kunden svarer...</span>
+                <div class="flex gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-slate-600 animate-bounce" style="animation-delay:0s"></span>
+                  <span class="w-1.5 h-1.5 rounded-full bg-slate-600 animate-bounce" style="animation-delay:.15s"></span>
+                  <span class="w-1.5 h-1.5 rounded-full bg-slate-600 animate-bounce" style="animation-delay:.3s"></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bottom: SMS-varsling -->
+            <div class="mt-5 pt-4 border-t border-white/8">
+              <div class="flex items-center gap-2 text-[11px] text-emerald-400">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81"/><path d="M1 1l22 22"/></svg>
+                SMS sendt til deg: "Ny booking — akutt VVS, Storgata 12"
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SMERTEPUNKT ───────────────────────────────────────── -->
+<section class="py-24 bg-zinc-50">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="max-w-2xl mx-auto text-center mb-16" data-animate>
+      <h2 class="f-display font-bold text-3xl md:text-4xl text-slate-900 mb-4" style="letter-spacing:-0.03em">
+        Vet du hva du taper hver uke?
+      </h2>
+      <p class="text-slate-500 text-lg">Småbedrifter mister jobber verdt tusenvis av kroner — ikke fordi de er dårlige, men fordi de ikke tok telefonen.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6" data-stagger>
+      <div class="bento p-8 text-center">
+        <div class="text-4xl font-bold f-display text-brand mb-2">83%</div>
+        <p class="text-slate-600 text-sm">av kunder som ikke får svar ringer neste bedrift på lista</p>
+      </div>
+      <div class="bento p-8 text-center">
+        <div class="text-4xl font-bold f-display text-slate-900 mb-2">8 000 kr</div>
+        <p class="text-slate-600 text-sm">gjennomsnittlig jobb for elektriker eller rørlegger</p>
+      </div>
+      <div class="bento p-8 text-center">
+        <div class="text-4xl font-bold f-display text-red-500 mb-2">32 000 kr</div>
+        <p class="text-slate-600 text-sm">tapt per måned ved bare <em>én</em> mistet samtale per uke</p>
+      </div>
+    </div>
+
+    <!-- Regnestykke -->
+    <div class="mt-12 max-w-xl mx-auto bg-white border border-zinc-200 rounded-2xl p-8" data-animate>
+      <p class="f-display font-semibold text-slate-900 mb-4">Regnestykket for din bedrift</p>
+      <div class="space-y-2 text-[15px] text-slate-600">
+        <div class="flex justify-between"><span>Gjennomsnittlig jobbverdi</span><span class="font-semibold text-slate-900">8 000 kr</span></div>
+        <div class="flex justify-between"><span>Mistede samtaler per uke</span><span class="font-semibold text-slate-900">× 1–3</span></div>
+        <div class="flex justify-between"><span>Uker per måned</span><span class="font-semibold text-slate-900">× 4</span></div>
+        <div class="border-t border-zinc-100 pt-2 flex justify-between">
+          <span class="font-semibold">Tapt inntekt per måned</span>
+          <span class="font-bold text-red-500 text-lg">32 000 – 96 000 kr</span>
+        </div>
+        <div class="flex justify-between text-brand">
+          <span class="font-semibold">AI-telefonsvarer koster</span>
+          <span class="font-bold">1 990 kr/mnd</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── HVORDAN DET VIRKER ─────────────────────────────────── -->
+<section id="hvordan" class="py-24">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="max-w-xl mx-auto text-center mb-16" data-animate>
+      <h2 class="f-display font-bold text-3xl md:text-4xl text-slate-900 mb-4" style="letter-spacing:-0.03em">
+        Sånn fungerer det
+      </h2>
+      <p class="text-slate-500">Settes opp én gang. Jobber for deg 24/7 etterpå.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8" data-stagger>
+
+      <!-- Steg 1 -->
+      <div class="relative text-center step-line">
+        <div class="w-12 h-12 rounded-2xl bg-brand-soft text-brand flex items-center justify-center mx-auto mb-5 f-display font-bold text-lg">1</div>
+        <h3 class="f-display font-semibold text-slate-900 mb-2">Kunden ringer</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">Nummeret ditt viderekobles til AI-agenten når du er opptatt eller ikke tar telefonen innen 3 ring.</p>
+      </div>
+
+      <!-- Steg 2 -->
+      <div class="relative text-center step-line">
+        <div class="w-12 h-12 rounded-2xl bg-brand-soft text-brand flex items-center justify-center mx-auto mb-5 f-display font-bold text-lg">2</div>
+        <h3 class="f-display font-semibold text-slate-900 mb-2">AI kvalifiserer og booker</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">Agenten snakker norsk, stiller de riktige spørsmålene og booker direkte i kalenderen din — eller varsler deg hvis det er akutt.</p>
+      </div>
+
+      <!-- Steg 3 -->
+      <div class="relative text-center">
+        <div class="w-12 h-12 rounded-2xl bg-brand-soft text-brand flex items-center justify-center mx-auto mb-5 f-display font-bold text-lg">3</div>
+        <h3 class="f-display font-semibold text-slate-900 mb-2">Du får SMS-varsel</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">Du får umiddelbart en SMS med kundens navn, hva de trenger, adresse og tidspunkt som er booket. Ingenting faller mellom stolene.</p>
+      </div>
+    </div>
+
+    <!-- Demo-seksjon -->
+    <div class="mt-20 bg-slate-900 rounded-3xl p-10 text-center" data-animate>
+      <div class="flex items-center justify-center gap-3 mb-4">
+        <div class="flex items-end gap-0.5 h-8">
+          <div class="wave-bar w-1.5 bg-sky-400 rounded-full"></div>
+          <div class="wave-bar w-1.5 bg-sky-400 rounded-full"></div>
+          <div class="wave-bar w-1.5 bg-sky-400 rounded-full"></div>
+          <div class="wave-bar w-1.5 bg-sky-400 rounded-full"></div>
+          <div class="wave-bar w-1.5 bg-sky-400 rounded-full"></div>
+        </div>
+        <p class="text-white f-display font-semibold text-lg">Vil du høre AI-agenten?</p>
+      </div>
+      <p class="text-slate-400 text-sm mb-6">Vi setter opp en demo for din bransje i løpet av møtet.</p>
+      <a href="#kontakt" class="inline-block bg-brand text-white f-display font-semibold px-8 py-4 rounded-xl text-[15px] hover:bg-brand-dark hover:shadow-[0_0_30px_rgba(14,165,233,.4)] hover:scale-[1.02] transition-all">
+        Book gratis demo (15 min)
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── HVA DU FÅR ─────────────────────────────────────────── -->
+<section class="py-24 bg-zinc-50">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="max-w-xl mx-auto text-center mb-16" data-animate>
+      <h2 class="f-display font-bold text-3xl md:text-4xl text-slate-900 mb-4" style="letter-spacing:-0.03em">
+        Alt inkludert fra dag én
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" data-stagger>
+      <div class="bento p-6">
+        <div class="w-10 h-10 rounded-xl bg-brand-soft flex items-center justify-center mb-4">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.66A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <h3 class="f-display font-semibold text-slate-900 mb-1">Norsk stemme</h3>
+        <p class="text-slate-500 text-sm">Naturlig norsk (bokmål) via ElevenLabs. Kunder skjønner ikke at det er AI.</p>
+      </div>
+
+      <div class="bento p-6">
+        <div class="w-10 h-10 rounded-xl bg-brand-soft flex items-center justify-center mb-4">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <h3 class="f-display font-semibold text-slate-900 mb-1">Direktebooking</h3>
+        <p class="text-slate-500 text-sm">Kunden booker rett i kalenderen din. Ingen frem-og-tilbake på SMS.</p>
+      </div>
+
+      <div class="bento p-6">
+        <div class="w-10 h-10 rounded-xl bg-brand-soft flex items-center justify-center mb-4">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <h3 class="f-display font-semibold text-slate-900 mb-1">SMS-varsling</h3>
+        <p class="text-slate-500 text-sm">Øyeblikkelig SMS til deg med kundeinfo og tidspunkt etter hver samtale.</p>
+      </div>
+
+      <div class="bento p-6">
+        <div class="w-10 h-10 rounded-xl bg-brand-soft flex items-center justify-center mb-4">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <h3 class="f-display font-semibold text-slate-900 mb-1">Akutteskalaering</h3>
+        <p class="text-slate-500 text-sm">Vanlekkasje kl. 23? Agenten varsler deg direkte istedenfor å bare booke.</p>
+      </div>
+
+      <div class="bento p-6">
+        <div class="w-10 h-10 rounded-xl bg-brand-soft flex items-center justify-center mb-4">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3 class="f-display font-semibold text-slate-900 mb-1">24/7 — alltid oppe</h3>
+        <p class="text-slate-500 text-sm">Helger, kvelder og helligdager. Aldri opptatt, aldri for trøtt.</p>
+      </div>
+
+      <div class="bento p-6">
+        <div class="w-10 h-10 rounded-xl bg-brand-soft flex items-center justify-center mb-4">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        </div>
+        <h3 class="f-display font-semibold text-slate-900 mb-1">Tilpasset din bransje</h3>
+        <p class="text-slate-500 text-sm">Agenten vet hva en elektriker-jobb innebærer vs. en rørlegger-jobb — og stiller riktige spørsmål.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PRIS ────────────────────────────────────────────────── -->
+<section id="priser" class="py-24">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="max-w-xl mx-auto text-center mb-16" data-animate>
+      <h2 class="f-display font-bold text-3xl md:text-4xl text-slate-900 mb-4" style="letter-spacing:-0.03em">
+        Enkel prising
+      </h2>
+      <p class="text-slate-500">Én jobb ekstra i måneden betaler for seg selv.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto" data-stagger>
+
+      <!-- Standalone -->
+      <div class="bento p-8">
+        <p class="text-sm font-semibold text-slate-500 mb-1">AI-TELEFONSVARER</p>
+        <div class="flex items-end gap-1 mb-1">
+          <span class="f-display font-extrabold text-4xl text-slate-900">1 990</span>
+          <span class="text-slate-500 mb-1">kr/mnd</span>
+        </div>
+        <p class="text-slate-400 text-sm mb-6">Tillegg til din eksisterende nettside</p>
+        <ul class="space-y-3 text-sm text-slate-600 mb-8">
+          <li class="flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Norsktalende AI-agent</li>
+          <li class="flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Direktebooking i kalender</li>
+          <li class="flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> SMS-varsling etter samtale</li>
+          <li class="flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Akutt-eskalaering</li>
+          <li class="flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Ingen bindingstid</li>
+        </ul>
+        <a href="#kontakt" class="block text-center bg-brand text-white f-display font-semibold py-3.5 rounded-xl text-[14px] hover:bg-brand-dark transition-colors">
+          Start i dag
+        </a>
+      </div>
+
+      <!-- Voksende-pakken -->
+      <div class="bento p-8 border-brand relative overflow-hidden" style="border-color:#0EA5E9; border-width:2px;">
+        <div class="absolute top-0 right-0 bg-brand text-white text-[11px] font-bold px-3 py-1 rounded-bl-xl">MEST POPULÆR</div>
+        <p class="text-sm font-semibold text-brand mb-1">VOKSENDE-PAKKEN</p>
+        <div class="flex items-end gap-1 mb-1">
+          <span class="f-display font-extrabold text-4xl text-slate-900">3 990</span>
+          <span class="text-slate-500 mb-1">kr/mnd</span>
+        </div>
+        <p class="text-slate-400 text-sm mb-6">Nettside + AI-telefonsvarer + SEO</p>
+        <ul class="space-y-3 text-sm text-slate-600 mb-8">
+          <li class="flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Alt i AI-telefonsvarer</li>
+          <li class="flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Profesjonell nettside</li>
+          <li class="flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Google-profil-håndtering</li>
+          <li class="flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Lead-recovery (tapte kunder)</li>
+          <li class="flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Månedlig SEO-rapport</li>
+        </ul>
+        <a href="#kontakt" class="block text-center bg-brand text-white f-display font-semibold py-3.5 rounded-xl text-[14px] hover:bg-brand-dark transition-colors">
+          Se pakken
+        </a>
+      </div>
+    </div>
+
+    <p class="text-center text-slate-400 text-sm mt-6">Engangspris for oppsett: <strong class="text-slate-600">2 490 kr</strong> · Klar på 3 arbeidsdager</p>
+  </div>
+</section>
+
+<!-- ─── FAQ ────────────────────────────────────────────────── -->
+<section id="faq" class="py-24 bg-zinc-50">
+  <div class="max-w-3xl mx-auto px-6">
+    <div class="text-center mb-14" data-animate>
+      <h2 class="f-display font-bold text-3xl text-slate-900" style="letter-spacing:-0.03em">Vanlige spørsmål</h2>
+    </div>
+
+    <div class="space-y-3" data-stagger>
+
+      <details class="bento group">
+        <summary class="flex items-center justify-between p-6 font-semibold text-slate-900 f-display">
+          Hva hvis AI-en svarer feil?
+          <svg class="chevron flex-shrink-0 ml-4 text-slate-400" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="px-6 pb-6 text-slate-500 text-sm leading-relaxed">
+          Agenten er konfigurert for din bransje og følger et fast script. Hvis den er usikker, sier den at den skal videreformidle til deg og sender deg varsel. Ingen AI snakker på vegne av deg uten at du kan kontrollere det.
+        </div>
+      </details>
+
+      <details class="bento group">
+        <summary class="flex items-center justify-between p-6 font-semibold text-slate-900 f-display">
+          Hva koster det egentlig — er det skjulte kostnader?
+          <svg class="chevron flex-shrink-0 ml-4 text-slate-400" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="px-6 pb-6 text-slate-500 text-sm leading-relaxed">
+          1 990 kr/mnd dekker opptil 200 minutters samtaletid. Det tilsvarer 100–150 samtaler. De fleste småbedrifter bruker langt under dette. Engangspris for oppsett er 2 490 kr. Ingen bindingstid — si opp når du vil.
+        </div>
+      </details>
+
+      <details class="bento group">
+        <summary class="flex items-center justify-between p-6 font-semibold text-slate-900 f-display">
+          Kan jeg si opp?
+          <svg class="chevron flex-shrink-0 ml-4 text-slate-400" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="px-6 pb-6 text-slate-500 text-sm leading-relaxed">
+          Ja, ingen bindingstid. Si opp med én måneds varsel. Vi anbefaler å prøve minst 2 måneder for å se effekten — de første ukene brukes til å justere agenten til din bransje og dine kunder.
+        </div>
+      </details>
+
+      <details class="bento group">
+        <summary class="flex items-center justify-between p-6 font-semibold text-slate-900 f-display">
+          Hvordan høres AI-stemmen ut?
+          <svg class="chevron flex-shrink-0 ml-4 text-slate-400" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="px-6 pb-6 text-slate-500 text-sm leading-relaxed">
+          Vi bruker ElevenLabs — det beste på markedet for naturlig tale. Stemmen er norsk (bokmål), profesjonell og rolig. Kunder som ikke vet det, tror de snakker med en resepsjonist. Vi spiller av et eksempel i demo-møtet.
+        </div>
+      </details>
+
+      <details class="bento group">
+        <summary class="flex items-center justify-between p-6 font-semibold text-slate-900 f-display">
+          Må jeg bytte telefonnummer?
+          <svg class="chevron flex-shrink-0 ml-4 text-slate-400" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="px-6 pb-6 text-slate-500 text-sm leading-relaxed">
+          Nei. Vi setter opp viderekobling fra ditt eksisterende nummer. Kunder ringer som vanlig — de merker ingen forskjell.
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── KONTAKT / DEMO ────────────────────────────────────── -->
+<section id="kontakt" class="py-24">
+  <div class="max-w-2xl mx-auto px-6 text-center" data-animate>
+    <h2 class="f-display font-bold text-3xl md:text-4xl text-slate-900 mb-4" style="letter-spacing:-0.03em">
+      Klar for å ikke miste flere jobber?
+    </h2>
+    <p class="text-slate-500 text-lg mb-10">Book en gratis 15-minutters demo. Vi setter opp en agent for din bransje og lar deg høre den live.</p>
+
+    <!-- TILPASS: Bytt inn Calendly-lenke -->
+    <a href="https://calendly.com/dietrichsmarketing/ai-demo"
+       target="_blank" rel="noopener"
+       class="inline-block bg-brand text-white f-display font-semibold px-10 py-5 rounded-xl text-[16px] hover:bg-brand-dark hover:shadow-[0_0_40px_rgba(14,165,233,.4)] hover:scale-[1.02] transition-all mb-6">
+      Book gratis demo (15 min) →
+    </a>
+
+    <div class="flex flex-col items-center gap-2 text-slate-400 text-sm">
+      <span>eller ta kontakt direkte:</span>
+      <a href="mailto:post@dmarketing.no" class="text-brand hover:underline">post@dmarketing.no</a>
+      <a href="tel:+4793439278" class="text-brand hover:underline">934 39 278</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────────── -->
+<footer class="bg-slate-900 py-12">
+  <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+    <a href="https://dmarketing.no" class="f-display font-bold text-white text-[15px]">
+      Dietrichs<span class="text-brand">Marketing</span>
+    </a>
+    <p class="text-slate-500 text-sm">© 2026 Dietrichs Marketing · post@dmarketing.no · 934 39 278</p>
+    <a href="https://dmarketing.no/maler/priser.html" class="text-slate-400 text-sm hover:text-white transition-colors">Se alle pakker</a>
+  </div>
+</footer>
+
+<!-- ─── FLOATING CTA ──────────────────────────────────────── -->
+<div id="floating-cta">
+  <a href="#kontakt"
+     class="inline-flex items-center gap-2 bg-brand text-white f-display font-semibold px-6 py-3.5 rounded-full shadow-xl text-[14px] hover:bg-brand-dark transition-colors">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.66A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    Book gratis demo
+  </a>
+</div>
+
+<script>
+  const { inView, animate } = Motion;
+
+  // Scroll-reveal
+  inView('[data-animate]', ({ target }) => {
+    animate(target, { opacity: [0, 1], y: [24, 0] }, { duration: 0.5, easing: [0.25, 0.46, 0.45, 0.94] });
+  });
+  inView('[data-stagger]', ({ target }) => {
+    animate(target.querySelectorAll(':scope > *'),
+      { opacity: [0, 1], y: [20, 0] },
+      { duration: 0.4, delay: animate.stagger(0.08) }
+    );
+  });
+
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Floating CTA
+  const cta = document.getElementById('floating-cta');
+  window.addEventListener('scroll', () => {
+    cta.classList.toggle('visible', window.scrollY > 600);
+  });
+
+  // Mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger?.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => mobileMenu.classList.remove('open')));
+</script>
+</body>
+</html>

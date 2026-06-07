@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Behandlinger & Priser — Tannklinikken [By]</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { fontFamily: { display: ['Playfair Display','serif'], body: ['Inter','sans-serif'] }, colors: { brand: '#2563EB', 'brand-light': '#3B82F6' } } }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/motion@11.11.9/dist/motion.js"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #FAFAFA; color: #09090B; }
+    .font-display { font-family: 'Playfair Display', serif; }
+    #nav { transition: background 0.3s, box-shadow 0.3s; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); box-shadow: 0 1px 0 #E4E4E7; }
+    .card-hover { transition: box-shadow 0.2s, transform 0.2s; }
+    .card-hover:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.09); transform: translateY(-2px); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .faq-answer.open { max-height: 220px; }
+    .faq-icon { transition: transform 0.3s; }
+    .faq-icon.open { transform: rotate(45deg); }
+    .nav-page-link { font-size:0.8125rem; text-decoration:none; font-weight:500; color:#52525B; transition:color 0.2s; }
+    .nav-page-link:hover { color:#09090B; }
+    .nav-page-link.active { color:#2563EB; font-weight:600; }
+  </style>
+  <link href="../../images/favicon.png" rel="shortcut icon" type="image/x-icon">
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav" class="fixed top-0 left-0 right-0 z-50">
+  <div class="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
+    <a href="/" class="font-display font-medium text-lg tracking-tight text-[#09090B]">Tannklinikken <span style="color:#2563EB">[By]</span></a>
+    <div class="hidden md:flex items-center gap-7">
+      <a href="/" class="nav-page-link">Hjem</a>
+      <a href="tjenester" class="nav-page-link active">Behandlinger</a>
+      <a href="om-oss" class="nav-page-link">Om oss</a>
+      <a href="kontakt" class="nav-page-link">Kontakt</a>
+    </div>
+    <a href="kontakt" class="bg-[#2563EB] text-white text-sm font-medium px-5 py-2.5 rounded-lg hover:bg-[#1D4ED8] transition-colors">Book time</a>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="pt-28 pb-16 px-6 bg-white border-b border-zinc-100">
+  <div class="max-w-6xl mx-auto">
+    <a href="/" class="inline-flex items-center gap-1.5 text-xs font-medium mb-6" style="color:#2563EB">
+      <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M19 12H5m7-7l-7 7 7 7"/></svg>
+      Tilbake til forsiden
+    </a>
+    <p class="text-sm font-medium tracking-widest uppercase mb-3" style="color:#2563EB">Behandlinger</p>
+    <h1 class="font-display text-5xl font-bold text-[#09090B] mb-4" style="letter-spacing:-0.02em">Alt vi tilbyr</h1>
+    <p class="text-zinc-500 max-w-2xl leading-relaxed">Fra rutinemessige undersøkelser til avansert estetisk tannbehandling — vi har spesialistene og utstyret du trenger.</p>
+  </div>
+</section>
+
+<!-- AKUTT TANNPINE -->
+<section class="py-16 px-6" style="background:#FEF2F2; border-bottom: 1px solid #FECACA">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div data-animate>
+        <div class="inline-flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-full mb-5 bg-red-100 text-red-700">
+          <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse inline-block"></span>
+          Akutt tannpine
+        </div>
+        <h2 class="font-display text-3xl font-bold text-[#09090B] mb-4" style="letter-spacing:-0.02em">Vondt i tannen nå?</h2>
+        <p class="text-zinc-600 leading-relaxed mb-6">Vi setter alltid av kapasitet for akutte pasienter. Ring oss direkte — du slipper å vente dager med tannpine.</p>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-center gap-3 text-sm text-zinc-600">
+            <svg class="w-4 h-4 text-red-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+            Akutt time innen samme dag
+          </li>
+          <li class="flex items-center gap-3 text-sm text-zinc-600">
+            <svg class="w-4 h-4 text-red-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+            Schmerzbehandling og midlertidig fyll samme besøk
+          </li>
+          <li class="flex items-center gap-3 text-sm text-zinc-600">
+            <svg class="w-4 h-4 text-red-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+            Kun 895 kr for akutt undersøkelse
+          </li>
+        </ul>
+        <a href="tel:+4712345678" class="inline-flex items-center gap-2 bg-red-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-red-700 transition-colors">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.66A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Ring 123 45 678
+        </a>
+      </div>
+      <div class="aspect-[4/3] rounded-2xl overflow-hidden">
+        <img src="../bilder/tannlege/akutt.jpg" onerror="this.src='https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=700&q=80'" alt="Akutt tannlege" class="w-full h-full object-cover" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEHANDLINGSKORTER -->
+<section class="py-24 px-6 bg-white border-t border-zinc-100">
+  <div class="max-w-6xl mx-auto">
+    <div data-animate class="mb-12">
+      <p class="text-sm font-medium tracking-widest uppercase mb-3" style="color:#2563EB">Våre behandlinger</p>
+      <h2 class="font-display text-4xl font-bold text-[#09090B]" style="letter-spacing:-0.02em">Velg behandling</h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6">
+
+      <!-- Undersøkelse -->
+      <div data-animate class="card-hover bg-white border border-zinc-100 rounded-2xl p-8">
+        <div class="flex items-start justify-between mb-5">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(37,99,235,0.08)">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#2563EB" stroke-width="1.8"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+          </div>
+          <span class="text-sm font-semibold" style="color:#2563EB">Fra 895 kr</span>
+        </div>
+        <h3 class="font-display text-xl font-medium mb-2">Undersøkelse & kontroll</h3>
+        <p class="text-zinc-500 text-sm leading-relaxed mb-5">Grundig undersøkelse med full røntgen og status på tannkjøtt og bitestilling. Anbefalt hvert 1–2 år.</p>
+        <ul class="space-y-2">
+          <li class="flex items-center gap-2 text-xs text-zinc-500"><svg class="w-3.5 h-3.5 text-[#2563EB] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Røntgenbilder inkludert</li>
+          <li class="flex items-center gap-2 text-xs text-zinc-500"><svg class="w-3.5 h-3.5 text-[#2563EB] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Tannkjøttvurdering</li>
+          <li class="flex items-center gap-2 text-xs text-zinc-500"><svg class="w-3.5 h-3.5 text-[#2563EB] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Behandlingsplan hvis nødvendig</li>
+          <li class="flex items-center gap-2 text-xs text-zinc-500"><svg class="w-3.5 h-3.5 text-[#2563EB] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Refusjon Helfo (ved rettighet)</li>
+        </ul>
+      </div>
+
+      <!-- Rensing -->
+      <div data-animate class="card-hover bg-white border border-zinc-100 rounded-2xl p-8">
+        <div class="flex items-start justify-between mb-5">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(37,99,235,0.08)">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#2563EB" stroke-width="1.8"><path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+          </div>
+          <span class="text-sm font-semibold" style="color:#2563EB">Fra 650 kr</span>
+        </div>
+        <h3 class="font-display text-xl font-medium mb-2">Rensing & polering</h3>
+        <p class="text-zinc-500 text-sm leading-relaxed mb-5">Profesjonell fjerning av tannstein og plakk med ultralydinstrument og airflow-polering.</p>
+        <ul class="space-y-2">
+          <li class="flex items-center gap-2 text-xs text-zinc-500"><svg class="w-3.5 h-3.5 text-[#2563EB] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Ultralydrensing</li>
+          <li class="flex items-center gap-2 text-xs text-zinc-500"><svg class="w-3.5 h-3.5 text-[#2563EB] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Airflow-polering</li>
+          <li class="flex items-center gap-2 text-xs text-zinc-500"><svg class="w-3.5 h-3.5 text-[#2563EB] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Fluoridbehandling inkludert</li>
+          <li class="flex items-center gap-2 text-xs text-zinc-500"><svg class="w-3.5 h-3.5 text-[#2563EB] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Råd om hjemmehygiene</li>
+        </ul>
+      </div>
+
+      <!-- Tannbleking -->
+      <div data-animate class="card-hover bg-white border border-zinc-100 rounded-2xl p-8">
+        <div class="flex items-start justify-between mb-5">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(37,99,235,0.08)">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#2563EB" stroke-width="1.8"><path d="M12 3v1m0 16v1M4.22 4.22l.707.707m12.02 12.02l.707.707M1 12h1m16 0h1M4.22 19.78l.707-.707M18.95 5.05l-.707.707"/><circle cx="12" cy="12" r="4"/></svg>
+          </div>
+          <span class="text-sm font-semibold" style="color:#2563EB">Fra 2 490 kr</span>
+        </div>
+        <h3 class="font-display text-xl font-medium mb-2">Tannbleking</h3>
+        <p class="text-zinc-500 text-sm leading-relaxed mb-5">Klinisk godkjent bleking gir opptil 8 nyanser hvitere tenner. Rask og effektiv prosess med varig resultat.</p>
+        <ul class="space-y-2">
+          <li class="flex items-center gap-2 text-xs text-zinc-500"><svg class="w-3.5 h-3.5 text-[#2563EB] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Klinikk-bleking (1 time)</li>
+          <li class="flex items-center gap-2 text-xs text-zinc-500"><svg class="w-3.5 h-3.5 text-[#2563EB] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Etterbehandlingskit inkludert</li>
+          <li class="flex items-center gap-2 text-xs text-zinc-500"><svg class="w-3.5 h-3.5 text-[#2563EB] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Skinne for hjemmebruk</li>
+          <li class="flex items-center gap-2 text-xs text-zinc-500"><svg class="w-3.5 h-3.5 text-[#2563EB] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Resultat varer 1–3 år</li>
+        </ul>
+      </div>
+
+      <!-- Usynlige skinner -->
+      <div data-animate class="card-hover bg-white border border-zinc-100 rounded-2xl p-8">
+        <div class="flex items-start justify-between mb-5">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(37,99,235,0.08)">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#2563EB" stroke-width="1.8"><path d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <span class="text-sm font-semibold text-green-600">Konsultasjon gratis</span>
+        </div>
+        <h3 class="font-display text-xl font-medium mb-2">Usynlige skinner (Ortodonti)</h3>
+        <p class="text-zinc-500 text-sm leading-relaxed mb-5">Rett opp tenner uten metallbraces. Tilpassede, gjennomsiktige skinner som du kan ta ut ved behov.</p>
+        <ul class="space-y-2">
+          <li class="flex items-center gap-2 text-xs text-zinc-500"><svg class="w-3.5 h-3.5 text-[#2563EB] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Digital 3D-kartlegging</li>
+          <li class="flex items-center gap-2 text-xs text-zinc-500"><svg class="w-3.5 h-3.5 text-[#2563EB] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Tilpassede skinner pr. uke</li>
+          <li class="flex items-center gap-2 text-xs text-zinc-500"><svg class="w-3.5 h-3.5 text-[#2563EB] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Nesten usynlig i bruk</li>
+          <li class="flex items-center gap-2 text-xs text-zinc-500"><svg class="w-3.5 h-3.5 text-[#2563EB] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Behandlingstid 6–18 mnd</li>
+        </ul>
+      </div>
+
+      <!-- Implantat -->
+      <div data-animate class="card-hover bg-white border border-zinc-100 rounded-2xl p-8">
+        <div class="flex items-start justify-between mb-5">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(37,99,235,0.08)">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#2563EB" stroke-width="1.8"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+          </div>
+          <span class="text-sm font-semibold" style="color:#2563EB">Fra 14 900 kr</span>
+        </div>
+        <h3 class="font-display text-xl font-medium mb-2">Tannimplantat</h3>
+        <p class="text-zinc-500 text-sm leading-relaxed mb-5">Permanent erstatning for tapte tenner. Ser og føles som en ekte tann — for livet.</p>
+        <ul class="space-y-2">
+          <li class="flex items-center gap-2 text-xs text-zinc-500"><svg class="w-3.5 h-3.5 text-[#2563EB] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Titanskrue i kjeven</li>
+          <li class="flex items-center gap-2 text-xs text-zinc-500"><svg class="w-3.5 h-3.5 text-[#2563EB] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Keramikkkrone på toppen</li>
+          <li class="flex items-center gap-2 text-xs text-zinc-500"><svg class="w-3.5 h-3.5 text-[#2563EB] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>5 år garanti på implantatet</li>
+          <li class="flex items-center gap-2 text-xs text-zinc-500"><svg class="w-3.5 h-3.5 text-[#2563EB] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Avdragsordning tilgjengelig</li>
+        </ul>
+      </div>
+
+      <!-- Fyllinger -->
+      <div data-animate class="card-hover bg-white border border-zinc-100 rounded-2xl p-8">
+        <div class="flex items-start justify-between mb-5">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(37,99,235,0.08)">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#2563EB" stroke-width="1.8"><path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg>
+          </div>
+          <span class="text-sm font-semibold" style="color:#2563EB">Fra 1 290 kr</span>
+        </div>
+        <h3 class="font-display text-xl font-medium mb-2">Fyllinger & restaurering</h3>
+        <p class="text-zinc-500 text-sm leading-relaxed mb-5">Hvite komposittfyllinger som matcher tannfargen perfekt. Ingen amalgam — kun moderne materialer.</p>
+        <ul class="space-y-2">
+          <li class="flex items-center gap-2 text-xs text-zinc-500"><svg class="w-3.5 h-3.5 text-[#2563EB] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Tannfarget kompositt</li>
+          <li class="flex items-center gap-2 text-xs text-zinc-500"><svg class="w-3.5 h-3.5 text-[#2563EB] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Krone og bro ved behov</li>
+          <li class="flex items-center gap-2 text-xs text-zinc-500"><svg class="w-3.5 h-3.5 text-[#2563EB] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Lokalbedøvelse inkludert</li>
+          <li class="flex items-center gap-2 text-xs text-zinc-500"><svg class="w-3.5 h-3.5 text-[#2563EB] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Refusjon Helfo (ved rettighet)</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PRISLISTE -->
+<section class="py-24 px-6 bg-[#F8FAFC] border-t border-zinc-100">
+  <div class="max-w-4xl mx-auto">
+    <div data-animate class="text-center mb-12">
+      <p class="text-sm font-medium tracking-widest uppercase mb-3" style="color:#2563EB">Prisliste</p>
+      <h2 class="font-display text-4xl font-bold text-[#09090B]" style="letter-spacing:-0.02em">Transparente priser</h2>
+      <p class="text-zinc-500 text-sm mt-3">Ingen skjulte kostnader. Pris avtales alltid på forhånd.</p>
+    </div>
+    <div class="bg-white border border-zinc-100 rounded-2xl overflow-hidden" data-animate>
+      <div class="divide-y divide-zinc-100">
+        <div class="flex justify-between items-center px-6 py-4 hover:bg-zinc-50 transition-colors">
+          <div>
+            <div class="text-sm font-medium">Tannlegeundersøkelse</div>
+            <div class="text-xs text-zinc-400 mt-0.5">Inkl. røntgen og status</div>
+          </div>
+          <span class="text-sm font-semibold" style="color:#2563EB">895 kr</span>
+        </div>
+        <div class="flex justify-between items-center px-6 py-4 hover:bg-zinc-50 transition-colors">
+          <div>
+            <div class="text-sm font-medium">Rensing & polering</div>
+            <div class="text-xs text-zinc-400 mt-0.5">Inkl. fluoridbehandling</div>
+          </div>
+          <span class="text-sm font-semibold" style="color:#2563EB">650 kr</span>
+        </div>
+        <div class="flex justify-between items-center px-6 py-4 hover:bg-zinc-50 transition-colors">
+          <div>
+            <div class="text-sm font-medium">Røntgenbilder</div>
+            <div class="text-xs text-zinc-400 mt-0.5">Per 2 bilder</div>
+          </div>
+          <span class="text-sm font-semibold" style="color:#2563EB">395 kr</span>
+        </div>
+        <div class="flex justify-between items-center px-6 py-4 hover:bg-zinc-50 transition-colors">
+          <div>
+            <div class="text-sm font-medium">Fylling (kompositt)</div>
+            <div class="text-xs text-zinc-400 mt-0.5">Tannfarget, varig materiale</div>
+          </div>
+          <span class="text-sm font-semibold" style="color:#2563EB">Fra 1 290 kr</span>
+        </div>
+        <div class="flex justify-between items-center px-6 py-4 bg-blue-50 hover:bg-blue-100 transition-colors">
+          <div>
+            <div class="text-sm font-medium text-[#2563EB]">Tannbleking (klinikk)</div>
+            <div class="text-xs text-blue-400 mt-0.5">Inkl. skinne og etterbehandling</div>
+          </div>
+          <span class="text-sm font-bold" style="color:#2563EB">Fra 2 490 kr</span>
+        </div>
+        <div class="flex justify-between items-center px-6 py-4 hover:bg-zinc-50 transition-colors">
+          <div>
+            <div class="text-sm font-medium">Usynlige skinner</div>
+            <div class="text-xs text-zinc-400 mt-0.5">Pris etter omfang — konsultasjon gratis</div>
+          </div>
+          <span class="text-sm font-semibold text-green-600">Gratis konsultasjon</span>
+        </div>
+        <div class="flex justify-between items-center px-6 py-4 hover:bg-zinc-50 transition-colors">
+          <div>
+            <div class="text-sm font-medium">Tannimplantat (full)</div>
+            <div class="text-xs text-zinc-400 mt-0.5">Inkl. skrue, abutment og krone</div>
+          </div>
+          <span class="text-sm font-semibold" style="color:#2563EB">Fra 14 900 kr</span>
+        </div>
+      </div>
+    </div>
+    <p class="text-xs text-zinc-400 mt-5 text-center">Refusjon fra Helfo gjelder for mange behandlinger. Vi sender krav på vegne av deg.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="py-24 px-6 bg-white border-t border-zinc-100">
+  <div class="max-w-3xl mx-auto">
+    <div data-animate class="text-center mb-12">
+      <h2 class="font-display text-4xl font-bold text-[#09090B]" style="letter-spacing:-0.02em">Vanlige spørsmål</h2>
+    </div>
+    <div class="space-y-3">
+      <div class="bg-[#F8FAFC] border border-zinc-100 rounded-xl overflow-hidden">
+        <button class="w-full text-left px-6 py-4 flex items-center justify-between text-sm font-medium" onclick="toggleFaq(this)">
+          <span>Tar dere imot nye pasienter?</span>
+          <svg class="faq-icon w-4 h-4 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+        </button>
+        <div class="faq-answer px-6 text-sm text-zinc-500 leading-relaxed"><div class="pb-4">Ja, vi tar imot nye pasienter og familier. Book en første undersøkelse via skjema på kontaktsiden, eller ring oss direkte.</div></div>
+      </div>
+      <div class="bg-[#F8FAFC] border border-zinc-100 rounded-xl overflow-hidden">
+        <button class="w-full text-left px-6 py-4 flex items-center justify-between text-sm font-medium" onclick="toggleFaq(this)">
+          <span>Bruker dere bedøvelse for engstelige pasienter?</span>
+          <svg class="faq-icon w-4 h-4 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+        </button>
+        <div class="faq-answer px-6 text-sm text-zinc-500 leading-relaxed"><div class="pb-4">Absolutt. Vi tilbyr lokalbedøvelse, lystgass og beroligende midler tilpasset graden av angst. Fortell oss ved booking — vi sørger for at du har det bra.</div></div>
+      </div>
+      <div class="bg-[#F8FAFC] border border-zinc-100 rounded-xl overflow-hidden">
+        <button class="w-full text-left px-6 py-4 flex items-center justify-between text-sm font-medium" onclick="toggleFaq(this)">
+          <span>Hva dekker Helfo?</span>
+          <svg class="faq-icon w-4 h-4 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+        </button>
+        <div class="faq-answer px-6 text-sm text-zinc-500 leading-relaxed"><div class="pb-4">Helfo dekker deler av utgiftene til barn under 18 år, og voksne med visse diagnoser eller tilstander. Vi hjelper deg å sende kravet — du trenger ikke gjøre noe selv.</div></div>
+      </div>
+      <div class="bg-[#F8FAFC] border border-zinc-100 rounded-xl overflow-hidden">
+        <button class="w-full text-left px-6 py-4 flex items-center justify-between text-sm font-medium" onclick="toggleFaq(this)">
+          <span>Tilbyr dere avdragsordning?</span>
+          <svg class="faq-icon w-4 h-4 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+        </button>
+        <div class="faq-answer px-6 text-sm text-zinc-500 leading-relaxed"><div class="pb-4">Ja, for behandlinger over 3 000 kr tilbyr vi avdragsordning gjennom Klarna uten renter de første 3 månedene. Spør ved booking.</div></div>
+      </div>
+      <div class="bg-[#F8FAFC] border border-zinc-100 rounded-xl overflow-hidden">
+        <button class="w-full text-left px-6 py-4 flex items-center justify-between text-sm font-medium" onclick="toggleFaq(this)">
+          <span>Har dere tannlege for barn?</span>
+          <svg class="faq-icon w-4 h-4 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+        </button>
+        <div class="faq-answer px-6 text-sm text-zinc-500 leading-relaxed"><div class="pb-4">Ja! Dr. Lena Aaberg er spesialist i pedodonti (barnetannpleie) og har erfaring med å gjøre besøket til en positiv opplevelse for barna.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-[#0F172A] text-white py-16 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-4 gap-10 mb-12">
+      <div class="md:col-span-2">
+        <div class="font-display text-xl font-medium mb-3">Tannklinikken <span style="color:#3B82F6">[By]</span></div>
+        <p class="text-sm leading-relaxed max-w-xs" style="color:rgba(255,255,255,0.5)">Din lokale tannlege i [By] med fokus på trygghet, komfort og høy faglig kvalitet.</p>
+      </div>
+      <div>
+        <div class="text-xs font-medium tracking-widest uppercase mb-4" style="color:rgba(255,255,255,0.3)">Sider</div>
+        <ul class="space-y-2 text-sm" style="color:rgba(255,255,255,0.6)">
+          <li><a href="/" class="hover:text-white transition-colors">Hjem</a></li>
+          <li><a href="tjenester" class="hover:text-white transition-colors">Behandlinger</a></li>
+          <li><a href="om-oss" class="hover:text-white transition-colors">Om oss</a></li>
+          <li><a href="kontakt" class="hover:text-white transition-colors">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="text-xs font-medium tracking-widest uppercase mb-4" style="color:rgba(255,255,255,0.3)">Kontakt</div>
+        <ul class="space-y-2 text-sm" style="color:rgba(255,255,255,0.6)">
+          <li>123 45 678</li>
+          <li>hei@tannklinikken-[by].no</li>
+          <li>Klinikkgata 1, [By]</li>
+          <li class="pt-2 text-xs" style="color:rgba(255,255,255,0.3)">Man–fre 08:00–17:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t pt-6 flex justify-between items-center" style="border-color:rgba(255,255,255,0.1)">
+      <div class="text-xs" style="color:rgba(255,255,255,0.3)">© 2025 Tannklinikken [By].</div>
+      <a href="#" class="text-xs" style="color:rgba(255,255,255,0.3)">Personvern</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const icon = btn.querySelector('.faq-icon');
+    answer.classList.toggle('open');
+    icon.classList.toggle('open');
+  }
+  window.addEventListener('load', () => {
+    if (typeof Motion === 'undefined') return;
+    const { inView, animate } = Motion;
+    inView('[data-animate]', ({ target }) => { animate(target, { opacity: [0,1], y: [24,0] }, { duration: 0.5, easing: [0.25,0.46,0.45,0.94] }); });
+    inView('[data-stagger]', ({ target }) => { animate(target.querySelectorAll(':scope > *'), { opacity: [0,1], y: [20,0] }, { duration: 0.4, delay: animate.stagger(0.08) }); });
+  });
+</script>
+</body>
+</html>

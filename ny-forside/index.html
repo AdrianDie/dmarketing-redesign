@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI-nettsider for norske bedrifter | Dietrichs Marketing</title>
+  <meta name="description" content="Vi bygger en lynrask AI-klar nettside du eier 100 prosent og oppdaterer selv på 60 sekunder. Ingen kode, ingen byrå, ingen faste månedsavgifter." />
+  <meta property="og:title" content="AI-nettsider for norske bedrifter | Dietrichs Marketing" />
+  <meta property="og:description" content="Eier nettsiden selv. Oppdater på 60 sekunder med AI. Null faste byråkostnader." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#1B34FF" />
+  <link rel="shortcut icon" href="assets/favicon.png" type="image/png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Schibsted+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=19" />
+  <script>try{if(sessionStorage.getItem('dm_pre'))document.documentElement.classList.add('no-preloader');else sessionStorage.setItem('dm_pre','1');}catch(e){}</script>
+  <style>
+    .menu-wrap { background-color: #ffffff; padding: 16px 0; border-bottom: 1px solid #E4E4E7; position: fixed; top: 0; left: 0; right: 0; z-index: 101; }
+    .menu-wrap.scrolled { box-shadow: 0 1px 12px rgba(0,0,0,0.08); }
+    .navbar-2 { z-index: 101; justify-content: space-between; align-items: center; width: 90%; max-width: 1440px; height: 50px; margin: 0 auto; display: flex; position: relative; }
+    .logo-link-wrapper { flex-direction: column; justify-content: center; align-items: center; display: flex; text-decoration: none; }
+    .brand-3 { order: -1; }
+    .logo-text-container { order: 0; margin-top: 20px; display: flex; }
+    .heading-6 { color: #09090B; letter-spacing: 2px; text-transform: uppercase; margin: 0; font-family: Archivo, sans-serif; font-size: 12px; font-weight: 600; line-height: 12px; }
+    .heading-6.logo-1 { margin-left: 10px; font-size: 30px; line-height: 45px; }
+    .heading-6.logo-2 { color: transparent; -webkit-text-stroke: 0.5px #09090B; margin: 0 0 0 10px; font-size: 30px; line-height: 45px; }
+    .navigation__menu-btn { cursor: pointer; flex-direction: column; order: 1; justify-content: flex-start; align-items: center; height: 25px; overflow: hidden; display: flex; background: transparent; border: 0; padding: 0; outline: none; }
+    .navigation__menu-btn:focus, .navigation__menu-btn:focus-visible { outline: none; }
+    .open-wrap { align-items: center; height: 25px; display: flex; }
+    .navigation-text { color: #09090B; letter-spacing: 3px; text-transform: uppercase; font-family: Archivo, sans-serif; font-size: 12px; line-height: 12px; text-decoration: none; }
+    .hamburger { flex-direction: column; justify-content: space-between; align-items: flex-end; width: 25px; height: 10px; margin-left: 12.5px; display: flex; }
+    .hamburger-line { background-color: #09090B; width: 25px; height: 2.22px; }
+    .hamburger-line-4 { background-color: #09090B; width: 15px; height: 2.22px; }
+    body.menu-open .menu-wrap { background-color: #1a1a1f; border-bottom-color: rgba(255,255,255,0.1); }
+    body.menu-open .heading-6.logo-1 { color: whitesmoke; }
+    body.menu-open .heading-6.logo-2 { -webkit-text-stroke-color: whitesmoke; }
+    body.menu-open .navigation-text { color: #fff; }
+    body.menu-open .hamburger-line, body.menu-open .hamburger-line-4 { background-color: #fff; }
+    body.menu-open .close-btn::before, body.menu-open .close-btn::after { background: #fff; }
+    .menu-wrap, .heading-6, .navigation-text, .hamburger-line, .hamburger-line-4 { transition: background-color 0.25s ease, color 0.25s ease, -webkit-text-stroke-color 0.25s ease, border-color 0.25s ease; }
+    .close-wrap { flex-direction: row; justify-content: flex-end; align-items: center; height: 25px; display: flex; }
+    .close-btn { width: 18px; height: 18px; margin-left: 12.5px; position: relative; }
+    .close-btn::before, .close-btn::after { content: ""; position: absolute; top: 50%; left: 0; width: 100%; height: 2px; background: #fff; transform-origin: center; }
+    .close-btn::before { transform: translateY(-50%) rotate(45deg); }
+    .close-btn::after { transform: translateY(-50%) rotate(-45deg); }
+    .nav-container-2 { z-index: 97; background-color: #1a1a1f; flex-direction: column; justify-content: flex-start; align-items: center; min-height: 100vh; padding: 100px 0 80px; position: fixed; inset: 0; overflow-y: auto; transition: opacity 0.35s ease, visibility 0.35s ease; }
+    .nav__bg { z-index: -1; background-color: #1a1a1f; position: absolute; inset: 0; }
+    .container-4 { width: 92%; max-width: none; margin: 0 auto; }
+    .nav-items { z-index: 99; flex-flow: column; align-items: flex-start; width: 100%; max-width: 1200px; margin-top: 40px; display: flex; position: relative; overflow: hidden; }
+    .nav-item { align-items: center; text-decoration: none; display: flex; }
+    .nav-item-number { color: #fff; letter-spacing: 3px; margin-right: 20px; font-family: Archivo, sans-serif; font-size: 12px; line-height: 12px; transform: rotate(-90deg); }
+    /* Font-størrelse skalerer flytende: AI-NETTSIDER (12 tegn) må passe innen overlay-bredden på alle viewports */
+    .special-text-wrapper { height: clamp(56px, 11vw, 130px); overflow: hidden; }
+    .nav-item-text { color: transparent; -webkit-text-fill-color: transparent; -webkit-text-stroke: 0.8px #A5A3A6; text-transform: uppercase; font-family: Archivo, sans-serif; font-size: clamp(38px, 7.5vw, 90px); font-weight: 700; line-height: clamp(56px, 11vw, 130px); display: block; white-space: nowrap; }
+    .nav-item-text-full { color: #fff; text-transform: uppercase; font-family: Archivo, sans-serif; font-size: clamp(38px, 7.5vw, 90px); font-weight: 700; line-height: clamp(56px, 11vw, 130px); white-space: nowrap; }
+    .special-text-wrapper > div { transition: transform 0.55s cubic-bezier(0.65, 0, 0.35, 1); }
+    .nav-item:hover .nav-item-text, .nav-item:hover .nav-item-text-full,
+    .nav-item:focus .nav-item-text, .nav-item:focus .nav-item-text-full,
+    .nav-item:active .nav-item-text, .nav-item:active .nav-item-text-full,
+    .nav-item.is-touched .nav-item-text, .nav-item.is-touched .nav-item-text-full { transform: translateY(calc(-1 * clamp(56px, 11vw, 130px))); }
+    .nav-container-2.hidden-menu { opacity: 0; visibility: hidden; pointer-events: none; }
+    .navigation__menu-btn.is-open .open-wrap { display: none; }
+    .navigation__menu-btn:not(.is-open) .close-wrap { display: none; }
+    @media screen and (min-width: 1440px) {
+      .nav-items { width: 60%; }
+      .heading-6.logo-1, .heading-6.logo-2 { font-size: 40px; line-height: 30px; }
+    }
+    @media screen and (max-width: 767px) {
+      .nav-items { width: 90%; margin-top: 20px; }
+      .heading-6.logo-1 { font-size: 22px; line-height: 30px; }
+      .heading-6.logo-2 { font-size: 22px; line-height: 30px; margin-left: 6px; }
+    }
+    @media screen and (max-width: 479px) {
+      .nav-items { margin-top: 20%; }
+      .navbar-2 { width: 100%; padding: 0 16px; }
+      .heading-6.logo-1 { font-size: 18px; line-height: 28px; margin-left: 0; }
+      .heading-6.logo-2 { font-size: 18px; line-height: 28px; margin-left: 5px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ PRELOADER ============ -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader-top"></div>
+    <div class="preloader-bottom"></div>
+    <div class="preloader-logo">
+      <div class="preloader-image-wrapper">
+        <div class="preloader-image">
+          <h1 class="logo-1">Dietrichs</h1>
+          <h1 class="logo-2">marketing</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ NAV ============ -->
+  <section class="menu-wrap" id="nav">
+    <div class="navbar-2">
+      <a href="index.html" class="logo-link-wrapper brand-3">
+        <div class="logo-text-container">
+          <div class="heading-6 logo-1">Dietrichs</div>
+          <div class="heading-6 logo-2">marketing</div>
+        </div>
+      </a>
+      <button type="button" id="menu-btn" class="navigation__menu-btn" aria-label="Åpne meny">
+        <div class="open-wrap">
+          <div class="navigation-text">Meny</div>
+          <div class="hamburger">
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line-4"></div>
+          </div>
+        </div>
+        <div class="close-wrap">
+          <div class="navigation-text">Lukk</div>
+          <div class="close-btn"></div>
+        </div>
+      </button>
+    </div>
+  </section>
+
+  <div id="menu-overlay" class="nav-container-2 hidden-menu">
+    <div class="nav__bg"></div>
+    <div class="container-4">
+      <div class="nav-items">
+        <a href="index.html" class="nav-item">
+          <div class="nav-item-number">01</div>
+          <div class="special-text-wrapper">
+            <div class="nav-item-text">Forside</div>
+            <div class="nav-item-text-full">Forside</div>
+          </div>
+        </a>
+        <a href="ai-nettsider.html" class="nav-item">
+          <div class="nav-item-number">02</div>
+          <div class="special-text-wrapper">
+            <div class="nav-item-text">AI-nettsider</div>
+            <div class="nav-item-text-full">AI-nettsider</div>
+          </div>
+        </a>
+        <a href="maler/" class="nav-item">
+          <div class="nav-item-number">03</div>
+          <div class="special-text-wrapper">
+            <div class="nav-item-text">Maler</div>
+            <div class="nav-item-text-full">Maler</div>
+          </div>
+        </a>
+        <a href="kontakt.html" class="nav-item">
+          <div class="nav-item-number">04</div>
+          <div class="special-text-wrapper">
+            <div class="nav-item-text">Kontakt</div>
+            <div class="nav-item-text-full">Kontakt</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <span class="decor decor-ring" data-parallax="0.18"></span>
+    <span class="decor decor-dot" data-parallax="-0.3"></span>
+    <div class="wrap">
+      <span class="label reveal"><span class="num">001</span><span class="bar"></span> AI-nettsider</span>
+      <h1 class="hero-title display reveal">
+        <span class="line">Kutt alle kostnader</span>
+        <span class="line accent">for nettsiden.</span>
+        <span class="line outline">Få full kontroll selv.</span>
+      </h1>
+      <div class="hero-bottom">
+        <div class="hero-foot">
+          <div class="scroll-hint reveal">
+            Rull ned
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+        </div>
+        <div class="hero-intro">
+          <p class="hero-lead reveal">
+            Vi bygger en lynrask, AI-klar nettside du styrer helt selv. Oppdater innholdet på <strong>60&nbsp;sekunder</strong>, uten kode, uten byrå, uten faste månedsavgifter.
+          </p>
+          <div class="hero-cta reveal">
+            <a class="btn btn-primary" href="ai-nettsider.html#demo-video">Se demo-video
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a class="btn btn-ghost" href="#priser">Se priser</a>
+          </div>
+          <div class="reassure reveal">
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg> 100&nbsp;% eierskap</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg> 0&nbsp;kr i faste kostnader</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg> Superrask på Google</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHAT-DEMO ============ -->
+  <section class="section alt" id="sniktitt">
+    <div class="wrap">
+      <div class="demo-wrap">
+        <div>
+          <span class="label reveal"><span class="num">002</span><span class="bar"></span> Sniktitt</span>
+          <h2 class="display reveal sect-head" style="margin-top:18px; margin-bottom:0; font-size:clamp(2rem,5vw,3.9rem);">
+            Endre siden ved å <span class="accent">skrive én melding.</span>
+          </h2>
+          <p class="reveal" style="margin-top:22px; color:var(--ink-soft); font-size:1.08rem; max-width:46ch;">
+            Du forteller AI-en hva som skal endres på vanlig norsk. Den skriver koden og publiserer. Live på under ett minutt, helt uten å vente på et byrå.
+          </p>
+          <a class="btn btn-primary reveal" style="margin-top:30px;" href="ai-nettsider.html#demo-video">Se hele demoen
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="reveal">
+          <div class="chat">
+            <div class="chat-bar"><i></i><i></i><i></i><span class="url">claude.ai</span></div>
+            <div class="chat-body">
+              <div class="bubble me">Endre åpningstid fredager til 08–14, og legg til tilbud på varmepumpe.</div>
+              <div class="bubble ai">Ferdig. Live på <strong>~30 sekunder</strong>.</div>
+            </div>
+            <div class="chat-live">
+              <span class="live-pill"><i></i> Live</span>
+              <span class="meta">rorlegger-stavanger.no oppdatert</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HVORDAN (3 etapper) ============ -->
+  <section class="section" id="hvordan">
+    <div class="wrap">
+      <div class="sect-head">
+        <span class="label reveal"><span class="num">003</span><span class="bar"></span> Slik funker det</span>
+        <h2 class="display reveal">Fra idé til <span class="outline">evig oppdaterbar.</span></h2>
+        <p class="reveal">Tre enkle etapper. Etterpå styrer du alt selv, om og om igjen, helt uten oss.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-n"><span>Etappe 01</span></div>
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg></div>
+          <h3>Vi bygger eller flytter</h3>
+          <p>Vi flytter den siden du har inn i et lynraskt system, eller bygger en helt ny. Du beholder design og merkevare.</p>
+          <div class="branch"><span>Flytt eksisterende</span><span>Eller bygg ny</span></div>
+        </div>
+        <div class="step reveal">
+          <div class="step-n"><span>Etappe 02</span></div>
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/></svg></div>
+          <h3>Vi setter opp AI-en din</h3>
+          <p>Vi konfigurerer din private AI med bedriftens kontekst, og du får en kort videogjennomgang så du er trygg fra dag én.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-n"><span>Etappe 03</span></div>
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 11-3-6.7M21 4v5h-5"/></svg></div>
+          <h3>Du oppdaterer selv, for alltid</h3>
+          <p>Du chatter med AI-en, den lager koden, og siden er live på 60 sekunder. Ingen byrå, ingen venting, ingen faktura.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRE FRIHETER ============ -->
+  <section class="section alt">
+    <div class="wrap">
+      <div class="sect-head">
+        <span class="label reveal"><span class="num">004</span><span class="bar"></span> Hva du faktisk får</span>
+        <h2 class="display reveal">Tre friheter fra <span class="accent">dagen vi leverer.</span></h2>
+      </div>
+      <div class="freedoms">
+        <div class="freedom reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 10h20"/></svg></div>
+          <h3>Frihet fra månedsavgift</h3>
+          <p>Engangskostnad. <strong>0&nbsp;kr</strong> til oss etterpå. Du betaler kun for ditt eget domene, rundt 150&nbsp;kr i året.</p>
+        </div>
+        <div class="freedom reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div>
+          <h3>Frihet fra ventetid</h3>
+          <p>Trenger du å endre en pris klokken 23? Gjør det selv, på <strong>60&nbsp;sekunder</strong>. Ingen byrå-mailer, ingen kø.</p>
+        </div>
+        <div class="freedom reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+          <h3>Frihet fra avhengighet</h3>
+          <p>Du eier koden, designet og innholdet <strong>100&nbsp;%</strong>. Ingen kan låse deg ute eller holde siden din som gissel.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STATS-BÅND ============ -->
+  <section class="stats">
+    <div class="wrap">
+      <div class="stats-lead">
+        <span class="label on-dark reveal"><span class="num">005</span><span class="bar"></span> I tall</span>
+        <h2 class="display reveal">Bygget for fart, eierskap og null overraskelser.</h2>
+      </div>
+      <div class="stats-grid">
+        <div class="stat reveal"><div class="n" data-count="60" data-suffix=" sek">60 sek</div><div class="t">Fra melding til live oppdatering</div></div>
+        <div class="stat reveal"><div class="n" data-count="0" data-suffix=" kr">0 kr</div><div class="t">Faste månedsavgifter til oss</div></div>
+        <div class="stat reveal"><div class="n" data-count="100" data-suffix=" %">100 %</div><div class="t">Eierskap til side, kode og innhold</div></div>
+        <div class="stat reveal"><div class="n" data-count="10" data-suffix="+">10+</div><div class="t">Ferdige maler for norske bransjer</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MALER ============ -->
+  <section class="section" id="maler">
+    <div class="wrap">
+      <div class="mal-top">
+        <div>
+          <span class="label reveal"><span class="num">006</span><span class="bar"></span> Maler</span>
+          <h2 class="display reveal sect-head" style="margin:18px 0 0; font-size:clamp(2rem,5vw,3.9rem);">Ferdige maler <span class="outline">for norske bransjer.</span></h2>
+        </div>
+        <p class="reveal" style="color:var(--ink-soft); max-width:40ch;">16 designvariasjoner, én eller fire sider. Tilpasset håndverk, helse, regnskap og service. Klar på 3 til 5 dager.</p>
+      </div>
+      <div class="mal-grid">
+        <a class="mal reveal" href="ai-nettsider.html#demo-video"><span class="mn">01</span><span class="mt">Rørlegger</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        <a class="mal reveal" href="ai-nettsider.html#demo-video"><span class="mn">02</span><span class="mt">Elektriker</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        <a class="mal reveal" href="ai-nettsider.html#demo-video"><span class="mn">03</span><span class="mt">Snekker</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        <a class="mal reveal" href="ai-nettsider.html#demo-video"><span class="mn">04</span><span class="mt">Malerfirma</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        <a class="mal reveal" href="ai-nettsider.html#demo-video"><span class="mn">05</span><span class="mt">Bilverksted</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        <a class="mal reveal" href="ai-nettsider.html#demo-video"><span class="mn">06</span><span class="mt">Tannlege</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        <a class="mal reveal" href="ai-nettsider.html#demo-video"><span class="mn">07</span><span class="mt">Psykolog</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        <a class="mal reveal" href="ai-nettsider.html#demo-video"><span class="mn">08</span><span class="mt">Regnskap</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        <a class="mal reveal" href="ai-nettsider.html#demo-video"><span class="mn">09</span><span class="mt">Frisør</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        <a class="mal more reveal" href="ai-nettsider.html#demo-video"><span class="mn">+ Flere</span><span class="mt">Barber og din bransje</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRISER ============ -->
+  <section class="section alt" id="priser">
+    <div class="wrap">
+      <div class="sect-head" style="max-width:680px;">
+        <span class="label reveal"><span class="num">007</span><span class="bar"></span> Priser og pakker</span>
+        <h2 class="display reveal">Velg pakken. <span class="accent">Eier alt, for alltid.</span></h2>
+        <p class="reveal">Engangskostnad. Ingen månedsavgifter til oss, ingen binding. Du eier 100&nbsp;% av nettsiden og koden, uansett pakke.</p>
+      </div>
+      <div class="price-grid">
+
+        <div class="price reveal">
+          <div class="pname">Gjør-det-selv</div>
+          <div class="psub">For deg med 0 i budsjett</div>
+          <div class="amount"><b>1 900</b> <em>kr</em><small>Engangssum</small></div>
+          <ul class="plist">
+            <li class="feat-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Tilgang til AI-klar kildekode</li>
+            <li class="feat-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>100&nbsp;% eierskap til side og kode</li>
+            <li class="feat-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Videokurs: sett det opp selv</li>
+            <li class="feat-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>0&nbsp;kr i månedlige driftskostnader</li>
+          </ul>
+          <a class="btn btn-ghost" href="ai-nettsider.html#demo-video">Se demo-video</a>
+        </div>
+
+        <div class="price reveal">
+          <div class="pname">Digital Grunnmur</div>
+          <div class="psub">Raskt på nett, fiks ferdig</div>
+          <div class="amount"><b>7 900</b> <em>– 8 900 kr</em><small>Engangssum</small></div>
+          <ul class="plist">
+            <li class="pre">Alt fra Gjør-det-selv, pluss:</li>
+            <li class="feat-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Vi bygger, designer og setter opp</li>
+            <li class="feat-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Inntil 3 ferdige undersider</li>
+            <li class="feat-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Tilpasset merkevare og SEO-oppsett</li>
+            <li class="feat-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Lansert på ditt eget domene</li>
+          </ul>
+          <a class="btn btn-ghost" href="ai-nettsider.html#demo-video">Se demo-video</a>
+        </div>
+
+        <div class="price feat reveal">
+          <span class="badge">★ Mest populær</span>
+          <div class="pname">Autopilot Pro</div>
+          <div class="psub">Komplett kontroll</div>
+          <div class="amount"><b>12 900</b> <em>– 13 900 kr</em><small>Engangssum</small></div>
+          <ul class="plist">
+            <li class="pre">Alt fra Digital Grunnmur, pluss:</li>
+            <li class="feat-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Inntil 7 ferdige undersider</li>
+            <li class="feat-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Integrasjoner: booking, Google Maps</li>
+            <li class="feat-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Skreddersydd AI matet med din bedrift</li>
+            <li class="feat-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Trygghetsgaranti: 1 mnd. gratis support</li>
+          </ul>
+          <a class="btn btn-primary" href="ai-nettsider.html#demo-video">Se demo-video</a>
+        </div>
+
+        <div class="price reveal">
+          <div class="pname">Premium Skreddersøm</div>
+          <div class="psub">For avanserte krav</div>
+          <div class="amount"><b>24 900</b> <em>– 39 000 kr</em><small>Engangssum</small></div>
+          <ul class="plist">
+            <li class="pre">Alt fra Autopilot Pro, pluss:</li>
+            <li class="feat-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Inntil 15 undersider, kompleks struktur</li>
+            <li class="feat-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Spesialutviklede designkomponenter</li>
+            <li class="feat-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Skjemaer koblet rett til ditt CRM</li>
+            <li class="feat-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Dedikert utviklingstid og prosjektleder</li>
+          </ul>
+          <a class="btn btn-ghost" href="ai-nettsider.html#demo-video">Se demo-video</a>
+        </div>
+
+      </div>
+
+      <div class="pay-note reveal">
+        <div>
+          <h3>Fleksibel betaling og <span class="accent">100&nbsp;% eierskap</span></h3>
+          <p>Rentefri delbetaling over 2 til 3 måneder. Du kan også utsette første faktura i inntil 30 dager, slik at vi får siden din live før du i det hele tatt trenger å betale.</p>
+        </div>
+        <div class="pay-items">
+          <div class="pay-item"><h4>Del opp betalingen</h4><p>Betal over 2 eller 3 måneder, uten ekstra kostnad eller renter.</p></div>
+          <div class="pay-item"><h4>Utsett første faktura</h4><p>Vi starter i dag. Du kan utsette første betaling i inntil 30 dager.</p></div>
+          <div class="pay-item"><h4>Ingen binding</h4><p>Du betaler kun for oppsettet. Etter det eier du alt, 0&nbsp;kr/mnd til oss.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TEAM ============ -->
+  <section class="section" id="team">
+    <div class="wrap">
+      <div class="sect-head">
+        <span class="label reveal"><span class="num">008</span><span class="bar"></span> Hvem vi er</span>
+        <h2 class="display reveal">Teamet</h2>
+        <p class="reveal">Et lite, teknisk team som bygger og overfører AI-nettsidene til kundene uten noe unødvendig mellomledd.</p>
+      </div>
+      <div class="team-grid">
+        <div class="member reveal">
+          <img class="avatar" src="assets/adrian-bw-modified.png" alt="Adrian" loading="lazy" />
+          <div class="m-body">
+            <h3>Adrian</h3>
+            <div class="role">Daglig leder</div>
+            <p>Sørger for at systemene leverer maksimal verdi og at overgangen til AI-nettside går sømløst for hver kunde.</p>
+          </div>
+        </div>
+        <div class="member reveal">
+          <img class="avatar" src="assets/hedvig.jpg" alt="Hedvig" loading="lazy" />
+          <div class="m-body">
+            <h3>Hedvig</h3>
+            <div class="role">Salg</div>
+            <p>Hjelper deg med å kartlegge behovene dine og finne den pakken som passer din bedrift best.</p>
+          </div>
+        </div>
+        <div class="member reveal">
+          <img class="avatar" src="assets/espen-bw.jpg" alt="Espen" loading="lazy" />
+          <div class="m-body">
+            <h3>Espen</h3>
+            <div class="role">Utvikler</div>
+            <p>Ansvarlig for koden og den tekniske ytelsen som gjør at nettsiden din er lynrask og optimalisert.</p>
+          </div>
+        </div>
+        <div class="member reveal">
+          <img class="avatar" src="assets/bjarte-bw.jpg" alt="Bjarte" loading="lazy" />
+          <div class="m-body">
+            <h3>Bjarte</h3>
+            <div class="role">Utvikler</div>
+            <p>Sørger for at nettsiden din er teknisk komplett og klar til å tas i bruk fra det øyeblikket vi leverer.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ANMELDELSE ============ -->
+  <section class="section alt">
+    <div class="wrap">
+      <div class="review">
+        <span class="label reveal" style="justify-content:center;"><span class="num">009</span><span class="bar"></span> Kundeanmeldelse</span>
+        <div class="quote-mark reveal" aria-hidden="true">&ldquo;</div>
+        <blockquote class="reveal">Fantastic service and talent. Very pleasant to work with Adrian, effective, creative and always delivers. Can not recommend his services enough!</blockquote>
+        <div class="stars reveal" aria-label="Fem av fem stjerner">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+        </div>
+        <div class="who reveal">
+          <img src="assets/elmer.png" alt="Elmer Laahne" onerror="this.style.display='none'" />
+          <div style="text-align:left;"><b>Elmer Laahne</b><span>Daglig leder</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FINAL CTA ============ -->
+  <section class="final" id="se-demo">
+    <span class="decor decor-ring" data-parallax="0.2"></span>
+    <span class="decor decor-ring two" data-parallax="-0.15"></span>
+    <div class="wrap">
+      <span class="label on-dark reveal" style="justify-content:center;"><span class="num">010</span><span class="bar"></span> Klar?</span>
+      <h2 class="display reveal" style="margin-top:18px;">Klar til å se<br><span class="outline on-dark">fremtidens nettside?</span></h2>
+      <p class="reveal">Se demo-videoen og oppdag hvordan du kan eie alt selv, uten faste byråkostnader.</p>
+      <div class="hero-cta reveal">
+        <a class="btn btn-light" href="ai-nettsider.html#demo-video">Se demo-video
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a class="btn btn-ghost-light" href="kontakt.html">Ta kontakt</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="f-top">
+        <div>
+          <a href="#top" class="brand"><b>Dietrichs</b><span>marketing</span></a>
+          <p class="f-tag">AI-nettsider for norske bedrifter. Du eier alt, oppdaterer selv, og slipper faste byråkostnader.</p>
+        </div>
+        <div class="f-links">
+          <div class="f-col">
+            <h5>Nettsiden</h5>
+            <a href="#hvordan">Hvordan funker det</a>
+            <a href="#maler">Maler</a>
+            <a href="#priser">Priser</a>
+            <a href="#team">Team</a>
+          </div>
+          <div class="f-col">
+            <h5>Kom i gang</h5>
+            <a href="ai-nettsider.html#demo-video">Se demo-video</a>
+            <a href="kontakt.html">Ta kontakt</a>
+          </div>
+        </div>
+      </div>
+      <div class="f-bottom">
+        <div>© 2026 Dietrichs Marketing</div>
+        <div>Org.nr 932 612 583</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var btn = document.getElementById('menu-btn');
+      var overlay = document.getElementById('menu-overlay');
+      if (!btn || !overlay) return;
+      function setOpen(open) {
+        overlay.classList.toggle('hidden-menu', !open);
+        btn.classList.toggle('is-open', open);
+        document.body.classList.toggle('menu-open', open);
+        document.body.style.overflow = open ? 'hidden' : '';
+      }
+      btn.addEventListener('click', function () { setOpen(overlay.classList.contains('hidden-menu')); });
+      overlay.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('touchstart', function () { a.classList.add('is-touched'); }, { passive: true });
+        a.addEventListener('click', function () { setOpen(false); });
+      });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+    })();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="app.js?v=18" defer></script>
+</body>
+</html>
