@@ -114,12 +114,29 @@
     return '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/></svg>';
   }
 
+  /* ── Keyboard nav (module pages only) ────────────────────── */
+  function initKeyboardNav() {
+    if (document.querySelector('a.module-card')) return; // skip index
+    var nav = document.querySelector('nav.border-t .max-w-3xl');
+    if (!nav) return;
+    var links = nav.querySelectorAll('a');
+    var prev = links[0] || null;
+    var next = links[links.length - 1] || null;
+    document.addEventListener('keydown', function (e) {
+      if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
+      if (e.altKey || e.ctrlKey || e.metaKey) return;
+      if (e.key === 'ArrowLeft' && prev) prev.click();
+      if (e.key === 'ArrowRight' && next && next !== prev) next.click();
+    });
+  }
+
   /* ── Boot ─────────────────────────────────────────────────── */
   function init() {
     if (document.querySelector('a.module-card')) {
       initIndexPage();
     } else {
       initModulePage();
+      initKeyboardNav();
     }
   }
 
