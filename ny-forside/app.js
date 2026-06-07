@@ -46,33 +46,59 @@
     });
   }
 
-  /* ---------- Lead -> Supabase (config-styrt, ikke-blokkerende) ----------
-     Sender skjema-innsendinger til dashboard-databasen NÅR window.DM_SUPABASE
-     er fylt ut (url + anonKey). Tomt = av. preventDefault kalles ALDRI, så
-     skjemaet sender alltid til formsubmit (e-postvarsel) som før. */
+  /* ---------- Kontaktskjema: Supabase-fetch + inline suksessmelding ---------- */
   (function () {
-    var form = document.querySelector('.contact-form');
-    var sb = window.DM_SUPABASE;
-    if (!form || !sb || !sb.url || !sb.anonKey) return;
-    form.addEventListener('submit', function () {
-      try {
-        var val = function (n) { var el = form.querySelector('[name="' + n + '"]'); return el ? el.value.trim() : ''; };
-        var payload = {
-          navn: val('Navn'), bedrift: val('Bedrift'), epost: val('Epost'),
-          telefon: val('Telefon'), nettside: val('Nettside'), melding: val('Melding'),
-          type: 'ai-nettsider', status: 'ny', kilde: 'kontaktskjema'
-        };
-        fetch(sb.url.replace(/\/+$/, '') + '/rest/v1/' + (sb.table || 'leads'), {
-          method: 'POST', keepalive: true,
-          headers: {
-            'apikey': sb.anonKey,
-            'Authorization': 'Bearer ' + sb.anonKey,
-            'Content-Type': 'application/json',
-            'Prefer': 'return=minimal'
-          },
-          body: JSON.stringify(payload)
-        }).catch(function () {});
-      } catch (e) {}
+    var form = document.getElementById('contactForm');
+    if (!form) return;
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var btn = document.getElementById('contactSubmit');
+      var errEl = document.getElementById('contactError');
+      var successEl = document.getElementById('contactSuccess');
+      var val = function (n) { var el = form.querySelector('[name="' + n + '"]'); return el ? el.value.trim() : ''; };
+
+      var epost = val('Epost');
+      if (!epost) {
+        if (errEl) { errEl.textContent = 'Epostadresse er påkrevd.'; errEl.style.display = ''; }
+        return;
+      }
+      if (errEl) errEl.style.display = 'none';
+
+      if (btn) { btn.disabled = true; btn.textContent = 'Sender…'; }
+
+      var payload = {
+        navn: val('Navn'), bedrift: val('Bedrift'), epost: epost,
+        telefon: val('Telefon'), nettside: val('Nettside'), melding: val('Melding'),
+        type: 'kontaktskjema', status: 'ny', kilde: 'kontakt.html'
+      };
+
+      var sb = window.DM_SUPABASE;
+      var sendPromise = (sb && sb.url && sb.anonKey)
+        ? fetch(sb.url.replace(/\/+$/, '') + '/rest/v1/' + (sb.table || 'leads'), {
+            method: 'POST',
+            headers: {
+              'apikey': sb.anonKey,
+              'Authorization': 'Bearer ' + sb.anonKey,
+              'Content-Type': 'application/json',
+              'Prefer': 'return=minimal'
+            },
+            body: JSON.stringify(payload)
+          })
+        : Promise.resolve({ ok: true });
+
+      sendPromise.then(function (res) {
+        if (res.ok || res.status === 201) {
+          form.style.display = 'none';
+          if (successEl) successEl.style.display = '';
+        } else {
+          throw new Error('status ' + res.status);
+        }
+      }).catch(function () {
+        if (btn) { btn.disabled = false; btn.innerHTML = 'Send melding <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>'; }
+        if (errEl) { errEl.textContent = 'Noe gikk galt. Prøv igjen eller send en e-post til post@dmarketing.no.'; errEl.style.display = ''; }
+      });
     });
   })();
 

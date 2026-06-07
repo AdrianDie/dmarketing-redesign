@@ -235,10 +235,7 @@
           </ul>
         </div>
 
-        <form class="contact-form reveal" action="https://formsubmit.co/post@dmarketing.no" method="POST">
-          <input type="hidden" name="_subject" value="Ny henvendelse fra dmarketing.no" />
-          <input type="hidden" name="_template" value="table" />
-          <input type="hidden" name="_captcha" value="false" />
+        <form class="contact-form reveal" id="contactForm" novalidate>
           <label class="field">
             <span>Navn</span>
             <input type="text" name="Navn" placeholder="Ola Nordmann" autocomplete="name" />
@@ -263,12 +260,18 @@
             <span>Melding <em>*</em></span>
             <textarea name="Melding" placeholder="Skriv meldingen din her" required></textarea>
           </label>
-          <button type="submit" class="btn btn-primary">
+          <button type="submit" class="btn btn-primary" id="contactSubmit">
             Send melding
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </button>
+          <p class="form-note" id="contactError" style="display:none;color:#dc2626;"></p>
           <p class="form-note">Vi bruker opplysningene kun til å svare deg. Ingen spam.</p>
         </form>
+        <div class="contact-success" id="contactSuccess" style="display:none;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="40" height="40"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+          <h3>Takk for meldingen!</h3>
+          <p>Vi tar kontakt med deg innen en virkedag.</p>
+        </div>
       </div>
     </div>
   </section>
