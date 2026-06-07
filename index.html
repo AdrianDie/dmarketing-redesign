@@ -93,11 +93,12 @@
       }
     }
   </style>
-  <!-- Netlify Identity: håndterer invite/confirm-lenker fra epost -->
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <!-- Netlify Identity: videresend invite/confirm-tokens til login-siden -->
   <script>
-    netlifyIdentity.on('invite', function() { window.location.replace('/kurs/login'); });
-    netlifyIdentity.on('login', function() { window.location.replace('/kurs/'); });
+    var h = window.location.hash;
+    if (h.indexOf('invite_token=') !== -1 || h.indexOf('confirmation_token=') !== -1 || h.indexOf('recovery_token=') !== -1) {
+      window.location.replace('/kurs/login' + h);
+    }
   </script>
 </head>
 <body class="body-3">
