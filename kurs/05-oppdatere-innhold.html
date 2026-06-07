@@ -71,6 +71,64 @@
         <p style="margin-top:0.75rem;">Du trenger ikke pugge disse — du kan alltid bare skrive «den store overskriften øverst» eller «knappen» til Claude, så skjønner den det. Møter du flere ord du ikke kjenner, slå dem opp i <a href="ordliste" class="text-blue-600 underline">ordlisten</a>.</p>
       </div>
 
+      <figure class="not-prose my-8 rounded-2xl border border-zinc-200 bg-white p-5 md:p-7">
+        <p class="text-center text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-5">Nettside-anatomi — hva de ulike delene heter</p>
+        <svg viewBox="0 0 430 318" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Diagram av en nettside med meny, hero, H1, CTA-knapp, tjenester og footer">
+
+          <!-- NAV zone -->
+          <rect x="10" y="10" width="190" height="32" rx="6" fill="#0F172A"/>
+          <text x="105" y="30" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.5)" font-weight="700" letter-spacing="0.1em">MENY</text>
+
+          <!-- HERO zone -->
+          <rect x="10" y="42" width="190" height="110" fill="#EFF6FF"/>
+          <!-- H1 placeholder lines -->
+          <text x="25" y="61" font-size="7.5" fill="#1E40AF" font-weight="700" letter-spacing="0.05em">H1 — OVERSKRIFT</text>
+          <rect x="25" y="65" width="160" height="9" rx="2" fill="#BFDBFE"/>
+          <rect x="25" y="78" width="115" height="9" rx="2" fill="#BFDBFE"/>
+          <!-- CTA button -->
+          <rect x="25" y="103" width="80" height="28" rx="4" fill="#2563EB"/>
+          <text x="65" y="121" text-anchor="middle" font-size="8.5" font-weight="700" fill="white">Ring nå →</text>
+          <text x="113" y="121" font-size="7.5" fill="#6B7280">← CTA-knapp</text>
+
+          <!-- TJENESTER zone -->
+          <rect x="10" y="152" width="190" height="103" fill="#FAFAFA" stroke="#E4E4E7" stroke-width="1"/>
+          <rect x="16" y="162" width="55" height="84" rx="4" fill="white" stroke="#E4E4E7" stroke-width="1"/>
+          <rect x="78" y="162" width="55" height="84" rx="4" fill="white" stroke="#E4E4E7" stroke-width="1"/>
+          <rect x="140" y="162" width="54" height="84" rx="4" fill="white" stroke="#E4E4E7" stroke-width="1"/>
+          <rect x="21" y="172" width="45" height="7" rx="2" fill="#E4E4E7"/>
+          <rect x="83" y="172" width="45" height="7" rx="2" fill="#E4E4E7"/>
+          <rect x="145" y="172" width="44" height="7" rx="2" fill="#E4E4E7"/>
+
+          <!-- FOOTER zone -->
+          <rect x="10" y="255" width="190" height="53" fill="#1E293B"/>
+          <text x="105" y="285" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.4)" font-weight="700" letter-spacing="0.1em">FOOTER / BUNNEN</text>
+
+          <!-- Outer border -->
+          <rect x="10" y="10" width="190" height="298" rx="6" fill="none" stroke="#E4E4E7" stroke-width="1.5"/>
+
+          <!-- Connector lines to right-side labels -->
+          <line x1="200" y1="26" x2="216" y2="26" stroke="#94A3B8" stroke-width="1"/>
+          <line x1="200" y1="97" x2="216" y2="97" stroke="#94A3B8" stroke-width="1"/>
+          <line x1="200" y1="203" x2="216" y2="203" stroke="#94A3B8" stroke-width="1"/>
+          <line x1="200" y1="281" x2="216" y2="281" stroke="#94A3B8" stroke-width="1"/>
+
+          <!-- Right side labels -->
+          <text x="220" y="22" font-size="13" font-weight="700" fill="#09090B">Meny</text>
+          <text x="220" y="36" font-size="10" fill="#71717A">Logo + navigasjonslenker</text>
+
+          <text x="220" y="93" font-size="13" font-weight="700" fill="#09090B">Hero</text>
+          <text x="220" y="107" font-size="10" fill="#71717A">Toppfeltet — det første</text>
+          <text x="220" y="119" font-size="10" fill="#71717A">folk ser når de ankommer</text>
+
+          <text x="220" y="199" font-size="13" font-weight="700" fill="#09090B">Seksjoner</text>
+          <text x="220" y="213" font-size="10" fill="#71717A">Tjenester, om oss, priser…</text>
+
+          <text x="220" y="277" font-size="13" font-weight="700" fill="#09090B">Footer</text>
+          <text x="220" y="291" font-size="10" fill="#71717A">Kontakt, org.nr, copyright</text>
+
+        </svg>
+      </figure>
+
       <h2>Tre regler for gode prompts</h2>
       <ol>
         <li><strong>Vær konkret om HVOR.</strong> "Endre teksten på forsiden" er upresist. "Endre H1-overskriften på forsiden, der det står 'Velkommen'" er bra.</li>

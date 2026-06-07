@@ -72,6 +72,57 @@
         <li><strong>Sjekk på mobil OG desktop:</strong> noen ganger ser ulikt på de to.</li>
       </ol>
 
+      <figure class="not-prose my-8 rounded-2xl border border-zinc-200 bg-white p-5 md:p-7">
+        <p class="text-center text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-5">Prøv alltid disse stegene i rekkefølge</p>
+        <svg viewBox="0 0 560 155" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Fem feilsøkingssteg i rekkefølge: hard reload, Cloudflare status, inkognito, mobil og desktop, be Claude">
+
+          <!-- Connector lines between steps -->
+          <line x1="86" y1="60" x2="172" y2="60" stroke="#E4E4E7" stroke-width="2"/>
+          <polygon points="167,55 177,60 167,65" fill="#CBD5E1"/>
+          <line x1="194" y1="60" x2="280" y2="60" stroke="#E4E4E7" stroke-width="2"/>
+          <polygon points="275,55 285,60 275,65" fill="#CBD5E1"/>
+          <line x1="302" y1="60" x2="388" y2="60" stroke="#E4E4E7" stroke-width="2"/>
+          <polygon points="383,55 393,60 383,65" fill="#CBD5E1"/>
+          <line x1="410" y1="60" x2="462" y2="60" stroke="#E4E4E7" stroke-width="2"/>
+          <polygon points="457,55 467,60 457,65" fill="#CBD5E1"/>
+
+          <!-- Step 1: Hard reload -->
+          <circle cx="64" cy="60" r="22" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"/>
+          <text x="64" y="65" text-anchor="middle" font-size="15" font-weight="800" fill="#2563EB">1</text>
+          <text x="64" y="98" text-anchor="middle" font-size="10.5" font-weight="700" fill="#09090B">Hard reload</text>
+          <text x="64" y="111" text-anchor="middle" font-size="9.5" fill="#71717A">Ctrl+Shift+R</text>
+
+          <!-- Step 2: Cloudflare -->
+          <circle cx="183" cy="60" r="11" fill="#2563EB"/>
+          <text x="183" y="64" text-anchor="middle" font-size="11" font-weight="800" fill="white">2</text>
+          <text x="183" y="95" text-anchor="middle" font-size="10.5" font-weight="700" fill="#09090B">Cloudflare</text>
+          <text x="183" y="108" text-anchor="middle" font-size="9.5" fill="#71717A">Success / Failed?</text>
+
+          <!-- Step 3: Inkognito -->
+          <circle cx="291" cy="60" r="11" fill="#2563EB"/>
+          <text x="291" y="64" text-anchor="middle" font-size="11" font-weight="800" fill="white">3</text>
+          <text x="291" y="95" text-anchor="middle" font-size="10.5" font-weight="700" fill="#09090B">Inkognito</text>
+          <text x="291" y="108" text-anchor="middle" font-size="9.5" fill="#71717A">Cache-fri test</text>
+
+          <!-- Step 4: Mobil + Desktop -->
+          <circle cx="399" cy="60" r="11" fill="#2563EB"/>
+          <text x="399" y="64" text-anchor="middle" font-size="11" font-weight="800" fill="white">4</text>
+          <text x="399" y="95" text-anchor="middle" font-size="10.5" font-weight="700" fill="#09090B">Begge skjerm</text>
+          <text x="399" y="108" text-anchor="middle" font-size="9.5" fill="#71717A">Mobil + desktop</text>
+
+          <!-- Step 5: Ask Claude (green) -->
+          <circle cx="484" cy="60" r="22" fill="#16A34A"/>
+          <text x="484" y="55" text-anchor="middle" font-size="9" font-weight="800" fill="white">Be</text>
+          <text x="484" y="67" text-anchor="middle" font-size="9" font-weight="800" fill="white">Claude</text>
+          <text x="484" y="98" text-anchor="middle" font-size="10.5" font-weight="700" fill="#09090B">Lim inn</text>
+          <text x="484" y="111" text-anchor="middle" font-size="9.5" fill="#16A34A">feilmeldingen</text>
+
+          <!-- Bottom note -->
+          <text x="280" y="138" text-anchor="middle" font-size="10.5" fill="#71717A">Løst allerede på steg 1 i ~40 % av tilfellene. Claude fikser nesten alltid resten.</text>
+
+        </svg>
+      </figure>
+
       <h2>Vanligste problemer</h2>
 
       <div class="problem not-prose">

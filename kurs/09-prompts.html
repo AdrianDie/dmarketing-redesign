@@ -72,6 +72,64 @@
         <li><strong>HVORFOR:</strong> kontekst som hjelper Claude ta riktige beslutninger (valgfritt)</li>
       </ol>
 
+      <figure class="not-prose my-8 rounded-2xl border border-zinc-200 bg-white p-5 md:p-7">
+        <p class="text-center text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-5">Anatomien til en god prompt</p>
+        <svg viewBox="0 0 580 195" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="De tre ingrediensene: HVOR, HVA og HVORFOR kombineres til en god prompt">
+
+          <!-- Block 1: HVOR -->
+          <rect x="10" y="20" width="148" height="70" rx="8" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1.5"/>
+          <text x="84" y="42" text-anchor="middle" font-size="11" font-weight="700" fill="#1E40AF" letter-spacing="0.06em">HVOR</text>
+          <text x="84" y="58" text-anchor="middle" font-size="10" fill="#3B82F6">På forsiden,</text>
+          <text x="84" y="72" text-anchor="middle" font-size="10" fill="#3B82F6">H1-overskriften</text>
+
+          <!-- Block 2: HVA -->
+          <rect x="10" y="104" width="148" height="70" rx="8" fill="#F5F3FF" stroke="#DDD6FE" stroke-width="1.5"/>
+          <text x="84" y="126" text-anchor="middle" font-size="11" font-weight="700" fill="#5B21B6" letter-spacing="0.06em">HVA</text>
+          <text x="84" y="142" text-anchor="middle" font-size="10" fill="#7C3AED">Endre til «Norges</text>
+          <text x="84" y="156" text-anchor="middle" font-size="10" fill="#7C3AED">raskeste rørlegger»</text>
+
+          <!-- HVORFOR (optional tag + block) -->
+          <rect x="10" y="186" width="148" height="0" rx="8" fill="none"/>
+
+          <!-- Combining lines (three inputs merge into one) -->
+          <!-- Horizontal line from block 1 right edge -->
+          <line x1="158" y1="55" x2="200" y2="55" stroke="#CBD5E1" stroke-width="1.5"/>
+          <!-- Horizontal line from block 2 right edge -->
+          <line x1="158" y1="139" x2="200" y2="139" stroke="#CBD5E1" stroke-width="1.5"/>
+          <!-- Vertical connector -->
+          <line x1="200" y1="55" x2="200" y2="139" stroke="#CBD5E1" stroke-width="1.5"/>
+          <!-- Combined line to arrow -->
+          <line x1="200" y1="97" x2="278" y2="97" stroke="#CBD5E1" stroke-width="1.5"/>
+          <!-- Arrowhead -->
+          <polygon points="273,92 283,97 273,102" fill="#CBD5E1"/>
+
+          <!-- Optional: HVORFOR block -->
+          <rect x="10" y="188" width="148" height="0" rx="0" fill="none"/>
+
+          <!-- Result box: God prompt -->
+          <rect x="287" y="58" width="180" height="78" rx="10" fill="#F0FDF4" stroke="#86EFAC" stroke-width="2"/>
+          <text x="377" y="88" text-anchor="middle" font-size="13" font-weight="800" fill="#15803D">God prompt ✓</text>
+          <text x="377" y="107" text-anchor="middle" font-size="10" fill="#16A34A">Claude forstår nøyaktig</text>
+          <text x="377" y="120" text-anchor="middle" font-size="10" fill="#16A34A">hva du vil ha</text>
+
+          <!-- HVORFOR optional block below -->
+          <rect x="10" y="188" width="148" height="0" rx="8" fill="none"/>
+
+          <!-- Tip boxes at bottom -->
+          <rect x="10" y="188" width="245" height="0" rx="6" fill="none"/>
+
+          <!-- Small annotation for HOWFOR optional -->
+          <rect x="287" y="148" width="180" height="42" rx="8" fill="#FEF3C7" stroke="#FDE68A" stroke-width="1"/>
+          <text x="377" y="167" text-anchor="middle" font-size="10" font-weight="700" fill="#92400E">+ HVORFOR (valgfritt)</text>
+          <text x="377" y="181" text-anchor="middle" font-size="9.5" fill="#B45309">Kontekst gir bedre resultat</text>
+
+          <!-- Labels -->
+          <text x="84" y="14" text-anchor="middle" font-size="9" font-weight="700" fill="#64748B" letter-spacing="0.04em">INGREDIENS 1</text>
+          <text x="84" y="98" text-anchor="middle" font-size="9" font-weight="700" fill="#64748B" letter-spacing="0.04em">INGREDIENS 2</text>
+
+        </svg>
+      </figure>
+
       <h2>Bra vs dårlig — eksempler</h2>
 
       <h3>Eksempel 1: endre tekst</h3>
