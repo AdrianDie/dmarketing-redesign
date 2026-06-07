@@ -260,11 +260,11 @@
       position: absolute; inset: 0;
     }
     .container-4 {
-      width: 90%; max-width: none; margin: 0 auto;
+      width: 92%; max-width: none; margin: 0 auto;
     }
     .nav-items {
       z-index: 99; flex-flow: column; align-items: flex-start;
-      width: 80%; max-width: 1200px; margin-top: 40px;
+      width: 100%; max-width: 1200px; margin-top: 40px;
       display: flex; position: relative; overflow: hidden;
     }
     .nav-item {
@@ -276,24 +276,34 @@
       font-family: Archivo, sans-serif; font-size: 12px; line-height: 12px;
       transform: rotate(-90deg);
     }
-    .special-text-wrapper { height: 130px; overflow: hidden; }
+    .special-text-wrapper { height: clamp(56px, 11vw, 130px); overflow: hidden; }
     .nav-item-text {
       color: transparent; -webkit-text-fill-color: transparent;
       -webkit-text-stroke: 0.8px #A5A3A6;
       text-transform: uppercase; font-family: Archivo, sans-serif;
-      font-size: 90px; font-weight: 700; line-height: 130px; display: block;
+      font-size: clamp(38px, 7.5vw, 90px); font-weight: 700;
+      line-height: clamp(56px, 11vw, 130px); display: block;
+      white-space: nowrap;
     }
     .nav-item-text-full {
       color: #fff; text-transform: uppercase; font-family: Archivo, sans-serif;
-      font-size: 90px; font-weight: 700; line-height: 130px;
+      font-size: clamp(38px, 7.5vw, 90px); font-weight: 700;
+      line-height: clamp(56px, 11vw, 130px);
+      white-space: nowrap;
     }
     /* Hover-animasjon: slide tekst opp, fill-versjon kommer inn */
     .special-text-wrapper > div {
       transition: transform 0.55s cubic-bezier(0.65, 0, 0.35, 1);
     }
     .nav-item:hover .nav-item-text,
-    .nav-item:hover .nav-item-text-full {
-      transform: translateY(-130px);
+    .nav-item:hover .nav-item-text-full,
+    .nav-item:focus .nav-item-text,
+    .nav-item:focus .nav-item-text-full,
+    .nav-item:active .nav-item-text,
+    .nav-item:active .nav-item-text-full,
+    .nav-item.is-touched .nav-item-text,
+    .nav-item.is-touched .nav-item-text-full {
+      transform: translateY(calc(-1 * clamp(56px, 11vw, 130px)));
     }
 
     /* Toggle: skjul nav-container-2 når meny er stengt */
@@ -308,30 +318,18 @@
     .navigation__menu-btn:not(.is-open) .close-wrap { display: none; }
 
     @media screen and (min-width: 1440px) {
-      .nav-item-text, .nav-item-text-full { font-size: 85px; line-height: 110px; }
-      .nav-items { width: 50%; }
+      .nav-items { width: 60%; }
       .navigation-text { font-size: 15px; }
       .heading-6.logo-1, .heading-6.logo-2 { font-size: 40px; line-height: 30px; }
-      .special-text-wrapper { height: 110px; }
-      .nav-item:hover .nav-item-text,
-      .nav-item:hover .nav-item-text-full { transform: translateY(-110px); }
-    }
-    @media screen and (max-width: 991px) {
-      .nav-item-text, .nav-item-text-full { font-size: 85px; }
     }
     @media screen and (max-width: 767px) {
-      .special-text-wrapper { height: auto; }
-      .nav-item-text-full { font-size: 70px; line-height: 90px; display: none; }
-      .nav-item-text { font-size: 70px; line-height: 120px; }
-      .nav-items { width: 90%; }
+      .nav-items { width: 90%; margin-top: 20px; }
       .heading-6.logo-1 { font-size: 22px; line-height: 30px; }
       .heading-6.logo-2 { font-size: 22px; line-height: 30px; margin-left: 6px; }
       /* Floating CTA: skjul på mobil — overlapper inline-CTAs */
       #floating-cta { display: none !important; }
     }
     @media screen and (max-width: 479px) {
-      .nav-item-text { font-size: 35px; line-height: 200%; }
-      .nav-item-text-full { font-size: 35px; display: none; }
       .nav-items { margin-top: 20%; }
       .navbar-2 {
         justify-content: space-between; width: 100%;
@@ -395,32 +393,25 @@
             <div class="nav-item-text-full">Forside</div>
           </div>
         </a>
-        <a href="index.html#priser" class="nav-item">
+        <a href="ai-nettsider.html" class="nav-item">
           <div class="nav-item-number">02</div>
           <div class="special-text-wrapper">
-            <div class="nav-item-text">Tjenester</div>
-            <div class="nav-item-text-full">Tjenester</div>
-          </div>
-        </a>
-        <a href="kontakt.html" class="nav-item">
-          <div class="nav-item-number">03</div>
-          <div class="special-text-wrapper">
-            <div class="nav-item-text">Kontakt</div>
-            <div class="nav-item-text-full">Kontakt</div>
+            <div class="nav-item-text">AI-nettsider</div>
+            <div class="nav-item-text-full">AI-nettsider</div>
           </div>
         </a>
         <a href="maler/" class="nav-item">
-          <div class="nav-item-number">04</div>
+          <div class="nav-item-number">03</div>
           <div class="special-text-wrapper">
             <div class="nav-item-text">Maler</div>
             <div class="nav-item-text-full">Maler</div>
           </div>
         </a>
-        <a href="ai-nettsider.html" class="nav-item">
-          <div class="nav-item-number">05</div>
+        <a href="kontakt.html" class="nav-item">
+          <div class="nav-item-number">04</div>
           <div class="special-text-wrapper">
-            <div class="nav-item-text">AI-nettsider</div>
-            <div class="nav-item-text-full">AI-nettsider</div>
+            <div class="nav-item-text">Kontakt</div>
+            <div class="nav-item-text-full">Kontakt</div>
           </div>
         </a>
       </div>
@@ -1115,7 +1106,10 @@
         document.body.style.overflow = open ? 'hidden' : '';
       };
       btn.addEventListener('click', () => setOpen(overlay.classList.contains('hidden-menu')));
-      overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+      overlay.querySelectorAll('a').forEach(a => {
+        a.addEventListener('touchstart', () => a.classList.add('is-touched'), { passive: true });
+        a.addEventListener('click', () => setOpen(false));
+      });
     })();
 
     // Floating CTA

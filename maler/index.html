@@ -44,15 +44,67 @@
   <style>
     /* Gjenopprett side-stil som Webflow CSS overstyrer */
     body { background-color: #FAFAFA !important; color: #09090B !important; font-family: 'Schibsted Grotesk', system-ui, sans-serif !important; -webkit-font-smoothing: antialiased !important; -moz-osx-font-smoothing: grayscale !important; }
-    h1, h2, h3, h4, h5, h6 { text-transform: none !important; margin-left: 0 !important; color: #09090B !important; font-family: inherit !important; }
+    h1, h2 { text-transform: uppercase !important; margin-left: 0 !important; color: #09090B !important; font-family: inherit !important; }
+    h3, h4, h5, h6 { text-transform: none !important; margin-left: 0 !important; color: #09090B !important; font-family: inherit !important; }
+    .preloader-image .logo-1, .preloader-image .logo-2 { text-transform: uppercase !important; }
     .font-display, [class*="font-display"] { font-family: 'Archivo', sans-serif !important; }
-    /* Skjul nav-overlay til webflow.js åpner den */
-    .nav-container-2 { display: none; }
-    /* Svart nav-bar på lys bakgrunn */
-    .navbar-2 { background: transparent !important; position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; width: 100% !important; max-width: 100% !important; margin: 0 !important; padding: 0 5% !important; height: 56px !important; }
-    .open-wrap .navigation-text { color: #09090B !important; }
-    .close-wrap .navigation-text { color: #fff !important; }
-    .hamburger-line, .hamburger-line-4 { background-color: #09090B !important; }
+    /* ===== Hus-meny — scopet til .dm-nav for å ikke kollidere med Webflow ===== */
+    .dm-menu-wrap { background-color: #ffffff; padding: 16px 0; border-bottom: 1px solid #E4E4E7; position: fixed; top: 0; left: 0; right: 0; z-index: 101; }
+    .dm-navbar { z-index: 101; justify-content: space-between; align-items: center; width: 90%; max-width: 1440px; height: 50px; margin: 0 auto; display: flex; position: relative; }
+    .dm-logo-link { flex-direction: column; justify-content: center; align-items: center; display: flex; text-decoration: none; }
+    .dm-logo-text { display: flex; }
+    .dm-logo-1 { color: #09090B; letter-spacing: 2px; text-transform: uppercase; margin: 0 0 0 10px; font-family: Archivo, sans-serif; font-size: 30px; font-weight: 700; line-height: 45px; }
+    .dm-logo-2 { color: transparent; -webkit-text-stroke: 0.5px #09090B; letter-spacing: 2px; text-transform: uppercase; margin: 0 0 0 10px; font-family: Archivo, sans-serif; font-size: 30px; font-weight: 600; line-height: 45px; }
+    .dm-menu-btn { cursor: pointer; flex-direction: column; justify-content: flex-start; align-items: center; height: 25px; overflow: hidden; display: flex; background: transparent; border: 0; padding: 0; outline: none; }
+    .dm-menu-btn:focus, .dm-menu-btn:focus-visible { outline: none; }
+    .dm-open-wrap { align-items: center; height: 25px; display: flex; }
+    .dm-menu-text { color: #09090B; letter-spacing: 3px; text-transform: uppercase; font-family: Archivo, sans-serif; font-size: 12px; line-height: 12px; text-decoration: none; }
+    .dm-hamburger { flex-direction: column; justify-content: space-between; align-items: flex-end; width: 25px; height: 10px; margin-left: 12.5px; display: flex; }
+    .dm-hamburger-line-1 { background-color: #09090B; width: 25px; height: 2.22px; }
+    .dm-hamburger-line-2 { background-color: #09090B; width: 15px; height: 2.22px; }
+    body.dm-menu-open .dm-menu-wrap { background-color: #1a1a1f; border-bottom-color: rgba(255,255,255,0.1); }
+    body.dm-menu-open .dm-logo-1 { color: whitesmoke; }
+    body.dm-menu-open .dm-logo-2 { -webkit-text-stroke-color: whitesmoke; }
+    body.dm-menu-open .dm-menu-text { color: #fff; }
+    body.dm-menu-open .dm-hamburger-line-1, body.dm-menu-open .dm-hamburger-line-2 { background-color: #fff; }
+    body.dm-menu-open .dm-close-btn::before, body.dm-menu-open .dm-close-btn::after { background: #fff; }
+    .dm-menu-wrap, .dm-logo-1, .dm-logo-2, .dm-menu-text, .dm-hamburger-line-1, .dm-hamburger-line-2 { transition: background-color 0.25s ease, color 0.25s ease, -webkit-text-stroke-color 0.25s ease, border-color 0.25s ease; }
+    .dm-close-wrap { flex-direction: row; justify-content: flex-end; align-items: center; height: 25px; display: flex; }
+    .dm-close-btn { width: 18px; height: 18px; margin-left: 12.5px; position: relative; }
+    .dm-close-btn::before, .dm-close-btn::after { content: ""; position: absolute; top: 50%; left: 0; width: 100%; height: 2px; background: #fff; transform-origin: center; }
+    .dm-close-btn::before { transform: translateY(-50%) rotate(45deg); }
+    .dm-close-btn::after { transform: translateY(-50%) rotate(-45deg); }
+    .dm-menu-overlay { z-index: 97; background-color: #1a1a1f; flex-direction: column; justify-content: flex-start; align-items: center; min-height: 100vh; padding: 100px 0 80px; position: fixed; inset: 0; overflow-y: auto; transition: opacity 0.35s ease, visibility 0.35s ease; display: flex; }
+    .dm-menu-overlay.dm-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    .dm-menu-container { width: 92%; margin: 0 auto; }
+    .dm-menu-items { z-index: 99; flex-flow: column; align-items: flex-start; width: 100%; max-width: 1200px; margin: 40px auto 0; display: flex; position: relative; overflow: hidden; }
+    .dm-menu-item { align-items: center; text-decoration: none; display: flex; }
+    .dm-menu-num { color: #fff; letter-spacing: 3px; margin-right: 20px; font-family: Archivo, sans-serif; font-size: 12px; line-height: 12px; transform: rotate(-90deg); }
+    .dm-text-wrap { height: clamp(56px, 11vw, 130px); overflow: hidden; }
+    .dm-item-text { color: transparent; -webkit-text-fill-color: transparent; -webkit-text-stroke: 0.8px #A5A3A6; text-transform: uppercase; font-family: Archivo, sans-serif; font-size: clamp(38px, 7.5vw, 90px); font-weight: 700; line-height: clamp(56px, 11vw, 130px); display: block; white-space: nowrap; }
+    .dm-item-fill { color: #fff; -webkit-text-fill-color: #fff; -webkit-text-stroke: 0; text-transform: uppercase; font-family: Archivo, sans-serif; font-size: clamp(38px, 7.5vw, 90px); font-weight: 700; line-height: clamp(56px, 11vw, 130px); white-space: nowrap; }
+    .dm-text-wrap > div { transition: transform 0.55s cubic-bezier(0.65, 0, 0.35, 1); }
+    .dm-menu-item:hover .dm-item-text, .dm-menu-item:hover .dm-item-fill,
+    .dm-menu-item:focus .dm-item-text, .dm-menu-item:focus .dm-item-fill,
+    .dm-menu-item:active .dm-item-text, .dm-menu-item:active .dm-item-fill,
+    .dm-menu-item.is-touched .dm-item-text, .dm-menu-item.is-touched .dm-item-fill { transform: translateY(calc(-1 * clamp(56px, 11vw, 130px))); }
+    .dm-menu-btn.is-open .dm-open-wrap { display: none; }
+    .dm-menu-btn:not(.is-open) .dm-close-wrap { display: none; }
+    @media screen and (min-width: 1440px) {
+      .dm-menu-items { width: 60%; }
+      .dm-logo-1, .dm-logo-2 { font-size: 40px; line-height: 30px; }
+    }
+    @media screen and (max-width: 767px) {
+      .dm-menu-items { width: 90%; margin-top: 20px; }
+      .dm-logo-1 { font-size: 22px; line-height: 30px; }
+      .dm-logo-2 { font-size: 22px; line-height: 30px; margin-left: 6px; }
+    }
+    @media screen and (max-width: 479px) {
+      .dm-menu-items { margin-top: 20%; }
+      .dm-navbar { width: 100%; padding: 0 16px; }
+      .dm-logo-1 { font-size: 18px; line-height: 28px; margin-left: 0; }
+      .dm-logo-2 { font-size: 18px; line-height: 28px; margin-left: 5px; }
+    }
   /* ===== PRELOADER (akkurat samme som ai-nettsider) ===== */
   html.no-preloader .preloader{display:none!important}
   .preloader{z-index:99999;flex-direction:column;justify-content:center;align-items:center;width:100%;display:flex;position:fixed;inset:0;pointer-events:none}
@@ -79,83 +131,65 @@
     </div></div></div>
   </div>
 
-  <section>
-    <div class="w-layout-blockcontainer navbar-2 w-container">
-      <a href="../" class="logo-link-wrapper brand brand-2 logo-link brand-3 w-nav-brand">
-        <img src="../images/D-1-modified.png" alt="Dietrichs Marketing" style="height:36px;width:auto;">
+  <!-- ============ NAV (hus-meny) ============ -->
+  <section class="dm-menu-wrap" id="dm-nav">
+    <div class="dm-navbar">
+      <a href="../" class="dm-logo-link">
+        <div class="dm-logo-text">
+          <div class="dm-logo-1">Dietrichs</div>
+          <div class="dm-logo-2">marketing</div>
+        </div>
       </a>
-      <div data-w-id="030c9a2b-7371-70e1-61b4-748a08fec351" class="navigation__menu-btn">
-        <div class="open-wrap">
-          <div class="navigation-text">Meny</div>
-          <div class="hamburger">
-            <div class="hamburger-line"></div>
-            <div class="hamburger-line-4"></div>
+      <button type="button" id="dm-menu-btn" class="dm-menu-btn" aria-label="Åpne meny">
+        <div class="dm-open-wrap">
+          <div class="dm-menu-text">Meny</div>
+          <div class="dm-hamburger">
+            <div class="dm-hamburger-line-1"></div>
+            <div class="dm-hamburger-line-2"></div>
           </div>
         </div>
-        <div class="close-wrap">
-          <div class="navigation-text">Lukk</div>
-          <div class="close-btn"></div>
+        <div class="dm-close-wrap">
+          <div class="dm-menu-text">Lukk</div>
+          <div class="dm-close-btn"></div>
         </div>
-      </div>
-    </div>
-    <div class="nav-container-2">
-      <div class="w-layout-blockcontainer container-4 w-container">
-        <div class="nav-items">
-          <a data-w-id="030c9a2b-7371-70e1-61b4-748a08fec35f" href="../" class="nav-item link-block-11 link-block-12 link-block-13 w-inline-block">
-            <div class="nav-item-number">01</div>
-            <div class="special-text-wrapper">
-              <div class="nav-item-text">Forside</div>
-              <div class="nav-item-text-full">Forside</div>
-            </div>
-          </a>
-          <a data-w-id="030c9a2b-7371-70e1-61b4-748a08fec367" href="../index.html#priser" class="nav-item w-inline-block">
-            <div class="nav-item-number">02</div>
-            <div class="special-text-wrapper">
-              <div class="nav-item-text">Tjenester</div>
-              <div class="nav-item-text-full">Tjenester</div>
-            </div>
-          </a>
-          <a data-w-id="030c9a2b-7371-70e1-61b4-748a08fec377" href="../kontakt.html" class="nav-item w-inline-block">
-            <div class="nav-item-number">03</div>
-            <div class="special-text-wrapper">
-              <div class="nav-item-text">Kontakt</div>
-              <div class="nav-item-text-full">Kontakt</div>
-            </div>
-          </a>
-          <a data-w-id="030c9a2b-7371-70e1-61b4-748a08fec36f" href="../" class="nav-item w-inline-block w--current">
-            <div class="nav-item-number">04</div>
-            <div class="special-text-wrapper">
-              <div class="nav-item-text">Maler</div>
-              <div class="nav-item-text-full">Maler</div>
-            </div>
-          </a>
-          <a href="#" class="nav-item hide w-inline-block">
-            <div class="nav-item-number">02</div>
-            <div class="nav-item-text">About</div>
-          </a>
-          <a href="#" class="nav-item hide w-inline-block">
-            <div class="nav-item-number">03</div>
-            <div class="nav-item-text">Blog</div>
-          </a>
-          <a href="#" class="nav-item hide w-inline-block">
-            <div class="nav-item-number">03</div>
-            <div class="nav-item-text">Contact us</div>
-          </a>
-        </div>
-      </div>
-      <div class="w-embed">
-        <style type="text/css">
-.nav-item-text {
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-  -webkit-text-stroke-width: 0.8px;
-  -webkit-text-stroke-color: #A5A3A6;
-}
-        </style>
-      </div>
-      <div class="nav__bg"></div>
+      </button>
     </div>
   </section>
+
+  <div id="dm-menu-overlay" class="dm-menu-overlay dm-hidden">
+    <div class="dm-menu-container">
+      <div class="dm-menu-items">
+        <a href="../" class="dm-menu-item">
+          <div class="dm-menu-num">01</div>
+          <div class="dm-text-wrap">
+            <div class="dm-item-text">Forside</div>
+            <div class="dm-item-fill">Forside</div>
+          </div>
+        </a>
+        <a href="../ai-nettsider.html" class="dm-menu-item">
+          <div class="dm-menu-num">02</div>
+          <div class="dm-text-wrap">
+            <div class="dm-item-text">AI-nettsider</div>
+            <div class="dm-item-fill">AI-nettsider</div>
+          </div>
+        </a>
+        <a href="./" class="dm-menu-item">
+          <div class="dm-menu-num">03</div>
+          <div class="dm-text-wrap">
+            <div class="dm-item-text">Maler</div>
+            <div class="dm-item-fill">Maler</div>
+          </div>
+        </a>
+        <a href="../kontakt.html" class="dm-menu-item">
+          <div class="dm-menu-num">04</div>
+          <div class="dm-text-wrap">
+            <div class="dm-item-text">Kontakt</div>
+            <div class="dm-item-fill">Kontakt</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
 
 <!-- HEADER -->
 <header class="dot-grid pt-28">
@@ -761,6 +795,24 @@
     requestAnimationFrame(function () { setTimeout(function () { pre.classList.add('is-done'); }, 50); });
     setTimeout(function () { pre.style.display = 'none'; }, 2200);
   });
+  // Meny-toggle + touch-animasjon (hus-stil)
+  (function () {
+    var btn = document.getElementById('dm-menu-btn');
+    var overlay = document.getElementById('dm-menu-overlay');
+    if (!btn || !overlay) return;
+    function setOpen(open) {
+      overlay.classList.toggle('dm-hidden', !open);
+      btn.classList.toggle('is-open', open);
+      document.body.classList.toggle('dm-menu-open', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    }
+    btn.addEventListener('click', function () { setOpen(overlay.classList.contains('dm-hidden')); });
+    overlay.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('touchstart', function () { a.classList.add('is-touched'); }, { passive: true });
+      a.addEventListener('click', function () { setOpen(false); });
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+  })();
 </script>
 </body>
 </html>
