@@ -141,7 +141,7 @@
       <div id="progress-area" class="bg-white border border-zinc-200 rounded-2xl p-5 max-w-lg">
         <div class="flex items-center justify-between mb-3">
           <span class="text-sm font-semibold text-zinc-700">Fremgang</span>
-          <span id="progress-label" class="text-sm font-bold text-emerald-600">0 av 28 fullført</span>
+          <span id="progress-label" class="text-sm font-bold text-emerald-600">0 av 30 fullført</span>
         </div>
         <div class="h-3 bg-zinc-100 rounded-full overflow-hidden">
           <div id="progress-bar-fill" class="h-full bg-emerald-500 rounded-full" style="width:0%"></div>
@@ -407,7 +407,7 @@
 
   <script>
     var STORAGE_KEY = 'sjekkliste_v1';
-    var TOTAL = 28;
+    var TOTAL = 30;
 
     function loadState() {
       try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e) { return {}; }
