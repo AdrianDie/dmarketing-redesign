@@ -25,10 +25,34 @@
     return seg.replace('.html', '');
   }
 
+  /* ── Read-time lookup ────────────────────────────────────── */
+  var READ_TIMES = {
+    '01-velkommen': '4 min', '02-hvordan-fungerer-det': '8 min',
+    '03-overgangen': '6 min', '04-komme-i-gang': '8 min',
+    '05-oppdatere-innhold': '6 min', '06-bytte-bilder': '7 min',
+    '07-ny-side': '8 min', '08-seo': '7 min',
+    '09-prompts': '6 min', '10-publisere': '5 min',
+    '11-feilsoking': '7 min', '12-integrasjoner': '8 min',
+    '13-eierskap': '5 min'
+  };
+
   /* ── Module pages ─────────────────────────────────────────── */
   function initModulePage() {
     var moduleId = getModuleId();
     if (!moduleId || moduleId === 'index') return;
+
+    /* Read time in breadcrumb */
+    var readTime = READ_TIMES[moduleId];
+    if (readTime) {
+      var breadcrumb = document.querySelector('header .flex.items-center.gap-3');
+      if (breadcrumb) {
+        var rtSpan = document.createElement('span');
+        rtSpan.style.cssText = 'margin-left:auto;display:inline-flex;align-items:center;gap:4px;' +
+          'font-size:11px;color:#71717A;font-family:Inter,sans-serif;';
+        rtSpan.innerHTML = '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>' + readTime;
+        breadcrumb.appendChild(rtSpan);
+      }
+    }
 
     /* "Already completed" banner at top of content */
     if (getCompleted().indexOf(moduleId) !== -1) {
