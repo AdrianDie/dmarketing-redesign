@@ -73,20 +73,19 @@
     var wrapper = document.createElement('div');
     wrapper.style.cssText = 'text-align:center;padding:14px 24px;background:#FAFAFA;border-top:1px solid #F4F4F5;';
 
+    var BTN_BASE = 'display:inline-flex;align-items:center;gap:6px;font-size:13px;font-family:Inter,sans-serif;font-weight:600;padding:8px 18px;border-radius:8px;border:1.5px solid;cursor:pointer;transition:all 0.15s;';
+
     var btn = document.createElement('button');
-    btn.style.cssText = 'display:inline-flex;align-items:center;gap:6px;font-size:13px;font-family:Inter,sans-serif;font-weight:600;padding:8px 18px;border-radius:8px;border:1.5px solid;cursor:pointer;transition:all 0.15s;';
 
     function render() {
       var done = getCompleted().indexOf(moduleId) !== -1;
       if (done) {
         btn.innerHTML = checkSVG('currentColor') + ' Fullført!';
-        btn.style.cssText += 'background:#F0FDF4;border-color:#86EFAC;color:#15803D;';
+        btn.style.cssText = BTN_BASE + 'background:#F0FDF4;border-color:#86EFAC;color:#15803D;';
         btn.title = 'Klikk for å fjerne fullført-markering';
       } else {
         btn.innerHTML = circleSVG() + ' Marker modul som fullført';
-        btn.style.background = 'white';
-        btn.style.borderColor = '#E4E4E7';
-        btn.style.color = '#71717A';
+        btn.style.cssText = BTN_BASE + 'background:white;border-color:#E4E4E7;color:#71717A;';
         btn.title = '';
       }
     }
