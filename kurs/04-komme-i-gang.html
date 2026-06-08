@@ -279,6 +279,65 @@
         <p>Gratulerer — du har nå gjort din første endring. Resten av kurset er bare variasjoner av denne flyten.</p>
       </div>
 
+      <!-- Diagram: the repeating workflow loop -->
+      <figure class="not-prose my-8">
+        <p class="text-xs font-semibold uppercase tracking-widest text-zinc-400 mb-3">Slik ser flyten ut — igjen og igjen</p>
+        <svg viewBox="0 0 560 175" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Arbeidsflyt-loop: Du skriver til Claude, Claude foreslår, du godkjenner, GitHub lagrer, Cloudflare bygger, live på nettstedet">
+          <defs>
+            <marker id="wf-arr" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0, 7 3.5, 0 7" fill="#94A3B8"/></marker>
+            <marker id="wf-ret" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0, 7 3.5, 0 7" fill="#CBD5E1"/></marker>
+          </defs>
+
+          <!-- Step boxes -->
+          <!-- 1: Du skriver -->
+          <rect x="10" y="55" width="88" height="64" rx="10" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1.5"/>
+          <text x="54" y="80" font-size="9" fill="#1E40AF" font-weight="700" text-anchor="middle">1. Du skriver</text>
+          <text x="54" y="93" font-size="9" fill="#3B82F6" text-anchor="middle">til Claude</text>
+          <text x="54" y="107" font-size="18" text-anchor="middle">💬</text>
+
+          <!-- arrow 1→2 -->
+          <line x1="98" y1="87" x2="121" y2="87" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#wf-arr)"/>
+
+          <!-- 2: Claude foreslår -->
+          <rect x="122" y="55" width="88" height="64" rx="10" fill="#F5F3FF" stroke="#DDD6FE" stroke-width="1.5"/>
+          <text x="166" y="80" font-size="9" fill="#5B21B6" font-weight="700" text-anchor="middle">2. Claude</text>
+          <text x="166" y="93" font-size="9" fill="#7C3AED" text-anchor="middle">foreslår endring</text>
+          <text x="166" y="107" font-size="18" text-anchor="middle">🤖</text>
+
+          <!-- arrow 2→3 -->
+          <line x1="210" y1="87" x2="233" y2="87" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#wf-arr)"/>
+
+          <!-- 3: Du godkjenner -->
+          <rect x="234" y="55" width="88" height="64" rx="10" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1.5"/>
+          <text x="278" y="80" font-size="9" fill="#14532D" font-weight="700" text-anchor="middle">3. Du</text>
+          <text x="278" y="93" font-size="9" fill="#16A34A" text-anchor="middle">godkjenner</text>
+          <text x="278" y="107" font-size="18" text-anchor="middle">✅</text>
+
+          <!-- arrow 3→4 -->
+          <line x1="322" y1="87" x2="345" y2="87" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#wf-arr)"/>
+
+          <!-- 4: GitHub lagrer -->
+          <rect x="346" y="55" width="88" height="64" rx="10" fill="#FFF7ED" stroke="#FED7AA" stroke-width="1.5"/>
+          <text x="390" y="80" font-size="9" fill="#92400E" font-weight="700" text-anchor="middle">4. GitHub</text>
+          <text x="390" y="93" font-size="9" fill="#D97706" text-anchor="middle">lagrer filen</text>
+          <text x="390" y="107" font-size="18" text-anchor="middle">💾</text>
+
+          <!-- arrow 4→5 -->
+          <line x1="434" y1="87" x2="457" y2="87" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#wf-arr)"/>
+
+          <!-- 5: Live! -->
+          <rect x="458" y="55" width="88" height="64" rx="10" fill="#F0FDF4" stroke="#86EFAC" stroke-width="2"/>
+          <text x="502" y="80" font-size="9" fill="#14532D" font-weight="700" text-anchor="middle">5. Live!</text>
+          <text x="502" y="93" font-size="9" fill="#16A34A" text-anchor="middle">Cloudflare bygger</text>
+          <text x="502" y="107" font-size="18" text-anchor="middle">🌐</text>
+
+          <!-- return arrow along bottom -->
+          <path d="M502 119 L502 148 L54 148 L54 119" fill="none" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="5 3" marker-end="url(#wf-ret)"/>
+          <text x="280" y="162" font-size="9" fill="#94A3B8" text-anchor="middle">Neste endring? Start på nytt fra steg 1 — flyten er alltid den samme</text>
+        </svg>
+        <p class="text-center text-xs text-zinc-400 mt-2">Etter «godkjenn»-klikket tar Cloudflare 30–90 sekunder. Du gjør ingenting mens du venter.</p>
+      </figure>
+
       <h2>Vanlige problemer ved første oppsett</h2>
 
       <h3>Jeg får ikke logget inn på Claude</h3>
