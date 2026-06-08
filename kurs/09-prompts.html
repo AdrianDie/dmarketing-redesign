@@ -133,6 +133,61 @@
 
       <h2>Bra vs dårlig — eksempler</h2>
 
+      <figure class="not-prose my-8 rounded-2xl border border-zinc-200 bg-white p-5 md:p-7">
+        <p class="text-center text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-5">Prompts på en skala fra vag til presis</p>
+        <svg viewBox="0 0 580 220" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Prompt-kvalitetsskala: fra vag (rød) via OK (gul) til presis (grønn)">
+
+          <!-- Gradient bar background -->
+          <defs>
+            <linearGradient id="promptGrad" x1="0" x2="1" y1="0" y2="0">
+              <stop offset="0%" stop-color="#FEE2E2"/>
+              <stop offset="50%" stop-color="#FEF3C7"/>
+              <stop offset="100%" stop-color="#DCFCE7"/>
+            </linearGradient>
+          </defs>
+          <rect x="40" y="52" width="500" height="18" rx="9" fill="url(#promptGrad)"/>
+
+          <!-- Dot 1: Vag (left) -->
+          <circle cx="80" cy="61" r="12" fill="#EF4444" stroke="white" stroke-width="2.5"/>
+          <text x="80" y="66" text-anchor="middle" font-size="10" font-weight="800" fill="white">✗</text>
+
+          <!-- Dot 2: OK (middle) -->
+          <circle cx="290" cy="61" r="12" fill="#F59E0B" stroke="white" stroke-width="2.5"/>
+          <text x="290" y="66" text-anchor="middle" font-size="11" font-weight="800" fill="white">~</text>
+
+          <!-- Dot 3: Presis (right) -->
+          <circle cx="500" cy="61" r="12" fill="#16A34A" stroke="white" stroke-width="2.5"/>
+          <text x="500" y="66" text-anchor="middle" font-size="10" font-weight="800" fill="white">✓</text>
+
+          <!-- Label above dots -->
+          <text x="80" y="40" text-anchor="middle" font-size="10" font-weight="700" fill="#DC2626" letter-spacing="0.04em">VAG</text>
+          <text x="290" y="40" text-anchor="middle" font-size="10" font-weight="700" fill="#D97706" letter-spacing="0.04em">OK</text>
+          <text x="500" y="40" text-anchor="middle" font-size="10" font-weight="700" fill="#15803D" letter-spacing="0.04em">PRESIS</text>
+
+          <!-- Example boxes below each dot -->
+          <!-- Vag box -->
+          <rect x="10" y="88" width="145" height="50" rx="8" fill="#FEF2F2" stroke="#FECACA" stroke-width="1.5"/>
+          <text x="82" y="107" text-anchor="middle" font-size="10.5" font-style="italic" fill="#991B1B">«Gjør siden bedre»</text>
+          <text x="82" y="124" text-anchor="middle" font-size="9.5" fill="#B91C1C">Claude vet ikke hva du mener</text>
+
+          <!-- OK box -->
+          <rect x="218" y="88" width="145" height="50" rx="8" fill="#FFFBEB" stroke="#FDE68A" stroke-width="1.5"/>
+          <text x="290" y="107" text-anchor="middle" font-size="10.5" font-style="italic" fill="#92400E">«Endre teksten på forsiden»</text>
+          <text x="290" y="124" text-anchor="middle" font-size="9.5" fill="#B45309">Hvilken tekst? Til hva?</text>
+
+          <!-- Presis box -->
+          <rect x="425" y="88" width="150" height="66" rx="8" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.5"/>
+          <text x="500" y="107" text-anchor="middle" font-size="10.5" font-style="italic" fill="#14532D">«Forsiden, H1: endre fra</text>
+          <text x="500" y="121" text-anchor="middle" font-size="10.5" font-style="italic" fill="#14532D">«Hei» til «Norges raskeste</text>
+          <text x="500" y="135" text-anchor="middle" font-size="10.5" font-style="italic" fill="#14532D">rørlegger i Oslo»»</text>
+          <text x="500" y="150" text-anchor="middle" font-size="9.5" fill="#15803D">Claude treffer på første forsøk ✓</text>
+
+          <!-- Result note at bottom -->
+          <text x="290" y="195" text-anchor="middle" font-size="11" font-weight="600" fill="#3F3F46">Jo lenger til høyre, jo færre runder frem og tilbake</text>
+
+        </svg>
+      </figure>
+
       <h3>Eksempel 1: endre tekst</h3>
       <div class="prompt-bad"><span class="prompt-label">✗ For vag</span>Endre teksten</div>
       <div class="prompt-good"><span class="prompt-label">✓ Bra prompt</span>På forsiden, endre H1-overskriften fra "Velkommen til oss" til "Norges raskeste rørlegger i Stavanger". Husk å sjekke at den fortsatt passer på mobil.</div>
@@ -202,6 +257,61 @@ Bruk samme kort-stil som på tjenester-seksjonen.</div>
 
       <h2>Sju tips som gjør deg trygg med Claude</h2>
       <p>Småtriksene som skiller en som «bare prøver» fra en som får til akkurat det de vil:</p>
+
+      <figure class="not-prose my-8 rounded-2xl border border-zinc-200 bg-white p-5 md:p-7">
+        <p class="text-center text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-5">Sju gode vaner — visuell oversikt</p>
+        <svg viewBox="0 0 580 235" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Syv vaner for effektiv jobbing med Claude">
+
+          <!-- Row 1: 4 tiles -->
+          <rect x="10" y="10" width="124" height="78" rx="10" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1.5"/>
+          <text x="72" y="32" text-anchor="middle" font-size="18" fill="#2563EB">1</text>
+          <text x="72" y="50" text-anchor="middle" font-size="11" font-weight="700" fill="#1E40AF">Een oppgave</text>
+          <text x="72" y="63" text-anchor="middle" font-size="9.5" fill="#3B82F6">Sjekk og godkjenn</text>
+          <text x="72" y="76" text-anchor="middle" font-size="9.5" fill="#3B82F6">foer du gar videre</text>
+
+          <rect x="144" y="10" width="124" height="78" rx="10" fill="#F5F3FF" stroke="#DDD6FE" stroke-width="1.5"/>
+          <text x="206" y="32" text-anchor="middle" font-size="18" fill="#7C3AED">2</text>
+          <text x="206" y="50" text-anchor="middle" font-size="11" font-weight="700" fill="#5B21B6">Be om plan foerst</text>
+          <text x="206" y="63" text-anchor="middle" font-size="9.5" fill="#7C3AED">«Vis hva du vil</text>
+          <text x="206" y="76" text-anchor="middle" font-size="9.5" fill="#7C3AED">endre, ikke endre»</text>
+
+          <rect x="278" y="10" width="124" height="78" rx="10" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="1.5"/>
+          <text x="340" y="32" text-anchor="middle" font-size="18" fill="#059669">3</text>
+          <text x="340" y="50" text-anchor="middle" font-size="11" font-weight="700" fill="#065F46">Lim inn skjermbilde</text>
+          <text x="340" y="63" text-anchor="middle" font-size="9.5" fill="#059669">Bilde + «hva er</text>
+          <text x="340" y="76" text-anchor="middle" font-size="9.5" fill="#059669">galt her?»</text>
+
+          <rect x="412" y="10" width="160" height="78" rx="10" fill="#FFF7ED" stroke="#FED7AA" stroke-width="1.5"/>
+          <text x="492" y="32" text-anchor="middle" font-size="18" fill="#EA580C">4</text>
+          <text x="492" y="50" text-anchor="middle" font-size="11" font-weight="700" fill="#9A3412">Be om 3 forslag</text>
+          <text x="492" y="63" text-anchor="middle" font-size="9.5" fill="#EA580C">«Gi meg 3 forslag,</text>
+          <text x="492" y="76" text-anchor="middle" font-size="9.5" fill="#EA580C">jeg velger ett»</text>
+
+          <!-- Row 2: 3 tiles -->
+          <rect x="10" y="102" width="175" height="78" rx="10" fill="#FEF3C7" stroke="#FDE68A" stroke-width="1.5"/>
+          <text x="97" y="124" text-anchor="middle" font-size="18" fill="#D97706">5</text>
+          <text x="97" y="142" text-anchor="middle" font-size="11" font-weight="700" fill="#92400E">Fortell maalet</text>
+          <text x="97" y="156" text-anchor="middle" font-size="9.5" fill="#B45309">«Maalet er at folk ringer</text>
+          <text x="97" y="169" text-anchor="middle" font-size="9.5" fill="#B45309">for gratis befaring»</text>
+
+          <rect x="198" y="102" width="175" height="78" rx="10" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.5"/>
+          <text x="285" y="124" text-anchor="middle" font-size="18" fill="#16A34A">6</text>
+          <text x="285" y="142" text-anchor="middle" font-size="11" font-weight="700" fill="#14532D">Dobbeltsjekk</text>
+          <text x="285" y="156" text-anchor="middle" font-size="9.5" fill="#16A34A">«Gikk du gjennom</text>
+          <text x="285" y="169" text-anchor="middle" font-size="9.5" fill="#16A34A">alle sidene?»</text>
+
+          <rect x="387" y="102" width="185" height="78" rx="10" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1.5"/>
+          <text x="479" y="124" text-anchor="middle" font-size="18" fill="#2563EB">7</text>
+          <text x="479" y="142" text-anchor="middle" font-size="11" font-weight="700" fill="#1E40AF">Start ny chat</text>
+          <text x="479" y="156" text-anchor="middle" font-size="9.5" fill="#3B82F6">Ny oppgave = ny samtale.</text>
+          <text x="479" y="169" text-anchor="middle" font-size="9.5" fill="#3B82F6">Frisk start gir bedre svar.</text>
+
+          <!-- Bottom note -->
+          <text x="290" y="215" text-anchor="middle" font-size="11" font-weight="600" fill="#3F3F46">Tip: angre heller enn aa lappe. «Reverter siste endring» er nesten alltid raskere.</text>
+
+        </svg>
+      </figure>
+
       <ol>
         <li><strong>Én oppgave om gangen.</strong> Be om én ting, sjekk at den ble bra, og gå videre. Da er det lett å se hva som skjedde — og lett å angre hvis noe ble feil.</li>
         <li><strong>Be om en plan før du sier ja.</strong> Skriv <em>«vis meg hva du vil endre før du gjør det»</em>. Da ser du forslaget først og kan justere før noe blir publisert.</li>
