@@ -241,7 +241,7 @@
 
   /* ── Prompt copy buttons ─────────────────────────────────── */
   function initPromptCopyButtons() {
-    var examples = document.querySelectorAll('.prompt-example');
+    var examples = document.querySelectorAll('.prompt-example, .prompt-good');
     if (!examples.length) return;
     var COPY_ICON = '<svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
     var CHECK_ICON = '<svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>';
@@ -249,24 +249,39 @@
       'font-size:11px;font-family:Inter,sans-serif;font-weight:600;color:#71717A;' +
       'padding:4px 9px;border-radius:6px;border:1.5px solid #E4E4E7;background:white;' +
       'cursor:pointer;transition:all 0.15s;white-space:nowrap;';
+    var BTN_GOOD_BASE = BTN_BASE.replace('border:1.5px solid #E4E4E7', 'border:1.5px solid #A7F3D0')
+      .replace('color:#71717A', 'color:#047857').replace('background:white', 'background:#ECFDF5');
     examples.forEach(function (ex) {
-      var text = ex.textContent.trim();
+      /* Get text excluding any .prompt-label child */
+      var label = ex.querySelector('.prompt-label');
+      var text;
+      if (label) {
+        var clone = ex.cloneNode(true);
+        var cloneLabel = clone.querySelector('.prompt-label');
+        if (cloneLabel) cloneLabel.parentNode.removeChild(cloneLabel);
+        text = clone.textContent.trim();
+      } else {
+        text = ex.textContent.trim();
+      }
+      if (!text) return;
+      var isGood = ex.classList.contains('prompt-good');
       ex.style.position = 'relative';
       ex.style.paddingRight = '80px';
       var btn = document.createElement('button');
+      var base = isGood ? BTN_GOOD_BASE : BTN_BASE;
       btn.innerHTML = COPY_ICON + ' Kopier';
-      btn.style.cssText = BTN_BASE;
+      btn.style.cssText = base;
       btn.title = 'Kopier prompt til utklippstavlen';
-      btn.addEventListener('mouseenter', function () { btn.style.borderColor = '#D4D4D8'; btn.style.background = '#F4F4F5'; });
-      btn.addEventListener('mouseleave', function () { btn.style.borderColor = '#E4E4E7'; btn.style.background = 'white'; btn.style.color = '#71717A'; });
+      btn.addEventListener('mouseenter', function () { btn.style.borderColor = isGood ? '#6EE7B7' : '#D4D4D8'; btn.style.background = isGood ? '#D1FAE5' : '#F4F4F5'; });
+      btn.addEventListener('mouseleave', function () { btn.style.cssText = base; });
       btn.addEventListener('click', function () {
         if (!navigator.clipboard) return;
         navigator.clipboard.writeText(text).then(function () {
           btn.innerHTML = CHECK_ICON + ' Kopiert!';
-          btn.style.cssText = BTN_BASE + 'background:#F0FDF4;border-color:#86EFAC;color:#15803D;';
+          btn.style.cssText = base + 'background:#F0FDF4;border-color:#86EFAC;color:#15803D;';
           setTimeout(function () {
             btn.innerHTML = COPY_ICON + ' Kopier';
-            btn.style.cssText = BTN_BASE;
+            btn.style.cssText = base;
           }, 2000);
         });
       });
