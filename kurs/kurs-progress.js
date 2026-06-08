@@ -54,10 +54,34 @@
       }
     }
 
-    btn.onclick = function () { toggleComplete(moduleId); render(); };
+    btn.onclick = function () {
+      var nowDone = toggleComplete(moduleId);
+      render();
+      if (nowDone) showToast('✓ Modul fullført! Bra jobba.');
+    };
     render();
     wrapper.appendChild(btn);
     nav.parentNode.insertBefore(wrapper, nav);
+  }
+
+  /* ── Toast notification ───────────────────────────────────── */
+  function showToast(msg) {
+    var t = document.createElement('div');
+    t.textContent = msg;
+    t.style.cssText = 'position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);' +
+      'background:#09090B;color:#fff;font-family:Inter,sans-serif;font-size:13px;font-weight:600;' +
+      'padding:10px 20px;border-radius:10px;opacity:0;transition:opacity 0.25s,transform 0.25s;' +
+      'pointer-events:none;z-index:9999;white-space:nowrap;';
+    document.body.appendChild(t);
+    requestAnimationFrame(function () {
+      t.style.opacity = '1';
+      t.style.transform = 'translateX(-50%) translateY(0)';
+      setTimeout(function () {
+        t.style.opacity = '0';
+        t.style.transform = 'translateX(-50%) translateY(10px)';
+        setTimeout(function () { t.parentNode && t.parentNode.removeChild(t); }, 300);
+      }, 2200);
+    });
   }
 
   /* ── Index page ───────────────────────────────────────────── */
@@ -79,6 +103,24 @@
         card.appendChild(badge);
       }
     });
+
+    /* highlight first uncompleted card as "next up" */
+    var firstIncomplete = null;
+    cards.forEach(function (card) {
+      var href = (card.getAttribute('href') || '').split('/').pop().replace('.html', '');
+      if (!firstIncomplete && completed.indexOf(href) === -1) firstIncomplete = card;
+    });
+    if (firstIncomplete && completed.length > 0) {
+      firstIncomplete.style.outline = '2.5px solid #2563EB';
+      firstIncomplete.style.outlineOffset = '2px';
+      var nextBadge = document.createElement('span');
+      nextBadge.textContent = 'Fortsett her';
+      nextBadge.style.cssText = 'position:absolute;top:10px;left:12px;background:#2563EB;color:white;' +
+        'font-family:Inter,sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;' +
+        'text-transform:uppercase;letter-spacing:0.05em;';
+      firstIncomplete.style.position = 'relative';
+      firstIncomplete.appendChild(nextBadge);
+    }
 
     /* progress bar + count */
     var total = cards.length;
