@@ -358,6 +358,54 @@
         <li><strong>Live</strong>: alle som besøker siden ser den nye åpningstiden.</li>
       </ol>
 
+      <div class="diagram-figure not-prose">
+        <div class="svg-wrap">
+          <svg viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Oppdaterings-loopen i fire steg: du chatter med Claude, Claude endrer, du ser forhåndsvisning, så er det live på nett.">
+            <defs>
+              <marker id="loopArrow2" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
+                <path d="M0,0 L7,3 L0,6 Z" fill="#2563EB" />
+              </marker>
+            </defs>
+            <!-- Curved loop arrows (clockwise) -->
+            <path d="M 220 100 A 130 110 0 0 1 380 100" fill="none" stroke="#2563EB" stroke-width="2" stroke-dasharray="5 5" marker-end="url(#loopArrow2)" />
+            <path d="M 455 150 A 130 110 0 0 1 455 250" fill="none" stroke="#2563EB" stroke-width="2" stroke-dasharray="5 5" marker-end="url(#loopArrow2)" />
+            <path d="M 380 300 A 130 110 0 0 1 220 300" fill="none" stroke="#2563EB" stroke-width="2" stroke-dasharray="5 5" marker-end="url(#loopArrow2)" />
+            <path d="M 145 250 A 130 110 0 0 1 145 150" fill="none" stroke="#2563EB" stroke-width="2" stroke-dasharray="5 5" marker-end="url(#loopArrow2)" />
+            <!-- Node 1: Du chatter (top-left) -->
+            <circle cx="190" cy="100" r="48" fill="#FFFFFF" stroke="#E4E4E7" stroke-width="1.5" />
+            <circle cx="190" cy="84" r="16" fill="#EFF6FF" />
+            <path d="M181 78 h18 a3 3 0 0 1 3 3 v9 a3 3 0 0 1 -3 3 h-11 l-6 5 v-5 h-1 a3 3 0 0 1 -3 -3 v-9 a3 3 0 0 1 3 -3 z" fill="#2563EB" />
+            <text x="190" y="114" text-anchor="middle" font-size="11.5" font-weight="700" fill="#09090B">1. Du chatter</text>
+            <text x="190" y="129" text-anchor="middle" font-size="10" fill="#71717A">«bytt åpningstid»</text>
+            <!-- Node 2: Claude endrer (top-right) -->
+            <circle cx="410" cy="100" r="48" fill="#FFFFFF" stroke="#E4E4E7" stroke-width="1.5" />
+            <circle cx="410" cy="84" r="16" fill="#EFF6FF" />
+            <path d="M410 75 l2.2 5 5 2.2 -5 2.2 -2.2 5 -2.2 -5 -5 -2.2 5 -2.2 z" fill="#2563EB" />
+            <text x="410" y="114" text-anchor="middle" font-size="11.5" font-weight="700" fill="#09090B">2. Claude endrer</text>
+            <text x="410" y="129" text-anchor="middle" font-size="10" fill="#71717A">gjør jobben for deg</text>
+            <!-- Node 3: Du godkjenner (bottom-right) -->
+            <circle cx="410" cy="300" r="48" fill="#FFFFFF" stroke="#E4E4E7" stroke-width="1.5" />
+            <circle cx="410" cy="284" r="16" fill="#EFF6FF" />
+            <path d="M400 284 q10 -9 20 0 q-10 9 -20 0 z" fill="none" stroke="#2563EB" stroke-width="2" />
+            <circle cx="410" cy="284" r="3.2" fill="#2563EB" />
+            <text x="410" y="314" text-anchor="middle" font-size="11.5" font-weight="700" fill="#09090B">3. Du godkjenner</text>
+            <text x="410" y="329" text-anchor="middle" font-size="10" fill="#71717A">ser endringen, sier ok</text>
+            <!-- Node 4: Live (bottom-left) -->
+            <circle cx="190" cy="300" r="48" fill="#FFFFFF" stroke="#16A34A" stroke-width="1.5" />
+            <circle cx="190" cy="284" r="16" fill="#DCFCE7" />
+            <circle cx="190" cy="284" r="9" fill="none" stroke="#16A34A" stroke-width="2" />
+            <path d="M186 284 l3 3 5 -6" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <text x="190" y="314" text-anchor="middle" font-size="11.5" font-weight="700" fill="#09090B">4. Live på nett</text>
+            <text x="190" y="329" text-anchor="middle" font-size="10" fill="#16A34A">alle kan se det</text>
+            <!-- Center label -->
+            <text x="300" y="195" text-anchor="middle" font-size="12" font-weight="600" fill="#0B1F4A">Samme</text>
+            <text x="300" y="212" text-anchor="middle" font-size="12" font-weight="600" fill="#0B1F4A">runde</text>
+            <text x="300" y="229" text-anchor="middle" font-size="12" font-weight="600" fill="#0B1F4A">hver gang</text>
+          </svg>
+        </div>
+        <p style="text-align:center; font-size:12px; color:#71717A; margin-top:0.5rem;">Hele syklusen tar 30–90 sekunder. Og så er du klar for neste endring.</p>
+      </div>
+
       <div class="callout callout-ok">
         <p><strong>Forklart enkelt — «GitHub»:</strong> GitHub er en gratis nettside der nettsidens filer lagres trygt — tenk på det som en privat Dropbox-mappe, bare for nettsiden din. Den ligger «i skyen», som bare betyr <em>på internett, ikke på din egen PC</em>. Du eier kontoen, og du trenger sjelden å åpne den selv — Claude lagrer der for deg.</p>
       </div>
