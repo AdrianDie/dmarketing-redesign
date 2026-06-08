@@ -163,6 +163,60 @@ Lørdag stengt</div>
         <li>Claude lagrer, Cloudflare bygger, live på 30–90 sek</li>
       </ol>
 
+      <figure class="not-prose my-8 rounded-2xl border border-zinc-200 bg-white p-5 md:p-7">
+        <p class="text-center text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-5">Slik ser en tekst-endring ut — fra prompt til live</p>
+        <svg viewBox="0 0 560 170" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Fem steg: du skriver prompt, Claude leser siden, Claude viser plan, du godkjenner, live på nett">
+
+          <!-- Connector lines -->
+          <line x1="88" y1="60" x2="144" y2="60" stroke="#E4E4E7" stroke-width="2"/>
+          <polygon points="139,55 149,60 139,65" fill="#CBD5E1"/>
+          <line x1="196" y1="60" x2="252" y2="60" stroke="#E4E4E7" stroke-width="2"/>
+          <polygon points="247,55 257,60 247,65" fill="#CBD5E1"/>
+          <line x1="304" y1="60" x2="360" y2="60" stroke="#E4E4E7" stroke-width="2"/>
+          <polygon points="355,55 365,60 355,65" fill="#CBD5E1"/>
+          <line x1="412" y1="60" x2="456" y2="60" stroke="#E4E4E7" stroke-width="2"/>
+          <polygon points="451,55 461,60 451,65" fill="#CBD5E1"/>
+
+          <!-- Step 1 -->
+          <circle cx="56" cy="60" r="32" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"/>
+          <text x="56" y="56" text-anchor="middle" font-size="9" font-weight="700" fill="#2563EB">Du skriver</text>
+          <text x="56" y="68" text-anchor="middle" font-size="9" font-weight="700" fill="#2563EB">prompt</text>
+          <text x="56" y="110" text-anchor="middle" font-size="10" font-weight="700" fill="#09090B">Steg 1</text>
+          <text x="56" y="124" text-anchor="middle" font-size="9" fill="#71717A">«Endre H1 til...»</text>
+
+          <!-- Step 2 -->
+          <circle cx="172" cy="60" r="32" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>
+          <text x="172" y="56" text-anchor="middle" font-size="9" font-weight="700" fill="#7C3AED">Claude leser</text>
+          <text x="172" y="68" text-anchor="middle" font-size="9" font-weight="700" fill="#7C3AED">siden</text>
+          <text x="172" y="110" text-anchor="middle" font-size="10" font-weight="700" fill="#09090B">Steg 2</text>
+          <text x="172" y="124" text-anchor="middle" font-size="9" fill="#71717A">Finner alle steder</text>
+
+          <!-- Step 3 -->
+          <circle cx="280" cy="60" r="32" fill="#FEF3C7" stroke="#D97706" stroke-width="1.5"/>
+          <text x="280" y="56" text-anchor="middle" font-size="9" font-weight="700" fill="#B45309">Claude viser</text>
+          <text x="280" y="68" text-anchor="middle" font-size="9" font-weight="700" fill="#B45309">plan</text>
+          <text x="280" y="110" text-anchor="middle" font-size="10" font-weight="700" fill="#09090B">Steg 3</text>
+          <text x="280" y="124" text-anchor="middle" font-size="9" fill="#71717A">«Vil endre 3 steder»</text>
+
+          <!-- Step 4 -->
+          <circle cx="388" cy="60" r="32" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.5"/>
+          <text x="388" y="56" text-anchor="middle" font-size="9" font-weight="700" fill="#16A34A">Du</text>
+          <text x="388" y="68" text-anchor="middle" font-size="9" font-weight="700" fill="#16A34A">godkjenner</text>
+          <text x="388" y="110" text-anchor="middle" font-size="10" font-weight="700" fill="#09090B">Steg 4</text>
+          <text x="388" y="124" text-anchor="middle" font-size="9" fill="#71717A">«Godkjent» / «Nei»</text>
+
+          <!-- Step 5 (green, bigger) -->
+          <circle cx="496" cy="60" r="32" fill="#16A34A"/>
+          <text x="496" y="52" text-anchor="middle" font-size="8.5" font-weight="800" fill="white">Live på</text>
+          <text x="496" y="64" text-anchor="middle" font-size="8.5" font-weight="800" fill="white">30–90 sek</text>
+          <text x="496" y="110" text-anchor="middle" font-size="10" font-weight="700" fill="#09090B">Steg 5</text>
+          <text x="496" y="124" text-anchor="middle" font-size="9" fill="#16A34A">Cloudflare bygger</text>
+
+          <text x="280" y="152" text-anchor="middle" font-size="10.5" fill="#71717A">Du kan stoppe på steg 4 og justere — ingen endring skjer uten at du godkjenner.</text>
+
+        </svg>
+      </figure>
+
       <div class="callout">
         <p><strong>Pro-tips:</strong> Hvis Claude finner teksten på 5 ulike steder, betyr det ofte at du har inkonsistens i innholdet. Be Claude oppsummere ALLE forekomster så du kan rydde i én slynge.</p>
       </div>
