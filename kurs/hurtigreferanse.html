@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hurtigreferanse — prompts du kan bruke med en gang | AI-nettsider Kurs</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { theme: { extend: { fontFamily: { display: ['Archivo', 'sans-serif'], body: ['Inter', 'sans-serif'] }, colors: { ink: '#09090B', brand: '#2563EB', navy: '#0B1F4A' } } } }</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="../images/favicon.png" rel="shortcut icon" type="image/x-icon" />
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script src="/kurs/auth.js"></script>
+  <script src="/kurs/kurs-progress.js" defer></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #FAFAFA; color: #09090B; }
+    .font-display { font-family: 'Archivo', sans-serif; }
+    .badge { font-family: 'JetBrains Mono', 'Courier New', monospace; }
+
+    /* Category section */
+    .cat-header {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 16px;
+    }
+    .cat-icon {
+      flex-shrink: 0; width: 36px; height: 36px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .cat-title {
+      font-family: 'Archivo', sans-serif; font-weight: 800;
+      font-size: 1.1rem; letter-spacing: -0.02em; color: #09090B;
+    }
+
+    /* Prompt card */
+    .prompt-card {
+      background: #fff;
+      border: 1px solid #E4E4E7;
+      border-radius: 14px;
+      padding: 0;
+      overflow: hidden;
+      transition: box-shadow 0.15s, border-color 0.15s;
+    }
+    .prompt-card:hover { border-color: #BFDBFE; box-shadow: 0 8px 24px -8px rgba(37,99,235,0.14); }
+
+    .prompt-label {
+      padding: 12px 16px 0;
+      font-size: 12px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.06em; color: #71717A;
+    }
+    .prompt-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px; line-height: 1.6; color: #09090B;
+      padding: 8px 16px 14px;
+      white-space: pre-wrap; word-break: break-word;
+    }
+    .prompt-text mark {
+      background: #FEF9C3; color: #78350F;
+      border-radius: 3px; padding: 0 2px;
+      font-style: italic;
+    }
+    .prompt-footer {
+      border-top: 1px solid #F4F4F5;
+      padding: 10px 16px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .prompt-tip {
+      font-size: 11.5px; color: #71717A; line-height: 1.4;
+    }
+    .copy-btn {
+      flex-shrink: 0; display: inline-flex; align-items: center; gap: 5px;
+      font-size: 12px; font-family: 'Inter', sans-serif; font-weight: 600;
+      padding: 6px 12px; border-radius: 7px; border: 1.5px solid #E4E4E7;
+      background: white; color: #52525B; cursor: pointer;
+      transition: all 0.15s;
+    }
+    .copy-btn:hover { background: #F4F4F5; border-color: #D4D4D8; }
+    .copy-btn.copied { background: #F0FDF4; border-color: #86EFAC; color: #15803D; }
+  </style>
+</head>
+<body>
+
+  <script>window.DIETRICHS_MENU_CONFIG = { basePath: '../' };</script>
+  <script src="../components/dietrichs-menu.js" defer></script>
+
+  <!-- Hero -->
+  <header class="py-14 md:py-20 px-6 border-b border-zinc-100">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex items-center gap-3 mb-5">
+        <a href="./" class="text-xs font-semibold uppercase tracking-widest text-zinc-500 hover:text-blue-600">← Alle moduler</a>
+        <span class="text-zinc-300">/</span>
+        <span class="badge text-xs text-zinc-400">HURTIGREFERANSE</span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-blue-600">Cheat sheet</span>
+      </div>
+      <h1 class="font-display font-extrabold text-4xl md:text-6xl tracking-[-0.03em] text-ink leading-[1.05] mb-5">
+        Prompt-hurtigreferanse
+      </h1>
+      <p class="text-lg md:text-xl text-zinc-600 leading-relaxed max-w-2xl">
+        Ferdige prompts du kan kopiere, tilpasse med dine egne detaljer, og sende rett til Claude. Tekst i <span class="font-mono text-xs bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded italic">kursiv gul</span> bytter du ut med din egen informasjon.
+      </p>
+    </div>
+  </header>
+
+  <div class="px-6 py-12 md:py-16">
+    <div class="max-w-4xl mx-auto space-y-14">
+
+      <!-- ══ TEKST OG INNHOLD ══ -->
+      <section>
+        <div class="cat-header">
+          <div class="cat-icon" style="background:#EFF6FF;">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#2563EB" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </div>
+          <div>
+            <div class="cat-title">Tekst og innhold</div>
+            <div style="font-size:12px;color:#71717A;margin-top:1px;">Overskrifter, åpningstider, priser, kontaktinfo</div>
+          </div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-4">
+
+          <div class="prompt-card">
+            <div class="prompt-label">Endre kontaktinfo</div>
+            <div class="prompt-text">Endre telefonnummeret i bunnen av siden til: <mark>99 88 77 66</mark></div>
+            <div class="prompt-footer">
+              <span class="prompt-tip">Funker for e-post og adresse også</span>
+              <button class="copy-btn" data-copy="Endre telefonnummeret i bunnen av siden til: [ditt nummer]">
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Kopier
+              </button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-label">Endre åpningstider</div>
+            <div class="prompt-text">Oppdater åpningstidene til:
+Man–fre: <mark>08–17</mark>
+Lørdag: <mark>10–15</mark>
+Søndag: <mark>stengt</mark></div>
+            <div class="prompt-footer">
+              <span class="prompt-tip">Legg gjerne til feriestengning</span>
+              <button class="copy-btn" data-copy="Oppdater åpningstidene til:
+Man–fre: [tid]
+Lørdag: [tid]
+Søndag: [stengt/tid]">
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Kopier
+              </button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-label">Endre hero-overskrift</div>
+            <div class="prompt-text">Endre den store overskriften øverst på forsiden til: "<mark>Din nye overskrift her</mark>"</div>
+            <div class="prompt-footer">
+              <span class="prompt-tip">Hero = den første seksjonen</span>
+              <button class="copy-btn" data-copy='Endre den store overskriften øverst på forsiden til: "[din overskrift]"'>
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Kopier
+              </button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-label">Legg til ny tjeneste</div>
+            <div class="prompt-text">Legg til en ny tjeneste i tjenesteseksjonen:
+Navn: "<mark>Akutt-utrykning 24/7</mark>"
+Beskrivelse: "<mark>Vi rykker ut hele døgnet — ring oss</mark>"</div>
+            <div class="prompt-footer">
+              <span class="prompt-tip">Bruk samme stil som eksisterende</span>
+              <button class="copy-btn" data-copy='Legg til en ny tjeneste i tjenesteseksjonen:
+Navn: "[navn på tjeneste]"
+Beskrivelse: "[kort beskrivelse]"'>
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Kopier
+              </button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-label">Endre pris</div>
+            <div class="prompt-text">Endre prisen på "<mark>Standard service</mark>" fra <mark>1 490</mark> kr til <mark>1 690</mark> kr på prissiden</div>
+            <div class="prompt-footer">
+              <span class="prompt-tip">Beskriv hvilken side og hvilken post</span>
+              <button class="copy-btn" data-copy='Endre prisen på "[tjenestenavn]" fra [gammel pris] kr til [ny pris] kr på prissiden'>
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Kopier
+              </button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-label">Fjern en seksjon</div>
+            <div class="prompt-text">Fjern seksjonen om "<mark>Vår historie</mark>" fra <mark>om-oss</mark>-siden helt</div>
+            <div class="prompt-footer">
+              <span class="prompt-tip">Vær spesifikk om hvilken seksjon</span>
+              <button class="copy-btn" data-copy='Fjern seksjonen om "[tittel]" fra [siden] helt'>
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Kopier
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ══ BILDER ══ -->
+      <section>
+        <div class="cat-header">
+          <div class="cat-icon" style="background:#F0FDF4;">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#16A34A" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          </div>
+          <div>
+            <div class="cat-title">Bilder</div>
+            <div style="font-size:12px;color:#71717A;margin-top:1px;">Bytte, endre størrelse, legge til og fjerne bilder</div>
+          </div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-4">
+
+          <div class="prompt-card">
+            <div class="prompt-label">Bytt hero-bilde</div>
+            <div class="prompt-text">Bytt hero-bildet på forsiden med filen: <mark>nytt-bilde.webp</mark></div>
+            <div class="prompt-footer">
+              <span class="prompt-tip">Last opp bildet til GitHub først</span>
+              <button class="copy-btn" data-copy="Bytt hero-bildet på forsiden med filen: [filnavn.webp]">
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Kopier
+              </button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-label">Juster bildet på mobil</div>
+            <div class="prompt-text">Hero-bildet på forsiden er for høyt på mobil. Gjør det <mark>30 %</mark> lavere på skjermer under 768 px</div>
+            <div class="prompt-footer">
+              <span class="prompt-tip">Oppgi prosent eller piksel</span>
+              <button class="copy-btn" data-copy="Hero-bildet på forsiden er for høyt på mobil. Gjør det [prosent]% lavere på skjermer under 768 px">
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Kopier
+              </button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-label">Legg til bilde i seksjon</div>
+            <div class="prompt-text">Legg til bildet <mark>team.webp</mark> øverst i seksjonen "<mark>Om oss</mark>" på om-oss-siden. Bruk full bredde.</div>
+            <div class="prompt-footer">
+              <span class="prompt-tip">Beskriv plassering og størrelse</span>
+              <button class="copy-btn" data-copy='Legg til bildet [filnavn.webp] øverst i seksjonen "[seksjonsnavn]" på [siden]. Bruk full bredde.'>
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Kopier
+              </button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-label">Fjern bakgrunnsbilde</div>
+            <div class="prompt-text">Fjern bakgrunnsbildet i "<mark>Kontakt oss</mark>"-seksjonen. Bruk heller bakgrunnsfarge <mark>#F8FAFC</mark></div>
+            <div class="prompt-footer">
+              <span class="prompt-tip">Bruk HEX-kode fra merkevarepaletten</span>
+              <button class="copy-btn" data-copy='Fjern bakgrunnsbildet i "[seksjonsnavn]"-seksjonen. Bruk heller bakgrunnsfarge [#farge]'>
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Kopier
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ══ NYE SIDER ══ -->
+      <section>
+        <div class="cat-header">
+          <div class="cat-icon" style="background:#F5F3FF;">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#7C3AED" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M12 18v-6M9 15h6"/></svg>
+          </div>
+          <div>
+            <div class="cat-title">Nye sider</div>
+            <div style="font-size:12px;color:#71717A;margin-top:1px;">Tjeneste-sider, kampanje-sider, takk-sider</div>
+          </div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-4">
+
+          <div class="prompt-card">
+            <div class="prompt-label">Ny tjenesteside</div>
+            <div class="prompt-text">Lag en ny side for tjenesten "<mark>Rørlegger Oslo</mark>".
+Den skal ha:
+- En hero med overskrift og knapp
+- 3 fordeler med ikoner
+- Prisliste
+- Kontaktskjema
+
+Bruk samme stil som resten av siden.</div>
+            <div class="prompt-footer">
+              <span class="prompt-tip">Jo mer detaljer, desto bedre resultat</span>
+              <button class="copy-btn" data-copy='Lag en ny side for tjenesten "[tjenestenavn]".
+Den skal ha:
+- En hero med overskrift og knapp
+- 3 fordeler med ikoner
+- Prisliste
+- Kontaktskjema
+
+Bruk samme stil som resten av siden.'>
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Kopier
+              </button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-label">Takk-side etter skjema</div>
+            <div class="prompt-text">Lag en enkel "<mark>Takk for henvendelsen</mark>"-side på /takk.
+Den skal si at vi tar kontakt innen <mark>1–2 virkedager</mark>.
+Legg til en lenke tilbake til forsiden.</div>
+            <div class="prompt-footer">
+              <span class="prompt-tip">Pek skjemaet ditt til /takk etterpå</span>
+              <button class="copy-btn" data-copy='Lag en enkel "Takk for henvendelsen"-side på /takk.
+Den skal si at vi tar kontakt innen [x] virkedager.
+Legg til en lenke tilbake til forsiden.'>
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Kopier
+              </button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-label">Kampanjeside</div>
+            <div class="prompt-text">Lag en kampanjeside for "<mark>Sommerrabatt 2025</mark>".
+Tilbud: <mark>20 % rabatt på alle tjenester i juli</mark>.
+Legg til en tydelig CTA-knapp og et nedtellingsbanner øverst.</div>
+            <div class="prompt-footer">
+              <span class="prompt-tip">Begrens kampanjen med dato i teksten</span>
+              <button class="copy-btn" data-copy='Lag en kampanjeside for "[kampanjenavn]".
+Tilbud: [beskriv tilbudet].
+Legg til en tydelig CTA-knapp og et nedtellingsbanner øverst.'>
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Kopier
+              </button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-label">Blogg-innlegg</div>
+            <div class="prompt-text">Lag et blogg-innlegg om "<mark>5 tegn på at du trenger ny varmepumpe</mark>".
+Ca. 400 ord, uformell tone.
+Legg det inn på /blogg/ny-varmepumpe.</div>
+            <div class="prompt-footer">
+              <span class="prompt-tip">Angi lengde og tone for best resultat</span>
+              <button class="copy-btn" data-copy='Lag et blogg-innlegg om "[tittel]".
+Ca. [antall] ord, [tone]-tone.
+Legg det inn på /blogg/[slug].'>
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Kopier
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ══ SEO ══ -->
+      <section>
+        <div class="cat-header">
+          <div class="cat-icon" style="background:#FEF9C3;">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#D97706" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          </div>
+          <div>
+            <div class="cat-title">SEO</div>
+            <div style="font-size:12px;color:#71717A;margin-top:1px;">Title, meta-description, overskrifter, sitemap</div>
+          </div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-4">
+
+          <div class="prompt-card">
+            <div class="prompt-label">Oppdater title + meta</div>
+            <div class="prompt-text">Oppdater SEO-titlene på forsiden:
+Title: "<mark>Rørlegger Oslo — Fast og rimelig | FirmaNavn</mark>"
+Meta-description: "<mark>Vi hjelper deg med alt av rørleggerarbeid i Oslo. Ring 99 88 77 66 for tilbud samme dag.</mark>"</div>
+            <div class="prompt-footer">
+              <span class="prompt-tip">Title maks 60 tegn · Meta maks 160</span>
+              <button class="copy-btn" data-copy='Oppdater SEO-titlene på forsiden:
+Title: "[din title, maks 60 tegn]"
+Meta-description: "[din beskrivelse, maks 160 tegn]"'>
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Kopier
+              </button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-label">Sjekk søkeord i overskrifter</div>
+            <div class="prompt-text">Sjekk at H1 og H2 på forsiden og tjenestesiden inneholder søkeordet "<mark>rørlegger Oslo</mark>". Juster det som mangler.</div>
+            <div class="prompt-footer">
+              <span class="prompt-tip">Unngå å stappe inn søkeord unaturlig</span>
+              <button class="copy-btn" data-copy='Sjekk at H1 og H2 på forsiden og tjenestesiden inneholder søkeordet "[søkeord]". Juster det som mangler.'>
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Kopier
+              </button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-label">Alt-tekst på bilder</div>
+            <div class="prompt-text">Legg til beskrivende alt-tekst på alle bilder som mangler det. Bedriften heter "<mark>FirmaNavn</mark>" og jobber med "<mark>rørleggerarbeid i Oslo</mark>".</div>
+            <div class="prompt-footer">
+              <span class="prompt-tip">Google og skjermlesere bruker alt-tekst</span>
+              <button class="copy-btn" data-copy='Legg til beskrivende alt-tekst på alle bilder som mangler det. Bedriften heter "[navn]" og jobber med "[bransje/sted]".'>
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Kopier
+              </button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-label">Lag sitemap</div>
+            <div class="prompt-text">Lag en sitemap.xml-fil som inneholder alle sidene på nettstedet. Domenet er <mark>dinside.no</mark>.</div>
+            <div class="prompt-footer">
+              <span class="prompt-tip">Send inn til Google Search Console</span>
+              <button class="copy-btn" data-copy="Lag en sitemap.xml-fil som inneholder alle sidene på nettstedet. Domenet er [domene.no].">
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Kopier
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ══ DESIGN OG LAYOUT ══ -->
+      <section>
+        <div class="cat-header">
+          <div class="cat-icon" style="background:#FFF7ED;">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#EA580C" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </div>
+          <div>
+            <div class="cat-title">Design og layout</div>
+            <div style="font-size:12px;color:#71717A;margin-top:1px;">Farger, skriftstørrelse, mobil, spacing</div>
+          </div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-4">
+
+          <div class="prompt-card">
+            <div class="prompt-label">Endre en farge</div>
+            <div class="prompt-text">Bytt primærfargen på knapper og lenker fra <mark>#2563EB</mark> til <mark>#059669</mark> overalt på siden</div>
+            <div class="prompt-footer">
+              <span class="prompt-tip">Bruk HEX-kode for presis farge</span>
+              <button class="copy-btn" data-copy="Bytt primærfargen på knapper og lenker fra [gammel farge] til [ny farge] overalt på siden">
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Kopier
+              </button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-label">Mobiloptimalisering</div>
+            <div class="prompt-text">"<mark>Kontakt oss</mark>"-seksjonen er rotete på mobil. Stabelt elementene vertikalt og øk font-størrelsen til 16px på skjermer under 640px.</div>
+            <div class="prompt-footer">
+              <span class="prompt-tip">Vær spesifikk om seksjonen og problemet</span>
+              <button class="copy-btn" data-copy='"[Seksjonsnavn]"-seksjonen er rotete på mobil. Stablet elementene vertikalt og øk font-størrelsen til 16px på skjermer under 640px.'>
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Kopier
+              </button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-label">Legg til en knapp</div>
+            <div class="prompt-text">Legg til en knapp "<mark>Se alle tjenester</mark>" under tjeneste-kortene på forsiden. Den skal lenke til <mark>/tjenester</mark>.</div>
+            <div class="prompt-footer">
+              <span class="prompt-tip">Oppgi lenkedestinasjon</span>
+              <button class="copy-btn" data-copy='Legg til en knapp "[tekst]" under [seksjon] på [siden]. Den skal lenke til [/url].'>
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Kopier
+              </button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-label">Legg til Google Maps</div>
+            <div class="prompt-text">Legg til et innebygd Google Maps-kart for adressen "<mark>Storgata 1, Oslo</mark>" nederst på kontakt-siden</div>
+            <div class="prompt-footer">
+              <span class="prompt-tip">Se modul 12 for mer om integrasjoner</span>
+              <button class="copy-btn" data-copy='Legg til et innebygd Google Maps-kart for adressen "[adresse]" nederst på kontakt-siden'>
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Kopier
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ══ FEILSØKING ══ -->
+      <section>
+        <div class="cat-header">
+          <div class="cat-icon" style="background:#FEF2F2;">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#DC2626" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <div>
+            <div class="cat-title">Feilsøking</div>
+            <div style="font-size:12px;color:#71717A;margin-top:1px;">Når noe ikke ser riktig ut eller ikke fungerer</div>
+          </div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-4">
+
+          <div class="prompt-card">
+            <div class="prompt-label">Noe mangler etter endring</div>
+            <div class="prompt-text">Etter siste endring mangler <mark>tjeneste-kortene</mark> på forsiden. Kan du se hva som gikk galt og fikse det?</div>
+            <div class="prompt-footer">
+              <span class="prompt-tip">Prøv hard reload (Ctrl+Shift+R) først</span>
+              <button class="copy-btn" data-copy="Etter siste endring mangler [hva som mangler] på [side]. Kan du se hva som gikk galt og fikse det?">
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Kopier
+              </button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-label">Ser feil ut på mobil</div>
+            <div class="prompt-text"><mark>Navigasjonsmenyen</mark> ser riktig ut på datamaskin, men er ødelagt på mobil. Kan du fikse det?</div>
+            <div class="prompt-footer">
+              <span class="prompt-tip">Ta gjerne et skjermbilde og beskriv</span>
+              <button class="copy-btn" data-copy="[Element] ser riktig ut på datamaskin, men er ødelagt på mobil. Kan du fikse det?">
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Kopier
+              </button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-label">Gå tilbake til forrige versjon</div>
+            <div class="prompt-text">Den siste endringen ødela noe. Kan du angre alt som ble gjort siden <mark>[beskriv siste gode versjon]</mark>?</div>
+            <div class="prompt-footer">
+              <span class="prompt-tip">Se modul 10 for rollback-steg</span>
+              <button class="copy-btn" data-copy="Den siste endringen ødela noe. Kan du angre alt som ble gjort siden [beskriv siste gode tilstand]?">
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Kopier
+              </button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-label">Siden laster ikke</div>
+            <div class="prompt-text">Nettsiden min viser en hvit side. Her er feilmeldingen fra byggeloggen: <mark>[lim inn feilmeldingen]</mark></div>
+            <div class="prompt-footer">
+              <span class="prompt-tip">Finn byggeloggen i Cloudflare Pages</span>
+              <button class="copy-btn" data-copy="Nettsiden min viser en hvit side. Her er feilmeldingen fra byggeloggen: [lim inn feilmeldingen]">
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Kopier
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Tip box -->
+      <div style="background:#EFF6FF;border-left:3px solid #2563EB;padding:1.25rem 1.5rem;border-radius:0.5rem;">
+        <p style="font-size:1.0625rem;line-height:1.6;color:#1E3A8A;margin:0;">
+          <strong>Tips:</strong> Gi Claude kontekst om bedriften din én gang — navn, bransje, sted, målgruppe — og den vil huske det gjennom hele chat-sesjonen. Da slipper du å gjenta det for hvert spørsmål.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <nav class="border-t border-zinc-200 bg-white py-8 px-6">
+    <div class="max-w-4xl mx-auto flex justify-between items-center">
+      <a href="./" class="text-sm text-zinc-500 hover:text-blue-600 flex items-center gap-2">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Tilbake til oversikt
+      </a>
+      <a href="09-prompts" class="inline-flex items-center gap-2 bg-blue-600 text-white font-semibold px-5 py-3 rounded-lg hover:bg-blue-500 transition-colors text-sm">
+        Les modul 09: Effektive prompts
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </nav>
+
+  <footer class="bg-[#0F172A] text-white py-6 px-6">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-sm text-white/40">
+      <div>© 2026 Dietrichs Marketing</div>
+      <div>Org.nr 932 612 583</div>
+      <div id="kurs-user-info"></div>
+    </div>
+  </footer>
+
+  <script>
+    /* Copy-to-clipboard */
+    document.querySelectorAll('.copy-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var text = btn.getAttribute('data-copy');
+        if (!text) return;
+        navigator.clipboard.writeText(text).then(function () {
+          var orig = btn.innerHTML;
+          btn.innerHTML = '<svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg> Kopiert!';
+          btn.classList.add('copied');
+          setTimeout(function () {
+            btn.innerHTML = orig;
+            btn.classList.remove('copied');
+          }, 2000);
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
