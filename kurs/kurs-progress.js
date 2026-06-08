@@ -30,21 +30,16 @@
     var moduleId = getModuleId();
     if (!moduleId || moduleId === 'index') return;
 
-    /* "Already completed" banner inside article header */
+    /* "Already completed" banner at top of content */
     if (getCompleted().indexOf(moduleId) !== -1) {
-      var article = document.querySelector('article');
-      if (article) {
+      var contentDiv = document.querySelector('article .max-w-3xl');
+      if (contentDiv) {
         var banner = document.createElement('div');
-        banner.style.cssText = 'display:flex;align-items:center;gap:8px;background:#F0FDF4;' +
-          'border:1px solid #86EFAC;border-radius:10px;padding:10px 16px;margin:0 24px 0;' +
-          'max-width:672px;margin:0 auto 24px;font-family:Inter,sans-serif;font-size:13px;' +
-          'font-weight:600;color:#15803D;';
+        banner.style.cssText = 'display:inline-flex;align-items:center;gap:8px;background:#F0FDF4;' +
+          'border:1px solid #86EFAC;border-radius:8px;padding:8px 14px;margin-bottom:24px;' +
+          'font-family:Inter,sans-serif;font-size:13px;font-weight:600;color:#15803D;';
         banner.innerHTML = checkSVG('#16A34A') + ' Du har fullført denne modulen';
-        var firstChild = article.firstChild;
-        while (firstChild && firstChild.nodeType !== 1) firstChild = firstChild.nextSibling;
-        if (firstChild) {
-          article.insertBefore(banner, firstChild.nextSibling || firstChild);
-        }
+        contentDiv.insertBefore(banner, contentDiv.firstChild);
       }
     }
 
