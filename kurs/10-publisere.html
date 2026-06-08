@@ -186,6 +186,58 @@
         <li>Hvor lang tid hver oppdatering tok.</li>
       </ul>
 
+      <figure class="not-prose my-6 rounded-2xl border border-zinc-200 bg-white p-5 md:p-6">
+        <p class="text-center text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-4">Slik ser Cloudflare Pages-oversikten ut</p>
+        <svg viewBox="0 0 530 210" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Cloudflare Pages dashboard med tre deployments: Building, Success og Failed">
+
+          <!-- Browser chrome -->
+          <rect x="10" y="10" width="510" height="190" rx="8" fill="white" stroke="#E4E4E7" stroke-width="1.5"/>
+          <rect x="10" y="10" width="510" height="32" rx="8" fill="#F4F4F5"/>
+          <rect x="10" y="32" width="510" height="10" fill="#F4F4F5"/>
+          <circle cx="27" cy="26" r="4.5" fill="#EF4444"/>
+          <circle cx="40" cy="26" r="4.5" fill="#F59E0B"/>
+          <circle cx="53" cy="26" r="4.5" fill="#22C55E"/>
+          <rect x="72" y="18" width="260" height="16" rx="8" fill="white" stroke="#E4E4E7" stroke-width="1"/>
+          <text x="202" y="30" text-anchor="middle" font-size="9" fill="#71717A">dash.cloudflare.com › Pages › dittfirma</text>
+
+          <!-- Header row -->
+          <rect x="22" y="50" width="496" height="24" rx="4" fill="#F8FAFC"/>
+          <text x="36" y="66" font-size="10" font-weight="700" fill="#52525B">Deployment</text>
+          <text x="230" y="66" font-size="10" font-weight="700" fill="#52525B">Tidspunkt</text>
+          <text x="360" y="66" font-size="10" font-weight="700" fill="#52525B">Status</text>
+          <text x="450" y="66" font-size="10" font-weight="700" fill="#52525B">Tid brukt</text>
+
+          <!-- Row 1: Building (current) -->
+          <rect x="22" y="78" width="496" height="34" rx="4" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1"/>
+          <text x="36" y="91" font-size="10.5" font-weight="700" fill="#1E40AF">Oppdater åpningstider</text>
+          <text x="36" y="104" font-size="9.5" fill="#3B82F6">main: a3f4c12</text>
+          <text x="230" y="98" font-size="10" fill="#3B82F6">I dag 14:32</text>
+          <rect x="350" y="85" width="70" height="18" rx="9" fill="#DBEAFE"/>
+          <text x="385" y="98" text-anchor="middle" font-size="9" font-weight="700" fill="#1E40AF">⟳ Building…</text>
+          <text x="450" y="98" font-size="10" fill="#71717A">—</text>
+
+          <!-- Row 2: Success -->
+          <rect x="22" y="116" width="496" height="34" rx="4" fill="white"/>
+          <text x="36" y="129" font-size="10.5" font-weight="600" fill="#09090B">Legg til ny tjeneste-seksjon</text>
+          <text x="36" y="142" font-size="9.5" fill="#71717A">main: b7e9d04</text>
+          <text x="230" y="136" font-size="10" fill="#71717A">I dag 11:07</text>
+          <rect x="350" y="123" width="70" height="18" rx="9" fill="#DCFCE7"/>
+          <text x="385" y="136" text-anchor="middle" font-size="9" font-weight="700" fill="#15803D">✓ Success</text>
+          <text x="450" y="136" font-size="10" fill="#71717A">48 sek</text>
+
+          <!-- Row 3: Failed -->
+          <rect x="22" y="154" width="496" height="34" rx="4" fill="#FFF1F2" stroke="#FECDD3" stroke-width="1"/>
+          <text x="36" y="167" font-size="10.5" font-weight="600" fill="#9F1239">Prøvde ny hero-seksjon</text>
+          <text x="36" y="180" font-size="9.5" fill="#E11D48">main: c2a1f88</text>
+          <text x="230" y="174" font-size="10" fill="#71717A">I går 16:44</text>
+          <rect x="350" y="161" width="70" height="18" rx="9" fill="#FFE4E6"/>
+          <text x="385" y="174" text-anchor="middle" font-size="9" font-weight="700" fill="#BE123C">✗ Failed</text>
+          <text x="430" y="174" font-size="9" fill="#BE123C">View logs →</text>
+
+        </svg>
+        <p class="text-center text-xs text-zinc-400 mt-3">«Building» = holder på. «Success» = live. «Failed» = noe gikk galt — klikk «View logs» og lim inn feilen til Claude.</p>
+      </figure>
+
       <h3>Historikken på GitHub</h3>
       <p>På din GitHub-side finner du en liste over hver eneste endring som er gjort på nettsiden. Hvert steg (en «commit») har en kort beskrivelse av hva som ble endret (Claude skriver disse selv), klokkeslett, og hvilke filer det gjaldt. Fint hvis du vil bla tilbake og se hva som skjedde når.</p>
 
