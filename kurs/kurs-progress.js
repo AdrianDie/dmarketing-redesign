@@ -97,7 +97,17 @@
       if (nowDone) showToast('✓ Modul fullført! Bra jobba.');
     };
     render();
+
+    var refLink = document.createElement('a');
+    refLink.href = '/kurs/hurtigreferanse';
+    refLink.textContent = 'Prompt-hurtigreferanse →';
+    refLink.style.cssText = 'font-size:12px;font-family:Inter,sans-serif;font-weight:500;' +
+      'color:#7C3AED;text-decoration:none;margin-left:16px;';
+    refLink.onmouseover = function () { refLink.style.textDecoration = 'underline'; };
+    refLink.onmouseout  = function () { refLink.style.textDecoration = 'none'; };
+
     wrapper.appendChild(btn);
+    wrapper.appendChild(refLink);
     nav.parentNode.insertBefore(wrapper, nav);
   }
 
