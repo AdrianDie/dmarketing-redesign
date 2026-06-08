@@ -194,6 +194,58 @@
         </div>
       </div>
 
+      <figure class="not-prose my-6 rounded-2xl border border-zinc-200 bg-white p-5 md:p-6">
+        <p class="text-center text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-4">Slik ser det ut i Claude etter din første prompt</p>
+        <svg viewBox="0 0 520 260" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Claude-chat med brukermelding og Claude-svar som lister opp sidene på nettsiden">
+
+          <!-- Chat window -->
+          <rect x="10" y="10" width="500" height="240" rx="10" fill="white" stroke="#E4E4E7" stroke-width="1.5"/>
+
+          <!-- Header bar -->
+          <rect x="10" y="10" width="500" height="36" rx="10" fill="#F4F4F5"/>
+          <rect x="10" y="34" width="500" height="12" fill="#F4F4F5"/>
+          <text x="270" y="32" text-anchor="middle" font-size="10.5" font-weight="700" fill="#09090B">Claude · Prosjekt: DittFirma AS</text>
+          <circle cx="492" cy="28" r="7" fill="#22C55E"/>
+          <text x="492" y="32" text-anchor="middle" font-size="7" font-weight="700" fill="white">✓</text>
+
+          <!-- User message (right-aligned) -->
+          <rect x="270" y="56" width="228" height="36" rx="10" fill="#2563EB"/>
+          <text x="284" y="72" font-size="10" fill="white">Vis meg hvilke sider</text>
+          <text x="284" y="85" font-size="10" fill="white">nettstedet har</text>
+          <text x="490" y="98" text-anchor="end" font-size="9" fill="#94A3B8">Du</text>
+
+          <!-- Claude avatar -->
+          <circle cx="30" cy="126" r="12" fill="#2563EB"/>
+          <text x="30" y="130" text-anchor="middle" font-size="8.5" font-weight="800" fill="white">C</text>
+
+          <!-- Claude response bubble -->
+          <rect x="50" y="110" width="298" height="118" rx="10" fill="#F8FAFC" stroke="#E4E4E7" stroke-width="1"/>
+          <text x="66" y="130" font-size="10" fill="#09090B" font-weight="600">Her er sidene i prosjektet:</text>
+
+          <!-- File list -->
+          <text x="78" y="148" font-size="9.5" fill="#3B82F6">📄 index.html</text>
+          <text x="200" y="148" font-size="9" fill="#71717A">← forsiden</text>
+          <text x="78" y="163" font-size="9.5" fill="#3B82F6">📄 tjenester.html</text>
+          <text x="200" y="163" font-size="9" fill="#71717A">← tjenester</text>
+          <text x="78" y="178" font-size="9.5" fill="#3B82F6">📄 kontakt.html</text>
+          <text x="200" y="178" font-size="9" fill="#71717A">← kontaktside</text>
+          <text x="78" y="193" font-size="9.5" fill="#3B82F6">📄 om-oss.html</text>
+          <text x="200" y="193" font-size="9" fill="#71717A">← om bedriften</text>
+
+          <text x="66" y="218" font-size="10" fill="#52525B">Vil du endre noe på en av disse?</text>
+
+          <!-- Input field at bottom -->
+          <rect x="22" y="238" width="454" height="0" rx="10" fill="none"/>
+
+          <!-- Annotation -->
+          <line x1="351" y1="158" x2="400" y2="158" stroke="#16A34A" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <text x="402" y="155" font-size="9" fill="#16A34A" font-weight="600">Claude svarer</text>
+          <text x="402" y="167" font-size="9" fill="#16A34A" font-weight="600">med en gang ✓</text>
+
+        </svg>
+        <p class="text-center text-xs text-zinc-400 mt-3">Du ser en liste over alle filene. Ser du dette? Da fungerer alt — klar for steg 5.</p>
+      </figure>
+
       <div class="callout">
         <p><strong>Viktig:</strong> Setningene i de grå boksene over (som «Vis meg hvilke sider nettstedet har») er <strong>helt vanlige norske setninger du skriver fritt</strong> — ikke kode, og du trenger ikke treffe dem ordrett. Skriv slik du ville snakket. Navn med «.html» (som <code>index.html</code>) er derimot <strong>filnavn Claude viser deg</strong> — dem skriver du ikke selv.</p>
       </div>
