@@ -206,7 +206,12 @@
     var container = document.querySelector('section .max-w-5xl');
     var ordlisteBanner = container && container.querySelector('a[href="ordliste"]');
     if (ordlisteBanner) {
-      container.insertBefore(bar, ordlisteBanner);
+      /* Walk up until we find a direct child of container */
+      var insertBefore = ordlisteBanner;
+      while (insertBefore && insertBefore.parentNode !== container) {
+        insertBefore = insertBefore.parentNode;
+      }
+      if (insertBefore) container.insertBefore(bar, insertBefore);
     }
   }
 
