@@ -105,8 +105,17 @@
     refLink.onmouseover = function () { refLink.style.textDecoration = 'underline'; };
     refLink.onmouseout  = function () { refLink.style.textDecoration = 'none'; };
 
+    var checkLink = document.createElement('a');
+    checkLink.href = '/kurs/sjekkliste';
+    checkLink.textContent = 'Sjekkliste →';
+    checkLink.style.cssText = 'font-size:12px;font-family:Inter,sans-serif;font-weight:500;' +
+      'color:#16A34A;text-decoration:none;margin-left:14px;';
+    checkLink.onmouseover = function () { checkLink.style.textDecoration = 'underline'; };
+    checkLink.onmouseout  = function () { checkLink.style.textDecoration = 'none'; };
+
     wrapper.appendChild(btn);
     wrapper.appendChild(refLink);
+    wrapper.appendChild(checkLink);
     nav.parentNode.insertBefore(wrapper, nav);
   }
 
@@ -187,8 +196,12 @@
         celebration.innerHTML =
           '<p style="font-family:Archivo,sans-serif;font-size:1.1rem;font-weight:800;margin:0 0 4px;">' +
           '🎉 Gratulerer — du har fullført alle 13 moduler!</p>' +
-          '<p style="font-size:13px;opacity:0.85;margin:0;font-family:Inter,sans-serif;">' +
-          'Du kan nå oppdatere, bygge og drifte nettsiden din helt på egenhånd.</p>';
+          '<p style="font-size:13px;opacity:0.85;margin:0 0 12px;font-family:Inter,sans-serif;">' +
+          'Du kan nå oppdatere, bygge og drifte nettsiden din helt på egenhånd.</p>' +
+          '<a href="/kurs/sjekkliste" style="display:inline-flex;align-items:center;gap:6px;background:white;color:#15803D;' +
+          'font-family:Inter,sans-serif;font-size:13px;font-weight:700;padding:8px 18px;border-radius:8px;text-decoration:none;">' +
+          '<svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>' +
+          'Bruk lanserings-sjekklisten →</a>';
         hero.parentNode.insertBefore(celebration, hero);
       }
     }
