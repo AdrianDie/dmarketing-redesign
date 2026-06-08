@@ -117,6 +117,9 @@
     wrapper.appendChild(refLink);
     wrapper.appendChild(checkLink);
     nav.parentNode.insertBefore(wrapper, nav);
+
+    /* Prompt copy buttons */
+    initPromptCopyButtons();
   }
 
   /* ── Toast notification ───────────────────────────────────── */
@@ -234,6 +237,41 @@
   }
   function circleSVG() {
     return '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/></svg>';
+  }
+
+  /* ── Prompt copy buttons ─────────────────────────────────── */
+  function initPromptCopyButtons() {
+    var examples = document.querySelectorAll('.prompt-example');
+    if (!examples.length) return;
+    var COPY_ICON = '<svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+    var CHECK_ICON = '<svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>';
+    var BTN_BASE = 'position:absolute;top:8px;right:8px;display:inline-flex;align-items:center;gap:4px;' +
+      'font-size:11px;font-family:Inter,sans-serif;font-weight:600;color:#71717A;' +
+      'padding:4px 9px;border-radius:6px;border:1.5px solid #E4E4E7;background:white;' +
+      'cursor:pointer;transition:all 0.15s;white-space:nowrap;';
+    examples.forEach(function (ex) {
+      var text = ex.textContent.trim();
+      ex.style.position = 'relative';
+      ex.style.paddingRight = '80px';
+      var btn = document.createElement('button');
+      btn.innerHTML = COPY_ICON + ' Kopier';
+      btn.style.cssText = BTN_BASE;
+      btn.title = 'Kopier prompt til utklippstavlen';
+      btn.addEventListener('mouseenter', function () { btn.style.borderColor = '#D4D4D8'; btn.style.background = '#F4F4F5'; });
+      btn.addEventListener('mouseleave', function () { btn.style.borderColor = '#E4E4E7'; btn.style.background = 'white'; btn.style.color = '#71717A'; });
+      btn.addEventListener('click', function () {
+        if (!navigator.clipboard) return;
+        navigator.clipboard.writeText(text).then(function () {
+          btn.innerHTML = CHECK_ICON + ' Kopiert!';
+          btn.style.cssText = BTN_BASE + 'background:#F0FDF4;border-color:#86EFAC;color:#15803D;';
+          setTimeout(function () {
+            btn.innerHTML = COPY_ICON + ' Kopier';
+            btn.style.cssText = BTN_BASE;
+          }, 2000);
+        });
+      });
+      ex.appendChild(btn);
+    });
   }
 
   /* ── Keyboard nav (module pages only) ────────────────────── */
