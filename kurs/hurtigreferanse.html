@@ -102,11 +102,25 @@
     </div>
   </header>
 
+  <!-- Jump nav -->
+  <div style="position:sticky;top:0;z-index:40;background:rgba(250,250,250,0.95);backdrop-filter:blur(8px);border-bottom:1px solid #E4E4E7;padding:10px 24px;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;">
+    <div style="display:inline-flex;gap:6px;max-width:100%;">
+      <a href="#start-her" style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;font-family:'Inter',sans-serif;color:#EA580C;background:#FFF7ED;border:1px solid #FED7AA;border-radius:20px;padding:4px 12px;text-decoration:none;flex-shrink:0;">⭐ Start her</a>
+      <a href="#tekst" style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;font-family:'Inter',sans-serif;color:#2563EB;background:#EFF6FF;border:1px solid #BFDBFE;border-radius:20px;padding:4px 12px;text-decoration:none;flex-shrink:0;">Tekst</a>
+      <a href="#bilder" style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;font-family:'Inter',sans-serif;color:#7C3AED;background:#F5F3FF;border:1px solid #DDD6FE;border-radius:20px;padding:4px 12px;text-decoration:none;flex-shrink:0;">Bilder</a>
+      <a href="#nye-sider" style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;font-family:'Inter',sans-serif;color:#2563EB;background:#EFF6FF;border:1px solid #BFDBFE;border-radius:20px;padding:4px 12px;text-decoration:none;flex-shrink:0;">Nye sider</a>
+      <a href="#seo" style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;font-family:'Inter',sans-serif;color:#16A34A;background:#F0FDF4;border:1px solid #86EFAC;border-radius:20px;padding:4px 12px;text-decoration:none;flex-shrink:0;">SEO</a>
+      <a href="#design" style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;font-family:'Inter',sans-serif;color:#7C3AED;background:#F5F3FF;border:1px solid #DDD6FE;border-radius:20px;padding:4px 12px;text-decoration:none;flex-shrink:0;">Design</a>
+      <a href="#feilsoking" style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;font-family:'Inter',sans-serif;color:#DC2626;background:#FEF2F2;border:1px solid #FECACA;border-radius:20px;padding:4px 12px;text-decoration:none;flex-shrink:0;">Feilsøking</a>
+      <a href="#integrasjoner" style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;font-family:'Inter',sans-serif;color:#16A34A;background:#F0FDF4;border:1px solid #86EFAC;border-radius:20px;padding:4px 12px;text-decoration:none;flex-shrink:0;">Integrasjoner</a>
+    </div>
+  </div>
+
   <div class="px-6 py-12 md:py-16">
     <div class="max-w-4xl mx-auto space-y-14">
 
       <!-- ══ START HER: KONTEKST ══ -->
-      <section>
+      <section id="start-her">
         <div class="cat-header">
           <div class="cat-icon" style="background:#FFF7ED;">
             <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#EA580C" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -148,7 +162,7 @@ Fortell meg kort hva du vet om prosjektet mitt, og spør om det er noe du trenge
       </section>
 
       <!-- ══ TEKST OG INNHOLD ══ -->
-      <section>
+      <section id="tekst">
         <div class="cat-header">
           <div class="cat-icon" style="background:#EFF6FF;">
             <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#2563EB" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
@@ -246,7 +260,7 @@ Beskrivelse: "[kort beskrivelse]"'>
       </section>
 
       <!-- ══ BILDER ══ -->
-      <section>
+      <section id="bilder">
         <div class="cat-header">
           <div class="cat-icon" style="background:#F0FDF4;">
             <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#16A34A" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
@@ -310,7 +324,7 @@ Beskrivelse: "[kort beskrivelse]"'>
       </section>
 
       <!-- ══ NYE SIDER ══ -->
-      <section>
+      <section id="nye-sider">
         <div class="cat-header">
           <div class="cat-icon" style="background:#F5F3FF;">
             <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#7C3AED" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M12 18v-6M9 15h6"/></svg>
@@ -400,7 +414,7 @@ Legg det inn på /blogg/[slug].'>
       </section>
 
       <!-- ══ SEO ══ -->
-      <section>
+      <section id="seo">
         <div class="cat-header">
           <div class="cat-icon" style="background:#FEF9C3;">
             <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#D97706" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
@@ -468,7 +482,7 @@ Meta-description: "[din beskrivelse, maks 160 tegn]"'>
       </section>
 
       <!-- ══ DESIGN OG LAYOUT ══ -->
-      <section>
+      <section id="design">
         <div class="cat-header">
           <div class="cat-icon" style="background:#FFF7ED;">
             <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#EA580C" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
@@ -532,7 +546,7 @@ Meta-description: "[din beskrivelse, maks 160 tegn]"'>
       </section>
 
       <!-- ══ FEILSØKING ══ -->
-      <section>
+      <section id="feilsoking">
         <div class="cat-header">
           <div class="cat-icon" style="background:#FEF2F2;">
             <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#DC2626" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
@@ -595,7 +609,7 @@ Meta-description: "[din beskrivelse, maks 160 tegn]"'>
         </div>
       </section>
 
-      <section>
+      <section id="integrasjoner">
         <div class="cat-header">
           <div class="cat-icon" style="background:#F0FDF4;">
             <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#16A34A" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
