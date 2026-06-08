@@ -543,9 +543,11 @@
         var q = this.value.trim().toLowerCase();
         var visible = 0;
         cards.forEach(function (card) {
-          var name = (card.querySelector('.term-name') || {}).textContent || '';
-          var def  = (card.querySelector('.term-def')  || {}).textContent || '';
-          var hit  = !q || (name + ' ' + def).toLowerCase().includes(q);
+          var name    = (card.querySelector('.term-name')    || {}).textContent || '';
+          var def     = (card.querySelector('.term-def')     || {}).textContent || '';
+          var analogy = (card.querySelector('.term-analogy') || {}).textContent || '';
+          var tags    = card.getAttribute('data-term') || '';
+          var hit  = !q || (name + ' ' + def + ' ' + analogy + ' ' + tags).toLowerCase().includes(q);
           card.style.display = hit ? '' : 'none';
           if (hit) visible++;
         });
