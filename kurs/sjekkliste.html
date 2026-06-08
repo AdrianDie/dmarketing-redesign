@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lanserings-sjekkliste — klar til å gå live? | AI-nettsider Kurs</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { theme: { extend: { fontFamily: { display: ['Archivo', 'sans-serif'], body: ['Inter', 'sans-serif'] }, colors: { ink: '#09090B', brand: '#2563EB', navy: '#0B1F4A' } } } }</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="../images/favicon.png" rel="shortcut icon" type="image/x-icon" />
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script src="/kurs/auth.js"></script>
+  <script src="/kurs/kurs-progress.js" defer></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #FAFAFA; color: #09090B; }
+    .font-display { font-family: 'Archivo', sans-serif; }
+
+    /* Category headers */
+    .cat-header {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 16px;
+    }
+    .cat-icon {
+      flex-shrink: 0; width: 36px; height: 36px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .cat-title {
+      font-family: 'Archivo', sans-serif; font-weight: 800;
+      font-size: 1.1rem; letter-spacing: -0.02em; color: #09090B;
+    }
+
+    /* Checklist item */
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 18px;
+      background: #fff;
+      border: 1.5px solid #E4E4E7;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+      user-select: none;
+    }
+    .check-item:hover {
+      border-color: #BFDBFE;
+      box-shadow: 0 4px 12px -4px rgba(37,99,235,0.10);
+    }
+    .check-item.checked {
+      background: #F0FDF4;
+      border-color: #86EFAC;
+    }
+    .check-item.checked .check-label {
+      text-decoration: line-through;
+      color: #71717A;
+    }
+    .check-box {
+      flex-shrink: 0;
+      width: 22px; height: 22px;
+      border-radius: 6px;
+      border: 2px solid #D4D4D8;
+      background: white;
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 1px;
+      transition: all 0.15s;
+    }
+    .check-item.checked .check-box {
+      background: #16A34A;
+      border-color: #16A34A;
+    }
+    .check-box-tick {
+      opacity: 0;
+      transition: opacity 0.1s;
+    }
+    .check-item.checked .check-box-tick {
+      opacity: 1;
+    }
+    .check-label {
+      font-size: 15px;
+      line-height: 1.5;
+      color: #09090B;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    .check-sub {
+      display: block;
+      font-size: 12px;
+      font-weight: 400;
+      color: #71717A;
+      margin-top: 2px;
+      line-height: 1.4;
+    }
+    .check-item.checked .check-sub {
+      color: #A1A1AA;
+    }
+
+    /* Progress bar */
+    #progress-bar-fill {
+      transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+  </style>
+</head>
+<body>
+
+  <script>window.DIETRICHS_MENU_CONFIG = { basePath: '../' };</script>
+  <script src="../components/dietrichs-menu.js" defer></script>
+
+  <!-- Hero -->
+  <header class="py-14 md:py-20 px-6 border-b border-zinc-100">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex items-center gap-3 mb-5">
+        <a href="./" class="text-xs font-semibold uppercase tracking-widest text-zinc-500 hover:text-blue-600">← Alle moduler</a>
+        <span class="text-zinc-300">/</span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-emerald-600">Sjekkliste</span>
+      </div>
+      <h1 class="font-display font-extrabold text-4xl md:text-6xl tracking-[-0.03em] text-ink leading-[1.05] mb-5">
+        Lanserings-sjekkliste
+      </h1>
+      <p class="text-lg md:text-xl text-zinc-600 leading-relaxed max-w-2xl mb-8">
+        Gå gjennom punktene før du forteller kunder om siden. Kryss av etter hvert — fremgangen lagres automatisk i nettleseren din.
+      </p>
+
+      <!-- Progress bar -->
+      <div id="progress-area" class="bg-white border border-zinc-200 rounded-2xl p-5 max-w-lg">
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-sm font-semibold text-zinc-700">Fremgang</span>
+          <span id="progress-label" class="text-sm font-bold text-emerald-600">0 av 28 fullført</span>
+        </div>
+        <div class="h-3 bg-zinc-100 rounded-full overflow-hidden">
+          <div id="progress-bar-fill" class="h-full bg-emerald-500 rounded-full" style="width:0%"></div>
+        </div>
+        <div class="mt-3 flex items-center justify-between">
+          <span id="progress-pct" class="text-xs text-zinc-400">0 %</span>
+          <button id="reset-btn" onclick="resetChecklist()" class="text-xs text-zinc-400 hover:text-red-500 transition-colors">
+            Tilbakestill alt
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="px-6 py-12 md:py-16">
+    <div class="max-w-4xl mx-auto space-y-14">
+
+      <!-- ══ 1. INNHOLD ══ -->
+      <section>
+        <div class="cat-header">
+          <div class="cat-icon" style="background:#EFF6FF;">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#2563EB" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </div>
+          <div>
+            <div class="cat-title">Innhold</div>
+            <div style="font-size:12px;color:#71717A;margin-top:1px;">Er all tekst og info på nettstedet korrekt og ferdig?</div>
+          </div>
+        </div>
+        <div class="flex flex-col gap-3">
+          <div class="check-item" data-id="c1" onclick="toggleItem(this)">
+            <div class="check-box"><svg class="check-box-tick" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+            <div><span class="check-label">Ingen placeholder-tekst igjen</span><span class="check-sub">Søk etter «Lorem ipsum», «Din tekst her», «Eksempel» eller lignende i alle sider</span></div>
+          </div>
+          <div class="check-item" data-id="c2" onclick="toggleItem(this)">
+            <div class="check-box"><svg class="check-box-tick" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+            <div><span class="check-label">Kontaktinfo er korrekt og fullstendig</span><span class="check-sub">Telefonnummer, e-postadresse og eventuell fysisk adresse er oppdatert</span></div>
+          </div>
+          <div class="check-item" data-id="c3" onclick="toggleItem(this)">
+            <div class="check-box"><svg class="check-box-tick" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+            <div><span class="check-label">Åpningstider er riktige</span><span class="check-sub">Gjelder alle steder åpningstider nevnes — inkludert Google Business</span></div>
+          </div>
+          <div class="check-item" data-id="c4" onclick="toggleItem(this)">
+            <div class="check-box"><svg class="check-box-tick" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+            <div><span class="check-label">Priser og tilbud er oppdatert</span><span class="check-sub">Er det prislister, pakker eller kampanjer — er disse korrekte?</span></div>
+          </div>
+          <div class="check-item" data-id="c5" onclick="toggleItem(this)">
+            <div class="check-box"><svg class="check-box-tick" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+            <div><span class="check-label">«Om oss»-tekst beskriver faktisk bedriften din</span><span class="check-sub">Ikke generisk AI-tekst — les den høyt og sjekk at den høres riktig ut</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ 2. DESIGN OG VISUALS ══ -->
+      <section>
+        <div class="cat-header">
+          <div class="cat-icon" style="background:#F5F3FF;">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#7C3AED" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+          </div>
+          <div>
+            <div class="cat-title">Design og visuals</div>
+            <div style="font-size:12px;color:#71717A;margin-top:1px;">Ser nettstedet polert og profesjonelt ut?</div>
+          </div>
+        </div>
+        <div class="flex flex-col gap-3">
+          <div class="check-item" data-id="d1" onclick="toggleItem(this)">
+            <div class="check-box"><svg class="check-box-tick" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+            <div><span class="check-label">Logo vises korrekt på alle sider</span><span class="check-sub">Sjekk i headeren — er logoen skarp, ikke forstrekket, og riktig størrelse?</span></div>
+          </div>
+          <div class="check-item" data-id="d2" onclick="toggleItem(this)">
+            <div class="check-box"><svg class="check-box-tick" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+            <div><span class="check-label">Favicon er satt (ikon i nettleser-fanen)</span><span class="check-sub">Åpne nettsiden og se i fanen — er det logoen din eller et generisk ikon?</span></div>
+          </div>
+          <div class="check-item" data-id="d3" onclick="toggleItem(this)">
+            <div class="check-box"><svg class="check-box-tick" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+            <div><span class="check-label">Alle bilder er komprimert</span><span class="check-sub">Under 200 KB per bilde — bruk Squoosh eller TinyPNG (se modul 06)</span></div>
+          </div>
+          <div class="check-item" data-id="d4" onclick="toggleItem(this)">
+            <div class="check-box"><svg class="check-box-tick" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+            <div><span class="check-label">Ser bra ut på mobil</span><span class="check-sub">Åpne nettsiden på en ekte telefon og scroll gjennom alle sider</span></div>
+          </div>
+          <div class="check-item" data-id="d5" onclick="toggleItem(this)">
+            <div class="check-box"><svg class="check-box-tick" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+            <div><span class="check-label">Ingen «tomme» seksjoner eller ødelagte layout</span><span class="check-sub">Scroll langsomt gjennom alle sider på PC — er alt på rett plass?</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ 3. TEKNISK ══ -->
+      <section>
+        <div class="cat-header">
+          <div class="cat-icon" style="background:#FFF7ED;">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#EA580C" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <div class="cat-title">Teknisk</div>
+            <div style="font-size:12px;color:#71717A;margin-top:1px;">Fungerer alt som det skal under panseret?</div>
+          </div>
+        </div>
+        <div class="flex flex-col gap-3">
+          <div class="check-item" data-id="t1" onclick="toggleItem(this)">
+            <div class="check-box"><svg class="check-box-tick" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+            <div><span class="check-label">HTTPS er aktivt — grønt hengelås i adressefeltet</span><span class="check-sub">Cloudflare aktiverer dette automatisk, men dobbeltsjekk etter publisering</span></div>
+          </div>
+          <div class="check-item" data-id="t2" onclick="toggleItem(this)">
+            <div class="check-box"><svg class="check-box-tick" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+            <div><span class="check-label">Ingen ødelagte lenker</span><span class="check-sub">Klikk alle lenker i menyen og på forsiden — ingen 404-sider?</span></div>
+          </div>
+          <div class="check-item" data-id="t3" onclick="toggleItem(this)">
+            <div class="check-box"><svg class="check-box-tick" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+            <div><span class="check-label">Siden lastes raskt (&lt; 3 sekunder)</span><span class="check-sub">Prøv Ctrl+Shift+R (hard reload) — side skal laste fort på god mobilnett</span></div>
+          </div>
+          <div class="check-item" data-id="t4" onclick="toggleItem(this)">
+            <div class="check-box"><svg class="check-box-tick" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+            <div><span class="check-label">404-side finnes og er brukervennlig</span><span class="check-sub">Skriv inn dittdomene.no/finnes-ikke og sjekk at du får en fornuftig feilside</span></div>
+          </div>
+          <div class="check-item" data-id="t5" onclick="toggleItem(this)">
+            <div class="check-box"><svg class="check-box-tick" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+            <div><span class="check-label">Nettstedet er ikke sperret fra Google</span><span class="check-sub">Sjekk at det ikke er en «noindex»-tag som hindrer Google fra å finne siden</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ 4. SEO ══ -->
+      <section>
+        <div class="cat-header">
+          <div class="cat-icon" style="background:#F0FDF4;">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#16A34A" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          </div>
+          <div>
+            <div class="cat-title">SEO</div>
+            <div style="font-size:12px;color:#71717A;margin-top:1px;">Kan Google finne og forstå nettstedet ditt?</div>
+          </div>
+        </div>
+        <div class="flex flex-col gap-3">
+          <div class="check-item" data-id="s1" onclick="toggleItem(this)">
+            <div class="check-box"><svg class="check-box-tick" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+            <div><span class="check-label">Alle sider har unik title-tag med bedriftsnavn</span><span class="check-sub">F.eks. «Rørlegger Oslo | Firma AS» — sjekk fanen i nettleseren på hver side</span></div>
+          </div>
+          <div class="check-item" data-id="s2" onclick="toggleItem(this)">
+            <div class="check-box"><svg class="check-box-tick" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+            <div><span class="check-label">Alle sider har meta description</span><span class="check-sub">150–160 tegn som beskriver siden — vises i Google-resultater</span></div>
+          </div>
+          <div class="check-item" data-id="s3" onclick="toggleItem(this)">
+            <div class="check-box"><svg class="check-box-tick" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+            <div><span class="check-label">Én H1-overskrift per side</span><span class="check-sub">Ikke null og ikke tre — nøyaktig én H1 som forteller hva siden handler om</span></div>
+          </div>
+          <div class="check-item" data-id="s4" onclick="toggleItem(this)">
+            <div class="check-box"><svg class="check-box-tick" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+            <div><span class="check-label">Google Business-profil er oppdatert</span><span class="check-sub">Ny nettside-URL, riktig adresse og telefon, oppdaterte bilder</span></div>
+          </div>
+          <div class="check-item" data-id="s5" onclick="toggleItem(this)">
+            <div class="check-box"><svg class="check-box-tick" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+            <div><span class="check-label">NAP er likt overalt</span><span class="check-sub">Navn, Adresse, Telefon — må stave nøyaktig likt på Google Business og nettstedet</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ 5. INTEGRASJONER ══ -->
+      <section>
+        <div class="cat-header">
+          <div class="cat-icon" style="background:#F0FDF4;">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#16A34A" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          </div>
+          <div>
+            <div class="cat-title">Integrasjoner</div>
+            <div style="font-size:12px;color:#71717A;margin-top:1px;">Fungerer skjema, kart og booking som forventet?</div>
+          </div>
+        </div>
+        <div class="flex flex-col gap-3">
+          <div class="check-item" data-id="i1" onclick="toggleItem(this)">
+            <div class="check-box"><svg class="check-box-tick" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+            <div><span class="check-label">Kontaktskjema er testet — du mottar e-post</span><span class="check-sub">Fyll ut skjemaet med din egen e-post og send — kom det frem i innboksen?</span></div>
+          </div>
+          <div class="check-item" data-id="i2" onclick="toggleItem(this)">
+            <div class="check-box"><svg class="check-box-tick" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+            <div><span class="check-label">Booking-lenker og -knapper fungerer</span><span class="check-sub">Hvis du bruker Calendly el. lign. — test at booking flyter fra start til slutt</span></div>
+          </div>
+          <div class="check-item" data-id="i3" onclick="toggleItem(this)">
+            <div class="check-box"><svg class="check-box-tick" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+            <div><span class="check-label">Google Maps viser riktig adresse</span><span class="check-sub">Zoom inn på kartet og bekreft at pin og adresse stemmer</span></div>
+          </div>
+          <div class="check-item" data-id="i4" onclick="toggleItem(this)">
+            <div class="check-box"><svg class="check-box-tick" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+            <div><span class="check-label">Takk-melding vises etter skjemainnsending</span><span class="check-sub">Besøkende skal få bekreftelse på at meldingen er mottatt</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ 6. LEGALITET ══ -->
+      <section>
+        <div class="cat-header">
+          <div class="cat-icon" style="background:#FEF3C7;">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#D97706" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <div>
+            <div class="cat-title">Legalitet og GDPR</div>
+            <div style="font-size:12px;color:#71717A;margin-top:1px;">Oppfyller nettstedet norske og EU-regler?</div>
+          </div>
+        </div>
+        <div class="flex flex-col gap-3">
+          <div class="check-item" data-id="l1" onclick="toggleItem(this)">
+            <div class="check-box"><svg class="check-box-tick" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+            <div><span class="check-label">Personvernerklæring finnes</span><span class="check-sub">Obligatorisk hvis du samler inn e-post, navn eller bruker Google Analytics</span></div>
+          </div>
+          <div class="check-item" data-id="l2" onclick="toggleItem(this)">
+            <div class="check-box"><svg class="check-box-tick" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+            <div><span class="check-label">Cookie-banner vises for nye besøkende</span><span class="check-sub">Kreves hvis du bruker Google Analytics eller annen sporingsteknologi</span></div>
+          </div>
+          <div class="check-item" data-id="l3" onclick="toggleItem(this)">
+            <div class="check-box"><svg class="check-box-tick" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+            <div><span class="check-label">Organisasjonsnummer vises i footer</span><span class="check-sub">Norsk lov krever at org.nr. er synlig på alle kommersielle nettsteder</span></div>
+          </div>
+          <div class="check-item" data-id="l4" onclick="toggleItem(this)">
+            <div class="check-box"><svg class="check-box-tick" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+            <div><span class="check-label">Bedriftens offisielle navn er korrekt i footer</span><span class="check-sub">Skal matche Brønnøysund-registret — inkludert «AS», «ENK» osv.</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ferdig-boks (vises når alt er krysset av) -->
+      <div id="all-done-box" class="hidden rounded-2xl overflow-hidden border-2 border-emerald-300" style="background:linear-gradient(135deg,#ECFDF5,#D1FAE5);">
+        <div style="background:#16A34A;padding:16px 24px;display:flex;align-items:center;gap:10px;">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:1rem;color:white;">Alt er klart — du kan lansere! 🚀</span>
+        </div>
+        <div style="padding:20px 24px;">
+          <p style="font-size:15px;color:#14532D;line-height:1.6;margin-bottom:12px;">Gratulerer! Du har gått gjennom alle punktene på sjekklisten. Nettstedet ditt er klar til å møte kunder.</p>
+          <p style="font-size:14px;color:#166534;line-height:1.6;"><strong>Neste steg:</strong> Del nettsiden i sosiale medier, oppdater visittkort og signaturen din i e-post, og start å fortelle kundene om den nye nettsiden din.</p>
+        </div>
+      </div>
+
+      <!-- Callout: Husk backup -->
+      <div style="background:#EFF6FF;border-left:3px solid #2563EB;padding:1.25rem 1.5rem;border-radius:0.5rem;">
+        <p style="font-size:15px;color:#1E3A8A;line-height:1.6;margin:0;"><strong>Husk:</strong> Alt ligger trygt på GitHub (modul 13). Gå gjennom sjekklisten på nytt etter større endringer — det er god vane å ha en fast kvalitetskontroll.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bottom nav -->
+  <nav class="border-t border-zinc-100 px-6 py-8">
+    <div class="max-w-4xl mx-auto flex items-center justify-between gap-4">
+      <a href="./" class="text-sm text-zinc-500 hover:text-blue-600 flex items-center gap-2"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Alle moduler</a>
+      <a href="hurtigreferanse" class="inline-flex items-center gap-2 bg-blue-600 text-white font-semibold px-5 py-3 rounded-lg hover:bg-blue-500 transition-colors text-sm">Prompt-hurtigreferanse<svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+    </div>
+  </nav>
+
+  <footer class="bg-[#0F172A] text-white py-6 px-6"><div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-sm text-white/40"><div>© 2026 Dietrichs Marketing</div><div>Org.nr 932 612 583</div><div id="kurs-user-info"></div></div></footer>
+
+  <script>
+    var STORAGE_KEY = 'sjekkliste_v1';
+    var TOTAL = 28;
+
+    function loadState() {
+      try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e) { return {}; }
+    }
+    function saveState(state) {
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e) {}
+    }
+
+    function updateProgress() {
+      var items = document.querySelectorAll('.check-item');
+      var checked = document.querySelectorAll('.check-item.checked').length;
+      var pct = Math.round((checked / TOTAL) * 100);
+      document.getElementById('progress-label').textContent = checked + ' av ' + TOTAL + ' fullført';
+      document.getElementById('progress-bar-fill').style.width = pct + '%';
+      document.getElementById('progress-pct').textContent = pct + ' %';
+      // update bar color: green when complete
+      var fill = document.getElementById('progress-bar-fill');
+      if (pct === 100) {
+        fill.style.background = '#16A34A';
+      } else if (pct >= 70) {
+        fill.style.background = '#22C55E';
+      } else if (pct >= 40) {
+        fill.style.background = '#84CC16';
+      } else {
+        fill.style.background = '#10B981';
+      }
+      // show done box
+      document.getElementById('all-done-box').classList.toggle('hidden', pct < 100);
+    }
+
+    function toggleItem(el) {
+      var id = el.dataset.id;
+      el.classList.toggle('checked');
+      var state = loadState();
+      if (el.classList.contains('checked')) {
+        state[id] = true;
+      } else {
+        delete state[id];
+      }
+      saveState(state);
+      updateProgress();
+    }
+
+    function resetChecklist() {
+      if (!confirm('Er du sikker? Dette fjerner alle kryss.')) return;
+      localStorage.removeItem(STORAGE_KEY);
+      document.querySelectorAll('.check-item').forEach(function(el) {
+        el.classList.remove('checked');
+      });
+      updateProgress();
+    }
+
+    // Init from saved state
+    (function init() {
+      var state = loadState();
+      document.querySelectorAll('.check-item').forEach(function(el) {
+        if (state[el.dataset.id]) el.classList.add('checked');
+      });
+      updateProgress();
+    })();
+  </script>
+
+</body>
+</html>
