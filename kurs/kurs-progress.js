@@ -168,6 +168,22 @@
     if (total === 0) return;
     var pct = Math.round(done / total * 100);
 
+    /* 🎉 Course completion banner */
+    if (done === total) {
+      var hero = document.querySelector('header');
+      if (hero) {
+        var celebration = document.createElement('div');
+        celebration.style.cssText = 'background:linear-gradient(135deg,#1D4ED8 0%,#16A34A 100%);' +
+          'color:white;text-align:center;padding:20px 24px;';
+        celebration.innerHTML =
+          '<p style="font-family:Archivo,sans-serif;font-size:1.1rem;font-weight:800;margin:0 0 4px;">' +
+          '🎉 Gratulerer — du har fullført alle 13 moduler!</p>' +
+          '<p style="font-size:13px;opacity:0.85;margin:0;font-family:Inter,sans-serif;">' +
+          'Du kan nå oppdatere, bygge og drifte nettsiden din helt på egenhånd.</p>';
+        hero.parentNode.insertBefore(celebration, hero);
+      }
+    }
+
     var bar = document.createElement('div');
     bar.innerHTML =
       '<p style="font-size:13px;font-family:Inter,sans-serif;color:#52525B;margin:0 0 8px;">' +
