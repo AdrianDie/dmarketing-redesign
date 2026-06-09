@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link href="../images/favicon.png" rel="shortcut icon" type="image/x-icon" />
   <script src="/kurs/auth.js"></script>
+  <script src="/kurs/kurs-track.js"></script>
   <script src="/kurs/kurs-progress.js" defer></script>
   <style>
     body { font-family: 'Inter', sans-serif; background: #FAFAFA; color: #09090B; }
@@ -377,6 +378,49 @@ Bruk samme stil som tjenester/standard-service.html.</div>
       <div class="prompt-example">Lag en ny side på tjenester/akutt-rorleggervakt.html med dette eksakt innholdet:
 
 [full tekst og struktur ...]</div>
+
+      <h2>Slik lager du siden</h2>
+      <p>Fremgangsmåten er litt ulik avhengig av hvilken Claude du bruker. Velg spor under.</p>
+
+      <div class="track-toggle not-prose">
+        <p class="track-toggle__intro">Velg hvordan du jobber</p>
+        <div class="track-toggle__buttons">
+          <button class="track-btn" data-track="gratis" onclick="setTrack('gratis')">
+            <span class="track-btn__name">🟡 Gratis · Mer manuelt</span>
+            <span class="track-btn__sub">claude.ai i nettleseren</span>
+          </button>
+          <button class="track-btn" data-track="kode" onclick="setTrack('kode')">
+            <span class="track-btn__name">🔵 Enklere · Claude Code</span>
+            <span class="track-btn__sub">Betalt — Claude gjør alt automatisk</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="spor-gratis spor-block spor-block--gratis not-prose">
+        <div class="spor-label">🟡 Gratis · Mer manuelt</div>
+        <ol style="margin:0;padding-left:1.25rem;">
+          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Finn en eksisterende side å bruke som mal — f.eks. <code style="background:#FEF9C3;padding:0.1rem 0.35rem;border-radius:4px;font-family:monospace;font-size:0.875em;">tjenester/standard-service.html</code>. Åpne den i VS Code → <kbd style="background:#FEF9C3;padding:0.1rem 0.35rem;border-radius:4px;font-size:0.875em;">Ctrl+A</kbd> → <kbd style="background:#FEF9C3;padding:0.1rem 0.35rem;border-radius:4px;font-size:0.875em;">Ctrl+C</kbd>.</li>
+          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Gå til <strong>claude.ai</strong> → ny chat → lim inn HTML-koden fra malsiden.</li>
+          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Lim inn prompten din (se malene over) og send.</li>
+          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Claude svarer med koden til den nye siden. Kopier svaret.</li>
+          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Tilbake i VS Code: lag en ny fil med <kbd style="background:#FEF9C3;padding:0.1rem 0.35rem;border-radius:4px;font-size:0.875em;">Ctrl+N</kbd> → lim inn koden → <kbd style="background:#FEF9C3;padding:0.1rem 0.35rem;border-radius:4px;font-size:0.875em;">Ctrl+S</kbd> → lagre med riktig navn (f.eks. <code style="background:#FEF9C3;padding:0.1rem 0.35rem;border-radius:4px;font-family:monospace;font-size:0.875em;">tjenester/akutt-rorleggervakt.html</code>).</li>
+          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Trykk <kbd style="background:#FEF9C3;padding:0.1rem 0.35rem;border-radius:4px;font-size:0.875em;">F5</kbd> i nettleseren og åpne filen → sjekk at alt ser bra ut.</li>
+          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">For å lenke fra menyen: åpne menyfilen i VS Code → <kbd style="background:#FEF9C3;padding:0.1rem 0.35rem;border-radius:4px;font-size:0.875em;">Ctrl+A</kbd> → <kbd style="background:#FEF9C3;padding:0.1rem 0.35rem;border-radius:4px;font-size:0.875em;">Ctrl+C</kbd> → ny chat i claude.ai → lim inn + beskriv lenken du vil ha lagt til → kopier svar tilbake til VS Code.</li>
+          <li style="margin-bottom:0;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">VS Code Source Control-panel → skriv melding (f.eks. <em>«Ny tjenesteside: akutt rørleggervakt»</em>) → <strong>Commit &amp; Push</strong>.</li>
+        </ol>
+      </div>
+
+      <div class="spor-kode spor-block spor-block--kode not-prose">
+        <div class="spor-label">🔵 Enklere · Claude Code</div>
+        <ol style="margin:0;padding-left:1.25rem;">
+          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Åpne terminalen i VS Code og skriv <code style="background:#DBEAFE;padding:0.1rem 0.35rem;border-radius:4px;font-family:monospace;font-size:0.875em;">claude</code>.</li>
+          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Lim inn prompten din (se malene over).</li>
+          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Claude leser den eksisterende stilen selv, lager den nye filen på riktig sted og foreslår endringene.</li>
+          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Godkjenn med <kbd style="background:#DBEAFE;padding:0.1rem 0.35rem;border-radius:4px;font-size:0.875em;">y</kbd>.</li>
+          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Trykk <kbd style="background:#DBEAFE;padding:0.1rem 0.35rem;border-radius:4px;font-size:0.875em;">F5</kbd> i nettleseren → sjekk at alt ser bra ut.</li>
+          <li style="margin-bottom:0;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Skriv: <em>«Legg til lenke i menyen og push»</em> — Claude oppdaterer menyen, committer og pusher automatisk.</li>
+        </ol>
+      </div>
 
       <h2>Etter at siden er laget</h2>
       <p>Claude vil typisk:</p>

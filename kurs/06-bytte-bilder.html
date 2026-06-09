@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link href="../images/favicon.png" rel="shortcut icon" type="image/x-icon" />
   <script src="/kurs/auth.js"></script>
+  <script src="/kurs/kurs-track.js"></script>
   <script src="/kurs/kurs-progress.js" defer></script>
   <style>
     body { font-family: 'Inter', sans-serif; background: #FAFAFA; color: #09090B; }
@@ -148,20 +149,46 @@
       </div>
 
       <h2>Slik bytter du et bilde</h2>
-      <p>Det er to måter:</p>
+      <p>Husk å komprimere bildet på <strong>squoosh.app</strong> eller <strong>TinyPNG</strong> <em>før</em> du begynner — da unngår du en treg side. Velg så spor under og følg stegene.</p>
 
-      <h3>Metode 1: Last opp i chatten</h3>
-      <p>Dra og slipp bildet rett inn i Claude-chatten. Skriv: <code>Bytt hero-bildet på forsiden med dette bildet</code>. Claude håndterer:</p>
-      <ul>
-        <li>Lagring i riktig mappe</li>
-        <li>Riktig filnavn</li>
-        <li>Passer på at siden henter inn det riktige bildet der det skal vises</li>
-        <li>Foreslå eller skrive ny <code>alt</code>-tekst (en kort beskrivelse av bildet — for SEO og tilgjengelighet). SEO er det som gjør at siden dukker opp i Google — mer om det i modul 08.</li>
-      </ul>
+      <div class="track-toggle not-prose">
+        <p class="track-toggle__intro">Velg hvordan du jobber</p>
+        <div class="track-toggle__buttons">
+          <button class="track-btn" data-track="gratis" onclick="setTrack('gratis')">
+            <span class="track-btn__name">🟡 Gratis · Mer manuelt</span>
+            <span class="track-btn__sub">claude.ai i nettleseren</span>
+          </button>
+          <button class="track-btn" data-track="kode" onclick="setTrack('kode')">
+            <span class="track-btn__name">🔵 Enklere · Claude Code</span>
+            <span class="track-btn__sub">Betalt — Claude gjør alt automatisk</span>
+          </button>
+        </div>
+      </div>
 
-      <h3>Metode 2: Beskrivelse</h3>
-      <p>Hvis du har bildet et annet sted, gi Claude en URL eller beskrivelse:</p>
-      <div class="prompt-example">Last ned bildet fra https://drive.google.com/... og bruk det som hero på tjenester-siden. Alt-tekst: "rørlegger på vei til oppdrag i Stavanger".</div>
+      <div class="spor-gratis spor-block spor-block--gratis not-prose">
+        <div class="spor-label">🟡 Gratis · Mer manuelt</div>
+        <ol style="margin:0;padding-left:1.25rem;">
+          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Komprimer bildet og last det ned. Dra bildefilen inn i <code style="background:#FEF9C3;padding:0.1rem 0.35rem;border-radius:4px;font-family:monospace;font-size:0.875em;">images/</code>-mappen i VS Code (Explorer-panelet til venstre).</li>
+          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Åpne HTML-filen som inneholder bildet → <kbd style="background:#FEF9C3;padding:0.1rem 0.35rem;border-radius:4px;font-size:0.875em;">Ctrl+A</kbd> → <kbd style="background:#FEF9C3;padding:0.1rem 0.35rem;border-radius:4px;font-size:0.875em;">Ctrl+C</kbd> (kopier hele filen).</li>
+          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Gå til <strong>claude.ai</strong> → ny chat → lim inn HTML-koden. Dra bildefilen inn i chatfeltet for å laste det opp.</li>
+          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Skriv: <em>«Bytt hero-bildet med det vedlagte. Filnavnet er [filnavn]. Skriv god alt-tekst.»</em></li>
+          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Kopier Claude sitt svar (ny HTML) → VS Code → <kbd style="background:#FEF9C3;padding:0.1rem 0.35rem;border-radius:4px;font-size:0.875em;">Ctrl+A</kbd> → lim inn → <kbd style="background:#FEF9C3;padding:0.1rem 0.35rem;border-radius:4px;font-size:0.875em;">Ctrl+S</kbd>.</li>
+          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Trykk <kbd style="background:#FEF9C3;padding:0.1rem 0.35rem;border-radius:4px;font-size:0.875em;">F5</kbd> i nettleseren → sjekk at bildet vises riktig.</li>
+          <li style="margin-bottom:0;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">VS Code Source Control-panel → skriv melding (f.eks. <em>«Nytt hero-bilde»</em>) → <strong>Commit &amp; Push</strong>.</li>
+        </ol>
+      </div>
+
+      <div class="spor-kode spor-block spor-block--kode not-prose">
+        <div class="spor-label">🔵 Enklere · Claude Code</div>
+        <ol style="margin:0;padding-left:1.25rem;">
+          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Komprimer bildet og last det ned. Dra bildefilen inn i <code style="background:#DBEAFE;padding:0.1rem 0.35rem;border-radius:4px;font-family:monospace;font-size:0.875em;">images/</code>-mappen i VS Code.</li>
+          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Åpne terminalen i VS Code og skriv <code style="background:#DBEAFE;padding:0.1rem 0.35rem;border-radius:4px;font-family:monospace;font-size:0.875em;">claude</code>.</li>
+          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Skriv: <em>«Bytt hero-bildet på forsiden med [filnavn]. Skriv god alt-tekst.»</em></li>
+          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Claude finner selv riktig sted i koden og viser deg forslaget. Godkjenn med <kbd style="background:#DBEAFE;padding:0.1rem 0.35rem;border-radius:4px;font-size:0.875em;">y</kbd>.</li>
+          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Trykk <kbd style="background:#DBEAFE;padding:0.1rem 0.35rem;border-radius:4px;font-size:0.875em;">F5</kbd> i nettleseren → sjekk at bildet vises riktig.</li>
+          <li style="margin-bottom:0;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Skriv: <em>«commit og push»</em> → Claude committer og pusher automatisk.</li>
+        </ol>
+      </div>
 
       <h2>Optimalisere før opplasting</h2>
       <p>Hvis bildet er stort (mer enn 2 MB), bør du gjøre det mindre først. Det kalles å «komprimere» — altså å krympe filen så den blir lettere å laste, uten at bildet ser dårligere ut. Du trenger ikke installere noe: alle de tre verktøyene under er gratis nettsider du bare åpner i nettleseren, drar bildet inn i, og laster ned en mindre versjon fra.</p>

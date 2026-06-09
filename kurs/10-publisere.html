@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link href="../images/favicon.png" rel="shortcut icon" type="image/x-icon" />
   <script src="/kurs/auth.js"></script>
+  <script src="/kurs/kurs-track.js"></script>
   <script src="/kurs/kurs-progress.js" defer></script>
   <style>
     body { font-family: 'Inter', sans-serif; background: #FAFAFA; color: #09090B; }
@@ -66,12 +67,44 @@
   <article class="px-6 py-12 md:py-16">
     <div class="max-w-3xl mx-auto prose-custom">
 
-      <div class="callout">
-        <p><strong>Det korte svaret:</strong> du gjør ingenting. Når Claude har gjort en endring, går den helt av seg selv ut på nettsiden din i løpet av rundt halvannet minutt. Du trenger ikke trykke "publiser", lagre eller lære deg noe teknisk. Møter du et ord du ikke kjenner, kan du alltid slå det opp i <a href="ordliste" class="text-blue-600 underline">ordlisten</a>.</p>
+      <p>Det meste skjer automatisk — men du må sende endringen til GitHub <em>én gang</em> etter at du er ferdig. Deretter publiserer GitHub Pages siden på egen hånd. Møter du et ord du ikke kjenner, kan du alltid slå det opp i <a href="ordliste" class="text-blue-600 underline">ordlisten</a>.</p>
+
+      <h2>Steg 1: Send endringen til GitHub</h2>
+      <p>Dette er det eneste steget der de to sporene skiller seg — velg ditt:</p>
+
+      <div class="track-toggle not-prose">
+        <p class="track-toggle__intro">Velg hvordan du jobber</p>
+        <div class="track-toggle__buttons">
+          <button class="track-btn" data-track="gratis" onclick="setTrack('gratis')">
+            <span class="track-btn__name">🟡 Gratis · Mer manuelt</span>
+            <span class="track-btn__sub">claude.ai i nettleseren</span>
+          </button>
+          <button class="track-btn" data-track="kode" onclick="setTrack('kode')">
+            <span class="track-btn__name">🔵 Enklere · Claude Code</span>
+            <span class="track-btn__sub">Betalt — Claude gjør alt automatisk</span>
+          </button>
+        </div>
       </div>
 
-      <h2>Slik går en endring fra chat til ferdig nettside</h2>
-      <p>Fra du sier hva du vil i chatten, til det er ute på nett — slik ser hele reisen ut:</p>
+      <div class="spor-gratis spor-block spor-block--gratis not-prose">
+        <div class="spor-label">🟡 Gratis · Mer manuelt</div>
+        <p style="font-size:1.0625rem;line-height:1.6;color:#3F3F46;margin-bottom:0.75rem;">Etter at du har lagret endringen i VS Code, sender du den til GitHub manuelt:</p>
+        <ol style="margin:0;padding-left:1.25rem;">
+          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Åpne <strong>Source Control</strong>-panelet i VS Code (ikonet med tre prikker og linjer til venstre, eller <kbd style="background:#FEF9C3;padding:0.1rem 0.35rem;border-radius:4px;font-size:0.875em;">Ctrl+Shift+G</kbd>).</li>
+          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Du ser filene du har endret. Skriv en kort beskrivelse i meldingsfeltet øverst — f.eks. <em>«Oppdaterte åpningstider»</em>.</li>
+          <li style="margin-bottom:0;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Trykk knappen <strong>«Commit &amp; Push»</strong> (eller «Commit» → «Push»). Ferdig — nå er endringen på vei til GitHub.</li>
+        </ol>
+      </div>
+
+      <div class="spor-kode spor-block spor-block--kode not-prose">
+        <div class="spor-label">🔵 Enklere · Claude Code</div>
+        <p style="font-size:1.0625rem;line-height:1.6;color:#3F3F46;margin-bottom:0.75rem;">Claude Code gjør dette for deg automatisk. Når du er fornøyd med endringen, skriv bare:</p>
+        <div style="background:#DBEAFE;border-radius:8px;padding:12px 16px;font-family:monospace;font-size:0.9rem;color:#1E40AF;margin-bottom:0;">commit og push</div>
+        <p style="font-size:0.9375rem;color:#3B82F6;margin-top:8px;margin-bottom:0;">Claude committer med en beskrivende melding og pusher til GitHub — alt i én operasjon.</p>
+      </div>
+
+      <h2>Resten skjer automatisk</h2>
+      <p>Fra GitHub tar imot endringen, til den er live på nettsiden din — slik ser reisen ut:</p>
 
       <div class="svg-wrap">
         <svg viewBox="0 0 600 230" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Tidslinje: chat, lagre, bygge, live — hele veien tar omtrent 90 sekunder.">

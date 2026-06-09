@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link href="../images/favicon.png" rel="shortcut icon" type="image/x-icon" />
   <script src="/kurs/auth.js"></script>
+  <script src="/kurs/kurs-track.js"></script>
   <script src="/kurs/kurs-progress.js" defer></script>
   <style>
     body { font-family: 'Inter', sans-serif; background: #FAFAFA; color: #09090B; }
@@ -323,6 +324,17 @@ Bruk samme kort-stil som på tjenester-seksjonen.</div>
 
       <div class="callout">
         <p><strong>Den viktigste vanen:</strong> blir noe feil, så <strong>angre</strong> heller enn å lappe videre. Si <em>«angre den siste endringen»</em> og prøv på nytt med en tydeligere beskjed — det er nesten alltid raskere enn å fikse en fiks på en fiks.</p>
+      </div>
+
+      <div class="spor-kode spor-block spor-block--kode not-prose" style="margin:2rem 0;">
+        <div class="spor-label">🔵 Enklere · Claude Code — ekstra tips</div>
+        <p style="font-size:1.0625rem;line-height:1.6;color:#3F3F46;margin-bottom:0.75rem;">Når du bruker Claude Code i terminalen er det noen ekstra ting som er nyttig å vite:</p>
+        <ul style="margin:0;padding-left:1.25rem;">
+          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;"><strong>Du trenger ikke peke på filer.</strong> Si bare hva du vil endre — Claude leser selv gjennom prosjektet og finner riktig fil. «Bytt åpningstidene på kontaktsiden» er nok.</li>
+          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;"><strong>Be om plan før gjennomføring.</strong> Skriv <code style="background:#DBEAFE;padding:0.1rem 0.35rem;border-radius:4px;font-size:0.875em;">vis hva du vil endre, ikke endre ennå</code> — da ser du diff-en og kan godkjenne eller avvise før noe skjer.</li>
+          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;"><strong>Commit og push er én kommando.</strong> Når du er fornøyd, si bare <code style="background:#DBEAFE;padding:0.1rem 0.35rem;border-radius:4px;font-size:0.875em;">commit og push</code> — Claude skriver commit-meldingen og pusher.</li>
+          <li style="margin-bottom:0;font-size:1.0625rem;line-height:1.6;color:#3F3F46;"><strong>CLAUDE.md gir kontekst.</strong> Repoet ditt inneholder en ferdigskrevet <code style="background:#DBEAFE;padding:0.1rem 0.35rem;border-radius:4px;font-size:0.875em;">CLAUDE.md</code>-fil som forteller Claude hva slags bedrift det er, hvilke filer som gjør hva, og hvilken tone som passer. Du trenger ikke forklare dette i hver prompt.</li>
+        </ul>
       </div>
 
       <div class="callout">

@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link href="../images/favicon.png" rel="shortcut icon" type="image/x-icon" />
   <script src="/kurs/auth.js"></script>
+  <script src="/kurs/kurs-track.js"></script>
   <script src="/kurs/kurs-progress.js" defer></script>
   <style>
     body { font-family: 'Inter', sans-serif; background: #FAFAFA; color: #09090B; }
@@ -153,14 +154,51 @@ Lørdag stengt</div>
       <h3>Endre priser</h3>
       <div class="prompt-example">Bytt prisen på "Service-pakke Standard" fra 1 990 kr til 2 290 kr. Husk å sjekke om prisen står på flere steder (footer, prislister, FAQ).</div>
 
-      <h2>Slik fungerer flyten</h2>
-      <ol>
-        <li>Du sender prompten i Claude</li>
-        <li>Claude leser sidene og finner alle steder der teksten står</li>
-        <li>Claude svarer med en oppsummering: "Jeg vil endre disse 3 stedene: ..."</li>
-        <li>Du svarer enten <code>godkjent</code> eller <code>nei, bare det første stedet</code></li>
-        <li>Claude lagrer, GitHub Pages publiserer, live på 30–90 sek</li>
-      </ol>
+      <h2>Slik gjør du det</h2>
+
+      <div class="track-toggle not-prose">
+        <p class="track-toggle__intro">Velg din arbeidsmetode</p>
+        <div class="track-toggle__buttons">
+          <button class="track-btn" data-track="gratis" onclick="setTrack('gratis')">
+            <span class="track-btn__name">🟡 Gratis · Mer manuelt</span>
+            <span class="track-btn__sub">claude.ai i nettleseren</span>
+          </button>
+          <button class="track-btn" data-track="kode" onclick="setTrack('kode')">
+            <span class="track-btn__name">🔵 Enklere · Claude Code</span>
+            <span class="track-btn__sub">Betalt — Claude gjør alt automatisk</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="spor-gratis spor-block spor-block--gratis not-prose">
+        <div class="spor-label">🟡 Gratis · Mer manuelt</div>
+        <div class="prose-custom" style="max-width:none;">
+          <ol>
+            <li><strong>VS Code</strong> — åpne filen du vil endre (f.eks. <code>index.html</code>). Trykk <code>Ctrl+A</code> → <code>Ctrl+C</code> for å kopiere hele innholdet.</li>
+            <li><strong>claude.ai</strong> — start ny chat. Lim inn koden og beskriv endringen: <em>«Her er koden. Kan du endre telefonnummeret i footer til 99 88 77 66?»</em></li>
+            <li><strong>Claude svarer</strong> med den komplette, oppdaterte filen. Kopier hele svaret.</li>
+            <li><strong>VS Code</strong> — klikk inne i filen, trykk <code>Ctrl+A</code> → <code>Ctrl+V</code> → <code>Ctrl+S</code> for å erstatte og lagre.</li>
+            <li><strong>Nettleseren</strong> — trykk F5. Sjekk at endringen ser riktig ut.</li>
+            <li><strong>VS Code Source Control</strong> — klikk «+» ved filen, skriv commit-melding, klikk <strong>«Commit»</strong> → <strong>«Sync Changes»</strong>. Live på 30–60 sek. ✓</li>
+          </ol>
+          <div class="callout-warn callout" style="margin-top:1rem;">
+            <p><strong>Husk:</strong> lim alltid inn hele filen til Claude — ikke bare den biten du vil endre. Claude trenger kontekst for å finne riktig sted og unngå å ødelegge resten.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="spor-kode spor-block spor-block--kode not-prose">
+        <div class="spor-label">🔵 Enklere · Claude Code</div>
+        <div class="prose-custom" style="max-width:none;">
+          <ol>
+            <li><strong>VS Code terminal</strong> — skriv <code>claude</code> og trykk Enter.</li>
+            <li>Beskriv endringen på vanlig norsk: <em>«Endre telefonnummeret i footer til 99 88 77 66»</em></li>
+            <li>Claude leser filene selv, finner alle steder og viser deg nøyaktig hva den vil endre.</li>
+            <li>Godkjenn med <code>y</code>. Claude skriver filene og trykk F5 i nettleseren for å sjekke.</li>
+            <li>Si: <em>«Ser bra ut, commit og push»</em> — Claude sender til GitHub. Live på 30–60 sek. ✓</li>
+          </ol>
+        </div>
+      </div>
 
       <figure class="not-prose my-8 rounded-2xl border border-zinc-200 bg-white p-5 md:p-7">
         <p class="text-center text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-5">Slik ser en tekst-endring ut — fra prompt til live</p>

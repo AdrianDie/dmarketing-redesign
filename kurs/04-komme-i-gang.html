@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="no">
 <head>
   <meta charset="UTF-8" />
@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link href="../images/favicon.png" rel="shortcut icon" type="image/x-icon" />
   <script src="/kurs/auth.js"></script>
+  <script src="/kurs/kurs-track.js"></script>
   <script src="/kurs/kurs-progress.js" defer></script>
   <style>
     body { font-family: 'Inter', sans-serif; background: #FAFAFA; color: #09090B; }
@@ -32,17 +33,23 @@
     .callout-warn p { color: #78350F; }
     .callout-ok { background: #F0FDF4; border-left-color: #16A34A; }
     .callout-ok p { color: #14532D; }
-    /* "Forklart enkelt"-boks — gjenbrukes for vanskelige ord */
     .explain { background: #F5F3FF; border: 1px solid #DDD6FE; border-left: 3px solid #7C3AED; border-radius: 0.5rem; padding: 1.25rem 1.5rem; margin: 1.5rem 0; }
     .explain .explain-label { display: inline-flex; align-items: center; gap: 0.4rem; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: #6D28D9; margin-bottom: 0.5rem; }
     .explain p { font-size: 1rem; line-height: 1.65; color: #3F2C66; margin-bottom: 0; }
     .explain p + p { margin-top: 0.75rem; }
     .explain strong { color: #4C1D95; }
-    .explain code { background: #EDE9FE; }
-    .step { background: white; border: 1px solid #E4E4E7; border-radius: 1rem; padding: 1.5rem; margin: 1rem 0; display: flex; gap: 1rem; }
-    .step-num { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 2rem; color: #2563EB; line-height: 1; flex-shrink: 0; }
-    .step-content h3 { margin-top: 0 !important; }
-    .step-content p { margin-bottom: 0.5rem; }
+    .step { background: white; border: 1px solid #E4E4E7; border-radius: 1rem; padding: 1.5rem; margin: 1rem 0; display: flex; gap: 1rem; align-items: flex-start; }
+    .step-num { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 1.75rem; color: #2563EB; line-height: 1; flex-shrink: 0; min-width: 2rem; }
+    .step-content h3 { margin-top: 0 !important; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem; color: #09090B; }
+    .step-content p { margin-bottom: 0.5rem; font-size: 1rem; line-height: 1.65; color: #3F3F46; }
+    .step-content p:last-child { margin-bottom: 0; }
+    .step-content code { background: #F4F4F5; padding: 0.1rem 0.35rem; border-radius: 4px; font-family: monospace; font-size: 0.9em; }
+    .step-content ol { padding-left: 1.25rem; margin: 0.5rem 0 0; }
+    .step-content ol li { font-size: 1rem; line-height: 1.65; color: #3F3F46; margin-bottom: 0.35rem; }
+    /* Gratis step: amber num */
+    .step--gratis .step-num { color: #D97706; }
+    /* Kode step: blue num */
+    .step--kode .step-num { color: #2563EB; }
   </style>
 </head>
 <body>
@@ -61,299 +68,421 @@
         Komme i gang første gang
       </h1>
       <p class="text-lg md:text-xl text-zinc-600 leading-relaxed">
-        Fra mottatt velkomst-e-post til ditt første "hei" til Claude. ~15 minutter.
+        Fra ingenting til en fungerende arbeidsflyt. Set av 20–30 minutter.
       </p>
     </div>
   </header>
 
-
   <article class="px-6 py-12 md:py-16">
     <div class="max-w-3xl mx-auto prose-custom">
 
-      <div class="explain not-prose">
-        <span class="explain-label">
-          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M12 16v-4M12 8h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          Hva er en «prompt»?
-        </span>
-        <p>En <strong>«prompt»</strong> er <strong>meldingen du skriver til Claude</strong> — altså hva du ber den om. Du skriver den på helt vanlig norsk, slik du ville sagt det til en kollega. Det er ikke kode, og du kan formulere deg akkurat som du vil.</p>
-        <p>Vi bruker ordet «prompt» gjennom hele kurset — det betyr «beskjeden din til Claude». Møter du flere ord du ikke kjenner? Slå dem opp i <a href="ordliste" class="font-semibold text-blue-700 underline decoration-blue-300 hover:decoration-blue-600">ordlisten</a>.</p>
-      </div>
+      <p>I denne modulen setter du opp alt du trenger for å jobbe med nettsiden din. Du gjør det én gang — etterpå er det bare å bruke.</p>
 
-      <h2>Hva du skal ende opp med</h2>
-      <p>Etter denne modulen har du:</p>
-      <ul>
-        <li>Tilgang til din egen <strong>GitHub-konto</strong> (en gratis nettside der alle filene til nettsiden din lagres trygt)</li>
-        <li>Tilgang til <strong>Claude</strong> med din bedrift lagt inn på forhånd</li>
-        <li><strong>GitHub Pages</strong> koblet til prosjektet (tjenesten som automatisk publiserer nettsiden din på internett)</li>
-        <li>Gjort din første test-endring og sett den live</li>
-      </ul>
-
-      <p>Vi forklarer hvert ord underveis. Det er fire nye begreper i denne modulen — <strong>repo</strong>, <strong>dashboard</strong>, <strong>prosjekt</strong> og <strong>prompt</strong> — og du møter en forklaringsboks for hvert av dem. Trenger du en rask oppslagsbok, finner du alt i <a href="ordliste" class="font-semibold text-blue-700 underline decoration-blue-300 hover:decoration-blue-600">ordlisten</a>.</p>
-
-      <div class="not-prose my-8 rounded-2xl border border-zinc-200 bg-white p-5 md:p-7">
-        <p class="text-center text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-5">Fra velkomst-e-post til første live endring — 6 steg</p>
-        <svg viewBox="0 0 500 265" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Seks steg: e-post, GitHub, Claude, test-prompt, test-endring, sjekk live">
-
-          <!-- Row 1 connector lines + arrowheads -->
-          <line x1="93" y1="80" x2="225" y2="80" stroke="#E4E4E7" stroke-width="2"/>
-          <polygon points="220,75 230,80 220,85" fill="#CBD5E1"/>
-          <line x1="272" y1="80" x2="406" y2="80" stroke="#E4E4E7" stroke-width="2"/>
-          <polygon points="401,75 411,80 401,85" fill="#CBD5E1"/>
-
-          <!-- Snake path from step 3 down-left to step 4 -->
-          <path d="M 430,103 L 430,150 L 70,150 L 70,162" stroke="#CBD5E1" stroke-width="2" fill="none" stroke-linecap="round"/>
-          <polygon points="65,162 70,172 75,162" fill="#CBD5E1"/>
-
-          <!-- Row 2 connector lines + arrowheads -->
-          <line x1="93" y1="185" x2="225" y2="185" stroke="#E4E4E7" stroke-width="2"/>
-          <polygon points="220,180 230,185 220,190" fill="#CBD5E1"/>
-          <line x1="272" y1="185" x2="406" y2="185" stroke="#E4E4E7" stroke-width="2"/>
-          <polygon points="401,180 411,185 401,190" fill="#CBD5E1"/>
-
-          <!-- Step 1: E-post -->
-          <circle cx="70" cy="80" r="23" fill="#EFF6FF" stroke="#2563EB" stroke-width="2.5"/>
-          <text x="70" y="87" text-anchor="middle" font-size="18" font-weight="800" fill="#2563EB">1</text>
-          <text x="70" y="118" text-anchor="middle" font-size="12" font-weight="700" fill="#09090B">E-post</text>
-          <text x="70" y="133" text-anchor="middle" font-size="10.5" fill="#71717A">Velkomst-e-post</text>
-
-          <!-- Step 2: GitHub -->
-          <circle cx="250" cy="80" r="23" fill="#EFF6FF" stroke="#2563EB" stroke-width="2.5"/>
-          <text x="250" y="87" text-anchor="middle" font-size="18" font-weight="800" fill="#2563EB">2</text>
-          <text x="250" y="118" text-anchor="middle" font-size="12" font-weight="700" fill="#09090B">GitHub</text>
-          <text x="250" y="133" text-anchor="middle" font-size="10.5" fill="#71717A">Aksepter invitasjon</text>
-
-          <!-- Step 3: Claude -->
-          <circle cx="430" cy="80" r="23" fill="#EFF6FF" stroke="#2563EB" stroke-width="2.5"/>
-          <text x="430" y="87" text-anchor="middle" font-size="18" font-weight="800" fill="#2563EB">3</text>
-          <text x="430" y="118" text-anchor="middle" font-size="12" font-weight="700" fill="#09090B">Claude</text>
-          <text x="430" y="133" text-anchor="middle" font-size="10.5" fill="#71717A">Logg inn, åpne prosjekt</text>
-
-          <!-- Step 4: Test-prompt -->
-          <circle cx="70" cy="185" r="23" fill="#EFF6FF" stroke="#2563EB" stroke-width="2.5"/>
-          <text x="70" y="192" text-anchor="middle" font-size="18" font-weight="800" fill="#2563EB">4</text>
-          <text x="70" y="222" text-anchor="middle" font-size="12" font-weight="700" fill="#09090B">Test-prompt</text>
-          <text x="70" y="237" text-anchor="middle" font-size="10.5" fill="#71717A">"Vis sidene"</text>
-
-          <!-- Step 5: Test-endring -->
-          <circle cx="250" cy="185" r="23" fill="#EFF6FF" stroke="#2563EB" stroke-width="2.5"/>
-          <text x="250" y="192" text-anchor="middle" font-size="18" font-weight="800" fill="#2563EB">5</text>
-          <text x="250" y="222" text-anchor="middle" font-size="12" font-weight="700" fill="#09090B">Test-endring</text>
-          <text x="250" y="237" text-anchor="middle" font-size="10.5" fill="#71717A">Bytt telefonnummer</text>
-
-          <!-- Step 6: Sjekk live (green = done!) -->
-          <circle cx="430" cy="185" r="23" fill="#16A34A"/>
-          <path d="M 421 186 l 5.5 5.5 10 -11" fill="none" stroke="#FFFFFF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
-          <text x="430" y="222" text-anchor="middle" font-size="12" font-weight="700" fill="#09090B">Sjekk live</text>
-          <text x="430" y="237" text-anchor="middle" font-size="10.5" fill="#16A34A">Ctrl+Shift+R</text>
-
-        </svg>
-        <p class="text-center text-xs text-zinc-400 mt-3">Første gang tar ca. 15 minutter totalt. Neste gang: 2–3 minutter per endring.</p>
-      </div>
-
-      <h2>Steg-for-steg</h2>
+      <!-- ═══════════════════════════════════════════
+           FELLES DEL 1: GITHUB
+      ══════════════════════════════════════════════ -->
+      <h2>Steg 1 — Opprett GitHub-konto</h2>
+      <p>GitHub er stedet der alle filene til nettsiden din lagres. Tenk på det som en Dropbox-mappe for kode — men med én viktig bonus: GitHub husker <em>alle</em> endringer som noensinne er gjort, for alltid.</p>
 
       <div class="step not-prose">
         <div class="step-num">1</div>
         <div class="step-content">
-          <h3 class="font-display font-bold text-lg mb-2">Sjekk velkomst-e-posten fra oss</h3>
-          <p class="text-zinc-600 text-sm">Du fikk en e-post fra <strong>adrian@dmarketing.no</strong> da prosjektet ble levert. Den inneholder tre lenker: <strong>GitHub-repo</strong>, <strong>Claude-tilgang</strong> og <strong>GitHub-oversikten</strong>. Hvis du ikke finner den: sjekk søppelpost, eller send oss melding så sender vi på nytt.</p>
+          <h3>Gå til github.com</h3>
+          <p>Åpne nettleseren og skriv <code>github.com</code> i adressefeltet. Klikk <strong>«Sign up»</strong> øverst til høyre.</p>
         </div>
-      </div>
-
-      <div class="explain not-prose">
-        <span class="explain-label">
-          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M12 16v-4M12 8h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          Hva er «repo» og «dashboard»?
-        </span>
-        <p>Et <strong>«repo»</strong> (uttales «rippo», kortform for det engelske <em>repository</em>) er <strong>mappen der alle filene til nettsiden din ligger samlet</strong>. Et <strong>GitHub-repo</strong> er denne mappen lagret trygt på GitHub. Du trenger ikke gjøre noe inni den selv — Claude gjør jobben.</p>
-        <p>Et <strong>«dashboard»</strong> er en <strong>kontroll-side du logger inn på</strong> — en oversiktsside med knapper og statuser. <strong>GitHub-oversikten</strong> er siden på github.com der du kan se hvordan det går med nettsiden din.</p>
       </div>
 
       <div class="step not-prose">
         <div class="step-num">2</div>
         <div class="step-content">
-          <h3 class="font-display font-bold text-lg mb-2">Aksepter GitHub-invitasjonen</h3>
-          <p class="text-zinc-600 text-sm">Klikk "Aksepter invitasjon" i e-posten. Hvis du ikke har GitHub-konto fra før, viser GitHub deg et lite skjema når du klikker: skriv inn samme e-post som du ga oss, velg et passord, og trykk for å bekrefte. Det er gratis og tar omtrent ett minutt.</p>
+          <h3>Fyll inn e-post, passord og brukernavn</h3>
+          <p>Velg et brukernavn du husker — det vil inngå i adressen til nettsiden din mens du setter opp alt. Bruk gjerne firmanavnet ditt.</p>
         </div>
       </div>
 
       <div class="step not-prose">
         <div class="step-num">3</div>
         <div class="step-content">
-          <h3 class="font-display font-bold text-lg mb-2">Logg inn på Claude</h3>
-          <p class="text-zinc-600 text-sm">Gå til <code>claude.ai</code>, logg inn med Google eller e-post. Du har fått tilgang til et eget <strong>«prosjekt»</strong> (på engelsk heter det «Project») — en egen arbeidsplass inne i Claude som allerede vet alt om bedriften din. Klikk på invitasjonen for å åpne den.</p>
+          <h3>Bekreft e-postadressen</h3>
+          <p>GitHub sender en e-post med en kode. Skriv inn koden på skjermen. Velg <strong>«Free»</strong>-planen — det er den gratis varianten, og det er alt du trenger.</p>
         </div>
       </div>
 
       <div class="step not-prose">
         <div class="step-num">4</div>
         <div class="step-content">
-          <h3 class="font-display font-bold text-lg mb-2">Test første prompt (din første melding til Claude)</h3>
-          <p class="text-zinc-600 text-sm">I Claude-prosjektet skriver du i tekstfeltet: <code>Vis meg hvilke sider nettstedet har</code>. Claude vil liste opp filene. Hvis du ser navn som <code>index.html</code> og <code>tjenester.html</code> — perfekt, alt fungerer. (<code>index.html</code> er alltid <strong>forsiden</strong>, og <code>tjenester.html</code> er tjeneste-siden. «.html» betyr bare at det er en nettside-fil.)</p>
+          <h3>Aksepter invitasjon fra Dietrichs</h3>
+          <p>Du har fått en e-post fra GitHub med tittelen <strong>«You've been invited to collaborate»</strong>. Åpne den og klikk <strong>«Accept invitation»</strong>. Nå har du tilgang til repoet ditt — mappen med alle filene til nettsiden din.</p>
+          <p>Ikke funnet e-posten? Sjekk spam-mappen, eller kontakt oss så sender vi en ny invitasjon.</p>
         </div>
-      </div>
-
-      <figure class="not-prose my-6 rounded-2xl border border-zinc-200 bg-white p-5 md:p-6">
-        <p class="text-center text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-4">Slik ser det ut i Claude etter din første prompt</p>
-        <svg viewBox="0 0 520 260" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Claude-chat med brukermelding og Claude-svar som lister opp sidene på nettsiden">
-
-          <!-- Chat window -->
-          <rect x="10" y="10" width="500" height="240" rx="10" fill="white" stroke="#E4E4E7" stroke-width="1.5"/>
-
-          <!-- Header bar -->
-          <rect x="10" y="10" width="500" height="36" rx="10" fill="#F4F4F5"/>
-          <rect x="10" y="34" width="500" height="12" fill="#F4F4F5"/>
-          <text x="270" y="32" text-anchor="middle" font-size="10.5" font-weight="700" fill="#09090B">Claude · Prosjekt: DittFirma AS</text>
-          <circle cx="492" cy="28" r="7" fill="#22C55E"/>
-          <text x="492" y="32" text-anchor="middle" font-size="7" font-weight="700" fill="white">✓</text>
-
-          <!-- User message (right-aligned) -->
-          <rect x="270" y="56" width="228" height="36" rx="10" fill="#2563EB"/>
-          <text x="284" y="72" font-size="10" fill="white">Vis meg hvilke sider</text>
-          <text x="284" y="85" font-size="10" fill="white">nettstedet har</text>
-          <text x="490" y="98" text-anchor="end" font-size="9" fill="#94A3B8">Du</text>
-
-          <!-- Claude avatar -->
-          <circle cx="30" cy="126" r="12" fill="#2563EB"/>
-          <text x="30" y="130" text-anchor="middle" font-size="8.5" font-weight="800" fill="white">C</text>
-
-          <!-- Claude response bubble -->
-          <rect x="50" y="110" width="298" height="118" rx="10" fill="#F8FAFC" stroke="#E4E4E7" stroke-width="1"/>
-          <text x="66" y="130" font-size="10" fill="#09090B" font-weight="600">Her er sidene i prosjektet:</text>
-
-          <!-- File list -->
-          <text x="78" y="148" font-size="9.5" fill="#3B82F6">📄 index.html</text>
-          <text x="200" y="148" font-size="9" fill="#71717A">← forsiden</text>
-          <text x="78" y="163" font-size="9.5" fill="#3B82F6">📄 tjenester.html</text>
-          <text x="200" y="163" font-size="9" fill="#71717A">← tjenester</text>
-          <text x="78" y="178" font-size="9.5" fill="#3B82F6">📄 kontakt.html</text>
-          <text x="200" y="178" font-size="9" fill="#71717A">← kontaktside</text>
-          <text x="78" y="193" font-size="9.5" fill="#3B82F6">📄 om-oss.html</text>
-          <text x="200" y="193" font-size="9" fill="#71717A">← om bedriften</text>
-
-          <text x="66" y="218" font-size="10" fill="#52525B">Vil du endre noe på en av disse?</text>
-
-          <!-- Input field at bottom -->
-          <rect x="22" y="238" width="454" height="0" rx="10" fill="none"/>
-
-          <!-- Annotation -->
-          <line x1="351" y1="158" x2="400" y2="158" stroke="#16A34A" stroke-width="1.5" stroke-dasharray="4 3"/>
-          <text x="402" y="155" font-size="9" fill="#16A34A" font-weight="600">Claude svarer</text>
-          <text x="402" y="167" font-size="9" fill="#16A34A" font-weight="600">med en gang ✓</text>
-
-        </svg>
-        <p class="text-center text-xs text-zinc-400 mt-3">Du ser en liste over alle filene. Ser du dette? Da fungerer alt — klar for steg 5.</p>
-      </figure>
-
-      <div class="callout">
-        <p><strong>Viktig:</strong> Setningene i de grå boksene over (som «Vis meg hvilke sider nettstedet har») er <strong>helt vanlige norske setninger du skriver fritt</strong> — ikke kode, og du trenger ikke treffe dem ordrett. Skriv slik du ville snakket. Navn med «.html» (som <code>index.html</code>) er derimot <strong>filnavn Claude viser deg</strong> — dem skriver du ikke selv.</p>
       </div>
 
       <div class="step not-prose">
         <div class="step-num">5</div>
         <div class="step-content">
-          <h3 class="font-display font-bold text-lg mb-2">Gjør en test-endring</h3>
-          <p class="text-zinc-600 text-sm">Skriv: <code>Bytt telefonnummeret i bunnen til 12 34 56 78 (det er bare en test, vi setter tilbake)</code>. Claude foreslår endringen, du klikker «godkjenn», og den lagres. GitHub Pages publiserer så siden automatisk — det betyr bare at maskinen setter sammen den ferdige nettsiden av filene dine. Du gjør ingenting selv.</p>
+          <h3>Bekreft at du ser filene</h3>
+          <p>Gå til github.com og logg inn. Du skal nå se et «repository» (en mappe) med navn som ligner på firmanavnet ditt. Klikk på det og sjekk at du ser filer som <code>index.html</code>, <code>style.css</code> og lignende. Da er GitHub-tilgangen i orden.</p>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════
+           FELLES DEL 2: VS CODE
+      ══════════════════════════════════════════════ -->
+      <h2>Steg 2 — Installer VS Code</h2>
+      <p>VS Code er editoren du redigerer filer i. Den er gratis, brukes av millioner av folk verden over, og har alt du trenger innebygd: filviser, koderedigering og git (så du kan sende endringer til GitHub direkte).</p>
+
+      <div class="step not-prose">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>Last ned VS Code</h3>
+          <p>Gå til <code>code.visualstudio.com</code>. Siden registrerer automatisk om du er på Windows eller Mac og tilbyr riktig versjon. Klikk den store nedlastingsknappen.</p>
         </div>
       </div>
 
       <div class="step not-prose">
-        <div class="step-num">6</div>
+        <div class="step-num">2</div>
         <div class="step-content">
-          <h3 class="font-display font-bold text-lg mb-2">Sjekk at det er live</h3>
-          <p class="text-zinc-600 text-sm">Vent 30–90 sekunder. Åpne din egen nettside på nytt og trykk <strong>Ctrl + Shift + R</strong> (forklart rett under). Du skal se det nye telefonnummeret. Si til Claude: <code>Sett telefonen tilbake til [riktig nummer]</code> for å rydde.</p>
+          <h3>Installer</h3>
+          <p><strong>Windows:</strong> Åpne .exe-filen du lastet ned og klikk deg gjennom installasjonen. Standardvalgene er fine — du trenger ikke endre noe.</p>
+          <p><strong>Mac:</strong> Åpne .zip-filen, dra «Visual Studio Code» til Applications-mappen din.</p>
         </div>
       </div>
 
-      <div class="explain not-prose">
-        <span class="explain-label">
-          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M12 16v-4M12 8h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          Hva er cache og «hard reload»? (Ctrl + Shift + R)
-        </span>
-        <p>Nettleseren din husker den gamle versjonen av siden for å spare tid. Denne lagrede kopien kalles <strong>«cache»</strong>. Det er praktisk til vanlig, men irriterende når du nettopp har endret noe — for da kan du fortsatt se den gamle versjonen.</p>
-        <p>For å tvinge nettleseren til å hente den <strong>aller nyeste</strong> versjonen, trykker du <strong>Ctrl + Shift + R</strong> (Windows) eller <strong>Cmd + Shift + R</strong> (Mac) samtidig. Dette kalles en <strong>«hard reload»</strong> — altså «last siden helt på nytt». Bruk det hver gang du lurer på om du ser den ferskeste versjonen.</p>
+      <div class="step not-prose">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>Åpne VS Code</h3>
+          <p>Start programmet. Du ser en velkomstskjerm med noen snarveier. Du trenger ikke gjøre noe her ennå.</p>
+        </div>
       </div>
 
-      <div class="callout">
-        <p>Gratulerer — du har nå gjort din første endring. Resten av kurset er bare variasjoner av denne flyten.</p>
+      <!-- ═══════════════════════════════════════════
+           FELLES DEL 3: KLON REPOET
+      ══════════════════════════════════════════════ -->
+      <h2>Steg 3 — Last ned nettsiden til PC-en</h2>
+      <p>Nå skal du hente filene fra GitHub og lagre dem lokalt på PC-en din. Dette kalles å «klone» — du lager en kopi av mappen fra GitHub til din egen maskin.</p>
+
+      <div class="step not-prose">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>Finn repo-URL-en på GitHub</h3>
+          <p>Gå til github.com og åpne repoet ditt. Klikk den grønne knappen <strong>«&lt;&gt; Code»</strong>. Kopier URL-en som vises under «HTTPS» — den ser ut som <code>https://github.com/brukernavn/firma-nettside.git</code>.</p>
+        </div>
       </div>
 
-      <!-- Diagram: the repeating workflow loop -->
-      <figure class="not-prose my-8">
-        <p class="text-xs font-semibold uppercase tracking-widest text-zinc-400 mb-3">Slik ser flyten ut — igjen og igjen</p>
-        <svg viewBox="0 0 560 175" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Arbeidsflyt-loop: Du skriver til Claude, Claude foreslår, du godkjenner, GitHub lagrer, GitHub Pages publiserer, live på nettstedet">
-          <defs>
-            <marker id="wf-arr" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0, 7 3.5, 0 7" fill="#94A3B8"/></marker>
-            <marker id="wf-ret" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0, 7 3.5, 0 7" fill="#CBD5E1"/></marker>
-          </defs>
-
-          <!-- Step boxes -->
-          <!-- 1: Du skriver -->
-          <rect x="10" y="55" width="88" height="64" rx="10" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1.5"/>
-          <text x="54" y="80" font-size="9" fill="#1E40AF" font-weight="700" text-anchor="middle">1. Du skriver</text>
-          <text x="54" y="93" font-size="9" fill="#3B82F6" text-anchor="middle">til Claude</text>
-          <text x="54" y="107" font-size="18" text-anchor="middle">💬</text>
-
-          <!-- arrow 1→2 -->
-          <line x1="98" y1="87" x2="121" y2="87" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#wf-arr)"/>
-
-          <!-- 2: Claude foreslår -->
-          <rect x="122" y="55" width="88" height="64" rx="10" fill="#F5F3FF" stroke="#DDD6FE" stroke-width="1.5"/>
-          <text x="166" y="80" font-size="9" fill="#5B21B6" font-weight="700" text-anchor="middle">2. Claude</text>
-          <text x="166" y="93" font-size="9" fill="#7C3AED" text-anchor="middle">foreslår endring</text>
-          <text x="166" y="107" font-size="18" text-anchor="middle">🤖</text>
-
-          <!-- arrow 2→3 -->
-          <line x1="210" y1="87" x2="233" y2="87" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#wf-arr)"/>
-
-          <!-- 3: Du godkjenner -->
-          <rect x="234" y="55" width="88" height="64" rx="10" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1.5"/>
-          <text x="278" y="80" font-size="9" fill="#14532D" font-weight="700" text-anchor="middle">3. Du</text>
-          <text x="278" y="93" font-size="9" fill="#16A34A" text-anchor="middle">godkjenner</text>
-          <text x="278" y="107" font-size="18" text-anchor="middle">✅</text>
-
-          <!-- arrow 3→4 -->
-          <line x1="322" y1="87" x2="345" y2="87" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#wf-arr)"/>
-
-          <!-- 4: GitHub lagrer -->
-          <rect x="346" y="55" width="88" height="64" rx="10" fill="#FFF7ED" stroke="#FED7AA" stroke-width="1.5"/>
-          <text x="390" y="80" font-size="9" fill="#92400E" font-weight="700" text-anchor="middle">4. GitHub</text>
-          <text x="390" y="93" font-size="9" fill="#D97706" text-anchor="middle">lagrer filen</text>
-          <text x="390" y="107" font-size="18" text-anchor="middle">💾</text>
-
-          <!-- arrow 4→5 -->
-          <line x1="434" y1="87" x2="457" y2="87" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#wf-arr)"/>
-
-          <!-- 5: Live! -->
-          <rect x="458" y="55" width="88" height="64" rx="10" fill="#F0FDF4" stroke="#86EFAC" stroke-width="2"/>
-          <text x="502" y="80" font-size="9" fill="#14532D" font-weight="700" text-anchor="middle">5. Live!</text>
-          <text x="502" y="93" font-size="9" fill="#16A34A" text-anchor="middle">GitHub Pages publiserer</text>
-          <text x="502" y="107" font-size="18" text-anchor="middle">🌐</text>
-
-          <!-- return arrow along bottom -->
-          <path d="M502 119 L502 148 L54 148 L54 119" fill="none" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="5 3" marker-end="url(#wf-ret)"/>
-          <text x="280" y="162" font-size="9" fill="#94A3B8" text-anchor="middle">Neste endring? Start på nytt fra steg 1 — flyten er alltid den samme</text>
-        </svg>
-        <p class="text-center text-xs text-zinc-400 mt-2">Etter «godkjenn»-klikket tar GitHub Pages 30–90 sekunder. Du gjør ingenting mens du venter.</p>
-      </figure>
-
-      <h2>Vanlige problemer ved første oppsett</h2>
-
-      <h3>Jeg får ikke logget inn på Claude</h3>
-      <p>Sjekk at du bruker samme e-post som invitasjonen ble sendt til. Hvis du fortsatt har problemer, send oss en melding så genererer vi ny invitasjon.</p>
-
-      <h3>GitHub spør om kredittkort</h3>
-      <p>GitHub er gratis for det vi trenger. Hvis det spør om betaling, har du sannsynligvis havnet på «Pro»-nivået (det betalte) ved et uhell — bytt tilbake til <strong>«Free»</strong> (gratis). «Tier» er bare det engelske ordet for «nivå».</p>
-
-      <h3>Endringen vises ikke selv etter 5 minutter</h3>
-      <p>Tre vanlige grunner: <strong>(1)</strong> Nettleseren viser fortsatt den gamle, lagrede versjonen (cache) — gjør en hard reload med <code>Ctrl + Shift + R</code> (se forklaringen lenger oppe). <strong>(2)</strong> Claude lagret ikke — sjekk at du klikket «godkjenn». <strong>(3)</strong> GitHub Pages fikk ikke publisert den nye siden — gå til GitHub-oversikten og sjekk fanen «Actions». Står det <code>Failed</code> i rødt, gikk noe galt — da kan du sende oss en melding så hjelper vi deg.</p>
-
-      <div class="callout callout-warn">
-        <p><strong>Tips:</strong> Lagre begge lenkene (GitHub og Claude) i bokmerker. Du kommer til å bruke dem ofte.</p>
+      <div class="step not-prose">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>Klon via VS Code</h3>
+          <p>I VS Code: trykk <strong>Ctrl+Shift+P</strong> (Mac: Cmd+Shift+P) for å åpne kommandopaletten. Skriv <code>Git: Clone</code> og trykk Enter. Lim inn URL-en og trykk Enter igjen.</p>
+          <p>VS Code spør deg om å velge en mappe på PC-en din — velg et sted du husker, f.eks. Dokumenter. Klikk <strong>«Open»</strong> når VS Code spør om du vil åpne den klonede mappen.</p>
+        </div>
       </div>
 
-      <div class="callout">
-        <p>I neste modul (05) ser vi på hvordan du oppdaterer tekst, overskrifter og åpningstider — akkurat det du nettopp lærte å gjøre for første gang.</p>
+      <div class="step not-prose">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>Du ser filene i VS Code</h3>
+          <p>I panelet til venstre (Explorer) skal du nå se alle filene til nettsiden: <code>index.html</code>, <code>style.css</code>, bilder osv. Disse filene ligger nå på PC-en din.</p>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════
+           FELLES DEL 4: FORHÅNDSVISNING
+      ══════════════════════════════════════════════ -->
+      <h2>Steg 4 — Se nettsiden lokalt</h2>
+      <p>Nå skal du åpne nettsiden i nettleseren din slik at du kan se endringene du gjør med en gang — før du sender dem live.</p>
+
+      <div class="step not-prose">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>Åpne index.html i nettleseren</h3>
+          <p>I VS Code: høyreklikk på <code>index.html</code> i Explorer-panelet til venstre → velg <strong>«Reveal in File Explorer»</strong> (Windows) eller <strong>«Reveal in Finder»</strong> (Mac). Dobbelklikk på <code>index.html</code> i vinduet som åpner seg. Nettsiden åpner seg i nettleseren din.</p>
+          <p>Når du har gjort en endring: lagre filen i VS Code (<strong>Ctrl+S</strong>), og trykk <strong>F5</strong> (eller Ctrl+R) i nettleseren for å se den oppdaterte siden.</p>
+        </div>
+      </div>
+
+      <details class="live-server-box not-prose">
+        <summary>💡 Vil du at nettleseren oppdaterer seg automatisk når du lagrer?</summary>
+        <div class="live-server-box__body">
+          <p>En utvidelse kalt <strong>Live Server</strong> gjør at nettleseren oppdaterer seg selv hver gang du trykker Lagre — uten at du trenger å trykke F5. Praktisk, men helt valgfritt.</p>
+          <p><strong>Slik installerer du den:</strong></p>
+          <ol>
+            <li>I VS Code: klikk ikonet med fire firkanter i sidepanelet til venstre (Extensions)</li>
+            <li>Søk etter <strong>«Live Server»</strong></li>
+            <li>Klikk <strong>«Install»</strong> på den av Ritwick Dey</li>
+            <li>Høyreklikk på <code>index.html</code> i Explorer-panelet → <strong>«Open with Live Server»</strong></li>
+            <li>Nettleseren åpner og oppdaterer seg automatisk fra nå av</li>
+          </ol>
+        </div>
+      </details>
+
+      <!-- ═══════════════════════════════════════════
+           SPOR-VELGER
+      ══════════════════════════════════════════════ -->
+      <h2>Steg 5 — Velg din arbeidsmetode</h2>
+      <p>Her skiller veiene seg. Begge metodene fungerer — forskjellen er pris og hvor mye du gjør manuelt.</p>
+
+      <div class="track-toggle not-prose">
+        <div id="track-first-time" class="track-firsttime" style="display:none;">
+          <strong>Første gang?</strong> Les kort hva de to alternativene betyr, og velg det som passer deg. Du kan bytte når som helst — valget huskes til neste gang.
+        </div>
+        <p class="track-toggle__intro">Velg din arbeidsmetode</p>
+        <div class="track-toggle__buttons">
+          <button class="track-btn" data-track="gratis" onclick="setTrack('gratis')">
+            <span class="track-btn__name">🟡 Gratis · Mer manuelt</span>
+            <span class="track-btn__sub">claude.ai gratis i nettleseren.<br>Du er «broen» mellom GitHub og Claude.</span>
+          </button>
+          <button class="track-btn" data-track="kode" onclick="setTrack('kode')">
+            <span class="track-btn__name">🔵 Enklere · Claude Code</span>
+            <span class="track-btn__sub">Betalt (~$20/mnd).<br>Claude gjør alt direkte i filene dine.</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════
+           GRATIS-SPOR
+      ══════════════════════════════════════════════ -->
+      <div class="spor-gratis spor-block spor-block--gratis not-prose">
+        <div class="spor-label">🟡 Gratis · Mer manuelt</div>
+
+        <div class="prose-custom" style="max-width:none;">
+
+          <h3>Opprett gratis Claude-konto</h3>
+
+          <div class="step step--gratis not-prose" style="background:white;">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <h3>Gå til claude.ai</h3>
+              <p>Skriv <code>claude.ai</code> i nettleseren. Klikk <strong>«Sign Up»</strong>. Du kan registrere deg med Google-kontoen din, eller med e-post og passord.</p>
+            </div>
+          </div>
+
+          <div class="step step--gratis not-prose" style="background:white;">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <h3>Velg gratis plan</h3>
+              <p>Claude tilbyr en gratis plan som er mer enn god nok til å starte. Velg <strong>«Free»</strong>. Du kan oppgradere til Pro ($20/mnd) hvis du ønsker mer kapasitet senere.</p>
+            </div>
+          </div>
+
+          <div class="step step--gratis not-prose" style="background:white;">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <h3>Du er inne</h3>
+              <p>Du ser en chat-boks. Prøv å skrive «Hei, hvem er du?» — Claude svarer på norsk. Gratis-versjonen har en dagsgrense for antall meldinger, men til vanlig nettstedbruk er det nok.</p>
+            </div>
+          </div>
+
+          <h3 style="margin-top:2rem;">Slik fungerer arbeidsflyten din</h3>
+          <p style="font-size:1.0625rem;line-height:1.7;color:#3F3F46;">Siden gratis Claude ikke kan koble seg direkte til GitHub, er du broen mellom de to. Det er noen steg mer enn Claude Code — men helt overkommelig når du har gjort det noen ganger:</p>
+
+          <div style="background:white;border:1.5px solid #FDE68A;border-radius:12px;padding:1.25rem 1.5rem;margin:1rem 0;">
+            <ol style="padding-left:1.25rem;margin:0;">
+              <li style="font-size:1rem;line-height:1.65;color:#3F3F46;margin-bottom:0.5rem;"><strong>VS Code</strong> — åpne filen du vil endre, marker alt (<code>Ctrl+A</code>) og kopier (<code>Ctrl+C</code>)</li>
+              <li style="font-size:1rem;line-height:1.65;color:#3F3F46;margin-bottom:0.5rem;"><strong>claude.ai</strong> — ny chat, lim inn koden og beskriv hva du vil endre</li>
+              <li style="font-size:1rem;line-height:1.65;color:#3F3F46;margin-bottom:0.5rem;"><strong>Claude svarer</strong> med ny, komplett fil — kopier svaret</li>
+              <li style="font-size:1rem;line-height:1.65;color:#3F3F46;margin-bottom:0.5rem;"><strong>VS Code</strong> — marker alt, lim inn, trykk <code>Ctrl+S</code></li>
+              <li style="font-size:1rem;line-height:1.65;color:#3F3F46;margin-bottom:0.5rem;"><strong>Nettleseren</strong> — trykk F5, sjekk at det ser riktig ut</li>
+              <li style="font-size:1rem;line-height:1.65;color:#3F3F46;margin-bottom:0;"><strong>VS Code Source Control</strong> — commit + push, og endringen er live om 30–60 sek</li>
+            </ol>
+          </div>
+
+          <h3 style="margin-top:2rem;">Første test — prøv det nå</h3>
+
+          <div class="step step--gratis not-prose" style="background:white;">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <h3>Åpne index.html i VS Code</h3>
+              <p>Klikk på <code>index.html</code> i Explorer-panelet. Filen åpner seg i editoren til høyre.</p>
+            </div>
+          </div>
+
+          <div class="step step--gratis not-prose" style="background:white;">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <h3>Kopier hele filen</h3>
+              <p>Klikk inne i kodefeltet. Trykk <code>Ctrl+A</code> (Mac: <code>Cmd+A</code>) for å markere alt, deretter <code>Ctrl+C</code> for å kopiere.</p>
+            </div>
+          </div>
+
+          <div class="step step--gratis not-prose" style="background:white;">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <h3>Gå til claude.ai — ny chat</h3>
+              <p>Klikk <strong>«New conversation»</strong>. Skriv meldingen din, f.eks.:</p>
+              <p style="font-family:monospace;background:#F4F4F5;padding:0.75rem 1rem;border-radius:8px;font-size:0.9rem;color:#18181B;">Her er koden til nettsiden min: [lim inn koden]. Kan du endre telefonnummeret i bunnen til 99 88 77 66?</p>
+            </div>
+          </div>
+
+          <div class="step step--gratis not-prose" style="background:white;">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <h3>Kopier Claudes svar</h3>
+              <p>Claude svarer med den komplette, oppdaterte filen. Klikk «Copy»-knappen over kodeblokken (eller marker alt og kopier manuelt).</p>
+            </div>
+          </div>
+
+          <div class="step step--gratis not-prose" style="background:white;">
+            <div class="step-num">5</div>
+            <div class="step-content">
+              <h3>Lim inn i VS Code og lagre</h3>
+              <p>Tilbake i VS Code: klikk inne i filen, trykk <code>Ctrl+A</code> og deretter <code>Ctrl+V</code> for å erstatte innholdet med Claudes versjon. Trykk <code>Ctrl+S</code> for å lagre.</p>
+            </div>
+          </div>
+
+          <div class="step step--gratis not-prose" style="background:white;">
+            <div class="step-num">6</div>
+            <div class="step-content">
+              <h3>Sjekk i nettleseren</h3>
+              <p>Gå til nettleserfanen med den lokale siden og trykk <strong>F5</strong>. Du skal se den nye telefonnummeret på siden. Ser det riktig ut?</p>
+            </div>
+          </div>
+
+          <div class="step step--gratis not-prose" style="background:white;">
+            <div class="step-num">7</div>
+            <div class="step-content">
+              <h3>Send til GitHub — gjør det live</h3>
+              <p>I VS Code: klikk ikonet med tre prikker forbundet med linjer i sidepanelet til venstre (<strong>Source Control</strong>). Du ser <code>index.html</code> under «Changes».</p>
+              <ol>
+                <li>Klikk <strong>«+»</strong> ved siden av filen for å «stage» endringen</li>
+                <li>Skriv en kort melding i feltet øverst, f.eks. <em>«Oppdaterte telefonnummer»</em></li>
+                <li>Klikk <strong>«Commit»</strong>, deretter <strong>«Sync Changes»</strong> (eller «Push»)</li>
+              </ol>
+              <p>Vent 30–60 sekunder — gå til nettstedet ditt live og bekreft at endringen er der. Det fungerte! 🎉</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════
+           CLAUDE CODE-SPOR
+      ══════════════════════════════════════════════ -->
+      <div class="spor-kode spor-block spor-block--kode not-prose">
+        <div class="spor-label">🔵 Enklere · Claude Code</div>
+
+        <div class="prose-custom" style="max-width:none;">
+
+          <h3>Kjøp Claude Pro</h3>
+
+          <div class="step step--kode not-prose" style="background:white;">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <h3>Gå til claude.ai</h3>
+              <p>Skriv <code>claude.ai</code> i nettleseren. Opprett en konto (eller logg inn) og klikk <strong>«Upgrade to Pro»</strong>. Prisen er $20 per måned (~220 kr). Du kan si opp når som helst.</p>
+            </div>
+          </div>
+
+          <div class="step step--kode not-prose" style="background:white;">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <h3>Fyll inn betalingsinformasjon</h3>
+              <p>Skriv inn kortinformasjonen din og bekreft abonnementet. Du betales månedlig og kan si opp på «Settings → Billing».</p>
+            </div>
+          </div>
+
+          <h3 style="margin-top:2rem;">Installer Node.js</h3>
+          <p style="font-size:1.0625rem;line-height:1.7;color:#3F3F46;">Claude Code kjøres i terminalen, og for å installere det trenger du Node.js — et lite program som lar deg kjøre verktøy fra kommandolinjen. Det er enkelt å installere.</p>
+
+          <div class="step step--kode not-prose" style="background:white;">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <h3>Last ned Node.js</h3>
+              <p>Gå til <code>nodejs.org</code>. Klikk den store knappen merket <strong>«LTS»</strong> (den anbefalte, stabile versjonen). Last ned og installer — klikk deg gjennom med standardvalgene.</p>
+            </div>
+          </div>
+
+          <div class="step step--kode not-prose" style="background:white;">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <h3>Sjekk at Node er installert</h3>
+              <p>Åpne terminalen i VS Code: trykk <strong>Ctrl+Ø</strong> (Windows, norsk tastatur) eller <strong>Ctrl+`</strong> (Mac). Skriv <code>node --version</code> og trykk Enter. Du skal se et versjonsnummer som <code>v20.x.x</code>. Hvis du ser det, er Node installert.</p>
+            </div>
+          </div>
+
+          <h3 style="margin-top:2rem;">Installer Claude Code</h3>
+
+          <div class="step step--kode not-prose" style="background:white;">
+            <div class="step-num">5</div>
+            <div class="step-content">
+              <h3>Skriv installasjonskommandoen</h3>
+              <p>I terminalen (fremdeles i VS Code): skriv denne kommandoen og trykk Enter:</p>
+              <p style="font-family:monospace;background:#F4F4F5;padding:0.75rem 1rem;border-radius:8px;font-size:0.95rem;color:#18181B;">npm install -g @anthropic-ai/claude-code</p>
+              <p>Det laster ned og installerer Claude Code. Kan ta 1–2 minutter.</p>
+            </div>
+          </div>
+
+          <div class="step step--kode not-prose" style="background:white;">
+            <div class="step-num">6</div>
+            <div class="step-content">
+              <h3>Logg inn</h3>
+              <p>Skriv <code>claude</code> i terminalen og trykk Enter. Første gang starter en påloggingsprosess — følg instruksjonene på skjermen. Du logger inn med samme konto som du bruker på claude.ai.</p>
+            </div>
+          </div>
+
+          <h3 style="margin-top:2rem;">Første test — prøv det nå</h3>
+
+          <div class="step step--kode not-prose" style="background:white;">
+            <div class="step-num">7</div>
+            <div class="step-content">
+              <h3>Sørg for at du er i prosjektmappen</h3>
+              <p>Terminalen i VS Code er allerede i mappen du åpnet (prosjektmappen med nettsidefilene). Du kan se stien øverst i terminalen. Skriv <code>ls</code> (Mac) eller <code>dir</code> (Windows) og trykk Enter — du skal se <code>index.html</code> i lista.</p>
+            </div>
+          </div>
+
+          <div class="step step--kode not-prose" style="background:white;">
+            <div class="step-num">8</div>
+            <div class="step-content">
+              <h3>Start Claude Code</h3>
+              <p>Skriv <code>claude</code> og trykk Enter. Claude Code starter og leser filen <code>CLAUDE.md</code> som Dietrichs har lagt inn i prosjektet ditt — den forklarer Claude hva nettsiden er, hvem bedriften er og hva den skal og ikke skal endre.</p>
+            </div>
+          </div>
+
+          <div class="step step--kode not-prose" style="background:white;">
+            <div class="step-num">9</div>
+            <div class="step-content">
+              <h3>Be Claude om en liten endring</h3>
+              <p>Skriv noe som dette i chatten og trykk Enter:</p>
+              <p style="font-family:monospace;background:#EFF6FF;padding:0.75rem 1rem;border-radius:8px;font-size:0.9rem;color:#1E3A8A;">Kan du endre telefonnummeret i bunnen av forsiden til 99 88 77 66?</p>
+              <p>Claude leser filene selv, finner riktig sted og viser deg nøyaktig hva den vil endre.</p>
+            </div>
+          </div>
+
+          <div class="step step--kode not-prose" style="background:white;">
+            <div class="step-num">10</div>
+            <div class="step-content">
+              <h3>Godkjenn endringen</h3>
+              <p>Claude viser en <strong>diff</strong> — en oversikt over hva som endres (rødt = fjernes, grønt = legges til). Ser det riktig ut? Skriv <code>y</code> og trykk Enter for å godkjenne. Claude skriver filen.</p>
+            </div>
+          </div>
+
+          <div class="step step--kode not-prose" style="background:white;">
+            <div class="step-num">11</div>
+            <div class="step-content">
+              <h3>Sjekk i nettleseren</h3>
+              <p>Trykk F5 i nettleserfanen med den lokale siden. Du skal se det nye telefonnummeret. Ser det riktig ut?</p>
+            </div>
+          </div>
+
+          <div class="step step--kode not-prose" style="background:white;">
+            <div class="step-num">12</div>
+            <div class="step-content">
+              <h3>Send til GitHub — gjør det live</h3>
+              <p>Tilbake i Claude Code-chatten: skriv</p>
+              <p style="font-family:monospace;background:#EFF6FF;padding:0.75rem 1rem;border-radius:8px;font-size:0.9rem;color:#1E3A8A;">Ser bra ut. Commit og push disse endringene.</p>
+              <p>Claude committer og pusher til GitHub. Vent 30–60 sekunder — gå til nettstedet ditt live og bekreft at endringen er der. 🎉</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════
+           AVSLUTNING (felles)
+      ══════════════════════════════════════════════ -->
+      <div class="callout callout-ok">
+        <p><strong>Du er i gang.</strong> Det du nettopp gjennomførte er nøyaktig det du gjør hver eneste gang fremover — det er bare kortere og kortere for hvert gang.</p>
       </div>
 
       <div style="background:#F0FDF4;border:1.5px solid #86EFAC;border-radius:14px;padding:20px 24px;margin:2rem 0 0;">
@@ -362,9 +491,10 @@
           <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:1rem;color:#14532D;letter-spacing:-0.01em;">Hva du lærte i denne modulen</span>
         </div>
         <ul style="margin:0;padding-left:20px;">
-          <li style="font-size:0.95rem;line-height:1.55;color:#15803D;margin-bottom:6px;list-style:disc;">Du trenger bare e-post, nettleseren din, og tilgangene du fikk fra Dietrichs</li>
-          <li style="font-size:0.95rem;line-height:1.55;color:#15803D;margin-bottom:6px;list-style:disc;">GitHub er lagringen og publiseringen, Claude er hjelperen — lagre begge som bokmerker</li>
-          <li style="font-size:0.95rem;line-height:1.55;color:#15803D;margin-bottom:0;list-style:disc;">Etter én vellykket testendring er du i gang — alt du gjør fremover er repetisjon av det samme</li>
+          <li style="font-size:0.95rem;line-height:1.55;color:#15803D;margin-bottom:6px;list-style:disc;">GitHub-konto opprettet og koblet til repoet ditt</li>
+          <li style="font-size:0.95rem;line-height:1.55;color:#15803D;margin-bottom:6px;list-style:disc;">VS Code installert og nettsiden klonet til PC-en din</li>
+          <li style="font-size:0.95rem;line-height:1.55;color:#15803D;margin-bottom:6px;list-style:disc;">Du kan se endringer lokalt før de går live</li>
+          <li style="font-size:0.95rem;line-height:1.55;color:#15803D;margin-bottom:0;list-style:disc;">Du har gjort en ekte endring fra start til slutt</li>
         </ul>
       </div>
 
