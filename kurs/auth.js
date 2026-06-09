@@ -1,19 +1,20 @@
 (function () {
   // ============================================================
-  //  Kurs-autentisering — passordbasert (ingen Netlify Identity)
-  //
-  //  Passord endres i login.html (se PASS_HASH-kommentaren der).
-  //  Kjør dette for å generere ny hash:
-  //    node -e "require('crypto').createHash('sha256').update('DITTPASSORD').digest('hex')"
+  //  Kurs-autentisering v3 — per-bruker (email + PBKDF2)
   // ============================================================
 
-  var TOKEN_KEY   = 'kurs_auth_v2';
+  var TOKEN_KEY   = 'kurs_auth_v3';
   var VALID_TOKEN = 'kurs_authed_2026';
 
-  // Skjul siden umiddelbart — unngår glimt av ubeskyttet innhold
+  // Skjul siden umiddelbart
   document.documentElement.style.visibility = 'hidden';
 
-  if (localStorage.getItem(TOKEN_KEY) !== VALID_TOKEN) {
+  var session = null;
+  try {
+    session = JSON.parse(localStorage.getItem(TOKEN_KEY) || 'null');
+  } catch(e) {}
+
+  if (!session || session.token !== VALID_TOKEN || !session.email) {
     window.location.replace('/kurs/login.html');
     return;
   }
@@ -24,7 +25,7 @@
   var info = document.getElementById('kurs-user-info');
   if (info) {
     info.innerHTML =
-      'Innlogget  &middot;  ' +
+      session.email + '  &middot;  ' +
       '<button onclick="kursLogout()" ' +
       'style="text-decoration:underline;cursor:pointer;background:none;border:none;' +
       'color:inherit;font:inherit;padding:0;">Logg ut</button>';
