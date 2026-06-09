@@ -209,26 +209,6 @@
       }
     }
 
-    var bar = document.createElement('div');
-    bar.innerHTML =
-      '<p style="font-size:13px;font-family:Inter,sans-serif;color:#52525B;margin:0 0 8px;">' +
-      '<strong style="color:#09090B;">' + done + ' av ' + total + ' moduler fullført</strong>' +
-      ' <span style="color:#94A3B8;">(' + pct + '%)</span></p>' +
-      '<div style="height:6px;background:#E4E4E7;border-radius:3px;overflow:hidden;max-width:320px;margin:0 auto;">' +
-      '<div style="height:100%;width:' + pct + '%;background:#2563EB;border-radius:3px;transition:width 0.5s;"></div>' +
-      '</div>';
-    bar.style.cssText = 'text-align:center;margin-bottom:24px;';
-
-    var container = document.querySelector('section .max-w-5xl');
-    var ordlisteBanner = container && container.querySelector('a[href="ordliste"]');
-    if (ordlisteBanner) {
-      /* Walk up until we find a direct child of container */
-      var insertBefore = ordlisteBanner;
-      while (insertBefore && insertBefore.parentNode !== container) {
-        insertBefore = insertBefore.parentNode;
-      }
-      if (insertBefore) container.insertBefore(bar, insertBefore);
-    }
   }
 
   /* ── SVG helpers ──────────────────────────────────────────── */
