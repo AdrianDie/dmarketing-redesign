@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RegnskapsPartner AS — Regnskap & Økonomi i [By]</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['DM Sans', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: '#1D4ED8',
+            'brand-dark': '#1E40AF',
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/motion@11.11.9/dist/motion.js"></script>
+  <style>
+    :root { --brand: #1D4ED8; }
+    body { font-family: 'Inter', sans-serif; background: #FAFAFA; color: #09090B; }
+    .font-display { font-family: 'DM Sans', sans-serif; }
+    #nav { transition: background 0.3s, box-shadow 0.3s; }
+    #nav.scrolled { background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); box-shadow: 0 1px 0 #E4E4E7; }
+    .card-hover { transition: box-shadow 0.2s, transform 0.2s; }
+    .card-hover:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.09); transform: translateY(-2px); }
+
+    /* Dashboard mockup */
+    .dashboard-mock {
+      background: white;
+      border: 1px solid #E4E4E7;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+    }
+    .bar { border-radius: 4px; background: #1D4ED8; }
+
+    /* Dot grid */
+    .dot-grid {
+      background-image: radial-gradient(circle, #d4d4d8 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    /* Animated counter */
+    @keyframes count-up { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .count-up { animation: count-up 0.6s ease both; }
+  </style>
+  <link href="../images/favicon.png" rel="shortcut icon" type="image/x-icon">
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav" class="fixed top-0 left-0 right-0 z-50">
+  <div class="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
+    <a href="#" class="font-display font-bold text-lg tracking-tight text-[#09090B]">
+      Regnskap<span style="color:#1D4ED8">Partner</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-600">
+      <a href="#tjenester" class="hover:text-[#09090B] transition-colors">Tjenester</a>
+      <a href="#priser" class="hover:text-[#09090B] transition-colors">Priser</a>
+      <a href="#om" class="hover:text-[#09090B] transition-colors">Om oss</a>
+      <a href="#kontakt" class="hover:text-[#09090B] transition-colors">Kontakt</a>
+    </div>
+    <a href="#kontakt" class="bg-[#1D4ED8] text-white text-sm font-semibold px-5 py-2.5 rounded-lg hover:bg-[#1E40AF] transition-colors">
+      Gratis konsultasjon
+    </a>
+  </div>
+</nav>
+
+<!-- HERO — Dashboard mockup, dot grid -->
+<section class="relative min-h-screen flex items-center dot-grid pt-14 overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-b from-[#FAFAFA]/60 via-transparent to-[#FAFAFA]"></div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-6 py-24 w-full">
+    <div class="grid md:grid-cols-2 gap-16 items-center">
+      <!-- Left text -->
+      <div>
+        <div data-animate class="inline-flex items-center gap-2 bg-white border border-zinc-200 text-xs font-medium text-zinc-600 px-3 py-1.5 rounded-full mb-8 shadow-sm">
+          <span class="w-1.5 h-1.5 rounded-full bg-green-500 inline-block"></span>
+          Autorisert regnskapsfører i [By]
+        </div>
+
+        <h1 data-animate class="font-display font-bold text-5xl md:text-6xl leading-[1.0] tracking-[-0.03em] text-[#09090B] mb-6">
+          Regnskap<br/>som bare<br/><span style="color:#1D4ED8">fungerer</span>
+        </h1>
+
+        <p data-animate class="text-lg text-zinc-500 leading-relaxed mb-8 max-w-md">
+          Full regnskapspakke for norske bedrifter. Fra bokføring og MVA til årsregnskap og lønnskjøring. Ingen bortforklaringer — bare ryddig økonomi.
+        </p>
+
+        <div data-animate class="flex flex-col sm:flex-row gap-3 mb-10">
+          <a href="#priser" class="bg-[#1D4ED8] text-white font-semibold px-7 py-3.5 rounded-lg text-sm hover:bg-[#1E40AF] transition-all hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(29,78,216,0.3)] text-center">
+            Se pakkene våre
+          </a>
+          <a href="#kontakt" class="flex items-center justify-center gap-2 border border-zinc-200 text-[#09090B] font-semibold px-7 py-3.5 rounded-lg text-sm hover:border-zinc-400 transition-colors">
+            Gratis konsultasjon
+          </a>
+        </div>
+
+        <div data-animate class="flex flex-wrap gap-6 text-sm text-zinc-500">
+          <span class="flex items-center gap-2">
+            <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="#1D4ED8" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            Autorisert regnskapsfører (ARF)
+          </span>
+          <span class="flex items-center gap-2">
+            <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="#1D4ED8" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            Fast månedspris
+          </span>
+          <span class="flex items-center gap-2">
+            <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="#1D4ED8" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            Svarer innen 24t
+          </span>
+        </div>
+      </div>
+
+      <!-- Right — Dashboard mockup -->
+      <div data-animate>
+        <div class="dashboard-mock">
+          <!-- Header bar -->
+          <div class="flex items-center justify-between px-5 py-3 border-b border-zinc-100 bg-zinc-50/50">
+            <div class="flex items-center gap-2">
+              <div class="w-2.5 h-2.5 rounded-full bg-red-400"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-yellow-400"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-green-400"></div>
+            </div>
+            <span class="text-xs text-zinc-400 font-medium">RegnskapsPartner — [Bedrift] Dashboard</span>
+            <span class="text-xs text-zinc-300">2025</span>
+          </div>
+          <!-- Stats row -->
+          <div class="grid grid-cols-3 gap-px bg-zinc-100">
+            <div class="bg-white p-4">
+              <div class="text-xs text-zinc-400 mb-1">Omsetning YTD</div>
+              <div class="font-display font-bold text-xl text-[#09090B]">2,4M</div>
+              <div class="text-xs text-green-600 flex items-center gap-1 mt-1">↑ 12% vs ifjor</div>
+            </div>
+            <div class="bg-white p-4">
+              <div class="text-xs text-zinc-400 mb-1">MVA skyldig</div>
+              <div class="font-display font-bold text-xl text-[#09090B]">84 200 kr</div>
+              <div class="text-xs text-zinc-400 mt-1">Frist 10. aug</div>
+            </div>
+            <div class="bg-white p-4">
+              <div class="text-xs text-zinc-400 mb-1">Ansatte</div>
+              <div class="font-display font-bold text-xl text-[#09090B]">6</div>
+              <div class="text-xs text-zinc-400 mt-1">Lønnskjøring OK</div>
+            </div>
+          </div>
+          <!-- Chart -->
+          <div class="p-5">
+            <div class="text-xs font-medium text-zinc-500 mb-3">Månedlig resultat</div>
+            <div class="flex items-end gap-2 h-24">
+              <div class="bar flex-1" style="height:45%"></div>
+              <div class="bar flex-1" style="height:60%"></div>
+              <div class="bar flex-1" style="height:40%"></div>
+              <div class="bar flex-1" style="height:75%"></div>
+              <div class="bar flex-1" style="height:55%"></div>
+              <div class="bar flex-1" style="height:80%"></div>
+              <div class="bar flex-1" style="height:70%; background:#60A5FA"></div>
+              <div class="bar flex-1" style="height:90%; background:#60A5FA"></div>
+              <div class="bar flex-1 opacity-30" style="height:30%; background:#E4E4E7"></div>
+              <div class="bar flex-1 opacity-30" style="height:30%; background:#E4E4E7"></div>
+              <div class="bar flex-1 opacity-30" style="height:30%; background:#E4E4E7"></div>
+              <div class="bar flex-1 opacity-30" style="height:30%; background:#E4E4E7"></div>
+            </div>
+            <div class="flex justify-between text-[10px] text-zinc-300 mt-1">
+              <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>Mai</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Okt</span><span>Nov</span><span>Des</span>
+            </div>
+          </div>
+          <!-- Bottom row -->
+          <div class="border-t border-zinc-100 px-5 py-3 flex items-center justify-between">
+            <span class="text-xs text-zinc-400">Sist oppdatert: I dag 09:41</span>
+            <span class="inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full" style="background:rgba(29,78,216,0.08); color:#1D4ED8">
+              <span class="w-1.5 h-1.5 rounded-full bg-green-500 inline-block"></span>
+              Alt á jour
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="border-y border-zinc-200 bg-white">
+  <div class="max-w-6xl mx-auto px-6 py-8">
+    <div data-stagger class="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div class="text-center">
+        <div class="font-display font-bold text-4xl" style="color:#1D4ED8">10+</div>
+        <div class="text-sm text-zinc-500 mt-1">Års erfaring</div>
+      </div>
+      <div class="text-center">
+        <div class="font-display font-bold text-4xl" style="color:#1D4ED8">150+</div>
+        <div class="text-sm text-zinc-500 mt-1">Bedriftskunder</div>
+      </div>
+      <div class="text-center">
+        <div class="font-display font-bold text-4xl" style="color:#1D4ED8">ARF</div>
+        <div class="text-sm text-zinc-500 mt-1">Autorisert</div>
+      </div>
+      <div class="text-center">
+        <div class="font-display font-bold text-4xl" style="color:#1D4ED8">24t</div>
+        <div class="text-sm text-zinc-500 mt-1">Responstid</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TJENESTER -->
+<section id="tjenester" class="py-24 px-6 bg-[#FAFAFA]">
+  <div class="max-w-6xl mx-auto">
+    <div data-animate class="mb-12">
+      <p class="text-sm font-semibold tracking-widest uppercase mb-3" style="color:#1D4ED8">Tjenester</p>
+      <h2 class="font-display font-bold text-4xl tracking-tight text-[#09090B]">Alt under ett tak</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+
+      <!-- Bokføring — 4 -->
+      <div data-animate class="card-hover md:col-span-4 bg-white border border-zinc-100 rounded-2xl p-8">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:rgba(29,78,216,0.08)">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#1D4ED8" stroke-width="1.8"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-xl mb-2">Bokføring & regnskap</h3>
+        <p class="text-zinc-500 text-sm leading-relaxed">Løpende bokføring, kontoavstemming og rapportering. Alltid á jour.</p>
+      </div>
+
+      <!-- MVA — 4 -->
+      <div data-animate class="card-hover md:col-span-4 bg-white border border-zinc-100 rounded-2xl p-8">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:rgba(29,78,216,0.08)">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#1D4ED8" stroke-width="1.8"><path d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-xl mb-2">MVA & skattemelding</h3>
+        <p class="text-zinc-500 text-sm leading-relaxed">Vi håndterer alle frister og innleveringer til Skatteetaten. Du slipper å tenke på det.</p>
+      </div>
+
+      <!-- Lønn — 4 -->
+      <div data-animate class="card-hover md:col-span-4 bg-white border border-zinc-100 rounded-2xl p-8">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:rgba(29,78,216,0.08)">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#1D4ED8" stroke-width="1.8"><path d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-xl mb-2">Lønnskjøring</h3>
+        <p class="text-zinc-500 text-sm leading-relaxed">Lønnslipper, a-melding og feriepenger. Vi håndterer alle ansatte du har.</p>
+      </div>
+
+      <!-- Årsregnskap — 8, navy -->
+      <div data-animate class="card-hover md:col-span-8 rounded-2xl p-8 relative overflow-hidden" style="background:#0F172A; color:white;">
+        <div class="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl" style="background:rgba(29,78,216,0.12)"></div>
+        <div class="relative">
+          <span class="inline-flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-full mb-5" style="background:rgba(255,255,255,0.1); color:rgba(147,197,253,1)">
+            Lovpålagt
+          </span>
+          <h3 class="font-display font-bold text-2xl mb-3">Årsregnskap & revisorbistand</h3>
+          <p class="leading-relaxed mb-6 max-w-md" style="color:rgba(255,255,255,0.6)">Komplett årsregnskap til Brønnøysund. Vi sikrer at alt er i orden med selskapsretten og skattereglene.</p>
+          <a href="#kontakt" class="inline-flex items-center gap-2 font-semibold px-5 py-2.5 rounded-lg text-sm transition-colors" style="background:rgba(255,255,255,0.1); color:white; border:1px solid rgba(255,255,255,0.2);">
+            Be om tilbud →
+          </a>
+        </div>
+      </div>
+
+      <!-- Rådgivning — 4 -->
+      <div data-animate class="card-hover md:col-span-4 bg-white border border-zinc-100 rounded-2xl p-8">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:rgba(29,78,216,0.08)">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#1D4ED8" stroke-width="1.8"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-xl mb-2">Økonomisk rådgivning</h3>
+        <p class="text-zinc-500 text-sm leading-relaxed">Budsjettering, likviditetsstyring og strategiske råd for vekst.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PRISER -->
+<section id="priser" class="py-24 px-6 bg-white border-t border-zinc-100">
+  <div class="max-w-5xl mx-auto">
+    <div data-animate class="text-center mb-12">
+      <p class="text-sm font-semibold tracking-widest uppercase mb-3" style="color:#1D4ED8">Priser</p>
+      <h2 class="font-display font-bold text-4xl tracking-tight text-[#09090B]">Transparente månedspriser</h2>
+      <p class="text-zinc-500 mt-3 text-sm">Ingen overraskelser. Fast pris basert på antall bilag per måned.</p>
+    </div>
+
+    <div data-stagger class="grid md:grid-cols-3 gap-6">
+      <!-- Starter -->
+      <div class="card-hover bg-white border border-zinc-100 rounded-2xl p-8">
+        <div class="text-sm text-zinc-400 font-medium mb-2">Starter</div>
+        <div class="font-display font-bold text-4xl text-[#09090B] mb-1">1 990 kr<span class="text-base font-normal text-zinc-400">/mnd</span></div>
+        <p class="text-zinc-500 text-xs mb-6">Opptil 50 bilag per måned</p>
+        <ul class="space-y-2.5 text-sm text-zinc-600 mb-8">
+          <li class="flex items-center gap-2">
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#1D4ED8" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
+            Løpende bokføring
+          </li>
+          <li class="flex items-center gap-2">
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#1D4ED8" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
+            MVA-innlevering
+          </li>
+          <li class="flex items-center gap-2">
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#1D4ED8" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
+            Månedlig rapport
+          </li>
+          <li class="flex items-center gap-2 text-zinc-300">
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#D4D4D8" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
+            Lønnskjøring
+          </li>
+        </ul>
+        <a href="#kontakt" class="block text-center border border-zinc-200 text-[#09090B] font-semibold py-2.5 rounded-lg text-sm hover:border-zinc-400 transition-colors">
+          Kom i gang
+        </a>
+      </div>
+
+      <!-- Vekst — featured -->
+      <div class="card-hover border-2 rounded-2xl p-8 relative" style="border-color:#1D4ED8; background:rgba(29,78,216,0.02)">
+        <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
+          <span class="text-xs font-semibold px-3 py-1.5 rounded-full text-white" style="background:#1D4ED8">Anbefalt</span>
+        </div>
+        <div class="text-sm font-medium mb-2" style="color:#1D4ED8">Vekst</div>
+        <div class="font-display font-bold text-4xl text-[#09090B] mb-1">3 490 kr<span class="text-base font-normal text-zinc-400">/mnd</span></div>
+        <p class="text-zinc-500 text-xs mb-6">Opptil 200 bilag per måned</p>
+        <ul class="space-y-2.5 text-sm text-zinc-600 mb-8">
+          <li class="flex items-center gap-2">
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#1D4ED8" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
+            Alt i Starter
+          </li>
+          <li class="flex items-center gap-2">
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#1D4ED8" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
+            Lønnskjøring (opptil 5)
+          </li>
+          <li class="flex items-center gap-2">
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#1D4ED8" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
+            Kvartalsvis rådgivning
+          </li>
+          <li class="flex items-center gap-2">
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#1D4ED8" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
+            Årsregnskap inkludert
+          </li>
+        </ul>
+        <a href="#kontakt" class="block text-center text-white font-semibold py-2.5 rounded-lg text-sm hover:opacity-90 transition-all hover:scale-[1.01]" style="background:#1D4ED8">
+          Kom i gang
+        </a>
+      </div>
+
+      <!-- Enterprise -->
+      <div class="card-hover bg-white border border-zinc-100 rounded-2xl p-8">
+        <div class="text-sm text-zinc-400 font-medium mb-2">Enterprise</div>
+        <div class="font-display font-bold text-4xl text-[#09090B] mb-1">Tilpas<span class="text-base font-normal text-zinc-400">set</span></div>
+        <p class="text-zinc-500 text-xs mb-6">Ubegrenset bilag, flere selskaper</p>
+        <ul class="space-y-2.5 text-sm text-zinc-600 mb-8">
+          <li class="flex items-center gap-2">
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#1D4ED8" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
+            Alt i Vekst
+          </li>
+          <li class="flex items-center gap-2">
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#1D4ED8" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
+            Dedikert kontaktperson
+          </li>
+          <li class="flex items-center gap-2">
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#1D4ED8" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
+            Konsernregnskap
+          </li>
+          <li class="flex items-center gap-2">
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#1D4ED8" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
+            SLA-avtale
+          </li>
+        </ul>
+        <a href="#kontakt" class="block text-center border border-zinc-200 text-[#09090B] font-semibold py-2.5 rounded-lg text-sm hover:border-zinc-400 transition-colors">
+          Kontakt oss
+        </a>
+      </div>
+    </div>
+    <p class="text-center text-xs text-zinc-400 mt-6">Alle priser eks. mva. Ingen bindingstid de første 3 månedene.</p>
+  </div>
+</section>
+
+<!-- OM -->
+<section id="om" class="py-24 px-6 bg-[#F8FAFC] border-t border-zinc-100">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-16 items-center">
+      <div data-animate>
+        <p class="text-sm font-semibold tracking-widest uppercase mb-3" style="color:#1D4ED8">Om oss</p>
+        <h2 class="font-display font-bold text-4xl tracking-tight text-[#09090B] mb-6">Tall du forstår, frister du holder</h2>
+        <p class="text-zinc-500 text-lg leading-relaxed mb-4">RegnskapsPartner ble etablert i [By] i 2015. Vi er et team på 4 autoriserte regnskapsførere og 2 økonomiassistenter.</p>
+        <p class="text-zinc-500 leading-relaxed mb-8">Vi er ikke et stort upersonlig byrå. Du får en fast kontaktperson som kjenner bedriften din. Og vi svarer faktisk på telefonen.</p>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-white border border-zinc-100 rounded-xl p-4">
+            <div class="font-display font-bold text-2xl mb-1" style="color:#1D4ED8">150+</div>
+            <div class="text-xs text-zinc-500">Bedriftskunder</div>
+          </div>
+          <div class="bg-white border border-zinc-100 rounded-xl p-4">
+            <div class="font-display font-bold text-2xl mb-1" style="color:#1D4ED8">10+</div>
+            <div class="text-xs text-zinc-500">Års erfaring</div>
+          </div>
+        </div>
+      </div>
+      <div data-animate class="relative">
+        <div class="rounded-2xl overflow-hidden aspect-[4/3]">
+          <img
+            src="bilder/regnskap/jakub-zerdzicki-heiYgqp0Tsk-unsplash.jpg"
+            onerror="this.src='https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=80'"
+            alt="RegnskapsPartner team"
+            class="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANMELDELSER -->
+<section class="py-24 px-6 bg-white border-t border-zinc-100">
+  <div class="max-w-6xl mx-auto">
+    <div data-animate class="text-center mb-12">
+      <h2 class="font-display font-bold text-4xl tracking-tight text-[#09090B]">Hva kundene sier</h2>
+    </div>
+    <div data-stagger class="grid md:grid-cols-3 gap-6">
+      <div class="card-hover bg-white border border-zinc-100 rounded-2xl p-6">
+        <div class="text-yellow-400 text-sm mb-3">★★★★★</div>
+        <p class="text-zinc-600 text-sm leading-relaxed mb-4">"Byttet fra et stort byrå til RegnskapsPartner, og angrer ikke ett sekund. Personlig service og alltid rask respons."</p>
+        <div class="font-medium text-sm">Knut Birkeland</div>
+        <div class="text-xs text-zinc-400">Daglig leder, Birkeland Bygg AS</div>
+      </div>
+      <div class="card-hover bg-white border border-zinc-100 rounded-2xl p-6">
+        <div class="text-yellow-400 text-sm mb-3">★★★★★</div>
+        <p class="text-zinc-600 text-sm leading-relaxed mb-4">"De hjelper oss med alt fra bokføring til strategiske beslutninger. En sann partner for vekst."</p>
+        <div class="font-medium text-sm">Lena Thorsen</div>
+        <div class="text-xs text-zinc-400">Gründer, Thorsen Design</div>
+      </div>
+      <div class="card-hover bg-white border border-zinc-100 rounded-2xl p-6">
+        <div class="text-yellow-400 text-sm mb-3">★★★★★</div>
+        <p class="text-zinc-600 text-sm leading-relaxed mb-4">"Endelig regnskap som er á jour. Kan fokusere på bedriften mens de tar seg av tallene."</p>
+        <div class="font-medium text-sm">Per Andr. Moberg</div>
+        <div class="text-xs text-zinc-400">Eier, PM Elektro</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section id="kontakt" class="py-24 px-6 bg-[#F8FAFC] border-t border-zinc-100">
+  <div class="max-w-5xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-16 items-start">
+      <div data-animate>
+        <p class="text-sm font-semibold tracking-widest uppercase mb-3" style="color:#1D4ED8">Kom i gang</p>
+        <h2 class="font-display font-bold text-4xl tracking-tight text-[#09090B] mb-4">Gratis konsultasjon</h2>
+        <p class="text-zinc-500 leading-relaxed mb-8">Book en gratis 30-minutters gjennomgang av bedriftens regnskapsbehov. Ingen forpliktelse.</p>
+        <div class="space-y-4 text-sm">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 bg-white border border-zinc-200 rounded-lg flex items-center justify-center">
+              <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="#1D4ED8" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.66A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="text-zinc-400 text-xs">Telefon</div>
+              <div class="font-medium text-[#09090B]">123 45 678</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 bg-white border border-zinc-200 rounded-lg flex items-center justify-center">
+              <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="#1D4ED8" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </div>
+            <div>
+              <div class="text-zinc-400 text-xs">E-post</div>
+              <div class="font-medium text-[#09090B]">hei@regnskapspartner.no</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-animate>
+        <form class="bg-white border border-zinc-200 rounded-2xl p-8 space-y-4">
+          <div>
+            <label class="block text-xs font-medium text-zinc-500 mb-1.5">Bedriftsnavn</label>
+            <input type="text" placeholder="Bedriften din AS" class="w-full border border-zinc-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#1D4ED8] focus:ring-1 focus:ring-[#1D4ED8] transition-colors" />
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-medium text-zinc-500 mb-1.5">Kontaktperson</label>
+              <input type="text" placeholder="Ditt navn" class="w-full border border-zinc-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#1D4ED8] transition-colors" />
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-zinc-500 mb-1.5">Telefon</label>
+              <input type="tel" placeholder="123 45 678" class="w-full border border-zinc-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#1D4ED8] transition-colors" />
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-zinc-500 mb-1.5">Antall ansatte</label>
+            <select class="w-full border border-zinc-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#1D4ED8] text-zinc-600">
+              <option>Velg størrelse...</option>
+              <option>Enkeltpersonforetak</option>
+              <option>1–5 ansatte</option>
+              <option>6–20 ansatte</option>
+              <option>20+ ansatte</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-zinc-500 mb-1.5">Hva trenger dere hjelp med?</label>
+            <textarea rows="3" placeholder="Bokføring, lønn, årsregnskap..." class="w-full border border-zinc-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#1D4ED8] transition-colors resize-none"></textarea>
+          </div>
+          <button type="submit" class="w-full text-white font-semibold py-3 rounded-lg text-sm transition-all hover:opacity-90 hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(29,78,216,0.25)]" style="background:#1D4ED8">
+            Send forespørsel →
+          </button>
+          <p class="text-xs text-zinc-400 text-center">Vi svarer innen neste virkedag</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-[#0F172A] text-white py-16 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-4 gap-10 mb-12">
+      <div class="md:col-span-2">
+        <div class="font-display font-bold text-xl mb-3">Regnskap<span style="color:#3B82F6">Partner</span></div>
+        <p class="text-sm leading-relaxed max-w-xs" style="color:rgba(255,255,255,0.5)">Autorisert regnskapsfirma i [By]. Vi hjelper norske bedrifter med regnskap, lønn og økonomi.</p>
+      </div>
+      <div>
+        <div class="text-xs font-semibold tracking-widest uppercase mb-4" style="color:rgba(255,255,255,0.3)">Tjenester</div>
+        <ul class="space-y-2 text-sm" style="color:rgba(255,255,255,0.6)">
+          <li><a href="#" class="hover:text-white transition-colors">Bokføring</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">MVA & skatt</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Lønnskjøring</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Årsregnskap</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Rådgivning</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="text-xs font-semibold tracking-widest uppercase mb-4" style="color:rgba(255,255,255,0.3)">Kontakt</div>
+        <ul class="space-y-2 text-sm" style="color:rgba(255,255,255,0.6)">
+          <li>123 45 678</li>
+          <li>hei@regnskapspartner.no</li>
+          <li>Økonomibygget 4, [By]</li>
+          <li class="pt-2 text-xs" style="color:rgba(255,255,255,0.3)">Man–fre 08:00–16:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t pt-6 flex flex-col sm:flex-row justify-between items-center gap-3" style="border-color:rgba(255,255,255,0.1)">
+      <div class="text-xs" style="color:rgba(255,255,255,0.3)">© 2025 RegnskapsPartner AS. ARF-autorisert.</div>
+      <div class="flex gap-4 text-xs" style="color:rgba(255,255,255,0.3)">
+        <a href="#" class="hover:text-white/60 transition-colors">Personvern</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  window.addEventListener('load', () => {
+    if (typeof Motion === 'undefined') return;
+    const { inView, animate } = Motion;
+    inView('[data-animate]', ({ target }) => {
+      animate(target, { opacity: [0,1], y: [24,0] }, { duration: 0.5, easing: [0.25,0.46,0.45,0.94] });
+    });
+    inView('[data-stagger]', ({ target }) => {
+      animate(target.querySelectorAll(':scope > *'), { opacity: [0,1], y: [20,0] }, { duration: 0.4, delay: animate.stagger(0.08) });
+    });
+  });
+</script>
+</body>
+</html>

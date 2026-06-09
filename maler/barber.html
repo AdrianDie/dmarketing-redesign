@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Barber [By] — Herreklipp & Barbering</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Manrope', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            gold: '#C9A84C',
+            'gold-light': '#E8C96A',
+            dark: '#0D0D0D',
+            'dark-2': '#141414',
+            'dark-3': '#1C1C1C',
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/motion@11.11.9/dist/motion.js"></script>
+  <link href="../images/favicon.png" rel="shortcut icon" type="image/x-icon">
+  <style>
+    * { box-sizing: border-box; }
+    body { background: #0D0D0D; color: #E8E8E8; font-family: 'Inter', sans-serif; }
+    .font-display { font-family: 'Manrope', sans-serif; }
+
+    /* Nav */
+    .nav-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 50; padding: 0 6%; height: 64px; display: flex; align-items: center; justify-content: space-between; transition: background 0.3s; }
+    .nav-bar.scrolled { background: rgba(13,13,13,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(201,168,76,0.15); }
+    .nav-logo { font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 18px; letter-spacing: 0.12em; text-transform: uppercase; color: #C9A84C; text-decoration: none; }
+    .nav-cta { background: #C9A84C; color: #0D0D0D; font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; padding: 10px 22px; text-decoration: none; transition: background 0.2s; }
+    .nav-cta:hover { background: #E8C96A; }
+    .nav-links { display: flex; gap: 36px; }
+    .nav-link { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s; font-family: 'Manrope', sans-serif; font-weight: 500; }
+    .nav-link:hover { color: #C9A84C; }
+
+    /* Gold divider */
+    .gold-line { width: 48px; height: 2px; background: #C9A84C; }
+    .label { font-family: 'Manrope', sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #C9A84C; font-weight: 600; }
+
+    /* Hero */
+    .hero { position: relative; height: 100vh; min-height: 700px; overflow: hidden; }
+    .hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(13,13,13,0.7) 35%, rgba(13,13,13,0.1) 100%); }
+
+    /* Service cards */
+    .service-card { background: #141414; border: 1px solid rgba(255,255,255,0.06); padding: 32px 28px; transition: border-color 0.2s, transform 0.2s; }
+    .service-card:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-2px); }
+    .service-icon { width: 44px; height: 44px; border: 1px solid rgba(201,168,76,0.3); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+
+    /* Price table */
+    .price-row { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .price-row:last-child { border-bottom: none; }
+
+    /* Gallery */
+    .gallery-img { overflow: hidden; aspect-ratio: 3/4; }
+    .gallery-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; filter: grayscale(20%); }
+    .gallery-img:hover img { transform: scale(1.05); filter: grayscale(0%); }
+
+    /* Stat */
+    .stat-num { font-family: 'Manrope', sans-serif; font-size: 48px; font-weight: 800; color: #C9A84C; line-height: 1; letter-spacing: -0.03em; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav-bar" id="navbar">
+  <a href="#" class="nav-logo">The Barber</a>
+  <div class="nav-links hidden md:flex">
+    <a href="#tjenester" class="nav-link">Tjenester</a>
+    <a href="#priser" class="nav-link">Priser</a>
+    <a href="#galleri" class="nav-link">Galleri</a>
+  </div>
+  <a href="#bestill" class="nav-cta">Book nå</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img
+    src="bilder/frisor/allef-vinicius-IvQeAVeJULw-unsplash.jpg"
+    onerror="this.src='https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1600&q=85'"
+    alt="The Barber"
+    class="hero-img"
+  />
+  <div class="hero-overlay"></div>
+  <div class="absolute inset-0 flex items-center" style="padding: 0 6%; padding-top: 64px;">
+    <div data-animate style="max-width: 620px;">
+      <p class="label mb-6">Herreklipp &amp; Barbering · [By]</p>
+      <h1 class="font-display font-extrabold text-white mb-6" style="font-size: clamp(48px, 7vw, 88px); line-height: 1.0; letter-spacing: -0.03em;">
+        Stil du kan<br/><span style="color: #C9A84C;">stole på.</span>
+      </h1>
+      <p class="mb-10" style="font-size: 17px; color: rgba(255,255,255,0.6); line-height: 1.7; max-width: 420px;">
+        Premium klipp, klassisk barbering og moderne stiler. Vi tar oss tid til deg.
+      </p>
+      <div class="flex gap-4 flex-wrap">
+        <a href="#bestill" class="nav-cta" style="font-size: 13px; padding: 14px 32px;">Book time</a>
+        <a href="#tjenester" style="border: 1px solid rgba(201,168,76,0.4); color: #C9A84C; font-family: 'Manrope', sans-serif; font-weight: 600; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 28px; text-decoration: none; transition: border-color 0.2s;">Se tjenester</a>
+      </div>
+    </div>
+  </div>
+  <!-- Stats strip -->
+  <div class="absolute bottom-0 left-0 right-0" style="background: rgba(13,13,13,0.8); backdrop-filter: blur(10px); border-top: 1px solid rgba(201,168,76,0.15);">
+    <div class="max-w-5xl mx-auto px-6 py-6 grid grid-cols-3 gap-6 text-center">
+      <div>
+        <div class="stat-num">8+</div>
+        <div style="font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 4px;">År erfaring</div>
+      </div>
+      <div>
+        <div class="stat-num">4.9</div>
+        <div style="font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 4px;">Google-rating</div>
+      </div>
+      <div>
+        <div class="stat-num">3K+</div>
+        <div style="font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 4px;">Fornøyde kunder</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TJENESTER -->
+<section id="tjenester" class="py-28 px-6" style="background: #0D0D0D;">
+  <div class="max-w-5xl mx-auto">
+    <div data-animate class="mb-16">
+      <p class="label mb-4">Hva vi tilbyr</p>
+      <div class="gold-line mb-6"></div>
+      <h2 class="font-display font-extrabold text-white" style="font-size: clamp(32px, 4vw, 48px); letter-spacing: -0.03em;">Våre tjenester</h2>
+    </div>
+    <div data-stagger class="grid md:grid-cols-3 gap-px" style="background: rgba(255,255,255,0.05);">
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#C9A84C" stroke-width="1.5"><path d="M6 3v18M6 12h12M18 3v18"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-white mb-2" style="font-size: 18px;">Herreklipp</h3>
+        <p style="font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.7;">Klassisk og moderne klipp tilpasset din hodestil. Inkluderer vask og styling.</p>
+        <p class="mt-4" style="font-size: 13px; color: #C9A84C; font-family: 'Manrope', sans-serif; font-weight: 600;">fra 350 kr</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#C9A84C" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-white mb-2" style="font-size: 18px;">Skjeggstell</h3>
+        <p style="font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.7;">Trimming, forming og varm barbering med hot towel og aftershave.</p>
+        <p class="mt-4" style="font-size: 13px; color: #C9A84C; font-family: 'Manrope', sans-serif; font-weight: 600;">fra 250 kr</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#C9A84C" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-white mb-2" style="font-size: 18px;">Pakketilbud</h3>
+        <p style="font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.7;">Klipp + skjegg + hot towel shave. Den komplette gentlemanopplevelsen.</p>
+        <p class="mt-4" style="font-size: 13px; color: #C9A84C; font-family: 'Manrope', sans-serif; font-weight: 600;">fra 550 kr</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / PHOTO SPLIT -->
+<section class="py-0" style="background: #141414;">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 items-stretch">
+    <div class="aspect-video md:aspect-auto overflow-hidden" style="min-height: 500px;">
+      <img
+        src="bilder/frisor/agustin-fernandez-1Pmp9uxK8X8-unsplash.jpg"
+        onerror="this.src='https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=900&q=80'"
+        alt="Barber på jobb"
+        class="w-full h-full object-cover"
+        style="filter: grayscale(15%);"
+      />
+    </div>
+    <div data-animate class="flex flex-col justify-center px-12 py-20">
+      <p class="label mb-4">Om oss</p>
+      <div class="gold-line mb-6"></div>
+      <h2 class="font-display font-extrabold text-white mb-6" style="font-size: clamp(28px, 3.5vw, 42px); letter-spacing: -0.03em; line-height: 1.15;">Håndverk vi er<br/>stolte av.</h2>
+      <p style="font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.8; margin-bottom: 24px;">Vi har servert menn i [By] siden 2016. Hos oss handler det ikke bare om et klipp — det handler om å gå ut og føle seg riktig bra.</p>
+      <p style="font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.8; margin-bottom: 32px;">Alle barbere er sertifiserte og har minimum 5 års erfaring fra internasjonale barber shops.</p>
+      <div class="grid grid-cols-2 gap-6">
+        <div>
+          <div class="stat-num" style="font-size: 36px;">2016</div>
+          <div style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-top: 4px;">Etablert</div>
+        </div>
+        <div>
+          <div class="stat-num" style="font-size: 36px;">5</div>
+          <div style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-top: 4px;">Dyktige barbere</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRISER -->
+<section id="priser" class="py-28 px-6" style="background: #141414;">
+  <div class="max-w-4xl mx-auto">
+    <div data-animate class="text-center mb-16">
+      <p class="label mb-4">Transparente priser</p>
+      <div class="gold-line mx-auto mb-6"></div>
+      <h2 class="font-display font-extrabold text-white" style="font-size: clamp(28px, 4vw, 44px); letter-spacing: -0.03em;">Prisliste</h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-16">
+      <div>
+        <p class="label mb-6">Klipp</p>
+        <div class="price-row">
+          <div>
+            <p class="font-display font-semibold text-white" style="font-size:15px;">Herreklipp</p>
+            <p style="font-size:12px;color:rgba(255,255,255,0.35);">Klipp + styling</p>
+          </div>
+          <p class="font-display font-bold" style="color:#C9A84C;font-size:16px;">350 kr</p>
+        </div>
+        <div class="price-row">
+          <div>
+            <p class="font-display font-semibold text-white" style="font-size:15px;">Studentklipp</p>
+            <p style="font-size:12px;color:rgba(255,255,255,0.35);">Gyldig studentbevis</p>
+          </div>
+          <p class="font-display font-bold" style="color:#C9A84C;font-size:16px;">280 kr</p>
+        </div>
+        <div class="price-row">
+          <div>
+            <p class="font-display font-semibold text-white" style="font-size:15px;">Barn (under 12)</p>
+            <p style="font-size:12px;color:rgba(255,255,255,0.35);">Enkelt klipp</p>
+          </div>
+          <p class="font-display font-bold" style="color:#C9A84C;font-size:16px;">220 kr</p>
+        </div>
+        <div class="price-row">
+          <div>
+            <p class="font-display font-semibold text-white" style="font-size:15px;">Fade / Skin Fade</p>
+            <p style="font-size:12px;color:rgba(255,255,255,0.35);">Inkludert styling</p>
+          </div>
+          <p class="font-display font-bold" style="color:#C9A84C;font-size:16px;">420 kr</p>
+        </div>
+      </div>
+      <div>
+        <p class="label mb-6">Skjegg & pakker</p>
+        <div class="price-row">
+          <div>
+            <p class="font-display font-semibold text-white" style="font-size:15px;">Skjeggstell</p>
+            <p style="font-size:12px;color:rgba(255,255,255,0.35);">Trim + forming</p>
+          </div>
+          <p class="font-display font-bold" style="color:#C9A84C;font-size:16px;">250 kr</p>
+        </div>
+        <div class="price-row">
+          <div>
+            <p class="font-display font-semibold text-white" style="font-size:15px;">Hot towel barbering</p>
+            <p style="font-size:12px;color:rgba(255,255,255,0.35);">Klassisk barbering</p>
+          </div>
+          <p class="font-display font-bold" style="color:#C9A84C;font-size:16px;">380 kr</p>
+        </div>
+        <div class="price-row" style="border-color: rgba(201,168,76,0.2); background: rgba(201,168,76,0.04); margin: 0 -16px; padding: 16px;">
+          <div>
+            <p class="font-display font-bold text-white" style="font-size:15px;">The Full Package ⭐</p>
+            <p style="font-size:12px;color:rgba(255,255,255,0.35);">Klipp + skjegg + hot towel</p>
+          </div>
+          <p class="font-display font-bold" style="color:#C9A84C;font-size:18px;">550 kr</p>
+        </div>
+        <div class="price-row">
+          <div>
+            <p class="font-display font-semibold text-white" style="font-size:15px;">Månedlig abonnement</p>
+            <p style="font-size:12px;color:rgba(255,255,255,0.35);">2 klipp per måned</p>
+          </div>
+          <p class="font-display font-bold" style="color:#C9A84C;font-size:16px;">599 kr</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERI -->
+<section id="galleri" class="py-28 px-6" style="background: #0D0D0D;">
+  <div class="max-w-6xl mx-auto">
+    <div data-animate class="text-center mb-16">
+      <p class="label mb-4">Vårt arbeid</p>
+      <div class="gold-line mx-auto mb-6"></div>
+      <h2 class="font-display font-extrabold text-white" style="font-size: clamp(28px, 4vw, 44px); letter-spacing: -0.03em;">Galleri</h2>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+      <div class="gallery-img">
+        <img src="bilder/frisor/nate-johnston-tgPrIYnW3g4-unsplash.jpg" onerror="this.src='https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=500&q=80'" alt="Klipp 1" />
+      </div>
+      <div class="gallery-img" style="aspect-ratio:3/4; margin-top:48px;">
+        <img src="bilder/frisor/agustin-fernandez-1Pmp9uxK8X8-unsplash.jpg" onerror="this.src='https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=500&q=80'" alt="Klipp 2" />
+      </div>
+      <div class="gallery-img">
+        <img src="bilder/frisor/andrea-donato-MNu0n-3BIKs-unsplash.jpg" onerror="this.src='https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=500&q=80'" alt="Verktøy" />
+      </div>
+      <div class="gallery-img" style="aspect-ratio:3/4; margin-top:48px;">
+        <img src="bilder/frisor/delfina-pan-wJoB8D3hnzc-unsplash.jpg" onerror="this.src='https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=500&q=80'" alt="Klipp 4" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANMELDELSER -->
+<section class="py-24 px-6" style="background: #141414;">
+  <div class="max-w-5xl mx-auto">
+    <div data-animate class="text-center mb-14">
+      <p class="label mb-4">Hva kundene sier</p>
+      <div class="gold-line mx-auto mb-6"></div>
+    </div>
+    <div data-stagger class="grid md:grid-cols-3 gap-6">
+      <div style="border:1px solid rgba(255,255,255,0.07);padding:28px;background:#1C1C1C;">
+        <div style="display:flex;gap:3px;margin-bottom:16px;">
+          <span style="color:#C9A84C;font-size:14px;">★★★★★</span>
+        </div>
+        <p style="font-size:14px;color:rgba(255,255,255,0.55);line-height:1.7;margin-bottom:20px;">"Beste barber i hele [By]. Kemal vet akkurat hva han gjør, og resultatet er alltid perfekt."</p>
+        <p class="font-display font-semibold text-white" style="font-size:13px;">Henrik L.</p>
+      </div>
+      <div style="border:1px solid rgba(201,168,76,0.25);padding:28px;background:#1C1C1C;">
+        <div style="display:flex;gap:3px;margin-bottom:16px;">
+          <span style="color:#C9A84C;font-size:14px;">★★★★★</span>
+        </div>
+        <p style="font-size:14px;color:rgba(255,255,255,0.55);line-height:1.7;margin-bottom:20px;">"Har gått her fast i 3 år. De husker alltid hva jeg vil ha og holder et superprofesjonelt nivå."</p>
+        <p class="font-display font-semibold text-white" style="font-size:13px;">Mikael S.</p>
+      </div>
+      <div style="border:1px solid rgba(255,255,255,0.07);padding:28px;background:#1C1C1C;">
+        <div style="display:flex;gap:3px;margin-bottom:16px;">
+          <span style="color:#C9A84C;font-size:14px;">★★★★★</span>
+        </div>
+        <p style="font-size:14px;color:rgba(255,255,255,0.55);line-height:1.7;margin-bottom:20px;">"Hot towel pakken er bare noe annet. Føler meg som en ny person etterpå. Anbefales sterkt!"</p>
+        <p class="font-display font-semibold text-white" style="font-size:13px;">Thomas B.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK / CTA -->
+<section id="bestill" class="py-28 px-6" style="background: #0D0D0D; border-top: 1px solid rgba(201,168,76,0.1);">
+  <div class="max-w-2xl mx-auto text-center" data-animate>
+    <p class="label mb-4">Ta kontakt</p>
+    <div class="gold-line mx-auto mb-8"></div>
+    <h2 class="font-display font-extrabold text-white mb-4" style="font-size: clamp(32px, 4vw, 52px); letter-spacing: -0.03em;">Klar for en ny klipp?</h2>
+    <p style="font-size:16px;color:rgba(255,255,255,0.45);margin-bottom:40px;">Ring oss eller send en melding for å booke time. Walk-in alltid velkommen.</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="tel:+4712345678" class="nav-cta" style="font-size:13px;padding:16px 36px;">Ring 123 45 678</a>
+      <a href="mailto:post@thebarber.no" style="border:1px solid rgba(201,168,76,0.35);color:#C9A84C;font-family:'Manrope',sans-serif;font-weight:600;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;padding:16px 32px;text-decoration:none;">Send e-post</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#0A0A0A;border-top:1px solid rgba(255,255,255,0.05);padding:40px 6%;">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+    <a href="#" class="nav-logo">The Barber</a>
+    <p style="font-size:12px;color:rgba(255,255,255,0.25);letter-spacing:0.05em;">© 2025 The Barber [By]. Alle rettigheter reservert.</p>
+    <div style="display:flex;gap:24px;">
+      <a href="#tjenester" class="nav-link">Tjenester</a>
+      <a href="#priser" class="nav-link">Priser</a>
+      <a href="#bestill" class="nav-link">Book</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll effect
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Animations
+  window.addEventListener('load', () => {
+    if (typeof Motion === 'undefined') return;
+    const { inView, animate } = Motion;
+    inView('[data-animate]', ({ target }) => {
+      animate(target, { opacity: [0,1], y: [28,0] }, { duration: 0.55, easing: [0.25,0.46,0.45,0.94] });
+    });
+    inView('[data-stagger]', ({ target }) => {
+      animate(target.querySelectorAll(':scope > *'), { opacity: [0,1], y: [20,0] }, { duration: 0.4, delay: animate.stagger(0.1) });
+    });
+  });
+</script>
+</body>
+</html>

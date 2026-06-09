@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AutoFix — Bilverksted i [By]</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{fontFamily:{display:['Space Grotesk','sans-serif'],body:['Inter','sans-serif']},colors:{brand:'#DC2626','brand-light':'#EF4444','brand-soft':'#FEF2F2'}}}}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/motion@11.11.9/dist/motion.js"></script>
+  <link href="../../images/favicon.png" rel="shortcut icon" type="image/x-icon">
+  <style>
+    *{-webkit-font-smoothing:antialiased}body{font-family:'Inter',sans-serif;background:#fff;color:#0F172A}.f-display{font-family:'Space Grotesk',sans-serif}
+    #nav{transition:background .25s,box-shadow .25s}#nav.scrolled{background:rgba(255,255,255,.92);backdrop-filter:blur(16px);box-shadow:0 1px 0 #E2E8F0}
+    .bg-grid{background-color:#FAFAFA;background-image:linear-gradient(rgba(220,38,38,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(220,38,38,.06) 1px,transparent 1px);background-size:40px 40px}
+    .bento{background:#fff;border:1px solid #E2E8F0;border-radius:20px;transition:box-shadow .2s,transform .2s}.bento:hover{box-shadow:0 12px 40px rgba(220,38,38,.10);transform:translateY(-3px)}
+    .glass-img{position:relative;border-radius:20px;overflow:hidden}.glass-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(15,23,42,.28));pointer-events:none}
+    .step-line::after{content:'';position:absolute;top:18px;left:calc(50% + 22px);width:calc(100% - 44px);height:1px;background:#E2E8F0}
+    @media(max-width:767px){.step-line::after{display:none}}
+    .nav-active{color:#0F172A !important;font-weight:600}
+    @keyframes pulse-ring{0%{box-shadow:0 0 0 0 rgba(220,38,38,.45)}70%{box-shadow:0 0 0 10px rgba(220,38,38,0)}100%{box-shadow:0 0 0 0 rgba(220,38,38,0)}}
+    .pulse{animation:pulse-ring 2s infinite}
+  </style>
+</head>
+<body>
+
+<nav id="nav" class="fixed top-0 inset-x-0 z-50">
+  <div class="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
+    <a href="/" class="f-display font-bold text-[15px] tracking-tight text-slate-900">Auto<span class="text-brand">Fix</span></a>
+    <div class="hidden md:flex items-center gap-7 text-[13px] font-medium text-slate-500">
+      <a href="/"     class="hover:text-slate-900 transition-colors nav-active">Hjem</a>
+      <a href="tjenester" class="hover:text-slate-900 transition-colors">Tjenester</a>
+      <a href="om-oss"    class="hover:text-slate-900 transition-colors">Om oss</a>
+      <a href="kontakt"   class="hover:text-slate-900 transition-colors">Kontakt</a>
+    </div>
+    <a href="kontakt" class="bg-brand text-white text-[13px] font-semibold px-4 py-2 rounded-lg hover:bg-brand-light transition-colors">Book time</a>
+  </div>
+</nav>
+
+<!-- HERO — Mørk industriell editorial med bilde-stripe -->
+<section class="relative pt-14 overflow-hidden text-white" style="background:#0B0F14;">
+  <!-- Tech grid backdrop -->
+  <div class="absolute inset-0 pointer-events-none opacity-30" style="background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:60px 60px;"></div>
+  <!-- Red accent stripe -->
+  <div class="absolute top-0 left-0 w-full h-1" style="background:linear-gradient(90deg,#DC2626 0%,#F59E0B 50%,transparent 100%);"></div>
+
+  <div class="relative max-w-6xl mx-auto px-6 pt-20 pb-12">
+    <div class="grid md:grid-cols-12 gap-10 items-end">
+      <div class="md:col-span-7">
+        <div data-animate class="inline-flex items-center gap-2 border border-red-500/30 bg-red-500/10 backdrop-blur-sm text-[11px] font-bold uppercase tracking-widest text-red-400 px-3 py-1.5 rounded-full mb-7">
+          <span class="w-1.5 h-1.5 rounded-full bg-red-500 inline-block animate-pulse"></span>
+          Åpent nå · 08–17
+        </div>
+        <h1 data-animate class="f-display font-extrabold text-5xl md:text-6xl lg:text-7xl text-white leading-[0.95] mb-7" style="letter-spacing:-0.035em">
+          Bilen klar<br/>
+          <span style="color:#F87171">når vi sier den er klar.</span>
+        </h1>
+        <p data-animate class="text-[17px] text-white/60 leading-relaxed max-w-md mb-9">
+          Autorisert bilverksted i [By]. EU-kontroll, service og dekk — fast pris, rask levering, ingen skjulte kostnader.
+        </p>
+        <div data-animate class="flex flex-col sm:flex-row gap-3 mb-10">
+          <a href="kontakt" class="bg-red-600 text-white f-display font-semibold px-7 py-3.5 rounded-xl text-[14px] hover:bg-red-700 hover:shadow-[0_0_30px_rgba(220,38,38,.50)] hover:scale-[1.02] transition-all text-center">
+            Book time nå
+          </a>
+          <a href="tel:+4712345678" class="inline-flex items-center justify-center gap-2 border border-white/20 text-white font-semibold px-7 py-3.5 rounded-xl text-[14px] hover:border-white/40 transition-all">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.66A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            123 45 678
+          </a>
+        </div>
+        <!-- Live status display -->
+        <div data-animate class="inline-flex items-center gap-4 border-t border-white/10 pt-6 mt-2">
+          <div>
+            <div class="text-[10px] uppercase tracking-widest text-white/40 mb-1">Verksted-kapasitet</div>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              <span class="text-[13px] font-semibold text-white">Ledige plasser i dag</span>
+            </div>
+          </div>
+          <div class="w-px h-10 bg-white/10"></div>
+          <div>
+            <div class="text-[10px] uppercase tracking-widest text-white/40 mb-1">Snitt leveringstid</div>
+            <div class="text-[13px] font-mono font-bold text-white">04:32:15</div>
+          </div>
+          <div class="w-px h-10 bg-white/10"></div>
+          <div>
+            <div class="text-[10px] uppercase tracking-widest text-white/40 mb-1">Score</div>
+            <div class="text-[13px] font-bold text-amber-400">★★★★★ 4.8</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="md:col-span-5 relative" data-animate>
+        <div class="relative rounded-2xl overflow-hidden aspect-[4/5] shadow-2xl ring-1 ring-white/10">
+          <img src="../bilder/bilverksted/hero.jpg"
+               onerror="this.src='https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=900&q=85'"
+               alt="Verksted i [By]"
+               class="w-full h-full object-cover" style="filter:contrast(1.1) saturate(0.85);" />
+          <div class="absolute inset-0 pointer-events-none" style="background:linear-gradient(to bottom,rgba(11,15,20,0) 40%,rgba(11,15,20,0.8) 100%);"></div>
+          <!-- Spec sticker -->
+          <div class="absolute bottom-4 left-4 right-4">
+            <div class="font-mono text-[10px] uppercase tracking-widest text-red-400 mb-1">[ Verksted #01 · [By] ]</div>
+            <div class="font-mono text-[11px] text-white/70">SHOP_ID: AUTOFIX-NO-0427</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom industrial badge strip -->
+  <div class="relative border-t border-white/10 bg-black/40 backdrop-blur-sm">
+    <div class="max-w-6xl mx-auto px-6 py-5 flex flex-wrap items-center justify-between gap-y-3 text-[12px] text-white/60 font-mono uppercase tracking-widest">
+      <span class="flex items-center gap-2"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Statens vegvesen-godkjent</span>
+      <span class="flex items-center gap-2"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Svar &lt; 1 time</span>
+      <span class="flex items-center gap-2"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>2 års garanti</span>
+      <span class="flex items-center gap-2"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Fast pris</span>
+      <span class="flex items-center gap-2"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>EV-spesialist</span>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="border-y border-slate-100" style="background:#FAFAFA">
+  <div class="max-w-6xl mx-auto px-6 py-8 grid grid-cols-2 md:grid-cols-4 gap-8 text-center" data-stagger>
+    <div><div class="f-display font-extrabold text-[36px] text-brand" style="letter-spacing:-.03em">1 200+</div><div class="text-[12px] text-slate-400 uppercase tracking-wide mt-1">Biler servicert</div></div>
+    <div><div class="f-display font-extrabold text-[36px] text-slate-900" style="letter-spacing:-.03em">4.8★</div><div class="text-[12px] text-slate-400 uppercase tracking-wide mt-1">Google-snitt</div></div>
+    <div><div class="f-display font-extrabold text-[36px] text-slate-900" style="letter-spacing:-.03em">Alle</div><div class="text-[12px] text-slate-400 uppercase tracking-wide mt-1">Bilmerker</div></div>
+    <div><div class="f-display font-extrabold text-[36px] text-slate-900" style="letter-spacing:-.03em">Fast</div><div class="text-[12px] text-slate-400 uppercase tracking-wide mt-1">Pris alltid</div></div>
+  </div>
+</div>
+
+<!-- TJENESTER BENTO -->
+<section class="py-24 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div data-animate class="mb-12 flex items-end justify-between">
+      <div>
+        <p class="text-[12px] font-semibold tracking-widest uppercase text-brand mb-3">Tjenester</p>
+        <h2 class="f-display font-extrabold text-4xl text-slate-900" style="letter-spacing:-.03em">Alt bilen din trenger</h2>
+      </div>
+      <a href="tjenester" class="hidden md:inline-flex items-center gap-1.5 text-[13px] font-semibold text-brand hover:underline">Se alle tjenester →</a>
+    </div>
+    <div class="grid grid-cols-12 gap-5" data-stagger>
+
+      <!-- EU-kontroll — stor -->
+      <div class="bento col-span-12 md:col-span-8 p-8 flex gap-8 items-center">
+        <div class="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0" style="background:#FEF2F2">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="1.8"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        </div>
+        <div>
+          <div class="inline-flex text-[11px] font-semibold text-brand bg-brand-soft border border-red-100 px-2.5 py-1 rounded-full mb-3">Lovpålagt hvert 2. år</div>
+          <h3 class="f-display font-bold text-[22px] text-slate-900 mb-2">EU-kontroll</h3>
+          <p class="text-slate-500 text-[14px] leading-relaxed max-w-md">Rask og grundig EU-kontroll av godkjent verksted. Bestill time og få svar på om bilen er godkjent — samme dag.</p>
+        </div>
+        <div class="ml-auto flex-shrink-0 hidden md:block">
+          <div class="f-display font-bold text-[28px] text-brand">fra 690 kr</div>
+          <div class="text-[12px] text-slate-400 mt-1">inkl. mva.</div>
+        </div>
+      </div>
+
+      <!-- Årsservice -->
+      <div class="bento col-span-12 md:col-span-4 p-7">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:#FEF2F2">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/></svg>
+        </div>
+        <h3 class="f-display font-bold text-[18px] text-slate-900 mb-2">Årsservice</h3>
+        <p class="text-slate-500 text-[13px] leading-relaxed">Olje, filter, tennplugger, belter og full gjennomgang. Alt du trenger for en trygg sesong.</p>
+        <div class="mt-4 text-brand f-display font-semibold text-[14px]">fra 1 490 kr</div>
+      </div>
+
+      <!-- Dekkskift -->
+      <div class="bento col-span-12 md:col-span-4 p-7">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:#FEF2F2">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>
+        </div>
+        <h3 class="f-display font-bold text-[18px] text-slate-900 mb-2">Dekkskift & lagring</h3>
+        <p class="text-slate-500 text-[13px] leading-relaxed">Sommer- og vinterdekk. Balansering inkludert. Oppbevaring av reservedekkene hele sesongen.</p>
+        <div class="mt-4 text-brand f-display font-semibold text-[14px]">fra 690 kr</div>
+      </div>
+
+      <!-- Bremsejobb -->
+      <div class="bento col-span-12 md:col-span-4 p-7">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(239,68,68,.07)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="1.8"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-6a4 4 0 100-8 4 4 0 000 8z"/></svg>
+        </div>
+        <h3 class="f-display font-bold text-[18px] text-slate-900 mb-2">Bremsejobb</h3>
+        <p class="text-slate-500 text-[13px] leading-relaxed">Utskifting av bremseskiver og klosser. Vi kontrollerer hele bremseystemet og garanterer trygg kjøring.</p>
+        <div class="mt-4 text-brand f-display font-semibold text-[14px]">fra 1 890 kr</div>
+      </div>
+
+      <!-- Diagnostikk -->
+      <div class="bento col-span-12 md:col-span-4 p-7">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(239,68,68,.07)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 9l3 3 4-4"/></svg>
+        </div>
+        <h3 class="f-display font-bold text-[18px] text-slate-900 mb-2">Feilkodesøk & diagnostikk</h3>
+        <p class="text-slate-500 text-[13px] leading-relaxed">Motorlys? Vi leser av feilkoder og forklarer hva det betyr — ingen overraskelser på regningen.</p>
+        <div class="mt-4 text-brand f-display font-semibold text-[14px]">490 kr</div>
+      </div>
+
+      <!-- Klima -->
+      <div class="bento col-span-12 md:col-span-4 p-7">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(239,68,68,.07)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="1.8"><path d="M12 2v20M4.93 4.93l14.14 14.14M2 12h20M4.93 19.07L19.07 4.93"/></svg>
+        </div>
+        <h3 class="f-display font-bold text-[18px] text-slate-900 mb-2">Klimaanlegg</h3>
+        <p class="text-slate-500 text-[13px] leading-relaxed">Etterfylling av kjølemiddel, rengjøring av fordamper og kontroll av hele klimasystemet.</p>
+        <div class="mt-4 text-brand f-display font-semibold text-[14px]">fra 890 kr</div>
+      </div>
+
+    </div>
+    <div class="mt-6 md:hidden text-center">
+      <a href="tjenester" class="inline-flex items-center gap-1.5 text-[13px] font-semibold text-brand hover:underline">Se alle tjenester →</a>
+    </div>
+  </div>
+</section>
+
+<!-- OM OSS SPLIT -->
+<section class="py-24 px-6" style="background:#FAFAFA">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+    <div data-animate class="glass-img aspect-[4/3]">
+      <img src="../bilder/bilverksted/verksted.jpg"
+           onerror="this.src='https://images.unsplash.com/photo-1632823469850-2f77dd9c7f93?w=800&q=80'"
+           alt="AutoFix verksted" class="w-full h-full object-cover" />
+    </div>
+    <div data-animate>
+      <p class="text-[12px] font-semibold tracking-widest uppercase text-brand mb-4">Om oss</p>
+      <h2 class="f-display font-extrabold text-4xl text-slate-900 mb-6" style="letter-spacing:-.03em">[By]s mest ærlige verksted</h2>
+      <p class="text-slate-500 text-[15px] leading-relaxed mb-5">Vi startet AutoFix fordi vi var lei av skjulte gebyrer og vage prisanslag. Hos oss får du alltid skriftlig tilbud på forhånd — og betaler det vi sier.</p>
+      <p class="text-slate-500 text-[14px] leading-relaxed mb-8">Alle merker og modeller. Fra Volkswagen til Tesla — vi har moderne diagnoseutstyr og sertifiserte mekanikere for alle kjøretøy.</p>
+      <a href="om-oss" class="inline-flex items-center gap-2 text-[14px] font-semibold text-brand hover:underline">Møt teamet →</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROSESS -->
+<section class="py-24 px-6">
+  <div class="max-w-5xl mx-auto">
+    <div data-animate class="text-center mb-16">
+      <p class="text-[12px] font-semibold tracking-widest uppercase text-brand mb-3">Slik jobber vi</p>
+      <h2 class="f-display font-extrabold text-4xl text-slate-900" style="letter-spacing:-.03em">Enkelt og forutsigbart</h2>
+    </div>
+    <div class="grid md:grid-cols-4 gap-8" data-stagger>
+      <div class="relative text-center step-line">
+        <div class="w-10 h-10 rounded-full bg-brand text-white f-display font-bold text-[16px] flex items-center justify-center mx-auto mb-5">1</div>
+        <h3 class="f-display font-bold text-[16px] text-slate-900 mb-2">Book time</h3>
+        <p class="text-slate-400 text-[13px] leading-relaxed">Ring eller send skjema — vi finner en tid som passer deg.</p>
+      </div>
+      <div class="relative text-center step-line">
+        <div class="w-10 h-10 rounded-full bg-brand text-white f-display font-bold text-[16px] flex items-center justify-center mx-auto mb-5">2</div>
+        <h3 class="f-display font-bold text-[16px] text-slate-900 mb-2">Lever bilen</h3>
+        <p class="text-slate-400 text-[13px] leading-relaxed">Lever bilen om morgenen. Vi tilbyr lånebil og henting ved behov.</p>
+      </div>
+      <div class="relative text-center step-line">
+        <div class="w-10 h-10 rounded-full bg-brand text-white f-display font-bold text-[16px] flex items-center justify-center mx-auto mb-5">3</div>
+        <h3 class="f-display font-bold text-[16px] text-slate-900 mb-2">Godkjenn tilbud</h3>
+        <p class="text-slate-400 text-[13px] leading-relaxed">Vi ringer med fastpris — ingenting gjøres uten din godkjenning.</p>
+      </div>
+      <div class="text-center">
+        <div class="w-10 h-10 rounded-full bg-brand text-white f-display font-bold text-[16px] flex items-center justify-center mx-auto mb-5">4</div>
+        <h3 class="f-display font-bold text-[16px] text-slate-900 mb-2">Hent ferdig bil</h3>
+        <p class="text-slate-400 text-[13px] leading-relaxed">Klar samme dag i de fleste tilfeller. Med garanti på alt arbeid.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANMELDELSER -->
+<section class="py-24 px-6" style="background:#FAFAFA">
+  <div class="max-w-6xl mx-auto">
+    <div data-animate class="text-center mb-12">
+      <p class="text-[12px] font-semibold tracking-widest uppercase text-brand mb-3">Kunder</p>
+      <h2 class="f-display font-extrabold text-4xl text-slate-900" style="letter-spacing:-.03em">Hva folk sier om oss</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5" data-stagger>
+      <div class="bg-white border border-slate-100 rounded-2xl p-7">
+        <div class="flex gap-1 mb-4">★★★★★</div>
+        <p class="text-slate-600 text-[14px] leading-relaxed mb-5">«Leverte bilen om morgenen, fikk svar innen én time og bilen var klar til lunsj. Fast pris, ingen overraskelser. Blir kunden her fremover.»</p>
+        <div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-brand-soft flex items-center justify-center f-display font-bold text-brand text-[13px]">MK</div><div><div class="f-display font-semibold text-[13px] text-slate-900">Magnus K.</div><div class="text-[11px] text-slate-400">EU-kontroll</div></div></div>
+      </div>
+      <div class="bg-white border border-slate-100 rounded-2xl p-7">
+        <div class="flex gap-1 mb-4">★★★★★</div>
+        <p class="text-slate-600 text-[14px] leading-relaxed mb-5">«Motorlyset kom på en fredag. Ringte AutoFix, hadde time samme dag. De fant problemet raskt og prisen var veldig rimelig. Anbefales!»</p>
+        <div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-brand-soft flex items-center justify-center f-display font-bold text-brand text-[13px]">SL</div><div><div class="f-display font-semibold text-[13px] text-slate-900">Sofie L.</div><div class="text-[11px] text-slate-400">Diagnostikk</div></div></div>
+      </div>
+      <div class="bg-white border border-slate-100 rounded-2xl p-7">
+        <div class="flex gap-1 mb-4">★★★★★</div>
+        <p class="text-slate-600 text-[14px] leading-relaxed mb-5">«Har vært her tre ganger nå. Alltid hyggelig, alltid ærlig om hva som trengs og ikke trengs. Godt å ha et verksted man kan stole på.»</p>
+        <div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-brand-soft flex items-center justify-center f-display font-bold text-brand text-[13px]">TH</div><div><div class="f-display font-semibold text-[13px] text-slate-900">Torbjørn H.</div><div class="text-[11px] text-slate-400">Årsservice</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DARK CTA -->
+<section class="py-20 px-6" style="background:#0F172A">
+  <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+    <div data-animate>
+      <h2 class="f-display font-extrabold text-3xl text-white mb-2" style="letter-spacing:-.03em">Bilen trenger service?</h2>
+      <p class="text-slate-400 text-[15px]">Book time i dag — vi svarer innen én time.</p>
+    </div>
+    <div class="flex gap-3 flex-shrink-0">
+      <a href="kontakt" class="bg-brand text-white f-display font-semibold px-6 py-3.5 rounded-xl text-[14px] hover:bg-brand-light transition-colors">Book time</a>
+      <a href="tel:+4712345678" class="bg-white/10 border border-white/20 text-white f-display font-semibold px-6 py-3.5 rounded-xl text-[14px] hover:bg-white/20 transition-colors">Ring 123 45 678</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#0F172A" class="text-white py-16 px-6 border-t border-white/5">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-4 gap-10 mb-12">
+      <div class="md:col-span-2">
+        <div class="f-display font-bold text-[18px] mb-3">Auto<span style="color:#EF4444">Fix</span></div>
+        <p class="text-[13px] leading-relaxed max-w-xs" style="color:rgba(255,255,255,.45)">Autorisert bilverksted i [By] siden 2012.</p>
+      </div>
+      <div>
+        <div class="text-[11px] font-semibold tracking-widest uppercase mb-4" style="color:rgba(255,255,255,.3)">Sider</div>
+        <ul class="space-y-2 text-[13px]" style="color:rgba(255,255,255,.55)">
+          <li><a href="/"     class="hover:text-white transition-colors">Hjem</a></li>
+          <li><a href="tjenester" class="hover:text-white transition-colors">Tjenester</a></li>
+          <li><a href="om-oss"   class="hover:text-white transition-colors">Om oss</a></li>
+          <li><a href="kontakt"  class="hover:text-white transition-colors">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="text-[11px] font-semibold tracking-widest uppercase mb-4" style="color:rgba(255,255,255,.3)">Kontakt</div>
+        <ul class="space-y-2 text-[13px]" style="color:rgba(255,255,255,.55)">
+          <li>123 45 678</li><li>kontakt@autofix.no</li><li>Eksempelgata 12, [By]</li>
+          <li class="pt-2 text-[12px]" style="color:rgba(255,255,255,.25)">Org.nr: 123 456 789</li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t pt-6 flex flex-col sm:flex-row justify-between items-center gap-3" style="border-color:rgba(255,255,255,.08)">
+      <div class="text-[12px]" style="color:rgba(255,255,255,.25)">© 2025 AutoFix AS</div>
+      <div class="flex gap-5 text-[12px]" style="color:rgba(255,255,255,.25)"><a href="#" class="hover:text-white/60">Personvern</a><a href="#" class="hover:text-white/60">Cookies</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 24); });
+  window.addEventListener('load', () => {
+    if (typeof Motion === 'undefined') return;
+    const { inView, animate } = Motion;
+    inView('[data-animate]', ({ target }) => { animate(target, { opacity:[0,1], y:[28,0] }, { duration:.55, easing:[.25,.46,.45,.94] }); });
+    inView('[data-stagger]', ({ target }) => { animate(target.querySelectorAll(':scope > *'), { opacity:[0,1], y:[20,0] }, { duration:.4, delay:animate.stagger(.09) }); });
+  });
+</script>
+</body>
+</html>

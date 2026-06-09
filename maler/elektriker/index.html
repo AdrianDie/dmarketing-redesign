@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ElektroGruppen — Elektriker i [By]</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { display: ['IBM Plex Sans','sans-serif'], body: ['Inter','sans-serif'] },
+        colors: { brand:'#4F46E5', 'brand-light':'#6366F1', 'brand-soft':'#EEF2FF' }
+      }}
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=IBM+Plex+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/motion@11.11.9/dist/motion.js"></script>
+  <link href="../../images/favicon.png" rel="shortcut icon" type="image/x-icon">
+  <style>
+    * { -webkit-font-smoothing: antialiased; }
+    body { font-family:'Inter',sans-serif; background:#fff; color:#0F172A; }
+    .f-display { font-family:'IBM Plex Sans',sans-serif; }
+    #nav { transition: background .25s, box-shadow .25s; }
+    #nav.scrolled { background:rgba(255,255,255,.92); backdrop-filter:blur(16px); box-shadow:0 1px 0 #E2E8F0; }
+    .bg-grid {
+      background-color:#fff;
+      background-image: linear-gradient(rgba(226,232,240,.6) 1px,transparent 1px), linear-gradient(90deg,rgba(226,232,240,.6) 1px,transparent 1px);
+      background-size:40px 40px;
+    }
+    .bento { background:#fff; border:1px solid #E2E8F0; border-radius:20px; transition:box-shadow .2s,transform .2s; }
+    .bento:hover { box-shadow:0 12px 40px rgba(79,70,229,.10); transform:translateY(-3px); }
+    .glass-img { position:relative; border-radius:20px; overflow:hidden; }
+    .glass-img::after { content:''; position:absolute; inset:0; background:linear-gradient(to bottom,transparent 50%,rgba(15,23,42,.32)); pointer-events:none; }
+    @keyframes pulse-ring { 0%{box-shadow:0 0 0 0 rgba(239,68,68,.45)} 70%{box-shadow:0 0 0 10px rgba(239,68,68,0)} 100%{box-shadow:0 0 0 0 rgba(239,68,68,0)} }
+    .pulse { animation:pulse-ring 2s infinite; }
+    .step-line::after { content:''; position:absolute; top:18px; left:calc(50% + 22px); width:calc(100% - 44px); height:1px; background:#E2E8F0; }
+    @media(max-width:767px){ .step-line::after{ display:none; } }
+    .nav-active { color:#0F172A !important; font-weight:600; }
+    .project-card { border-radius:16px; overflow:hidden; transition:transform .2s,box-shadow .2s; }
+    .project-card:hover { transform:translateY(-3px); box-shadow:0 12px 40px rgba(79,70,229,.12); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav" class="fixed top-0 inset-x-0 z-50">
+  <div class="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
+    <a href="/" class="f-display font-bold text-[15px] tracking-tight text-slate-900">Elektro<span class="text-brand">Gruppen</span></a>
+    <div class="hidden md:flex items-center gap-7 text-[13px] font-medium text-slate-500">
+      <a href="/"    class="hover:text-slate-900 transition-colors nav-active">Hjem</a>
+      <a href="tjenester" class="hover:text-slate-900 transition-colors">Tjenester</a>
+      <a href="om-oss"   class="hover:text-slate-900 transition-colors">Om oss</a>
+      <a href="kontakt"  class="hover:text-slate-900 transition-colors">Kontakt</a>
+    </div>
+    <div class="flex items-center gap-2">
+      <a href="tel:+4712345678" class="hidden sm:inline-flex items-center gap-1.5 text-[12px] font-semibold text-red-600 bg-red-50 border border-red-100 px-3 py-1.5 rounded-full pulse hover:bg-red-100 transition-colors">
+        <span class="w-1.5 h-1.5 rounded-full bg-red-500 inline-block"></span>Akutt? Ring nå
+      </a>
+      <a href="kontakt" class="bg-brand text-white text-[13px] font-semibold px-4 py-2 rounded-lg hover:bg-brand-light transition-colors">Få tilbud</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO — Bento-grid med tekniske sertifiseringer -->
+<section class="relative pt-24 overflow-hidden bg-white">
+  <div class="absolute inset-0 pointer-events-none" style="background-image:linear-gradient(rgba(79,70,229,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(79,70,229,0.04) 1px,transparent 1px);background-size:48px 48px;"></div>
+
+  <div class="relative max-w-6xl mx-auto px-6 pt-16 pb-12">
+    <!-- Top: title centered/left -->
+    <div data-animate class="max-w-3xl mb-12">
+      <div class="inline-flex items-center gap-2 bg-indigo-50 border border-indigo-100 text-[12px] font-semibold text-brand px-4 py-2 rounded-full mb-7">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block"></span>
+        Tilgjengelig i dag — [By]
+      </div>
+      <h1 class="f-display font-extrabold text-5xl md:text-6xl text-slate-900 leading-[0.95]" style="letter-spacing:-0.035em">
+        Strøm som virker —<br/><span class="text-brand">døgnet rundt.</span>
+      </h1>
+      <p class="text-lg text-slate-500 max-w-xl leading-relaxed mt-6">
+        Sertifisert elektriker i [By]. Sikringsskap, EV-lader, smarthus og akutthjelp — alltid til fast pris med NEK 400-dokumentasjon.
+      </p>
+    </div>
+
+    <!-- Bento grid -->
+    <div data-stagger class="grid grid-cols-1 md:grid-cols-12 gap-4">
+
+      <!-- Big primary CTA card -->
+      <div class="md:col-span-7 relative overflow-hidden rounded-2xl p-9 text-white" style="background:linear-gradient(135deg,#312E81 0%,#4F46E5 60%,#6366F1 100%);min-height:280px;">
+        <div class="absolute -top-16 -right-16 w-64 h-64 rounded-full opacity-30" style="background:radial-gradient(circle,#A5B4FC 0%,transparent 70%);"></div>
+        <div class="relative">
+          <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/20 text-[11px] font-bold uppercase tracking-widest text-white/90 px-3 py-1.5 rounded-full mb-7">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block animate-pulse"></span>
+            24/7 akutt
+          </div>
+          <h3 class="f-display font-extrabold text-3xl md:text-4xl text-white mb-4 leading-tight" style="letter-spacing:-0.025em">
+            Trenger du elektriker<br/>akkurat nå?
+          </h3>
+          <p class="text-white/70 text-[14px] leading-relaxed max-w-md mb-7">
+            Akutt-utrykning innen 2 timer i [By] og omegn. Vi ringer deg opp etter noen minutter med pris og tidsestimat.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <a href="tel:+4712345678" class="inline-flex items-center gap-2 bg-white text-brand font-semibold px-5 py-3 rounded-xl text-[13px] hover:bg-indigo-50 hover:scale-[1.02] transition-all">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.66A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              123 45 678
+            </a>
+            <a href="kontakt" class="inline-flex items-center gap-2 border border-white/25 text-white font-semibold px-5 py-3 rounded-xl text-[13px] hover:border-white/50 transition-all">
+              Få tilbud →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats stack -->
+      <div class="md:col-span-5 grid grid-cols-2 gap-4">
+        <div class="bento p-6 col-span-2">
+          <div class="text-[10px] uppercase tracking-widest text-slate-400 mb-2">Responstid i [By]</div>
+          <div class="flex items-end gap-3">
+            <div class="f-display font-extrabold text-5xl text-brand leading-none">~47<span class="text-2xl text-slate-400 ml-1">min</span></div>
+            <div class="text-[12px] text-emerald-600 mb-1.5 flex items-center gap-1">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 15l7-7 7 7"/></svg>
+              22% raskere enn snitt
+            </div>
+          </div>
+        </div>
+        <div class="bento p-5">
+          <div class="text-[10px] uppercase tracking-widest text-slate-400 mb-2">Snitt</div>
+          <div class="f-display font-extrabold text-3xl text-slate-900">4.9★</div>
+          <div class="text-[11px] text-slate-400 mt-1">140+ anmeldelser</div>
+        </div>
+        <div class="bento p-5">
+          <div class="text-[10px] uppercase tracking-widest text-slate-400 mb-2">År</div>
+          <div class="f-display font-extrabold text-3xl text-slate-900">15+</div>
+          <div class="text-[11px] text-slate-400 mt-1">i bransjen</div>
+        </div>
+      </div>
+
+      <!-- Service cards row -->
+      <div class="md:col-span-3 bento p-6 hover:bg-indigo-50/40 transition-colors">
+        <div class="w-9 h-9 rounded-lg bg-indigo-50 flex items-center justify-center mb-4">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <h4 class="f-display font-bold text-[15px] text-slate-900 mb-1.5">EV-lader</h4>
+        <p class="text-[12px] text-slate-500 leading-relaxed">Easee · Zaptec · NEK 400-dok inkludert.</p>
+      </div>
+      <div class="md:col-span-3 bento p-6 hover:bg-indigo-50/40 transition-colors">
+        <div class="w-9 h-9 rounded-lg bg-indigo-50 flex items-center justify-center mb-4">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 9h6M9 13h6M9 17h4"/></svg>
+        </div>
+        <h4 class="f-display font-bold text-[15px] text-slate-900 mb-1.5">Sikringsskap</h4>
+        <p class="text-[12px] text-slate-500 leading-relaxed">Oppgradering eller bytte. Jordfeilbryter inkludert.</p>
+      </div>
+      <div class="md:col-span-3 bento p-6 hover:bg-indigo-50/40 transition-colors">
+        <div class="w-9 h-9 rounded-lg bg-indigo-50 flex items-center justify-center mb-4">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v14a2 2 0 01-2 2h-4M12 17h.01M9 13h6"/></svg>
+        </div>
+        <h4 class="f-display font-bold text-[15px] text-slate-900 mb-1.5">Smarthus</h4>
+        <p class="text-[12px] text-slate-500 leading-relaxed">Loxone-sertifisert. Alt-i-ett-styring.</p>
+      </div>
+      <div class="md:col-span-3 bento p-6 hover:bg-indigo-50/40 transition-colors">
+        <div class="w-9 h-9 rounded-lg bg-indigo-50 flex items-center justify-center mb-4">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h4 class="f-display font-bold text-[15px] text-slate-900 mb-1.5">Boligalarm</h4>
+        <p class="text-[12px] text-slate-500 leading-relaxed">Verisure-installatør. 1-årig support.</p>
+      </div>
+    </div>
+
+    <!-- Sertifikat-rad -->
+    <div data-animate class="mt-10 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 pt-8 border-t border-slate-100 text-[11px] text-slate-400 uppercase tracking-widest font-mono">
+      <span>DSB-godkjent</span>
+      <span class="w-1 h-1 rounded-full bg-slate-300"></span>
+      <span>NEK 400-dokumentert</span>
+      <span class="w-1 h-1 rounded-full bg-slate-300"></span>
+      <span>Easee-partner</span>
+      <span class="w-1 h-1 rounded-full bg-slate-300"></span>
+      <span>Zaptec-sertifisert</span>
+      <span class="w-1 h-1 rounded-full bg-slate-300"></span>
+      <span>Loxone-installatør</span>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="border-y border-slate-100">
+  <div class="max-w-6xl mx-auto px-6 py-10">
+    <div data-stagger class="grid grid-cols-2 md:grid-cols-4 gap-10">
+      <div class="text-center"><div class="f-display font-extrabold text-[42px] text-brand leading-none">15+</div><div class="text-[13px] text-slate-400 mt-2">År med erfaring</div></div>
+      <div class="text-center"><div class="f-display font-extrabold text-[42px] text-brand leading-none">2 400</div><div class="text-[13px] text-slate-400 mt-2">Oppdrag fullført</div></div>
+      <div class="text-center"><div class="f-display font-extrabold text-[42px] text-brand leading-none">4.9</div><div class="text-[13px] text-slate-400 mt-2">Google-snitt</div></div>
+      <div class="text-center"><div class="f-display font-extrabold text-[42px] text-brand leading-none">24/7</div><div class="text-[13px] text-slate-400 mt-2">Akuttberedskap</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TJENESTER — BENTO -->
+<section id="tjenester" class="py-28 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div data-animate class="mb-14 flex justify-between items-end">
+      <div>
+        <p class="text-[12px] font-semibold tracking-widest uppercase text-brand mb-3">Tjenester</p>
+        <h2 class="f-display font-extrabold text-4xl tracking-tight text-slate-900">Alt du trenger av elektriker</h2>
+      </div>
+      <a href="tjenester" class="hidden md:inline-flex items-center gap-1 text-[13px] font-semibold text-brand hover:text-brand-light transition-colors">
+        Se alle tjenester →
+      </a>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mb-4">
+      <div data-animate class="bento md:col-span-8 p-9 relative overflow-hidden">
+        <div class="absolute inset-0 rounded-[20px]" style="background:linear-gradient(135deg,#FFF5F5 0%,#fff 60%)"></div>
+        <div class="relative">
+          <div class="inline-flex items-center gap-2 text-[11px] font-semibold text-red-600 bg-red-50 border border-red-100 px-3 py-1.5 rounded-full mb-5 pulse">
+            <span class="w-1.5 h-1.5 rounded-full bg-red-500 inline-block"></span>24/7 — tilgjengelig nå
+          </div>
+          <h3 class="f-display font-bold text-2xl text-slate-900 mb-3">Akutt elektriker</h3>
+          <p class="text-slate-500 text-[14px] leading-relaxed max-w-sm mb-7">Kortslutning, sikringsbrudd eller strøm som ikke virker? Vi er på plass innen 2 timer — kvelder og helger inkludert.</p>
+          <a href="tel:+4712345678" class="inline-flex items-center gap-2 bg-red-600 text-white text-[13px] font-semibold px-5 py-2.5 rounded-lg hover:bg-red-700 transition-colors">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.66A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Ring 123 45 678
+          </a>
+        </div>
+      </div>
+      <div data-animate class="bento md:col-span-4 p-8">
+        <div class="w-10 h-10 bg-brand-soft rounded-xl flex items-center justify-center mb-5">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4M9 8.5L12 10l3-1.5M12 10v3"/></svg>
+        </div>
+        <h3 class="f-display font-bold text-[17px] text-slate-900 mb-2">Sikringsskap</h3>
+        <p class="text-slate-500 text-[13px] leading-relaxed">Oppgradering og kontroll av el-tavle. Inkl. RCD-vern og jordfeilbryter.</p>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+      <div data-animate class="bento p-8">
+        <div class="w-10 h-10 bg-emerald-50 rounded-xl flex items-center justify-center mb-5">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="1.8"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <h3 class="f-display font-bold text-[17px] text-slate-900 mb-2">EV-lader</h3>
+        <p class="text-slate-500 text-[13px] leading-relaxed">Sertifisert partner for Easee og Zaptec. Hjemmelader og borettslag-løsninger.</p>
+      </div>
+      <div data-animate class="bento p-8">
+        <div class="w-10 h-10 bg-brand-soft rounded-xl flex items-center justify-center mb-5">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3 class="f-display font-bold text-[17px] text-slate-900 mb-2">Nybygg & rehab</h3>
+        <p class="text-slate-500 text-[13px] leading-relaxed">Komplett el-anlegg for nye bygg, tilbygg og totalrehabiliteringer.</p>
+      </div>
+      <div data-animate class="bento p-8">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-5" style="background:rgba(139,92,246,.08)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </div>
+        <h3 class="f-display font-bold text-[17px] text-slate-900 mb-2">Smarthjem</h3>
+        <p class="text-slate-500 text-[13px] leading-relaxed">Integrasjon av dimming, automasjon og styresystemer. Google Home og HomeKit.</p>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+      <div data-animate class="bento md:col-span-4 p-8">
+        <div class="w-10 h-10 bg-brand-soft rounded-xl flex items-center justify-center mb-5">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="1.8"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        </div>
+        <h3 class="f-display font-bold text-[17px] text-slate-900 mb-2">NEK 400-dokumentasjon</h3>
+        <p class="text-slate-500 text-[13px] leading-relaxed">Alle oppdrag leveres med fullstendig elektrisk dokumentasjon og garantibevis.</p>
+      </div>
+      <div data-animate class="bento md:col-span-8 p-9 relative overflow-hidden" style="background:linear-gradient(135deg,#EEF2FF 0%,#F8FAFF 60%,#fff 100%)">
+        <div class="pointer-events-none absolute top-0 right-0 w-48 h-48 rounded-full" style="background:radial-gradient(circle,rgba(99,102,241,.12),transparent 70%)"></div>
+        <div class="relative">
+          <span class="inline-flex text-[11px] font-semibold text-brand bg-white border border-slate-200 px-3 py-1.5 rounded-full mb-5">B2B & næring</span>
+          <h3 class="f-display font-bold text-2xl text-slate-900 mb-3">Næringsbygg & serviceavtale</h3>
+          <p class="text-slate-500 text-[14px] leading-relaxed max-w-sm mb-7">Fast elektriker for bedrifter og eiendomsforvaltere. Prioritert respons, dedikert kontakt og komplett dokumentasjon.</p>
+          <a href="kontakt" class="inline-flex items-center gap-2 bg-brand text-white text-[13px] font-semibold px-5 py-2.5 rounded-lg hover:bg-brand-light transition-colors">Ta kontakt →</a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-10">
+      <a href="tjenester" class="inline-flex items-center gap-2 border border-slate-200 text-slate-600 f-display font-semibold px-6 py-3 rounded-xl text-[13px] hover:border-brand hover:text-brand transition-colors">
+        Se alle tjenester med priser →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- OM OSS -->
+<section id="om" class="py-28 px-6" style="background:#F8FAFC">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-20 items-center">
+      <div data-animate class="order-2 md:order-1">
+        <div class="glass-img aspect-[4/3]">
+          <img src="../bilder/elektriker/jimmy-nilsson-masth-UovTD1dG-lA-unsplash.jpg"
+               onerror="this.src='https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=900&q=80'"
+               alt="ElektroGruppen team" class="w-full h-full object-cover" />
+          <div class="absolute bottom-5 left-5 right-5 z-10" style="background:rgba(255,255,255,.82);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.9);border-radius:14px;padding:16px;">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-brand rounded-full flex items-center justify-center text-white f-display font-bold text-sm flex-shrink-0">JH</div>
+              <div class="flex-1">
+                <div class="f-display font-semibold text-[13px] text-slate-900">Jan Henrik Haugen</div>
+                <div class="text-[12px] text-slate-500">Daglig leder & masterlektriker</div>
+              </div>
+              <div class="text-brand f-display font-bold text-[13px]">4.9 ★</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="order-1 md:order-2">
+        <div data-animate>
+          <p class="text-[12px] font-semibold tracking-widest uppercase text-brand mb-3">Om oss</p>
+          <h2 class="f-display font-extrabold text-4xl tracking-tight text-slate-900 mb-6" style="letter-spacing:-.03em">Lokal elektriker<br/>siden 2009</h2>
+          <p class="text-slate-500 text-[16px] leading-relaxed mb-5">ElektroGruppen er et team på 8 sertifiserte elektrikere som kjenner [By]s bygningsmasse ut og inn.</p>
+          <p class="text-slate-500 text-[14px] leading-relaxed mb-8">Vi leverer alltid skriftlig dokumentasjon etter NEK 400. Ingen ekstraregninger, ingen overraskelser — bare ryddig arbeid til avtalt pris.</p>
+          <div class="grid grid-cols-2 gap-3 mb-8">
+            <div class="border border-slate-200 rounded-2xl p-5"><div class="f-display font-extrabold text-[28px] text-brand leading-none">2 400+</div><div class="text-[12px] text-slate-400 mt-1">Oppdrag fullført</div></div>
+            <div class="border border-slate-200 rounded-2xl p-5"><div class="f-display font-extrabold text-[28px] text-brand leading-none">4.9 ★</div><div class="text-[12px] text-slate-400 mt-1">Google-snitt</div></div>
+            <div class="border border-slate-200 rounded-2xl p-5"><div class="f-display font-extrabold text-[28px] text-brand leading-none">15 år</div><div class="text-[12px] text-slate-400 mt-1">I bransjen</div></div>
+            <div class="border border-slate-200 rounded-2xl p-5"><div class="f-display font-extrabold text-[28px] text-brand leading-none">DSB</div><div class="text-[12px] text-slate-400 mt-1">Autorisert</div></div>
+          </div>
+          <a href="om-oss" class="inline-flex items-center gap-1 text-[13px] font-semibold text-brand hover:text-brand-light transition-colors">Møt teamet vårt →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROSESS -->
+<section id="prosess" class="py-28 px-6">
+  <div class="max-w-5xl mx-auto">
+    <div data-animate class="text-center mb-16">
+      <p class="text-[12px] font-semibold tracking-widest uppercase text-brand mb-3">Prosess</p>
+      <h2 class="f-display font-extrabold text-4xl tracking-tight text-slate-900" style="letter-spacing:-.03em">Fra kontakt til ferdig oppdrag</h2>
+    </div>
+    <div data-stagger class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div class="relative step-line text-center"><div class="w-9 h-9 bg-brand text-white f-display font-bold text-[15px] rounded-full flex items-center justify-center mx-auto mb-5">1</div><h3 class="f-display font-semibold text-[15px] text-slate-900 mb-2">Kontakt oss</h3><p class="text-slate-500 text-[13px] leading-relaxed">Ring, e-post eller skjema. Vi svarer innen 2 timer på hverdager.</p></div>
+      <div class="relative step-line text-center"><div class="w-9 h-9 bg-brand text-white f-display font-bold text-[15px] rounded-full flex items-center justify-center mx-auto mb-5">2</div><h3 class="f-display font-semibold text-[15px] text-slate-900 mb-2">Gratis befaring</h3><p class="text-slate-500 text-[13px] leading-relaxed">Skriftlig fastpristilbud innen 24 timer etter befaring.</p></div>
+      <div class="relative step-line text-center"><div class="w-9 h-9 bg-brand text-white f-display font-bold text-[15px] rounded-full flex items-center justify-center mx-auto mb-5">3</div><h3 class="f-display font-semibold text-[15px] text-slate-900 mb-2">Utførelse</h3><p class="text-slate-500 text-[13px] leading-relaxed">Oppdrag utføres ryddig og punktlig. Vi oppdaterer deg underveis.</p></div>
+      <div class="text-center"><div class="w-9 h-9 bg-brand text-white f-display font-bold text-[15px] rounded-full flex items-center justify-center mx-auto mb-5">4</div><h3 class="f-display font-semibold text-[15px] text-slate-900 mb-2">Dokumentasjon</h3><p class="text-slate-500 text-[13px] leading-relaxed">NEK 400-dokumentasjon og garantibevis sendes på e-post.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ANMELDELSER -->
+<section class="py-28 px-6" style="background:#F8FAFC">
+  <div class="max-w-6xl mx-auto">
+    <div data-animate class="text-center mb-14">
+      <p class="text-[12px] font-semibold tracking-widest uppercase text-brand mb-3">Anmeldelser</p>
+      <h2 class="f-display font-extrabold text-4xl tracking-tight text-slate-900" style="letter-spacing:-.03em">Hva kundene sier</h2>
+      <div class="flex items-center justify-center gap-2 mt-5">
+        <span class="text-yellow-400 text-lg">★★★★★</span>
+        <span class="text-[13px] text-slate-400">4.9 / 5 basert på 140 Google-anmeldelser</span>
+      </div>
+    </div>
+    <div data-stagger class="grid md:grid-cols-3 gap-5">
+      <div class="bento p-7"><div class="text-yellow-400 text-[13px] mb-4">★★★★★</div><p class="text-slate-600 text-[13px] leading-relaxed mb-5">"Rask respons på akuttoppdraget. Var hos oss på 90 minutter og fikset alt på en gang. Ryddige og profesjonelle."</p><div class="flex items-center gap-3"><div class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-[11px] font-semibold text-slate-500">KB</div><div><div class="text-[13px] font-medium text-slate-900">Kari Bergstrom</div><div class="text-[11px] text-slate-400">Privatperson, [By]</div></div></div></div>
+      <div class="bento p-7"><div class="text-yellow-400 text-[13px] mb-4">★★★★★</div><p class="text-slate-600 text-[13px] leading-relaxed mb-5">"Installerte EV-lader på to timer. Prisen var akkurat som tilbudet og de ryddet godt etter seg. Varmt anbefalt!"</p><div class="flex items-center gap-3"><div class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-[11px] font-semibold text-slate-500">MH</div><div><div class="text-[13px] font-medium text-slate-900">Magnus Halvorsen</div><div class="text-[11px] text-slate-400">Privatperson, [By]</div></div></div></div>
+      <div class="bento p-7"><div class="text-yellow-400 text-[13px] mb-4">★★★★★</div><p class="text-slate-600 text-[13px] leading-relaxed mb-5">"Har brukt ElektroGruppen på tre prosjekter. Alltid på tid, god dokumentasjon og konkurransedyktige priser."</p><div class="flex items-center gap-3"><div class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-[11px] font-semibold text-slate-500">TN</div><div><div class="text-[13px] font-medium text-slate-900">Tone Nilsen</div><div class="text-[11px] text-slate-400">Styreleder, borettslag</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<section class="py-20 px-6" style="background:#0F172A">
+  <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+    <div data-animate>
+      <h2 class="f-display font-extrabold text-3xl text-white mb-2" style="letter-spacing:-.03em">Klar for et tilbud?</h2>
+      <p class="text-slate-400 text-[15px]">Svar innen 2 timer på hverdager. Akutt? Ring direkte.</p>
+    </div>
+    <div class="flex gap-3 flex-shrink-0">
+      <a href="kontakt" class="bg-brand text-white f-display font-semibold px-6 py-3.5 rounded-xl text-[14px] hover:bg-brand-light transition-colors">Få gratis tilbud</a>
+      <a href="tel:+4712345678" class="bg-red-600 text-white f-display font-semibold px-6 py-3.5 rounded-xl text-[14px] hover:bg-red-700 transition-colors pulse">Ring nå</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#0F172A" class="text-white py-16 px-6 border-t border-white/5">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-4 gap-10 mb-12">
+      <div class="md:col-span-2">
+        <div class="f-display font-bold text-[18px] mb-3">Elektro<span class="text-brand-light">Gruppen</span></div>
+        <p class="text-[13px] leading-relaxed max-w-xs" style="color:rgba(255,255,255,.45)">Sertifisert elektriker i [By] siden 2009. Trygghet, kvalitet og rask respons.</p>
+        <a href="tel:+4712345678" class="inline-flex items-center gap-2 mt-5 bg-red-600 text-white text-[12px] font-semibold px-4 py-2 rounded-lg hover:bg-red-700 transition-colors pulse">Akutt? Ring 123 45 678</a>
+      </div>
+      <div>
+        <div class="text-[11px] font-semibold tracking-widest uppercase mb-4" style="color:rgba(255,255,255,.3)">Sider</div>
+        <ul class="space-y-2 text-[13px]" style="color:rgba(255,255,255,.55)">
+          <li><a href="/"     class="hover:text-white transition-colors">Hjem</a></li>
+          <li><a href="tjenester" class="hover:text-white transition-colors">Tjenester</a></li>
+          <li><a href="om-oss"   class="hover:text-white transition-colors">Om oss</a></li>
+          <li><a href="kontakt"  class="hover:text-white transition-colors">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="text-[11px] font-semibold tracking-widest uppercase mb-4" style="color:rgba(255,255,255,.3)">Kontakt</div>
+        <ul class="space-y-2 text-[13px]" style="color:rgba(255,255,255,.55)">
+          <li>123 45 678</li>
+          <li>kontakt@elektrogruppen.no</li>
+          <li>Eksempelgata 12, [By]</li>
+          <li class="pt-2 text-[12px]" style="color:rgba(255,255,255,.25)">Org.nr: 123 456 789</li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t pt-6 flex flex-col sm:flex-row justify-between items-center gap-3" style="border-color:rgba(255,255,255,.08)">
+      <div class="text-[12px]" style="color:rgba(255,255,255,.25)">© 2025 ElektroGruppen AS</div>
+      <div class="flex gap-5 text-[12px]" style="color:rgba(255,255,255,.25)">
+        <a href="#" class="hover:text-white/60 transition-colors">Personvern</a>
+        <a href="#" class="hover:text-white/60 transition-colors">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 24); });
+  window.addEventListener('load', () => {
+    if (typeof Motion === 'undefined') return;
+    const { inView, animate } = Motion;
+    inView('[data-animate]', ({ target }) => { animate(target, { opacity:[0,1], y:[28,0] }, { duration:.55, easing:[.25,.46,.45,.94] }); });
+    inView('[data-stagger]', ({ target }) => { animate(target.querySelectorAll(':scope > *'), { opacity:[0,1], y:[20,0] }, { duration:.4, delay:animate.stagger(.09) }); });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tjenester — AutoFix</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{fontFamily:{display:['Space Grotesk','sans-serif'],body:['Inter','sans-serif']},colors:{brand:'#DC2626','brand-light':'#EF4444','brand-soft':'#FEF2F2'}}}}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/motion@11.11.9/dist/motion.js"></script>
+  <link href="../../images/favicon.png" rel="shortcut icon" type="image/x-icon">
+  <style>
+    *{-webkit-font-smoothing:antialiased}body{font-family:'Inter',sans-serif;background:#fff;color:#0F172A}.f-display{font-family:'Space Grotesk',sans-serif}
+    #nav{transition:background .25s,box-shadow .25s}#nav.scrolled{background:rgba(255,255,255,.92);backdrop-filter:blur(16px);box-shadow:0 1px 0 #E2E8F0}
+    .svc-block{border:1px solid #E2E8F0;border-radius:20px;overflow:hidden;transition:box-shadow .2s}.svc-block:hover{box-shadow:0 8px 32px rgba(220,38,38,.08)}
+    .include-item{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #F1F5F9;font-size:13px;color:#475569}.include-item:last-child{border-bottom:none}
+    .faq-item{border-bottom:1px solid #E2E8F0;padding:20px 0}
+    .price-tag{background:#FEF2F2;color:#DC2626;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;padding:6px 14px;border-radius:999px;display:inline-block}
+    @keyframes pulse-ring{0%{box-shadow:0 0 0 0 rgba(220,38,38,.45)}70%{box-shadow:0 0 0 10px rgba(220,38,38,0)}100%{box-shadow:0 0 0 0 rgba(220,38,38,0)}}.pulse{animation:pulse-ring 2s infinite}
+  </style>
+</head>
+<body>
+
+<nav id="nav" class="fixed top-0 inset-x-0 z-50">
+  <div class="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
+    <a href="/" class="f-display font-bold text-[15px] tracking-tight text-slate-900">Auto<span class="text-brand">Fix</span></a>
+    <div class="hidden md:flex items-center gap-7 text-[13px] font-medium text-slate-500">
+      <a href="/"     class="hover:text-slate-900 transition-colors">Hjem</a>
+      <a href="tjenester" class="hover:text-slate-900 transition-colors text-slate-900 font-semibold">Tjenester</a>
+      <a href="om-oss"    class="hover:text-slate-900 transition-colors">Om oss</a>
+      <a href="kontakt"   class="hover:text-slate-900 transition-colors">Kontakt</a>
+    </div>
+    <a href="kontakt" class="bg-brand text-white text-[13px] font-semibold px-4 py-2 rounded-lg hover:bg-brand-light transition-colors">Book time</a>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="pt-28 pb-16 px-6" style="background:linear-gradient(to bottom,#FFF5F5,#fff)">
+  <div class="max-w-6xl mx-auto">
+    <div data-animate>
+      <a href="/" class="inline-flex items-center gap-1.5 text-[12px] text-slate-400 hover:text-brand transition-colors mb-6">
+        <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>Tilbake til forsiden
+      </a>
+      <p class="text-[12px] font-semibold tracking-widest uppercase text-brand mb-3">Tjenester</p>
+      <h1 class="f-display font-extrabold text-5xl tracking-tight text-slate-900 mb-5" style="letter-spacing:-.04em">Alt verkstedet<br/>bilen din trenger</h1>
+      <p class="text-[16px] text-slate-500 max-w-xl leading-relaxed">Fast pris på alle oppdrag. Ingen jobb starter uten din godkjenning. Garantert ferdig til lovet tid.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EU-KONTROLL — FEATURED -->
+<section class="py-8 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div data-animate class="svc-block" style="background:linear-gradient(135deg,#FFF5F5,#fff)">
+      <div class="grid md:grid-cols-2 gap-0">
+        <div class="p-10">
+          <div class="inline-flex items-center gap-2 text-[11px] font-semibold text-brand bg-brand-soft border border-red-100 px-3 py-1.5 rounded-full mb-5 pulse">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand inline-block"></span>Lovpålagt hvert 2. år
+          </div>
+          <h2 class="f-display font-extrabold text-3xl text-slate-900 mb-4" style="letter-spacing:-.03em">EU-kontroll</h2>
+          <p class="text-slate-500 text-[15px] leading-relaxed mb-6">Godkjent EU-kontrollstasjon. Vi tar deg raskt inn, gjennomfører grundig kontroll og sender deg ut igjen — som regel samme dag.</p>
+          <div class="mb-8">
+            <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Alle bilmerker og modeller</div>
+            <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Offisielt EU-kontrollsertifikat</div>
+            <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Utbedring av feil på stedet (tillegg)</div>
+            <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Gratis omprøve ved feil</div>
+          </div>
+          <a href="kontakt" class="inline-flex items-center gap-2 bg-brand text-white f-display font-semibold px-6 py-3.5 rounded-xl text-[14px] hover:bg-brand-light transition-colors">Book EU-kontroll</a>
+        </div>
+        <div class="relative hidden md:block">
+          <img src="../bilder/bilverksted/eu-kontroll.jpg"
+               onerror="this.src='https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=700&q=80'"
+               alt="EU-kontroll" class="w-full h-full object-cover" style="min-height:340px;" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES GRID -->
+<section class="py-6 px-6">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-6">
+
+    <div data-animate class="svc-block p-8">
+      <div class="flex items-start justify-between mb-5">
+        <div class="w-12 h-12 bg-brand-soft rounded-xl flex items-center justify-center">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/></svg>
+        </div>
+        <span class="price-tag">fra 1 490 kr</span>
+      </div>
+      <h3 class="f-display font-bold text-xl text-slate-900 mb-3">Årsservice</h3>
+      <p class="text-slate-500 text-[14px] leading-relaxed mb-5">Komplett gjennomgang: olje, oljefilter, luftfilter, tennplugger, bremser, dekk og alle væskenivåer.</p>
+      <div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Olje- og filterbytte inkludert</div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Kontroll av 30+ punkter</div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Rapport med tilstandsvurdering</div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Klar samme dag</div>
+      </div>
+    </div>
+
+    <div data-animate class="svc-block p-8">
+      <div class="flex items-start justify-between mb-5">
+        <div class="w-12 h-12 bg-brand-soft rounded-xl flex items-center justify-center">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>
+        </div>
+        <span class="price-tag">fra 690 kr</span>
+      </div>
+      <h3 class="f-display font-bold text-xl text-slate-900 mb-3">Dekkskift & balansering</h3>
+      <p class="text-slate-500 text-[14px] leading-relaxed mb-5">Sommer- og vinterdekk på alle merker. Balansering alltid inkludert. Dekklagring tilgjengelig hele sesongen.</p>
+      <div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Balansering inkludert</div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Dekkkontroll og tilstandsvurdering</div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Oppbevaring (200 kr/sesong)</div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Alle dimensjoner</div>
+      </div>
+    </div>
+
+    <div data-animate class="svc-block p-8">
+      <div class="flex items-start justify-between mb-5">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(220,38,38,.07)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="1.8"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-6a4 4 0 100-8 4 4 0 000 8z"/></svg>
+        </div>
+        <span class="price-tag">fra 1 890 kr</span>
+      </div>
+      <h3 class="f-display font-bold text-xl text-slate-900 mb-3">Bremsejobb</h3>
+      <p class="text-slate-500 text-[14px] leading-relaxed mb-5">Utskifting av bremseklosser og -skiver med 2 års garanti. Vi kontrollerer hele bremsesystemet — hydraulikk, kalipers og slanger.</p>
+      <div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Bremseklosser og -skiver</div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Kontroll av bremsehydraulikk</div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>2 års garanti på deler og arbeid</div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>OE-kvalitet på alle deler</div>
+      </div>
+    </div>
+
+    <div data-animate class="svc-block p-8">
+      <div class="flex items-start justify-between mb-5">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(220,38,38,.07)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 9l3 3 4-4"/></svg>
+        </div>
+        <span class="price-tag">490 kr</span>
+      </div>
+      <h3 class="f-display font-bold text-xl text-slate-900 mb-3">Diagnostikk & feilkodesøk</h3>
+      <p class="text-slate-500 text-[14px] leading-relaxed mb-5">Motorlys, ABS-lys eller andre varsellys? Vi leser av OBD-koder, analyserer systemet og forklarer deg nøyaktig hva som er feil.</p>
+      <div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Full OBD-avlesning</div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Klartekst-forklaring</div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Tilbud på utbedring inkludert</div>
+        <div class="include-item"><svg width="14" height="14" fill="#16A34A" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>490 kr trekkes fra reparasjonsregning</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KLIMA — WIDE -->
+<section class="py-6 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div data-animate class="svc-block p-10" style="background:linear-gradient(135deg,#FEF2F2,#FFF5F5 60%,#fff 100%)">
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <span class="inline-flex text-[11px] font-semibold text-brand bg-white border border-red-100 px-3 py-1.5 rounded-full mb-5">Sesongservice</span>
+          <h3 class="f-display font-extrabold text-3xl text-slate-900 mb-4" style="letter-spacing:-.03em">Klimaanlegg & AC-service</h3>
+          <p class="text-slate-500 text-[15px] leading-relaxed mb-6">Etterfylling av kjølemiddel, desinfeksjon av fordamper og full kontroll av kompressor og slanger. Klima som faktisk kjøler.</p>
+          <a href="kontakt" class="inline-flex items-center gap-2 bg-brand text-white f-display font-semibold px-6 py-3 rounded-xl text-[14px] hover:bg-brand-light transition-colors">Book AC-service →</a>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-white border border-red-100 rounded-2xl p-5 text-center"><div class="f-display font-extrabold text-[28px] text-brand">890 kr</div><div class="text-[12px] text-slate-400 mt-1">Kjølemiddelservice</div></div>
+          <div class="bg-white border border-red-100 rounded-2xl p-5 text-center"><div class="f-display font-extrabold text-[28px] text-brand">490 kr</div><div class="text-[12px] text-slate-400 mt-1">Desinfeksjon</div></div>
+          <div class="bg-white border border-red-100 rounded-2xl p-5 text-center"><div class="f-display font-extrabold text-[28px] text-brand">R134a</div><div class="text-[12px] text-slate-400 mt-1">& R1234yf</div></div>
+          <div class="bg-white border border-red-100 rounded-2xl p-5 text-center"><div class="f-display font-extrabold text-[28px] text-brand">1 dag</div><div class="text-[12px] text-slate-400 mt-1">Ferdig</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRISLISTE -->
+<section class="py-20 px-6" style="background:#F8FAFC">
+  <div class="max-w-4xl mx-auto">
+    <div data-animate class="text-center mb-12">
+      <p class="text-[12px] font-semibold tracking-widest uppercase text-brand mb-3">Priser</p>
+      <h2 class="f-display font-extrabold text-4xl tracking-tight text-slate-900" style="letter-spacing:-.03em">Faste priser</h2>
+      <p class="text-slate-500 text-[14px] mt-3">Alle priser inkl. mva. Ingenting gjøres uten din godkjenning.</p>
+    </div>
+    <div data-stagger class="bg-white border border-slate-200 rounded-2xl overflow-hidden">
+      <div class="grid grid-cols-3 text-[11px] font-semibold uppercase tracking-widest text-slate-400 px-6 py-3 border-b border-slate-100" style="background:#FAFAFA">
+        <span>Tjeneste</span><span class="text-center">Varighet</span><span class="text-right">Pris</span>
+      </div>
+      <div class="divide-y divide-slate-50">
+        <div class="grid grid-cols-3 px-6 py-4 items-center"><span class="f-display font-semibold text-slate-900 text-[14px]">EU-kontroll</span><span class="text-center text-[13px] text-slate-400">1–2 timer</span><span class="text-right f-display font-bold text-slate-900">fra 690 kr</span></div>
+        <div class="grid grid-cols-3 px-6 py-4 items-center"><span class="f-display font-semibold text-slate-900 text-[14px]">Årsservice (liten)</span><span class="text-center text-[13px] text-slate-400">2–3 timer</span><span class="text-right f-display font-bold text-slate-900">fra 1 490 kr</span></div>
+        <div class="grid grid-cols-3 px-6 py-4 items-center"><span class="f-display font-semibold text-slate-900 text-[14px]">Dekkskift inkl. balansering</span><span class="text-center text-[13px] text-slate-400">30–60 min</span><span class="text-right f-display font-bold text-slate-900">fra 690 kr</span></div>
+        <div class="grid grid-cols-3 px-6 py-4 items-center"><span class="f-display font-semibold text-slate-900 text-[14px]">Bremsejobb (aksel)</span><span class="text-center text-[13px] text-slate-400">1–2 timer</span><span class="text-right f-display font-bold text-slate-900">fra 1 890 kr</span></div>
+        <div class="grid grid-cols-3 px-6 py-4 items-center" style="background:#FFF5F5"><span class="f-display font-bold text-brand text-[14px]">Diagnostikk ⭐</span><span class="text-center text-[13px] text-slate-400">30–45 min</span><span class="text-right f-display font-bold text-brand">490 kr</span></div>
+        <div class="grid grid-cols-3 px-6 py-4 items-center"><span class="f-display font-semibold text-slate-900 text-[14px]">AC-service</span><span class="text-center text-[13px] text-slate-400">1 time</span><span class="text-right f-display font-bold text-slate-900">fra 890 kr</span></div>
+        <div class="grid grid-cols-3 px-6 py-4 items-center"><span class="f-display font-semibold text-slate-900 text-[14px]">Timepris</span><span class="text-center text-[13px] text-slate-400">Per time</span><span class="text-right f-display font-bold text-slate-900">950 kr/t</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="py-20 px-6">
+  <div class="max-w-3xl mx-auto">
+    <div data-animate class="text-center mb-12">
+      <p class="text-[12px] font-semibold tracking-widest uppercase text-brand mb-3">FAQ</p>
+      <h2 class="f-display font-extrabold text-4xl tracking-tight text-slate-900" style="letter-spacing:-.03em">Vanlige spørsmål</h2>
+    </div>
+    <div data-stagger>
+      <div class="faq-item"><h3 class="f-display font-semibold text-[16px] text-slate-900 mb-2">Kan jeg levere bilen uten avtale?</h3><p class="text-slate-500 text-[14px] leading-relaxed">Vi anbefaler å booke på forhånd, men for EU-kontroll og enkle dekkskift tar vi gjerne imot drop-in. Ring oss først for å sjekke kapasitet.</p></div>
+      <div class="faq-item"><h3 class="f-display font-semibold text-[16px] text-slate-900 mb-2">Hva skjer hvis dere finner mer feil?</h3><p class="text-slate-500 text-[14px] leading-relaxed">Vi ringer deg alltid med tilbud før vi gjør noe ekstra. Ingenting skjer uten din godkjenning.</p></div>
+      <div class="faq-item"><h3 class="f-display font-semibold text-[16px] text-slate-900 mb-2">Tilbyr dere lånebil?</h3><p class="text-slate-500 text-[14px] leading-relaxed">Ja, lånebil er tilgjengelig for større jobber. Bestill dette når du booker time.</p></div>
+      <div class="faq-item"><h3 class="f-display font-semibold text-[16px] text-slate-900 mb-2">Jobber dere med alle bilmerker?</h3><p class="text-slate-500 text-[14px] leading-relaxed">Ja — fra Volkswagen og Toyota til Tesla og BMW. Vi har moderne diagnoseutstyr for alle merker og modeller.</p></div>
+      <div class="faq-item"><h3 class="f-display font-semibold text-[16px] text-slate-900 mb-2">Hva er garantien på arbeidet?</h3><p class="text-slate-500 text-[14px] leading-relaxed">2 års garanti på alle reparasjoner og deler. Merkevarens garanti gjelder i tillegg.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-20 px-6" style="background:#0F172A">
+  <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+    <div data-animate>
+      <h2 class="f-display font-extrabold text-3xl text-white mb-2" style="letter-spacing:-.03em">Klar for time?</h2>
+      <p class="text-slate-400 text-[15px]">Vi svarer innen én time på hverdager.</p>
+    </div>
+    <div class="flex gap-3 flex-shrink-0">
+      <a href="kontakt" class="bg-brand text-white f-display font-semibold px-6 py-3.5 rounded-xl text-[14px] hover:bg-brand-light transition-colors">Book time</a>
+      <a href="tel:+4712345678" class="bg-white/10 border border-white/20 text-white f-display font-semibold px-6 py-3.5 rounded-xl text-[14px] hover:bg-white/20 transition-colors">Ring 123 45 678</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#0F172A" class="text-white py-16 px-6 border-t border-white/5">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-4 gap-10 mb-12">
+      <div class="md:col-span-2"><div class="f-display font-bold text-[18px] mb-3">Auto<span style="color:#EF4444">Fix</span></div><p class="text-[13px] leading-relaxed max-w-xs" style="color:rgba(255,255,255,.45)">Autorisert bilverksted i [By] siden 2012.</p></div>
+      <div><div class="text-[11px] font-semibold tracking-widest uppercase mb-4" style="color:rgba(255,255,255,.3)">Sider</div><ul class="space-y-2 text-[13px]" style="color:rgba(255,255,255,.55)"><li><a href="/" class="hover:text-white transition-colors">Hjem</a></li><li><a href="tjenester" class="hover:text-white transition-colors">Tjenester</a></li><li><a href="om-oss" class="hover:text-white transition-colors">Om oss</a></li><li><a href="kontakt" class="hover:text-white transition-colors">Kontakt</a></li></ul></div>
+      <div><div class="text-[11px] font-semibold tracking-widest uppercase mb-4" style="color:rgba(255,255,255,.3)">Kontakt</div><ul class="space-y-2 text-[13px]" style="color:rgba(255,255,255,.55)"><li>123 45 678</li><li>kontakt@autofix.no</li><li>Eksempelgata 12, [By]</li><li class="pt-2 text-[12px]" style="color:rgba(255,255,255,.25)">Org.nr: 123 456 789</li></ul></div>
+    </div>
+    <div class="border-t pt-6 flex flex-col sm:flex-row justify-between items-center gap-3" style="border-color:rgba(255,255,255,.08)">
+      <div class="text-[12px]" style="color:rgba(255,255,255,.25)">© 2025 AutoFix AS</div>
+      <div class="flex gap-5 text-[12px]" style="color:rgba(255,255,255,.25)"><a href="#" class="hover:text-white/60">Personvern</a><a href="#" class="hover:text-white/60">Cookies</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 24); });
+  window.addEventListener('load', () => {
+    if (typeof Motion === 'undefined') return;
+    const { inView, animate } = Motion;
+    inView('[data-animate]', ({ target }) => { animate(target, { opacity:[0,1], y:[28,0] }, { duration:.55, easing:[.25,.46,.45,.94] }); });
+    inView('[data-stagger]', ({ target }) => { animate(target.querySelectorAll(':scope > *'), { opacity:[0,1], y:[20,0] }, { duration:.4, delay:animate.stagger(.09) }); });
+  });
+</script>
+</body>
+</html>
