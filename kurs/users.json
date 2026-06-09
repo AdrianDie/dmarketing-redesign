@@ -1,10 +1,9 @@
 {
-  "users": [],
-  "invites": [
+  "users": [
     {
-      "token": "51b91b76c0b426efd0456452f05b408c3cef0580ec76c719",
       "email": "adrian.dietrichs2@gmail.com",
-      "expires": "2026-06-16T20:09:31.735Z"
+      "hash": "72625d6c3921808a9bd201329e37e13c608e97c038ccd489df4f33f272fbc35f"
     }
-  ]
+  ],
+  "invites": []
 }
