@@ -180,9 +180,8 @@
 
       <p>Skulle du starte en fersk Claude (eller bytte til ChatGPT), gir du den stilen på under ett minutt:</p>
       <ul>
-        <li><strong>Bruker du Claude Code:</strong> filen ligger allerede i prosjektet ditt (i mappen <code>.claude/skills/nettside-stil/</code>), og Claude finner den helt selv. Vil du ha stilen i alle prosjektene dine, kopierer du den mappen til <code>.claude/skills/</code> i hjemmemappen din.</li>
-        <li><strong>Bruker du vanlig Claude på claude.ai:</strong> åpne prosjektet ditt og last opp filen <code>SKILL.md</code> (eller lim inn teksten) som kunnskap. Vi har allerede gjort dette for deg — så til vanlig trenger du ikke røre det.</li>
-        <li><strong>Helt ny Claude eller ChatGPT:</strong> last opp den ene filen <code>SKILL.md</code>, eller lim innholdet øverst i chatten og skriv <em>«Følg denne stilen på alt du lager»</em>. Ferdig.</li>
+        <li><strong>Bruker du Claude-appen (gratis eller Pro):</strong> åpne prosjektet ditt i Claude og last opp filen <code>SKILL.md</code> (eller lim inn teksten) som kunnskap. Vi har allerede gjort dette for deg — til vanlig trenger du ikke røre det.</li>
+        <li><strong>Bruker du ChatGPT:</strong> last opp filen <code>SKILL.md</code>, eller lim innholdet øverst i chatten og skriv <em>«Følg denne stilen på alt du lager»</em>. Ferdig.</li>
       </ul>
       <p>Finner du ikke filen? Be oss sende den på nytt — det tar oss to minutter.</p>
 
@@ -390,8 +389,8 @@ Bruk samme stil som tjenester/standard-service.html.</div>
             <span class="track-btn__sub">Claude-appen på skrivebordet</span>
           </button>
           <button class="track-btn" data-track="kode" onclick="setTrack('kode')">
-            <span class="track-btn__name">🔵 Enklere · Claude Code</span>
-            <span class="track-btn__sub">Betalt — Claude gjør alt automatisk</span>
+            <span class="track-btn__name">🔵 Pro · ~$20/mnd</span>
+            <span class="track-btn__sub">Claude Pro-abonnement — ingen meldingsgrense</span>
           </button>
         </div>
       </div>
@@ -411,14 +410,16 @@ Bruk samme stil som tjenester/standard-service.html.</div>
       </div>
 
       <div class="spor-kode spor-block spor-block--kode not-prose">
-        <div class="spor-label">🔵 Enklere · Claude Code</div>
+        <div class="spor-label">🔵 Pro · ~$20/mnd</div>
         <ol style="margin:0;padding-left:1.25rem;">
-          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Åpne terminalen i VS Code og skriv <code style="background:#DBEAFE;padding:0.1rem 0.35rem;border-radius:4px;font-family:monospace;font-size:0.875em;">claude</code>.</li>
-          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Lim inn prompten din (se malene over).</li>
-          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Claude leser den eksisterende stilen selv, lager den nye filen på riktig sted og foreslår endringene.</li>
-          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Godkjenn med <kbd style="background:#DBEAFE;padding:0.1rem 0.35rem;border-radius:4px;font-size:0.875em;">y</kbd>.</li>
-          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Trykk <kbd style="background:#DBEAFE;padding:0.1rem 0.35rem;border-radius:4px;font-size:0.875em;">F5</kbd> i nettleseren → sjekk at alt ser bra ut.</li>
-          <li style="margin-bottom:0;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Skriv: <em>«Legg til lenke i menyen og push»</em> — Claude oppdaterer menyen, committer og pusher automatisk.</li>
+          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Åpne malsiden i VS Code → <kbd style="background:#DBEAFE;padding:0.1rem 0.35rem;border-radius:4px;font-size:0.875em;">Ctrl+A</kbd> → <kbd style="background:#DBEAFE;padding:0.1rem 0.35rem;border-radius:4px;font-size:0.875em;">Ctrl+C</kbd> (kopier hele filen).</li>
+          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Åpne <strong>Claude-appen</strong> → ny samtale → lim inn HTML-koden fra malsiden.</li>
+          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Lim inn prompten din (se malene over) og send.</li>
+          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Claude svarer med koden til den nye siden. Kopier svaret.</li>
+          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">VS Code: lag en ny fil med riktig navn (f.eks. <code style="background:#DBEAFE;padding:0.1rem 0.35rem;border-radius:4px;font-family:monospace;font-size:0.875em;">tjeneste-navn.html</code>), lim inn og trykk <kbd style="background:#DBEAFE;padding:0.1rem 0.35rem;border-radius:4px;font-size:0.875em;">Ctrl+S</kbd>.</li>
+          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Trykk <kbd style="background:#DBEAFE;padding:0.1rem 0.35rem;border-radius:4px;font-size:0.875em;">F5</kbd> i nettleseren og åpne filen → sjekk at alt ser bra ut.</li>
+          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">For å lenke fra menyen: åpne menyfilen → <kbd style="background:#DBEAFE;padding:0.1rem 0.35rem;border-radius:4px;font-size:0.875em;">Ctrl+A</kbd> → <kbd style="background:#DBEAFE;padding:0.1rem 0.35rem;border-radius:4px;font-size:0.875em;">Ctrl+C</kbd> → ny samtale i Claude-appen → lim inn + beskriv lenken du vil ha lagt til → kopier svar tilbake til VS Code.</li>
+          <li style="margin-bottom:0;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">VS Code Source Control-panel → skriv melding (f.eks. <em>«Ny tjenesteside»</em>) → <strong>Commit &amp; Push</strong>.</li>
         </ol>
       </div>
 
