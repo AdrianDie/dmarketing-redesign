@@ -1,5 +1,10 @@
 {
   "users": [],
   "invites": [
+    {
+      "token": "51b91b76c0b426efd0456452f05b408c3cef0580ec76c719",
+      "email": "adrian.dietrichs2@gmail.com",
+      "expires": "2026-06-16T20:09:31.735Z"
+    }
   ]
 }
