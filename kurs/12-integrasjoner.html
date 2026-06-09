@@ -6,7 +6,7 @@
   <title>12: Avanserte integrasjoner | AI-nettsider Kurs</title>
   <meta name="robots" content="noindex, nofollow" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config = { theme: { extend: { fontFamily: { display: ['Archivo', 'sans-serif'], body: ['Inter', 'sans-serif'] }, colors: { ink: '#09090B', brand: '#2563EB', navy: '#0B1F4A' } } } }</script>
+  <script>tailwind.config = { theme: { extend: { fontFamily: { display: ['Archivo', 'sans-serif'], body: ['Inter', 'sans-serif'] }, colors: { ink: '#09090B', brand: '#0339f8', navy: '#0B1F4A' } } } }</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -26,14 +26,14 @@
     .prose-custom ol li { list-style-type: decimal; }
     .prose-custom strong { color: #09090B; }
     .prose-custom code { background: #F4F4F5; padding: 0.15rem 0.4rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
-    .callout { background: #EFF6FF; border-left: 3px solid #2563EB; padding: 1.25rem 1.5rem; border-radius: 0.5rem; margin: 1.5rem 0; }
+    .callout { background: #EFF6FF; border-left: 3px solid #0339f8; padding: 1.25rem 1.5rem; border-radius: 0.5rem; margin: 1.5rem 0; }
     .callout p { margin-bottom: 0; color: #1E3A8A; }
     .prompt-example { background: #F4F4F5; border-radius: 0.5rem; padding: 1rem 1.25rem; margin: 0.75rem 0; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: #18181B; white-space: pre-wrap; }
     .integration { background: white; border: 1px solid #E4E4E7; border-radius: 1rem; padding: 1.5rem; margin: 1.25rem 0; }
     .integration h3 { margin-top: 0 !important; }
     .integration .meta { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
     .integration .pill { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.25rem 0.625rem; border-radius: 1rem; font-weight: 600; }
-    .pill-tier { background: #DBEAFE; color: #1E40AF; }
+    .pill-tier { background: #DBEAFE; color: #0228c0; }
     .pill-cost { background: #ECFDF5; color: #065F46; }
     .pill-time { background: #FEF3C7; color: #78350F; }
   </style>
@@ -92,8 +92,8 @@
 
           <!-- Google Maps (top) -->
           <circle cx="240" cy="52" r="36" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1.5"/>
-          <text x="240" y="47" text-anchor="middle" font-size="9.5" font-weight="700" fill="#1E40AF">Google</text>
-          <text x="240" y="60" text-anchor="middle" font-size="9.5" font-weight="700" fill="#1E40AF">Maps</text>
+          <text x="240" y="47" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0228c0">Google</text>
+          <text x="240" y="60" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0228c0">Maps</text>
           <text x="240" y="74" text-anchor="middle" font-size="8.5" fill="#71717A">Gratis</text>
 
           <!-- Calendly (top-right) -->
@@ -122,8 +122,8 @@
 
           <!-- Google Analytics (top-left) -->
           <circle cx="102" cy="100" r="36" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1.5"/>
-          <text x="102" y="91" text-anchor="middle" font-size="9.5" font-weight="700" fill="#1E40AF">Google</text>
-          <text x="102" y="104" text-anchor="middle" font-size="9.5" font-weight="700" fill="#1E40AF">Analytics</text>
+          <text x="102" y="91" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0228c0">Google</text>
+          <text x="102" y="104" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0228c0">Analytics</text>
           <text x="102" y="117" text-anchor="middle" font-size="8.5" fill="#71717A">Statistikk · Gratis</text>
 
         </svg>
@@ -158,17 +158,17 @@
           <text x="30" y="74" font-size="9" fill="#71717A">Velg en tid som passer deg:</text>
 
           <!-- Embed / iframe box (highlighted) -->
-          <rect x="20" y="82" width="200" height="98" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="2" stroke-dasharray="5,3"/>
-          <text x="120" y="103" text-anchor="middle" font-size="9.5" font-weight="700" fill="#1E40AF">iframe (innebygd vindu)</text>
+          <rect x="20" y="82" width="200" height="98" rx="8" fill="#EFF6FF" stroke="#0339f8" stroke-width="2" stroke-dasharray="5,3"/>
+          <text x="120" y="103" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0228c0">iframe (innebygd vindu)</text>
           <text x="120" y="117" text-anchor="middle" font-size="9" fill="#3B82F6">Calendly vises her,</text>
           <text x="120" y="130" text-anchor="middle" font-size="9" fill="#3B82F6">som om det er en del</text>
           <text x="120" y="143" text-anchor="middle" font-size="9" fill="#3B82F6">av siden din</text>
           <!-- Mini calendar mockup -->
           <rect x="45" y="150" width="150" height="24" rx="4" fill="white" stroke="#BFDBFE" stroke-width="1"/>
-          <text x="120" y="166" text-anchor="middle" font-size="9" fill="#1E40AF">Man Tir Ons Tor Fre</text>
+          <text x="120" y="166" text-anchor="middle" font-size="9" fill="#0228c0">Man Tir Ons Tor Fre</text>
 
           <!-- Label on box -->
-          <text x="120" y="194" text-anchor="middle" font-size="9" font-weight="600" fill="#1E40AF">Din nettside (ditt-firma.no)</text>
+          <text x="120" y="194" text-anchor="middle" font-size="9" font-weight="600" fill="#0228c0">Din nettside (ditt-firma.no)</text>
 
           <!-- Arrow in middle -->
           <line x1="242" y1="130" x2="296" y2="130" stroke="#CBD5E1" stroke-width="2"/>

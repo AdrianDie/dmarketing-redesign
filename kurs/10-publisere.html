@@ -6,7 +6,7 @@
   <title>10: Publisere endringer | AI-nettsider Kurs</title>
   <meta name="robots" content="noindex, nofollow" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config = { theme: { extend: { fontFamily: { display: ['Archivo', 'sans-serif'], body: ['Inter', 'sans-serif'] }, colors: { ink: '#09090B', brand: '#2563EB', navy: '#0B1F4A' } } } }</script>
+  <script>tailwind.config = { theme: { extend: { fontFamily: { display: ['Archivo', 'sans-serif'], body: ['Inter', 'sans-serif'] }, colors: { ink: '#09090B', brand: '#0339f8', navy: '#0B1F4A' } } } }</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -27,7 +27,7 @@
     .prose-custom ol li { list-style-type: decimal; }
     .prose-custom strong { color: #09090B; }
     .prose-custom code { background: #F4F4F5; padding: 0.15rem 0.4rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
-    .callout { background: #EFF6FF; border-left: 3px solid #2563EB; padding: 1.25rem 1.5rem; border-radius: 0.5rem; margin: 1.5rem 0; }
+    .callout { background: #EFF6FF; border-left: 3px solid #0339f8; padding: 1.25rem 1.5rem; border-radius: 0.5rem; margin: 1.5rem 0; }
     .callout p { margin-bottom: 0; color: #1E3A8A; }
     .callout-warn { background: #FEF3C7; border-left-color: #D97706; }
     .callout-warn p { color: #78350F; }
@@ -37,7 +37,7 @@
     .svg-wrap svg { width: 100%; height: auto; display: block; }
     .flow-step { display: flex; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid #F4F4F5; }
     .flow-step:last-child { border-bottom: none; }
-    .flow-num { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 1.25rem; color: #2563EB; line-height: 1; flex-shrink: 0; width: 2rem; }
+    .flow-num { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 1.25rem; color: #0339f8; line-height: 1; flex-shrink: 0; width: 2rem; }
     .flow-content h3 { margin-top: 0 !important; margin-bottom: 0.25rem !important; font-size: 1rem !important; }
     .flow-content p { font-size: 0.95rem !important; margin-bottom: 0 !important; }
   </style>
@@ -113,11 +113,11 @@
         <svg viewBox="0 0 600 230" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Tidslinje: chat, lagre, bygge, live — hele veien tar omtrent 90 sekunder.">
           <!-- Timeline base line -->
           <line x1="70" y1="115" x2="530" y2="115" stroke="#E4E4E7" stroke-width="3" />
-          <line x1="70" y1="115" x2="530" y2="115" stroke="#2563EB" stroke-width="3" stroke-dasharray="2 0" opacity="0.25" />
+          <line x1="70" y1="115" x2="530" y2="115" stroke="#0339f8" stroke-width="3" stroke-dasharray="2 0" opacity="0.25" />
 
           <!-- Step 1: Chat -->
           <g>
-            <circle cx="70" cy="115" r="13" fill="#2563EB" />
+            <circle cx="70" cy="115" r="13" fill="#0339f8" />
             <path d="M64 110 h11 a2.5 2.5 0 0 1 2.5 2.5 v5 a2.5 2.5 0 0 1 -2.5 2.5 h-7 l-4 3 v-3 a2.5 2.5 0 0 1 -2.5 -2.5 v-5 a2.5 2.5 0 0 1 2.5 -2.5 z" fill="#FFFFFF" />
             <text x="70" y="152" text-anchor="middle" font-size="13" font-weight="700" fill="#09090B">Chat</text>
             <text x="70" y="170" text-anchor="middle" font-size="10.5" fill="#71717A">du sier det</text>
@@ -125,21 +125,21 @@
 
           <!-- Step 2: Lagre -->
           <g>
-            <circle cx="223" cy="115" r="13" fill="#2563EB" />
+            <circle cx="223" cy="115" r="13" fill="#0339f8" />
             <rect x="216" y="108" width="14" height="14" rx="2.5" fill="#FFFFFF" />
-            <rect x="219" y="108" width="8" height="5" fill="#2563EB" />
-            <rect x="219.5" y="116" width="7" height="4.5" rx="1" fill="#2563EB" />
+            <rect x="219" y="108" width="8" height="5" fill="#0339f8" />
+            <rect x="219.5" y="116" width="7" height="4.5" rx="1" fill="#0339f8" />
             <text x="223" y="152" text-anchor="middle" font-size="13" font-weight="700" fill="#09090B">Lagre</text>
             <text x="223" y="170" text-anchor="middle" font-size="10.5" fill="#71717A">Claude lagrer</text>
           </g>
 
           <!-- Step 3: Bygge -->
           <g>
-            <circle cx="377" cy="115" r="13" fill="#2563EB" />
+            <circle cx="377" cy="115" r="13" fill="#0339f8" />
             <g fill="#FFFFFF">
               <circle cx="377" cy="115" r="6.5" />
             </g>
-            <circle cx="377" cy="115" r="2.6" fill="#2563EB" />
+            <circle cx="377" cy="115" r="2.6" fill="#0339f8" />
             <g stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round">
               <line x1="377" y1="105" x2="377" y2="108.5" />
               <line x1="377" y1="121.5" x2="377" y2="125" />
@@ -244,11 +244,11 @@
 
           <!-- Row 1: Building (current) -->
           <rect x="22" y="78" width="496" height="34" rx="4" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1"/>
-          <text x="36" y="91" font-size="10.5" font-weight="700" fill="#1E40AF">Oppdater åpningstider</text>
+          <text x="36" y="91" font-size="10.5" font-weight="700" fill="#0228c0">Oppdater åpningstider</text>
           <text x="36" y="104" font-size="9.5" fill="#3B82F6">main: a3f4c12</text>
           <text x="230" y="98" font-size="10" fill="#3B82F6">I dag 14:32</text>
           <rect x="350" y="85" width="70" height="18" rx="9" fill="#DBEAFE"/>
-          <text x="385" y="98" text-anchor="middle" font-size="9" font-weight="700" fill="#1E40AF">⟳ Building…</text>
+          <text x="385" y="98" text-anchor="middle" font-size="9" font-weight="700" fill="#0228c0">⟳ Building…</text>
           <text x="450" y="98" font-size="10" fill="#71717A">—</text>
 
           <!-- Row 2: Success -->
@@ -284,25 +284,25 @@
         <p class="text-center text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-5">Versjonshistorikk — du kan alltid gå tilbake</p>
         <svg viewBox="0 0 560 195" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Tidslinje med fire lagre-punkter: første versjon, byttet åpningstider, ny hero-seksjon, oppdaterte priser — med tilbake-pil som viser at du kan gå til hvilken som helst versjon">
           <defs>
-            <marker id="rev-arr" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0, 7 3.5, 0 7" fill="#2563EB"/></marker>
+            <marker id="rev-arr" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0, 7 3.5, 0 7" fill="#0339f8"/></marker>
             <marker id="rev-arr-back" markerWidth="7" markerHeight="7" refX="1" refY="3.5" orient="auto"><polygon points="7 0, 0 3.5, 7 7" fill="#7C3AED"/></marker>
           </defs>
 
           <!-- Main timeline line -->
           <line x1="40" y1="70" x2="520" y2="70" stroke="#E4E4E7" stroke-width="3"/>
           <!-- Progress fill (all committed) -->
-          <line x1="40" y1="70" x2="480" y2="70" stroke="#2563EB" stroke-width="3" opacity="0.3"/>
+          <line x1="40" y1="70" x2="480" y2="70" stroke="#0339f8" stroke-width="3" opacity="0.3"/>
 
           <!-- Commit 1 -->
-          <circle cx="60" cy="70" r="12" fill="#2563EB" stroke="white" stroke-width="2"/>
+          <circle cx="60" cy="70" r="12" fill="#0339f8" stroke="white" stroke-width="2"/>
           <text x="60" y="74" text-anchor="middle" font-size="9" font-weight="800" fill="white">1</text>
           <text x="60" y="100" text-anchor="middle" font-size="9.5" font-weight="700" fill="#09090B">Første versjon</text>
           <text x="60" y="113" text-anchor="middle" font-size="8.5" fill="#71717A">15. jan</text>
           <rect x="22" y="118" width="76" height="14" rx="3" fill="#EFF6FF"/>
-          <text x="60" y="129" text-anchor="middle" font-size="8" fill="#1E40AF">v1 – live!</text>
+          <text x="60" y="129" text-anchor="middle" font-size="8" fill="#0228c0">v1 – live!</text>
 
           <!-- Commit 2 -->
-          <circle cx="190" cy="70" r="12" fill="#2563EB" stroke="white" stroke-width="2"/>
+          <circle cx="190" cy="70" r="12" fill="#0339f8" stroke="white" stroke-width="2"/>
           <text x="190" y="74" text-anchor="middle" font-size="9" font-weight="800" fill="white">2</text>
           <text x="190" y="100" text-anchor="middle" font-size="9.5" font-weight="700" fill="#09090B">Byttet åpningstider</text>
           <text x="190" y="113" text-anchor="middle" font-size="8.5" fill="#71717A">20. jan</text>
@@ -310,7 +310,7 @@
           <text x="190" y="129" text-anchor="middle" font-size="8" fill="#14532D">kontakt.html</text>
 
           <!-- Commit 3 -->
-          <circle cx="320" cy="70" r="12" fill="#2563EB" stroke="white" stroke-width="2"/>
+          <circle cx="320" cy="70" r="12" fill="#0339f8" stroke="white" stroke-width="2"/>
           <text x="320" y="74" text-anchor="middle" font-size="9" font-weight="800" fill="white">3</text>
           <text x="320" y="100" text-anchor="middle" font-size="9.5" font-weight="700" fill="#09090B">Ny hero-seksjon</text>
           <text x="320" y="113" text-anchor="middle" font-size="8.5" fill="#71717A">22. jan</text>
@@ -388,19 +388,19 @@
 
           <!-- Fix box (right) -->
           <rect x="386" y="20" width="164" height="130" rx="10" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="2"/>
-          <rect x="386" y="20" width="164" height="30" rx="10" fill="#2563EB"/>
-          <rect x="386" y="38" width="164" height="12" fill="#2563EB"/>
+          <rect x="386" y="20" width="164" height="30" rx="10" fill="#0339f8"/>
+          <rect x="386" y="38" width="164" height="12" fill="#0339f8"/>
           <text x="468" y="39" text-anchor="middle" font-size="11" font-weight="800" fill="white">Hard reload</text>
           <!-- Keyboard combo -->
-          <rect x="406" y="56" width="124" height="26" rx="6" fill="#1E40AF"/>
+          <rect x="406" y="56" width="124" height="26" rx="6" fill="#0228c0"/>
           <text x="468" y="73" text-anchor="middle" font-size="11" font-weight="800" fill="white">Ctrl + Shift + R</text>
-          <text x="468" y="98" text-anchor="middle" font-size="10" fill="#1E40AF">(Mac: Cmd+Shift+R)</text>
+          <text x="468" y="98" text-anchor="middle" font-size="10" fill="#0228c0">(Mac: Cmd+Shift+R)</text>
           <text x="468" y="114" text-anchor="middle" font-size="9.5" fill="#3B82F6">Sletter gammel cache og</text>
           <text x="468" y="127" text-anchor="middle" font-size="9.5" fill="#3B82F6">henter den aller ferskeste.</text>
 
           <!-- Fix arrow -->
-          <line x1="372" y1="85" x2="384" y2="85" stroke="#2563EB" stroke-width="2"/>
-          <polygon points="379,80 389,85 379,90" fill="#2563EB"/>
+          <line x1="372" y1="85" x2="384" y2="85" stroke="#0339f8" stroke-width="2"/>
+          <polygon points="379,80 389,85 379,90" fill="#0339f8"/>
 
           <!-- Bottom note -->
           <text x="280" y="172" text-anchor="middle" font-size="10.5" fill="#71717A">Alle andre ser allerede ny versjon — det er bare du som ser gammel pga. cache.</text>
