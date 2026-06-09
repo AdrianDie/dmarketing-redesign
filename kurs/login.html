@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Logg inn — AI-nettsider Kurs</title>
   <meta name="robots" content="noindex, nofollow" />
-
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -25,7 +24,6 @@
   </style>
 </head>
 <body class="min-h-screen flex flex-col items-center justify-center px-6 py-12">
-
   <div class="w-full max-w-sm">
 
     <div class="mb-8 text-center">
@@ -45,100 +43,94 @@
       Logg inn for å fortsette
     </h1>
     <p class="text-zinc-500 text-sm mb-8 leading-relaxed text-center">
-      Kurset er kun tilgjengelig for kunder av Dietrichs Marketing.<br>
-      Skriv inn passordet du fikk tilsendt fra oss.
+      Kurset er kun tilgjengelig for kunder av Dietrichs Marketing.
     </p>
 
     <form id="loginForm" class="space-y-4">
       <div>
-        <label for="passord" class="block text-sm font-medium text-zinc-700 mb-1.5">Passord</label>
-        <input
-          type="password"
-          id="passord"
-          autocomplete="current-password"
-          placeholder="Skriv inn passordet"
+        <label for="epost" class="block text-sm font-medium text-zinc-700 mb-1.5">E-post</label>
+        <input type="email" id="epost" autocomplete="email" placeholder="din@epost.no"
           class="w-full border border-zinc-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          autofocus
-        />
+          autofocus />
+      </div>
+      <div>
+        <label for="passord" class="block text-sm font-medium text-zinc-700 mb-1.5">Passord</label>
+        <input type="password" id="passord" autocomplete="current-password" placeholder="Ditt passord"
+          class="w-full border border-zinc-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
       </div>
 
       <div id="errorMsg" style="display:none;" class="bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg px-4 py-3">
-        Feil passord. Prøv igjen, eller kontakt Dietrichs Marketing.
+        Feil e-post eller passord. Prøv igjen.
       </div>
 
-      <button
-        type="submit"
-        id="submitBtn"
+      <button type="submit" id="submitBtn"
         class="w-full bg-blue-600 text-white font-semibold py-3.5 px-6 rounded-xl hover:bg-blue-500 active:bg-blue-700 transition-colors text-sm">
         Logg inn
       </button>
     </form>
 
     <p class="mt-6 text-xs text-zinc-400 leading-relaxed text-center">
-      Har du ikke fått passord?<br>
+      Har du ikke fått tilgang?<br>
       Kontakt: <a href="mailto:adrian@dmarketing.no" class="underline hover:text-zinc-600">adrian@dmarketing.no</a>
     </p>
-
   </div>
 
   <script>
-    // ============================================================
-    //  PASSORD-INNSTILLINGER
-    //
-    //  Nåværende passord: Kurs2026
-    //
-    //  Slik bytter du passord:
-    //  1. Velg nytt passord
-    //  2. Kjør: node -e "require('crypto').createHash('sha256').update('DITTPASSORD').digest('hex')"
-    //  3. Erstatt PASS_HASH nedenfor med den nye hashen
-    //  4. Oppdater også VALID_TOKEN til noe nytt (valgfritt — tvinger alle til å logge inn på nytt)
-    // ============================================================
-    var PASS_HASH   = 'c94f60e5f4ac363a7d2b86dde22a8aa0e2d28a7566a45df518369e04284e5c0b';
-    var TOKEN_KEY   = 'kurs_auth_v2';
-    var VALID_TOKEN = 'kurs_authed_2026';
+    var USERS_JSON_URL = 'https://raw.githubusercontent.com/AdrianDie/dmarketing-redesign/main/kurs/users.json';
+    var TOKEN_KEY      = 'kurs_auth_v3';
 
-    // Allerede innlogget? Send videre
-    if (localStorage.getItem(TOKEN_KEY) === VALID_TOKEN) {
-      window.location.replace('/kurs/');
+    // Allerede innlogget?
+    try {
+      var stored = JSON.parse(localStorage.getItem(TOKEN_KEY) || 'null');
+      if (stored && stored.token === 'kurs_authed_2026' && stored.email) {
+        window.location.replace('/kurs/');
+      }
+    } catch(e) {}
+
+    async function pbkdf2Hash(password, email) {
+      var enc = new TextEncoder();
+      var keyMaterial = await crypto.subtle.importKey(
+        'raw', enc.encode(password), 'PBKDF2', false, ['deriveBits']
+      );
+      var bits = await crypto.subtle.deriveBits(
+        { name: 'PBKDF2', salt: enc.encode(email.toLowerCase()), iterations: 100000, hash: 'SHA-256' },
+        keyMaterial, 256
+      );
+      return Array.from(new Uint8Array(bits)).map(b => b.toString(16).padStart(2,'0')).join('');
     }
 
-    // SHA-256 via Web Crypto (innebygd i alle moderne nettlesere)
-    async function sha256(str) {
-      var buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
-      return Array.from(new Uint8Array(buf))
-        .map(function(b) { return b.toString(16).padStart(2, '0'); })
-        .join('');
-    }
-
-    document.getElementById('loginForm').addEventListener('submit', async function (e) {
+    document.getElementById('loginForm').addEventListener('submit', async function(e) {
       e.preventDefault();
       var btn    = document.getElementById('submitBtn');
       var errMsg = document.getElementById('errorMsg');
-      var input  = document.getElementById('passord').value;
+      var email  = document.getElementById('epost').value.toLowerCase().trim();
+      var pw     = document.getElementById('passord').value;
 
-      if (!input) return;
+      if (!email || !pw) return;
 
-      btn.disabled    = true;
+      btn.disabled = true;
       btn.textContent = 'Sjekker…';
       errMsg.style.display = 'none';
 
       try {
-        var hash = await sha256(input);
-        if (hash === PASS_HASH) {
-          localStorage.setItem(TOKEN_KEY, VALID_TOKEN);
+        var res  = await fetch(USERS_JSON_URL + '?t=' + Date.now());
+        var db   = await res.json();
+        var hash = await pbkdf2Hash(pw, email);
+        var user = db.users.find(function(u) { return u.email === email && u.hash === hash; });
+
+        if (user) {
+          localStorage.setItem(TOKEN_KEY, JSON.stringify({ email: email, token: 'kurs_authed_2026' }));
           window.location.replace('/kurs/');
         } else {
           errMsg.style.display = 'block';
-          btn.disabled    = false;
+          btn.disabled = false;
           btn.textContent = 'Logg inn';
           document.getElementById('passord').value = '';
-          document.getElementById('passord').focus();
         }
-      } catch (err) {
-        // Fallback for veldig gamle nettlesere uten Web Crypto
-        errMsg.textContent = 'Nettleseren din er for gammel. Bruk Chrome, Firefox eller Safari.';
+      } catch(err) {
+        errMsg.textContent = 'Noe gikk galt. Sjekk internettforbindelsen og prøv igjen.';
         errMsg.style.display = 'block';
-        btn.disabled    = false;
+        btn.disabled = false;
         btn.textContent = 'Logg inn';
       }
     });
