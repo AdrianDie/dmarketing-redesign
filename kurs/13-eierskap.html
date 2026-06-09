@@ -89,7 +89,7 @@
           <line x1="25" y1="179" x2="255" y2="179" stroke="#BBF7D0" stroke-width="1"/>
 
           <text x="30" y="195" font-size="12" font-weight="700" fill="#14532D">Hosting + Claude-tilgang</text>
-          <text x="30" y="209" font-size="10.5" fill="#15803D">Cloudflare-konto + din AI-konto</text>
+          <text x="30" y="209" font-size="10.5" fill="#15803D">GitHub-konto + Claude-konto</text>
 
           <!-- Right column: Vi (Dietrichs) -->
           <rect x="315" y="10" width="255" height="215" rx="12" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="2"/>
@@ -144,7 +144,7 @@
 
       <div class="ownership-card not-prose">
         <p class="label">Aktivum 4</p>
-        <h3 class="font-display font-bold text-xl">Stedet siden «bor» (hosting hos Cloudflare)</h3>
+        <h3 class="font-display font-bold text-xl">Stedet siden «bor» (hosting hos GitHub Pages)</h3>
         <p class="text-zinc-600 mt-2">Hosting er stedet på internett der nettsiden din «bor» og vises fram fra. Den kontoen står på din egen e-post. Den er gratis så lenge du ikke har over 100 000 besøk i måneden. Hvis du vil, kan du flytte hostingen til andre leverandører — for eksempel Vercel, Netlify eller Amazon (AWS) — siden filene dine fungerer hvor som helst.</p>
       </div>
 
@@ -159,7 +159,7 @@
       <ul>
         <li><strong>Som medhjelper (collaborator)</strong> på din GitHub-konto, så vi kan se og hjelpe til med nettsiden</li>
         <li><strong>Som medhjelper (collaborator)</strong> i din Claude, så vi kan hjelpe deg hvis du sitter fast</li>
-        <li><strong>Vi har IKKE</strong> passordet til domenet ditt, passordet til Cloudflare, eller noen kontoer som er knyttet til deg personlig</li>
+        <li><strong>Vi har IKKE</strong> passordet til domenet ditt eller noen kontoer som er knyttet til deg personlig</li>
       </ul>
       <p>Når du vil avslutte samarbeidet:</p>
       <ol>
@@ -176,7 +176,6 @@
       <ul>
         <li>Domeneleverandøren (for eksempel Domeneshop eller Namecheap)</li>
         <li>GitHub</li>
-        <li>Cloudflare</li>
         <li>Claude</li>
       </ul>
       <p>Klarer du ikke å logge inn på en av dem? Da ber du oss om å tilbakestille kontoen, så du får full tilgang med din egen e-post.</p>
@@ -197,7 +196,7 @@
 
       <figure class="not-prose my-8 rounded-2xl border border-zinc-200 bg-white p-5 md:p-7">
         <p class="text-center text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-5">Fire lag med automatisk sikkerhetskopi — alle gratis</p>
-        <svg viewBox="0 0 540 230" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Fire lag: GitHub (evig historikk), Cloudflare (rollback), din PC (nedlasting), Wayback Machine (automatiske snapshots)">
+        <svg viewBox="0 0 540 230" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Fire lag: GitHub (evig historikk), GitHub Pages (rollback via git), din PC (nedlasting), Wayback Machine (automatiske snapshots)">
 
           <!-- Layer 1: GitHub -->
           <rect x="10" y="10" width="520" height="42" rx="8" fill="#0F172A"/>
@@ -207,11 +206,11 @@
           <rect x="430" y="20" width="90" height="22" rx="11" fill="#22C55E"/>
           <text x="475" y="35" text-anchor="middle" font-size="9.5" font-weight="700" fill="white">Automatisk ✓</text>
 
-          <!-- Layer 2: Cloudflare -->
+          <!-- Layer 2: GitHub Pages -->
           <rect x="10" y="58" width="520" height="42" rx="8" fill="#1E3A8A"/>
           <text x="50" y="76" font-size="11" font-weight="800" fill="white">Lag 2</text>
-          <text x="50" y="90" font-size="9.5" fill="rgba(255,255,255,0.6)">Cloudflare</text>
-          <text x="300" y="83" text-anchor="middle" font-size="11" font-weight="700" fill="white">Rollback til hvilken som helst tidligere versjon</text>
+          <text x="50" y="90" font-size="9.5" fill="rgba(255,255,255,0.6)">GitHub Pages</text>
+          <text x="300" y="83" text-anchor="middle" font-size="11" font-weight="700" fill="white">Rollback til hvilken som helst tidligere versjon via git</text>
           <rect x="430" y="68" width="90" height="22" rx="11" fill="#22C55E"/>
           <text x="475" y="83" text-anchor="middle" font-size="9.5" font-weight="700" fill="white">Automatisk ✓</text>
 
@@ -300,7 +299,7 @@
       <p>Nettsiden din blir automatisk sikkerhetskopiert på fire steder, helt gratis:</p>
       <ol>
         <li><strong>GitHub:</strong> tar vare på hver eneste versjon, for alltid</li>
-        <li><strong>Cloudflare:</strong> kan når som helst rulle tilbake til en tidligere versjon av siden</li>
+        <li><strong>GitHub Pages:</strong> kan når som helst rulle tilbake til en tidligere versjon av siden — be Claude om å reverere til en bestemt dato</li>
         <li><strong>Din egen PC,</strong> hvis du laster ned en kopi av alle filene («klone» er bare det tekniske ordet for å lage en slik kopi)</li>
         <li><strong>Wayback Machine</strong> (nettstedet archive.org) tar automatisk «øyeblikksbilder» av offentlige nettsider gjennom årene — enda en sikkerhetskopi du får helt gratis</li>
       </ol>
@@ -308,7 +307,7 @@
       <h2>Nyttige prompts for eierskap og sikkerhet</h2>
       <p>Nyttige ting du kan be Claude om i forbindelse med eierskap og kontroll:</p>
 
-      <div class="prompt-example">List opp alle kontoene og tilgangene som er satt opp for denne nettsiden — GitHub, Cloudflare, domeneleverandør og alle integrasjoner. Vis dem som en enkel tabell med tjeneste, hva den brukes til og hvem som eier kontoen.</div>
+      <div class="prompt-example">List opp alle kontoene og tilgangene som er satt opp for denne nettsiden — GitHub, domeneleverandør og alle integrasjoner. Vis dem som en enkel tabell med tjeneste, hva den brukes til og hvem som eier kontoen.</div>
 
       <div class="prompt-example">Lag en lokal sikkerhetskopi: list opp alle HTML, CSS og bilde-filer i prosjektet slik at jeg vet hva som finnes — og forklar steg for steg hvordan jeg laster ned en full kopi av alle filer fra GitHub til PC-en min.</div>
 

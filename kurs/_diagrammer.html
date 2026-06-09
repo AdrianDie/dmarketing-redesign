@@ -119,68 +119,56 @@
   </header>
 
   <!-- ============================================================= -->
-  <!-- DIAGRAM 1 — DE TRE VERKTØYENE                                  -->
+  <!-- DIAGRAM 1 — DE TO VERKTØYENE                                   -->
   <!-- ============================================================= -->
   <section class="diagram-block">
     <span class="label">Diagram 1</span>
-    <h2>De tre verktøyene</h2>
-    <p class="desc">Tre verktøy jobber sammen — én lager siden, én hjelper deg, én legger den ut på nett.</p>
+    <h2>De to verktøyene</h2>
+    <p class="desc">To verktøy er alt du trenger — Claude hjelper deg med endringer, GitHub lagrer filene og publiserer nettsiden.</p>
 
     <div class="svg-wrap">
-      <svg viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="De tre verktøyene: Astro lager nettsiden, Claude er hjelperen du chatter med, Cloudflare legger den ut på nett.">
+      <svg viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="De to verktøyene: Claude er hjelperen du chatter med, GitHub lagrer filene og publiserer nettsiden.">
         <defs>
           <marker id="arrow1" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto" markerUnits="strokeWidth">
             <path d="M0,0 L7,3 L0,6 Z" fill="#71717A" />
           </marker>
         </defs>
 
-        <!-- Connecting arrows (behind boxes) -->
-        <line x1="180" y1="135" x2="218" y2="135" stroke="#71717A" stroke-width="2" marker-end="url(#arrow1)" />
-        <line x1="382" y1="135" x2="420" y2="135" stroke="#71717A" stroke-width="2" marker-end="url(#arrow1)" />
+        <!-- Connecting arrow -->
+        <line x1="258" y1="135" x2="330" y2="135" stroke="#71717A" stroke-width="2" marker-end="url(#arrow1)" />
+        <!-- Arrow label -->
+        <text x="294" y="123" text-anchor="middle" font-size="10.5" fill="#71717A">lagrer</text>
 
-        <!-- Box 1: Astro -->
+        <!-- Box 1: Claude -->
         <g>
-          <rect x="20" y="70" width="160" height="130" rx="16" fill="#FFFFFF" stroke="#E4E4E7" stroke-width="1.5" />
-          <circle cx="100" cy="108" r="22" fill="#EFF6FF" />
-          <!-- document icon -->
-          <rect x="91" y="98" width="18" height="22" rx="2.5" fill="#2563EB" />
-          <rect x="95" y="103" width="10" height="1.8" rx="0.9" fill="#FFFFFF" />
-          <rect x="95" y="107.5" width="10" height="1.8" rx="0.9" fill="#FFFFFF" />
-          <rect x="95" y="112" width="6" height="1.8" rx="0.9" fill="#FFFFFF" />
-          <text x="100" y="152" text-anchor="middle" font-size="16" font-weight="700" fill="#09090B">Astro</text>
-          <text x="100" y="174" text-anchor="middle" font-size="11.5" fill="#71717A">nettsiden din</text>
-        </g>
-
-        <!-- Box 2: Claude -->
-        <g>
-          <rect x="220" y="70" width="160" height="130" rx="16" fill="#FFFFFF" stroke="#E4E4E7" stroke-width="1.5" />
-          <circle cx="300" cy="108" r="22" fill="#EFF6FF" />
+          <rect x="50" y="70" width="200" height="130" rx="16" fill="#FFFFFF" stroke="#E4E4E7" stroke-width="1.5" />
+          <circle cx="150" cy="108" r="22" fill="#EFF6FF" />
           <!-- chat bubble icon -->
-          <path d="M289 99 h22 a4 4 0 0 1 4 4 v11 a4 4 0 0 1 -4 4 h-13 l-7 6 v-6 h-2 a4 4 0 0 1 -4 -4 v-11 a4 4 0 0 1 4 -4 z" fill="#2563EB" />
-          <circle cx="296" cy="109" r="1.6" fill="#FFFFFF" />
-          <circle cx="302" cy="109" r="1.6" fill="#FFFFFF" />
-          <circle cx="308" cy="109" r="1.6" fill="#FFFFFF" />
-          <text x="300" y="152" text-anchor="middle" font-size="16" font-weight="700" fill="#09090B">Claude</text>
-          <text x="300" y="174" text-anchor="middle" font-size="11.5" fill="#71717A">hjelperen du chatter med</text>
+          <path d="M139 99 h22 a4 4 0 0 1 4 4 v11 a4 4 0 0 1 -4 4 h-13 l-7 6 v-6 h-2 a4 4 0 0 1 -4 -4 v-11 a4 4 0 0 1 4 -4 z" fill="#2563EB" />
+          <circle cx="146" cy="109" r="1.6" fill="#FFFFFF" />
+          <circle cx="152" cy="109" r="1.6" fill="#FFFFFF" />
+          <circle cx="158" cy="109" r="1.6" fill="#FFFFFF" />
+          <text x="150" y="152" text-anchor="middle" font-size="16" font-weight="700" fill="#09090B">Claude</text>
+          <text x="150" y="174" text-anchor="middle" font-size="11.5" fill="#71717A">hjelperen du chatter med</text>
         </g>
 
-        <!-- Box 3: Cloudflare -->
+        <!-- Box 2: GitHub -->
         <g>
-          <rect x="420" y="70" width="160" height="130" rx="16" fill="#FFFFFF" stroke="#E4E4E7" stroke-width="1.5" />
-          <circle cx="500" cy="108" r="22" fill="#EFF6FF" />
-          <!-- cloud icon -->
-          <path d="M489 114 a8 8 0 0 1 1 -15.8 a9 9 0 0 1 17 1.5 a6 6 0 0 1 -1 14.3 z" fill="#2563EB" />
-          <text x="500" y="152" text-anchor="middle" font-size="16" font-weight="700" fill="#09090B">Cloudflare</text>
-          <text x="500" y="174" text-anchor="middle" font-size="11.5" fill="#71717A">legger den ut på nett</text>
+          <rect x="350" y="70" width="200" height="130" rx="16" fill="#FFFFFF" stroke="#E4E4E7" stroke-width="1.5" />
+          <circle cx="450" cy="108" r="22" fill="#EFF6FF" />
+          <!-- document / file icon -->
+          <rect x="441" y="97" width="18" height="22" rx="2.5" fill="#2563EB" />
+          <rect x="445" y="102" width="10" height="1.8" rx="0.9" fill="#FFFFFF" />
+          <rect x="445" y="106.5" width="10" height="1.8" rx="0.9" fill="#FFFFFF" />
+          <rect x="445" y="111" width="6" height="1.8" rx="0.9" fill="#FFFFFF" />
+          <text x="450" y="152" text-anchor="middle" font-size="16" font-weight="700" fill="#09090B">GitHub</text>
+          <text x="450" y="171" text-anchor="middle" font-size="11.5" fill="#71717A">lagrer filene</text>
+          <text x="450" y="187" text-anchor="middle" font-size="11.5" fill="#71717A">og publiserer nettsiden</text>
         </g>
-
-        <!-- Arrow labels -->
-        <text x="199" y="123" text-anchor="middle" font-size="10.5" fill="#71717A">endrer</text>
-        <text x="401" y="123" text-anchor="middle" font-size="10.5" fill="#71717A">sender</text>
 
         <!-- Bottom summary line -->
-        <text x="300" y="248" text-anchor="middle" font-size="13" font-weight="600" fill="#0B1F4A">Du chatter med Claude — Claude endrer Astro-siden — Cloudflare viser den fram.</text>
-        <text x="300" y="278" text-anchor="middle" font-size="11.5" fill="#71717A">Du trenger ikke åpne eller forstå noen av dem. Du bare snakker.</text>
+        <text x="300" y="242" text-anchor="middle" font-size="13" font-weight="600" fill="#0B1F4A">Du chatter med Claude — Claude lagrer endringene på GitHub — nettsiden oppdateres.</text>
+        <text x="300" y="268" text-anchor="middle" font-size="11.5" fill="#71717A">Du trenger ikke åpne eller forstå noen av dem. Du snakker med Claude.</text>
       </svg>
     </div>
   </section>
@@ -333,10 +321,10 @@
     <p class="desc">Fra du sier hva du vil til det er ute på nett — det tar rundt halvannet minutt.</p>
 
     <div class="svg-wrap">
-      <svg viewBox="0 0 600 230" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Tidslinje: chat, lagre, bygge, live — hele veien tar omtrent 90 sekunder.">
+      <svg viewBox="0 0 600 230" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Tidslinje: chat, Claude gjør endringen, GitHub publiserer, live — hele veien tar omtrent 60 sekunder.">
         <!-- Timeline base line -->
         <line x1="70" y1="115" x2="530" y2="115" stroke="#E4E4E7" stroke-width="3" />
-        <!-- progress portion (chat -> live) in brand -->
+        <!-- progress portion in brand -->
         <line x1="70" y1="115" x2="530" y2="115" stroke="#2563EB" stroke-width="3" stroke-dasharray="2 0" opacity="0.25" />
 
         <!-- Step 1: Chat -->
@@ -347,33 +335,24 @@
           <text x="70" y="170" text-anchor="middle" font-size="10.5" fill="#71717A">du sier det</text>
         </g>
 
-        <!-- Step 2: Lagre -->
+        <!-- Step 2: Claude gjør endringen -->
         <g>
           <circle cx="223" cy="115" r="13" fill="#2563EB" />
-          <!-- save / disk icon -->
-          <rect x="216" y="108" width="14" height="14" rx="2.5" fill="#FFFFFF" />
-          <rect x="219" y="108" width="8" height="5" fill="#2563EB" />
-          <rect x="219.5" y="116" width="7" height="4.5" rx="1" fill="#2563EB" />
-          <text x="223" y="152" text-anchor="middle" font-size="13" font-weight="700" fill="#09090B">Lagre</text>
-          <text x="223" y="170" text-anchor="middle" font-size="10.5" fill="#71717A">Claude lagrer</text>
+          <!-- sparkle icon -->
+          <path d="M223 106 l2 4.5 4.5 2 -4.5 2 -2 4.5 -2 -4.5 -4.5 -2 4.5 -2 z" fill="#FFFFFF" />
+          <text x="223" y="152" text-anchor="middle" font-size="13" font-weight="700" fill="#09090B">Claude</text>
+          <text x="223" y="170" text-anchor="middle" font-size="10.5" fill="#71717A">gjør endringen</text>
         </g>
 
-        <!-- Step 3: Bygge -->
+        <!-- Step 3: GitHub lagrer -->
         <g>
           <circle cx="377" cy="115" r="13" fill="#2563EB" />
-          <!-- gear icon -->
-          <g fill="#FFFFFF">
-            <circle cx="377" cy="115" r="6.5" />
-          </g>
-          <circle cx="377" cy="115" r="2.6" fill="#2563EB" />
-          <g stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round">
-            <line x1="377" y1="105" x2="377" y2="108.5" />
-            <line x1="377" y1="121.5" x2="377" y2="125" />
-            <line x1="367" y1="115" x2="370.5" y2="115" />
-            <line x1="383.5" y1="115" x2="387" y2="115" />
-          </g>
-          <text x="377" y="152" text-anchor="middle" font-size="13" font-weight="700" fill="#09090B">Bygge</text>
-          <text x="377" y="170" text-anchor="middle" font-size="10.5" fill="#71717A">automatisk</text>
+          <!-- save / disk icon -->
+          <rect x="370" y="108" width="14" height="14" rx="2.5" fill="#FFFFFF" />
+          <rect x="373" y="108" width="8" height="5" fill="#2563EB" />
+          <rect x="373.5" y="116" width="7" height="4.5" rx="1" fill="#2563EB" />
+          <text x="377" y="152" text-anchor="middle" font-size="13" font-weight="700" fill="#09090B">GitHub</text>
+          <text x="377" y="170" text-anchor="middle" font-size="10.5" fill="#71717A">publiserer</text>
         </g>
 
         <!-- Step 4: Live -->
@@ -384,10 +363,10 @@
           <text x="530" y="171" text-anchor="middle" font-size="10.5" fill="#16A34A">ute på nett</text>
         </g>
 
-        <!-- ~90 sekunder bracket -->
+        <!-- ~60 sekunder bracket -->
         <path d="M70 78 v-8 h460 v8" fill="none" stroke="#0B1F4A" stroke-width="1.5" />
         <rect x="245" y="48" width="110" height="26" rx="13" fill="#0B1F4A" />
-        <text x="300" y="65" text-anchor="middle" font-size="12.5" font-weight="700" fill="#FFFFFF">~90 sekunder</text>
+        <text x="300" y="65" text-anchor="middle" font-size="12.5" font-weight="700" fill="#FFFFFF">~60 sekunder</text>
 
         <!-- footer note -->
         <text x="300" y="206" text-anchor="middle" font-size="11.5" fill="#71717A">Du venter ikke på noen. Det skjer av seg selv mens du tar en slurk kaffe.</text>

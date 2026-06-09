@@ -67,14 +67,14 @@
       <h2>Først: prøv dette ALLTID først</h2>
       <ol>
         <li><strong>Hard reload:</strong> Ctrl+Shift+R (Win) / Cmd+Shift+R (Mac). Løser ~40 % av "siden ser feil ut"-problemer.</li>
-        <li><strong>Sjekk Cloudflare-dashboard:</strong> bygde nettsiden ferdig? Eller står det "Failed"?</li>
+        <li><strong>Sjekk GitHub-oversikten:</strong> bygde nettsiden ferdig? Eller står det "Failed"?</li>
         <li><strong>Sjekk i privat-modus / inkognito:</strong> luker ut cache- og cookie-problemer.</li>
         <li><strong>Sjekk på mobil OG desktop:</strong> noen ganger ser ulikt på de to.</li>
       </ol>
 
       <figure class="not-prose my-8 rounded-2xl border border-zinc-200 bg-white p-5 md:p-7">
         <p class="text-center text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-5">Prøv alltid disse stegene i rekkefølge</p>
-        <svg viewBox="0 0 560 155" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Fem feilsøkingssteg i rekkefølge: hard reload, Cloudflare status, inkognito, mobil og desktop, be Claude">
+        <svg viewBox="0 0 560 155" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Fem feilsøkingssteg i rekkefølge: hard reload, GitHub-status, inkognito, mobil og desktop, be Claude">
 
           <!-- Connector lines between steps -->
           <line x1="86" y1="60" x2="172" y2="60" stroke="#E4E4E7" stroke-width="2"/>
@@ -92,11 +92,11 @@
           <text x="64" y="98" text-anchor="middle" font-size="10.5" font-weight="700" fill="#09090B">Hard reload</text>
           <text x="64" y="111" text-anchor="middle" font-size="9.5" fill="#71717A">Ctrl+Shift+R</text>
 
-          <!-- Step 2: Cloudflare -->
+          <!-- Step 2: GitHub Actions -->
           <circle cx="183" cy="60" r="11" fill="#2563EB"/>
           <text x="183" y="64" text-anchor="middle" font-size="11" font-weight="800" fill="white">2</text>
-          <text x="183" y="95" text-anchor="middle" font-size="10.5" font-weight="700" fill="#09090B">Cloudflare</text>
-          <text x="183" y="108" text-anchor="middle" font-size="9.5" fill="#71717A">Success / Failed?</text>
+          <text x="183" y="95" text-anchor="middle" font-size="10.5" font-weight="700" fill="#09090B">GitHub</text>
+          <text x="183" y="108" text-anchor="middle" font-size="9.5" fill="#71717A">Actions: ok / feil?</text>
 
           <!-- Step 3: Inkognito -->
           <circle cx="291" cy="60" r="11" fill="#2563EB"/>
@@ -128,7 +128,7 @@
 
       <figure class="not-prose my-8 rounded-2xl border border-zinc-200 bg-white p-5 md:p-7">
         <p class="text-center text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-5">Fra redigering til live nettside — steg for steg</p>
-        <svg viewBox="0 0 580 175" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Bygge-pipeline: Du redigerer i Claude, Claude pusher til GitHub, Cloudflare bygger, live nettside oppdatert">
+        <svg viewBox="0 0 580 175" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Bygge-pipeline: Du redigerer i Claude, Claude pusher til GitHub, GitHub Pages publiserer, live nettside oppdatert">
 
           <!-- Stage boxes -->
           <!-- Stage 1: Claude -->
@@ -153,10 +153,10 @@
           <polygon points="294,57 304,62 294,67" fill="#CBD5E1"/>
           <text x="287" y="55" text-anchor="middle" font-size="9" fill="#94A3B8">~10 sek</text>
 
-          <!-- Stage 3: Cloudflare builds -->
+          <!-- Stage 3: GitHub Pages publiserer -->
           <rect x="304" y="28" width="130" height="68" rx="10" fill="#FFF7ED" stroke="#FED7AA" stroke-width="1.5"/>
           <text x="369" y="52" text-anchor="middle" font-size="22" fill="#EA580C">⚙️</text>
-          <text x="369" y="70" text-anchor="middle" font-size="11" font-weight="700" fill="#9A3412">Cloudflare bygger</text>
+          <text x="369" y="70" text-anchor="middle" font-size="11" font-weight="700" fill="#9A3412">GitHub Pages publiserer</text>
           <text x="369" y="84" text-anchor="middle" font-size="9.5" fill="#EA580C">1–3 minutter</text>
 
           <!-- Arrow 3 -->
@@ -173,7 +173,7 @@
           <!-- Total time note -->
           <rect x="10" y="112" width="560" height="38" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
           <text x="290" y="128" text-anchor="middle" font-size="11" font-weight="700" fill="#334155">Totalt: 2–5 minutter fra du lagrer til du ser endringen i nettleser</text>
-          <text x="290" y="143" text-anchor="middle" font-size="10" fill="#64748B">Ser du fortsatt gammelt etter 5 min? → Hard reload (Ctrl+Shift+R) eller sjekk Cloudflare-status</text>
+          <text x="290" y="143" text-anchor="middle" font-size="10" fill="#64748B">Ser du fortsatt gammelt etter 5 min? → Hard reload (Ctrl+Shift+R) eller sjekk GitHub Pages-status</text>
 
         </svg>
       </figure>
@@ -185,7 +185,7 @@
         <h3>Endringen vises ikke selv etter 5 minutter</h3>
         <p class="text-zinc-600 text-sm mt-2">Du gjorde en endring, ventet, hard-reloadet, men ser fortsatt gammel versjon.</p>
         <div class="fix">
-          <p><strong>Fix:</strong> 1) Sjekk Cloudflare → siste deployment status. 2) Hvis "Success" men du ser gammelt: prøv inkognito-vindu. 3) Hvis fortsatt gammelt: be Claude verifisere at filen faktisk har endringen (<code>vis meg innholdet i tjenester.html</code>).</p>
+          <p><strong>Fix:</strong> 1) Sjekk GitHub → fanen «Actions» → siste kjøring. 2) Hvis "Success" men du ser gammelt: prøv inkognito-vindu. 3) Hvis fortsatt gammelt: be Claude verifisere at filen faktisk har endringen (<code>vis meg innholdet i tjenester.html</code>).</p>
         </div>
       </div>
 
@@ -209,10 +209,10 @@
 
       <div class="problem not-prose">
         <p class="label">Problem 4</p>
-        <h3>Cloudflare-build feiler ("Build failed")</h3>
-        <p class="text-zinc-600 text-sm mt-2">Cloudflare-dashboardet viser rødt "Failed".</p>
+        <h3>publisering feiler ("Build failed")</h3>
+        <p class="text-zinc-600 text-sm mt-2">GitHub-oversiktenet viser rødt "Failed".</p>
         <div class="fix">
-          <p><strong>Fix:</strong> Klikk på den feilede publiseringen, og finn knappen "View build logs" (det betyr «vis bygge-loggen» — selve den tekniske feilmeldingen fra da siden ble satt sammen). Kopier hele feilmeldingen, lim den inn til Claude og si: <code>Cloudflare-build feiler med denne feilmeldingen: [lim inn]. Hva er galt og hvordan fikser jeg det?</code></p>
+          <p><strong>Fix:</strong> Klikk på den feilede publiseringen, og finn knappen "View build logs" (det betyr «vis bygge-loggen» — selve den tekniske feilmeldingen fra da siden ble satt sammen). Kopier hele feilmeldingen, lim den inn til Claude og si: <code>publisering feiler med denne feilmeldingen: [lim inn]. Hva er galt og hvordan fikser jeg det?</code></p>
         </div>
       </div>
 
@@ -246,7 +246,7 @@
       <div class="problem not-prose">
         <p class="label">Problem 8</p>
         <h3>Domenet peker ikke til siden</h3>
-        <p class="text-zinc-600 text-sm mt-2">DNS-konfigurasjon er feil — siden er live på Cloudflare, men domenet ditt viser noe annet.</p>
+        <p class="text-zinc-600 text-sm mt-2">DNS-konfigurasjon er feil — siden er live på GitHub Pages, men domenet ditt viser noe annet.</p>
         <div class="fix">
           <p><strong>Fix:</strong> Hvis domenet ditt ikke viser den nye siden, er det nesten alltid noe med DNS-innstillingene (det vi gikk gjennom i modul 03 — internettets «adressebok»). Dette er lett å gjøre feil, så her anbefaler vi: kontakt oss, så fikser vi det sammen.</p>
         </div>
@@ -266,7 +266,7 @@
         <h3>Jeg gjorde noe og hele siden er ødelagt</h3>
         <p class="text-zinc-600 text-sm mt-2">Endring brakk noe — flere ting fungerer ikke nå.</p>
         <div class="fix">
-          <p><strong>Fix:</strong> ROLLBACK. To måter: 1) Be Claude <code>Reverter de siste 3 endringene, sett siden tilbake til hvordan den var i går.</code> 2) Cloudflare → siste vellykkede deployment → Rollback. Live om 5 sek. Ingen permanent skade.</p>
+          <p><strong>Fix:</strong> ROLLBACK. To måter: 1) Be Claude <code>Reverter de siste 3 endringene, sett siden tilbake til hvordan den var i går.</code> 2) GitHub → be Claude «reverter siste endringer». Live om 5 sek. Ingen permanent skade.</p>
         </div>
       </div>
 
@@ -284,7 +284,7 @@
           <rect x="10" y="42" width="20" height="34" fill="#2563EB" rx="0"/>
           <text x="20" y="63" text-anchor="middle" font-size="10" font-weight="800" fill="white">1</text>
           <text x="40" y="63" font-size="10.5" font-weight="600" fill="#09090B">Endring vises ikke</text>
-          <text x="290" y="63" font-size="10" fill="#3F3F46">Hard reload (Ctrl+Shift+R) → Cloudflare status</text>
+          <text x="290" y="63" font-size="10" fill="#3F3F46">Hard reload (Ctrl+Shift+R) → GitHub-status</text>
 
           <!-- Row 2 -->
           <rect x="10" y="78" width="540" height="34" rx="0" fill="white"/>
@@ -304,7 +304,7 @@
           <rect x="10" y="150" width="540" height="34" rx="0" fill="white"/>
           <rect x="10" y="150" width="20" height="34" fill="#DC2626" rx="0"/>
           <text x="20" y="171" text-anchor="middle" font-size="10" font-weight="800" fill="white">4</text>
-          <text x="40" y="171" font-size="10.5" font-weight="600" fill="#09090B">Cloudflare build feiler</text>
+          <text x="40" y="171" font-size="10.5" font-weight="600" fill="#09090B">publisering feiler</text>
           <text x="290" y="171" font-size="10" fill="#3F3F46">Åpne build-log → kopier feilmelding → Claude</text>
 
           <!-- Row 5 -->
@@ -347,7 +347,7 @@
           <rect x="10" y="366" width="20" height="34" fill="#DC2626" rx="0"/>
           <text x="20" y="383" text-anchor="middle" font-size="9.5" font-weight="800" fill="white">10</text>
           <text x="40" y="387" font-size="10.5" font-weight="600" fill="#09090B">Siden er ødelagt</text>
-          <text x="290" y="387" font-size="10" fill="#3F3F46">ROLLBACK: «reverter siste endringer» eller Cloudflare</text>
+          <text x="290" y="387" font-size="10" fill="#3F3F46">ROLLBACK: «reverter siste endringer» — be Claude om det</text>
 
           <!-- Border around whole table -->
           <rect x="10" y="10" width="540" height="390" rx="6" fill="none" stroke="#E4E4E7" stroke-width="1.5"/>
@@ -368,7 +368,7 @@
 
       <div class="prompt-example">Etter siste endring mangler [beskriv hva] på [siden]. Kan du se hva som gikk galt og fikse det? List opp hva du endrer før du gjør noe.</div>
 
-      <div class="prompt-example">Nettsiden min viser en hvit/tom side. Her er feilmeldingen fra byggeloggen i Cloudflare:
+      <div class="prompt-example">Nettsiden min viser en hvit/tom side. Her er feilmeldingen fra fanen «Actions» på GitHub:
 [lim inn feilmeldingen her]
 Hva er galt, og hva er løsningen?</div>
 
@@ -382,7 +382,7 @@ Hva er galt, og hva er løsningen?</div>
         <li><strong>Sikkerhetsproblemer:</strong> alltid kontakt oss</li>
         <li><strong>DNS / domene-trøbbel:</strong> ofte behov for ekspert</li>
         <li><strong>Større layout-endringer:</strong> hvis Claude er fast, kan vi ofte hjelpe på 30 min</li>
-        <li><strong>Oppgraderinger av Astro/Cloudflare:</strong> sjelden, men trenger ekspert</li>
+        <li><strong>Store tekniske oppgraderinger:</strong> sjelden, men trenger ekspert</li>
       </ul>
 
       <div class="callout">

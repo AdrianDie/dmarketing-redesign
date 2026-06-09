@@ -137,7 +137,7 @@
       <h2>Det som skjer bak kulissene</h2>
 
       <div class="callout">
-        <p><strong>Dette trenger du IKKE å lese for å bruke nettsiden.</strong> Det er bare for de nysgjerrige som vil vite hva som egentlig skjer bak kulissene. Vil du heller hoppe over teknikken, gå rett til <a href="#hvis-bygget-feiler" class="text-blue-600 underline">«Hvis bygget feiler»</a> eller <a href="#rollback" class="text-blue-600 underline">«Gå tilbake til forrige versjon»</a> lenger ned.</p>
+        <p><strong>Dette trenger du IKKE å lese for å bruke nettsiden.</strong> Det er bare for de nysgjerrige som vil vite hva som egentlig skjer bak kulissene. Vil du heller hoppe over teknikken, gå rett til <a href="#hvis-bygget-feiler" class="text-blue-600 underline">«Hvis publiseringen feiler»</a> eller <a href="#rollback" class="text-blue-600 underline">«Gå tilbake til forrige versjon»</a> lenger ned.</p>
       </div>
 
       <p>For deg som vil titte under panseret: her er de fire stegene, forklart i klartekst.</p>
@@ -147,7 +147,7 @@
           <div class="flow-num">1</div>
           <div class="flow-content">
             <h3>Claude lagrer endringen</h3>
-            <p class="text-zinc-600">Claude lagrer endringen og sender den opp til GitHub — den private mappen på nett der alle filene til nettsiden din ligger samlet. (Utviklere kaller dette å «committe» — lagre en versjon — og «pushe» — sende den opp til GitHub. Men du trenger aldri å gjøre det selv.)</p>
+            <p class="text-zinc-600">Claude lagrer endringen og sender den opp til GitHub — der alle filene til nettsiden din ligger. (Utviklere kaller dette å «committe» og «pushe». Du trenger aldri å gjøre det selv.)</p>
           </div>
         </div>
         <div class="flow-step">
@@ -160,15 +160,15 @@
         <div class="flow-step">
           <div class="flow-num">3</div>
           <div class="flow-content">
-            <h3>Cloudflare får automatisk beskjed</h3>
-            <p class="text-zinc-600">Cloudflare (datamaskinene som viser fram nettsiden din til besøkende) får automatisk vite at det finnes en ny versjon. Ingen knapp å trykke.</p>
+            <h3>GitHub Pages publiserer automatisk</h3>
+            <p class="text-zinc-600">GitHub Pages (tjenesten som viser fram nettsiden din til besøkende) oppdager endringen og publiserer den nye versjonen. Ingen knapp å trykke — det skjer av seg selv.</p>
           </div>
         </div>
         <div class="flow-step">
           <div class="flow-num">4</div>
           <div class="flow-content">
-            <h3>Nettsiden bygges og blir live</h3>
-            <p class="text-zinc-600">Maskinen setter automatisk sammen alle bitene — tekst, bilder og design — til de ferdige sidene folk ser. Dette kalles å «bygge», og tar ~30–60 sekunder. Så kopieres siden til hundrevis av datamaskiner verden rundt, så den laster lynraskt uansett hvor besøkeren bor.</p>
+            <h3>Siden er live</h3>
+            <p class="text-zinc-600">Etter 30–60 sekunder ser alle besøkende den oppdaterte versjonen. Du trenger ikke gjøre noe annet.</p>
           </div>
         </div>
       </div>
@@ -177,17 +177,17 @@
 
       <p>Du <em>kan</em> selv se at en endring er på vei ut, hvis du vil. Men du <em>må</em> ikke — alt går av seg selv.</p>
 
-      <h3>Cloudflare-oversikten</h3>
-      <p>Logg inn på <code>dash.cloudflare.com</code> → Pages → prosjektet ditt. Dette er en oversiktsside (et «dashboard») der du ser hver gang nettsiden har blitt oppdatert:</p>
+      <h3>GitHub-oversikten</h3>
+      <p>Logg inn på <code>github.com</code> → Pages → prosjektet ditt. Dette er en oversiktsside (et «dashboard») der du ser hver gang nettsiden har blitt oppdatert:</p>
       <ul>
-        <li>En liste over alle oppdateringer. I Cloudflare-menyen heter de «deployments» — du kan tenke «publisering» (at en ny versjon av siden legges ut).</li>
+        <li>En liste over alle oppdateringer. I GitHub heter de «deployments» eller «Actions» — du kan tenke «publisering» (at en ny versjon av siden legges ut).</li>
         <li>Status på hver: <strong>«Building»</strong> (holder på), <strong>«Success»</strong> (gikk bra) eller <strong>«Failed»</strong> (noe gikk galt).</li>
         <li>Hvor lang tid hver oppdatering tok.</li>
       </ul>
 
       <figure class="not-prose my-6 rounded-2xl border border-zinc-200 bg-white p-5 md:p-6">
-        <p class="text-center text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-4">Slik ser Cloudflare Pages-oversikten ut</p>
-        <svg viewBox="0 0 530 210" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Cloudflare Pages dashboard med tre deployments: Building, Success og Failed">
+        <p class="text-center text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-4">Slik ser GitHub Pages-oversikten ut</p>
+        <svg viewBox="0 0 530 210" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="GitHub Pages dashboard med tre deployments: Building, Success og Failed">
 
           <!-- Browser chrome -->
           <rect x="10" y="10" width="510" height="190" rx="8" fill="white" stroke="#E4E4E7" stroke-width="1.5"/>
@@ -197,7 +197,7 @@
           <circle cx="40" cy="26" r="4.5" fill="#F59E0B"/>
           <circle cx="53" cy="26" r="4.5" fill="#22C55E"/>
           <rect x="72" y="18" width="260" height="16" rx="8" fill="white" stroke="#E4E4E7" stroke-width="1"/>
-          <text x="202" y="30" text-anchor="middle" font-size="9" fill="#71717A">dash.cloudflare.com › Pages › dittfirma</text>
+          <text x="202" y="30" text-anchor="middle" font-size="9" fill="#71717A">github.com › Pages › dittfirma</text>
 
           <!-- Header row -->
           <rect x="22" y="50" width="496" height="24" rx="4" fill="#F8FAFC"/>
@@ -300,14 +300,8 @@
         <p class="text-center text-xs text-zinc-400 mt-3">Si til Claude: «Reverter til slik siden var den 20. januar» — da tar du deg tilbake til lagre-punkt 2.</p>
       </figure>
 
-      <h2 id="hvis-bygget-feiler">Hvis bygget feiler</h2>
-      <p>Noen ganger klarer ikke maskinen å sette sammen siden — da sier vi at «bygget feilet». Cloudflare gir deg en feilmelding. Du trenger ikke forstå den; bare lim den inn til Claude, så ordner Claude resten. De vanligste er:</p>
-
-      <h3>«Cannot find module»</h3>
-      <p>En liten byggekloss mangler. Si til Claude: <em>«Bygget feilet med 'cannot find module' — kan du fikse det?»</em> Claude legger den manglende biten på plass og prøver igjen.</p>
-
-      <h3>«Syntax error»</h3>
-      <p>Claude kom i skade for å skrive noe som ikke var helt riktig. Si til Claude: <em>«Bygget feilet med en syntax error — se på filen og rett den.»</em></p>
+      <h2 id="hvis-bygget-feiler">Hvis publiseringen feiler</h2>
+      <p>Noen ganger klarer ikke GitHub Pages å publisere siden — da sier vi at «publiseringen feilet». GitHub gir deg en feilmelding under fanen «Actions». Du trenger ikke forstå den; bare lim den inn til Claude, så ordner Claude resten.</p>
 
       <div class="callout callout-ok">
         <p><strong>Bra nytt:</strong> hvis et bygg feiler, går nettsiden din <strong>IKKE</strong> ned. Den siste versjonen som fungerte blir liggende ute helt til en ny versjon er ferdig og godkjent. Du kan prøve igjen så mange ganger du vil — besøkende merker ingenting.</p>
@@ -317,17 +311,17 @@
       <p>Angret du på en endring? Det er to enkle måter å skru tiden tilbake på:</p>
 
       <h3>Måte 1: Be Claude angre</h3>
-      <p>Si rett og slett: <em>«Angre den siste endringen.»</em> Siden går tilbake til slik den var før, på under et minutt. Ingen varig skade.</p>
+      <p>Si: <em>«Angre den siste endringen.»</em> Siden går tilbake til slik den var før, på under et minutt. Ingen varig skade.</p>
 
-      <h3>Måte 2: Cloudflares «angre»-knapp</h3>
-      <p>Inne i Cloudflare-oversikten finner du den forrige versjonen som fungerte, og klikker <strong>«Rollback to this deployment»</strong> (= «gå tilbake til denne versjonen»). Siden er tilbake på ca. 5 sekunder. Praktisk hvis du raskt vil teste om noe gikk galt.</p>
+      <h3>Måte 2: Angi et bestemt tidspunkt</h3>
+      <p>Si til Claude: <em>«Reverter til slik siden så ut den [dato].»</em> Claude finner den riktige versjonen i GitHub-historikken og ruller tilbake til den. Alle endringer er lagret for alltid, så du kan alltid gå tilbake.</p>
 
       <h2>«Jeg ser jo ikke endringen min!»</h2>
       <p>Noen ganger ser nettsiden lik ut selv etter at endringen er live. Som regel er det fordi <strong>din egen nettleser viser deg en gammel, husket versjon</strong> for å spare tid. (Det kalles «cache» — at nettleseren husker siden fra sist.) Selve nettsiden er allerede oppdatert for alle andre.</p>
 
       <figure class="not-prose my-8 rounded-2xl border border-zinc-200 bg-white p-5 md:p-7">
         <p class="text-center text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-5">Nettleser-cache — hvorfor du ser gammelt innhold</p>
-        <svg viewBox="0 0 560 185" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Diagram: din nettleser viser cached (gammel) versjon mens Cloudflare allerede har den nye. Hard reload tvinger frem den nye.">
+        <svg viewBox="0 0 560 185" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Diagram: din nettleser viser cached (gammel) versjon mens GitHub Pages allerede har den nye. Hard reload tvinger frem den nye.">
 
           <!-- Your browser (left) -->
           <rect x="10" y="20" width="170" height="130" rx="10" fill="#FEF2F2" stroke="#FECACA" stroke-width="1.5"/>
@@ -345,7 +339,7 @@
           <rect x="198" y="20" width="170" height="130" rx="10" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.5"/>
           <rect x="198" y="20" width="170" height="30" rx="10" fill="#16A34A"/>
           <rect x="198" y="38" width="170" height="12" fill="#16A34A"/>
-          <text x="283" y="39" text-anchor="middle" font-size="11" font-weight="800" fill="white">Cloudflare (live)</text>
+          <text x="283" y="39" text-anchor="middle" font-size="11" font-weight="800" fill="white">GitHub Pages (live)</text>
 
           <!-- Cloudflare content (new) -->
           <rect x="210" y="58" width="146" height="46" rx="6" fill="white" stroke="#86EFAC" stroke-width="1"/>
@@ -411,9 +405,9 @@
           <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:1rem;color:#14532D;letter-spacing:-0.01em;">Hva du lærte i denne modulen</span>
         </div>
         <ul style="margin:0;padding-left:20px;">
-          <li style="font-size:0.95rem;line-height:1.55;color:#15803D;margin-bottom:6px;list-style:disc;">Du gjør ingenting for å publisere — Claude lagrer, og Cloudflare Pages bygger og publiserer automatisk</li>
+          <li style="font-size:0.95rem;line-height:1.55;color:#15803D;margin-bottom:6px;list-style:disc;">Du gjør ingenting for å publisere — Claude lagrer, og GitHub Pages publiserer automatisk</li>
           <li style="font-size:0.95rem;line-height:1.55;color:#15803D;margin-bottom:6px;list-style:disc;">En endring er live på 30 sekunder til 2 minutter — du kan lukke chatten og gå videre</li>
-          <li style="font-size:0.95rem;line-height:1.55;color:#15803D;margin-bottom:0;list-style:disc;">Byggeloggen i Cloudflare Pages viser nøyaktig hva som gikk galt — og du kan rulle tilbake med én kommando</li>
+          <li style="font-size:0.95rem;line-height:1.55;color:#15803D;margin-bottom:0;list-style:disc;">Byggeloggen i GitHub Pages viser nøyaktig hva som gikk galt — og du kan rulle tilbake med én kommando</li>
         </ul>
       </div>
 

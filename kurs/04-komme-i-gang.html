@@ -84,7 +84,7 @@
       <ul>
         <li>Tilgang til din egen <strong>GitHub-konto</strong> (en gratis nettside der alle filene til nettsiden din lagres trygt)</li>
         <li>Tilgang til <strong>Claude</strong> med din bedrift lagt inn på forhånd</li>
-        <li><strong>Cloudflare Pages</strong> koblet til prosjektet (Cloudflare-tjenesten som viser nettsiden din fram på internett)</li>
+        <li><strong>GitHub Pages</strong> koblet til prosjektet (tjenesten som automatisk publiserer nettsiden din på internett)</li>
         <li>Gjort din første test-endring og sett den live</li>
       </ul>
 
@@ -156,7 +156,7 @@
         <div class="step-num">1</div>
         <div class="step-content">
           <h3 class="font-display font-bold text-lg mb-2">Sjekk velkomst-e-posten fra oss</h3>
-          <p class="text-zinc-600 text-sm">Du fikk en e-post fra <strong>adrian@dmarketing.no</strong> da prosjektet ble levert. Den inneholder tre lenker: <strong>GitHub-repo</strong>, <strong>Claude-tilgang</strong> og <strong>Cloudflare-dashboard</strong>. Hvis du ikke finner den: sjekk søppelpost, eller send oss melding så sender vi på nytt.</p>
+          <p class="text-zinc-600 text-sm">Du fikk en e-post fra <strong>adrian@dmarketing.no</strong> da prosjektet ble levert. Den inneholder tre lenker: <strong>GitHub-repo</strong>, <strong>Claude-tilgang</strong> og <strong>GitHub-oversikten</strong>. Hvis du ikke finner den: sjekk søppelpost, eller send oss melding så sender vi på nytt.</p>
         </div>
       </div>
 
@@ -166,7 +166,7 @@
           Hva er «repo» og «dashboard»?
         </span>
         <p>Et <strong>«repo»</strong> (uttales «rippo», kortform for det engelske <em>repository</em>) er <strong>mappen der alle filene til nettsiden din ligger samlet</strong>. Et <strong>GitHub-repo</strong> er denne mappen lagret trygt på GitHub. Du trenger ikke gjøre noe inni den selv — Claude gjør jobben.</p>
-        <p>Et <strong>«dashboard»</strong> er en <strong>kontroll-side du logger inn på</strong> — en oversiktsside med knapper og statuser. <strong>Cloudflare-dashboard</strong> er innloggingssiden hos Cloudflare der du kan se hvordan det går med nettsiden din.</p>
+        <p>Et <strong>«dashboard»</strong> er en <strong>kontroll-side du logger inn på</strong> — en oversiktsside med knapper og statuser. <strong>GitHub-oversikten</strong> er siden på github.com der du kan se hvordan det går med nettsiden din.</p>
       </div>
 
       <div class="step not-prose">
@@ -253,7 +253,7 @@
         <div class="step-num">5</div>
         <div class="step-content">
           <h3 class="font-display font-bold text-lg mb-2">Gjør en test-endring</h3>
-          <p class="text-zinc-600 text-sm">Skriv: <code>Bytt telefonnummeret i bunnen til 12 34 56 78 (det er bare en test, vi setter tilbake)</code>. Claude foreslår endringen, du klikker «godkjenn», og den lagres. Cloudflare «bygger» så siden automatisk — det betyr bare at maskinen setter sammen den ferdige nettsiden av filene dine. Du gjør ingenting selv.</p>
+          <p class="text-zinc-600 text-sm">Skriv: <code>Bytt telefonnummeret i bunnen til 12 34 56 78 (det er bare en test, vi setter tilbake)</code>. Claude foreslår endringen, du klikker «godkjenn», og den lagres. GitHub Pages publiserer så siden automatisk — det betyr bare at maskinen setter sammen den ferdige nettsiden av filene dine. Du gjør ingenting selv.</p>
         </div>
       </div>
 
@@ -281,7 +281,7 @@
       <!-- Diagram: the repeating workflow loop -->
       <figure class="not-prose my-8">
         <p class="text-xs font-semibold uppercase tracking-widest text-zinc-400 mb-3">Slik ser flyten ut — igjen og igjen</p>
-        <svg viewBox="0 0 560 175" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Arbeidsflyt-loop: Du skriver til Claude, Claude foreslår, du godkjenner, GitHub lagrer, Cloudflare bygger, live på nettstedet">
+        <svg viewBox="0 0 560 175" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Arbeidsflyt-loop: Du skriver til Claude, Claude foreslår, du godkjenner, GitHub lagrer, GitHub Pages publiserer, live på nettstedet">
           <defs>
             <marker id="wf-arr" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0, 7 3.5, 0 7" fill="#94A3B8"/></marker>
             <marker id="wf-ret" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0, 7 3.5, 0 7" fill="#CBD5E1"/></marker>
@@ -327,14 +327,14 @@
           <!-- 5: Live! -->
           <rect x="458" y="55" width="88" height="64" rx="10" fill="#F0FDF4" stroke="#86EFAC" stroke-width="2"/>
           <text x="502" y="80" font-size="9" fill="#14532D" font-weight="700" text-anchor="middle">5. Live!</text>
-          <text x="502" y="93" font-size="9" fill="#16A34A" text-anchor="middle">Cloudflare bygger</text>
+          <text x="502" y="93" font-size="9" fill="#16A34A" text-anchor="middle">GitHub Pages publiserer</text>
           <text x="502" y="107" font-size="18" text-anchor="middle">🌐</text>
 
           <!-- return arrow along bottom -->
           <path d="M502 119 L502 148 L54 148 L54 119" fill="none" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="5 3" marker-end="url(#wf-ret)"/>
           <text x="280" y="162" font-size="9" fill="#94A3B8" text-anchor="middle">Neste endring? Start på nytt fra steg 1 — flyten er alltid den samme</text>
         </svg>
-        <p class="text-center text-xs text-zinc-400 mt-2">Etter «godkjenn»-klikket tar Cloudflare 30–90 sekunder. Du gjør ingenting mens du venter.</p>
+        <p class="text-center text-xs text-zinc-400 mt-2">Etter «godkjenn»-klikket tar GitHub Pages 30–90 sekunder. Du gjør ingenting mens du venter.</p>
       </figure>
 
       <h2>Vanlige problemer ved første oppsett</h2>
@@ -346,10 +346,10 @@
       <p>GitHub er gratis for det vi trenger. Hvis det spør om betaling, har du sannsynligvis havnet på «Pro»-nivået (det betalte) ved et uhell — bytt tilbake til <strong>«Free»</strong> (gratis). «Tier» er bare det engelske ordet for «nivå».</p>
 
       <h3>Endringen vises ikke selv etter 5 minutter</h3>
-      <p>Tre vanlige grunner: <strong>(1)</strong> Nettleseren viser fortsatt den gamle, lagrede versjonen (cache) — gjør en hard reload med <code>Ctrl + Shift + R</code> (se forklaringen lenger oppe). <strong>(2)</strong> Claude lagret ikke — sjekk at du klikket «godkjenn». <strong>(3)</strong> Cloudflare fikk ikke bygget den nye siden — gå til Cloudflare-dashboardet (kontroll-siden du logget inn på) og se i listen om byggingen gikk galt. Står det <code>Failed</code> i rødt, gikk byggingen feil — da kan du sende oss en melding så hjelper vi deg.</p>
+      <p>Tre vanlige grunner: <strong>(1)</strong> Nettleseren viser fortsatt den gamle, lagrede versjonen (cache) — gjør en hard reload med <code>Ctrl + Shift + R</code> (se forklaringen lenger oppe). <strong>(2)</strong> Claude lagret ikke — sjekk at du klikket «godkjenn». <strong>(3)</strong> GitHub Pages fikk ikke publisert den nye siden — gå til GitHub-oversikten og sjekk fanen «Actions». Står det <code>Failed</code> i rødt, gikk noe galt — da kan du sende oss en melding så hjelper vi deg.</p>
 
       <div class="callout callout-warn">
-        <p><strong>Tips:</strong> Lagre alle de tre lenkene (GitHub, Claude, Cloudflare) i bokmerker. Du kommer til å bruke dem ofte.</p>
+        <p><strong>Tips:</strong> Lagre begge lenkene (GitHub og Claude) i bokmerker. Du kommer til å bruke dem ofte.</p>
       </div>
 
       <div class="callout">
@@ -363,7 +363,7 @@
         </div>
         <ul style="margin:0;padding-left:20px;">
           <li style="font-size:0.95rem;line-height:1.55;color:#15803D;margin-bottom:6px;list-style:disc;">Du trenger bare e-post, nettleseren din, og tilgangene du fikk fra Dietrichs</li>
-          <li style="font-size:0.95rem;line-height:1.55;color:#15803D;margin-bottom:6px;list-style:disc;">GitHub er lagringen, Claude er hjelperen, Cloudflare er det som gjør siden live — lagre alle tre som bokmerker</li>
+          <li style="font-size:0.95rem;line-height:1.55;color:#15803D;margin-bottom:6px;list-style:disc;">GitHub er lagringen og publiseringen, Claude er hjelperen — lagre begge som bokmerker</li>
           <li style="font-size:0.95rem;line-height:1.55;color:#15803D;margin-bottom:0;list-style:disc;">Etter én vellykket testendring er du i gang — alt du gjør fremover er repetisjon av det samme</li>
         </ul>
       </div>
