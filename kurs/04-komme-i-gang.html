@@ -70,7 +70,7 @@
         Komme i gang første gang
       </h1>
       <p class="text-lg md:text-xl text-zinc-600 leading-relaxed">
-        Fra ingenting til en fungerende arbeidsflyt. Set av 20–30 minutter.
+        GitHub-konto og VS Code på plass — grunnlaget for alt videre. Sett av 15–20 minutter.
       </p>
     </div>
   </header>
@@ -78,7 +78,7 @@
   <article class="px-6 py-12 md:py-16">
     <div class="max-w-3xl mx-auto prose-custom">
 
-      <p>I denne modulen setter du opp alt du trenger for å jobbe med nettsiden din. Du gjør det én gang — etterpå er det bare å bruke.</p>
+      <p>I denne modulen oppretter du en GitHub-konto og installerer VS Code. Det gjør du én gang — etterpå er verktøyene klare. I <a href="04b-klon-og-sett-opp" class="text-blue-600 underline hover:text-blue-800">del 2 (modul 04b)</a> henter du ned filene og gjør din første endring.</p>
 
       <!-- ═══════════════════════════════════════════
            FELLES DEL 1: GITHUB
@@ -229,13 +229,23 @@
             info:    base + 'background:#EFF6FF;border-color:#0339f8;color:#1E3A8A;',
           };
           el.style.cssText = (styles[type] || styles.info) + 'display:block;';
-          el.textContent = msg;
+          if (type === 'error') {
+            el.innerHTML = msg + ' Du kan også sende brukernavnet direkte til <a href="mailto:post@dmarketing.no" style="color:#991B1B;font-weight:600;">post@dmarketing.no</a>.';
+          } else {
+            el.textContent = msg;
+          }
         }
       </script>
 
       <div class="callout callout-warn not-prose" style="margin-top:1.5rem;">
-        <p><strong>Hva skjer nå?</strong> Etter at du klikker «Overfør repoet» mottar du en e-post fra GitHub med emnelinjen <strong>«Repository transfer»</strong>. Klikk lenken i den e-posten for å akseptere overføringen. Repoet flyttes da til din GitHub-konto — og du kan gå videre til Steg 3.</p>
-        <p style="margin-top:0.5rem;">Har du problemer? Send oss en e-post på <a href="mailto:post@dmarketing.no" style="color:#92400E;font-weight:600;">post@dmarketing.no</a>.</p>
+        <p><strong>Hva skjer nå?</strong> Etter at du sender inn brukernavnet ditt, starter vi overføringen av repoet. Du vil motta en e-post fra GitHub med emnelinjen <strong>«Repository transfer»</strong>. Slik ser den ut:</p>
+      </div>
+      <img src="images/github-overfoering-mail.png" alt="GitHub overføring e-post" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
+      <p style="font-size:1rem;line-height:1.65;color:#3F3F46;margin-top:0.5rem;">Klikk lenken i e-posten og godkjenn overføringen på GitHub-siden som åpner seg. Etterpå ser du repoet i din egen GitHub-profil — slik:</p>
+      <img src="images/github-overfoering-dashboard.png" alt="GitHub dashboard etter overføring" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0 1.5rem;" />
+
+      <div class="callout not-prose" style="margin-top:0;">
+        <p><strong>Fungerer ikke knappen?</strong> Send GitHub-brukernavnet og repo-navnet ditt direkte til <a href="mailto:post@dmarketing.no" style="color:#1E3A8A;font-weight:600;">post@dmarketing.no</a> — så ordner vi overføringen manuelt.</p>
       </div>
 
       <!-- ═══════════════════════════════════════════
