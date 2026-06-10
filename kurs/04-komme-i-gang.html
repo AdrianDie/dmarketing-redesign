@@ -84,7 +84,7 @@
            FELLES DEL 1: GITHUB
       ══════════════════════════════════════════════ -->
       <h2>Steg 1 — Få tilgang til nettsiden din på GitHub</h2>
-      <p>GitHub er stedet der alle filene til nettsiden din lagres. Du har allerede fått en invitasjon fra oss — så du trenger ikke gå til github.com selv. Følg trinnene under.</p>
+      <p>GitHub er stedet der alle filene til nettsiden din lagres. Du har allerede fått en invitasjon fra oss — så du trenger ikke gå til github.com selv. Vi bruker <strong>Brattøy Elektriske</strong> som eksempel her, men flyten er lik uansett hva firmaet ditt heter.</p>
 
       <div class="step not-prose">
         <div class="step-num">1</div>
@@ -92,6 +92,7 @@
           <h3>Finn invitasjonsmailèn</h3>
           <p>Sjekk e-posten du fikk da du startet dette kurset. Se etter en mail fra <strong>noreply@github.com</strong> med emnelinjen <strong>«[navn] invited you to collaborate»</strong>. Finner du den ikke? Sjekk søppelpost-mappen.</p>
           <p>Klikk på <strong>«View invitation»</strong> i mailen.</p>
+          <img src="images/github-invitasjon-mail.png" alt="GitHub invitasjonsmail" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0 0;" />
         </div>
       </div>
 
@@ -99,7 +100,8 @@
         <div class="step-num">2</div>
         <div class="step-content">
           <h3>Opprett GitHub-konto</h3>
-          <p>Du blir sendt til GitHub og bedt om å opprette en konto. Fyll inn <strong>samme e-postadresse som du fikk invitasjonen på</strong>, velg et passord og et brukernavn du husker. Bruk gjerne firmanavnet ditt som brukernavn.</p>
+          <p>Du blir sendt til GitHub og bedt om å opprette en konto. Fyll inn <strong>samme e-postadresse som du fikk invitasjonen på</strong>, velg et passord og et brukernavn du husker. Bruk gjerne firmanavnet ditt som brukernavn — f.eks. <code>brattoy</code>.</p>
+          <img src="images/github-opprett-konto.png" alt="Opprett GitHub-konto" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0 0;" />
         </div>
       </div>
 
@@ -107,7 +109,8 @@
         <div class="step-num">3</div>
         <div class="step-content">
           <h3>Bekreft e-postadressen din</h3>
-          <p>GitHub ber deg om å skrive inn en kode for å bekrefte at e-posten er din. Gå tilbake til e-posten din og se etter en ny mail fra GitHub med tittelen <strong>«Your GitHub launch code»</strong>. Der står en 8-sifret kode — skriv den inn på GitHub-siden.</p>
+          <p>GitHub ber deg om å skrive inn en kode for å bekrefte at e-posten er din. Gå tilbake til innboksen og se etter en mail med tittelen <strong>«Your GitHub launch code»</strong>. Der står en 8-sifret kode — skriv den inn på GitHub-siden.</p>
+          <img src="images/github-kode-mail.png" alt="GitHub kode-mail" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0 0;" />
         </div>
       </div>
 
@@ -116,6 +119,7 @@
         <div class="step-content">
           <h3>Logg inn</h3>
           <p>Etter at kontoen er opprettet blir du bedt om å logge inn. Bruk e-postadressen og passordet du nettopp valgte.</p>
+          <img src="images/github-logg-inn.png" alt="Logg inn på GitHub" style="width:100%;max-width:480px;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0 0;" />
         </div>
       </div>
 
@@ -124,12 +128,110 @@
         <div class="step-content">
           <h3>Gå tilbake til invitasjonsmailèn og aksepter</h3>
           <p>Nå som du er logget inn: gå tilbake til den opprinnelige invitasjonsmailèn og klikk <strong>«View invitation»</strong> igjen. Du ser nå en side med to knapper — klikk <strong>«Accept invitation»</strong>.</p>
+          <img src="images/github-aksepter.png" alt="Aksepter GitHub-invitasjon" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0 0;" />
         </div>
       </div>
 
       <div class="callout callout-ok not-prose" style="margin-top:1.5rem;margin-bottom:1.5rem;">
-        <p><strong>Du har nå tilgang til nettsiden din.</strong> GitHub viser deg alle filene nettsiden din består av — HTML-filer, bilder, stilark og alt annet. Dette er «kildekoden» til siden din. I de neste stegene setter du opp verktøyene du trenger for å redigere den.</p>
+        <p><strong>Du har nå tilgang til nettsiden din.</strong> For Brattøy Elektriske ser det slik ut på GitHub — her ser du alle filene nettsiden din består av:</p>
       </div>
+      <img src="images/github-repo.png" alt="GitHub-repo etter akseptert invitasjon" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0 0 1.5rem;" />
+
+      <div class="step not-prose" id="transfer-step">
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <h3>Overfør repoet til din GitHub-konto</h3>
+          <p>Fyll inn GitHub-brukernavnet ditt og repo-navnet ditt, så overfører vi repoet til deg. Da eier du det selv og kan klone det fritt.</p>
+          <p>Brukernavnet ditt finner du øverst til høyre på github.com etter innlogging.</p>
+
+          <div style="margin-top:1rem;display:flex;flex-direction:column;gap:0.75rem;max-width:420px;">
+            <div>
+              <label for="gh-username" style="display:block;font-size:0.875rem;font-weight:600;color:#09090B;margin-bottom:0.35rem;">GitHub-brukernavn</label>
+              <input type="text" id="gh-username" placeholder="f.eks. brattoy-as" autocomplete="off" spellcheck="false"
+                style="width:100%;box-sizing:border-box;padding:0.6rem 0.875rem;border:1.5px solid #D4D4D8;border-radius:8px;font-family:'Inter',sans-serif;font-size:1rem;color:#09090B;outline:none;"
+                onfocus="this.style.borderColor='#0339f8'" onblur="this.style.borderColor='#D4D4D8'" />
+            </div>
+            <div>
+              <label for="gh-repo" style="display:block;font-size:0.875rem;font-weight:600;color:#09090B;margin-bottom:0.35rem;">Repo-navn</label>
+              <input type="text" id="gh-repo" placeholder="f.eks. brattoy-redesign" autocomplete="off" spellcheck="false"
+                style="width:100%;box-sizing:border-box;padding:0.6rem 0.875rem;border:1.5px solid #D4D4D8;border-radius:8px;font-family:'Inter',sans-serif;font-size:1rem;color:#09090B;outline:none;"
+                onfocus="this.style.borderColor='#0339f8'" onblur="this.style.borderColor='#D4D4D8'" />
+            </div>
+            <div>
+              <button id="transfer-btn" onclick="doTransfer()"
+                style="background:#0339f8;color:white;font-family:'Archivo',sans-serif;font-weight:700;font-size:0.9375rem;padding:0.625rem 1.5rem;border-radius:8px;border:none;cursor:pointer;"
+                onmouseover="if(!this.disabled)this.style.background='#1d4ed8'" onmouseout="if(!this.disabled)this.style.background='#0339f8'">
+                Overfør repoet
+              </button>
+            </div>
+          </div>
+          <div id="transfer-status" style="display:none;margin-top:0.75rem;max-width:420px;"></div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          var params = new URLSearchParams(window.location.search);
+          var repo = params.get('repo');
+          if (repo) {
+            var el = document.getElementById('gh-repo');
+            if (el) el.value = repo;
+          }
+        })();
+
+        async function doTransfer() {
+          var btn = document.getElementById('transfer-btn');
+          var username = document.getElementById('gh-username').value.trim();
+          var repo = document.getElementById('gh-repo').value.trim();
+
+          if (!username || !repo) {
+            setTransferStatus('error', 'Fyll inn både GitHub-brukernavn og repo-navn.');
+            return;
+          }
+
+          btn.disabled = true;
+          btn.textContent = 'Venter…';
+          btn.style.opacity = '0.65';
+          setTransferStatus('info', 'Kobler til GitHub…');
+
+          try {
+            var resp = await fetch('https://github-transfer.DITT-SUBDOMAIN.workers.dev', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ github_username: username, repo_name: repo }),
+            });
+            var data = await resp.json();
+            if (data.ok) {
+              setTransferStatus('success',
+                '✓ Overføringsforespørselen er sendt! Du vil om litt motta en e-post fra GitHub — klikk «Accept transfer» i den e-posten for å fullføre. Deretter finner du repoét på github.com/' + username + '/' + repo + '.'
+              );
+              btn.style.display = 'none';
+            } else {
+              setTransferStatus('error', data.error || 'Noe gikk galt. Prøv igjen eller ta kontakt med Adrian.');
+              btn.disabled = false;
+              btn.textContent = 'Overfør repoét';
+              btn.style.opacity = '1';
+            }
+          } catch (e) {
+            setTransferStatus('error', 'Kunne ikke nå serveren. Sjekk internettforbindelsen din og prøv igjen.');
+            btn.disabled = false;
+            btn.textContent = 'Overfør repoét';
+            btn.style.opacity = '1';
+          }
+        }
+
+        function setTransferStatus(type, msg) {
+          var el = document.getElementById('transfer-status');
+          var base = 'padding:0.75rem 1rem;border-radius:8px;font-size:0.9375rem;line-height:1.55;border-left:3px solid;';
+          var styles = {
+            success: base + 'background:#F0FDF4;border-color:#16A34A;color:#14532D;',
+            error:   base + 'background:#FEF2F2;border-color:#EF4444;color:#7F1D1D;',
+            info:    base + 'background:#EFF6FF;border-color:#0339f8;color:#1E3A8A;',
+          };
+          el.style.cssText = (styles[type] || styles.info) + 'display:block;';
+          el.textContent = msg;
+        }
+      </script>
 
       <!-- ═══════════════════════════════════════════
            FELLES DEL 2: VS CODE
