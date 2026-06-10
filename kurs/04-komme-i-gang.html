@@ -83,48 +83,52 @@
       <!-- ═══════════════════════════════════════════
            FELLES DEL 1: GITHUB
       ══════════════════════════════════════════════ -->
-      <h2>Steg 1 — Opprett GitHub-konto</h2>
-      <p>GitHub er stedet der alle filene til nettsiden din lagres. Tenk på det som en Dropbox-mappe for kode — men med én viktig bonus: GitHub husker <em>alle</em> endringer som noensinne er gjort, for alltid.</p>
+      <h2>Steg 1 — Få tilgang til nettsiden din på GitHub</h2>
+      <p>GitHub er stedet der alle filene til nettsiden din lagres. Du har allerede fått en invitasjon fra oss — så du trenger ikke gå til github.com selv. Følg trinnene under.</p>
 
       <div class="step not-prose">
         <div class="step-num">1</div>
         <div class="step-content">
-          <h3>Gå til github.com</h3>
-          <p>Gå til <a href="https://github.com" target="_blank" rel="noopener" class="text-blue-600 underline hover:text-blue-800">github.com</a>. Klikk <strong>«Sign up»</strong> øverst til høyre.</p>
+          <h3>Finn invitasjonsmailèn</h3>
+          <p>Sjekk e-posten du fikk da du startet dette kurset. Se etter en mail fra <strong>noreply@github.com</strong> med emnelinjen <strong>«[navn] invited you to collaborate»</strong>. Finner du den ikke? Sjekk søppelpost-mappen.</p>
+          <p>Klikk på <strong>«View invitation»</strong> i mailen.</p>
         </div>
       </div>
 
       <div class="step not-prose">
         <div class="step-num">2</div>
         <div class="step-content">
-          <h3>Fyll inn e-post, passord og brukernavn</h3>
-          <p>Velg et brukernavn du husker — det vil inngå i adressen til nettsiden din mens du setter opp alt. Bruk gjerne firmanavnet ditt.</p>
+          <h3>Opprett GitHub-konto</h3>
+          <p>Du blir sendt til GitHub og bedt om å opprette en konto. Fyll inn <strong>samme e-postadresse som du fikk invitasjonen på</strong>, velg et passord og et brukernavn du husker. Bruk gjerne firmanavnet ditt som brukernavn.</p>
         </div>
       </div>
 
       <div class="step not-prose">
         <div class="step-num">3</div>
         <div class="step-content">
-          <h3>Bekreft e-postadressen</h3>
-          <p>GitHub sender en e-post med en kode. Skriv inn koden på skjermen. Velg <strong>«Free»</strong>-planen — det er den gratis varianten, og det er alt du trenger.</p>
+          <h3>Bekreft e-postadressen din</h3>
+          <p>GitHub ber deg om å skrive inn en kode for å bekrefte at e-posten er din. Gå tilbake til e-posten din og se etter en ny mail fra GitHub med tittelen <strong>«Your GitHub launch code»</strong>. Der står en 8-sifret kode — skriv den inn på GitHub-siden.</p>
         </div>
       </div>
 
       <div class="step not-prose">
         <div class="step-num">4</div>
         <div class="step-content">
-          <h3>Aksepter invitasjon fra Dietrichs</h3>
-          <p>Du har fått en e-post fra GitHub med tittelen <strong>«You've been invited to collaborate»</strong>. Åpne den og klikk <strong>«Accept invitation»</strong>. Nå har du tilgang til repoet ditt — mappen med alle filene til nettsiden din.</p>
-          <p>Ikke funnet e-posten? Sjekk spam-mappen, eller kontakt oss så sender vi en ny invitasjon.</p>
+          <h3>Logg inn</h3>
+          <p>Etter at kontoen er opprettet blir du bedt om å logge inn. Bruk e-postadressen og passordet du nettopp valgte.</p>
         </div>
       </div>
 
       <div class="step not-prose">
         <div class="step-num">5</div>
         <div class="step-content">
-          <h3>Bekreft at du ser filene</h3>
-          <p>Gå til github.com og logg inn. Du skal nå se et «repository» (en mappe) med navn som ligner på firmanavnet ditt. Klikk på det og sjekk at du ser filer som <code>index.html</code>, <code>style.css</code> og lignende. Da er GitHub-tilgangen i orden.</p>
+          <h3>Gå tilbake til invitasjonsmailèn og aksepter</h3>
+          <p>Nå som du er logget inn: gå tilbake til den opprinnelige invitasjonsmailèn og klikk <strong>«View invitation»</strong> igjen. Du ser nå en side med to knapper — klikk <strong>«Accept invitation»</strong>.</p>
         </div>
+      </div>
+
+      <div class="callout callout-ok not-prose" style="margin-top:1.5rem;margin-bottom:1.5rem;">
+        <p><strong>Du har nå tilgang til nettsiden din.</strong> GitHub viser deg alle filene nettsiden din består av — HTML-filer, bilder, stilark og alt annet. Dette er «kildekoden» til siden din. I de neste stegene setter du opp verktøyene du trenger for å redigere den.</p>
       </div>
 
       <!-- ═══════════════════════════════════════════
@@ -133,28 +137,99 @@
       <h2>Steg 2 — Installer VS Code</h2>
       <p>VS Code er editoren du redigerer filer i. Den er gratis, brukes av millioner av folk verden over, og har alt du trenger innebygd: filviser, koderedigering og git (så du kan sende endringer til GitHub direkte).</p>
 
+      <!-- OS-velger -->
+      <div class="not-prose" style="display:flex;gap:0.5rem;margin:1.5rem 0 0.5rem;">
+        <button id="os-win" onclick="setOS('win')" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 1.1rem;border-radius:8px;border:2px solid #0339f8;background:#0339f8;color:white;font-family:'Archivo',sans-serif;font-weight:700;font-size:0.9rem;cursor:pointer;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
+          Windows
+        </button>
+        <button id="os-mac" onclick="setOS('mac')" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 1.1rem;border-radius:8px;border:2px solid #D4D4D8;background:white;color:#3F3F46;font-family:'Archivo',sans-serif;font-weight:700;font-size:0.9rem;cursor:pointer;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          Mac
+        </button>
+      </div>
+      <script>
+        function setOS(os) {
+          document.querySelectorAll('.os-win').forEach(el => el.style.display = os === 'win' ? '' : 'none');
+          document.querySelectorAll('.os-mac').forEach(el => el.style.display = os === 'mac' ? '' : 'none');
+          var wb = document.getElementById('os-win');
+          var mb = document.getElementById('os-mac');
+          if (os === 'win') {
+            wb.style.background = '#0339f8'; wb.style.color = 'white'; wb.style.borderColor = '#0339f8';
+            mb.style.background = 'white'; mb.style.color = '#3F3F46'; mb.style.borderColor = '#D4D4D8';
+          } else {
+            mb.style.background = '#0339f8'; mb.style.color = 'white'; mb.style.borderColor = '#0339f8';
+            wb.style.background = 'white'; wb.style.color = '#3F3F46'; wb.style.borderColor = '#D4D4D8';
+          }
+          localStorage.setItem('kurs-os', os);
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+          setOS(localStorage.getItem('kurs-os') || 'win');
+        });
+      </script>
+
       <div class="step not-prose">
         <div class="step-num">1</div>
         <div class="step-content">
           <h3>Last ned VS Code</h3>
-          <p>Gå til <a href="https://code.visualstudio.com" target="_blank" rel="noopener" class="text-blue-600 underline hover:text-blue-800">code.visualstudio.com</a>. Siden registrerer automatisk om du er på Windows eller Mac og tilbyr riktig versjon. Klikk den store nedlastingsknappen.</p>
+          <p>Gå til <a href="https://code.visualstudio.com" target="_blank" rel="noopener">code.visualstudio.com</a>.</p>
+
+          <!-- Windows -->
+          <div class="os-win">
+            <p>Klikk den store <strong>«Download for Windows»</strong>-knappen midt på siden.</p>
+            <img src="images/vscode-windows.png" alt="VS Code nedlasting Windows" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
+          </div>
+
+          <!-- Mac -->
+          <div class="os-mac">
+            <p>Klikk <strong>«Download»</strong>-knappen øverst til høyre på siden.</p>
+            <img src="images/vscode-mac-home.png" alt="VS Code nedlasting Mac steg 1" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
+            <p>Du blir sendt til nedlastingssiden. Klikk den store <strong>«Mac»</strong>-knappen.</p>
+            <img src="images/vscode-mac-download.png" alt="VS Code nedlasting Mac steg 2" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
+          </div>
         </div>
       </div>
 
       <div class="step not-prose">
         <div class="step-num">2</div>
         <div class="step-content">
-          <h3>Installer</h3>
-          <p><strong>Windows:</strong> Åpne .exe-filen du lastet ned og klikk deg gjennom installasjonen. Standardvalgene er fine — du trenger ikke endre noe.</p>
-          <p><strong>Mac:</strong> Åpne .zip-filen, dra «Visual Studio Code» til Applications-mappen din.</p>
+          <h3>Nedlastingen starter</h3>
+          <p>Nettleseren begynner å laste ned installasjonsfilen. Du ser fremdriften nede i nettleseren (eller i et nedlastingsvindu øverst til høyre). Vent til den er ferdig — filen er ca. 176 MB.</p>
+          <img src="images/vscode-nedlasting.png" alt="VS Code laster ned" style="width:360px;max-width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
+          <p>Når det står <strong>«Ferdig»</strong>, klikk på mappeikonet for å åpne filen direkte.</p>
+          <img src="images/vscode-ferdig.png" alt="VS Code nedlasting ferdig" style="width:360px;max-width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
+        </div>
+      </div>
+
+      <div class="step not-prose os-win">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>Start installasjonen</h3>
+          <p>Windows spør om du vil kjøre filen — klikk <strong>OK</strong> eller <strong>Kjør</strong>. Installasjonsprogrammet åpner seg og viser lisensavtalen. Velg <strong>«I accept the agreement»</strong> og klikk <strong>Next</strong>.</p>
+          <img src="images/vscode-lisens.png" alt="VS Code lisensavtale" style="width:100%;max-width:520px;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
+          <p>Klikk deg gjennom de neste skjermbildene med <strong>Next</strong> — standardvalgene er fine. På skjermbildet «Select Additional Tasks» trykker du bare <strong>Next</strong>.</p>
+          <img src="images/vscode-tasks.png" alt="VS Code ekstra oppgaver" style="width:100%;max-width:520px;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
+          <p>Klikk <strong>Install</strong> — installasjonen tar et par minutter. Når den er ferdig klikker du <strong>Finish</strong>. VS Code åpner seg automatisk.</p>
+        </div>
+      </div>
+
+      <div class="callout callout-ok not-prose" style="margin-top:2rem;">
+        <p><strong>VS Code er installert.</strong> Du har nå verktøyet du trenger for å se og redigere filene nettsiden din består av — <code>index.html</code>, <code>style.css</code>, bilder og alt annet. I neste steg henter du selve filene ned til PC-en din.</p>
+      </div>
+
+      <div class="step not-prose os-mac">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>Installer VS Code</h3>
+          <p>Åpne .zip-filen du lastet ned. Dra <strong>«Visual Studio Code»</strong>-ikonet til <strong>Applications</strong>-mappen din. Åpne deretter appen fra Applications.</p>
         </div>
       </div>
 
       <div class="step not-prose">
-        <div class="step-num">3</div>
+        <div class="step-num">4</div>
         <div class="step-content">
           <h3>Åpne VS Code</h3>
-          <p>Start programmet. Du ser en velkomstskjerm med noen snarveier. Du trenger ikke gjøre noe her ennå.</p>
+          <p>Start programmet. Du ser en velkomstskjerm med noen snarveier. Du trenger ikke gjøre noe her ennå — bare la den stå åpen til neste steg.</p>
         </div>
       </div>
 
