@@ -141,7 +141,7 @@
         <div class="step-num">6</div>
         <div class="step-content">
           <h3>Overfør repoet til din GitHub-konto</h3>
-          <p>Fyll inn GitHub-brukernavnet ditt og repo-navnet ditt, så overfører vi repoet til deg. Da eier du det selv og kan klone det fritt.</p>
+          <p>Fyll inn GitHub-brukernavnet ditt og bedriftsnavnet ditt, så overfører vi repoet til deg. Da eier du det selv og kan klone det fritt.</p>
           <p>Brukernavnet ditt finner du øverst til høyre på github.com etter innlogging.</p>
 
           <div style="margin-top:1rem;display:flex;flex-direction:column;gap:0.75rem;max-width:420px;">
@@ -152,8 +152,8 @@
                 onfocus="this.style.borderColor='#0339f8'" onblur="this.style.borderColor='#D4D4D8'" />
             </div>
             <div>
-              <label for="gh-repo" style="display:block;font-size:0.875rem;font-weight:600;color:#09090B;margin-bottom:0.35rem;">Repo-navn</label>
-              <input type="text" id="gh-repo" placeholder="f.eks. brattoy-redesign" autocomplete="off" spellcheck="false"
+              <label for="gh-business" style="display:block;font-size:0.875rem;font-weight:600;color:#09090B;margin-bottom:0.35rem;">Bedriftsnavn</label>
+              <input type="text" id="gh-business" placeholder="f.eks. Brattøy Elektriske AS" autocomplete="off" spellcheck="false"
                 style="width:100%;box-sizing:border-box;padding:0.6rem 0.875rem;border:1.5px solid #D4D4D8;border-radius:8px;font-family:'Inter',sans-serif;font-size:1rem;color:#09090B;outline:none;"
                 onfocus="this.style.borderColor='#0339f8'" onblur="this.style.borderColor='#D4D4D8'" />
             </div>
@@ -172,20 +172,20 @@
       <script>
         (function () {
           var params = new URLSearchParams(window.location.search);
-          var repo = params.get('repo');
-          if (repo) {
-            var el = document.getElementById('gh-repo');
-            if (el) el.value = repo;
+          var business = params.get('business');
+          if (business) {
+            var el = document.getElementById('gh-business');
+            if (el) el.value = business;
           }
         })();
 
         async function doTransfer() {
           var btn = document.getElementById('transfer-btn');
           var username = document.getElementById('gh-username').value.trim();
-          var repo = document.getElementById('gh-repo').value.trim();
+          var business = document.getElementById('gh-business').value.trim();
 
-          if (!username || !repo) {
-            setTransferStatus('error', 'Fyll inn både GitHub-brukernavn og repo-navn.');
+          if (!username || !business) {
+            setTransferStatus('error', 'Fyll inn både GitHub-brukernavn og bedriftsnavn.');
             return;
           }
 
@@ -198,12 +198,12 @@
             var resp = await fetch('https://github-transfer.DITT-SUBDOMAIN.workers.dev', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ github_username: username, repo_name: repo }),
+              body: JSON.stringify({ github_username: username, business_name: business }),
             });
             var data = await resp.json();
             if (data.ok) {
               setTransferStatus('success',
-                '✓ Overføringsforespørselen er sendt! Du vil om litt motta en e-post fra GitHub — klikk «Accept transfer» i den e-posten for å fullføre. Deretter finner du repoét på github.com/' + username + '/' + repo + '.'
+                '✓ Overføringsforespørselen er sendt! Du vil om litt motta en e-post fra GitHub — klikk «Accept transfer» i den e-posten for å fullføre.'
               );
               btn.style.display = 'none';
             } else {
@@ -245,7 +245,7 @@
       <img src="images/github-overfoering-dashboard.png" alt="GitHub dashboard etter overføring" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0 1.5rem;" />
 
       <div class="callout not-prose" style="margin-top:0;">
-        <p><strong>Fungerer ikke knappen?</strong> Send GitHub-brukernavnet og repo-navnet ditt direkte til <a href="mailto:post@dmarketing.no" style="color:#1E3A8A;font-weight:600;">post@dmarketing.no</a> — så ordner vi overføringen manuelt.</p>
+        <p><strong>Fungerer ikke knappen?</strong> Send GitHub-brukernavnet og bedriftsnavnet ditt direkte til <a href="mailto:post@dmarketing.no" style="color:#1E3A8A;font-weight:600;">post@dmarketing.no</a> — så ordner vi overføringen manuelt.</p>
       </div>
 
       <!-- ═══════════════════════════════════════════
@@ -375,7 +375,7 @@
         <ul style="margin:0;padding-left:20px;">
           <li style="font-size:0.95rem;line-height:1.55;color:#15803D;margin-bottom:6px;list-style:disc;">GitHub-konto opprettet og koblet til repoet ditt</li>
           <li style="font-size:0.95rem;line-height:1.55;color:#15803D;margin-bottom:6px;list-style:disc;">VS Code installert og klar til bruk</li>
-          <li style="font-size:0.95rem;line-height:1.55;color:#15803D;margin-bottom:0;list-style:disc;">GitHub-brukernavn sendt til Dietrichs Marketing</li>
+          <li style="font-size:0.95rem;line-height:1.55;color:#15803D;margin-bottom:0;list-style:disc;">GitHub-brukernavn og bedriftsnavn sendt til Dietrichs Marketing</li>
         </ul>
       </div>
 
