@@ -71,12 +71,12 @@
 
 ---
 
-## Task 1: Opprett users.json i kurs-repoet
+## Task 1: Opprett users.json i kurs-repoet ✅
 
 **Files:**
 - Create: `kurs/users.json`
 
-- [ ] **Opprett tom brukerdatabase:**
+- [x] **Opprett tom brukerdatabase:**
 
   Fil: `kurs/users.json`
   ```json
@@ -86,7 +86,7 @@
   }
   ```
 
-- [ ] **Commit:**
+- [x] **Commit:**
   ```bash
   cd C:\Users\adria\website-mirrors\dmarketing-redesign
   git add kurs/users.json
@@ -96,33 +96,33 @@
 
 ---
 
-## Task 2: Cloudflare Worker — prosjektoppsett
+## Task 2: Cloudflare Worker — prosjektoppsett ✅
 
 **Files:**
 - Create: `C:\Users\adria\kurs-worker\worker.js`
 - Create: `C:\Users\adria\kurs-worker\wrangler.toml`
 - Create: `C:\Users\adria\kurs-worker\package.json`
 
-- [ ] **Installer Wrangler CLI:**
+- [x] **Installer Wrangler CLI:**
   ```bash
   npm install -g wrangler
   wrangler --version
   ```
   Forventet output: `wrangler 3.x.x`
 
-- [ ] **Logg inn på Cloudflare:**
+- [ ] **Logg inn på Cloudflare:** ← **GJENSTÅR**
   ```bash
   wrangler login
   ```
   Åpner nettleser — godkjenn tilgang.
 
-- [ ] **Opprett worker-mappe:**
+- [x] **Opprett worker-mappe:**
   ```bash
   mkdir C:\Users\adria\kurs-worker
   cd C:\Users\adria\kurs-worker
   ```
 
-- [ ] **Opprett `wrangler.toml`:**
+- [x] **Opprett `wrangler.toml`:**
   ```toml
   name = "kurs-auth-worker"
   main = "worker.js"
@@ -139,7 +139,7 @@
   SITE_BASE_URL = "https://www.dmarketing.no"
   ```
 
-- [ ] **Opprett `package.json`:**
+- [x] **Opprett `package.json`:**
   ```json
   {
     "name": "kurs-auth-worker",
@@ -150,12 +150,14 @@
 
 ---
 
-## Task 3: Cloudflare Worker — kjernelogikk
+## Task 3: Cloudflare Worker — kjernelogikk ✅
 
 **Files:**
 - Create: `C:\Users\adria\kurs-worker\worker.js`
 
-- [ ] **Skriv `worker.js`:**
+> **Oppdatering:** Worker er skrevet og inkluderer tre endepunkter: `/invite` (med `repo`-felt), `/set-password` (kopierer `repo` fra invite til brukerpost), og `/transfer-repo` (overfører repo automatisk basert på innlogget e-post). Se `C:\Users\adria\kurs-worker\worker.js`.
+
+- [x] **Skriv `worker.js`:**
 
   ```js
   // kurs-auth-worker/worker.js
@@ -363,7 +365,7 @@
       Velg passord og start kurset →
     </a>
     <p style="color:#a1a1aa;font-size:12px;margin:24px 0 0;">
-      Lenken er gyldig i 7 dager. Har du spørsmål? Svar på denne e-posten.
+      Lenken er gyldig i 7 dager. Har du spørsmål? Send en mail til <a href="mailto:post@dmarketing.no" style="color:#2563EB;">post@dmarketing.no</a>
     </p>
   </div>
   </body></html>`;
@@ -381,12 +383,15 @@
     <a href="https://www.dmarketing.no/kurs/" style="display:inline-block;background:#2563EB;color:#fff;font-weight:600;font-size:15px;padding:14px 28px;border-radius:10px;text-decoration:none;">
       Gå til kurset →
     </a>
+    <p style="color:#a1a1aa;font-size:12px;margin:24px 0 0;">
+      Har du spørsmål? Send en mail til <a href="mailto:post@dmarketing.no" style="color:#2563EB;">post@dmarketing.no</a>
+    </p>
   </div>
   </body></html>`;
   }
   ```
 
-- [ ] **Commit worker-filene:**
+- [x] **Commit worker-filene:**
   ```bash
   cd C:\Users\adria\kurs-worker
   git init
@@ -396,7 +401,7 @@
 
 ---
 
-## Task 4: Deploy Cloudflare Worker med secrets
+## Task 4: Deploy Cloudflare Worker med secrets ← GJENSTÅR
 
 - [ ] **Sett secrets (kjøres én gang — lagres kryptert i Cloudflare):**
   ```bash
@@ -431,7 +436,7 @@
 
 ---
 
-## Task 5: Oppdater `kurs/login.html` — email + passord
+## Task 5: Oppdater `kurs/login.html` — email + passord ✅
 
 **Files:**
 - Modify: `kurs/login.html`
@@ -591,7 +596,7 @@ Erstatt hele innholdet i `kurs/login.html` med:
 
 ---
 
-## Task 6: Oppdater `kurs/auth.js` — per-bruker session
+## Task 6: Oppdater `kurs/auth.js` — per-bruker session ✅
 
 **Files:**
 - Modify: `kurs/auth.js`
@@ -647,7 +652,7 @@ Erstatt hele innholdet i `kurs/login.html` med:
 
 ---
 
-## Task 7: Opprett `kurs/sett-passord.html`
+## Task 7: Opprett `kurs/sett-passord.html` ✅
 
 **Files:**
 - Create: `kurs/sett-passord.html`
@@ -843,7 +848,7 @@ Erstatt hele innholdet i `kurs/login.html` med:
 
 ---
 
-## Task 8: Legg til Kurs-fane i kundedashboardet
+## Task 8: Legg til Kurs-fane i kundedashboardet ← GJENSTÅR
 
 **Files:**
 - Modify: `C:\Users\adria\dmarketing-dashboard\dashboard.html`
@@ -883,9 +888,13 @@ Legg til en ny "Kurs"-fane i dashboardet. Finn fanen-navlinjen (der "AI-nettside
     <!-- Legg til-skjema -->
     <div id="kursLeggTilForm" class="hidden mb-6 bg-blue-50 border border-blue-200 rounded-xl p-4">
       <p class="text-sm font-medium text-blue-900 mb-3">Inviter ny bruker — velkomst-epost sendes automatisk</p>
-      <div class="flex gap-2">
+      <div class="flex gap-2 mb-2">
         <input type="email" id="kursNyEpost" placeholder="kunde@firma.no"
           class="flex-1 border border-zinc-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        <input type="text" id="kursNyRepo" placeholder="repo-navn (f.eks. brattoy-redesign)"
+          class="flex-1 border border-zinc-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      </div>
+      <div class="flex gap-2">
         <button onclick="kursSendInvite()" id="btnSendInvite"
           class="bg-blue-600 text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-blue-500 transition-colors whitespace-nowrap">
           Send invitasjon
@@ -982,16 +991,24 @@ Legg til en ny "Kurs"-fane i dashboardet. Finn fanen-navlinjen (der "AI-nettside
     document.getElementById('kursLeggTilForm').classList.add('hidden');
     document.getElementById('btnLeggTil').classList.remove('hidden');
     document.getElementById('kursNyEpost').value = '';
+    document.getElementById('kursNyRepo').value  = '';
     document.getElementById('kursInviteMsg').classList.add('hidden');
   }
 
   async function kursSendInvite() {
     var email  = document.getElementById('kursNyEpost').value.toLowerCase().trim();
+    var repo   = document.getElementById('kursNyRepo').value.trim();
     var btn    = document.getElementById('btnSendInvite');
     var msgEl  = document.getElementById('kursInviteMsg');
 
     if (!email || !email.includes('@')) {
       msgEl.textContent = 'Skriv inn en gyldig e-postadresse.';
+      msgEl.className   = 'mt-3 text-sm text-red-600';
+      msgEl.classList.remove('hidden');
+      return;
+    }
+    if (!repo) {
+      msgEl.textContent = 'Skriv inn repo-navnet (f.eks. brattoy-redesign).';
       msgEl.className   = 'mt-3 text-sm text-red-600';
       msgEl.classList.remove('hidden');
       return;
@@ -1008,7 +1025,7 @@ Legg til en ny "Kurs"-fane i dashboardet. Finn fanen-navlinjen (der "AI-nettside
           'Content-Type': 'application/json',
           'X-Worker-Secret': KURS_WORKER_SECRET,
         },
-        body: JSON.stringify({ email: email }),
+        body: JSON.stringify({ email: email, repo: repo }),
       });
       var data = await res.json();
 
@@ -1071,7 +1088,7 @@ Legg til en ny "Kurs"-fane i dashboardet. Finn fanen-navlinjen (der "AI-nettside
 
 ---
 
-## Task 9: Oppdater `sett-passord.html` med riktig worker-URL
+## Task 9: Oppdater `sett-passord.html` med riktig worker-URL ✅
 
 **Files:**
 - Modify: `kurs/sett-passord.html`
@@ -1091,7 +1108,7 @@ Legg til en ny "Kurs"-fane i dashboardet. Finn fanen-navlinjen (der "AI-nettside
 
 ---
 
-## Task 10: End-to-end test
+## Task 10: End-to-end test ← GJENSTÅR (etter Task 4 og 8)
 
 - [ ] **Test invitasjonsflyt:**
   1. Åpne `laast/dashboard.html` → Kurs-fanen
