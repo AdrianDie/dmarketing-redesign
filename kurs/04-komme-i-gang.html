@@ -239,10 +239,17 @@
             info:    base + 'background:#EFF6FF;border-color:#0339f8;color:#1E3A8A;',
           };
           el.style.cssText = (styles[type] || styles.info) + 'display:block;';
+          el.textContent = '';
+          var text = document.createTextNode(msg);
+          el.appendChild(text);
           if (type === 'error') {
-            el.innerHTML = msg + ' Du kan også sende GitHub-brukernavnet ditt til <a href="mailto:post@dmarketing.no" style="color:#991B1B;font-weight:600;">post@dmarketing.no</a>.';
-          } else {
-            el.textContent = msg;
+            el.appendChild(document.createTextNode(' Du kan også sende GitHub-brukernavnet ditt til '));
+            var a = document.createElement('a');
+            a.href = 'mailto:post@dmarketing.no';
+            a.style.cssText = 'color:#991B1B;font-weight:600;';
+            a.textContent = 'post@dmarketing.no';
+            el.appendChild(a);
+            el.appendChild(document.createTextNode('.'));
           }
         }
       </script>

@@ -87,16 +87,16 @@
       }
     } catch(e) {}
 
-    async function pbkdf2Hash(password, email) {
+    async function pbkdf2Derive(password, salt) {
       var enc = new TextEncoder();
       var keyMaterial = await crypto.subtle.importKey(
         'raw', enc.encode(password), 'PBKDF2', false, ['deriveBits']
       );
       var bits = await crypto.subtle.deriveBits(
-        { name: 'PBKDF2', salt: enc.encode(email.toLowerCase()), iterations: 100000, hash: 'SHA-256' },
+        { name: 'PBKDF2', salt: enc.encode(salt), iterations: 100000, hash: 'SHA-256' },
         keyMaterial, 256
       );
-      return Array.from(new Uint8Array(bits)).map(b => b.toString(16).padStart(2,'0')).join('');
+      return Array.from(new Uint8Array(bits)).map(function(b) { return b.toString(16).padStart(2,'0'); }).join('');
     }
 
     document.getElementById('loginForm').addEventListener('submit', async function(e) {
@@ -115,11 +115,14 @@
       try {
         var res  = await fetch(USERS_JSON_URL + '?t=' + Date.now());
         var db   = await res.json();
-        var hash = await pbkdf2Hash(pw, email);
-        var user = db.users.find(function(u) { return u.email === email && u.hash === hash; });
+        // authHash brukes for å verifisere mot users.json
+        var authHash = await pbkdf2Derive(pw, email.toLowerCase());
+        var user = db.users.find(function(u) { return u.email === email && u.hash === authHash; });
 
         if (user) {
-          localStorage.setItem(TOKEN_KEY, JSON.stringify({ email: email, token: 'kurs_authed_2026' }));
+          // sessionToken er avledet separat — kjent bare av den som kan passordet
+          var sessionToken = await pbkdf2Derive(pw + '\x00session', email.toLowerCase());
+          localStorage.setItem(TOKEN_KEY, JSON.stringify({ email: email, token: sessionToken }));
           window.location.replace('/kurs/');
         } else {
           errMsg.style.display = 'block';
