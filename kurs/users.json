@@ -5,5 +5,11 @@
       "hash": "72625d6c3921808a9bd201329e37e13c608e97c038ccd489df4f33f272fbc35f"
     }
   ],
-  "invites": []
+  "invites": [
+    {
+      "email": "adrian.dietrichs2@gmail.com",
+      "token": "47f476397b3d43de9c2035c2237411259f58d97be9434cae95f21f695b10cd73",
+      "expires": 1781287440116
+    }
+  ]
 }
