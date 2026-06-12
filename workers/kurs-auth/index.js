@@ -29,25 +29,30 @@ export default {
   async fetch(request, env) {
     const origin = request.headers.get('Origin') || '';
 
-    if (request.method === 'OPTIONS') {
-      return corsResponse(null, 204, origin);
+    try {
+      if (request.method === 'OPTIONS') {
+        return corsResponse(null, 204, origin);
+      }
+
+      if (request.method !== 'POST') {
+        return corsResponse(JSON.stringify({ ok: false, error: 'Method not allowed' }), 405, origin);
+      }
+
+      const url = new URL(request.url);
+
+      if (url.pathname === '/set-password') {
+        return await handleSetPassword(request, env, origin);
+      }
+
+      if (url.pathname === '/request-reset') {
+        return await handleRequestReset(request, env, origin);
+      }
+
+      return corsResponse(JSON.stringify({ ok: false, error: 'Not found' }), 404, origin);
+    } catch (err) {
+      console.error('Worker error:', err && err.message, err && err.stack);
+      return corsResponse(JSON.stringify({ ok: false, error: 'Server error: ' + (err && err.message) }), 500, origin);
     }
-
-    if (request.method !== 'POST') {
-      return corsResponse(JSON.stringify({ ok: false, error: 'Method not allowed' }), 405, origin);
-    }
-
-    const url = new URL(request.url);
-
-    if (url.pathname === '/set-password') {
-      return handleSetPassword(request, env, origin);
-    }
-
-    if (url.pathname === '/request-reset') {
-      return handleRequestReset(request, env, origin);
-    }
-
-    return corsResponse(JSON.stringify({ ok: false, error: 'Not found' }), 404, origin);
   },
 };
 
@@ -192,12 +197,12 @@ async function sendResetEmail(env, toEmail, resetLink) {
     body: JSON.stringify({
       from: `Dietrichs Marketing <${FROM_EMAIL}>`,
       to: [toEmail],
-      subject: 'Tilbakestill passordet ditt — AI-nettsider Kurs',
+      subject: 'Tilbakestill passordet ditt — Nettsidekurs',
       html: `
         <div style="font-family:Inter,sans-serif;max-width:480px;margin:0 auto;color:#09090B;">
           <p style="font-size:15px;margin-bottom:16px;">Hei,</p>
           <p style="font-size:15px;margin-bottom:24px;">
-            Vi mottok en forespørsel om å tilbakestille passordet ditt for AI-nettsider Kurset.
+            Vi mottok en forespørsel om å tilbakestille passordet ditt for Nettsidekurset.
           </p>
           <a href="${resetLink}"
              style="display:inline-block;background:#2563EB;color:#fff;font-weight:600;
