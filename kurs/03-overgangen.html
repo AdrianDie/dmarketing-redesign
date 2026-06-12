@@ -182,11 +182,11 @@
 
       <h2>Domeneovergangen</h2>
       <p>
-        Dette er det eneste steget som faktisk «flytter» noe — og det gjøres kontrollert. Vi peker domenet ditt til den nye siden via DNS, det vil si internettets adressebok. For besøkende skjer det sømløst; den nye siden tar over på nøyaktig samme adresse, uten nedetid.
+        Når den nye siden er ferdig og testet, sender vi deg en enkel oppskrift på hvordan du bytter DNS-innstillingene hos den som administrerer domenet ditt. DNS er internettets adressebok — ved å oppdatere den peker du domenet ditt til den nye siden. For besøkende skjer det sømløst; den nye siden tar over på nøyaktig samme adresse, uten nedetid.
       </p>
 
       <div class="callout">
-        <p><strong>Hva er DNS?</strong> DNS forteller nettleseren hvilken datamaskin som skal vise fram nettsiden når noen skriver <code>dittfirma.no</code>. Vi oppdaterer hvilken adresse boken peker til — som å endre destinasjonen i en GPS. Du trenger ikke gjøre dette selv.</p>
+        <p><strong>Hva er DNS?</strong> DNS forteller nettleseren hvilken datamaskin som skal vise fram nettsiden når noen skriver <code>dittfirma.no</code>. Du oppdaterer hvilken adresse boken peker til — som å endre destinasjonen i en GPS. Vi sender deg nøyaktig steg-for-steg instruksjoner for akkurat din leverandør.</p>
       </div>
 
       <h2>SEO og Google-plasseringen din bevares</h2>
@@ -196,72 +196,8 @@
 
       <h2>Slik vet du at du er live</h2>
       <p>
-        Du trenger ikke følge med selv — vi sender deg en e-post så snart den nye siden er live på domenet ditt. Da er overgangen fullført, og kurset kan begynne.
+        Når du har byttet DNS-innstillingene vil den nye siden normalt dukke opp i løpet av noen minutter. Vi sender deg en bekreftelse så snart vi ser at alt er oppe og fungerer. Da er overgangen fullført og kurset kan begynne — og du kan trygt avslutte abonnementet hos din gamle nettsideleverandør. <strong>Domenet beholder du uansett.</strong>
       </p>
-
-      <div class="not-prose" id="golive-checklist" style="background:#F8FAFC; border:1.5px solid #E2E8F0; border-radius:14px; padding:24px 26px; margin:1.5rem 0;">
-        <p style="font-family:'Archivo',sans-serif; font-size:0.8rem; font-weight:700; letter-spacing:0.08em; color:#94A3B8; text-transform:uppercase; margin:0 0 18px 0;">Gjør dette når siden er live</p>
-
-        <!-- Step 1 -->
-        <label id="step1-label" style="display:flex; align-items:flex-start; gap:14px; cursor:pointer; margin-bottom:0;">
-          <div style="position:relative; flex-shrink:0; margin-top:2px;">
-            <input type="checkbox" id="step1" onchange="goliveStep1()" style="position:absolute;opacity:0;width:0;height:0;">
-            <div id="step1-box" style="width:24px;height:24px;border:2px solid #CBD5E1;border-radius:6px;background:#fff;display:flex;align-items:center;justify-content:center;transition:all .15s;">
-              <svg id="step1-check" width="14" height="14" viewBox="0 0 14 14" fill="none" style="opacity:0;transition:opacity .15s;"><path d="M2.5 7l3 3 6-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-          </div>
-          <div>
-            <p style="font-size:1rem; font-weight:600; color:#1E293B; margin:0 0 2px 0; line-height:1.4;">Har du fått e-posten fra oss om at siden er live?</p>
-            <p style="font-size:0.875rem; color:#64748B; margin:0; line-height:1.5;">Vi sender deg en e-post så snart den nye nettsiden er oppe på domenet ditt.</p>
-          </div>
-        </label>
-
-        <!-- Step 2 (hidden initially) -->
-        <div id="step2-wrap" style="display:none; margin-top:18px; padding-top:18px; border-top:1.5px solid #E2E8F0;">
-          <label style="display:flex; align-items:flex-start; gap:14px; cursor:pointer;">
-            <div style="position:relative; flex-shrink:0; margin-top:2px;">
-              <input type="checkbox" id="step2" onchange="goliveStep2()" style="position:absolute;opacity:0;width:0;height:0;">
-              <div id="step2-box" style="width:24px;height:24px;border:2px solid #CBD5E1;border-radius:6px;background:#fff;display:flex;align-items:center;justify-content:center;transition:all .15s;">
-                <svg id="step2-check" width="14" height="14" viewBox="0 0 14 14" fill="none" style="opacity:0;transition:opacity .15s;"><path d="M2.5 7l3 3 6-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-            </div>
-            <div>
-              <p style="font-size:1rem; font-weight:600; color:#1E293B; margin:0 0 2px 0; line-height:1.4;">Har du avsluttet abonnementet hos din gamle nettsideleverandør?</p>
-              <p style="font-size:0.875rem; color:#64748B; margin:0; line-height:1.5;">Domenet beholder du uansett — det er bare hosting-abonnementet hos den gamle leverandøren du avslutter.</p>
-            </div>
-          </label>
-        </div>
-
-        <!-- Done state -->
-        <div id="golive-done" style="display:none; margin-top:18px; padding:14px 18px; background:#F0FDF4; border-radius:10px; border:1.5px solid #86EFAC;">
-          <p style="font-family:'Archivo',sans-serif; font-weight:800; color:#14532D; font-size:1rem; margin:0;">🎉 Perfekt — du er helt over! Nå er kurset ditt.</p>
-        </div>
-      </div>
-
-      <script>
-        function goliveStep1() {
-          const checked = document.getElementById('step1').checked;
-          const box = document.getElementById('step1-box');
-          const chk = document.getElementById('step1-check');
-          box.style.background = checked ? '#16A34A' : '#fff';
-          box.style.borderColor = checked ? '#16A34A' : '#CBD5E1';
-          chk.style.opacity = checked ? '1' : '0';
-          document.getElementById('step2-wrap').style.display = checked ? 'block' : 'none';
-          if (!checked) {
-            document.getElementById('step2').checked = false;
-            goliveStep2(true);
-          }
-        }
-        function goliveStep2(reset) {
-          const checked = !reset && document.getElementById('step2').checked;
-          const box = document.getElementById('step2-box');
-          const chk = document.getElementById('step2-check');
-          box.style.background = checked ? '#16A34A' : '#fff';
-          box.style.borderColor = checked ? '#16A34A' : '#CBD5E1';
-          chk.style.opacity = checked ? '1' : '0';
-          document.getElementById('golive-done').style.display = checked ? 'block' : 'none';
-        }
-      </script>
 
       <div class="callout">
         <p><strong>Neste steg:</strong> Nå som du er over på den nye løsningen, setter du opp GitHub og VS Code i modul 04 — og gjør din aller første endring i modul 04b.</p>
