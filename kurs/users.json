@@ -2,14 +2,8 @@
   "users": [
     {
       "email": "adrian.dietrichs2@gmail.com",
-      "hash": "72625d6c3921808a9bd201329e37e13c608e97c038ccd489df4f33f272fbc35f"
+      "hash": "305e2126d76bcc399e1a694387eefa44cc78c32d4a8a5595ee18a59b84e741c6"
     }
   ],
-  "invites": [
-    {
-      "email": "adrian.dietrichs2@gmail.com",
-      "token": "1fb2ca2360c64ad1bf4fdf843e2ed1b41fe8e55df73d4ef88dd6599e1f80a90f",
-      "expires": 1781291760298
-    }
-  ]
+  "invites": []
 }
