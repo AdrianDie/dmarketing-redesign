@@ -82,8 +82,12 @@
     // Allerede innlogget?
     try {
       var stored = JSON.parse(localStorage.getItem(TOKEN_KEY) || 'null');
-      if (stored && stored.token === 'kurs_authed_2026' && stored.email) {
+      var validToken = stored && typeof stored.token === 'string' && /^[a-f0-9]{64}$/.test(stored.token);
+      if (validToken && stored.email) {
         window.location.replace('/kurs/');
+      } else if (stored && stored.token && !/^[a-f0-9]{64}$/.test(stored.token)) {
+        // Rydd opp gammelt token-format som lager redirect-loop
+        localStorage.removeItem(TOKEN_KEY);
       }
     } catch(e) {}
 
