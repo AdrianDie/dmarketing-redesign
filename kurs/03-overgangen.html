@@ -199,10 +199,69 @@
         Du trenger ikke følge med selv — vi sender deg en e-post så snart den nye siden er live på domenet ditt. Da er overgangen fullført, og kurset kan begynne.
       </p>
 
-      <div class="not-prose" style="border-left: 4px solid #16A34A; background: #F0FDF4; border-radius: 0 10px 10px 0; padding: 18px 22px; margin: 1.5rem 0;">
-        <p style="font-family:'Archivo',sans-serif; font-size:1.1rem; font-weight:800; color:#14532D; margin:0 0 6px 0; letter-spacing:-0.01em;">✓ Når du har fått e-posten fra oss</p>
-        <p style="font-size:1rem; line-height:1.65; color:#166534; margin:0;">Er det trygt å avslutte abonnementet hos din nåværende nettsideleverandør. <strong>Domenet beholder du uansett</strong> — det er bare hosting-abonnementet som avsluttes.</p>
+      <div class="not-prose" id="golive-checklist" style="background:#F8FAFC; border:1.5px solid #E2E8F0; border-radius:14px; padding:24px 26px; margin:1.5rem 0;">
+        <p style="font-family:'Archivo',sans-serif; font-size:0.8rem; font-weight:700; letter-spacing:0.08em; color:#94A3B8; text-transform:uppercase; margin:0 0 18px 0;">Gjør dette når siden er live</p>
+
+        <!-- Step 1 -->
+        <label id="step1-label" style="display:flex; align-items:flex-start; gap:14px; cursor:pointer; margin-bottom:0;">
+          <div style="position:relative; flex-shrink:0; margin-top:2px;">
+            <input type="checkbox" id="step1" onchange="goliveStep1()" style="position:absolute;opacity:0;width:0;height:0;">
+            <div id="step1-box" style="width:24px;height:24px;border:2px solid #CBD5E1;border-radius:6px;background:#fff;display:flex;align-items:center;justify-content:center;transition:all .15s;">
+              <svg id="step1-check" width="14" height="14" viewBox="0 0 14 14" fill="none" style="opacity:0;transition:opacity .15s;"><path d="M2.5 7l3 3 6-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+          <div>
+            <p style="font-size:1rem; font-weight:600; color:#1E293B; margin:0 0 2px 0; line-height:1.4;">Har du fått e-posten fra oss om at siden er live?</p>
+            <p style="font-size:0.875rem; color:#64748B; margin:0; line-height:1.5;">Vi sender deg en e-post så snart den nye nettsiden er oppe på domenet ditt.</p>
+          </div>
+        </label>
+
+        <!-- Step 2 (hidden initially) -->
+        <div id="step2-wrap" style="display:none; margin-top:18px; padding-top:18px; border-top:1.5px solid #E2E8F0;">
+          <label style="display:flex; align-items:flex-start; gap:14px; cursor:pointer;">
+            <div style="position:relative; flex-shrink:0; margin-top:2px;">
+              <input type="checkbox" id="step2" onchange="goliveStep2()" style="position:absolute;opacity:0;width:0;height:0;">
+              <div id="step2-box" style="width:24px;height:24px;border:2px solid #CBD5E1;border-radius:6px;background:#fff;display:flex;align-items:center;justify-content:center;transition:all .15s;">
+                <svg id="step2-check" width="14" height="14" viewBox="0 0 14 14" fill="none" style="opacity:0;transition:opacity .15s;"><path d="M2.5 7l3 3 6-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+            <div>
+              <p style="font-size:1rem; font-weight:600; color:#1E293B; margin:0 0 2px 0; line-height:1.4;">Har du avsluttet abonnementet hos din gamle nettsideleverandør?</p>
+              <p style="font-size:0.875rem; color:#64748B; margin:0; line-height:1.5;">Domenet beholder du uansett — det er bare hosting-abonnementet hos den gamle leverandøren du avslutter.</p>
+            </div>
+          </label>
+        </div>
+
+        <!-- Done state -->
+        <div id="golive-done" style="display:none; margin-top:18px; padding:14px 18px; background:#F0FDF4; border-radius:10px; border:1.5px solid #86EFAC;">
+          <p style="font-family:'Archivo',sans-serif; font-weight:800; color:#14532D; font-size:1rem; margin:0;">🎉 Perfekt — du er helt over! Nå er kurset ditt.</p>
+        </div>
       </div>
+
+      <script>
+        function goliveStep1() {
+          const checked = document.getElementById('step1').checked;
+          const box = document.getElementById('step1-box');
+          const chk = document.getElementById('step1-check');
+          box.style.background = checked ? '#16A34A' : '#fff';
+          box.style.borderColor = checked ? '#16A34A' : '#CBD5E1';
+          chk.style.opacity = checked ? '1' : '0';
+          document.getElementById('step2-wrap').style.display = checked ? 'block' : 'none';
+          if (!checked) {
+            document.getElementById('step2').checked = false;
+            goliveStep2(true);
+          }
+        }
+        function goliveStep2(reset) {
+          const checked = !reset && document.getElementById('step2').checked;
+          const box = document.getElementById('step2-box');
+          const chk = document.getElementById('step2-check');
+          box.style.background = checked ? '#16A34A' : '#fff';
+          box.style.borderColor = checked ? '#16A34A' : '#CBD5E1';
+          chk.style.opacity = checked ? '1' : '0';
+          document.getElementById('golive-done').style.display = checked ? 'block' : 'none';
+        }
+      </script>
 
       <div class="callout">
         <p><strong>Neste steg:</strong> Nå som du er over på den nye løsningen, setter du opp GitHub og VS Code i modul 04 — og gjør din aller første endring i modul 04b.</p>
