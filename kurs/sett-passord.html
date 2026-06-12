@@ -30,10 +30,10 @@
     </div>
 
     <div id="viewForm">
-      <h1 class="font-display font-extrabold text-3xl tracking-[-0.03em] text-ink mb-3 text-center">
+      <h1 id="formHeading" class="font-display font-extrabold text-3xl tracking-[-0.03em] text-ink mb-3 text-center">
         Velg ditt passord
       </h1>
-      <p class="text-zinc-500 text-sm mb-8 leading-relaxed text-center">
+      <p id="formSubtext" class="text-zinc-500 text-sm mb-8 leading-relaxed text-center">
         Velg et passord for å få tilgang til kurset.
       </p>
 
@@ -84,6 +84,13 @@
 
     var params = new URLSearchParams(window.location.search);
     var token  = params.get('token') || '';
+    var isReset = params.get('reset') === '1';
+
+    if (isReset) {
+      document.getElementById('formHeading').textContent  = 'Velg nytt passord';
+      document.getElementById('formSubtext').textContent  = 'Velg et nytt passord for kurset ditt.';
+      document.getElementById('submitBtn').textContent    = 'Sett nytt passord';
+    }
 
     if (!token) {
       document.getElementById('viewForm').style.display = 'none';

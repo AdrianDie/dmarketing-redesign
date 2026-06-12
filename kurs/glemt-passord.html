@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glemt passord — AI-nettsider Kurs</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { display: ['Archivo', 'sans-serif'] },
+        colors: { ink: '#09090B', brand: '#2563EB', navy: '#0B1F4A' }
+      }}
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="../images/favicon.png" rel="shortcut icon" type="image/x-icon" />
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #FAFAFA; color: #09090B; }
+    .font-display { font-family: 'Archivo', sans-serif; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center px-6 py-12">
+  <div class="w-full max-w-sm">
+
+    <div class="mb-8 text-center">
+      <a href="/kurs/login.html" class="text-sm font-medium text-zinc-500 hover:text-blue-600 transition-colors">
+        ← Tilbake til innlogging
+      </a>
+    </div>
+
+    <div class="mb-5 text-center">
+      <span class="inline-flex items-center gap-2 bg-white border border-zinc-200 text-xs font-medium text-zinc-600 px-3 py-1.5 rounded-full shadow-sm">
+        <span class="w-1.5 h-1.5 rounded-full bg-blue-600 inline-block"></span>
+        AI-nettsider Kurs · 13 moduler
+      </span>
+    </div>
+
+    <!-- Skjema -->
+    <div id="viewForm">
+      <h1 class="font-display font-extrabold text-3xl tracking-[-0.03em] text-ink mb-3 text-center">
+        Glemt passord?
+      </h1>
+      <p class="text-zinc-500 text-sm mb-8 leading-relaxed text-center">
+        Skriv inn e-postadressen din, så sender vi deg en lenke for å tilbakestille passordet.
+      </p>
+
+      <form id="resetForm" class="space-y-4">
+        <div>
+          <label for="epost" class="block text-sm font-medium text-zinc-700 mb-1.5">E-post</label>
+          <input type="email" id="epost" autocomplete="email" placeholder="din@epost.no"
+            class="w-full border border-zinc-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            autofocus />
+        </div>
+
+        <div id="errorMsg" style="display:none;" class="bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg px-4 py-3"></div>
+
+        <button type="submit" id="submitBtn"
+          class="w-full bg-blue-600 text-white font-semibold py-3.5 px-6 rounded-xl hover:bg-blue-500 active:bg-blue-700 transition-colors text-sm">
+          Send tilbakestillingslenke
+        </button>
+      </form>
+    </div>
+
+    <!-- Sendt -->
+    <div id="viewSuccess" style="display:none;" class="text-center">
+      <div class="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-5">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+      <h2 class="font-display font-bold text-2xl text-ink mb-2">Sjekk innboksen</h2>
+      <p class="text-zinc-500 text-sm leading-relaxed">
+        Hvis e-postadressen finnes i systemet, har vi sendt en lenke for å tilbakestille passordet.<br><br>
+        Lenken er gyldig i <strong>1 time</strong>.
+      </p>
+      <a href="/kurs/login.html" class="inline-block mt-6 text-sm text-blue-600 hover:underline">
+        Tilbake til innlogging
+      </a>
+    </div>
+
+  </div>
+
+  <script>
+    var WORKER_URL = 'https://kurs-auth-worker.dietrichs-mkt.workers.dev';
+
+    document.getElementById('resetForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      var btn    = document.getElementById('submitBtn');
+      var errMsg = document.getElementById('errorMsg');
+      var email  = document.getElementById('epost').value.toLowerCase().trim();
+
+      if (!email) return;
+
+      errMsg.style.display = 'none';
+      btn.disabled = true;
+      btn.textContent = 'Sender…';
+
+      try {
+        var res  = await fetch(WORKER_URL + '/request-reset', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email }),
+        });
+        var data = await res.json();
+
+        if (res.ok && data.ok) {
+          document.getElementById('viewForm').style.display = 'none';
+          document.getElementById('viewSuccess').style.display = 'block';
+        } else {
+          errMsg.textContent = data.error || 'Noe gikk galt. Prøv igjen.';
+          errMsg.style.display = 'block';
+          btn.disabled = false;
+          btn.textContent = 'Send tilbakestillingslenke';
+        }
+      } catch (err) {
+        errMsg.textContent = 'Noe gikk galt. Sjekk internettforbindelsen og prøv igjen.';
+        errMsg.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Send tilbakestillingslenke';
+      }
+    });
+  </script>
+</body>
+</html>
