@@ -79,14 +79,10 @@
     var USERS_JSON_URL = 'https://raw.githubusercontent.com/AdrianDie/dmarketing-redesign/main/kurs/users.json';
     var TOKEN_KEY      = 'kurs_auth_v3';
 
-    // Allerede innlogget?
+    // Rydd opp gammelt token-format (kurs_authed_2026 e.l.) som ikke er 64-tegns hex
     try {
       var stored = JSON.parse(localStorage.getItem(TOKEN_KEY) || 'null');
-      var validToken = stored && typeof stored.token === 'string' && /^[a-f0-9]{64}$/.test(stored.token);
-      if (validToken && stored.email) {
-        window.location.replace('/kurs/');
-      } else if (stored && stored.token && !/^[a-f0-9]{64}$/.test(stored.token)) {
-        // Rydd opp gammelt token-format som lager redirect-loop
+      if (stored && stored.token && !/^[a-f0-9]{64}$/.test(stored.token)) {
         localStorage.removeItem(TOKEN_KEY);
       }
     } catch(e) {}
