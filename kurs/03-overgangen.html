@@ -168,53 +168,9 @@
         <li><strong>Tilgang til domenet</strong> — innlogging hos den som administrerer domenet ditt (ofte ditt webhotell). Vi viser deg nøyaktig hvor du finner det.</li>
       </ul>
 
-      <figure class="not-prose my-6 rounded-2xl border border-zinc-200 bg-white p-5 md:p-6">
-        <p class="text-center text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-4">Slik ser domene-oversikten din ut (f.eks. hos Domeneshop)</p>
-        <svg viewBox="0 0 520 200" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Mockup av domene-oversikt med dittfirma.no synlig i listen">
-
-          <!-- Browser chrome -->
-          <rect x="10" y="10" width="500" height="180" rx="8" fill="white" stroke="#E4E4E7" stroke-width="1.5"/>
-          <rect x="10" y="10" width="500" height="36" rx="8" fill="#F4F4F5"/>
-          <rect x="10" y="34" width="500" height="12" fill="#F4F4F5"/>
-          <!-- Browser dots -->
-          <circle cx="28" cy="28" r="5" fill="#EF4444"/>
-          <circle cx="44" cy="28" r="5" fill="#F59E0B"/>
-          <circle cx="60" cy="28" r="5" fill="#22C55E"/>
-          <!-- URL bar -->
-          <rect x="80" y="19" width="300" height="18" rx="9" fill="white" stroke="#E4E4E7" stroke-width="1"/>
-          <text x="230" y="32" text-anchor="middle" font-size="9.5" fill="#71717A">domeneshop.no/nn/my-domains</text>
-
-          <!-- Content area -->
-          <!-- Header row -->
-          <rect x="24" y="54" width="472" height="28" rx="4" fill="#F4F4F5"/>
-          <text x="36" y="72" font-size="10" font-weight="700" fill="#52525B">Domenenavn</text>
-          <text x="220" y="72" font-size="10" font-weight="700" fill="#52525B">Status</text>
-          <text x="340" y="72" font-size="10" font-weight="700" fill="#52525B">Utløper</text>
-          <text x="430" y="72" font-size="10" font-weight="700" fill="#52525B">Handlinger</text>
-
-          <!-- Row 1: Customer's domain (highlighted) -->
-          <rect x="24" y="82" width="472" height="32" rx="4" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1.5"/>
-          <text x="36" y="101" font-size="11" font-weight="700" fill="#1D4ED8">dittfirma.no</text>
-          <rect x="213" y="89" width="52" height="16" rx="8" fill="#22C55E"/>
-          <text x="239" y="101" text-anchor="middle" font-size="9" font-weight="700" fill="white">Aktiv</text>
-          <text x="340" y="101" font-size="10" fill="#3B82F6">2027-02-14</text>
-          <text x="430" y="101" font-size="10" fill="#0339f8">Administrer →</text>
-
-          <!-- Row 2: another domain -->
-          <rect x="24" y="118" width="472" height="28" rx="4" fill="white"/>
-          <text x="36" y="136" font-size="11" fill="#71717A">gammeltdomene.no</text>
-          <rect x="213" y="124" width="52" height="16" rx="8" fill="#E4E4E7"/>
-          <text x="239" y="136" text-anchor="middle" font-size="9" font-weight="600" fill="#71717A">Utløpt</text>
-          <text x="340" y="136" font-size="10" fill="#71717A">2023-11-30</text>
-
-          <!-- Annotation arrow -->
-          <line x1="110" y1="98" x2="110" y2="170" stroke="#0339f8" stroke-width="1.5" stroke-dasharray="4 3"/>
-          <polygon points="106,165 110,175 114,165" fill="#0339f8"/>
-          <text x="130" y="165" font-size="10" fill="#0339f8" font-weight="600">← Dette er domenet ditt</text>
-
-        </svg>
-        <p class="text-center text-xs text-zinc-400 mt-3">Du finner tilgang til dette i e-posten du fikk da du registrerte domenet.</p>
-      </figure>
+      <div class="callout">
+        <p><strong>Er det noe spesielt du vil ha med?</strong> Send det til oss på e-post så fort du kan — jo tidligere vi får ønskene dine, jo mer får vi inn i første versjon. Prøv å samle alt i én melding fremfor å sende stykkevis, så slipper vi å koordinere frem og tilbake.</p>
+      </div>
 
       <h2>Hva vi gjør (det tekniske — kort fortalt)</h2>
       <p>Du trenger ikke gjøre noe av dette selv. Det er bare greit å vite hva som skjer bak kulissene:</p>
@@ -225,79 +181,14 @@
         <li><strong>Tester</strong> alt på en midlertidig adresse før vi rører domenet ditt.</li>
       </ol>
 
-      <h2>Domene- og e-post-overgangen</h2>
+      <h2>Domeneovergangen</h2>
       <p>
-        Dette er det eneste steget som «flytter» noe — og det gjøres kontrollert. Vi peker domenet ditt til den nye siden via DNS. For deg som besøker siden skjer det sømløst; den nye siden tar over på samme adresse.
+        Dette er det eneste steget som faktisk «flytter» noe — og det gjøres kontrollert. Vi peker domenet ditt til den nye siden via DNS, det vil si internettets adressebok. For besøkende skjer det sømløst; den nye siden tar over på nøyaktig samme adresse, uten nedetid.
       </p>
 
       <div class="callout">
-        <p><strong>Hva er DNS?</strong> DNS er internettets adressebok. Den forteller nettleseren hvilken datamaskin som skal vise fram nettsiden når noen skriver <code>dittfirma.no</code>. Vi oppdaterer hvilken adresse boken peker til — som å sette opp en ny adresse i en GPS. Du trenger ikke gjøre dette selv.</p>
+        <p><strong>Hva er DNS?</strong> DNS forteller nettleseren hvilken datamaskin som skal vise fram nettsiden når noen skriver <code>dittfirma.no</code>. Vi oppdaterer hvilken adresse boken peker til — som å endre destinasjonen i en GPS. Du trenger ikke gjøre dette selv.</p>
       </div>
-
-      <div class="callout callout-ok">
-        <p><strong>E-posten din berøres ikke.</strong> Vi flytter kun web-pekerne. E-posten din fortsetter å virke nøyaktig som før — vi rører ikke noe av e-post-oppsettet ditt, uansett hvilken e-postløsning du bruker (for eksempel Microsoft 365 eller Google Workspace, eller noe annet). Du sender og mottar e-post som vanlig gjennom hele overgangen.</p>
-      </div>
-
-      <figure class="not-prose my-6 rounded-2xl border border-zinc-200 bg-white p-5 md:p-6">
-        <p class="text-center text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-4">DNS-innstillinger — hva vi endrer, og hva vi ikke rører</p>
-        <svg viewBox="0 0 560 230" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="DNS-innstillinger: web-pekerne byttes, e-post-radene forblir urørt">
-
-          <!-- Column headers -->
-          <text x="130" y="18" text-anchor="middle" font-size="11" font-weight="700" fill="#09090B">Type</text>
-          <text x="230" y="18" text-anchor="middle" font-size="11" font-weight="700" fill="#09090B">Navn</text>
-          <text x="370" y="18" text-anchor="middle" font-size="11" font-weight="700" fill="#09090B">Verdi (peker til)</text>
-          <text x="515" y="18" text-anchor="middle" font-size="11" font-weight="700" fill="#09090B">Status</text>
-
-          <line x1="10" y1="24" x2="550" y2="24" stroke="#E4E4E7" stroke-width="1"/>
-
-          <!-- Row 1: A record (WEB - changed) -->
-          <rect x="10" y="28" width="540" height="36" rx="6" fill="#FFF7ED" stroke="#FED7AA" stroke-width="1.5"/>
-          <rect x="16" y="33" width="32" height="20" rx="4" fill="#EA580C"/>
-          <text x="32" y="47" text-anchor="middle" font-size="9.5" font-weight="700" fill="white">A</text>
-          <text x="130" y="50" text-anchor="middle" font-size="10.5" font-weight="600" fill="#92400E">dittfirma.no</text>
-          <text x="370" y="44" text-anchor="middle" font-size="9.5" fill="#71717A" text-decoration="line-through">185.x.x.x (gammelt webhotell)</text>
-          <text x="370" y="57" text-anchor="middle" font-size="9.5" fill="#16A34A" font-weight="600">185.199.108.153 (GitHub Pages) ✓</text>
-          <rect x="480" y="33" width="64" height="20" rx="10" fill="#FEF3C7"/>
-          <text x="512" y="47" text-anchor="middle" font-size="9" font-weight="700" fill="#B45309">ENDRET</text>
-
-          <!-- Row 2: CNAME www (WEB - changed) -->
-          <rect x="10" y="68" width="540" height="30" rx="6" fill="#FFF7ED" stroke="#FED7AA" stroke-width="1.5"/>
-          <rect x="16" y="73" width="52" height="20" rx="4" fill="#EA580C"/>
-          <text x="42" y="87" text-anchor="middle" font-size="8.5" font-weight="700" fill="white">CNAME</text>
-          <text x="130" y="87" text-anchor="middle" font-size="10.5" font-weight="600" fill="#92400E">www</text>
-          <text x="370" y="87" text-anchor="middle" font-size="9.5" fill="#16A34A" font-weight="600">dittfirma.no (GitHub Pages) ✓</text>
-          <rect x="480" y="73" width="64" height="20" rx="10" fill="#FEF3C7"/>
-          <text x="512" y="87" text-anchor="middle" font-size="9" font-weight="700" fill="#B45309">ENDRET</text>
-
-          <!-- Divider with label -->
-          <line x1="10" y1="108" x2="550" y2="108" stroke="#E4E4E7" stroke-width="1" stroke-dasharray="6 4"/>
-          <rect x="185" y="100" width="190" height="16" rx="8" fill="#F4F4F5"/>
-          <text x="280" y="111" text-anchor="middle" font-size="9" font-weight="700" fill="#71717A" letter-spacing="0.05em">E-POST-RADER — VI RØRER INGENTING HER</text>
-
-          <!-- Row 3: MX (EMAIL - untouched) -->
-          <rect x="10" y="118" width="540" height="30" rx="6" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.5"/>
-          <rect x="16" y="123" width="28" height="20" rx="4" fill="#16A34A"/>
-          <text x="30" y="137" text-anchor="middle" font-size="9.5" font-weight="700" fill="white">MX</text>
-          <text x="130" y="137" text-anchor="middle" font-size="10.5" fill="#15803D">dittfirma.no</text>
-          <text x="370" y="137" text-anchor="middle" font-size="9.5" fill="#15803D">mail.protection.outlook.com</text>
-          <rect x="480" y="123" width="64" height="20" rx="10" fill="#DCFCE7"/>
-          <text x="512" y="137" text-anchor="middle" font-size="9" font-weight="700" fill="#15803D">URØRT ✓</text>
-
-          <!-- Row 4: TXT SPF (EMAIL - untouched) -->
-          <rect x="10" y="152" width="540" height="30" rx="6" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.5"/>
-          <rect x="16" y="157" width="28" height="20" rx="4" fill="#16A34A"/>
-          <text x="30" y="171" text-anchor="middle" font-size="9.5" font-weight="700" fill="white">TXT</text>
-          <text x="130" y="171" text-anchor="middle" font-size="10.5" fill="#15803D">dittfirma.no</text>
-          <text x="370" y="171" text-anchor="middle" font-size="9.5" fill="#15803D">v=spf1 include:spf.protection.outlook.com</text>
-          <rect x="480" y="157" width="64" height="20" rx="10" fill="#DCFCE7"/>
-          <text x="512" y="171" text-anchor="middle" font-size="9" font-weight="700" fill="#15803D">URØRT ✓</text>
-
-          <!-- Summary note -->
-          <text x="280" y="210" text-anchor="middle" font-size="10.5" fill="#71717A">Kun de to web-radene (A og CNAME) byttes. E-post-radene (MX, TXT) forblir helt uendret.</text>
-
-        </svg>
-        <p class="text-center text-xs text-zinc-400 mt-3">Vi viser deg dette live og peker ut nøyaktig hva vi gjør — du godkjenner før vi endrer noe.</p>
-      </figure>
 
       <div class="callout callout-warn">
         <p><strong>Ikke si opp den gamle siden ennå.</strong> Vent til den nye er bekreftet live og du har sett at alt fungerer (se sjekklisten nedenfor). Da — og først da — kan den gamle trygt avsluttes.</p>
@@ -318,7 +209,7 @@
 
       <figure class="not-prose my-6 rounded-2xl border border-zinc-200 bg-white p-5 md:p-6">
         <p class="text-center text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-4">Slik ser det ut når du er live — ditt eget domene i adressefeltet</p>
-        <svg viewBox="0 0 560 100" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Nettleser med adressefelt som viser dittfirma.no">
+        <svg viewBox="0 0 560 100" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Nettleser med adressefelt som viser dittfirma.no">
 
           <!-- Browser window -->
           <rect x="10" y="10" width="540" height="80" rx="8" fill="white" stroke="#E4E4E7" stroke-width="1.5"/>
@@ -365,8 +256,8 @@
         </div>
         <ul style="margin:0;padding-left:20px;">
           <li style="font-size:0.95rem;line-height:1.55;color:#15803D;margin-bottom:6px;list-style:disc;">Overgangen skjer uten nedetid — besøkende merker ingenting mens vi bytter</li>
-          <li style="font-size:0.95rem;line-height:1.55;color:#15803D;margin-bottom:6px;list-style:disc;">E-post og domene følger med — vi rører ikke e-postserveren, bare peker web-trafikken om</li>
-          <li style="font-size:0.95rem;line-height:1.55;color:#15803D;margin-bottom:0;list-style:disc;">Du vil se dokumentasjons-skjermbilder underveis så du alltid vet hva som ble gjort</li>
+          <li style="font-size:0.95rem;line-height:1.55;color:#15803D;margin-bottom:6px;list-style:disc;">Domenet ditt følger med — vi peker det til den nye siden når alt er testet og klart</li>
+          <li style="font-size:0.95rem;line-height:1.55;color:#15803D;margin-bottom:0;list-style:disc;">Send ønsker og spesielle behov på e-post så fort du kan — jo tidligere vi får dem, jo mer rekker vi</li>
         </ul>
       </div>
 

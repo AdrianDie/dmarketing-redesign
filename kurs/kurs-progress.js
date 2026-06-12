@@ -28,7 +28,7 @@
   /* ── Read-time lookup ────────────────────────────────────── */
   var READ_TIMES = {
     '01-velkommen': '4 min', '02-hvordan-fungerer-det': '8 min',
-    '03-overgangen': '6 min', '04-komme-i-gang': '8 min',
+    '03-overgangen': '6 min', '04-komme-i-gang': '8 min', '04b-klon-og-sett-opp': '10 min',
     '05-oppdatere-innhold': '6 min', '06-bytte-bilder': '7 min',
     '07-ny-side': '8 min', '08-seo': '7 min',
     '09-prompts': '6 min', '10-publisere': '5 min',
