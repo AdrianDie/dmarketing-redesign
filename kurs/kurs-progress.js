@@ -28,12 +28,12 @@
   /* ── Read-time lookup ────────────────────────────────────── */
   var READ_TIMES = {
     '01-velkommen': '4 min', '02-hvordan-fungerer-det': '8 min',
-    '03-overgangen': '6 min', '04-komme-i-gang': '8 min', '04b-klon-og-sett-opp': '10 min',
-    '05-oppdatere-innhold': '6 min', '06-bytte-bilder': '7 min',
-    '07-ny-side': '8 min', '08-seo': '7 min',
-    '09-prompts': '6 min', '10-publisere': '5 min',
-    '11-feilsoking': '7 min', '12-integrasjoner': '8 min',
-    '13-eierskap': '5 min'
+    '03-overgangen': '6 min', '04-komme-i-gang': '8 min', '05-klon-og-sett-opp': '10 min',
+    '06-oppdatere-innhold': '6 min', '07-bytte-bilder': '7 min',
+    '08-ny-side': '8 min', '09-seo': '7 min',
+    '10-prompts': '6 min', '11-publisere': '5 min',
+    '12-feilsoking': '7 min', '13-integrasjoner': '8 min',
+    '14-eierskap': '5 min'
   };
 
   /* ── Module pages ─────────────────────────────────────────── */
