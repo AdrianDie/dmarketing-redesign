@@ -34,6 +34,12 @@
     .callout-ok { background: #F0FDF4; border-left-color: #16A34A; }
     .callout-ok p { color: #14532D; }
     .prompt-example { background: #F4F4F5; border-radius: 0.5rem; padding: 1rem 1.25rem; margin: 0.75rem 0; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: #18181B; }
+    .live-server-box { background: white; border: 1.5px solid #E4E4E7; border-radius: 12px; padding: 0 1.25rem; margin: 1rem 0; }
+    .live-server-box summary { padding: 1rem 0; cursor: pointer; font-weight: 600; font-size: 0.95rem; color: #3F3F46; }
+    .live-server-box__body { padding: 0 0 1rem; }
+    .live-server-box__body p { font-size: 1rem; line-height: 1.65; color: #3F3F46; margin-bottom: 0.75rem; }
+    .live-server-box__body ol { padding-left: 1.25rem; margin: 0; }
+    .live-server-box__body ol li { font-size: 1rem; line-height: 1.65; color: #3F3F46; margin-bottom: 0.35rem; }
   </style>
 </head>
 <body>
@@ -218,6 +224,21 @@ Lørdag stengt</div>
           </ol>
         </div>
       </div>
+
+      <details class="live-server-box not-prose">
+        <summary>💡 Vil du at nettleseren oppdaterer seg automatisk når du lagrer?</summary>
+        <div class="live-server-box__body">
+          <p>En utvidelse kalt <strong>Live Server</strong> gjør at nettleseren oppdaterer seg selv hver gang du trykker Lagre — uten at du trenger å trykke F5. Praktisk, men helt valgfritt.</p>
+          <p><strong>Slik installerer du den:</strong></p>
+          <ol>
+            <li>I VS Code: klikk ikonet med fire firkanter i sidepanelet til venstre (Extensions)</li>
+            <li>Søk etter <strong>«Live Server»</strong></li>
+            <li>Klikk <strong>«Install»</strong> på den av Ritwick Dey</li>
+            <li>Høyreklikk på <code>index.html</code> i Explorer-panelet → <strong>«Open with Live Server»</strong></li>
+            <li>Nettleseren åpner og oppdaterer seg automatisk fra nå av</li>
+          </ol>
+        </div>
+      </details>
 
       <figure class="not-prose my-8 rounded-2xl border border-zinc-200 bg-white p-5 md:p-7">
         <p class="text-center text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-5">Slik ser en tekst-endring ut — fra prompt til live</p>
