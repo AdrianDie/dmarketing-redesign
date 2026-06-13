@@ -156,7 +156,7 @@
         <div class="track-toggle__buttons">
           <button class="track-btn" data-track="gratis" onclick="setTrack('gratis')">
             <span class="track-btn__name">🟡 Gratis · Mer manuelt</span>
-            <span class="track-btn__sub">Claude-appen på skrivebordet</span>
+            <span class="track-btn__sub">Google AI Studio — gratis nettside fra Google</span>
           </button>
           <button class="track-btn" data-track="kode" onclick="setTrack('kode')">
             <span class="track-btn__name">🔵 Pro · ~$20/mnd</span>
@@ -170,9 +170,8 @@
         <ol style="margin:0;padding-left:1.25rem;">
           <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Komprimer bildet og last det ned. Dra bildefilen inn i <code style="background:#FEF9C3;padding:0.1rem 0.35rem;border-radius:4px;font-family:monospace;font-size:0.875em;">images/</code>-mappen i VS Code (Explorer-panelet til venstre).</li>
           <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Åpne HTML-filen som inneholder bildet → <kbd style="background:#FEF9C3;padding:0.1rem 0.35rem;border-radius:4px;font-size:0.875em;">Ctrl+A</kbd> → <kbd style="background:#FEF9C3;padding:0.1rem 0.35rem;border-radius:4px;font-size:0.875em;">Ctrl+C</kbd> (kopier hele filen).</li>
-          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Åpne <strong>Claude-appen</strong> → ny samtale → lim inn HTML-koden. Dra bildefilen inn i samtalefeltet for å laste det opp.</li>
-          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Skriv: <em>«Bytt hero-bildet med det vedlagte. Filnavnet er [filnavn]. Skriv god alt-tekst.»</em></li>
-          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Kopier Claude sitt svar (ny HTML) → VS Code → <kbd style="background:#FEF9C3;padding:0.1rem 0.35rem;border-radius:4px;font-size:0.875em;">Ctrl+A</kbd> → lim inn → <kbd style="background:#FEF9C3;padding:0.1rem 0.35rem;border-radius:4px;font-size:0.875em;">Ctrl+S</kbd>.</li>
+          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Åpne <strong>Google AI Studio</strong> (<a href="https://aistudio.google.com" target="_blank" rel="noopener" style="color:#0339f8;">aistudio.google.com</a>) → ny prompt → lim inn HTML-koden og skriv: <em>«Bildefilen heter [filnavn.jpg]. Kan du oppdatere src-attributten for hero-bildet til images/[filnavn.jpg] og skrive passende alt-tekst?»</em></li>
+          <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Kopier AI-ens svar (ny HTML) → VS Code → <kbd style="background:#FEF9C3;padding:0.1rem 0.35rem;border-radius:4px;font-size:0.875em;">Ctrl+A</kbd> → lim inn → <kbd style="background:#FEF9C3;padding:0.1rem 0.35rem;border-radius:4px;font-size:0.875em;">Ctrl+S</kbd>.</li>
           <li style="margin-bottom:0.6rem;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">Trykk <kbd style="background:#FEF9C3;padding:0.1rem 0.35rem;border-radius:4px;font-size:0.875em;">F5</kbd> i nettleseren → sjekk at bildet vises riktig.</li>
           <li style="margin-bottom:0;font-size:1.0625rem;line-height:1.6;color:#3F3F46;">VS Code Source Control-panel → skriv melding (f.eks. <em>«Nytt hero-bilde»</em>) → <strong>Commit &amp; Push</strong>.</li>
         </ol>
