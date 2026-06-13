@@ -92,7 +92,7 @@
         Kopier filene til datamaskinen din, forhåndsvis nettsiden og velg arbeidsmetode.
       </p>
       <p class="text-base text-zinc-500 leading-relaxed mt-3">
-        Nettsiden din ligger på GitHub — men for å redigere den trenger du filene tilgjengelig på datamaskinen din. GitHub Desktop er verktøyet som kopierer dem over og holder dem oppdatert, slik at endringene du gjør i VS Code automatisk kan sendes live.
+        Nettsiden din ligger på GitHub — men for å redigere den trenger du filene tilgjengelig på datamaskinen din. VS Code har Git innebygd, så du kloner repoet direkte derfra og sender endringer live uten noe ekstra verktøy.
       </p>
     </div>
   </header>
@@ -105,119 +105,53 @@
       </div>
 
       <!-- ═══════════════════════════════════════════
-           GITHUB DESKTOP
+           STEG 1: KLON
       ══════════════════════════════════════════════ -->
-      <h2>Installer GitHub Desktop — det siste verktøyet</h2>
-      <p>Dette er det aller siste verktøyet du trenger å installere. GitHub Desktop kopierer filene til datamaskinen din og holder dem oppdatert — uten å skrive kommandoer.</p>
-
-      <div class="not-prose" style="background:#F8FAFC;border:1.5px solid #E2E8F0;border-radius:14px;padding:20px 24px;margin:2rem 0;">
-        <p style="font-family:'Archivo',sans-serif;font-weight:700;font-size:0.8rem;letter-spacing:0.08em;text-transform:uppercase;color:#94A3B8;margin:0 0 14px 0;">Videoguide for installasjon</p>
-        <div style="display:flex;gap:16px;flex-wrap:wrap;">
-          <a href="https://www.youtube.com/watch?v=qqn5AW6XN_M" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:#FF0000;color:white;font-weight:700;font-size:0.9rem;padding:10px 18px;border-radius:8px;text-decoration:none;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-2.75 12.84 12.84 0 0 0-8.45 0A4.83 4.83 0 0 1 3.6 6.69 49.49 49.49 0 0 0 3 12a49.49 49.49 0 0 0 .6 5.31 4.83 4.83 0 0 1 3.77 2.75 12.84 12.84 0 0 0 8.45 0 4.83 4.83 0 0 1 3.77-2.75A49.49 49.49 0 0 0 21 12a49.49 49.49 0 0 0-.41-5.31z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#FF0000"/></svg>
-            Windows-guide
-          </a>
-          <a href="https://www.youtube.com/watch?v=4eTmhtvFW8A" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:#FF0000;color:white;font-weight:700;font-size:0.9rem;padding:10px 18px;border-radius:8px;text-decoration:none;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-2.75 12.84 12.84 0 0 0-8.45 0A4.83 4.83 0 0 1 3.6 6.69 49.49 49.49 0 0 0 3 12a49.49 49.49 0 0 0 .6 5.31 4.83 4.83 0 0 1 3.77 2.75 12.84 12.84 0 0 0 8.45 0 4.83 4.83 0 0 1 3.77-2.75A49.49 49.49 0 0 0 21 12a49.49 49.49 0 0 0-.41-5.31z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#FF0000"/></svg>
-            Mac-guide
-          </a>
-        </div>
-      </div>
+      <h2>Steg 1 — Kopier nettsidefilene til datamaskinen din</h2>
+      <p>Nå skal du kopiere alle filene til nettsiden din fra GitHub over til datamaskinen din. Denne operasjonen kalles «kloning». VS Code har Git innebygd, så du gjør det direkte derfra — ingen ekstra verktøy å installere.</p>
 
       <div class="step not-prose">
         <div class="step-num">1</div>
         <div class="step-content">
-          <h3>Gå til GitHub Desktop-nettsiden</h3>
-          <p>Gå til <a href="https://desktop.github.com" target="_blank" rel="noopener">desktop.github.com</a> og klikk <strong>«Download now»</strong>.</p>
-          <img src="images/github-desktop-nettside.png" alt="GitHub Desktop nettside" style="width:100%;max-width:640px;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0 0;" />
+          <h3>Åpne kommandopaletten i VS Code</h3>
+          <p>Trykk <kbd style="background:#F4F4F5;border:1px solid #E4E4E7;border-radius:4px;padding:1px 6px;font-size:0.875em;">Ctrl+Shift+P</kbd> (Mac: <kbd style="background:#F4F4F5;border:1px solid #E4E4E7;border-radius:4px;padding:1px 6px;font-size:0.875em;">Cmd+Shift+P</kbd>). En søkelinje åpner seg øverst i VS Code.</p>
         </div>
       </div>
 
       <div class="step not-prose">
         <div class="step-num">2</div>
         <div class="step-content">
-          <h3>Last ned og installer</h3>
-          <p>Du blir sendt til nedlastingssiden. Klikk <strong>«Download for Windows (64bit)»</strong> — eller <strong>«Download for macOS»</strong> hvis du er på Mac.</p>
-          <img src="images/github-desktop-last-ned.png" alt="GitHub Desktop nedlastingsside" style="width:100%;max-width:640px;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0 0;" />
-          <p style="margin-top:0.75rem;">Filen lastes ned i nettleseren. Klikk <strong>«Åpne fil»</strong> (Windows) eller kjør .dmg-filen (Mac) for å installere.</p>
-          <img src="images/github-desktop-nedlastingsbar.png" alt="Nettleser viser nedlastet fil" style="width:100%;max-width:380px;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0 0;" />
+          <h3>Søk etter "Git: Clone"</h3>
+          <p>Skriv <code>git clone</code> i søkefeltet og velg <strong>«Git: Clone»</strong> fra listen som dukker opp.</p>
         </div>
       </div>
 
       <div class="step not-prose">
         <div class="step-num">3</div>
         <div class="step-content">
-          <h3>Logg inn med GitHub-kontoen din</h3>
-          <p>GitHub Desktop åpner seg automatisk med en velkomstskjerm. Klikk <strong>«Sign in to GitHub.com»</strong>.</p>
-          <img src="images/github-desktop-velkommen.png" alt="GitHub Desktop velkomstskjerm" style="width:100%;max-width:640px;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0 0;" />
-          <p style="margin-top:0.75rem;">Nettleseren åpner en innloggingsside. Skriv inn brukernavnet og passordet du opprettet i modul 04, og klikk <strong>«Sign in»</strong>.</p>
-          <img src="images/github-logg-inn-browser.png" alt="Logg inn på GitHub i nettleseren" style="width:100%;max-width:480px;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0 0;" />
+          <h3>Lim inn URL-en til repoet ditt</h3>
+          <p>VS Code spør etter en URL. Gå til repoet ditt på <a href="https://github.com" target="_blank" rel="noopener" style="color:#0339f8;">github.com</a>, klikk den grønne <strong>«Code»</strong>-knappen og kopier HTTPS-URL-en — den ser slik ut: <code>https://github.com/brukernavn/repo-navn.git</code>. Lim inn i VS Code og trykk <kbd style="background:#F4F4F5;border:1px solid #E4E4E7;border-radius:4px;padding:1px 6px;font-size:0.875em;">Enter</kbd>.</p>
         </div>
       </div>
 
       <div class="step not-prose">
         <div class="step-num">4</div>
         <div class="step-content">
-          <h3>Bekreft enheten din</h3>
-          <p>GitHub sender deg en engangskode på e-post for å bekrefte at det er deg. Sjekk innboksen din, kopier koden og lim den inn i feltet under <strong>«Device Verification Code»</strong>. Klikk <strong>«Verify»</strong>.</p>
-          <img src="images/github-bekreft-enhet.png" alt="GitHub enhetsverifisering" style="width:100%;max-width:440px;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0 0;" />
+          <h3>Velg hvor filene skal lagres</h3>
+          <p>VS Code åpner en mappevelger. Velg en mappe du husker — vi anbefaler å lage en ny mappe på Skrivebordet, da er den alltid lett å finne.</p>
         </div>
       </div>
 
       <div class="step not-prose">
         <div class="step-num">5</div>
         <div class="step-content">
-          <h3>Godkjenn GitHub Desktop</h3>
-          <p>GitHub spør deg om å godkjenne at GitHub Desktop får tilgang til kontoen din. Klikk <strong>«Continue»</strong> ved siden av brukernavnet ditt.</p>
-          <img src="images/github-autoriser-konto.png" alt="Velg konto for GitHub Desktop" style="width:100%;max-width:440px;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0 0;" />
-          <p style="margin-top:0.75rem;">Klikk deretter <strong>«Authorize desktop»</strong> for å gi GitHub Desktop tilgang.</p>
-          <img src="images/github-autoriser-tilgang.png" alt="Autoriser GitHub Desktop" style="width:100%;max-width:440px;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0 0;" />
-          <p style="margin-top:0.75rem;">Nettleseren spør om du vil åpne GitHub Desktop igjen. Klikk <strong>«Åpne»</strong>.</p>
-          <img src="images/github-desktop-apne-program.png" alt="Åpne GitHub Desktop fra nettleseren" style="width:100%;max-width:640px;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0 0;" />
+          <h3>Åpne repoet i VS Code</h3>
+          <p>Når kloningen er ferdig, spør VS Code om du vil åpne repoet. Klikk <strong>«Open»</strong>. Spør VS Code om du stoler på filene? Klikk <strong>«Yes, I trust the authors»</strong>. VS Code åpner seg med alle filene til nettsiden i panelet til venstre: <code>index.html</code>, <code>style.css</code>, bilder osv.</p>
         </div>
       </div>
 
-      <div class="step not-prose">
-        <div class="step-num">6</div>
-        <div class="step-content">
-          <h3>Fullfør oppsettet</h3>
-          <p>GitHub Desktop ber deg bekrefte navn og e-post som brukes på endringene du lagrer. La alt stå som det er og klikk <strong>«Finish»</strong>.</p>
-          <img src="images/github-desktop-konfigurer-git.png" alt="Konfigurer Git i GitHub Desktop" style="width:100%;max-width:640px;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0 0;" />
-        </div>
-      </div>
-
-      <!-- ═══════════════════════════════════════════
-           STEG 1: KLON
-      ══════════════════════════════════════════════ -->
-      <h2>Steg 1 — Kopier nettsidefilene til datamaskinen din</h2>
-      <p>Nå skal du kopiere alle filene til nettsiden din fra GitHub over til datamaskinen din. Denne operasjonen kalles «kloning». Du gjør det én gang — etterpå åpner du GitHub Desktop og jobber videre derfra.</p>
-
-      <div class="step not-prose">
-        <div class="step-num">1</div>
-        <div class="step-content">
-          <h3>Finn repoet ditt i GitHub Desktop</h3>
-          <p>GitHub Desktop viser nå en «Let's get started»-skjerm. Repoet ditt (det heter noe slikt som <code>brattoy-redesign</code>) skal allerede ligge i listen til venstre. Klikk på det, og klikk deretter <strong>«Clone [repo-navn]»</strong>-knappen nederst.</p>
-          <img src="images/github-desktop-kom-i-gang.png" alt="GitHub Desktop — Let's get started med repo i listen" style="width:100%;max-width:640px;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0 0;" />
-        </div>
-      </div>
-
-      <div class="step not-prose">
-        <div class="step-num">2</div>
-        <div class="step-content">
-          <h3>Velg hvor filene skal lagres</h3>
-          <p>Et dialogvindu åpner seg. Klikk <strong>«Choose...»</strong> og velg en mappe du husker. Vi anbefaler å lage en ny mappe på Skrivebordet — da er den alltid lett å finne. Klikk <strong>«Clone»</strong>. GitHub Desktop kopierer alle filene til nettsiden din dit.</p>
-          <img src="images/github-desktop-klon-dialog.png" alt="Clone a repository-dialogen i GitHub Desktop" style="width:100%;max-width:640px;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0 0;" />
-        </div>
-      </div>
-
-      <div class="step not-prose">
-        <div class="step-num">3</div>
-        <div class="step-content">
-          <h3>Åpne filene i VS Code</h3>
-          <p>Når kloningen er ferdig, klikk <strong>«Open in Visual Studio Code»</strong> i GitHub Desktop.</p>
-          <img src="images/github-desktop-aapne-vscode.png" alt="Åpne i VS Code fra GitHub Desktop" style="width:100%;max-width:640px;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0 0;" />
-          <p style="margin-top:0.75rem;">VS Code kan spørre om du stoler på filene i mappen — klikk <strong>«Yes, I trust the authors»</strong>. VS Code åpner seg med alle filene til nettsiden i panelet til venstre (Explorer): <code>index.html</code>, <code>style.css</code>, bilder osv.</p>
-        </div>
+      <div class="callout not-prose" style="margin-top:1.5rem;">
+        <p><strong>Første gang du pusher</strong> ber VS Code deg om å logge inn på GitHub. Det åpner nettleseren automatisk — logg inn der og kom tilbake. Dette skjer bare én gang per datamaskin.</p>
       </div>
 
       <!-- ═══════════════════════════════════════════
