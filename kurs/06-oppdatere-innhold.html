@@ -184,8 +184,18 @@
           <div class="step-num">2</div>
           <div class="step-content">
             <h3>Åpne Claude-appen — ny samtale</h3>
-            <p>Klikk <strong>«New conversation»</strong>. Lim inn koden (<code>Ctrl+V</code>) og skriv meldingen din, f.eks.:</p>
-            <p style="font-family:monospace;background:#EFF6FF;padding:0.75rem 1rem;border-radius:8px;font-size:0.9rem;color:#1E3A8A;">Her er koden til nettsiden min. Kan du endre telefonnummeret i bunnen til 99 88 77 66? Før du gjør noe — still meg spørsmål om alt du er usikker på.</p>
+            <p>Klikk <strong>«New conversation»</strong> og skriv meldingen din. Siden Claude kan redigere filene direkte på datamaskinen din, er det viktig at du oppgir filstien til mappen — da vet Claude nøyaktig hvor filene ligger. F.eks.:</p>
+            <p style="font-family:monospace;background:#EFF6FF;padding:0.75rem 1rem;border-radius:8px;font-size:0.9rem;color:#1E3A8A;">Filene til nettsiden min ligger i mappen: C:\Users\brattoy\Desktop\brattoy-redesign. Kan du endre telefonnummeret i bunnen av nettsiden til 99 88 77 66? Før du gjør noe — still meg spørsmål om alt du er usikker på.</p>
+            <details style="background:#F8FAFC;border:1px solid #E4E4E7;border-radius:10px;padding:0;margin-top:0.75rem;">
+              <summary style="padding:0.75rem 1rem;cursor:pointer;font-weight:600;font-size:0.875rem;color:#3F3F46;list-style:none;display:flex;align-items:center;gap:0.5rem;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;"><path d="M6 9l6 6 6-6"/></svg>
+                Slik finner du filstien til mappen din
+              </summary>
+              <div style="padding:0 1rem 1rem;">
+                <p style="font-size:0.9rem;color:#3F3F46;margin:0 0 0.75rem 0;">Finn mappen i Filutforsker (Windows) eller Finder (Mac). Høyreklikk på mappen og velg <strong>«Kopier som bane»</strong> (Windows) eller <strong>«Kopier som banenavn»</strong> (Mac). Lim det inn i meldingen til Claude med <code>Ctrl+V</code>.</p>
+                <img src="images/filutforsker-kopier-bane.png" alt="Høyreklikk på mappen og velg Kopier som bane" style="width:100%;max-width:480px;border-radius:10px;border:1px solid #E4E4E7;" />
+              </div>
+            </details>
           </div>
         </div>
         <div class="step step--kode" style="background:white;">
