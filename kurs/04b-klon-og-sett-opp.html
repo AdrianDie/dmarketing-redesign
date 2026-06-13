@@ -113,24 +113,67 @@
       <div class="step not-prose">
         <div class="step-num">1</div>
         <div class="step-content">
-          <h3>Åpne kommandopaletten i VS Code</h3>
-          <p>Trykk <kbd style="background:#F4F4F5;border:1px solid #E4E4E7;border-radius:4px;padding:1px 6px;font-size:0.875em;">Ctrl+Shift+P</kbd> (Mac: <kbd style="background:#F4F4F5;border:1px solid #E4E4E7;border-radius:4px;padding:1px 6px;font-size:0.875em;">Cmd+Shift+P</kbd>). En søkelinje åpner seg øverst i VS Code.</p>
+          <h3>Klikk på Source Control og velg «Clone Repository»</h3>
+          <p>Klikk på Source Control-ikonet i menyen til venstre i VS Code (det ser ut som tre prikker med streker). Klikk deretter på <strong>«Clone Repository»</strong>-knappen.</p>
+          <img src="images/vscode-klon-source-control.png" alt="VS Code med Source Control-panelet og Clone Repository-knappen" style="width:100%;max-width:640px;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0 0;" />
         </div>
       </div>
 
       <div class="step not-prose">
         <div class="step-num">2</div>
         <div class="step-content">
-          <h3>Søk etter "Git: Clone"</h3>
-          <p>Skriv <code>git clone</code> i søkefeltet og velg <strong>«Git: Clone»</strong> fra listen som dukker opp.</p>
+          <h3>Klikk «Clone from GitHub»</h3>
+          <p>En søkelinje åpner seg øverst i VS Code. Klikk på <strong>«Clone from GitHub»</strong>.</p>
+          <img src="images/vscode-klon-clone-from-github.png" alt="VS Code søkelinje med Clone from GitHub-valget" style="width:100%;max-width:640px;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0 0;" />
+        </div>
+      </div>
+
+      <!-- INNLOGGING (vises bare hvis ikke logget inn) -->
+      <div class="not-prose" style="background:#FFF9EC;border:1.5px solid #F59E0B;border-radius:14px;padding:20px 24px;margin:2rem 0;">
+        <p style="font-weight:700;margin:0 0 4px 0;">Er du allerede logget inn på GitHub i VS Code?</p>
+        <p style="margin:0 0 14px 0;color:#6B7280;">Da hopper du rett til <strong>steg 3</strong> — du ser repoet ditt i listen med en gang.</p>
+        <p style="font-weight:700;margin:0 0 10px 0;">Ber VS Code deg om å logge inn? Gjør disse stegene, og gå så tilbake til steg 3:</p>
+
+        <div class="step" style="margin-bottom:12px;">
+          <div class="step-num" style="font-size:0.8rem;width:24px;height:24px;min-width:24px;">a</div>
+          <div class="step-content">
+            <p style="margin:0;"><strong>Klikk «Allow»</strong> i VS Code-dialogen som dukker opp.</p>
+            <img src="images/vscode-klon-logg-inn-popup.png" alt="VS Code ber om å logge inn via GitHub" style="width:100%;max-width:540px;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0 0;" />
+          </div>
+        </div>
+
+        <div class="step" style="margin-bottom:12px;">
+          <div class="step-num" style="font-size:0.8rem;width:24px;height:24px;min-width:24px;">b</div>
+          <div class="step-content">
+            <p style="margin:0;">Nettleseren åpner en GitHub-side. Klikk <strong>«Authorize Visual-Studio-Code»</strong>.</p>
+            <img src="images/github-autoriser-vscode.png" alt="GitHub OAuth-side for å autorisere VS Code" style="width:100%;max-width:440px;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0 0;" />
+          </div>
+        </div>
+
+        <div class="step" style="margin-bottom:12px;">
+          <div class="step-num" style="font-size:0.8rem;width:24px;height:24px;min-width:24px;">c</div>
+          <div class="step-content">
+            <p style="margin:0;">GitHub sender en bekreftelseskode til e-posten din. Skriv inn koden og klikk <strong>«Verify»</strong>.</p>
+            <img src="images/github-bekreft-tilgang.png" alt="GitHub bekreftelseskode på e-post" style="width:100%;max-width:440px;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0 0;" />
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num" style="font-size:0.8rem;width:24px;height:24px;min-width:24px;">d</div>
+          <div class="step-content">
+            <p style="margin:0;">Nettleseren spør om du vil åpne VS Code igjen. Klikk <strong>«Åpne»</strong>.</p>
+            <img src="images/nettleser-apne-vscode.png" alt="Nettleserdialog for å åpne VS Code" style="width:100%;max-width:480px;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0 0;" />
+            <p style="margin:0.75rem 0 0;"><strong>Nå er du tilbake i VS Code — gå til steg 3.</strong></p>
+          </div>
         </div>
       </div>
 
       <div class="step not-prose">
         <div class="step-num">3</div>
         <div class="step-content">
-          <h3>Lim inn URL-en til repoet ditt</h3>
-          <p>VS Code spør etter en URL. Gå til repoet ditt på <a href="https://github.com" target="_blank" rel="noopener" style="color:#0339f8;">github.com</a>, klikk den grønne <strong>«Code»</strong>-knappen og kopier HTTPS-URL-en — den ser slik ut: <code>https://github.com/brukernavn/repo-navn.git</code>. Lim inn i VS Code og trykk <kbd style="background:#F4F4F5;border:1px solid #E4E4E7;border-radius:4px;padding:1px 6px;font-size:0.875em;">Enter</kbd>.</p>
+          <h3>Velg repoet ditt fra listen</h3>
+          <p>VS Code viser en liste med dine GitHub-repoer. Klikk på repoet ditt — det heter noe slikt som <code>brattoy-redesign</code>.</p>
+          <img src="images/vscode-klon-velg-repo.png" alt="VS Code viser liste med GitHub-repoer" style="width:100%;max-width:640px;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0 0;" />
         </div>
       </div>
 
@@ -138,20 +181,28 @@
         <div class="step-num">4</div>
         <div class="step-content">
           <h3>Velg hvor filene skal lagres</h3>
-          <p>VS Code åpner en mappevelger. Velg en mappe du husker — vi anbefaler å lage en ny mappe på Skrivebordet, da er den alltid lett å finne.</p>
+          <p>VS Code åpner en mappevelger. Vi anbefaler å velge <strong>Skrivebordet</strong> — da er mappen alltid lett å finne. Klikk <strong>«Select as Repository Destination»</strong>.</p>
+          <img src="images/vscode-klon-velg-mappe.png" alt="Mappevelger med Skrivebord valgt" style="width:100%;max-width:640px;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0 0;" />
         </div>
       </div>
 
       <div class="step not-prose">
         <div class="step-num">5</div>
         <div class="step-content">
-          <h3>Åpne repoet i VS Code</h3>
-          <p>Når kloningen er ferdig, spør VS Code om du vil åpne repoet. Klikk <strong>«Open»</strong>. Spør VS Code om du stoler på filene? Klikk <strong>«Yes, I trust the authors»</strong>. VS Code åpner seg med alle filene til nettsiden i panelet til venstre: <code>index.html</code>, <code>style.css</code>, bilder osv.</p>
+          <h3>Åpne repoet</h3>
+          <p>Når kloningen er ferdig spør VS Code om du vil åpne mappen. Klikk <strong>«Open»</strong>.</p>
+          <img src="images/vscode-klon-apne-repo.png" alt="VS Code spør om du vil åpne repoet" style="width:100%;max-width:540px;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0 0;" />
         </div>
       </div>
 
-      <div class="callout not-prose" style="margin-top:1.5rem;">
-        <p><strong>Første gang du pusher</strong> ber VS Code deg om å logge inn på GitHub. Det åpner nettleseren automatisk — logg inn der og kom tilbake. Dette skjer bare én gang per datamaskin.</p>
+      <div class="step not-prose">
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <h3>Stol på filene</h3>
+          <p>VS Code spør om du stoler på filene i mappen. Klikk <strong>«Yes, I trust the authors»</strong>.</p>
+          <img src="images/vscode-klon-stol-pa-forfattere.png" alt="VS Code spør om du stoler på filene" style="width:100%;max-width:540px;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0 0;" />
+          <p style="margin-top:0.75rem;">VS Code åpner seg med alle filene til nettsiden din i panelet til venstre: <code>index.html</code>, <code>style.css</code>, bilder osv. Du er klar til neste steg.</p>
+        </div>
       </div>
 
       <!-- ═══════════════════════════════════════════
@@ -159,6 +210,7 @@
       ══════════════════════════════════════════════ -->
       <h2>Steg 2 — Forhåndsvis nettsiden</h2>
       <p>La oss ta et sekund og se hva du faktisk har gjort. Mappen du nettopp klonet inneholder <strong>hele nettsiden din</strong> — alle HTML-filer, bilder og stilark er nå på datamaskinen din. Du kan åpne <code>index.html</code> direkte i nettleseren og se nettsiden akkurat slik den er i dag, uten internett.</p>
+      <img src="images/vscode-repo-apent.png" alt="VS Code med nettsidefilene åpne i Explorer-panelet" style="width:100%;max-width:640px;border-radius:10px;border:1px solid #E4E4E7;margin:0 0 1.5rem;" />
 
       <div class="step not-prose">
         <div class="step-num">1</div>
