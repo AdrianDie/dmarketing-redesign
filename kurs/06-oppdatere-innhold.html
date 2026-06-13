@@ -390,59 +390,91 @@ Lørdag stengt</div>
         </div>
       </details>
 
-      <figure class="not-prose my-8 rounded-2xl border border-zinc-200 bg-white p-5 md:p-7">
-        <p class="text-center text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-5">Slik ser en tekst-endring ut — fra prompt til live</p>
-        <svg viewBox="0 0 560 170" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Fem steg: du skriver prompt, Claude leser siden, Claude viser plan, du godkjenner, live på nett">
+      <div class="not-prose my-8 rounded-2xl border border-zinc-200 bg-white p-5 md:p-7">
+        <p class="text-center text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-4">Slik ser en tekst-endring ut — fra prompt til live</p>
 
-          <!-- Connector lines -->
-          <line x1="88" y1="60" x2="144" y2="60" stroke="#E4E4E7" stroke-width="2"/>
-          <polygon points="139,55 149,60 139,65" fill="#CBD5E1"/>
-          <line x1="196" y1="60" x2="252" y2="60" stroke="#E4E4E7" stroke-width="2"/>
-          <polygon points="247,55 257,60 247,65" fill="#CBD5E1"/>
-          <line x1="304" y1="60" x2="360" y2="60" stroke="#E4E4E7" stroke-width="2"/>
-          <polygon points="355,55 365,60 355,65" fill="#CBD5E1"/>
-          <line x1="412" y1="60" x2="456" y2="60" stroke="#E4E4E7" stroke-width="2"/>
-          <polygon points="451,55 461,60 451,65" fill="#CBD5E1"/>
+        <!-- Toggle -->
+        <div style="display:flex;gap:0.5rem;justify-content:center;margin-bottom:1.25rem;">
+          <button onclick="setDiagram('gratis')" id="diag-btn-gratis" style="padding:0.4rem 1rem;border-radius:8px;border:2px solid #D97706;background:#FFFBEB;font-size:0.8125rem;font-weight:700;color:#92400E;cursor:pointer;">🟡 Gratis</button>
+          <button onclick="setDiagram('pro')" id="diag-btn-pro" style="padding:0.4rem 1rem;border-radius:8px;border:2px solid #E4E4E7;background:white;font-size:0.8125rem;font-weight:700;color:#3F3F46;cursor:pointer;">🔵 Claude Pro</button>
+        </div>
 
-          <!-- Step 1 -->
-          <circle cx="56" cy="60" r="32" fill="#EFF6FF" stroke="#0339f8" stroke-width="2"/>
-          <text x="56" y="56" text-anchor="middle" font-size="9" font-weight="700" fill="#0339f8">Du skriver</text>
-          <text x="56" y="68" text-anchor="middle" font-size="9" font-weight="700" fill="#0339f8">prompt</text>
-          <text x="56" y="110" text-anchor="middle" font-size="10" font-weight="700" fill="#09090B">Steg 1</text>
-          <text x="56" y="124" text-anchor="middle" font-size="9" fill="#71717A">«Endre H1 til...»</text>
+        <!-- Gratis diagram -->
+        <div id="diag-gratis">
+          <svg viewBox="0 0 560 170" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
+            <line x1="88" y1="60" x2="144" y2="60" stroke="#E4E4E7" stroke-width="2"/><polygon points="139,55 149,60 139,65" fill="#CBD5E1"/>
+            <line x1="196" y1="60" x2="252" y2="60" stroke="#E4E4E7" stroke-width="2"/><polygon points="247,55 257,60 247,65" fill="#CBD5E1"/>
+            <line x1="304" y1="60" x2="360" y2="60" stroke="#E4E4E7" stroke-width="2"/><polygon points="355,55 365,60 355,65" fill="#CBD5E1"/>
+            <line x1="412" y1="60" x2="456" y2="60" stroke="#E4E4E7" stroke-width="2"/><polygon points="451,55 461,60 451,65" fill="#CBD5E1"/>
+            <circle cx="56" cy="60" r="32" fill="#FFFBEB" stroke="#D97706" stroke-width="2"/>
+            <text x="56" y="56" text-anchor="middle" font-size="9" font-weight="700" fill="#92400E">Du laster opp</text>
+            <text x="56" y="68" text-anchor="middle" font-size="9" font-weight="700" fill="#92400E">+ skriver</text>
+            <text x="56" y="110" text-anchor="middle" font-size="10" font-weight="700" fill="#09090B">Steg 1</text>
+            <text x="56" y="124" text-anchor="middle" font-size="9" fill="#71717A">Filer + prompt</text>
+            <circle cx="172" cy="60" r="32" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>
+            <text x="172" y="56" text-anchor="middle" font-size="9" font-weight="700" fill="#7C3AED">AI leser</text>
+            <text x="172" y="68" text-anchor="middle" font-size="9" font-weight="700" fill="#7C3AED">filene</text>
+            <text x="172" y="110" text-anchor="middle" font-size="10" font-weight="700" fill="#09090B">Steg 2</text>
+            <text x="172" y="124" text-anchor="middle" font-size="9" fill="#71717A">Google AI Studio</text>
+            <circle cx="280" cy="60" r="32" fill="#FEF3C7" stroke="#D97706" stroke-width="1.5"/>
+            <text x="280" y="56" text-anchor="middle" font-size="9" font-weight="700" fill="#B45309">AI svarer</text>
+            <text x="280" y="68" text-anchor="middle" font-size="9" font-weight="700" fill="#B45309">med kode</text>
+            <text x="280" y="110" text-anchor="middle" font-size="10" font-weight="700" fill="#09090B">Steg 3</text>
+            <text x="280" y="124" text-anchor="middle" font-size="9" fill="#71717A">Du kopierer svaret</text>
+            <circle cx="388" cy="60" r="32" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.5"/>
+            <text x="388" y="56" text-anchor="middle" font-size="9" font-weight="700" fill="#16A34A">Du limer</text>
+            <text x="388" y="68" text-anchor="middle" font-size="9" font-weight="700" fill="#16A34A">inn + lagrer</text>
+            <text x="388" y="110" text-anchor="middle" font-size="10" font-weight="700" fill="#09090B">Steg 4</text>
+            <text x="388" y="124" text-anchor="middle" font-size="9" fill="#71717A">VS Code + Ctrl+S</text>
+            <circle cx="496" cy="60" r="32" fill="#16A34A"/>
+            <text x="496" y="52" text-anchor="middle" font-size="8.5" font-weight="800" fill="white">Live på</text>
+            <text x="496" y="64" text-anchor="middle" font-size="8.5" font-weight="800" fill="white">30–90 sek</text>
+            <text x="496" y="110" text-anchor="middle" font-size="10" font-weight="700" fill="#09090B">Steg 5</text>
+            <text x="496" y="124" text-anchor="middle" font-size="9" fill="#16A34A">Commit &amp; publiser</text>
+          </svg>
+        </div>
 
-          <!-- Step 2 -->
-          <circle cx="172" cy="60" r="32" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>
-          <text x="172" y="56" text-anchor="middle" font-size="9" font-weight="700" fill="#7C3AED">Claude leser</text>
-          <text x="172" y="68" text-anchor="middle" font-size="9" font-weight="700" fill="#7C3AED">siden</text>
-          <text x="172" y="110" text-anchor="middle" font-size="10" font-weight="700" fill="#09090B">Steg 2</text>
-          <text x="172" y="124" text-anchor="middle" font-size="9" fill="#71717A">Finner alle steder</text>
+        <!-- Pro diagram -->
+        <div id="diag-pro" style="display:none;">
+          <svg viewBox="0 0 360 170" width="72%" style="display:block;margin:0 auto;" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
+            <line x1="88" y1="60" x2="144" y2="60" stroke="#E4E4E7" stroke-width="2"/><polygon points="139,55 149,60 139,65" fill="#CBD5E1"/>
+            <line x1="196" y1="60" x2="252" y2="60" stroke="#E4E4E7" stroke-width="2"/><polygon points="247,55 257,60 247,65" fill="#CBD5E1"/>
+            <circle cx="56" cy="60" r="32" fill="#EFF6FF" stroke="#0339f8" stroke-width="2"/>
+            <text x="56" y="56" text-anchor="middle" font-size="9" font-weight="700" fill="#0339f8">Du skriver</text>
+            <text x="56" y="68" text-anchor="middle" font-size="9" font-weight="700" fill="#0339f8">prompt</text>
+            <text x="56" y="110" text-anchor="middle" font-size="10" font-weight="700" fill="#09090B">Steg 1</text>
+            <text x="56" y="124" text-anchor="middle" font-size="9" fill="#71717A">Filsti + hva du vil</text>
+            <circle cx="172" cy="60" r="32" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>
+            <text x="172" y="52" text-anchor="middle" font-size="9" font-weight="700" fill="#7C3AED">Claude gjør</text>
+            <text x="172" y="64" text-anchor="middle" font-size="9" font-weight="700" fill="#7C3AED">alt selv</text>
+            <text x="172" y="110" text-anchor="middle" font-size="10" font-weight="700" fill="#09090B">Steg 2</text>
+            <text x="172" y="124" text-anchor="middle" font-size="9" fill="#71717A">Les, endre, publiser</text>
+            <circle cx="280" cy="60" r="32" fill="#16A34A"/>
+            <text x="280" y="52" text-anchor="middle" font-size="8.5" font-weight="800" fill="white">Live på</text>
+            <text x="280" y="64" text-anchor="middle" font-size="8.5" font-weight="800" fill="white">30–90 sek</text>
+            <text x="280" y="110" text-anchor="middle" font-size="10" font-weight="700" fill="#09090B">Steg 3</text>
+            <text x="280" y="124" text-anchor="middle" font-size="9" fill="#16A34A">GitHub Pages publiserer</text>
+            <text x="168" y="155" text-anchor="middle" font-size="10.5" fill="#71717A">Du trenger ikke røre kode eller VS Code.</text>
+          </svg>
+        </div>
 
-          <!-- Step 3 -->
-          <circle cx="280" cy="60" r="32" fill="#FEF3C7" stroke="#D97706" stroke-width="1.5"/>
-          <text x="280" y="56" text-anchor="middle" font-size="9" font-weight="700" fill="#B45309">Claude viser</text>
-          <text x="280" y="68" text-anchor="middle" font-size="9" font-weight="700" fill="#B45309">plan</text>
-          <text x="280" y="110" text-anchor="middle" font-size="10" font-weight="700" fill="#09090B">Steg 3</text>
-          <text x="280" y="124" text-anchor="middle" font-size="9" fill="#71717A">«Vil endre 3 steder»</text>
-
-          <!-- Step 4 -->
-          <circle cx="388" cy="60" r="32" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.5"/>
-          <text x="388" y="56" text-anchor="middle" font-size="9" font-weight="700" fill="#16A34A">Du</text>
-          <text x="388" y="68" text-anchor="middle" font-size="9" font-weight="700" fill="#16A34A">godkjenner</text>
-          <text x="388" y="110" text-anchor="middle" font-size="10" font-weight="700" fill="#09090B">Steg 4</text>
-          <text x="388" y="124" text-anchor="middle" font-size="9" fill="#71717A">«Godkjent» / «Nei»</text>
-
-          <!-- Step 5 (green, bigger) -->
-          <circle cx="496" cy="60" r="32" fill="#16A34A"/>
-          <text x="496" y="52" text-anchor="middle" font-size="8.5" font-weight="800" fill="white">Live på</text>
-          <text x="496" y="64" text-anchor="middle" font-size="8.5" font-weight="800" fill="white">30–90 sek</text>
-          <text x="496" y="110" text-anchor="middle" font-size="10" font-weight="700" fill="#09090B">Steg 5</text>
-          <text x="496" y="124" text-anchor="middle" font-size="9" fill="#16A34A">GitHub Pages publiserer</text>
-
-          <text x="280" y="152" text-anchor="middle" font-size="10.5" fill="#71717A">Du kan stoppe på steg 4 og justere — ingen endring skjer uten at du godkjenner.</text>
-
-        </svg>
-      </figure>
+        <script>
+          function setDiagram(track) {
+            document.getElementById('diag-gratis').style.display = track === 'gratis' ? '' : 'none';
+            document.getElementById('diag-pro').style.display = track === 'pro' ? '' : 'none';
+            document.getElementById('diag-btn-gratis').style.borderColor = track === 'gratis' ? '#D97706' : '#E4E4E7';
+            document.getElementById('diag-btn-gratis').style.background = track === 'gratis' ? '#FFFBEB' : 'white';
+            document.getElementById('diag-btn-gratis').style.color = track === 'gratis' ? '#92400E' : '#3F3F46';
+            document.getElementById('diag-btn-pro').style.borderColor = track === 'pro' ? '#0339f8' : '#E4E4E7';
+            document.getElementById('diag-btn-pro').style.background = track === 'pro' ? '#EFF6FF' : 'white';
+            document.getElementById('diag-btn-pro').style.color = track === 'pro' ? '#1E3A8A' : '#3F3F46';
+          }
+          document.addEventListener('DOMContentLoaded', function() {
+            var t = localStorage.getItem('kurs-track') || 'gratis';
+            setDiagram(t === 'kode' ? 'pro' : 'gratis');
+          });
+        </script>
+      </div>
 
       <div class="callout">
         <p><strong>Pro-tips:</strong> Hvis Claude finner teksten på 5 ulike steder, betyr det ofte at du har inkonsistens i innholdet. Be Claude oppsummere ALLE forekomster så du kan rydde i én slynge.</p>
@@ -453,8 +485,8 @@ Lørdag stengt</div>
       <h3>Du ber om endring, men teksten finnes flere steder</h3>
       <p>Hvis du sier "endre 'Velkommen' til 'Hei'" og Claude finner ordet 30 ganger på siden, blir det rot. Vær mer spesifikk: "Endre H1-overskriften på forsiden ..." eller gi mer kontekst.</p>
 
-      <h3>Du glemmer å nevne mobile-versjon</h3>
-      <p>De fleste tekster er like på desktop (vanlig PC- eller Mac-skjerm) og mobil, men noen ganger har de ulik formulering for å spare plass. Hvis du vil endre begge, si: <code>... gjelder begge versjoner (desktop og mobil)</code>.</p>
+      <h3>Claude vet ikke hvordan siden din ser ut</h3>
+      <p>Gå til forsiden av nettsiden du har i dag. Trykk <kbd>Ctrl+A</kbd> (velg alt), <kbd>Ctrl+C</kbd> (kopier), og lim inn i chatten med <kbd>Ctrl+V</kbd>. Da ser Claude hele siden — tekster, struktur og mobilversjon — uten at du trenger å forklare noe.</p>
 
       <h3>Du publiserer noe du ikke ville</h3>
       <p>Si til Claude: <code>angre den siste endringen</code>. Siden går tilbake til slik den var før, på rundt 30 sekunder. Ingen permanent skade — du kan alltid angre.</p>
@@ -486,7 +518,7 @@ Lørdag stengt</div>
 
   <nav class="border-t border-zinc-200 bg-white py-8 px-6">
     <div class="max-w-4xl mx-auto flex justify-between items-center">
-      <a href="05-klon-og-sett-opp" class="text-sm text-zinc-500 hover:text-blue-600 flex items-center gap-2"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>04b: Klon og sett opp</a>
+      <a href="05-klon-og-sett-opp" class="text-sm text-zinc-500 hover:text-blue-600 flex items-center gap-2"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>05: Klon og sett opp</a>
       <a href="07-bytte-bilder" class="inline-flex items-center gap-2 bg-blue-600 text-white font-semibold px-5 py-3 rounded-lg hover:bg-blue-500 transition-colors text-sm">Modul 06: Bytte bilder<svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
     </div>
   </nav>
