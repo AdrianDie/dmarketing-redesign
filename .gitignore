@@ -18,3 +18,8 @@ Thumbs.db
 mobile_screenshots/
 temporary_screenshots/
 .playwright-mcp/
+
+# Kurs — låste Pro-moduler (ikke publiser på GitHub Pages)
+kurs/09-seo.html
+kurs/13-integrasjoner.html
+kurs/14-eierskap.html
