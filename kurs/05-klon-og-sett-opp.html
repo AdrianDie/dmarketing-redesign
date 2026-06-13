@@ -399,8 +399,31 @@
             <div class="step-num">3</div>
             <div class="step-content">
               <h3>Velg Pro til $20/mnd</h3>
-              <p>Du ser tre planer: <strong>Free</strong>, <strong>Pro ($20/mnd)</strong> og Max ($100+/mnd). Klikk <strong>«Get Pro plan»</strong>. Fyll inn kortinformasjonen og bekreft. Du kan si opp når som helst via «Settings → Billing».</p>
-              <img src="images/claude-pro-pris.png" alt="Planer-siden med Free, Pro og Max" style="width:100%;max-width:580px;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0 0;" />
+              <p>Du ser tre planer: <strong>Free</strong>, <strong>Pro ($20/mnd)</strong> og Max ($100+/mnd). Klikk <strong>«Get Pro plan»</strong>. Fyll inn kortinformasjonen og bekreft.</p>
+              <img src="images/claude-pro-pris.png" alt="Planer-siden med Free, Pro og Max" style="width:100%;max-width:580px;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0 1rem;" />
+              <details style="background:#F8FAFC;border:1px solid #E4E4E7;border-radius:10px;padding:0;">
+                <summary style="padding:0.85rem 1rem;cursor:pointer;font-weight:600;font-size:0.9rem;color:#3F3F46;list-style:none;display:flex;align-items:center;gap:0.5rem;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;transition:transform 0.2s;" class="details-chevron"><path d="M6 9l6 6 6-6"/></svg>
+                  Slik avslutter du abonnementet
+                </summary>
+                <div style="padding:0 1rem 1rem;">
+                  <p style="font-size:0.9rem;color:#3F3F46;margin:0 0 0.75rem 0;">Du betaler kun for den måneden du bruker — ingen binding. Slik sier du opp:</p>
+                  <ol style="padding-left:1.25rem;margin:0;display:flex;flex-direction:column;gap:0.4rem;">
+                    <li style="font-size:0.9rem;color:#3F3F46;line-height:1.6;">Gå til <a href="https://claude.ai" target="_blank" rel="noopener" style="color:#0339f8;">claude.ai</a> og logg inn</li>
+                    <li style="font-size:0.9rem;color:#3F3F46;line-height:1.6;">Klikk på profilikonet ditt nederst til venstre → <strong>Settings</strong></li>
+                    <li style="font-size:0.9rem;color:#3F3F46;line-height:1.6;">Gå til <strong>Billing</strong> og klikk <strong>«Cancel plan»</strong></li>
+                  </ol>
+                  <p style="font-size:0.875rem;color:#6B7280;margin:0.75rem 0 0;">Du beholder Pro-tilgangen ut måneden du allerede har betalt for.</p>
+                </div>
+              </details>
+              <script>
+                document.querySelectorAll('details').forEach(function(d) {
+                  d.addEventListener('toggle', function() {
+                    var chevron = d.querySelector('.details-chevron');
+                    if (chevron) chevron.style.transform = d.open ? 'rotate(180deg)' : '';
+                  });
+                });
+              </script>
             </div>
           </div>
 
