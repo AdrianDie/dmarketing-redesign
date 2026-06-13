@@ -40,6 +40,23 @@
     .live-server-box__body p { font-size: 1rem; line-height: 1.65; color: #3F3F46; margin-bottom: 0.75rem; }
     .live-server-box__body ol { padding-left: 1.25rem; margin: 0; }
     .live-server-box__body ol li { font-size: 1rem; line-height: 1.65; color: #3F3F46; margin-bottom: 0.35rem; }
+    .step { background: white; border: 1px solid #E4E4E7; border-radius: 1rem; padding: 1.5rem; margin: 1rem 0; display: flex; gap: 1rem; align-items: flex-start; }
+    .step-num { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 1.75rem; color: #0339f8; line-height: 1; flex-shrink: 0; min-width: 2rem; }
+    .step-content h3 { margin-top: 0 !important; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem; color: #09090B; }
+    .step-content p { margin-bottom: 0.5rem; font-size: 1rem; line-height: 1.65; color: #3F3F46; }
+    .step-content p:last-child { margin-bottom: 0; }
+    .step-content code { background: #F4F4F5; padding: 0.1rem 0.35rem; border-radius: 4px; font-family: monospace; font-size: 0.9em; }
+    .step-content ol { padding-left: 1.25rem; margin: 0.5rem 0 0; }
+    .step-content ol li { font-size: 1rem; line-height: 1.65; color: #3F3F46; margin-bottom: 0.35rem; }
+    .step--gratis .step-num { color: #D97706; }
+    .step--kode .step-num { color: #0339f8; }
+    .track-toggle { border: 1.5px solid #E4E4E7; border-radius: 14px; padding: 1.5rem; margin: 1.5rem 0; background: #FAFAFA; }
+    .track-toggle__intro { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 1rem; color: #09090B; margin-bottom: 0.75rem; }
+    .track-toggle__buttons { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .track-btn { flex: 1; min-width: 200px; border: 2px solid #E4E4E7; border-radius: 10px; padding: 0.875rem 1rem; cursor: pointer; background: white; text-align: left; transition: border-color 0.15s, background 0.15s; }
+    .track-btn:hover { border-color: #0339f8; }
+    .track-btn[data-active="true"] { border-color: #0339f8; background: #EFF6FF; }
+    .track-btn__name { display: block; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 0.9375rem; color: #09090B; margin-bottom: 0.25rem; }
   </style>
 </head>
 <body>
@@ -66,6 +83,122 @@
 
   <article class="px-6 py-12 md:py-16">
     <div class="max-w-4xl mx-auto prose-custom">
+
+      <!-- ═══════════════════════════════════════════
+           FØRSTE TEST
+      ══════════════════════════════════════════════ -->
+      <h2>Første test — prøv det nå</h2>
+      <p>La oss gjøre en ekte endring med én gang. Vi bytter telefonnummeret i bunnen av nettsiden — det er en liten, ufarlig endring som viser deg hele flyten fra start til slutt.</p>
+
+      <div class="track-toggle not-prose">
+        <p class="track-toggle__intro">Velg din arbeidsmetode</p>
+        <div class="track-toggle__buttons">
+          <button class="track-btn" data-track="gratis" onclick="setTrack('gratis')">
+            <span class="track-btn__name">🟡 Gratis · Google AI Studio</span>
+          </button>
+          <button class="track-btn" data-track="kode" onclick="setTrack('kode')">
+            <span class="track-btn__name">🔵 Pro · Claude-appen</span>
+          </button>
+        </div>
+      </div>
+
+      <script>
+        function setTrack(track) {
+          document.querySelectorAll('.spor-gratis').forEach(el => el.style.display = track === 'gratis' ? '' : 'none');
+          document.querySelectorAll('.spor-kode').forEach(el => el.style.display = track === 'kode' ? '' : 'none');
+          document.querySelectorAll('.track-btn').forEach(btn => btn.dataset.active = btn.dataset.track === track ? 'true' : 'false');
+          localStorage.setItem('kurs-track', track);
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+          setTrack(localStorage.getItem('kurs-track') || 'gratis');
+        });
+      </script>
+
+      <!-- GRATIS -->
+      <div class="spor-gratis not-prose">
+        <div class="step step--gratis" style="background:white;">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h3>Last opp filene i Google AI Studio</h3>
+            <p>Åpne Google AI Studio og klikk <strong>«+ New prompt»</strong>. Klikk deretter på <strong>«+»-knappen</strong> i tekstfeltet og velg <strong>«Upload files»</strong>. Naviger til mappen der du lagret nettsiden og velg <code>app.js</code>, <code>index.html</code> og <code>style.css</code> (klikk øverst, hold Shift, klikk nederst).</p>
+          </div>
+        </div>
+        <div class="step step--gratis" style="background:white;">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h3>Skriv hva du vil endre</h3>
+            <p>Skriv inn meldingen din i tekstfeltet, f.eks.:</p>
+            <p style="font-family:monospace;background:#F4F4F5;padding:0.75rem 1rem;border-radius:8px;font-size:0.9rem;color:#18181B;">Kan du endre telefonnummeret i bunnen av nettsiden til 99 88 77 66? Før du gjør noe — still meg spørsmål om alt du er usikker på.</p>
+            <p>Send og vent på svar.</p>
+          </div>
+        </div>
+        <div class="step step--gratis" style="background:white;">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h3>Kopier AI-ens svar og lim inn i VS Code</h3>
+            <p>AI-en svarer med oppdatert kode. Klikk «Copy»-knappen over kodeblokken. Åpne den aktuelle filen i VS Code, trykk <code>Ctrl+A</code> → <code>Ctrl+V</code> → <code>Ctrl+S</code> for å erstatte og lagre.</p>
+          </div>
+        </div>
+        <div class="step step--gratis" style="background:white;">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <h3>Sjekk i nettleseren</h3>
+            <p>Gå til nettleserfanen med den lokale siden og trykk <strong>F5</strong>. Ser du det nye telefonnummeret?</p>
+          </div>
+        </div>
+        <div class="step step--gratis" style="background:white;">
+          <div class="step-num">5</div>
+          <div class="step-content">
+            <h3>Send til GitHub — gjør det live</h3>
+            <p>I VS Code: klikk <strong>Source Control</strong>-ikonet i sidepanelet. Du ser den endrede filen under «Changes».</p>
+            <ol>
+              <li>Klikk <strong>«+»</strong> ved siden av filen for å stage endringen</li>
+              <li>Skriv en kort melding, f.eks. <em>«Oppdaterte telefonnummer»</em></li>
+              <li>Klikk <strong>«Commit»</strong>, deretter <strong>«Sync Changes»</strong></li>
+            </ol>
+            <p>Vent 30–60 sekunder, gå til nettsiden din live og bekreft at endringen er der.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRO -->
+      <div class="spor-kode not-prose">
+        <div class="step step--kode" style="background:white;">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h3>Åpne index.html i VS Code og kopier</h3>
+            <p>Klikk på <code>index.html</code> i Explorer-panelet. Klikk inne i kodefeltet og trykk <code>Ctrl+A</code> → <code>Ctrl+C</code> for å markere og kopiere hele filen.</p>
+          </div>
+        </div>
+        <div class="step step--kode" style="background:white;">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h3>Åpne Claude-appen — ny samtale</h3>
+            <p>Klikk <strong>«New conversation»</strong>. Lim inn koden (<code>Ctrl+V</code>) og skriv meldingen din, f.eks.:</p>
+            <p style="font-family:monospace;background:#EFF6FF;padding:0.75rem 1rem;border-radius:8px;font-size:0.9rem;color:#1E3A8A;">Her er koden til nettsiden min. Kan du endre telefonnummeret i bunnen til 99 88 77 66? Før du gjør noe — still meg spørsmål om alt du er usikker på.</p>
+          </div>
+        </div>
+        <div class="step step--kode" style="background:white;">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h3>Kopier Claudes svar og lim inn i VS Code</h3>
+            <p>Claude svarer med den komplette, oppdaterte filen. Klikk «Copy»-knappen over kodeblokken. Tilbake i VS Code: trykk <code>Ctrl+A</code> → <code>Ctrl+V</code> → <code>Ctrl+S</code>.</p>
+          </div>
+        </div>
+        <div class="step step--kode" style="background:white;">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <h3>Sjekk i nettleseren og gjør det live</h3>
+            <p>Trykk F5. Ser du det nye telefonnummeret? I VS Code: klikk <strong>Source Control</strong>, trykk «+» ved filen, skriv en kort melding, klikk <strong>«Commit»</strong> → <strong>«Sync Changes»</strong>. Live på 30–60 sek.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout callout-ok not-prose" style="margin-top:1.5rem;">
+        <p><strong>Du har gjort din første ekte endring.</strong> Oppsett er unnagjort — fremover er det bare å åpne AI-en, gjøre endringen og trykke Commit &amp; Push. Kortere og kortere for hvert gang.</p>
+      </div>
+
+      <hr style="border:none;border-top:1.5px solid #E4E4E7;margin:3rem 0;" />
 
       <div class="callout">
         <p><strong>Noen ord vi bruker i denne modulen.</strong> Her er fire begreper fra «nettside-verdenen» — forklart med vanlige ord:</p>
