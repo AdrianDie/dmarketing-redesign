@@ -318,14 +318,25 @@
           <img src="images/google-ai-studio-velg-pro.png" alt="Modellisten med Gemini 3.1 Pro Preview valgt" style="width:100%;max-width:640px;border-radius:10px;border:1px solid #E4E4E7;margin:0 0 1.5rem;" />
 
           <h3 style="margin-top:2rem;">Slik fungerer arbeidsflyten din</h3>
-          <p style="font-size:1.0625rem;line-height:1.7;color:#3F3F46;">Google AI Studio er ikke koblet direkte til GitHub — du er broen mellom de to. Det er noen steg, men helt overkommelig når du har gjort det noen ganger:</p>
+          <p style="font-size:1.0625rem;line-height:1.7;color:#3F3F46;">I stedet for å kopiere og lime inn kode manuelt kan du laste opp filene direkte til Google AI Studio. Da ser AI-en hele nettsiden på én gang og kan gjøre endringer med full oversikt.</p>
+
+          <p style="font-size:1rem;font-weight:600;color:#3F3F46;margin:1.25rem 0 0.5rem 0;">Last opp nettsidefilene til Google AI Studio:</p>
+
+          <p style="color:#3F3F46;margin:0 0 0.5rem 0;"><strong>1.</strong> Klikk på <strong>«+»-knappen</strong> i tekstfeltet nederst i Google AI Studio, og velg <strong>«Upload files»</strong>.</p>
+          <img src="images/google-ai-studio-pluss-knapp.png" alt="Klikk på plus-knappen i Google AI Studio for å laste opp filer" style="width:100%;max-width:640px;border-radius:10px;border:1px solid #E4E4E7;margin:0.5rem 0 1rem;" />
+
+          <p style="color:#3F3F46;margin:0 0 0.5rem 0;"><strong>2.</strong> Naviger til mappen der du lagret nettsiden fra GitHub. Du trenger ikke alle filer — det holder med de tre viktigste: <strong>app.js</strong>, <strong>index.html</strong> og <strong>style.css</strong>. Klikk på <code>app</code> øverst, hold inne <kbd style="background:#F4F4F5;border:1px solid #E4E4E7;border-radius:4px;padding:1px 6px;font-size:0.85em;">Shift</kbd> og klikk på <code>style</code> nederst — da markeres alle tre samtidig. Klikk «Åpne».</p>
+          <p style="color:#6B7280;font-size:0.9rem;margin:0 0 0.5rem 0;">Vil du gjøre noe med bilder? Legg til <code>assets</code>-mappen også.</p>
+          <img src="images/google-ai-studio-velg-filer.png" alt="Velg app.js, index.html og style.css med Shift-klikk" style="width:100%;max-width:640px;border-radius:10px;border:1px solid #E4E4E7;margin:0.5rem 0 1rem;" />
+
+          <p style="color:#3F3F46;margin:0 0 0.5rem 0;"><strong>3.</strong> Filene lastes inn i Google AI Studio. Nå kan du skrive hva du vil endre — AI-en ser hele nettsiden og svarer med oppdatert kode.</p>
+          <img src="images/google-ai-studio-filer-lastet-opp.png" alt="app.js, index.html og style.css lastet opp i Google AI Studio" style="width:100%;max-width:640px;border-radius:10px;border:1px solid #E4E4E7;margin:0.5rem 0 1rem;" />
 
           <div style="background:white;border:1.5px solid #FDE68A;border-radius:12px;padding:1.25rem 1.5rem;margin:1rem 0;">
+            <p style="font-weight:600;margin:0 0 0.75rem 0;">Resten av flyten:</p>
             <ol style="padding-left:1.25rem;margin:0;">
-              <li style="font-size:1rem;line-height:1.65;color:#3F3F46;margin-bottom:0.5rem;"><strong>VS Code</strong> — åpne filen du vil endre, marker alt (<code>Ctrl+A</code>) og kopier (<code>Ctrl+C</code>)</li>
-              <li style="font-size:1rem;line-height:1.65;color:#3F3F46;margin-bottom:0.5rem;"><strong>Google AI Studio</strong> — ny prompt, lim inn koden og beskriv hva du vil endre</li>
-              <li style="font-size:1rem;line-height:1.65;color:#3F3F46;margin-bottom:0.5rem;"><strong>AI-en svarer</strong> med ny, komplett fil — kopier svaret</li>
-              <li style="font-size:1rem;line-height:1.65;color:#3F3F46;margin-bottom:0.5rem;"><strong>VS Code</strong> — marker alt, lim inn, trykk <code>Ctrl+S</code></li>
+              <li style="font-size:1rem;line-height:1.65;color:#3F3F46;margin-bottom:0.5rem;"><strong>AI-en svarer</strong> med oppdatert kode — kopier den aktuelle filen</li>
+              <li style="font-size:1rem;line-height:1.65;color:#3F3F46;margin-bottom:0.5rem;"><strong>VS Code</strong> — åpne filen, marker alt (<code>Ctrl+A</code>), lim inn (<code>Ctrl+V</code>), lagre (<code>Ctrl+S</code>)</li>
               <li style="font-size:1rem;line-height:1.65;color:#3F3F46;margin-bottom:0.5rem;"><strong>Nettleseren</strong> — trykk F5, sjekk at det ser riktig ut</li>
               <li style="font-size:1rem;line-height:1.65;color:#3F3F46;margin-bottom:0;"><strong>VS Code Source Control</strong> — commit + push, og endringen er live om 30–60 sek</li>
             </ol>
