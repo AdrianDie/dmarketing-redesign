@@ -6,6 +6,12 @@
       "runtimeExecutable": "python",
       "runtimeArgs": ["-m", "http.server", "5052", "--directory", "C:/Users/adria/Voltio-Plattform/portal"],
       "port": 5052
+    },
+    {
+      "name": "kurs",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "5053", "--directory", "C:/Users/adria/website-mirrors/dmarketing-redesign"],
+      "port": 5053
     }
   ]
 }
