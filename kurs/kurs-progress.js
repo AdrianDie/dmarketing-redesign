@@ -218,7 +218,7 @@
           'color:white;text-align:center;padding:20px 24px;';
         celebration.innerHTML =
           '<p style="font-family:Archivo,sans-serif;font-size:1.1rem;font-weight:800;margin:0 0 4px;">' +
-          '🎉 Gratulerer — du har fullført alle 13 moduler!</p>' +
+          '🎉 Gratulerer — du har fullført alle 14 moduler!</p>' +
           '<p style="font-size:13px;opacity:0.85;margin:0 0 12px;font-family:Inter,sans-serif;">' +
           'Du kan nå oppdatere, bygge og drifte nettsiden din helt på egenhånd.</p>' +
           '<a href="/kurs/sjekkliste" style="display:inline-flex;align-items:center;gap:6px;background:white;color:#15803D;' +
