@@ -12,6 +12,18 @@
       "runtimeExecutable": "python",
       "runtimeArgs": ["-m", "http.server", "5053", "--directory", "C:/Users/adria/website-mirrors/dmarketing-redesign"],
       "port": 5053
+    },
+    {
+      "name": "acom",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8090", "--directory", "C:/Users/adria/website-mirrors/acom-redesign"],
+      "port": 8090
+    },
+    {
+      "name": "aktivit",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8091", "--directory", "C:/Users/adria/website-mirrors/aktivit-redesign"],
+      "port": 8091
     }
   ]
 }
