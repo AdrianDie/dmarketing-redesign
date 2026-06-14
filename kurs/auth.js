@@ -16,7 +16,11 @@
   // Token valideres som 64-tegns hex — avhengig av passordet, ikke en hardkodet streng
   var validToken = session && typeof session.token === 'string' && /^[a-f0-9]{64}$/.test(session.token);
 
-  if (!validToken || !session.email) {
+  var SESSION_MS = 8 * 60 * 60 * 1000; // 8 timer
+  var expired = !session || !session.loginAt || (Date.now() - session.loginAt > SESSION_MS);
+
+  if (!validToken || !session.email || expired) {
+    localStorage.removeItem(TOKEN_KEY);
     window.location.replace('/kurs/login.html');
     return;
   }

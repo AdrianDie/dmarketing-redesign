@@ -128,7 +128,7 @@
         if (user) {
           // sessionToken er avledet separat — kjent bare av den som kan passordet
           var sessionToken = await pbkdf2Derive(pw + '\x00session', email.toLowerCase());
-          localStorage.setItem(TOKEN_KEY, JSON.stringify({ email: email, token: sessionToken }));
+          localStorage.setItem(TOKEN_KEY, JSON.stringify({ email: email, token: sessionToken, loginAt: Date.now() }));
           window.location.replace('/kurs/');
         } else {
           errMsg.style.display = 'block';
