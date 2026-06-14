@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>15: Voltio — AI-chatbot for nettsiden | Nettsidekurs</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { theme: { extend: { fontFamily: { display: ['Archivo', 'sans-serif'], body: ['Inter', 'sans-serif'] }, colors: { ink: '#09090B', brand: '#0339f8', navy: '#0B1F4A' } } } }</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="../images/favicon.png" rel="shortcut icon" type="image/x-icon" />
+  <script src="/kurs/auth.js"></script>
+  <script src="/kurs/kurs-progress.js" defer></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #FAFAFA; color: #09090B; }
+    .font-display { font-family: 'Archivo', sans-serif; }
+    .badge { font-family: 'JetBrains Mono', 'Courier New', monospace; }
+    .prose-custom h2 { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 1.875rem; line-height: 1.2; margin-top: 3.5rem; margin-bottom: 1.25rem; letter-spacing: -0.02em; }
+    .prose-custom h3 { font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 1.25rem; margin-top: 2.75rem; margin-bottom: 1rem; }
+    .prose-custom p { font-size: 1.0625rem; line-height: 1.7; color: #3F3F46; margin-bottom: 2.5rem; }
+    .prose-custom ul, .prose-custom ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+    .prose-custom li { font-size: 1.0625rem; line-height: 1.7; color: #3F3F46; margin-bottom: 0.5rem; }
+    .prose-custom ul li { list-style-type: disc; }
+    .prose-custom ol li { list-style-type: decimal; }
+    .prose-custom strong { color: #09090B; }
+    .prose-custom code { background: #F4F4F5; padding: 0.15rem 0.4rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
+    .callout { background: #EFF6FF; border-left: 3px solid #0339f8; padding: 1.25rem 1.5rem; border-radius: 0.5rem; margin: 1.5rem 0; }
+    .callout p { margin-bottom: 0; color: #1E3A8A; }
+    .feature-card { background: white; border: 1px solid #E4E4E7; border-radius: 1rem; padding: 1.5rem; margin: 1.25rem 0; }
+    .feature-card h3 { margin-top: 0 !important; }
+    .feature-card .meta { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
+    .pill { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.25rem 0.625rem; border-radius: 1rem; font-weight: 600; }
+    .pill-blue { background: #DBEAFE; color: #0228c0; }
+    .pill-green { background: #ECFDF5; color: #065F46; }
+    .pill-orange { background: #FEF3C7; color: #78350F; }
+    .pill-red { background: #FEE2E2; color: #991B1B; }
+  </style>
+</head>
+<body>
+  <script>window.DIETRICHS_MENU_CONFIG = { basePath: '../' };</script>
+  <script src="../components/dietrichs-menu.js" defer></script>
+
+  <header class="py-14 md:py-20 px-6 border-b border-zinc-100">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex items-center gap-3 mb-5">
+        <a href="./" class="text-xs font-semibold uppercase tracking-widest text-zinc-500 hover:text-blue-600">← Alle moduler</a>
+        <span class="text-zinc-300">/</span>
+        <span class="badge text-xs text-zinc-400">MODUL 15</span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-blue-600">Tillegg · 1 uke gratis</span>
+      </div>
+      <h1 class="font-display font-extrabold text-4xl md:text-6xl tracking-[-0.03em] text-ink leading-[1.05] mb-5">
+        Voltio — AI-chatbot for nettsiden din
+      </h1>
+      <p class="text-lg md:text-xl text-zinc-600 leading-relaxed">
+        Nettsiden din er oppe. Men hva skjer med kundene som tar kontakt klokken 22:00?
+      </p>
+    </div>
+  </header>
+
+  <article class="px-6 py-12 md:py-16">
+    <div class="max-w-4xl mx-auto prose-custom">
+
+      <div class="callout">
+        <p><strong>Dette er ikke en modul du MÅ lese.</strong> Det er en valgfri tilleggstjeneste fra Dietrichs Marketing — for deg som vil at nettsiden skal jobbe aktivt med å hente inn kunder, ikke bare «være der». Møter du et ukjent ord underveis, kan du slå det opp i <a href="ordliste" class="text-blue-600 underline">ordlisten</a>.</p>
+      </div>
+
+      <h2>En hverdag de fleste kjenner seg igjen i</h2>
+      <p>
+        Du er elektriker og er på veien hjem fra en lang dag. Klokken er 22:15. Mens du jobbet var en potensiell kunde innom nettsiden din. De stilte et spørsmål om prisen på å bytte sikringsskap — og ventet. Ingen svar. Så gikk de videre og fant en annen elektriker.
+      </p>
+      <p>
+        Du mistet ikke jobben fordi nettsiden din var dårlig. Du mistet den fordi <strong>ingen var der til å svare</strong>.
+      </p>
+      <p>
+        Voltio er en liten AI-chatbot som sitter på nettsiden din og svarer kunder umiddelbart — selv midt på natten, selv mens du er på jobb.
+      </p>
+
+      <figure class="not-prose my-8 rounded-2xl border border-zinc-200 bg-white p-5 md:p-7">
+        <p class="text-center text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-5">Uten chatbot vs med Voltio</p>
+        <svg viewBox="0 0 570 200" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Sammenligning: uten chatbot mister du kunden, med Voltio svarer siden automatisk">
+
+          <!-- LEFT: Uten chatbot -->
+          <rect x="10" y="10" width="248" height="178" rx="10" fill="#FEF2F2" stroke="#FECACA" stroke-width="1.5"/>
+          <rect x="10" y="10" width="248" height="44" rx="10" fill="#DC2626"/>
+          <rect x="10" y="42" width="248" height="12" fill="#DC2626"/>
+          <text x="134" y="36" text-anchor="middle" font-size="14" font-weight="800" fill="white">Uten chatbot</text>
+
+          <text x="28" y="74" font-size="14" fill="#DC2626">✗</text>
+          <text x="46" y="74" font-size="11" fill="#7F1D1D">Kunde skriver kl 22 — ingen svar</text>
+
+          <text x="28" y="100" font-size="14" fill="#DC2626">✗</text>
+          <text x="46" y="100" font-size="11" fill="#7F1D1D">Kunden finner en annen leverandør</text>
+
+          <text x="28" y="126" font-size="14" fill="#DC2626">✗</text>
+          <text x="46" y="126" font-size="11" fill="#7F1D1D">Du ser meldingen neste morgen</text>
+
+          <text x="28" y="152" font-size="14" fill="#DC2626">✗</text>
+          <text x="46" y="152" font-size="11" fill="#7F1D1D">Jobben er allerede tapt</text>
+
+          <text x="28" y="181" font-size="11" fill="#991B1B" font-style="italic">Nettsiden er passiv</text>
+
+          <!-- vs -->
+          <text x="285" y="105" text-anchor="middle" font-size="17" font-weight="800" fill="#CBD5E1">vs</text>
+
+          <!-- RIGHT: Med Voltio -->
+          <rect x="312" y="10" width="248" height="178" rx="10" fill="#F0FDF4" stroke="#86EFAC" stroke-width="2"/>
+          <rect x="312" y="10" width="248" height="44" rx="10" fill="#16A34A"/>
+          <rect x="312" y="42" width="248" height="12" fill="#16A34A"/>
+          <text x="436" y="36" text-anchor="middle" font-size="14" font-weight="800" fill="white">Med Voltio</text>
+
+          <text x="330" y="74" font-size="14" fill="#16A34A">✓</text>
+          <text x="348" y="74" font-size="11" fill="#14532D">Voltio svarer kunden umiddelbart</text>
+
+          <text x="330" y="100" font-size="14" fill="#16A34A">✓</text>
+          <text x="348" y="100" font-size="11" fill="#14532D">Kunden sender inn forespørsel</text>
+
+          <text x="330" y="126" font-size="14" fill="#16A34A">✓</text>
+          <text x="348" y="126" font-size="11" fill="#14532D">Du får arbeidsordre på e-post</text>
+
+          <text x="330" y="152" font-size="14" fill="#16A34A">✓</text>
+          <text x="348" y="152" font-size="11" fill="#14532D">Akutte saker: varsel til deg nå</text>
+
+          <text x="330" y="181" font-size="11" fill="#15803D" font-style="italic">Nettsiden jobber for deg 24/7</text>
+
+        </svg>
+      </figure>
+
+      <h2>Hva Voltio er — uten teknisk sjargong</h2>
+      <p>
+        Voltio er en liten chat-boks — du kjenner igjen typen fra nettbanken eller nettbutikker — som Dietrichs Marketing setter opp på nettsiden din. Den er lært opp på informasjon om bedriften din: hva du tilbyr, hva du koster omtrent, og hva slags jobber du tar.
+      </p>
+      <p>
+        Når en kunde skriver noe, svarer chatboten på norsk. Den samler inn det du trenger (navn, telefon, hva jobben gjelder), og sender deg en ryddig e-post — ferdig til å ringe tilbake.
+      </p>
+
+      <figure class="not-prose my-8 rounded-2xl border border-zinc-200 bg-white p-5 md:p-7">
+        <p class="text-center text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-5">Slik fungerer Voltio — tre utfall</p>
+        <svg viewBox="0 0 520 270" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Flytdiagram: kunde skriver på nettsiden, Voltio behandler henvendelsen, tre mulige utfall: svar til kunden, arbeidsordre på e-post, akutt-varsel">
+
+          <!-- Customer box -->
+          <rect x="160" y="10" width="200" height="52" rx="10" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1.5"/>
+          <text x="260" y="32" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0228c0">Kunde skriver på nettsiden</text>
+          <text x="260" y="50" text-anchor="middle" font-size="10" fill="#3B82F6">«Hva koster nytt sikringsskap?»</text>
+
+          <!-- Arrow down to Voltio -->
+          <line x1="260" y1="62" x2="260" y2="86" stroke="#CBD5E1" stroke-width="2"/>
+          <polygon points="255,82 265,82 260,90" fill="#CBD5E1"/>
+
+          <!-- Voltio center box -->
+          <rect x="140" y="90" width="240" height="58" rx="10" fill="#0B1F4A"/>
+          <text x="260" y="114" text-anchor="middle" font-size="12" font-weight="800" fill="white">Voltio (AI-chatbot)</text>
+          <text x="260" y="132" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.65)">Kjenner bedriften din · Svarer på norsk</text>
+
+          <!-- Branch connector: stem, bar, three drops -->
+          <line x1="260" y1="148" x2="260" y2="164" stroke="#CBD5E1" stroke-width="1.5"/>
+          <line x1="87" y1="164" x2="433" y2="164" stroke="#CBD5E1" stroke-width="1.5"/>
+          <line x1="87" y1="164" x2="87" y2="180" stroke="#CBD5E1" stroke-width="1.5"/>
+          <polygon points="82,176 92,176 87,184" fill="#CBD5E1"/>
+          <line x1="260" y1="164" x2="260" y2="180" stroke="#CBD5E1" stroke-width="1.5"/>
+          <polygon points="255,176 265,176 260,184" fill="#CBD5E1"/>
+          <line x1="433" y1="164" x2="433" y2="180" stroke="#CBD5E1" stroke-width="1.5"/>
+          <polygon points="428,176 438,176 433,184" fill="#CBD5E1"/>
+
+          <!-- Left: Svar til kunden -->
+          <rect x="10" y="184" width="154" height="76" rx="10" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.5"/>
+          <text x="87" y="207" text-anchor="middle" font-size="11" font-weight="700" fill="#14532D">Svarer kunden</text>
+          <text x="87" y="222" text-anchor="middle" font-size="9.5" fill="#15803D">Gir informasjon om</text>
+          <text x="87" y="235" text-anchor="middle" font-size="9.5" fill="#15803D">priser og tjenester</text>
+          <text x="87" y="252" text-anchor="middle" font-size="9" fill="#16A34A" font-weight="700">Umiddelbart · 24/7</text>
+
+          <!-- Center: Arbeidsordre -->
+          <rect x="183" y="184" width="154" height="76" rx="10" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1.5"/>
+          <text x="260" y="207" text-anchor="middle" font-size="11" font-weight="700" fill="#0228c0">E-post til deg</text>
+          <text x="260" y="222" text-anchor="middle" font-size="9.5" fill="#3B82F6">Navn, telefon, adresse</text>
+          <text x="260" y="235" text-anchor="middle" font-size="9.5" fill="#3B82F6">og hva det gjelder</text>
+          <text x="260" y="252" text-anchor="middle" font-size="9" fill="#0228c0" font-weight="700">Ryddig arbeidsordre</text>
+
+          <!-- Right: Akutt -->
+          <rect x="356" y="184" width="154" height="76" rx="10" fill="#FFF7ED" stroke="#FED7AA" stroke-width="1.5"/>
+          <text x="433" y="207" text-anchor="middle" font-size="11" font-weight="700" fill="#C2410C">Akutt-varsel</text>
+          <text x="433" y="222" text-anchor="middle" font-size="9.5" fill="#EA580C">«Lekkasje» / «strøm borte»</text>
+          <text x="433" y="235" text-anchor="middle" font-size="9.5" fill="#EA580C">→ varsel til deg nå</text>
+          <text x="433" y="252" text-anchor="middle" font-size="9" fill="#C2410C" font-weight="700">Du bestemmer neste steg</text>
+
+        </svg>
+        <p class="text-center text-xs text-zinc-400 mt-3">Voltio håndterer de fleste henvendelser automatisk. Du ser alt i innboksen og ringer tilbake når det passer.</p>
+      </figure>
+
+      <h2>Betaler det seg?</h2>
+      <p>
+        Regnestykket er enkelt: Voltio koster 599 kr i måneden. For at det skal lønne seg, holder det at chatboten fanger inn <strong>én jobb per måned</strong> du ellers ville mistet. Her er hva det ser ut som i praksis:
+      </p>
+
+      <div class="not-prose my-6 rounded-2xl overflow-hidden border border-zinc-200">
+        <div style="background:#09090B;padding:12px 24px;">
+          <p style="font-family:'Archivo',sans-serif;font-weight:800;font-size:0.875rem;color:white;margin:0;">En forespørsel kl. 21:00 — hva skjer?</p>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;">
+          <div style="background:#FEF2F2;padding:20px 24px;border-right:1px solid #FECACA;">
+            <p style="font-size:0.7rem;font-weight:700;color:#DC2626;text-transform:uppercase;letter-spacing:0.07em;margin:0 0 10px;">Uten chatbot</p>
+            <p style="font-family:'Archivo',sans-serif;font-size:1.6rem;font-weight:900;color:#991B1B;margin:0 0 8px;">0 kr</p>
+            <p style="font-size:0.875rem;color:#7F1D1D;margin:0;line-height:1.55;">Ingen svar. Kunden finner en annen. Jobben er borte.</p>
+          </div>
+          <div style="background:#F0FDF4;padding:20px 24px;">
+            <p style="font-size:0.7rem;font-weight:700;color:#16A34A;text-transform:uppercase;letter-spacing:0.07em;margin:0 0 10px;">Med Voltio</p>
+            <p style="font-family:'Archivo',sans-serif;font-size:1.6rem;font-weight:900;color:#15803D;margin:0 0 8px;">4 000 kr</p>
+            <p style="font-size:0.875rem;color:#14532D;margin:0;line-height:1.55;">Voltio svarer, samler inn opplysningene. Du ringer tilbake neste morgen. Jobben er din.</p>
+          </div>
+        </div>
+        <div style="background:#FAFAFA;padding:12px 24px;border-top:1px solid #E4E4E7;">
+          <p style="font-size:0.8rem;color:#71717A;margin:0;line-height:1.5;">Voltio: 599 kr/mnd. Netto gevinst for én fanget jobb: <strong style="color:#09090B;">ca. 3 400 kr</strong>. Eksempelet bruker 4 000 kr — et konservativt estimat. En typisk elektriker- eller rørleggerjobb i Norge er 3 000–8 000 kr.</p>
+        </div>
+      </div>
+
+      <p>
+        De fleste som prøver Voltio oppdager at de fikk to–tre forespørsler i løpet av prøveuken som de ellers ikke visste om. Det er den beste testen: se hva chatboten faktisk fanger inn.
+      </p>
+
+      <h2>Hvem passer Voltio for?</h2>
+      <p>
+        Voltio passer best for deg som jobber ute hos kunder og ikke kan sitte klar ved telefonen hele dagen. Her er tre eksempler fra yrker vi kjenner godt:
+      </p>
+
+      <div class="feature-card not-prose">
+        <div class="meta">
+          <span class="pill pill-blue">Elektriker</span>
+          <span class="pill pill-orange">På jobb · Kan ikke svare</span>
+        </div>
+        <h3 class="font-display font-bold text-xl">Du er på et bygg — kunden venter ikke</h3>
+        <p class="text-zinc-600 mt-2">Du jobber fra 7 til 16. Telefonen er på stillemodus. Mens du jobbet tok to kunder kontakt via nettsiden. Voltio svarte dem begge, samlet inn opplysningene, og sendte deg to ryddige e-poster. Du ringer tilbake etter jobb — og den ene er en storjobb du ellers ville mistet.</p>
+      </div>
+
+      <div class="feature-card not-prose">
+        <div class="meta">
+          <span class="pill pill-blue">Rørlegger</span>
+          <span class="pill pill-red">Akutte saker</span>
+        </div>
+        <h3 class="font-display font-bold text-xl">Klokken 22:30. Vannlekkasje.</h3>
+        <p class="text-zinc-600 mt-2">En kunde skriver «det er vannlekkasje i kjelleren» på nettsiden din. Voltio registrerer «lekkasje» som en akutt sak og sender deg et varsel med en gang. Du bestemmer om du ringer kunden nå eller ber dem ringe nødnummeret. Du er informert og i kontroll — ikke overrasket neste morgen.</p>
+      </div>
+
+      <div class="feature-card not-prose">
+        <div class="meta">
+          <span class="pill pill-green">Frisør / skjønnhetssalong</span>
+          <span class="pill pill-orange">I stolen med klienten</span>
+        </div>
+        <h3 class="font-display font-bold text-xl">Du er midt i en farge. Telefonen ringer.</h3>
+        <p class="text-zinc-600 mt-2">Du kan ikke ta telefonen. Kunden som vil booke klippetime finner chatboten på nettsiden, spør om priser og tilgjengelighet — og sender inn en bestilling. Du ser forespørselen mellom klienter og bekrefter. Ingen tapt booking. Ingen avbrutt farge.</p>
+      </div>
+
+      <h2>Hva er inkludert?</h2>
+      <p>Alt i Voltio settes opp av Dietrichs Marketing. Du trenger ikke gjøre noe teknisk selv.</p>
+
+      <div class="feature-card not-prose">
+        <div class="meta">
+          <span class="pill pill-blue">Inkludert</span>
+        </div>
+        <h3 class="font-display font-bold text-xl">AI-chatbot på nettsiden</h3>
+        <p class="text-zinc-600 mt-2">En liten chat-boks som vises på siden din. Den er lært opp på informasjon om din bedrift: tjenester, omtrentlige priser, område og åpningstider. Svarer på norsk, folkelig og naturlig — ikke som en robot.</p>
+      </div>
+
+      <div class="feature-card not-prose">
+        <div class="meta">
+          <span class="pill pill-blue">Inkludert</span>
+        </div>
+        <h3 class="font-display font-bold text-xl">Kundeskjema / portal</h3>
+        <p class="text-zinc-600 mt-2">Etter at chatboten har hjulpet kunden, ber den om navn, telefonnummer og hva jobben gjelder. Smidig og enkelt for kunden — som å fylle ut et bestillingsskjema på nett. Ingen kunde trenger å laste ned noe eller opprette en konto.</p>
+      </div>
+
+      <div class="feature-card not-prose">
+        <div class="meta">
+          <span class="pill pill-blue">Inkludert</span>
+        </div>
+        <h3 class="font-display font-bold text-xl">Arbeidsordre på e-post</h3>
+        <p class="text-zinc-600 mt-2">Hver gang en kunde sender inn en forespørsel, får du en ryddig e-post: hvem det er, hva jobben gjelder, adresse og kontaktinfo. Ferdig til å ringe tilbake. Du trenger ikke lete i chatlogger eller skrive ned noe fra telefonen.</p>
+      </div>
+
+      <div class="feature-card not-prose">
+        <div class="meta">
+          <span class="pill pill-orange">Valgfritt · Du velger nøkkelord</span>
+        </div>
+        <h3 class="font-display font-bold text-xl">Akutt-eskalering til telefon</h3>
+        <p class="text-zinc-600 mt-2">Skriver kunden ord som «lekkasje», «strøm borte», «brann» eller andre nøkkelord du velger, sender Voltio et eget varsel rett til deg — slik at du kan avgjøre om dette krever umiddelbar respons. Du definerer hva som er «akutt» for din bransje.</p>
+      </div>
+
+      <h2>Pris og prøvetid</h2>
+
+      <!-- First-10 callout -->
+      <div class="not-prose my-4 rounded-xl border border-amber-300 bg-amber-50 px-5 py-4 flex items-start gap-3">
+        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#D97706" stroke-width="2.5" class="flex-shrink-0 mt-0.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        <div>
+          <p style="font-family:'Archivo',sans-serif;font-weight:800;font-size:0.95rem;color:#92400E;margin:0 0 4px;">Er du blant de 10 første kursdeltakerne?</p>
+          <p style="font-size:0.875rem;color:#B45309;margin:0;line-height:1.55;">Du får <strong style="color:#92400E;">3 uker gratis</strong> i stedet for 1 — nevn det i e-posten til Adrian, så ordner vi det.</p>
+        </div>
+      </div>
+
+      <div class="not-prose my-6 rounded-2xl border-2 border-blue-200 bg-blue-50 overflow-hidden">
+        <div style="background:#0339f8;padding:14px 24px;">
+          <p style="font-family:'Archivo',sans-serif;font-weight:800;font-size:1.1rem;color:white;margin:0;">1 uke gratis — ingen kredittkort, ingen binding</p>
+        </div>
+        <div style="padding:24px;">
+          <div style="display:flex;flex-wrap:wrap;gap:24px;margin-bottom:16px;">
+            <div style="flex:1;min-width:180px;">
+              <p style="font-size:0.75rem;font-weight:700;color:#1E3A8A;text-transform:uppercase;letter-spacing:0.06em;margin:0 0 6px;">Den første uken</p>
+              <p style="font-family:'Archivo',sans-serif;font-size:2rem;font-weight:900;color:#09090B;margin:0 0 6px;">0 kr</p>
+              <p style="font-size:0.9rem;color:#3F3F46;margin:0;line-height:1.55;">Prøv Voltio i én uke. Ingen kredittkort. Bestem deg etterpå.</p>
+            </div>
+            <div style="flex:1;min-width:180px;">
+              <p style="font-size:0.75rem;font-weight:700;color:#1E3A8A;text-transform:uppercase;letter-spacing:0.06em;margin:0 0 6px;">Etter prøvetiden</p>
+              <p style="font-family:'Archivo',sans-serif;font-size:2rem;font-weight:900;color:#09090B;margin:0 0 6px;">599 kr<span style="font-size:1rem;font-weight:400;color:#71717A;">/mnd</span></p>
+              <p style="font-size:0.9rem;color:#3F3F46;margin:0;line-height:1.55;">Si opp når du vil — ingen oppsigelsestid. Én jobb du ellers ville mistet dekker mange måneder.</p>
+            </div>
+          </div>
+          <div style="padding-top:14px;border-top:1.5px solid #BFDBFE;">
+            <p style="font-size:0.8rem;color:#1E3A8A;margin:0;">Inkludert: chatbot på nettsiden + kundeskjema + arbeidsordre på e-post + akutt-eskalering + oppsett av Dietrichs Marketing innen én arbeidsdag.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>Slik kommer du i gang</h2>
+      <ol>
+        <li><strong>Send en e-post til <a href="mailto:adrian@dietrichs.no" class="text-blue-600 underline">adrian@dietrichs.no</a></strong> med emnefeltet «Voltio». Fortell kort hva slags bedrift du har og hva du tilbyr.</li>
+        <li><strong>Vi setter det opp innen én arbeidsdag.</strong> Vi lærer opp chatboten på informasjon om bedriften din og legger den inn på nettsiden — du trenger ikke gjøre noe.</li>
+        <li><strong>Du prøver i 1 uke.</strong> Ingen kredittkort, ingen binding. Etter en uke bestemmer du om du vil fortsette. Er du blant de 10 første? Nevn det — da får du 3 uker gratis.</li>
+      </ol>
+
+      <!-- CTA box -->
+      <div style="margin-top:2.5rem;background:linear-gradient(135deg,#EFF6FF,#DBEAFE);border:2px solid #93C5FD;border-radius:18px;overflow:hidden;">
+        <div style="background:#0339f8;padding:14px 24px;display:flex;align-items:center;gap:10px;">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:1rem;color:white;">Prøv Voltio gratis — 1 uke (de 10 første: 3 uker)</span>
+        </div>
+        <div style="padding:20px 24px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:0;">
+            <p style="font-size:15px;color:#1E3A8A;line-height:1.6;margin:0;">Send en e-post til <strong>adrian@dietrichs.no</strong> — så setter vi det opp innen én arbeidsdag. Ingen kredittkort, ingen binding.</p>
+          </div>
+          <a href="mailto:adrian@dietrichs.no?subject=Voltio" style="flex-shrink:0;display:inline-flex;align-items:center;gap:8px;background:#0339f8;color:white;font-family:'Archivo',sans-serif;font-weight:800;font-size:0.95rem;padding:12px 22px;border-radius:12px;text-decoration:none;white-space:nowrap;transition:background 0.15s;" onmouseover="this.style.background='#0228c0'" onmouseout="this.style.background='#0339f8'">
+            Send e-post til Adrian
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Summary box -->
+      <div style="background:#F0FDF4;border:1.5px solid #86EFAC;border-radius:14px;padding:20px 24px;margin:2rem 0 0;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#16A34A" stroke-width="2.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:1rem;color:#14532D;letter-spacing:-0.01em;">Voltio — kort oppsummert</span>
+        </div>
+        <ul style="margin:0;padding-left:20px;">
+          <li style="font-size:0.95rem;line-height:1.55;color:#15803D;margin-bottom:6px;list-style:disc;">Voltio er en AI-chatbot fra Dietrichs Marketing som svarer kundehenvendelser 24/7 — slik at du aldri mister en jobb utenfor arbeidstid</li>
+          <li style="font-size:0.95rem;line-height:1.55;color:#15803D;margin-bottom:6px;list-style:disc;">Inkludert: chatbot, kundeskjema, arbeidsordre på e-post og akutt-eskalering — satt opp av oss innen én arbeidsdag</li>
+          <li style="font-size:0.95rem;line-height:1.55;color:#15803D;margin-bottom:0;list-style:disc;">1 uke gratis, ingen binding — deretter 599 kr/mnd. De 10 første kursdeltakerne får 3 uker gratis. Kom i gang: <strong>adrian@dietrichs.no</strong></li>
+        </ul>
+      </div>
+
+    </div>
+  </article>
+
+  <nav class="border-t border-zinc-200 bg-white py-8 px-6">
+    <div class="max-w-4xl mx-auto flex justify-between items-center">
+      <a href="14-eierskap" class="text-sm text-zinc-500 hover:text-blue-600 flex items-center gap-2"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>14: Eierskap</a>
+      <a href="./" class="inline-flex items-center gap-2 bg-blue-600 text-white font-semibold px-5 py-3 rounded-lg hover:bg-blue-500 transition-colors text-sm">Tilbake til kurs-oversikt<svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+    </div>
+  </nav>
+  <footer class="bg-[#0F172A] text-white py-6 px-6"><div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-sm text-white/40"><div>© 2026 Dietrichs Marketing</div><div>Org.nr 932 612 583</div><div id="kurs-user-info"></div></div></footer>
+</body>
+</html>

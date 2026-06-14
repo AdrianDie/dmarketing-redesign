@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "portal",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "5052", "--directory", "C:/Users/adria/Voltio-Plattform/portal"],
+      "port": 5052
+    }
+  ]
+}
