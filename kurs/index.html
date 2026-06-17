@@ -65,7 +65,7 @@
       <div class="max-w-4xl mx-auto px-6 pt-20 pb-20 md:pt-28 md:pb-28 text-center">
         <div class="inline-flex items-center gap-2 bg-white border border-zinc-200 text-xs font-medium text-zinc-600 px-3 py-1.5 rounded-full mb-7 shadow-sm">
           <span class="w-1.5 h-1.5 rounded-full bg-blue-600 inline-block"></span>
-          Nettsidekurs · 14 moduler
+          Nettsidekurs · 15 moduler
         </div>
         <h1 class="font-display font-extrabold text-[2.25rem] sm:text-[3rem] md:text-[4rem] leading-[1.03] tracking-[-0.035em] text-ink mb-6">
           Velkommen!<br>
@@ -74,7 +74,7 @@
           Du har tatt et smart valg. AI endrer måten små bedrifter jobber på — og de fleste har ikke oppdaget det ennå.
         </p>
         <p class="text-base md:text-lg text-zinc-500 leading-relaxed mb-8 max-w-2xl mx-auto">
-          14 moduler · 4–15 min hver
+          15 moduler · 4–15 min hver
         </p>
       </div>
     </div>
@@ -84,7 +84,7 @@
   <section class="py-16 md:py-24 px-6 bg-white border-t border-zinc-100">
     <div class="max-w-5xl mx-auto">
       <!-- KURSINTRO — hva du lærer -->
-      <div class="mb-14 md:mb-18 max-w-3xl">
+      <div class="mb-14 md:mb-18">
         <p class="text-xs font-semibold tracking-widest uppercase text-blue-600 mb-4">Hva du lærer</p>
         <h2 class="font-display font-extrabold text-3xl md:text-[2.5rem] tracking-[-0.03em] text-ink leading-[1.1] mb-5">
           Full kontroll over nettsiden — og grunnlaget for mye mer.
@@ -133,7 +133,7 @@
             <button onclick="meldInteresse()" id="voltio-interesse-btn" class="inline-flex items-center gap-2 bg-white text-[#0B1F4A] font-semibold px-5 py-2.5 rounded-xl text-sm hover:bg-blue-50 active:bg-blue-100 transition-colors">
               Meld interesse — vi tar kontakt
             </button>
-            <a href="15-voltio-chatbot" class="inline-flex items-center gap-2 text-sm text-white/50 hover:text-white/80 transition-colors">
+            <a href="16-voltio-chatbot" class="inline-flex items-center gap-2 text-sm text-white/50 hover:text-white/80 transition-colors">
               Les mer
               <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
             </a>
@@ -152,7 +152,7 @@
         try { session = JSON.parse(localStorage.getItem('kurs_auth_v3') || 'null'); } catch(e) {}
         var email = (session && session.email) ? session.email : 'ukjent';
 
-        fetch('https://formsubmit.co/ajax/adrian@dietrichs.no', {
+        fetch('https://formsubmit.co/ajax/adrian@dmarketing.no', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify({
@@ -178,7 +178,7 @@
       <div class="text-center mb-12 md:mb-16">
         <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-3">Pensum</p>
         <h2 class="font-display font-extrabold text-3xl md:text-5xl tracking-[-0.03em] text-ink leading-[1.1]">
-          14 moduler — 3 deler
+          15 moduler — 3 deler
         </h2>
         <p class="text-zinc-600 mt-4 max-w-2xl mx-auto">
           Del 1: grunnleggende (1–5). Del 2: daglig drift (6–11). Del 3: avansert (12–14).
@@ -232,7 +232,7 @@
           <p style="font-size:0.875rem;color:#3B82F6;margin:0;">Passer deg som vil jobbe uten å tenke på kvoter.</p>
         </div>
       </div>
-      <p class="text-sm text-zinc-500 text-center mb-10 -mt-6">Velg spor i modul 05 — du kan bytte når som helst. Alle moduler støtter begge spor.</p>
+      <p class="text-sm text-zinc-500 text-center mb-10 -mt-6">Velg spor i modul 06 — du kan bytte når som helst. Alle moduler støtter begge spor.</p>
 
       <!-- DEL 1 -->
       <div class="mb-14">
@@ -274,9 +274,18 @@
             <h3 class="font-display font-bold text-xl text-ink mb-2">Komme i gang første gang</h3>
             <p class="text-sm text-zinc-600">Opprett GitHub-konto og installer VS Code — verktøyene du trenger for å redigere nettsiden.</p>
           </a>
-          <a href="05-klon-og-sett-opp" class="module-card block bg-white border border-zinc-200 rounded-2xl p-6">
+          <a href="05-koble-domenet" class="module-card block bg-white border border-zinc-200 rounded-2xl p-6">
             <div class="flex items-center gap-3 mb-3">
               <span class="badge text-xs text-zinc-400">05</span>
+              <span class="text-xs font-semibold uppercase tracking-wider text-blue-600">Oppsett</span>
+              <span class="ml-auto text-xs text-zinc-400 flex items-center gap-1"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>10 min</span>
+            </div>
+            <h3 class="font-display font-bold text-xl text-ink mb-2">Koble domenet til nettsiden</h3>
+            <p class="text-sm text-zinc-600">Pek domenet ditt til GitHub Pages med DNS-innstillinger — slik at besøkende kommer til riktig sted.</p>
+          </a>
+          <a href="06-klon-og-sett-opp" class="module-card block bg-white border border-zinc-200 rounded-2xl p-6">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="badge text-xs text-zinc-400">06</span>
               <span class="text-xs font-semibold uppercase tracking-wider text-blue-600">Oppsett</span>
               <span class="ml-auto text-xs text-zinc-400 flex items-center gap-1"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>10 min</span>
             </div>
@@ -290,54 +299,54 @@
       <div class="mb-14">
         <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-5">Del 2 · Daglig drift</p>
         <div class="grid md:grid-cols-2 gap-5">
-          <a href="06-oppdatere-innhold" class="module-card block bg-white border border-zinc-200 rounded-2xl p-6">
+          <a href="07-oppdatere-innhold" class="module-card block bg-white border border-zinc-200 rounded-2xl p-6">
             <div class="flex items-center gap-3 mb-3">
-              <span class="badge text-xs text-zinc-400">06</span>
+              <span class="badge text-xs text-zinc-400">07</span>
               <span class="text-xs font-semibold uppercase tracking-wider text-blue-600">Daglig bruk</span>
               <span class="ml-auto text-xs text-zinc-400 flex items-center gap-1"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>6 min</span>
             </div>
             <h3 class="font-display font-bold text-xl text-ink mb-2">Oppdatere tekst og innhold</h3>
             <p class="text-sm text-zinc-600">Endre overskrifter, brødtekst, åpningstider, telefonnumre.</p>
           </a>
-          <a href="07-bytte-bilder" class="module-card block bg-white border border-zinc-200 rounded-2xl p-6">
+          <a href="08-bytte-bilder" class="module-card block bg-white border border-zinc-200 rounded-2xl p-6">
             <div class="flex items-center gap-3 mb-3">
-              <span class="badge text-xs text-zinc-400">07</span>
+              <span class="badge text-xs text-zinc-400">08</span>
               <span class="text-xs font-semibold uppercase tracking-wider text-blue-600">Daglig bruk</span>
               <span class="ml-auto text-xs text-zinc-400 flex items-center gap-1"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>7 min</span>
             </div>
             <h3 class="font-display font-bold text-xl text-ink mb-2">Bytte bilder</h3>
             <p class="text-sm text-zinc-600">Hvilke formater å bruke, hvordan beskjære, og hvordan be Claude bytte bildet uten at siden blir treg.</p>
           </a>
-          <a href="08-ny-side" class="module-card block bg-white border border-zinc-200 rounded-2xl p-6">
+          <a href="09-ny-side" class="module-card block bg-white border border-zinc-200 rounded-2xl p-6">
             <div class="flex items-center gap-3 mb-3">
-              <span class="badge text-xs text-zinc-400">08</span>
+              <span class="badge text-xs text-zinc-400">09</span>
               <span class="text-xs font-semibold uppercase tracking-wider text-blue-600">Drift</span>
               <span class="ml-auto text-xs text-zinc-400 flex items-center gap-1"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>8 min</span>
             </div>
             <h3 class="font-display font-bold text-xl text-ink mb-2">Lage en ny side</h3>
             <p class="text-sm text-zinc-600">Tjeneste-sider, kampanje-sider, blogg-innlegg — be Claude bygge.</p>
           </a>
-          <a href="09-seo" class="module-card block bg-white border border-zinc-200 rounded-2xl p-6">
+          <a href="10-seo" class="module-card block bg-white border border-zinc-200 rounded-2xl p-6">
             <div class="flex items-center gap-3 mb-3">
-              <span class="badge text-xs text-zinc-400">09</span>
+              <span class="badge text-xs text-zinc-400">10</span>
               <span class="text-xs font-semibold uppercase tracking-wider text-blue-600">Drift</span>
               <span class="ml-auto text-xs text-zinc-400 flex items-center gap-1"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>7 min</span>
             </div>
             <h3 class="font-display font-bold text-xl text-ink mb-2">SEO-grunnleggende</h3>
             <p class="text-sm text-zinc-600">Title, meta-description, overskrifter, sitemap. Hva er nok?</p>
           </a>
-          <a href="10-prompts" class="module-card block bg-white border border-zinc-200 rounded-2xl p-6">
+          <a href="11-prompts" class="module-card block bg-white border border-zinc-200 rounded-2xl p-6">
             <div class="flex items-center gap-3 mb-3">
-              <span class="badge text-xs text-zinc-400">10</span>
+              <span class="badge text-xs text-zinc-400">11</span>
               <span class="text-xs font-semibold uppercase tracking-wider text-blue-600">Drift</span>
               <span class="ml-auto text-xs text-zinc-400 flex items-center gap-1"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>6 min</span>
             </div>
             <h3 class="font-display font-bold text-xl text-ink mb-2">Effektive AI-prompts</h3>
             <p class="text-sm text-zinc-600">Slik snakker du med Claude så du får det du faktisk vil.</p>
           </a>
-          <a href="11-publisere" class="module-card block bg-white border border-zinc-200 rounded-2xl p-6">
+          <a href="12-publisere" class="module-card block bg-white border border-zinc-200 rounded-2xl p-6">
             <div class="flex items-center gap-3 mb-3">
-              <span class="badge text-xs text-zinc-400">11</span>
+              <span class="badge text-xs text-zinc-400">12</span>
               <span class="text-xs font-semibold uppercase tracking-wider text-blue-600">Drift</span>
               <span class="ml-auto text-xs text-zinc-400 flex items-center gap-1"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>5 min</span>
             </div>
@@ -348,7 +357,7 @@
       </div>
 
       <!-- VOLTIO — stor mørk boks, mellom daglig drift og avansert -->
-      <a href="15-voltio-chatbot" class="block mt-14 mb-14 rounded-2xl overflow-hidden no-underline" style="background:#0B1F4A;text-decoration:none;">
+      <a href="16-voltio-chatbot" class="block mt-14 mb-14 rounded-2xl overflow-hidden no-underline" style="background:#0B1F4A;text-decoration:none;">
         <div class="px-6 md:px-10 py-8 md:py-10">
           <div class="flex items-center gap-2 mb-4">
             <span class="text-xs font-semibold uppercase tracking-widest" style="color:rgba(255,255,255,0.5);">Neste steg</span>
