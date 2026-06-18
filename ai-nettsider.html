@@ -1188,7 +1188,17 @@
       btn.addEventListener('click', () => setOpen(overlay.classList.contains('hidden-menu')));
       overlay.querySelectorAll('a').forEach(a => {
         a.addEventListener('touchstart', () => a.classList.add('is-touched'), { passive: true });
-        a.addEventListener('click', () => setOpen(false));
+        a.addEventListener('click', (e) => {
+          const href = a.getAttribute('href');
+          const isExternal = href && !href.startsWith('#');
+          if (isExternal) {
+            e.preventDefault();
+            overlay.style.transition = 'none';
+            window.location.href = href;
+          } else {
+            setOpen(false);
+          }
+        });
       });
     })();
 
