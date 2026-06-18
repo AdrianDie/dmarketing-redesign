@@ -556,49 +556,56 @@
   <!-- ============================================== -->
   <!-- SEKSJON 2: MAGIEN (sniktitt — chat-illustrasjon) -->
   <!-- ============================================== -->
-  <section class="py-32 md:py-48 px-6 bg-white border-t border-zinc-100">
-    <div class="max-w-3xl mx-auto">
+  <section class="py-32 md:py-48 px-6 bg-[#F5F5F5] border-t border-zinc-100">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
 
-      <div data-animate class="text-center mb-14 md:mb-20">
-        <p class="text-sm font-semibold tracking-widest uppercase text-blue-600 mb-4">Sniktitt</p>
-        <h2 class="font-display font-extrabold text-3xl md:text-5xl tracking-[-0.03em] text-[#09090B] leading-[1.1]">
-          Slik oppdaterer du nettsiden din<br>
-          <span class="outline-text">på under 60 sekunder.</span>
-        </h2>
-      </div>
-
-      <div data-animate class="bg-white border border-zinc-200 rounded-2xl shadow-2xl overflow-hidden max-w-xl mx-auto">
-        <!-- Browser-bar -->
-        <div class="flex items-center gap-1.5 px-4 py-3 border-b border-zinc-100 bg-[#FAFAFA]">
-          <span class="w-2.5 h-2.5 rounded-full bg-red-400"></span>
-          <span class="w-2.5 h-2.5 rounded-full bg-yellow-400"></span>
-          <span class="w-2.5 h-2.5 rounded-full bg-green-400"></span>
-          <div class="ml-3 text-[11px] text-zinc-400 font-mono">claude.ai</div>
+        <div data-animate>
+          <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-5"><span class="font-mono mr-2">002</span><span class="inline-block w-8 h-px bg-zinc-300 align-middle mr-2"></span>Sniktitt</p>
+          <h2 class="font-display font-extrabold text-3xl md:text-[clamp(2rem,5vw,3.9rem)] tracking-[-0.03em] text-[#09090B] leading-[1.08]" style="margin-bottom:0;">
+            Endre siden ved å <span class="text-blue-600">skrive én melding.</span>
+          </h2>
+          <p class="mt-5 text-zinc-500 text-base md:text-lg leading-relaxed" style="max-width:46ch;">
+            Du forteller AI-en hva som skal endres på vanlig norsk. Den skriver koden og publiserer. Live på under ett minutt, helt uten å vente på et byrå.
+          </p>
+          <a href="#demo-video" class="inline-flex items-center gap-2 mt-7 px-7 py-3.5 bg-blue-600 text-white font-semibold rounded-full text-sm hover:bg-blue-700 transition-colors glow-cta">
+            Se hele demoen
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
         </div>
-        <!-- Chat-mock -->
-        <div class="p-6 space-y-4">
-          <div class="flex justify-end">
-            <div class="bg-blue-600 text-white px-5 py-3 rounded-2xl rounded-br-md max-w-[85%] text-sm md:text-base">
-              Endre åpningstid fredager til 08–14, og legg til tilbud på varmepumpe.
+
+        <div data-animate>
+          <div class="bg-white border border-zinc-200 rounded-2xl shadow-2xl overflow-hidden">
+            <div class="flex items-center gap-1.5 px-4 py-3 border-b border-zinc-100 bg-[#FAFAFA]">
+              <span class="w-2.5 h-2.5 rounded-full bg-red-400"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-yellow-400"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-green-400"></span>
+              <div class="ml-3 text-[11px] text-zinc-400 font-mono">claude.ai</div>
+            </div>
+            <div class="p-6 space-y-4">
+              <div class="flex justify-end">
+                <div class="bg-blue-600 text-white px-5 py-3 rounded-2xl rounded-br-md max-w-[85%] text-sm md:text-base">
+                  Endre åpningstid fredager til 08–14, og legg til tilbud på varmepumpe.
+                </div>
+              </div>
+              <div class="flex items-start gap-2.5">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center text-white text-[11px] font-bold flex-shrink-0">AI</div>
+                <div class="bg-zinc-100 text-zinc-800 px-5 py-3 rounded-2xl rounded-bl-md text-sm md:text-base">
+                  Ferdig. Live på <strong>~30 sekunder</strong>.
+                </div>
+              </div>
+            </div>
+            <div class="border-t border-zinc-100 bg-gradient-to-br from-blue-50 to-white px-6 py-4 flex items-center gap-3">
+              <span class="inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wider text-green-700 bg-green-100 px-2 py-0.5 rounded-full">
+                <span class="w-1.5 h-1.5 rounded-full bg-green-500 pulse-dot"></span>
+                Live
+              </span>
+              <span class="text-xs text-zinc-500 font-mono">rorlegger-stavanger.no oppdatert</span>
             </div>
           </div>
-          <div class="flex items-start gap-2.5">
-            <div class="w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center text-white text-[11px] font-bold flex-shrink-0">AI</div>
-            <div class="bg-zinc-100 text-zinc-800 px-5 py-3 rounded-2xl rounded-bl-md text-sm md:text-base">
-              Ferdig. Live på <strong>~30 sekunder</strong>.
-            </div>
-          </div>
         </div>
-        <!-- Live-bekreftelse -->
-        <div class="border-t border-zinc-100 bg-gradient-to-br from-blue-50 to-white px-6 py-4 flex items-center gap-3">
-          <span class="inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wider text-green-700 bg-green-100 px-2 py-0.5 rounded-full">
-            <span class="w-1.5 h-1.5 rounded-full bg-green-500 pulse-dot"></span>
-            Live
-          </span>
-          <span class="text-xs text-zinc-500 font-mono">rorlegger-stavanger.no oppdatert</span>
-        </div>
-      </div>
 
+      </div>
     </div>
   </section>
 
