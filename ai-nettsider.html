@@ -89,6 +89,16 @@
     /* Statisk tidslinje (Y-fork) — ingen tegne-animasjon, men beholder strukturen */
     .timeline-path { stroke-dasharray: none; }
 
+    /* Knapper (kopiert fra style.css) */
+    .hero-btn { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 0.98rem; padding: 15px 26px; border-radius: 999px; border: 1.5px solid transparent; cursor: pointer; transition: transform .16s ease, box-shadow .16s ease, background .16s ease, color .16s ease, border-color .16s ease; white-space: nowrap; text-decoration: none; }
+    .hero-btn svg { width: 17px; height: 17px; }
+    .hero-btn.primary { background: #1B34FF; color: #fff; box-shadow: 0 12px 36px rgba(27,52,255,0.30); }
+    .hero-btn.primary:hover { transform: translateY(-2px) scale(1.015); background: #1226C9; }
+    .hero-btn.ghost { background: transparent; color: #0E1116; border-color: rgba(14,17,22,0.18); }
+    .hero-btn.ghost:hover { border-color: #1B34FF; color: #1B34FF; transform: translateY(-2px); }
+    .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; justify-content: center; }
+    @media (max-width: 768px) { .hero-cta .hero-btn { width: 100%; justify-content: center; } }
+
     /* Chat-demo (kopiert fra style.css for sniktitt-seksjon) */
     .demo-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(30px,5vw,72px); align-items: center; }
     .demo-wrap .label { display: inline-flex; align-items: center; gap: 14px; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: #9A9A93; }
@@ -517,18 +527,15 @@
           </p>
 
           <!-- CTA-knapper -->
-          <div class="flex flex-col sm:flex-row justify-center gap-4 mb-10">
-            <a href="#kontakt" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 text-white font-semibold rounded-full text-base hover:bg-blue-700 transition-colors glow-cta">
-              Bestill gratis nettsideutkast
+          <div class="hero-cta">
+            <a class="hero-btn primary" href="#kontakt">Bestill gratis nettsideutkast
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
             </a>
-            <a href="#demo-video" class="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-zinc-300 text-[#09090B] font-semibold rounded-full text-base hover:border-zinc-500 transition-colors">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              Se demovideo
-            </a>
+            <a class="hero-btn ghost" href="#demo-video">Se demovideo</a>
           </div>
 
           <!-- Reassurance-strip -->
-          <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs text-zinc-500">
+          <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs text-zinc-500" style="margin-top:28px;">
             <span class="flex items-center gap-1.5">
               <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#16a34a" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
               100&nbsp;% eierskap
