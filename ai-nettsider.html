@@ -89,6 +89,36 @@
     /* Statisk tidslinje (Y-fork) — ingen tegne-animasjon, men beholder strukturen */
     .timeline-path { stroke-dasharray: none; }
 
+    /* Chat-demo (kopiert fra style.css for sniktitt-seksjon) */
+    .demo-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(30px,5vw,72px); align-items: center; }
+    .demo-wrap .label { display: inline-flex; align-items: center; gap: 14px; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: #9A9A93; }
+    .demo-wrap .label .num { color: #1B34FF; font-weight: 700; }
+    .demo-wrap .label .bar { width: 34px; height: 1.5px; background: currentColor; opacity: 0.5; display: inline-block; }
+    .demo-wrap .display { font-weight: 800; text-transform: uppercase; letter-spacing: -0.01em; line-height: 0.98; font-family: 'Archivo', sans-serif; }
+    .demo-wrap .accent { color: #1B34FF; }
+    .demo-wrap .btn { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 0.98rem; padding: 15px 26px; border-radius: 999px; border: 1.5px solid transparent; cursor: pointer; transition: transform .16s ease, box-shadow .16s ease, background .16s ease; white-space: nowrap; }
+    .demo-wrap .btn svg { width: 17px; height: 17px; }
+    .demo-wrap .btn-primary { background: #1B34FF; color: #fff; box-shadow: 0 12px 36px rgba(27,52,255,0.30); }
+    .demo-wrap .btn-primary:hover { transform: translateY(-2px) scale(1.015); background: #1226C9; }
+    .demo-chat { background: #fff; border: 1px solid #E7E4D8; border-radius: 26px; box-shadow: 0 16px 50px rgba(20,30,90,0.10); overflow: hidden; max-width: 460px; width: 100%; }
+    .demo-chat .chat-bar { display: flex; align-items: center; gap: 7px; padding: 14px 16px; border-bottom: 1px solid #E7E4D8; background: #FCFBF7; }
+    .demo-chat .chat-bar i { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+    .demo-chat .chat-bar i:nth-child(1){ background:#f87171; } .demo-chat .chat-bar i:nth-child(2){ background:#fbbf24; } .demo-chat .chat-bar i:nth-child(3){ background:#34d399; }
+    .demo-chat .chat-bar .url { margin-left: 10px; font-size: 12px; color: #9A9A93; }
+    .demo-chat .chat-body { padding: 22px; display: flex; flex-direction: column; gap: 14px; }
+    .demo-chat .bubble { padding: 13px 17px; border-radius: 18px; font-size: 0.95rem; max-width: 86%; line-height: 1.5; }
+    .demo-chat .bubble.me { align-self: flex-end; background: #1B34FF; color: #fff; border-bottom-right-radius: 6px; }
+    .demo-chat .bubble.ai { align-self: flex-start; background: #F5F3EA; color: #0E1116; border-bottom-left-radius: 6px; }
+    .demo-chat .bubble.ai strong { color: #1B34FF; }
+    .demo-chat .chat-live { display: flex; align-items: center; gap: 12px; padding: 14px 22px; border-top: 1px solid #E7E4D8; background: linear-gradient(180deg, #ECEEFF, #fff); }
+    .demo-chat .live-pill { display:inline-flex; align-items:center; gap:7px; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#0a7d34; background:#d7f5e1; padding:4px 9px; border-radius:999px; }
+    .demo-chat .live-pill i { width:6px; height:6px; border-radius:50%; background:#15c45a; animation: pulse-dot 2s infinite; }
+    .demo-chat .chat-live .meta { font-size: 12px; color: #9A9A93; }
+    @media (max-width: 768px) {
+      .demo-wrap { grid-template-columns: 1fr; }
+      .demo-chat { margin: 0 auto; }
+    }
+
     /* Scroll-reveal animasjoner (erstatter Motion.js) */
     [data-animate], [data-stagger] > * {
       opacity: 0;
@@ -556,55 +586,34 @@
   <!-- ============================================== -->
   <!-- SEKSJON 2: MAGIEN (sniktitt — chat-illustrasjon) -->
   <!-- ============================================== -->
-  <section class="py-32 md:py-48 px-6 bg-[#F5F5F5] border-t border-zinc-100">
-    <div class="max-w-6xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
-
-        <div data-animate>
-          <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-5"><span class="font-mono mr-2">002</span><span class="inline-block w-8 h-px bg-zinc-300 align-middle mr-2"></span>Sniktitt</p>
-          <h2 class="font-display font-extrabold text-3xl md:text-[clamp(2rem,5vw,3.9rem)] tracking-[-0.03em] text-[#09090B] leading-[1.08]" style="margin-bottom:0;">
-            Endre siden ved å <span class="text-blue-600">skrive én melding.</span>
+  <section data-animate style="padding: clamp(84px,12vh,168px) 0; background: #F5F3EA;">
+    <div style="width:100%; max-width:1240px; margin:0 auto; padding:0 clamp(20px,5vw,64px);">
+      <div class="demo-wrap">
+        <div>
+          <span class="label reveal"><span class="num">002</span><span class="bar"></span> Sniktitt</span>
+          <h2 class="display reveal" style="margin-top:18px; margin-bottom:0; font-size:clamp(2rem,5vw,3.9rem);">
+            Endre siden ved å <span class="accent">skrive én melding.</span>
           </h2>
-          <p class="mt-5 text-zinc-500 text-base md:text-lg leading-relaxed" style="max-width:46ch;">
+          <p class="reveal" style="margin-top:22px; color:#5F6169; font-size:1.08rem; max-width:46ch;">
             Du forteller AI-en hva som skal endres på vanlig norsk. Den skriver koden og publiserer. Live på under ett minutt, helt uten å vente på et byrå.
           </p>
-          <a href="#demo-video" class="inline-flex items-center gap-2 mt-7 px-7 py-3.5 bg-blue-600 text-white font-semibold rounded-full text-sm hover:bg-blue-700 transition-colors glow-cta">
-            Se hele demoen
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          <a class="btn btn-primary reveal" style="margin-top:30px;" href="#demo-video">Se hele demoen
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
         </div>
-
-        <div data-animate>
-          <div class="bg-white border border-zinc-200 rounded-2xl shadow-2xl overflow-hidden">
-            <div class="flex items-center gap-1.5 px-4 py-3 border-b border-zinc-100 bg-[#FAFAFA]">
-              <span class="w-2.5 h-2.5 rounded-full bg-red-400"></span>
-              <span class="w-2.5 h-2.5 rounded-full bg-yellow-400"></span>
-              <span class="w-2.5 h-2.5 rounded-full bg-green-400"></span>
-              <div class="ml-3 text-[11px] text-zinc-400 font-mono">claude.ai</div>
+        <div class="reveal">
+          <div class="demo-chat">
+            <div class="chat-bar"><i></i><i></i><i></i><span class="url">claude.ai</span></div>
+            <div class="chat-body">
+              <div class="bubble me">Endre åpningstid fredager til 08–14, og legg til tilbud på varmepumpe.</div>
+              <div class="bubble ai">Ferdig. Live på <strong>~30 sekunder</strong>.</div>
             </div>
-            <div class="p-6 space-y-4">
-              <div class="flex justify-end">
-                <div class="bg-blue-600 text-white px-5 py-3 rounded-2xl rounded-br-md max-w-[85%] text-sm md:text-base">
-                  Endre åpningstid fredager til 08–14, og legg til tilbud på varmepumpe.
-                </div>
-              </div>
-              <div class="flex items-start gap-2.5">
-                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center text-white text-[11px] font-bold flex-shrink-0">AI</div>
-                <div class="bg-zinc-100 text-zinc-800 px-5 py-3 rounded-2xl rounded-bl-md text-sm md:text-base">
-                  Ferdig. Live på <strong>~30 sekunder</strong>.
-                </div>
-              </div>
-            </div>
-            <div class="border-t border-zinc-100 bg-gradient-to-br from-blue-50 to-white px-6 py-4 flex items-center gap-3">
-              <span class="inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wider text-green-700 bg-green-100 px-2 py-0.5 rounded-full">
-                <span class="w-1.5 h-1.5 rounded-full bg-green-500 pulse-dot"></span>
-                Live
-              </span>
-              <span class="text-xs text-zinc-500 font-mono">rorlegger-stavanger.no oppdatert</span>
+            <div class="chat-live">
+              <span class="live-pill"><i></i> Live</span>
+              <span class="meta">rorlegger-stavanger.no oppdatert</span>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </section>
