@@ -534,6 +534,16 @@
             <a class="hero-btn ghost" href="#demo-video">Se demovideo</a>
           </div>
 
+<!-- Telefonnummer (Oppdatert til Alternativ 2) -->
+          <div class="mt-8 flex justify-center">
+            <a href="tel:+4793439278" class="group inline-flex items-center gap-2.5 text-[0.95rem] font-medium text-[#1B34FF] hover:opacity-80 transition-all">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:rotate-12 group-hover:scale-110">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+              </svg>
+              <span>Eller ring oss direkte på 934 39 278</span>
+            </a>
+          </div>
+
           <!-- Reassurance-strip -->
           <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs text-zinc-500" style="margin-top:28px;">
             <span class="flex items-center gap-1.5">
@@ -912,6 +922,48 @@
   </section>
 
   <!-- ============================================== -->
+  <!-- KUNDEANMELDELSE                                  -->
+  <!-- ============================================== -->
+  <section style="padding:clamp(84px,12vh,168px) 0; background:#F5F3EA;">
+    <div style="max-width:880px; margin:0 auto; padding:0 clamp(20px,5vw,64px); text-align:center;" data-animate>
+
+      <!-- Label: 009 —— KUNDEANMELDELSE -->
+      <div style="display:inline-flex; align-items:center; gap:14px; font-size:0.72rem; font-weight:600; letter-spacing:0.22em; text-transform:uppercase; color:#9A9A93; justify-content:center;">
+        <span style="color:#1B34FF; font-weight:700;">009</span>
+        <span style="width:34px; height:1.5px; background:currentColor; opacity:0.5; display:inline-block;"></span>
+        Kundeanmeldelse
+      </div>
+
+      <!-- Quote mark -->
+      <div class="font-display" style="font-weight:800; font-size:5rem; line-height:0.6; color:#1B34FF; opacity:0.25; margin-top:40px;" aria-hidden="true">&ldquo;</div>
+
+      <!-- Quote text -->
+      <blockquote class="font-display" style="margin:18px 0 0; font-weight:700; letter-spacing:-0.01em; font-size:clamp(1.5rem,3.4vw,2.6rem); line-height:1.25; color:#0E1116;">
+        Fantastic service and talent. Very pleasant to work with Adrian, effective, creative and always delivers. Can not recommend his services enough!
+      </blockquote>
+
+      <!-- Stars -->
+      <div style="display:flex; justify-content:center; gap:5px; margin-top:24px; color:#1B34FF;" aria-label="Fem av fem stjerner">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+      </div>
+
+      <!-- Profile -->
+      <div style="display:inline-flex; align-items:center; gap:13px; margin-top:24px;">
+        <img src="assets/elmer.png" alt="Elmer Laahne" style="width:52px; height:52px; border-radius:50%; object-fit:cover; border:1px solid #E4E4E7;" onerror="this.style.display='none'" />
+        <div style="text-align:left;">
+          <b style="font-weight:700; display:block; color:#0E1116;">Elmer Laahne</b>
+          <span style="font-size:0.85rem; color:#9A9A93;">Daglig leder</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================== -->
   <!-- SEKSJON 6: PRISER & PAKKER                      -->
   <!-- ============================================== -->
   <section id="priser" class="py-32 md:py-48 px-6 bg-white border-t border-zinc-100">
@@ -1175,11 +1227,16 @@
           Ta kontakt, så viser vi deg hvordan du kan eie alt selv, uten faste byråkostnader.
         </p>
 
-        <div class="flex justify-center">
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
           <a href="kontakt.html"
              class="inline-flex items-center justify-center gap-2 bg-white text-[#0B1F4A] font-semibold px-7 py-4 rounded-xl text-base glow-cta-light whitespace-nowrap">
             Ta kontakt
             <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a href="tel:+4793439278"
+             class="inline-flex items-center justify-center gap-2 text-white/80 hover:text-white font-medium text-sm transition-colors whitespace-nowrap">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            934 39 278
           </a>
         </div>
       </div>
@@ -1192,17 +1249,22 @@
   <footer class="bg-[#0F172A] text-white py-8 px-6">
     <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-sm text-white/40">
       <div>© 2026 Dietrichs Marketing</div>
-      <div>Org.nr 932 612 583</div>
+      <div class="flex items-center gap-4">
+        <a href="tel:+4793439278" class="hover:text-white/70 transition-colors">Tlf: 934 39 278</a>
+        <span>Org.nr 932 612 583</span>
+      </div>
     </div>
   </footer>
 
-  <!-- FLOATING CTA -->
+<!-- FLOATING CTA (Midtstilt knapp) -->
   <div id="floating-cta"
-       style="position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);z-index:999;opacity:0;transition:opacity 0.35s,transform 0.35s;pointer-events:none;">
+       style="position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(20px) scale(0.9); z-index:999; opacity:0; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); pointer-events:none;">
     <a href="kontakt.html"
-       style="display:inline-flex;align-items:center;gap:10px;background:#1D4ED8;color:#fff;font-family:'Inter',sans-serif;font-weight:600;font-size:14px;padding:14px 24px;border-radius:50px;box-shadow:0 8px 32px rgba(29,78,216,0.4);text-decoration:none;white-space:nowrap;">
-      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-      Ta kontakt
+       style="display:inline-flex; align-items:center; gap:10px; background:#1B34FF; color:#fff; font-family:'Inter',sans-serif; font-weight:600; font-size:15px; padding:14px 24px; border-radius:999px; text-decoration:none; white-space:nowrap; box-shadow: 0 10px 25px rgba(27, 52, 255, 0.35); border: 1px solid rgba(255,255,255,0.1);">
+      Bestill gratis utkast
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+        <path d="M5 12h14M13 5l7 7-7 7"/>
+      </svg>
     </a>
   </div>
 
@@ -1236,7 +1298,8 @@
       });
     })();
 
-    // Floating CTA
+
+// Floating CTA logikk (Midtstilt versjon)
     (function () {
       const bar = document.getElementById('floating-cta');
       if (!bar) return;
@@ -1246,9 +1309,10 @@
         if (show === visible) return;
         visible = show;
         bar.style.opacity = show ? '1' : '0';
+        // Viktig: Vi må beholde -50% i transform for at den skal forbli i midten
         bar.style.transform = show
-          ? 'translateX(-50%) translateY(0)'
-          : 'translateX(-50%) translateY(80px)';
+          ? 'translateX(-50%) translateY(0) scale(1)'
+          : 'translateX(-50%) translateY(20px) scale(0.9)';
         bar.style.pointerEvents = show ? 'auto' : 'none';
       }, { passive: true });
     })();
