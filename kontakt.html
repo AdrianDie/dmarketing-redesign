@@ -235,7 +235,7 @@
           </ul>
         </div>
 
-        <form class="contact-form reveal" action="https://formsubmit.co/adrian@dmarketing.no" method="POST">
+        <form class="contact-form reveal" id="contact-form">
           <input type="hidden" name="_subject" value="Ny henvendelse fra dmarketing.no" />
           <input type="hidden" name="_template" value="table" />
           <input type="hidden" name="_captcha" value="false" />
@@ -263,12 +263,35 @@
             <span>Melding <em>*</em></span>
             <textarea name="Melding" placeholder="Skriv meldingen din her" required></textarea>
           </label>
-          <button type="submit" class="btn btn-primary">
+          <button type="submit" class="btn btn-primary" id="submit-btn">
             Send melding
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </button>
           <p class="form-note">Vi bruker opplysningene kun til å svare deg. Ingen spam.</p>
         </form>
+        <div id="form-success" style="display:none; text-align:center; padding:40px 0;">
+          <h3 style="font-family:Archivo,sans-serif; font-size:1.6rem; font-weight:700; margin-bottom:12px;">Takk for meldingen!</h3>
+          <p style="color:#5F6169; font-size:1.05rem;">Vi svarer deg så raskt vi kan.</p>
+        </div>
+        <script>
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+          e.preventDefault();
+          var btn = document.getElementById('submit-btn');
+          btn.textContent = 'Sender…';
+          btn.disabled = true;
+          fetch('https://formsubmit.co/ajax/adrian@dmarketing.no', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify(Object.fromEntries(new FormData(this)))
+          }).then(function(r) { return r.json(); }).then(function() {
+            document.getElementById('contact-form').style.display = 'none';
+            document.getElementById('form-success').style.display = 'block';
+          }).catch(function() {
+            btn.textContent = 'Noe gikk galt — prøv igjen';
+            btn.disabled = false;
+          });
+        });
+        </script>
       </div>
     </div>
   </section>
