@@ -10,6 +10,16 @@
   <meta name="theme-color" content="#1B34FF" />
   <link rel="shortcut icon" href="assets/favicon.png" type="image/png" />
 
+  <!-- Google Ads + GA4 tracking -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18193599749"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-18193599749');
+    gtag('config', 'G-9MZXTCLH1H');
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Schibsted+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -328,5 +338,10 @@
        Tomt = av: skjemaet sender til e-post (formsubmit) som før. -->
   <script>window.DM_SUPABASE = { url: "https://mrogtjiimpmcmoornyjj.supabase.co", anonKey: "sb_publishable__Y_Xi1Z6xfdnPPFK0zewrg_N1HP1pmu", table: "leads" };</script>
   <script src="app.js?v=20" defer></script>
+  <script>
+    document.querySelector('.contact-form')?.addEventListener('submit', function() {
+      gtag('event', 'conversion', { send_to: 'AW-18193599749/kontaktskjema_sendt' });
+    });
+  </script>
 </body>
 </html>

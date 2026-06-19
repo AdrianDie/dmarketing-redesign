@@ -8,6 +8,16 @@
   <meta property="og:title" content="AI-nettsider for norske bedrifter | Dietrichs Marketing">
   <meta property="og:description" content="Eier nettsiden selv. Oppdater på 60 sekunder med AI. Slipp faste byråkostnader.">
 
+  <!-- Google Ads + GA4 tracking -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18193599749"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-18193599749');
+    gtag('config', 'G-9MZXTCLH1H');
+  </script>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -1046,6 +1056,52 @@
   </section>
 
   <!-- ============================================== -->
+  <!-- SEKSJON 6B: BESTILL GRATIS NETTSIDEUTKAST       -->
+  <!-- ============================================== -->
+  <section id="bestill" class="py-32 md:py-48 px-6 bg-[#FAFAFA] border-t border-zinc-100">
+    <div class="max-w-xl mx-auto">
+      <div data-animate class="text-center mb-12">
+        <p class="text-sm font-semibold tracking-widest uppercase text-blue-600 mb-4">Gratis & uforpliktende</p>
+        <h2 class="font-display font-extrabold text-3xl md:text-5xl tracking-[-0.03em] leading-[1.1] mb-4">
+          Få et gratis<br>
+          <span style="color: transparent; -webkit-text-stroke: 1.5px #09090B;">nettsideutkast</span>
+        </h2>
+        <p class="text-zinc-500 text-lg leading-relaxed max-w-md mx-auto">
+          Send oss nettsiden din, så lager vi et ferdig forslag til hvordan den kan se ut — helt gratis. Ingen forpliktelser.
+        </p>
+      </div>
+
+      <form data-animate action="https://formsubmit.co/post@dmarketing.no" method="POST" class="space-y-4" id="utkast-form">
+        <input type="hidden" name="_subject" value="Bestilling: Gratis nettsideutkast" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+
+        <div>
+          <label class="block text-sm font-medium text-zinc-700 mb-1">Bedriftsnavn</label>
+          <input type="text" name="Bedrift" placeholder="Eks: Fjordstål AS" required
+                 class="w-full border border-zinc-300 rounded-xl px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-zinc-700 mb-1">Nåværende nettside</label>
+          <input type="url" name="Nettside" placeholder="https://dittfirma.no" required inputmode="url"
+                 class="w-full border border-zinc-300 rounded-xl px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-zinc-700 mb-1">E-post eller telefon</label>
+          <input type="text" name="Kontaktinfo" placeholder="ola@eksempel.no / 912 34 567" required
+                 class="w-full border border-zinc-300 rounded-xl px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+        </div>
+
+        <button type="submit"
+                class="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-4 rounded-xl text-base transition-colors glow-cta mt-2">
+          Bestill gratis nettsideutkast →
+        </button>
+        <p class="text-center text-xs text-zinc-400 mt-2">Helt gratis. Vi sender deg et ferdig forslag innen 48 timer.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============================================== -->
   <!-- SEKSJON 7: SISTE MULIGHET (footer-CTA)          -->
   <!-- ============================================== -->
   <section id="signup" class="dot-grid-dark bg-[#0B1F4A] text-white py-32 md:py-48 px-6">
@@ -1140,6 +1196,60 @@
       // Skjul helt etter at panelene er ute (delay 0.8s + duration 0.9s = 1.7s, +buffer)
       setTimeout(() => { pre.style.display = 'none'; }, 2200);
     });
+
+    // --- TRACKING ---
+    (function() {
+      // 1. Tid på siden > 30 sek → Engasjert 30s
+      setTimeout(() => {
+        gtag('event', 'conversion', { send_to: 'AW-18193599749/engasjert_30s' });
+      }, 30000);
+
+      // 2. Scroll-dybde
+      const scrollMarkers = { 25: false, 50: false, 75: false, 100: false };
+      window.addEventListener('scroll', () => {
+        const pct = Math.round((window.scrollY + window.innerHeight) / document.body.scrollHeight * 100);
+        [25, 50, 75, 100].forEach(m => {
+          if (pct >= m && !scrollMarkers[m]) {
+            scrollMarkers[m] = true;
+            gtag('event', 'scroll_depth', { event_category: 'engagement', event_label: m + '%' });
+          }
+        });
+      }, { passive: true });
+
+      // 3. CTA-klikk: "Se demo-video" → Demo-video klikk
+      document.querySelectorAll('a[href*="demo"]').forEach(el => {
+        el.addEventListener('click', () => {
+          gtag('event', 'conversion', { send_to: 'AW-18193599749/demo_video_klikk' });
+        });
+      });
+
+      // 4. CTA-klikk: "Kontakt" → Kontakt-klikk
+      document.querySelectorAll('a[href*="kontakt"]').forEach(el => {
+        el.addEventListener('click', () => {
+          gtag('event', 'conversion', { send_to: 'AW-18193599749/kontakt_klikk' });
+        });
+      });
+
+      // 5. Scroll til pris-seksjonen → Sett priser
+      const priser = document.getElementById('priser');
+      if (priser) {
+        const obs = new IntersectionObserver(([e]) => {
+          if (e.isIntersecting) {
+            gtag('event', 'conversion', { send_to: 'AW-18193599749/sett_priser' });
+            obs.disconnect();
+          }
+        }, { threshold: 0.3 });
+        obs.observe(priser);
+      }
+
+      // 6. Skjema sendt: "Bestill gratis nettsideutkast"
+      const form = document.getElementById('utkast-form');
+      if (form) {
+        form.addEventListener('submit', () => {
+          gtag('event', 'conversion', { send_to: 'AW-18193599749/kontaktskjema_sendt' });
+        });
+      }
+    })();
 
     // Scroll-reveal
     window.addEventListener('load', () => {
