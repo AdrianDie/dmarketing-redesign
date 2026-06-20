@@ -92,7 +92,7 @@
           Hvorfor må jeg gjøre dette selv?
         </div>
         <p>Dette krever innlogging hos <em>din</em> domeneleverandør. Av sikkerhetsmessige årsaker ber vi aldri om kundens passord, og vi har derfor ikke tilgang til å gjøre dette for deg.</p>
-        <p>I tillegg er et av hovedmålene med dette kurset at <strong>du eier og har kontroll over alt selv</strong>. Når du forstår hvordan du styrer ditt eget domene, er du ikke lenger avhengig av dyre mellommenn. Innstillingene du legger inn nå er de samme uansett — og du trenger aldri gjøre det igjen med mindre du bytter leverandør.</p>
+        <p>I tillegg er et av hovedmålene med dette kurset at <strong>du eier og har kontroll over alt selv</strong>. Når du forstår hvordan du styrer ditt eget domene, er du ikke lenger avhengig av dyre mellomledd. Innstillingene du legger inn nå er de samme uansett — og du trenger aldri gjøre det igjen med mindre du bytter leverandør.</p>
       </div>
 
       <h2>Det du skal gjøre — oversikt</h2>
@@ -191,9 +191,56 @@
         </div>
       </div>
 
-      <h2>Steg 2: Legg inn DNS-innstillinger</h2>
+      <div style="background:linear-gradient(135deg,#EDE9FE,#E0E7FF);border:2px solid #A78BFA;border-radius:16px;padding:28px 28px 24px;margin:2.5rem 0;" class="not-prose">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+          <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#7C3AED" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+          <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:1.15rem;color:#4C1D95;">Trenger du hjelp med DNS? Bruk ChatGPT</span>
+        </div>
+        <p style="font-size:1rem;line-height:1.6;color:#3B2667;margin:0 0 14px;">DNS-innstillinger kan virke teknisk, men du trenger ikke forstå alt selv. Vi har laget en ferdig tekst du kan lime inn i <a href="https://chatgpt.com" target="_blank" rel="noopener" style="color:#4C1D95;font-weight:600;">ChatGPT</a> — da får du en personlig veiledning tilpasset akkurat din domeneleverandør.</p>
+        <p style="font-size:0.95rem;line-height:1.55;color:#3B2667;margin:0 0 16px;"><strong>Slik gjør du:</strong> Åpne ChatGPT, lim inn teksten under, og følg instruksjonene. ChatGPT vil spørre deg hvilken leverandør du bruker og guide deg steg for steg — med kontroll til slutt.</p>
+        <div style="position:relative;">
+          <button onclick="navigator.clipboard.writeText(document.getElementById('chatgpt-prompt').innerText).then(()=>{this.textContent='Kopiert ✓';this.style.background='#16A34A';setTimeout(()=>{this.textContent='Kopier teksten';this.style.background='#7C3AED'},2000)})" style="position:absolute;top:10px;right:10px;background:#7C3AED;color:white;border:none;padding:8px 16px;border-radius:8px;font-size:0.8rem;font-weight:600;cursor:pointer;z-index:1;font-family:'Inter',sans-serif;">Kopier teksten</button>
+          <div id="chatgpt-prompt" style="background:white;border:1.5px solid #C4B5FD;border-radius:12px;padding:20px 20px 20px;font-size:0.85rem;line-height:1.6;color:#1E1B3A;max-height:260px;overflow-y:auto;white-space:pre-wrap;font-family:'Inter',sans-serif;">Jeg trenger hjelp med å koble domenet mitt til en nettside som ligger på GitHub Pages. Jeg er ikke teknisk, så jeg trenger en enkel steg-for-steg veiledning.
 
-      <p>Nå skal du logge inn hos domeneleverandøren din (for eksempel Domeneshop, Namecheap eller GoDaddy). Finn siden for <strong>DNS-innstillinger</strong> — den kan hete «DNS-poster», «DNS Records», «Soneinnstillinger» eller lignende.</p>
+Her er situasjonen:
+- Nettsiden min ligger klar på GitHub Pages
+- Jeg må legge inn DNS-innstillinger hos domeneleverandøren min slik at domenet mitt peker til GitHub sine servere
+- Jeg har kanskje gamle DNS-poster fra en tidligere nettside som må slettes først
+
+Her er DNS-postene som skal legges inn:
+
+A-POSTER (alle fire er obligatoriske, alle på @):
+- A @ 185.199.108.153
+- A @ 185.199.109.153
+- A @ 185.199.110.153
+- A @ 185.199.111.153
+
+CNAME-POST (obligatorisk):
+- CNAME www → [mitt GitHub-brukernavn].github.io
+
+AAAA-POSTER for IPv6 (valgfritt men anbefalt, alle på @):
+- AAAA @ 2606:50c0:8000::153
+- AAAA @ 2606:50c0:8001::153
+- AAAA @ 2606:50c0:8002::153
+- AAAA @ 2606:50c0:8003::153
+
+VIKTIGE REGLER:
+- Gamle A-poster, AAAA-poster og CNAME på www som peker til den forrige hostingen MÅ slettes
+- MX-poster (e-post), TXT-poster (SPF/DKIM) og NS-poster MÅ IKKE røres — da slutter e-posten å fungere
+- Er jeg usikker på hva en post gjør, lar jeg den stå
+
+Vennligst:
+1. Spør meg hvilken domeneleverandør jeg bruker (f.eks. Domeneshop, One.com, Namecheap, GoDaddy, osv.)
+2. Spør meg hva mitt GitHub-brukernavn er (for CNAME-posten)
+3. Gi meg en steg-for-steg veiledning for å logge inn, finne DNS-innstillingene, slette de gamle postene, og legge inn de nye — tilpasset min leverandør
+4. Når jeg er ferdig, be meg beskrive eller ta skjermbilde av hva jeg ser i DNS-oversikten, og sjekk om alt ser riktig ut</div>
+        </div>
+        <p style="font-size:0.85rem;color:#6D28D9;margin:14px 0 0;">Du kan fortsatt følge den manuelle veiledningen under hvis du foretrekker det.</p>
+      </div>
+
+      <h2>Steg 2: Legg inn DNS-innstillinger (manuell veiledning)</h2>
+
+      <p>Hvis du foretrekker å gjøre det selv uten ChatGPT, følger her den fullstendige veiledningen. Logg inn hos domeneleverandøren din (for eksempel Domeneshop, Namecheap eller GoDaddy). Finn siden for <strong>DNS-innstillinger</strong> — den kan hete «DNS-poster», «DNS Records», «Soneinnstillinger» eller lignende.</p>
 
       <h3>Først: rydd opp i gamle poster</h3>
 
