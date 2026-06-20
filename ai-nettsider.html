@@ -1374,7 +1374,7 @@
     (function() {
       // 1. Tid på siden > 30 sek → Engasjert 30s
       setTimeout(() => {
-        gtag('event', 'conversion', { send_to: 'AW-18193599749/engasjert_30s' });
+        gtag('event', 'conversion', { send_to: 'AW-18193599749/vJ46CNyW9MEcEIWaseND' });
       }, 30000);
 
       // 2. Scroll-dybde
@@ -1392,14 +1392,14 @@
       // 3. CTA-klikk: "Se demo-video" → Demo-video klikk
       document.querySelectorAll('a[href*="demo"]').forEach(el => {
         el.addEventListener('click', () => {
-          gtag('event', 'conversion', { send_to: 'AW-18193599749/demo_video_klikk' });
+          gtag('event', 'conversion', { send_to: 'AW-18193599749/tJRfCOffh8IcEIWaseND' });
         });
       });
 
       // 4. CTA-klikk: "Kontakt" → Kontakt-klikk
       document.querySelectorAll('a[href*="kontakt"]').forEach(el => {
         el.addEventListener('click', () => {
-          gtag('event', 'conversion', { send_to: 'AW-18193599749/kontakt_klikk' });
+          gtag('event', 'conversion', { send_to: 'AW-18193599749/KbvgCPrk8cEcEIWaseND' });
         });
       });
 
@@ -1408,7 +1408,7 @@
       if (priser) {
         const obs = new IntersectionObserver(([e]) => {
           if (e.isIntersecting) {
-            gtag('event', 'conversion', { send_to: 'AW-18193599749/sett_priser' });
+            gtag('event', 'conversion', { send_to: 'AW-18193599749/u9igCNaT9MEcEIWaseND' });
             obs.disconnect();
           }
         }, { threshold: 0.3 });
@@ -1419,7 +1419,7 @@
       const form = document.getElementById('utkast-form');
       if (form) {
         form.addEventListener('submit', () => {
-          gtag('event', 'conversion', { send_to: 'AW-18193599749/kontaktskjema_sendt' });
+          gtag('event', 'conversion', { send_to: 'AW-18193599749/wRthCOqP2sEcEIWaseND' });
         });
       }
     })();
