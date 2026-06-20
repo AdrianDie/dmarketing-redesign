@@ -8,6 +8,16 @@
   <meta property="og:title" content="AI-nettsider for norske bedrifter | Dietrichs Marketing">
   <meta property="og:description" content="Eier nettsiden selv. Oppdater på 60 sekunder med AI. Slipp faste byråkostnader.">
 
+  <!-- Google Ads + GA4 tracking -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18193599749"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-18193599749');
+    gtag('config', 'G-9MZXTCLH1H');
+  </script>
+
   <link rel="stylesheet" href="tailwind-compiled.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -1252,6 +1262,7 @@
       <div class="flex items-center gap-4">
         <a href="tel:+4793439278" class="hover:text-white/70 transition-colors">Tlf: 934 39 278</a>
         <span>Org.nr 932 612 583</span>
+        <a href="personvern.html" class="hover:text-white/70 transition-colors">Personvern</a>
       </div>
     </div>
   </footer>
@@ -1355,6 +1366,62 @@
         });
       }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
       document.querySelectorAll('[data-animate],[data-stagger]').forEach(el => io.observe(el));
+    })();
+  </script>
+
+  <!-- Conversion tracking events -->
+  <script>
+    (function() {
+      // 1. Tid på siden > 30 sek → Engasjert 30s
+      setTimeout(() => {
+        gtag('event', 'conversion', { send_to: 'AW-18193599749/engasjert_30s' });
+      }, 30000);
+
+      // 2. Scroll-dybde
+      const scrollMarkers = { 25: false, 50: false, 75: false, 100: false };
+      window.addEventListener('scroll', () => {
+        const pct = Math.round((window.scrollY + window.innerHeight) / document.body.scrollHeight * 100);
+        [25, 50, 75, 100].forEach(m => {
+          if (pct >= m && !scrollMarkers[m]) {
+            scrollMarkers[m] = true;
+            gtag('event', 'scroll_depth', { event_category: 'engagement', event_label: m + '%' });
+          }
+        });
+      }, { passive: true });
+
+      // 3. CTA-klikk: "Se demo-video" → Demo-video klikk
+      document.querySelectorAll('a[href*="demo"]').forEach(el => {
+        el.addEventListener('click', () => {
+          gtag('event', 'conversion', { send_to: 'AW-18193599749/demo_video_klikk' });
+        });
+      });
+
+      // 4. CTA-klikk: "Kontakt" → Kontakt-klikk
+      document.querySelectorAll('a[href*="kontakt"]').forEach(el => {
+        el.addEventListener('click', () => {
+          gtag('event', 'conversion', { send_to: 'AW-18193599749/kontakt_klikk' });
+        });
+      });
+
+      // 5. Scroll til pris-seksjonen → Sett priser
+      const priser = document.getElementById('priser');
+      if (priser) {
+        const obs = new IntersectionObserver(([e]) => {
+          if (e.isIntersecting) {
+            gtag('event', 'conversion', { send_to: 'AW-18193599749/sett_priser' });
+            obs.disconnect();
+          }
+        }, { threshold: 0.3 });
+        obs.observe(priser);
+      }
+
+      // 6. Skjema sendt
+      const form = document.getElementById('utkast-form');
+      if (form) {
+        form.addEventListener('submit', () => {
+          gtag('event', 'conversion', { send_to: 'AW-18193599749/kontaktskjema_sendt' });
+        });
+      }
     })();
   </script>
 

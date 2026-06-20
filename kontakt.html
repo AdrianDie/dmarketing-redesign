@@ -8,6 +8,16 @@
   <meta property="og:title" content="Kontakt | Dietrichs Marketing" />
   <meta property="og:description" content="Møt teamet og send oss en melding. Vi svarer raskt." />
   <meta name="theme-color" content="#1B34FF" />
+  <!-- Google Ads + GA4 tracking -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18193599749"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-18193599749');
+    gtag('config', 'G-9MZXTCLH1H');
+  </script>
+
   <link rel="shortcut icon" href="assets/favicon.png" type="image/png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -279,6 +289,7 @@
           var btn = document.getElementById('submit-btn');
           btn.textContent = 'Sender…';
           btn.disabled = true;
+          gtag('event', 'conversion', { send_to: 'AW-18193599749/kontaktskjema_sendt' });
           fetch('https://formsubmit.co/ajax/adrian@dmarketing.no', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
