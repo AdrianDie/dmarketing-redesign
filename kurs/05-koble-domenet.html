@@ -84,14 +84,18 @@
       </div>
 
       <div class="callout">
-        <p><strong>Tips:</strong> Denne modulen inneholder noen tekniske steg. Bruk gjerne en AI-assistent som <a href="https://aistudio.google.com" target="_blank" rel="noopener" style="color:#1E3A8A;font-weight:600;">Google AI Studio</a> underveis for å forsikre deg om at alt gjøres riktig — lenger ned på siden finner du en ferdig tekst du kan lime inn for å få hjelp med DNS-oppsettet.</p>
+        <p><strong>Tips:</strong> Denne modulen inneholder noen tekniske steg. Bruk gjerne en AI-assistent som <a href="https://aistudio.google.com" target="_blank" rel="noopener" style="color:#1E3A8A;font-weight:600;">Google AI Studio</a> underveis for å forsikre deg om at alt gjøres riktig — i steg 3 finner du en ferdig tekst du kan lime inn for å få hjelp.</p>
       </div>
+
+      <!-- ═══════════════════════════════════════════════ -->
+      <!--  INTRO                                          -->
+      <!-- ═══════════════════════════════════════════════ -->
 
       <h2>Hva betyr det å «koble domenet»?</h2>
 
       <p>Nettsiden din ligger allerede klar på GitHub Pages, men den har foreløpig en midlertidig adresse (noe som <code>brukernavn.github.io/mappenavn</code>). For at folk skal finne siden på din vanlige nettadresse — for eksempel <code>dittfirma.no</code> — må du fortelle internett at domenet ditt nå skal vise innholdet fra GitHub Pages.</p>
 
-      <p>Det gjør du ved å legge inn noen <strong>DNS-innstillinger</strong> hos domeneleverandøren din (for eksempel Domeneshop, Namecheap eller GoDaddy). DNS er internettets adressebok — du oppdaterer hvilken adresse boken peker til, som å endre destinasjonen i en GPS.</p>
+      <p>Det gjør du ved å legge inn noen <strong>DNS-innstillinger</strong> hos domeneleverandøren din. DNS er internettets adressebok — du oppdaterer hvilken adresse boken peker til, som å endre destinasjonen i en GPS.</p>
 
       <div class="explain">
         <div class="explain-label">
@@ -103,10 +107,12 @@
       </div>
 
       <h2>Det du skal gjøre — oversikt</h2>
-      <p>Det er to steg, og rekkefølgen er viktig:</p>
+      <p>Det er fire steg:</p>
       <ol>
-        <li><strong>Først i GitHub:</strong> fortell GitHub hvilket domene som hører til nettsiden din</li>
-        <li><strong>Deretter hos domeneleverandøren:</strong> legg inn DNS-pekere som sender besøkende til GitHub sine servere</li>
+        <li><strong>Registrer domenet i GitHub</strong> — fortell GitHub hvilket domene som hører til nettsiden</li>
+        <li><strong>Finn og logg inn hos domeneleverandøren</strong> — finn ut hvem som styrer domenet ditt, og åpne DNS-innstillingene</li>
+        <li><strong>Legg inn DNS-postene</strong> — bruk AI-assistent (anbefalt) eller gjør det manuelt</li>
+        <li><strong>Vent, sjekk og slå på HTTPS</strong> — bekreft at alt fungerer</li>
       </ol>
 
       <div class="callout">
@@ -116,31 +122,22 @@
       <figure class="not-prose my-8 rounded-2xl border border-zinc-200 bg-white p-5 md:p-7">
         <p class="text-center text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-5">Slik henger det sammen</p>
         <svg viewBox="0 0 560 140" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="GitHub Pages mottar domenet, DNS peker besøkende dit">
-          <!-- GitHub -->
           <rect x="10" y="20" width="150" height="100" rx="12" fill="#F0FDF4" stroke="#86EFAC" stroke-width="2"/>
           <text x="85" y="48" text-anchor="middle" font-size="11" font-weight="800" fill="#14532D">GitHub Pages</text>
           <text x="85" y="66" text-anchor="middle" font-size="10" fill="#15803D">CNAME-fil = domenet</text>
           <text x="85" y="84" text-anchor="middle" font-size="9.5" fill="#15803D">«Jeg hører til</text>
           <text x="85" y="96" text-anchor="middle" font-size="9.5" fill="#15803D">dittfirma.no»</text>
-
-          <!-- Arrow 1 -->
           <line x1="160" y1="55" x2="200" y2="55" stroke="#16A34A" stroke-width="2"/>
           <polygon points="195,50 205,55 195,60" fill="#16A34A"/>
           <text x="183" y="48" text-anchor="middle" font-size="8.5" fill="#6B7280">steg 1</text>
-
-          <!-- Domeneleverandør -->
           <rect x="205" y="20" width="150" height="100" rx="12" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="2"/>
           <text x="280" y="48" text-anchor="middle" font-size="11" font-weight="800" fill="#1E3A8A">Domeneleverandør</text>
           <text x="280" y="66" text-anchor="middle" font-size="10" fill="#3B82F6">DNS-innstillinger</text>
           <text x="280" y="84" text-anchor="middle" font-size="9.5" fill="#3B82F6">«Send besøkende</text>
           <text x="280" y="96" text-anchor="middle" font-size="9.5" fill="#3B82F6">til GitHub»</text>
-
-          <!-- Arrow 2 -->
           <line x1="355" y1="55" x2="395" y2="55" stroke="#0339f8" stroke-width="2"/>
           <polygon points="390,50 400,55 390,60" fill="#0339f8"/>
-          <text x="377" y="48" text-anchor="middle" font-size="8.5" fill="#6B7280">steg 2</text>
-
-          <!-- Besøkende -->
+          <text x="377" y="48" text-anchor="middle" font-size="8.5" fill="#6B7280">steg 2–3</text>
           <rect x="400" y="20" width="150" height="100" rx="12" fill="#FAFAFA" stroke="#E4E4E7" stroke-width="2"/>
           <text x="475" y="52" text-anchor="middle" font-size="11" font-weight="800" fill="#09090B">Besøkende</text>
           <text x="475" y="70" text-anchor="middle" font-size="10" fill="#71717A">skriver dittfirma.no</text>
@@ -148,7 +145,11 @@
         </svg>
       </figure>
 
-      <h2>Steg 1: Koble domenet i GitHub</h2>
+      <!-- ═══════════════════════════════════════════════ -->
+      <!--  STEG 1: GitHub                                 -->
+      <!-- ═══════════════════════════════════════════════ -->
+
+      <h2>Steg 1: Registrer domenet i GitHub</h2>
 
       <p>Først forteller du GitHub hvilket domene som hører til nettsiden din. Det gjør at GitHub vet at <code>dittfirma.no</code> skal vise akkurat ditt repo og ingen annens.</p>
 
@@ -184,23 +185,18 @@
         <div class="step-content">
           <h3>Skriv inn domenet ditt</h3>
           <p>Under <strong>Custom domain</strong>, skriv inn domenenavnet ditt — for eksempel <code>dittfirma.no</code> — og klikk <strong>Save</strong>.</p>
-          <p>GitHub oppretter automatisk en fil som heter <code>CNAME</code> i repoet ditt. Det er denne filen som kobler domenet til nettsiden. Du vil se en gul melding som sier «DNS check in progress» — det er forventet, og den forsvinner når du har gjort steg 2.</p>
+          <p>GitHub oppretter automatisk en fil som heter <code>CNAME</code> i repoet ditt. Det er denne filen som kobler domenet til nettsiden. Du vil se en gul melding som sier «DNS check in progress» — det er forventet, og den forsvinner etter steg 3.</p>
           <img src="images/GIthub-pages.png" alt="Fyll inn domenenavnet under Custom domain" class="w-full h-auto mt-5 rounded-lg border border-zinc-200 shadow-sm" />
         </div>
       </div>
 
-      <div class="step not-prose">
-        <div class="step-num">5</div>
-        <div class="step-content">
-          <h3>Slå på HTTPS (gjør dette etter steg 2)</h3>
-          <p>Huk av for <strong>Enforce HTTPS</strong>. Da får nettsiden din hengelåsen i nettleseren, og besøkende vet at forbindelsen er sikker. Det er gratis.</p>
-          <p>Denne avhukingsboksen er sannsynligvis grå akkurat nå — det er normalt. Den blir klikkbar etter at du har gjort steg 2 (DNS-innstillingene) og ventet noen minutter. Kom tilbake hit etterpå og huk av.</p>
-        </div>
-      </div>
+      <!-- ═══════════════════════════════════════════════ -->
+      <!--  STEG 2: Finn leverandøren                      -->
+      <!-- ═══════════════════════════════════════════════ -->
 
-      <h2>Steg 2: Logg inn hos domeneleverandøren din</h2>
+      <h2>Steg 2: Finn og logg inn hos domeneleverandøren</h2>
 
-      <p>Nå skal du logge inn hos <strong>domeneleverandøren</strong> din og finne <strong>DNS-innstillingene</strong>. La oss ta det steg for steg.</p>
+      <p>Nå skal du logge inn hos <strong>domeneleverandøren</strong> din og finne <strong>DNS-innstillingene</strong>.</p>
 
       <div class="explain">
         <div class="explain-label">
@@ -208,14 +204,6 @@
           Hva er en domeneleverandør?
         </div>
         <p>Domeneleverandøren er selskapet du kjøpte nettadressen din hos — for eksempel <a href="#domeneshop-guide" style="color:#6D28D9;font-weight:600;">Domeneshop</a>, <a href="#webhuset-guide" style="color:#6D28D9;font-weight:600;">Webhuset</a>, <a href="#onecom-guide" style="color:#6D28D9;font-weight:600;">One.com</a>, <a href="#namecheap-guide" style="color:#6D28D9;font-weight:600;">Namecheap</a> eller <a href="#godaddy-guide" style="color:#6D28D9;font-weight:600;">GoDaddy</a>. Det er her du logger inn for å styre hvor domenet ditt peker.</p>
-      </div>
-
-      <div class="explain">
-        <div class="explain-label">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-          Hva er DNS-innstillinger?
-        </div>
-        <p><strong>DNS-innstillinger</strong> er en liste over «pekere» som forteller internett hvor domenet ditt skal sende besøkende. Akkurat nå peker de sannsynligvis til den gamle nettsiden din — vi skal endre dem slik at de peker til GitHub Pages i stedet. Hos leverandøren din kan denne siden hete «DNS-poster», «DNS Records», «Soneinnstillinger», «Avanserte innstillinger» eller lignende.</p>
       </div>
 
       <h3>Vet du ikke hvor domenet ditt er registrert?</h3>
@@ -238,20 +226,17 @@
         </div>
       </div>
 
-      <p>Når du vet hvem leverandøren er, gå til nettsiden deres, logg inn, og finn DNS-innstillingene. Husker du ikke innloggingen? Bruk «Glemt passord»-funksjonen — det er helt normalt.</p>
+      <h3>Logg inn og finn DNS-innstillingene</h3>
 
-      <div class="explain">
+      <p>Gå til nettsiden til leverandøren din, logg inn, og finn DNS-innstillingene. Klikk på leverandøren din under for å se nøyaktig hvordan:</p>
+
+      <div class="explain" style="margin-bottom:1rem;">
         <div class="explain-label">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-          Husker du ikke hvilken e-post du brukte?
+          Husker du ikke innloggingen?
         </div>
-        <p>Søk i innboksen din etter navnet på leverandøren (f.eks. «Domeneshop», «Webhuset» eller «One.com»). Du har sannsynligvis fått kvitteringer, fornyelsespåminnelser eller velkomst-e-poster fra dem — da vet du at det er den e-postadressen du registrerte deg med.</p>
-        <p>Finner du ingenting? Prøv «Glemt passord» hos leverandøren med de e-postadressene du tror det kan være. Du kan også kontakte leverandørens kundeservice direkte — de kan hjelpe deg med å finne kontoen din.</p>
+        <p>Bruk «Glemt passord»-funksjonen — det er helt normalt. Vet du ikke hvilken e-post du brukte? Søk i innboksen din etter navnet på leverandøren (f.eks. «Domeneshop» eller «Webhuset»). Du har sannsynligvis fått kvitteringer eller fornyelsespåminnelser fra dem. Du kan også kontakte leverandørens kundeservice direkte.</p>
       </div>
-
-      <h3>Finn DNS-innstillingene hos din leverandør</h3>
-
-      <p>Klikk på leverandøren din under for å se hvordan du finner DNS-innstillingene:</p>
 
       <div class="not-prose" style="display:flex;flex-direction:column;gap:8px;margin:1.25rem 0;">
 
@@ -265,8 +250,7 @@
               <li style="margin-bottom:6px;">Gå til <a href="https://www.domeneshop.no/login" target="_blank" rel="noopener" style="color:#0339f8;">domeneshop.no/login</a> og logg inn</li>
               <li style="margin-bottom:6px;">Klikk på <strong>«Mine domener»</strong></li>
               <li style="margin-bottom:6px;">Klikk på domenet ditt (f.eks. <code style="background:#F4F4F5;padding:2px 6px;border-radius:4px;font-size:0.85em;">dittfirma.no</code>)</li>
-              <li style="margin-bottom:6px;">Klikk på fanen <strong>«DNS-pekere»</strong> øverst</li>
-              <li>For å legge til en ny post: fyll inn de ledige feltene på nederste linje og klikk på det <strong>grønne pluss-symbolet</strong></li>
+              <li>Klikk på fanen <strong>«DNS-pekere»</strong> øverst — her skal du legge inn de nye postene</li>
             </ol>
             <p style="margin:12px 0 0;font-size:0.85rem;color:#71717A;">Se også <a href="https://domene.shop/faq?id=15" target="_blank" rel="noopener" style="color:#0339f8;">Domeneshop sin egen veiledning</a></p>
           </div>
@@ -281,9 +265,7 @@
             <ol style="margin:16px 0 0;padding-left:20px;font-size:0.95rem;line-height:1.7;color:#3F3F46;">
               <li style="margin-bottom:6px;">Gå til <a href="https://kundesenter.webhuset.no" target="_blank" rel="noopener" style="color:#0339f8;">Webhuset sitt kundesenter</a> og logg inn</li>
               <li style="margin-bottom:6px;">Klikk <strong>«Domene»</strong> → velg domenet ditt</li>
-              <li style="margin-bottom:6px;">Klikk <strong>«DNS»</strong> → <strong>«DNS-oppføringer»</strong></li>
-              <li style="margin-bottom:6px;">Klikk <strong>«Ny oppføring»</strong> for å legge til en post</li>
-              <li>Velg posttype (A, CNAME osv.), fyll inn feltene, og klikk <strong>«Lagre»</strong>. Feltet «Navn» — la stå tomt eller skriv <code style="background:#F4F4F5;padding:2px 6px;border-radius:4px;font-size:0.85em;">@</code> for hoveddomenet</li>
+              <li>Klikk <strong>«DNS»</strong> → <strong>«DNS-oppføringer»</strong> — her skal du legge inn de nye postene</li>
             </ol>
             <p style="margin:12px 0 0;font-size:0.85rem;color:#71717A;">Se også <a href="https://www.webhuset.no/hjelp/diverse/legge-til-endre-og-slette-dns-oppf-ringer" target="_blank" rel="noopener" style="color:#0339f8;">Webhuset sin egen veiledning</a></p>
           </div>
@@ -299,8 +281,7 @@
               <li style="margin-bottom:6px;">Gå til <a href="https://www.one.com/admin" target="_blank" rel="noopener" style="color:#0339f8;">one.com/admin</a> og logg inn</li>
               <li style="margin-bottom:6px;">Velg riktig domene i nedtrekkslisten øverst til venstre (under «Domenenavn»)</li>
               <li style="margin-bottom:6px;">Klikk på <strong>«Domene»</strong> i venstremenyen</li>
-              <li style="margin-bottom:6px;">Klikk på <strong>«DNS-innstillinger»</strong></li>
-              <li>Her kan du legge til nye poster og slette gamle. Velg posttype (A, CNAME osv.), fyll inn feltene, og lagre</li>
+              <li>Klikk på <strong>«DNS-innstillinger»</strong> — her skal du legge inn de nye postene</li>
             </ol>
             <p style="margin:12px 0 0;font-size:0.85rem;color:#71717A;">Se også <a href="https://help.one.com/hc/no/articles/115005595925-Administrer-dine-DNS-innstillinger" target="_blank" rel="noopener" style="color:#0339f8;">One.com sin egen veiledning</a></p>
           </div>
@@ -316,8 +297,7 @@
               <li style="margin-bottom:6px;">Gå til <a href="https://www.namecheap.com/myaccount/login/" target="_blank" rel="noopener" style="color:#0339f8;">namecheap.com</a> og logg inn</li>
               <li style="margin-bottom:6px;">Klikk på <strong>«Domain List»</strong> i venstremenyen</li>
               <li style="margin-bottom:6px;">Klikk <strong>«Manage»</strong> ved siden av domenet ditt</li>
-              <li style="margin-bottom:6px;">Klikk på fanen <strong>«Advanced DNS»</strong></li>
-              <li>Klikk <strong>«Add New Record»</strong> for å legge til poster. Velg type (A, CNAME osv.), fyll inn feltene, og klikk den grønne haken for å lagre</li>
+              <li>Klikk på fanen <strong>«Advanced DNS»</strong> — her skal du legge inn de nye postene</li>
             </ol>
             <p style="margin:12px 0 0;font-size:0.85rem;color:#71717A;">Se også <a href="https://www.namecheap.com/support/knowledgebase/article.aspx/767/10/how-to-change-dns-for-a-domain/" target="_blank" rel="noopener" style="color:#0339f8;">Namecheap sin egen veiledning</a></p>
           </div>
@@ -332,9 +312,7 @@
             <ol style="margin:16px 0 0;padding-left:20px;font-size:0.95rem;line-height:1.7;color:#3F3F46;">
               <li style="margin-bottom:6px;">Gå til <a href="https://www.godaddy.com" target="_blank" rel="noopener" style="color:#0339f8;">godaddy.com</a> og logg inn</li>
               <li style="margin-bottom:6px;">Gå til <strong>«Mine produkter»</strong> og finn domenet ditt</li>
-              <li style="margin-bottom:6px;">Klikk <strong>«DNS»</strong> eller <strong>«Administrer DNS»</strong> ved siden av domenet</li>
-              <li style="margin-bottom:6px;">Klikk <strong>«Legg til»</strong> for å opprette en ny post</li>
-              <li>Velg type (A, CNAME osv.), fyll inn feltene, og klikk <strong>«Lagre»</strong></li>
+              <li>Klikk <strong>«DNS»</strong> eller <strong>«Administrer DNS»</strong> — her skal du legge inn de nye postene</li>
             </ol>
             <p style="margin:12px 0 0;font-size:0.85rem;color:#71717A;">Se også <a href="https://no.godaddy.com/help/administrer-dns-oppforinger-680" target="_blank" rel="noopener" style="color:#0339f8;">GoDaddy sin egen veiledning</a></p>
           </div>
@@ -346,17 +324,25 @@
             Annen leverandør
           </summary>
           <div style="padding:0 20px 20px;border-top:1px solid #F4F4F5;">
-            <p style="margin:16px 0 0;font-size:0.95rem;line-height:1.7;color:#3F3F46;">Logg inn hos leverandøren din og finn siden for DNS-innstillinger — den kan hete «DNS-poster», «DNS Records», «Soneinnstillinger» eller lignende. Bruk gjerne <a href="https://aistudio.google.com" target="_blank" rel="noopener" style="color:#0339f8;font-weight:600;">AI-assistenten</a> lenger ned — den tilpasser veiledningen til akkurat din leverandør.</p>
+            <p style="margin:16px 0 0;font-size:0.95rem;line-height:1.7;color:#3F3F46;">Logg inn hos leverandøren din og finn siden for DNS-innstillinger — den kan hete «DNS-poster», «DNS Records», «Soneinnstillinger» eller lignende. Bruk gjerne <a href="https://aistudio.google.com" target="_blank" rel="noopener" style="color:#0339f8;font-weight:600;">AI-assistenten</a> i steg 3 — den tilpasser veiledningen til akkurat din leverandør.</p>
           </div>
         </details>
 
       </div>
 
-      <h3>Legg inn DNS-postene med hjelp fra AI-assistent (anbefalt)</h3>
+      <!-- ═══════════════════════════════════════════════ -->
+      <!--  STEG 3: Legg inn DNS-postene                   -->
+      <!-- ═══════════════════════════════════════════════ -->
+
+      <h2>Steg 3: Legg inn DNS-postene</h2>
+
+      <p>Nå som du har DNS-innstillingene åpne hos leverandøren din, er det på tide å legge inn de riktige postene. Du har to valg:</p>
 
       <div class="callout-ok callout" style="margin-bottom:1.25rem;">
         <p><strong>Vi anbefaler at du bruker AI-assistenten under</strong> i stedet for å gjøre det manuelt. Den guider deg gjennom hvert steg, tilpasser seg din leverandør, og kontrollerer at alt er riktig til slutt — slik at du slipper å lure på om du har gjort noe feil.</p>
       </div>
+
+      <h3>Alternativ A: Bruk AI-assistent (anbefalt)</h3>
 
       <p>Kopier teksten under og lim inn i <a href="https://aistudio.google.com" target="_blank" rel="noopener" style="color:#0339f8;font-weight:600;">Google AI Studio</a> (eller en annen AI-assistent som ChatGPT eller Claude):</p>
 
@@ -395,111 +381,101 @@ VIKTIGE REGLER:
 Vennligst:
 1. Spør meg hvilken domeneleverandør jeg bruker (f.eks. Domeneshop, One.com, Namecheap, GoDaddy, osv.)
 2. Spør meg hva mitt GitHub-brukernavn er (for CNAME-posten)
-3. Gi meg en steg-for-steg veiledning for å logge inn, finne DNS-innstillingene, slette de gamle postene, og legge inn de nye — tilpasset min leverandør
+3. Gi meg en steg-for-steg veiledning for å slette de gamle postene og legge inn de nye — tilpasset min leverandør
 4. Når jeg er ferdig, be meg beskrive eller ta skjermbilde av hva jeg ser i DNS-oversikten, og sjekk om alt ser riktig ut</div>
         </div>
       </div>
 
-      <h2>Manuell veiledning (hvis du ikke bruker AI-assistent)</h2>
+      <p>Når AI-assistenten sier at alt ser riktig ut, gå videre til steg 4.</p>
 
-      <p>Foretrekker du å gjøre det selv? Her er den fullstendige oversikten over hvilke DNS-poster som skal legges inn og slettes.</p>
+      <h3>Alternativ B: Gjør det manuelt</h3>
 
-      <h3>Først: rydd opp i gamle poster</h3>
+      <p>Foretrekker du å gjøre det selv? Klikk under for den fullstendige oversikten.</p>
 
-      <p>Før du legger inn de nye postene, må du fjerne de gamle som peker til den forrige nettsiden. Men <strong>det er viktig at du bare sletter de riktige</strong> — noen poster styrer e-posten din og må ikke røres.</p>
+      <details style="background:white;border:1.5px solid #E4E4E7;border-radius:12px;overflow:hidden;margin:1rem 0;" class="not-prose">
+        <summary style="padding:16px 20px;cursor:pointer;font-family:'Archivo',sans-serif;font-weight:700;font-size:1rem;color:#09090B;display:flex;align-items:center;gap:10px;list-style:none;">
+          <svg class="details-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="transition:transform 0.2s;flex-shrink:0;"><path d="M9 18l6-6-6-6"/></svg>
+          Vis manuell veiledning
+        </summary>
+        <div style="padding:4px 20px 20px;border-top:1px solid #F4F4F5;">
 
-      <div style="background:#FEF2F2;border:2px solid #FCA5A5;border-radius:14px;padding:20px 24px;margin:1.5rem 0;" class="not-prose">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
-          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#DC2626" stroke-width="2.5"><path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
-          <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:1rem;color:#991B1B;">Ikke slett e-post-postene!</span>
-        </div>
-        <p style="font-size:0.95rem;line-height:1.55;color:#7F1D1D;margin:0 0 12px;">DNS-innstillingene styrer <em>mer</em> enn bare nettsiden — de styrer også e-posten din. Hvis du sletter feil poster, kan e-posten din slutte å fungere.</p>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-          <div style="background:white;border:1.5px solid #FCA5A5;border-radius:10px;padding:14px;">
-            <p style="font-weight:700;font-size:0.85rem;color:#991B1B;margin:0 0 8px;">SLETT disse (gamle nettside-poster):</p>
-            <ul style="margin:0;padding-left:16px;font-size:0.875rem;color:#7F1D1D;line-height:1.6;">
-              <li style="list-style:disc;margin-bottom:2px;"><strong>A-poster</strong> på <code style="background:#FEE2E2;font-size:0.8em;">@</code> som peker til den gamle hostingens IP</li>
-              <li style="list-style:disc;margin-bottom:2px;"><strong>AAAA-poster</strong> på <code style="background:#FEE2E2;font-size:0.8em;">@</code> (hvis de finnes)</li>
-              <li style="list-style:disc;margin-bottom:0;"><strong>CNAME</strong> på <code style="background:#FEE2E2;font-size:0.8em;">www</code> som peker til den gamle hostingen</li>
-            </ul>
+          <h4 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:1.05rem;margin:1.5rem 0 0.75rem;color:#09090B;">Først: rydd opp i gamle poster</h4>
+          <p style="font-size:0.95rem;line-height:1.65;color:#3F3F46;margin-bottom:1rem;">Før du legger inn de nye postene, må du fjerne de gamle som peker til den forrige nettsiden. Men <strong style="color:#09090B;">det er viktig at du bare sletter de riktige</strong> — noen poster styrer e-posten din og må ikke røres.</p>
+
+          <div style="background:#FEF2F2;border:2px solid #FCA5A5;border-radius:14px;padding:20px 24px;margin:1rem 0;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#DC2626" stroke-width="2.5"><path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+              <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:1rem;color:#991B1B;">Ikke slett e-post-postene!</span>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+              <div style="background:white;border:1.5px solid #FCA5A5;border-radius:10px;padding:14px;">
+                <p style="font-weight:700;font-size:0.85rem;color:#991B1B;margin:0 0 8px;">SLETT disse:</p>
+                <ul style="margin:0;padding-left:16px;font-size:0.875rem;color:#7F1D1D;line-height:1.6;">
+                  <li style="list-style:disc;margin-bottom:2px;"><strong>A-poster</strong> på <code style="background:#FEE2E2;font-size:0.8em;">@</code> som peker til den gamle hostingens IP</li>
+                  <li style="list-style:disc;margin-bottom:2px;"><strong>AAAA-poster</strong> på <code style="background:#FEE2E2;font-size:0.8em;">@</code> (hvis de finnes)</li>
+                  <li style="list-style:disc;margin-bottom:0;"><strong>CNAME</strong> på <code style="background:#FEE2E2;font-size:0.8em;">www</code> som peker til den gamle hostingen</li>
+                </ul>
+              </div>
+              <div style="background:white;border:1.5px solid #86EFAC;border-radius:10px;padding:14px;">
+                <p style="font-weight:700;font-size:0.85rem;color:#14532D;margin:0 0 8px;">BEHOLD disse:</p>
+                <ul style="margin:0;padding-left:16px;font-size:0.875rem;color:#15803D;line-height:1.6;">
+                  <li style="list-style:disc;margin-bottom:2px;"><strong>MX-poster</strong> — styrer e-posten din</li>
+                  <li style="list-style:disc;margin-bottom:2px;"><strong>TXT-poster</strong> — e-postverifisering (SPF, DKIM)</li>
+                  <li style="list-style:disc;margin-bottom:0;"><strong>NS-poster</strong> — styrer selve domenet</li>
+                </ul>
+              </div>
+            </div>
+            <p style="font-size:0.85rem;color:#991B1B;margin:12px 0 0;">Er du usikker? La posten stå — eller spør oss på <strong>adrian@dmarketing.no</strong>.</p>
           </div>
-          <div style="background:white;border:1.5px solid #86EFAC;border-radius:10px;padding:14px;">
-            <p style="font-weight:700;font-size:0.85rem;color:#14532D;margin:0 0 8px;">BEHOLD disse (e-post og annet):</p>
-            <ul style="margin:0;padding-left:16px;font-size:0.875rem;color:#15803D;line-height:1.6;">
-              <li style="list-style:disc;margin-bottom:2px;"><strong>MX-poster</strong> — styrer e-posten din</li>
-              <li style="list-style:disc;margin-bottom:2px;"><strong>TXT-poster</strong> — brukes til e-postverifisering (SPF, DKIM)</li>
-              <li style="list-style:disc;margin-bottom:0;"><strong>NS-poster</strong> — styrer selve domenet, rør aldri disse</li>
-            </ul>
-          </div>
+
+          <h4 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:1.05rem;margin:1.5rem 0 0.75rem;color:#09090B;">Legg inn de nye A-postene (obligatorisk)</h4>
+          <p style="font-size:0.95rem;line-height:1.65;color:#3F3F46;margin-bottom:0.75rem;">Disse fire postene sender domenet ditt til GitHub sine servere. Verdiene er <strong style="color:#09090B;">alltid de samme</strong> for alle GitHub Pages-sider.</p>
+          <table style="width:100%;border-collapse:collapse;margin:0.75rem 0;font-size:0.9375rem;">
+            <thead><tr><th style="background:#F4F4F5;font-weight:700;text-align:left;padding:10px 14px;border:1px solid #E4E4E7;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.04em;color:#52525B;">Type</th><th style="background:#F4F4F5;font-weight:700;text-align:left;padding:10px 14px;border:1px solid #E4E4E7;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.04em;color:#52525B;">Vert / Navn</th><th style="background:#F4F4F5;font-weight:700;text-align:left;padding:10px 14px;border:1px solid #E4E4E7;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.04em;color:#52525B;">Verdi</th></tr></thead>
+            <tbody>
+              <tr><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;">A</td><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;">@</td><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;">185.199.108.153</td></tr>
+              <tr><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;background:#FAFAFA;">A</td><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;background:#FAFAFA;">@</td><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;background:#FAFAFA;">185.199.109.153</td></tr>
+              <tr><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;">A</td><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;">@</td><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;">185.199.110.153</td></tr>
+              <tr><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;background:#FAFAFA;">A</td><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;background:#FAFAFA;">@</td><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;background:#FAFAFA;">185.199.111.153</td></tr>
+            </tbody>
+          </table>
+
+          <h4 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:1.05rem;margin:1.5rem 0 0.75rem;color:#09090B;">Legg inn CNAME-post for www (obligatorisk)</h4>
+          <p style="font-size:0.95rem;line-height:1.65;color:#3F3F46;margin-bottom:0.75rem;">Sørger for at <code style="background:#F4F4F5;padding:2px 6px;border-radius:4px;font-size:0.9em;">www.dittfirma.no</code> også fungerer:</p>
+          <table style="width:100%;border-collapse:collapse;margin:0.75rem 0;font-size:0.9375rem;">
+            <thead><tr><th style="background:#F4F4F5;font-weight:700;text-align:left;padding:10px 14px;border:1px solid #E4E4E7;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.04em;color:#52525B;">Type</th><th style="background:#F4F4F5;font-weight:700;text-align:left;padding:10px 14px;border:1px solid #E4E4E7;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.04em;color:#52525B;">Vert / Navn</th><th style="background:#F4F4F5;font-weight:700;text-align:left;padding:10px 14px;border:1px solid #E4E4E7;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.04em;color:#52525B;">Verdi</th></tr></thead>
+            <tbody><tr><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;">CNAME</td><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;">www</td><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;"><em>ditt-brukernavn</em>.github.io</td></tr></tbody>
+          </table>
+          <p style="font-size:0.95rem;line-height:1.65;color:#3F3F46;">Bytt ut <code style="background:#F4F4F5;padding:2px 6px;border-radius:4px;font-size:0.9em;">ditt-brukernavn</code> med ditt faktiske GitHub-brukernavn.</p>
+
+          <h4 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:1.05rem;margin:1.5rem 0 0.75rem;color:#09090B;">AAAA-poster for IPv6 (valgfritt, men anbefalt)</h4>
+          <table style="width:100%;border-collapse:collapse;margin:0.75rem 0;font-size:0.9375rem;">
+            <thead><tr><th style="background:#F4F4F5;font-weight:700;text-align:left;padding:10px 14px;border:1px solid #E4E4E7;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.04em;color:#52525B;">Type</th><th style="background:#F4F4F5;font-weight:700;text-align:left;padding:10px 14px;border:1px solid #E4E4E7;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.04em;color:#52525B;">Vert / Navn</th><th style="background:#F4F4F5;font-weight:700;text-align:left;padding:10px 14px;border:1px solid #E4E4E7;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.04em;color:#52525B;">Verdi</th></tr></thead>
+            <tbody>
+              <tr><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;">AAAA</td><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;">@</td><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;">2606:50c0:8000::153</td></tr>
+              <tr><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;background:#FAFAFA;">AAAA</td><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;background:#FAFAFA;">@</td><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;background:#FAFAFA;">2606:50c0:8001::153</td></tr>
+              <tr><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;">AAAA</td><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;">@</td><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;">2606:50c0:8002::153</td></tr>
+              <tr><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;background:#FAFAFA;">AAAA</td><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;background:#FAFAFA;">@</td><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;background:#FAFAFA;">2606:50c0:8003::153</td></tr>
+            </tbody>
+          </table>
+
         </div>
-        <p style="font-size:0.85rem;color:#991B1B;margin:12px 0 0;">Er du usikker på hva en post gjør? La den stå — eller spør oss på <strong>adrian@dmarketing.no</strong> før du sletter.</p>
-      </div>
+      </details>
 
-      <h3>Legg inn de nye A-postene (obligatorisk)</h3>
-      <p>Disse fire postene sender domenet ditt (f.eks. <code>dittfirma.no</code>) til GitHub sine servere. Verdiene er <strong>alltid de samme</strong> for alle GitHub Pages-sider — de endrer seg aldri.</p>
+      <!-- ═══════════════════════════════════════════════ -->
+      <!--  STEG 4: Vent og sjekk                          -->
+      <!-- ═══════════════════════════════════════════════ -->
 
-      <table class="dns-table not-prose">
-        <thead>
-          <tr><th>Type</th><th>Vert / Navn</th><th>Verdi</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>A</td><td>@</td><td>185.199.108.153</td></tr>
-          <tr><td>A</td><td>@</td><td>185.199.109.153</td></tr>
-          <tr><td>A</td><td>@</td><td>185.199.110.153</td></tr>
-          <tr><td>A</td><td>@</td><td>185.199.111.153</td></tr>
-        </tbody>
-      </table>
-
-      <div class="explain">
-        <div class="explain-label">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-          Hva betyr @?
-        </div>
-        <p><code>@</code> betyr «selve domenet» — altså <code>dittfirma.no</code> uten noe foran. Noen leverandører vil at du skriver domenenavnet i stedet for @, men de fleste forstår @-tegnet.</p>
-      </div>
-
-      <h3>Legg inn CNAME-post for www (obligatorisk)</h3>
-      <p>Denne posten sørger for at <code>www.dittfirma.no</code> også fungerer:</p>
-
-      <table class="dns-table not-prose">
-        <thead>
-          <tr><th>Type</th><th>Vert / Navn</th><th>Verdi</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>CNAME</td><td>www</td><td><em>ditt-brukernavn</em>.github.io</td></tr>
-        </tbody>
-      </table>
-
-      <p>Bytt ut <code>ditt-brukernavn</code> med ditt faktiske GitHub-brukernavn. Hvis brukernavnet ditt er <code>olahansen</code>, skriver du <code>olahansen.github.io</code>.</p>
-
-      <div class="callout-warn callout">
-        <p><strong>Viktig:</strong> CNAME-posten skal bare settes på <code>www</code>, aldri på <code>@</code> (selve domenet). En CNAME-post på <code>@</code> kan kræsje med e-post og andre tjenester. Bruk A-poster for <code>@</code> og CNAME for <code>www</code>.</p>
-      </div>
-
-      <h3>AAAA-poster for IPv6 (valgfritt, men anbefalt)</h3>
-      <p>Disse gjør at domenet også fungerer over IPv6 — en nyere versjon av internettprotokollen. Det er ikke strengt nødvendig, men det er god praksis:</p>
-
-      <table class="dns-table not-prose">
-        <thead>
-          <tr><th>Type</th><th>Vert / Navn</th><th>Verdi</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>AAAA</td><td>@</td><td>2606:50c0:8000::153</td></tr>
-          <tr><td>AAAA</td><td>@</td><td>2606:50c0:8001::153</td></tr>
-          <tr><td>AAAA</td><td>@</td><td>2606:50c0:8002::153</td></tr>
-          <tr><td>AAAA</td><td>@</td><td>2606:50c0:8003::153</td></tr>
-        </tbody>
-      </table>
-
-      <div class="callout">
-        <p><strong>Alle IP-adressene over er faste.</strong> De er de samme for alle GitHub Pages-nettsider i hele verden. Du trenger aldri endre dem — de er like uansett hva nettsiden din inneholder.</p>
-      </div>
-
-      <h2>Vent og sjekk</h2>
+      <h2>Steg 4: Vent, sjekk og slå på HTTPS</h2>
 
       <p>DNS-endringer kan ta <strong>opptil 24 timer</strong> å spre seg rundt på internett, men som regel fungerer det innen noen minutter. Åpne domenet ditt i en nettleser og se om den nye nettsiden dukker opp.</p>
 
-      <p>Når nettsiden viser seg, gå tilbake til GitHub → Settings → Pages og huk av <strong>Enforce HTTPS</strong> hvis du ikke allerede har gjort det. Da får nettsiden hengelåsen i nettleseren.</p>
+      <p>Når nettsiden viser seg:</p>
+      <ol>
+        <li>Gå tilbake til GitHub → <strong>Settings</strong> → <strong>Pages</strong></li>
+        <li>Huk av for <strong>Enforce HTTPS</strong> — da får nettsiden hengelåsen i nettleseren. Det er gratis.</li>
+      </ol>
+      <p>Denne avhukingsboksen kan være grå akkurat nå — det er normalt. Den blir klikkbar etter at DNS-endringene har spredd seg, som regel innen noen minutter.</p>
 
       <div class="callout-ok callout">
         <p><strong>Ferdig!</strong> Når domenet viser den nye nettsiden med hengelås, er koblingen på plass. Du trenger aldri gjøre dette igjen — med mindre du en dag bytter til en helt annen hostingleverandør.</p>
@@ -512,7 +488,7 @@ Vennligst:
         <li><strong>Sjekk at det ikke ligger gamle A-poster igjen</strong> — de kan kræsje med de nye. Du skal bare ha de fire GitHub-adressene, ingen andre A-poster på <code>@</code>.</li>
         <li><strong>Sjekk at domenenavnet i GitHub</strong> er stavet nøyaktig likt som domenet du eier (inkludert <code>.no</code> på slutten).</li>
         <li><strong>Tøm nettleserens hurtigminne</strong> — trykk <kbd>Ctrl+Shift+R</kbd> (Windows) eller <kbd>Cmd+Shift+R</kbd> (Mac) for å laste siden uten cache.</li>
-        <li><strong>Kontakt oss</strong> på <strong>adrian@dmarketing.no</strong> — vi kan bruke offentlige verktøy for å sjekke om DNS-innstillingene dine er oppdatert riktig, og guide deg videre hvis det har skjedd en feil.</li>
+        <li><strong>Kontakt oss</strong> på <strong>adrian@dmarketing.no</strong> — vi kan sjekke om DNS-innstillingene dine er riktige og guide deg videre.</li>
       </ul>
 
       <div style="background:#F0FDF4;border:1.5px solid #86EFAC;border-radius:14px;padding:20px 24px;margin:2rem 0 0;">
