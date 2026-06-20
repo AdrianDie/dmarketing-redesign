@@ -195,13 +195,57 @@
         </div>
       </div>
 
-      <div style="background:linear-gradient(135deg,#EDE9FE,#E0E7FF);border:2px solid #A78BFA;border-radius:16px;padding:28px 28px 24px;margin:2.5rem 0;" class="not-prose">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
-          <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#7C3AED" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
-          <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:1.15rem;color:#4C1D95;">Trenger du hjelp med DNS? Bruk AI-assistent</span>
+      <h2>Steg 2: Logg inn hos domeneleverandøren din</h2>
+
+      <p>Nå skal du logge inn hos <strong>domeneleverandøren</strong> din og finne <strong>DNS-innstillingene</strong>. La oss ta det steg for steg.</p>
+
+      <div class="explain">
+        <div class="explain-label">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          Hva er en domeneleverandør?
         </div>
-        <p style="font-size:1rem;line-height:1.6;color:#3B2667;margin:0 0 14px;">DNS-innstillinger kan virke teknisk, men du trenger ikke forstå alt selv. Vi har laget en ferdig tekst du kan lime inn i en AI-assistent — da får du en personlig veiledning tilpasset akkurat din domeneleverandør.</p>
-        <p style="font-size:0.95rem;line-height:1.55;color:#3B2667;margin:0 0 16px;"><strong>Slik gjør du:</strong> Åpne en AI-assistent (vi anbefaler <a href="https://aistudio.google.com" target="_blank" rel="noopener" style="color:#4C1D95;font-weight:600;">Google AI Studio</a>, men <a href="https://chatgpt.com" target="_blank" rel="noopener" style="color:#4C1D95;font-weight:600;">ChatGPT</a> eller <a href="https://claude.ai" target="_blank" rel="noopener" style="color:#4C1D95;font-weight:600;">Claude</a> fungerer også). Lim inn teksten under og følg instruksjonene. AI-assistenten vil spørre deg hvilken leverandør du bruker og guide deg steg for steg — med kontroll til slutt.</p>
+        <p>Domeneleverandøren er selskapet du kjøpte nettadressen din hos — for eksempel <strong>Domeneshop</strong>, <strong>One.com</strong>, <strong>Namecheap</strong> eller <strong>GoDaddy</strong>. Det er her du logger inn for å styre hvor domenet ditt peker.</p>
+      </div>
+
+      <div class="explain">
+        <div class="explain-label">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          Hva er DNS-innstillinger?
+        </div>
+        <p><strong>DNS-innstillinger</strong> er en liste over «pekere» som forteller internett hvor domenet ditt skal sende besøkende. Akkurat nå peker de sannsynligvis til den gamle nettsiden din — vi skal endre dem slik at de peker til GitHub Pages i stedet. Hos leverandøren din kan denne siden hete «DNS-poster», «DNS Records», «Soneinnstillinger», «Avanserte innstillinger» eller lignende.</p>
+      </div>
+
+      <h3>Vet du ikke hvor domenet ditt er registrert?</h3>
+
+      <p>Ingen grunn til bekymring — det er enkelt å finne ut. For <strong>.no-domener</strong> kan du slå det opp direkte:</p>
+
+      <div class="step not-prose">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>Søk opp domenet ditt hos Norid</h3>
+          <p>Gå til <a href="https://www.norid.no/no/domeneoppslag/" target="_blank" rel="noopener">norid.no/domeneoppslag</a> og skriv inn domenet ditt (for eksempel <code>dittfirma.no</code>). Trykk «Søk».</p>
+        </div>
+      </div>
+
+      <div class="step not-prose">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>Finn registraren</h3>
+          <p>I resultatet ser du et felt som heter <strong>«Registrar»</strong> — det er leverandøren din. Der står det for eksempel «Domeneshop AS» eller «United Domains AG». Det er hos <em>dem</em> du skal logge inn.</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        <p><strong>Har du et .com- eller annet internasjonalt domene?</strong> Søk på <a href="https://lookup.icann.org/" target="_blank" rel="noopener" style="color:#1E3A8A;font-weight:600;">lookup.icann.org</a> i stedet — det fungerer for alle domener utenfor .no.</p>
+      </div>
+
+      <p>Når du vet hvem leverandøren er, gå til nettsiden deres, logg inn, og finn DNS-innstillingene. Husker du ikke innloggingen? Bruk «Glemt passord»-funksjonen — det er helt normalt.</p>
+
+      <h3>Bruk AI-assistent for å få hjelp med DNS-postene</h3>
+
+      <p>Når du er innlogget og har funnet DNS-innstillingene, kan AI-assistenten hjelpe deg med å legge inn de riktige postene. Kopier teksten under og lim inn i <a href="https://aistudio.google.com" target="_blank" rel="noopener" style="color:#0339f8;font-weight:600;">Google AI Studio</a> (eller en annen AI-assistent):</p>
+
+      <div style="background:linear-gradient(135deg,#EDE9FE,#E0E7FF);border:2px solid #A78BFA;border-radius:16px;padding:28px 28px 24px;margin:1.5rem 0;" class="not-prose">
         <div style="position:relative;">
           <button onclick="navigator.clipboard.writeText(document.getElementById('chatgpt-prompt').innerText).then(()=>{this.textContent='Kopiert ✓';this.style.background='#16A34A';setTimeout(()=>{this.textContent='Kopier teksten';this.style.background='#7C3AED'},2000)})" style="position:absolute;top:10px;right:10px;background:#7C3AED;color:white;border:none;padding:8px 16px;border-radius:8px;font-size:0.8rem;font-weight:600;cursor:pointer;z-index:1;font-family:'Inter',sans-serif;">Kopier teksten</button>
           <div id="chatgpt-prompt" style="background:white;border:1.5px solid #C4B5FD;border-radius:12px;padding:20px 20px 20px;font-size:0.85rem;line-height:1.6;color:#1E1B3A;max-height:260px;overflow-y:auto;white-space:pre-wrap;font-family:'Inter',sans-serif;">Jeg trenger hjelp med å koble domenet mitt til en nettside som ligger på GitHub Pages. Jeg er ikke teknisk, så jeg trenger en enkel steg-for-steg veiledning.
@@ -239,12 +283,11 @@ Vennligst:
 3. Gi meg en steg-for-steg veiledning for å logge inn, finne DNS-innstillingene, slette de gamle postene, og legge inn de nye — tilpasset min leverandør
 4. Når jeg er ferdig, be meg beskrive eller ta skjermbilde av hva jeg ser i DNS-oversikten, og sjekk om alt ser riktig ut</div>
         </div>
-        <p style="font-size:0.85rem;color:#6D28D9;margin:14px 0 0;">Du kan fortsatt følge den manuelle veiledningen under hvis du foretrekker det.</p>
       </div>
 
-      <h2>Steg 2: Legg inn DNS-innstillinger (manuell veiledning)</h2>
+      <h2>Manuell veiledning (hvis du ikke bruker AI-assistent)</h2>
 
-      <p>Hvis du foretrekker å gjøre det selv uten ChatGPT, følger her den fullstendige veiledningen. Logg inn hos domeneleverandøren din (for eksempel Domeneshop, Namecheap eller GoDaddy). Finn siden for <strong>DNS-innstillinger</strong> — den kan hete «DNS-poster», «DNS Records», «Soneinnstillinger» eller lignende.</p>
+      <p>Foretrekker du å gjøre det selv? Her er den fullstendige oversikten over hvilke DNS-poster som skal legges inn og slettes.</p>
 
       <h3>Først: rydd opp i gamle poster</h3>
 
@@ -337,7 +380,7 @@ Vennligst:
         <p><strong>Alle IP-adressene over er faste.</strong> De er de samme for alle GitHub Pages-nettsider i hele verden. Du trenger aldri endre dem — de er like uansett hva nettsiden din inneholder.</p>
       </div>
 
-      <h2>Steg 3: Vent og sjekk</h2>
+      <h2>Vent og sjekk</h2>
 
       <p>DNS-endringer kan ta <strong>opptil 24 timer</strong> å spre seg rundt på internett, men som regel fungerer det innen noen minutter. Åpne domenet ditt i en nettleser og se om den nye nettsiden dukker opp.</p>
 
