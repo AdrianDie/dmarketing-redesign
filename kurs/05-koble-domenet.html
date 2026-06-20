@@ -204,7 +204,7 @@
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
           Hva er en domeneleverandør?
         </div>
-        <p>Domeneleverandøren er selskapet du kjøpte nettadressen din hos — for eksempel <a href="#domeneshop-guide" style="color:#6D28D9;font-weight:600;">Domeneshop</a>, <strong>One.com</strong>, <strong>Namecheap</strong> eller <strong>GoDaddy</strong>. Det er her du logger inn for å styre hvor domenet ditt peker.</p>
+        <p>Domeneleverandøren er selskapet du kjøpte nettadressen din hos — for eksempel <a href="#domeneshop-guide" style="color:#6D28D9;font-weight:600;">Domeneshop</a>, <a href="#webhuset-guide" style="color:#6D28D9;font-weight:600;">Webhuset</a>, <strong>One.com</strong>, <strong>Namecheap</strong> eller <strong>GoDaddy</strong>. Det er her du logger inn for å styre hvor domenet ditt peker.</p>
       </div>
 
       <div class="explain">
@@ -279,6 +279,43 @@
       </div>
 
       <p>Herfra kan du enten følge den manuelle veiledningen lenger ned, eller bruke AI-assistenten under for å få hjelp med hvilke poster du skal slette og legge inn.</p>
+
+      <h3 id="webhuset-guide">Bruker du Webhuset? Her er snarveien</h3>
+
+      <p>Slik finner du DNS-innstillingene hos <strong>Webhuset</strong>:</p>
+
+      <div class="step not-prose">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>Logg inn i Kundesenteret</h3>
+          <p>Gå til <a href="https://kundesenter.webhuset.no" target="_blank" rel="noopener">Webhuset sitt kundesenter</a> og logg inn.</p>
+        </div>
+      </div>
+
+      <div class="step not-prose">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>Velg domenet ditt</h3>
+          <p>Klikk på <strong>«Domene»</strong> i menyen, og velg domenet du vil koble til nettsiden.</p>
+        </div>
+      </div>
+
+      <div class="step not-prose">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>Gå til DNS-oppføringer</h3>
+          <p>Klikk på <strong>«DNS»</strong> og deretter <strong>«DNS-oppføringer»</strong>. Her ser du alle postene som er lagt inn.</p>
+        </div>
+      </div>
+
+      <div class="step not-prose">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h3>Legg til nye poster</h3>
+          <p>Klikk <strong>«Ny oppføring»</strong> for å legge til en post. Velg posttype fra nedtrekkslisten (A, CNAME osv.), fyll inn feltene, og klikk <strong>«Lagre»</strong>. Gjenta for hver post du skal legge inn.</p>
+          <p>Feltet <strong>«Navn»</strong> er subdomenet — la det stå tomt eller skriv <code>@</code> for hoveddomenet. <strong>TTL</strong> kan du la stå på standard.</p>
+        </div>
+      </div>
 
       <h3>Bruk AI-assistent for å få hjelp med DNS-postene</h3>
 
