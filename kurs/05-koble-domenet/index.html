@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>05: Koble domenet til nettsiden | Nettsidekurs</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { theme: { extend: { fontFamily: { display: ['Archivo', 'sans-serif'], body: ['Inter', 'sans-serif'] }, colors: { ink: '#09090B', brand: '#0339f8', navy: '#0B1F4A' } } } }</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="../images/favicon.png" rel="shortcut icon" type="image/x-icon" />
+  <script src="/kurs/auth.js"></script>
+  <script src="/kurs/kurs-track.js"></script>
+  <script src="/kurs/kurs-progress.js" defer></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #FAFAFA; color: #09090B; }
+    .font-display { font-family: 'Archivo', sans-serif; }
+    .badge { font-family: 'JetBrains Mono', 'Courier New', monospace; }
+    .prose-custom h2 { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 1.875rem; line-height: 1.2; margin-top: 3.5rem; margin-bottom: 1.25rem; letter-spacing: -0.02em; }
+    .prose-custom h3 { font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 1.25rem; margin-top: 2.75rem; margin-bottom: 1rem; }
+    .prose-custom p { font-size: 1.0625rem; line-height: 1.7; color: #3F3F46; margin-bottom: 2.5rem; }
+    .prose-custom ul, .prose-custom ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+    .prose-custom li { font-size: 1.0625rem; line-height: 1.7; color: #3F3F46; margin-bottom: 0.5rem; }
+    .prose-custom ul li { list-style-type: disc; }
+    .prose-custom ol li { list-style-type: decimal; }
+    .prose-custom strong { color: #09090B; }
+    .prose-custom code { background: #F4F4F5; padding: 0.15rem 0.4rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
+    .callout { background: #EFF6FF; border-left: 3px solid #0339f8; padding: 1.25rem 1.5rem; border-radius: 0.5rem; margin: 1.5rem 0; }
+    .callout p { margin-bottom: 0; color: #1E3A8A; }
+    .callout-warn { background: #FEF3C7; border-left-color: #D97706; }
+    .callout-warn p { color: #78350F; }
+    .callout-ok { background: #F0FDF4; border-left-color: #16A34A; }
+    .callout-ok p { color: #14532D; }
+    .explain { background: #F5F3FF; border: 1px solid #DDD6FE; border-left: 3px solid #7C3AED; border-radius: 0.5rem; padding: 1.25rem 1.5rem; margin: 1.5rem 0; }
+    .explain .explain-label { display: inline-flex; align-items: center; gap: 0.4rem; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: #6D28D9; margin-bottom: 0.5rem; }
+    .explain p { font-size: 1rem; line-height: 1.65; color: #3F2C66; margin-bottom: 0; }
+    .explain p + p { margin-top: 0.75rem; }
+    .explain strong { color: #4C1D95; }
+    .step { background: white; border: 1px solid #E4E4E7; border-radius: 1rem; padding: 1.5rem; margin: 1rem 0; display: flex; gap: 1rem; align-items: flex-start; }
+    .step-num { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 1.75rem; color: #0339f8; line-height: 1; flex-shrink: 0; min-width: 2rem; }
+    .step-content { flex: 1; min-width: 0; } /* Lagt til for at bildene ikke skal bryte ut av boksen */
+    .step-content h3 { margin-top: 0 !important; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem; color: #09090B; }
+    .step-content p { margin-bottom: 0.5rem; font-size: 1rem; line-height: 1.65; color: #3F3F46; }
+    .step-content p:last-child { margin-bottom: 0; }
+    .step-content code { background: #F4F4F5; padding: 0.1rem 0.35rem; border-radius: 4px; font-family: monospace; font-size: 0.9em; }
+    .step-content a { color: #0339f8; text-decoration: underline; }
+    .dns-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9375rem; }
+    .dns-table th { background: #F4F4F5; font-weight: 700; text-align: left; padding: 10px 14px; border: 1px solid #E4E4E7; font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 0.04em; color: #52525B; }
+    .dns-table td { padding: 10px 14px; border: 1px solid #E4E4E7; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #09090B; }
+    .dns-table tr:nth-child(even) td { background: #FAFAFA; }
+    details summary::-webkit-details-marker { display: none; }
+    details[open] .details-arrow { transform: rotate(90deg); }
+    details summary:hover { background: #FAFAFA; }
+  </style>
+</head>
+<body>
+  <script>window.DIETRICHS_MENU_CONFIG = { basePath: '../' };</script>
+  <script src="../components/dietrichs-menu.js" defer></script>
+
+  <header class="py-14 md:py-20 px-6 border-b border-zinc-100">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex items-center gap-3 mb-5">
+        <a href=".././" class="text-xs font-semibold uppercase tracking-widest text-zinc-500 hover:text-blue-600">← Alle moduler</a>
+        <span class="text-zinc-300">/</span>
+        <span class="badge text-xs text-zinc-400">MODUL 05</span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-blue-600">Oppsett</span>
+      </div>
+      <h1 class="font-display font-extrabold text-4xl md:text-6xl tracking-[-0.03em] text-ink leading-[1.05] mb-5">
+        Koble domenet til nettsiden
+      </h1>
+      <p class="text-lg md:text-xl text-zinc-600 leading-relaxed">
+        Pek domenet ditt til den nye nettsiden — slik at besøkende kommer til riktig sted.
+      </p>
+    </div>
+  </header>
+
+  <article class="px-6 py-12 md:py-16">
+    <div class="max-w-4xl mx-auto prose-custom">
+
+      <div class="callout-warn callout">
+        <p><strong>Forutsetning:</strong> Denne modulen forutsetter at du har akseptert overføringen av nettsiden i GitHub. Du fikk en e-post fra GitHub med tittelen «Accept repository transfer» — klikk lenken og godkjenn <em>før</em> du fortsetter her. Hvis du ikke har fått den ennå, vent til Adrian har sendt den.</p>
+      </div>
+
+      <div class="callout">
+        <p><strong>Tips:</strong> Denne modulen inneholder noen tekniske steg. Bruk gjerne en AI-assistent som <a href="https://aistudio.google.com" target="_blank" rel="noopener" style="color:#1E3A8A;font-weight:600;">Google AI Studio</a> underveis for å forsikre deg om at alt gjøres riktig — i steg 3 finner du en ferdig tekst du kan lime inn for å få hjelp.</p>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════ -->
+      <!--  INTRO                                          -->
+      <!-- ═══════════════════════════════════════════════ -->
+
+      <h2>Hva betyr det å «koble domenet»?</h2>
+
+      <p>Nettsiden din ligger allerede klar på GitHub Pages, men den har foreløpig en midlertidig adresse (noe som <code>brukernavn.github.io/mappenavn</code>). For at folk skal finne siden på din vanlige nettadresse — for eksempel <code>dittfirma.no</code> — må du fortelle internett at domenet ditt nå skal vise innholdet fra GitHub Pages.</p>
+
+      <p>Det gjør du ved å legge inn noen <strong>DNS-innstillinger</strong> hos domeneleverandøren din. DNS er internettets adressebok — du oppdaterer hvilken adresse boken peker til, som å endre destinasjonen i en GPS.</p>
+
+      <div class="explain">
+        <div class="explain-label">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          Hvorfor må jeg gjøre dette selv?
+        </div>
+        <p>Dette krever innlogging hos <em>din</em> domeneleverandør. Av sikkerhetsmessige årsaker ber vi aldri om kundens passord, og vi har derfor ikke tilgang til å gjøre dette for deg.</p>
+        <p>I tillegg er et av hovedmålene med dette kurset at <strong>du eier og har kontroll over alt selv</strong>. Når du forstår hvordan du styrer ditt eget domene, er du ikke lenger avhengig av dyre mellomledd. Innstillingene du legger inn nå er de samme uansett — og du trenger aldri gjøre det igjen med mindre du bytter leverandør.</p>
+      </div>
+
+      <h2>Det du skal gjøre — oversikt</h2>
+      <p>Det er fire steg:</p>
+      <ol>
+        <li><strong>Registrer domenet i GitHub</strong> — fortell GitHub hvilket domene som hører til nettsiden</li>
+        <li><strong>Finn og logg inn hos domeneleverandøren</strong> — finn ut hvem som styrer domenet ditt, og åpne DNS-innstillingene</li>
+        <li><strong>Legg inn DNS-postene</strong> — bruk AI-assistent (anbefalt) eller gjør det manuelt</li>
+        <li><strong>Vent, sjekk og slå på HTTPS</strong> — bekreft at alt fungerer</li>
+      </ol>
+
+      <div class="callout">
+        <p><strong>Hvorfor denne rekkefølgen?</strong> GitHub anbefaler at du registrerer domenet hos dem <em>før</em> du peker DNS-en dit. Gjør du det motsatt, risikerer du i teorien at noen andre kobler seg på domenet ditt i mellomtiden. Det er lite sannsynlig, men det koster ingenting å gjøre det i riktig rekkefølge.</p>
+      </div>
+
+      <figure class="not-prose my-8 rounded-2xl border border-zinc-200 bg-white p-5 md:p-7">
+        <p class="text-center text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-5">Slik henger det sammen</p>
+        <svg viewBox="0 0 560 140" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="GitHub Pages mottar domenet, DNS peker besøkende dit">
+          <rect x="10" y="20" width="150" height="100" rx="12" fill="#F0FDF4" stroke="#86EFAC" stroke-width="2"/>
+          <text x="85" y="48" text-anchor="middle" font-size="11" font-weight="800" fill="#14532D">GitHub Pages</text>
+          <text x="85" y="66" text-anchor="middle" font-size="10" fill="#15803D">CNAME-fil = domenet</text>
+          <text x="85" y="84" text-anchor="middle" font-size="9.5" fill="#15803D">«Jeg hører til</text>
+          <text x="85" y="96" text-anchor="middle" font-size="9.5" fill="#15803D">dittfirma.no»</text>
+          <line x1="160" y1="55" x2="200" y2="55" stroke="#16A34A" stroke-width="2"/>
+          <polygon points="195,50 205,55 195,60" fill="#16A34A"/>
+          <text x="183" y="48" text-anchor="middle" font-size="8.5" fill="#6B7280">steg 1</text>
+          <rect x="205" y="20" width="150" height="100" rx="12" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="2"/>
+          <text x="280" y="48" text-anchor="middle" font-size="11" font-weight="800" fill="#1E3A8A">Domeneleverandør</text>
+          <text x="280" y="66" text-anchor="middle" font-size="10" fill="#3B82F6">DNS-innstillinger</text>
+          <text x="280" y="84" text-anchor="middle" font-size="9.5" fill="#3B82F6">«Send besøkende</text>
+          <text x="280" y="96" text-anchor="middle" font-size="9.5" fill="#3B82F6">til GitHub»</text>
+          <line x1="355" y1="55" x2="395" y2="55" stroke="#0339f8" stroke-width="2"/>
+          <polygon points="390,50 400,55 390,60" fill="#0339f8"/>
+          <text x="377" y="48" text-anchor="middle" font-size="8.5" fill="#6B7280">steg 2–3</text>
+          <rect x="400" y="20" width="150" height="100" rx="12" fill="#FAFAFA" stroke="#E4E4E7" stroke-width="2"/>
+          <text x="475" y="52" text-anchor="middle" font-size="11" font-weight="800" fill="#09090B">Besøkende</text>
+          <text x="475" y="70" text-anchor="middle" font-size="10" fill="#71717A">skriver dittfirma.no</text>
+          <text x="475" y="98" text-anchor="middle" font-size="10" fill="#71717A">og ser nettsiden din</text>
+        </svg>
+      </figure>
+
+      <!-- ═══════════════════════════════════════════════ -->
+      <!--  STEG 1: GitHub                                 -->
+      <!-- ═══════════════════════════════════════════════ -->
+
+      <h2>Steg 1: Registrer domenet i GitHub</h2>
+
+      <p>Først forteller du GitHub hvilket domene som hører til nettsiden din. Det gjør at GitHub vet at <code>dittfirma.no</code> skal vise akkurat ditt repo og ingen annens.</p>
+
+      <div class="step not-prose">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>Gå til repoet ditt på GitHub</h3>
+          <p>Logg inn på <a href="https://github.com" target="_blank" rel="noopener">github.com</a>. Klikk på repoet (mappen) med nettsiden din — du finner det på forsiden etter innlogging.</p>
+          <img src="../images/Click-repo.png" alt="Oversikt over repositories på GitHub" class="w-full h-auto mt-5 rounded-lg border border-zinc-200 shadow-sm" />
+        </div>
+      </div>
+
+      <div class="step not-prose">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>Åpne innstillingene</h3>
+          <p>Klikk på fanen <strong>Settings</strong> i menyen øverst i repoet (den ligger helt til høyre i fanerekken, ved siden av «Insights»).</p>
+          <img src="../images/Repo-settings.png" alt="Klikk på Settings-fanen i repoet" class="w-full h-auto mt-5 rounded-lg border border-zinc-200 shadow-sm" />
+        </div>
+      </div>
+
+      <div class="step not-prose">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>Velg Pages</h3>
+          <p>I menyen til venstre, scroll ned til seksjonen <strong>«Code and automation»</strong> og klikk på <strong>Pages</strong>.</p>
+          <img src="../images/Settings-pages.png" alt="Velg Pages fra venstremenyen" class="w-full h-auto mt-5 rounded-lg border border-zinc-200 shadow-sm" />
+        </div>
+      </div>
+
+      <div class="step not-prose">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h3>Skriv inn domenet ditt</h3>
+          <p>Under <strong>Custom domain</strong>, skriv inn domenenavnet ditt — for eksempel <code>dittfirma.no</code> — og klikk <strong>Save</strong>.</p>
+          <p>GitHub oppretter automatisk en fil som heter <code>CNAME</code> i repoet ditt. Det er denne filen som kobler domenet til nettsiden. Du vil se en gul melding som sier «DNS check in progress» — det er forventet, og den forsvinner etter steg 3.</p>
+          <img src="../images/GIthub-pages.png" alt="Fyll inn domenenavnet under Custom domain" class="w-full h-auto mt-5 rounded-lg border border-zinc-200 shadow-sm" />
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════ -->
+      <!--  STEG 2: Finn leverandøren                      -->
+      <!-- ═══════════════════════════════════════════════ -->
+
+      <h2>Steg 2: Finn og logg inn hos domeneleverandøren</h2>
+
+      <p>Nå skal du logge inn hos <strong>domeneleverandøren</strong> din og finne <strong>DNS-innstillingene</strong>.</p>
+
+      <div class="explain">
+        <div class="explain-label">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          Hva er en domeneleverandør?
+        </div>
+        <p>Domeneleverandøren er selskapet du kjøpte nettadressen din hos — for eksempel <a href="#domeneshop-guide" style="color:#6D28D9;font-weight:600;">Domeneshop</a>, <a href="#webhuset-guide" style="color:#6D28D9;font-weight:600;">Webhuset</a>, <a href="#onecom-guide" style="color:#6D28D9;font-weight:600;">One.com</a>, <a href="#namecheap-guide" style="color:#6D28D9;font-weight:600;">Namecheap</a> eller <a href="#godaddy-guide" style="color:#6D28D9;font-weight:600;">GoDaddy</a>. Det er her du logger inn for å styre hvor domenet ditt peker.</p>
+      </div>
+
+      <h3>Vet du ikke hvor domenet ditt er registrert?</h3>
+
+      <p>Ingen grunn til bekymring — det er enkelt å finne ut:</p>
+
+      <div class="step not-prose">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>Søk opp domenet ditt</h3>
+          <p>Gå til <a href="https://lookup.icann.org/en/lookup" target="_blank" rel="noopener">lookup.icann.org</a> og skriv inn domenet ditt (for eksempel <code>dittfirma.no</code>). Trykk «Lookup». Dette fungerer for alle domener — både .no, .com og andre.</p>
+        </div>
+      </div>
+
+      <div class="step not-prose">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>Finn registraren</h3>
+          <p>Scroll ned til seksjonen <strong>«Registrar Information»</strong>. Under <strong>«Name»</strong> ser du hvem leverandøren din er — for eksempel «WEBHUSET AS» eller «DOMENESHOP AS». Det er hos <em>dem</em> du skal logge inn.</p>
+        </div>
+      </div>
+
+      <h3>Logg inn og finn DNS-innstillingene</h3>
+
+      <p>Gå til nettsiden til leverandøren din, logg inn, og finn DNS-innstillingene. Klikk på leverandøren din under for å se nøyaktig hvordan:</p>
+
+      <div class="explain" style="margin-bottom:1rem;">
+        <div class="explain-label">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          Husker du ikke innloggingen?
+        </div>
+        <p>Bruk «Glemt passord»-funksjonen — det er helt normalt. Vet du ikke hvilken e-post du brukte? Søk i innboksen din etter navnet på leverandøren (f.eks. «Domeneshop» eller «Webhuset»). Du har sannsynligvis fått kvitteringer eller fornyelsespåminnelser fra dem. Du kan også kontakte leverandørens kundeservice direkte.</p>
+      </div>
+
+      <div class="not-prose" style="display:flex;flex-direction:column;gap:8px;margin:1.25rem 0;">
+
+        <details id="domeneshop-guide" style="background:white;border:1.5px solid #E4E4E7;border-radius:12px;overflow:hidden;">
+          <summary style="padding:16px 20px;cursor:pointer;font-family:'Archivo',sans-serif;font-weight:700;font-size:1rem;color:#09090B;display:flex;align-items:center;gap:10px;list-style:none;">
+            <svg class="details-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="transition:transform 0.2s;flex-shrink:0;"><path d="M9 18l6-6-6-6"/></svg>
+            Domeneshop
+          </summary>
+          <div style="padding:0 20px 20px;border-top:1px solid #F4F4F5;">
+            <ol style="margin:16px 0 0;padding-left:20px;font-size:0.95rem;line-height:1.7;color:#3F3F46;">
+              <li style="margin-bottom:6px;">Gå til <a href="https://www.domeneshop.no/login" target="_blank" rel="noopener" style="color:#0339f8;">domeneshop.no/login</a> og logg inn</li>
+              <li style="margin-bottom:6px;">Klikk på <strong>«Mine domener»</strong></li>
+              <li style="margin-bottom:6px;">Klikk på domenet ditt (f.eks. <code style="background:#F4F4F5;padding:2px 6px;border-radius:4px;font-size:0.85em;">dittfirma.no</code>)</li>
+              <li>Klikk på fanen <strong>«DNS-pekere»</strong> øverst — her skal du legge inn de nye postene</li>
+            </ol>
+            <p style="margin:12px 0 0;font-size:0.85rem;color:#71717A;">Se også <a href="https://domene.shop/faq?id=15" target="_blank" rel="noopener" style="color:#0339f8;">Domeneshop sin egen veiledning</a></p>
+          </div>
+        </details>
+
+        <details id="webhuset-guide" style="background:white;border:1.5px solid #E4E4E7;border-radius:12px;overflow:hidden;">
+          <summary style="padding:16px 20px;cursor:pointer;font-family:'Archivo',sans-serif;font-weight:700;font-size:1rem;color:#09090B;display:flex;align-items:center;gap:10px;list-style:none;">
+            <svg class="details-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="transition:transform 0.2s;flex-shrink:0;"><path d="M9 18l6-6-6-6"/></svg>
+            Webhuset
+          </summary>
+          <div style="padding:0 20px 20px;border-top:1px solid #F4F4F5;">
+            <ol style="margin:16px 0 0;padding-left:20px;font-size:0.95rem;line-height:1.7;color:#3F3F46;">
+              <li style="margin-bottom:6px;">Gå til <a href="https://kundesenter.webhuset.no" target="_blank" rel="noopener" style="color:#0339f8;">Webhuset sitt kundesenter</a> og logg inn</li>
+              <li style="margin-bottom:6px;">Klikk <strong>«Domene»</strong> → velg domenet ditt</li>
+              <li>Klikk <strong>«DNS»</strong> → <strong>«DNS-oppføringer»</strong> — her skal du legge inn de nye postene</li>
+            </ol>
+            <p style="margin:12px 0 0;font-size:0.85rem;color:#71717A;">Se også <a href="https://www.webhuset.no/hjelp/diverse/legge-til-endre-og-slette-dns-oppf-ringer" target="_blank" rel="noopener" style="color:#0339f8;">Webhuset sin egen veiledning</a></p>
+          </div>
+        </details>
+
+        <details id="onecom-guide" style="background:white;border:1.5px solid #E4E4E7;border-radius:12px;overflow:hidden;">
+          <summary style="padding:16px 20px;cursor:pointer;font-family:'Archivo',sans-serif;font-weight:700;font-size:1rem;color:#09090B;display:flex;align-items:center;gap:10px;list-style:none;">
+            <svg class="details-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="transition:transform 0.2s;flex-shrink:0;"><path d="M9 18l6-6-6-6"/></svg>
+            One.com
+          </summary>
+          <div style="padding:0 20px 20px;border-top:1px solid #F4F4F5;">
+            <ol style="margin:16px 0 0;padding-left:20px;font-size:0.95rem;line-height:1.7;color:#3F3F46;">
+              <li style="margin-bottom:6px;">Gå til <a href="https://www.one.com/admin" target="_blank" rel="noopener" style="color:#0339f8;">one.com/admin</a> og logg inn</li>
+              <li style="margin-bottom:6px;">Velg riktig domene i nedtrekkslisten øverst til venstre (under «Domenenavn»)</li>
+              <li style="margin-bottom:6px;">Klikk på <strong>«Domene»</strong> i venstremenyen</li>
+              <li>Klikk på <strong>«DNS-innstillinger»</strong> — her skal du legge inn de nye postene</li>
+            </ol>
+            <p style="margin:12px 0 0;font-size:0.85rem;color:#71717A;">Se også <a href="https://help.one.com/hc/no/articles/115005595925-Administrer-dine-DNS-innstillinger" target="_blank" rel="noopener" style="color:#0339f8;">One.com sin egen veiledning</a></p>
+          </div>
+        </details>
+
+        <details id="namecheap-guide" style="background:white;border:1.5px solid #E4E4E7;border-radius:12px;overflow:hidden;">
+          <summary style="padding:16px 20px;cursor:pointer;font-family:'Archivo',sans-serif;font-weight:700;font-size:1rem;color:#09090B;display:flex;align-items:center;gap:10px;list-style:none;">
+            <svg class="details-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="transition:transform 0.2s;flex-shrink:0;"><path d="M9 18l6-6-6-6"/></svg>
+            Namecheap
+          </summary>
+          <div style="padding:0 20px 20px;border-top:1px solid #F4F4F5;">
+            <ol style="margin:16px 0 0;padding-left:20px;font-size:0.95rem;line-height:1.7;color:#3F3F46;">
+              <li style="margin-bottom:6px;">Gå til <a href="https://www.namecheap.com/myaccount/login/" target="_blank" rel="noopener" style="color:#0339f8;">namecheap.com</a> og logg inn</li>
+              <li style="margin-bottom:6px;">Klikk på <strong>«Domain List»</strong> i venstremenyen</li>
+              <li style="margin-bottom:6px;">Klikk <strong>«Manage»</strong> ved siden av domenet ditt</li>
+              <li>Klikk på fanen <strong>«Advanced DNS»</strong> — her skal du legge inn de nye postene</li>
+            </ol>
+            <p style="margin:12px 0 0;font-size:0.85rem;color:#71717A;">Se også <a href="https://www.namecheap.com/support/knowledgebase/article.aspx/767/10/how-to-change-dns-for-a-domain/" target="_blank" rel="noopener" style="color:#0339f8;">Namecheap sin egen veiledning</a></p>
+          </div>
+        </details>
+
+        <details id="godaddy-guide" style="background:white;border:1.5px solid #E4E4E7;border-radius:12px;overflow:hidden;">
+          <summary style="padding:16px 20px;cursor:pointer;font-family:'Archivo',sans-serif;font-weight:700;font-size:1rem;color:#09090B;display:flex;align-items:center;gap:10px;list-style:none;">
+            <svg class="details-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="transition:transform 0.2s;flex-shrink:0;"><path d="M9 18l6-6-6-6"/></svg>
+            GoDaddy
+          </summary>
+          <div style="padding:0 20px 20px;border-top:1px solid #F4F4F5;">
+            <ol style="margin:16px 0 0;padding-left:20px;font-size:0.95rem;line-height:1.7;color:#3F3F46;">
+              <li style="margin-bottom:6px;">Gå til <a href="https://www.godaddy.com" target="_blank" rel="noopener" style="color:#0339f8;">godaddy.com</a> og logg inn</li>
+              <li style="margin-bottom:6px;">Gå til <strong>«Mine produkter»</strong> og finn domenet ditt</li>
+              <li>Klikk <strong>«DNS»</strong> eller <strong>«Administrer DNS»</strong> — her skal du legge inn de nye postene</li>
+            </ol>
+            <p style="margin:12px 0 0;font-size:0.85rem;color:#71717A;">Se også <a href="https://no.godaddy.com/help/administrer-dns-oppforinger-680" target="_blank" rel="noopener" style="color:#0339f8;">GoDaddy sin egen veiledning</a></p>
+          </div>
+        </details>
+
+        <details style="background:white;border:1.5px solid #E4E4E7;border-radius:12px;overflow:hidden;">
+          <summary style="padding:16px 20px;cursor:pointer;font-family:'Archivo',sans-serif;font-weight:700;font-size:1rem;color:#09090B;display:flex;align-items:center;gap:10px;list-style:none;">
+            <svg class="details-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="transition:transform 0.2s;flex-shrink:0;"><path d="M9 18l6-6-6-6"/></svg>
+            Annen leverandør
+          </summary>
+          <div style="padding:0 20px 20px;border-top:1px solid #F4F4F5;">
+            <p style="margin:16px 0 0;font-size:0.95rem;line-height:1.7;color:#3F3F46;">Logg inn hos leverandøren din og finn siden for DNS-innstillinger — den kan hete «DNS-poster», «DNS Records», «Soneinnstillinger» eller lignende. Bruk gjerne <a href="https://aistudio.google.com" target="_blank" rel="noopener" style="color:#0339f8;font-weight:600;">AI-assistenten</a> i steg 3 — den tilpasser veiledningen til akkurat din leverandør.</p>
+          </div>
+        </details>
+
+      </div>
+
+      <!-- ═══════════════════════════════════════════════ -->
+      <!--  STEG 3: Legg inn DNS-postene                   -->
+      <!-- ═══════════════════════════════════════════════ -->
+
+      <h2>Steg 3: Legg inn DNS-postene</h2>
+
+      <p>Nå som du har DNS-innstillingene åpne hos leverandøren din, er det på tide å legge inn de riktige postene. Du har to valg:</p>
+
+      <div class="callout-ok callout" style="margin-bottom:1.25rem;">
+        <p><strong>Vi anbefaler at du bruker AI-assistenten under</strong> i stedet for å gjøre det manuelt. Den guider deg gjennom hvert steg, tilpasser seg din leverandør, og kontrollerer at alt er riktig til slutt — slik at du slipper å lure på om du har gjort noe feil.</p>
+      </div>
+
+      <h3>Alternativ A: Bruk AI-assistent (anbefalt)</h3>
+
+      <p>Kopier teksten under og lim inn i <a href="https://aistudio.google.com" target="_blank" rel="noopener" style="color:#0339f8;font-weight:600;">Google AI Studio</a> (eller en annen AI-assistent som ChatGPT eller Claude):</p>
+
+      <div style="background:linear-gradient(135deg,#EDE9FE,#E0E7FF);border:2px solid #A78BFA;border-radius:16px;padding:28px 28px 24px;margin:1.5rem 0;" class="not-prose">
+        <div style="position:relative;">
+          <button onclick="navigator.clipboard.writeText(document.getElementById('chatgpt-prompt').innerText).then(()=>{this.textContent='Kopiert ✓';this.style.background='#16A34A';setTimeout(()=>{this.textContent='Kopier teksten';this.style.background='#7C3AED'},2000)})" style="position:absolute;top:10px;right:10px;background:#7C3AED;color:white;border:none;padding:8px 16px;border-radius:8px;font-size:0.8rem;font-weight:600;cursor:pointer;z-index:1;font-family:'Inter',sans-serif;">Kopier teksten</button>
+          <div id="chatgpt-prompt" style="background:white;border:1.5px solid #C4B5FD;border-radius:12px;padding:20px 20px 20px;font-size:0.85rem;line-height:1.6;color:#1E1B3A;max-height:260px;overflow-y:auto;white-space:pre-wrap;font-family:'Inter',sans-serif;">Jeg trenger hjelp med å koble domenet mitt til en nettside som ligger på GitHub Pages. Jeg er ikke teknisk, så jeg trenger en enkel steg-for-steg veiledning.
+
+Her er situasjonen:
+- Nettsiden min ligger klar på GitHub Pages
+- Jeg må legge inn DNS-innstillinger hos domeneleverandøren min slik at domenet mitt peker til GitHub sine servere
+- Jeg har kanskje gamle DNS-poster fra en tidligere nettside som må slettes først
+
+Her er DNS-postene som skal legges inn:
+
+A-POSTER (alle fire er obligatoriske, alle på @):
+- A @ 185.199.108.153
+- A @ 185.199.109.153
+- A @ 185.199.110.153
+- A @ 185.199.111.153
+
+CNAME-POST (obligatorisk):
+- CNAME www → [mitt GitHub-brukernavn].github.io
+
+AAAA-POSTER for IPv6 (valgfritt men anbefalt, alle på @):
+- AAAA @ 2606:50c0:8000::153
+- AAAA @ 2606:50c0:8001::153
+- AAAA @ 2606:50c0:8002::153
+- AAAA @ 2606:50c0:8003::153
+
+VIKTIGE REGLER:
+- Gamle A-poster, AAAA-poster og CNAME på www som peker til den forrige hostingen MÅ slettes
+- MX-poster (e-post), TXT-poster (SPF/DKIM) og NS-poster MÅ IKKE røres — da slutter e-posten å fungere
+- Er jeg usikker på hva en post gjør, lar jeg den stå
+
+Vennligst:
+1. Spør meg hvilken domeneleverandør jeg bruker (f.eks. Domeneshop, One.com, Namecheap, GoDaddy, osv.)
+2. Spør meg hva mitt GitHub-brukernavn er (for CNAME-posten)
+3. Gi meg en steg-for-steg veiledning for å slette de gamle postene og legge inn de nye — tilpasset min leverandør
+4. Når jeg er ferdig, be meg beskrive eller ta skjermbilde av hva jeg ser i DNS-oversikten, og sjekk om alt ser riktig ut</div>
+        </div>
+      </div>
+
+      <p>Når AI-assistenten sier at alt ser riktig ut, gå videre til steg 4.</p>
+
+      <h3>Alternativ B: Gjør det manuelt</h3>
+
+      <p>Foretrekker du å gjøre det selv? Klikk under for den fullstendige oversikten.</p>
+
+      <details style="background:white;border:1.5px solid #E4E4E7;border-radius:12px;overflow:hidden;margin:1rem 0;" class="not-prose">
+        <summary style="padding:16px 20px;cursor:pointer;font-family:'Archivo',sans-serif;font-weight:700;font-size:1rem;color:#09090B;display:flex;align-items:center;gap:10px;list-style:none;">
+          <svg class="details-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="transition:transform 0.2s;flex-shrink:0;"><path d="M9 18l6-6-6-6"/></svg>
+          Vis manuell veiledning
+        </summary>
+        <div style="padding:4px 20px 20px;border-top:1px solid #F4F4F5;">
+
+          <h4 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:1.05rem;margin:1.5rem 0 0.75rem;color:#09090B;">Først: rydd opp i gamle poster</h4>
+          <p style="font-size:0.95rem;line-height:1.65;color:#3F3F46;margin-bottom:1rem;">Før du legger inn de nye postene, må du fjerne de gamle som peker til den forrige nettsiden. Men <strong style="color:#09090B;">det er viktig at du bare sletter de riktige</strong> — noen poster styrer e-posten din og må ikke røres.</p>
+
+          <div style="background:#FEF2F2;border:2px solid #FCA5A5;border-radius:14px;padding:20px 24px;margin:1rem 0;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#DC2626" stroke-width="2.5"><path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+              <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:1rem;color:#991B1B;">Ikke slett e-post-postene!</span>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+              <div style="background:white;border:1.5px solid #FCA5A5;border-radius:10px;padding:14px;">
+                <p style="font-weight:700;font-size:0.85rem;color:#991B1B;margin:0 0 8px;">SLETT disse:</p>
+                <ul style="margin:0;padding-left:16px;font-size:0.875rem;color:#7F1D1D;line-height:1.6;">
+                  <li style="list-style:disc;margin-bottom:2px;"><strong>A-poster</strong> på <code style="background:#FEE2E2;font-size:0.8em;">@</code> som peker til den gamle hostingens IP</li>
+                  <li style="list-style:disc;margin-bottom:2px;"><strong>AAAA-poster</strong> på <code style="background:#FEE2E2;font-size:0.8em;">@</code> (hvis de finnes)</li>
+                  <li style="list-style:disc;margin-bottom:0;"><strong>CNAME</strong> på <code style="background:#FEE2E2;font-size:0.8em;">www</code> som peker til den gamle hostingen</li>
+                </ul>
+              </div>
+              <div style="background:white;border:1.5px solid #86EFAC;border-radius:10px;padding:14px;">
+                <p style="font-weight:700;font-size:0.85rem;color:#14532D;margin:0 0 8px;">BEHOLD disse:</p>
+                <ul style="margin:0;padding-left:16px;font-size:0.875rem;color:#15803D;line-height:1.6;">
+                  <li style="list-style:disc;margin-bottom:2px;"><strong>MX-poster</strong> — styrer e-posten din</li>
+                  <li style="list-style:disc;margin-bottom:2px;"><strong>TXT-poster</strong> — e-postverifisering (SPF, DKIM)</li>
+                  <li style="list-style:disc;margin-bottom:0;"><strong>NS-poster</strong> — styrer selve domenet</li>
+                </ul>
+              </div>
+            </div>
+            <p style="font-size:0.85rem;color:#991B1B;margin:12px 0 0;">Er du usikker? La posten stå — eller spør oss på <strong>adrian@dmarketing.no</strong>.</p>
+          </div>
+
+          <h4 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:1.05rem;margin:1.5rem 0 0.75rem;color:#09090B;">Legg inn de nye A-postene (obligatorisk)</h4>
+          <p style="font-size:0.95rem;line-height:1.65;color:#3F3F46;margin-bottom:0.75rem;">Disse fire postene sender domenet ditt til GitHub sine servere. Verdiene er <strong style="color:#09090B;">alltid de samme</strong> for alle GitHub Pages-sider.</p>
+          <table style="width:100%;border-collapse:collapse;margin:0.75rem 0;font-size:0.9375rem;">
+            <thead><tr><th style="background:#F4F4F5;font-weight:700;text-align:left;padding:10px 14px;border:1px solid #E4E4E7;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.04em;color:#52525B;">Type</th><th style="background:#F4F4F5;font-weight:700;text-align:left;padding:10px 14px;border:1px solid #E4E4E7;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.04em;color:#52525B;">Vert / Navn</th><th style="background:#F4F4F5;font-weight:700;text-align:left;padding:10px 14px;border:1px solid #E4E4E7;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.04em;color:#52525B;">Verdi</th></tr></thead>
+            <tbody>
+              <tr><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;">A</td><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;">@</td><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;">185.199.108.153</td></tr>
+              <tr><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;background:#FAFAFA;">A</td><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;background:#FAFAFA;">@</td><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;background:#FAFAFA;">185.199.109.153</td></tr>
+              <tr><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;">A</td><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;">@</td><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;">185.199.110.153</td></tr>
+              <tr><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;background:#FAFAFA;">A</td><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;background:#FAFAFA;">@</td><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;background:#FAFAFA;">185.199.111.153</td></tr>
+            </tbody>
+          </table>
+
+          <h4 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:1.05rem;margin:1.5rem 0 0.75rem;color:#09090B;">Legg inn CNAME-post for www (obligatorisk)</h4>
+          <p style="font-size:0.95rem;line-height:1.65;color:#3F3F46;margin-bottom:0.75rem;">Sørger for at <code style="background:#F4F4F5;padding:2px 6px;border-radius:4px;font-size:0.9em;">www.dittfirma.no</code> også fungerer:</p>
+          <table style="width:100%;border-collapse:collapse;margin:0.75rem 0;font-size:0.9375rem;">
+            <thead><tr><th style="background:#F4F4F5;font-weight:700;text-align:left;padding:10px 14px;border:1px solid #E4E4E7;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.04em;color:#52525B;">Type</th><th style="background:#F4F4F5;font-weight:700;text-align:left;padding:10px 14px;border:1px solid #E4E4E7;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.04em;color:#52525B;">Vert / Navn</th><th style="background:#F4F4F5;font-weight:700;text-align:left;padding:10px 14px;border:1px solid #E4E4E7;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.04em;color:#52525B;">Verdi</th></tr></thead>
+            <tbody><tr><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;">CNAME</td><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;">www</td><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;"><em>ditt-brukernavn</em>.github.io</td></tr></tbody>
+          </table>
+          <p style="font-size:0.95rem;line-height:1.65;color:#3F3F46;">Bytt ut <code style="background:#F4F4F5;padding:2px 6px;border-radius:4px;font-size:0.9em;">ditt-brukernavn</code> med ditt faktiske GitHub-brukernavn.</p>
+
+          <h4 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:1.05rem;margin:1.5rem 0 0.75rem;color:#09090B;">AAAA-poster for IPv6 (valgfritt, men anbefalt)</h4>
+          <table style="width:100%;border-collapse:collapse;margin:0.75rem 0;font-size:0.9375rem;">
+            <thead><tr><th style="background:#F4F4F5;font-weight:700;text-align:left;padding:10px 14px;border:1px solid #E4E4E7;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.04em;color:#52525B;">Type</th><th style="background:#F4F4F5;font-weight:700;text-align:left;padding:10px 14px;border:1px solid #E4E4E7;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.04em;color:#52525B;">Vert / Navn</th><th style="background:#F4F4F5;font-weight:700;text-align:left;padding:10px 14px;border:1px solid #E4E4E7;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.04em;color:#52525B;">Verdi</th></tr></thead>
+            <tbody>
+              <tr><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;">AAAA</td><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;">@</td><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;">2606:50c0:8000::153</td></tr>
+              <tr><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;background:#FAFAFA;">AAAA</td><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;background:#FAFAFA;">@</td><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;background:#FAFAFA;">2606:50c0:8001::153</td></tr>
+              <tr><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;">AAAA</td><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;">@</td><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;">2606:50c0:8002::153</td></tr>
+              <tr><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;background:#FAFAFA;">AAAA</td><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;background:#FAFAFA;">@</td><td style="padding:10px 14px;border:1px solid #E4E4E7;font-family:monospace;font-size:0.85rem;background:#FAFAFA;">2606:50c0:8003::153</td></tr>
+            </tbody>
+          </table>
+
+        </div>
+      </details>
+
+      <!-- ═══════════════════════════════════════════════ -->
+      <!--  STEG 4: Vent og sjekk                          -->
+      <!-- ═══════════════════════════════════════════════ -->
+
+      <h2>Steg 4: Vent, sjekk og slå på HTTPS</h2>
+
+      <p>DNS-endringer kan ta <strong>opptil 24 timer</strong> å spre seg rundt på internett, men som regel fungerer det innen noen minutter. Åpne domenet ditt i en nettleser og se om den nye nettsiden dukker opp.</p>
+
+      <p>Når nettsiden viser seg:</p>
+      <ol>
+        <li>Gå tilbake til GitHub → <strong>Settings</strong> → <strong>Pages</strong></li>
+        <li>Huk av for <strong>Enforce HTTPS</strong> — da får nettsiden hengelåsen i nettleseren. Det er gratis.</li>
+      </ol>
+      <p>Denne avhukingsboksen kan være grå akkurat nå — det er normalt. Den blir klikkbar etter at DNS-endringene har spredd seg, som regel innen noen minutter.</p>
+
+      <div class="callout-ok callout">
+        <p><strong>Ferdig!</strong> Når domenet viser den nye nettsiden med hengelås, er koblingen på plass. Du trenger aldri gjøre dette igjen — med mindre du en dag bytter til en helt annen hostingleverandør.</p>
+      </div>
+
+      <h2>Trøbbel?</h2>
+      <p>Hvis domenet ikke viser den nye nettsiden etter noen timer:</p>
+      <ul>
+        <li><strong>Dobbeltsjekk DNS-postene</strong> — en liten skrivefeil i IP-adressen er nok til at det ikke fungerer.</li>
+        <li><strong>Sjekk at det ikke ligger gamle A-poster igjen</strong> — de kan kræsje med de nye. Du skal bare ha de fire GitHub-adressene, ingen andre A-poster på <code>@</code>.</li>
+        <li><strong>Sjekk at domenenavnet i GitHub</strong> er stavet nøyaktig likt som domenet du eier (inkludert <code>.no</code> på slutten).</li>
+        <li><strong>Tøm nettleserens hurtigminne</strong> — trykk <kbd>Ctrl+Shift+R</kbd> (Windows) eller <kbd>Cmd+Shift+R</kbd> (Mac) for å laste siden uten cache.</li>
+        <li><strong>Kontakt oss</strong> på <strong>adrian@dmarketing.no</strong> — vi kan sjekke om DNS-innstillingene dine er riktige og guide deg videre.</li>
+      </ul>
+
+      <div style="background:#F0FDF4;border:1.5px solid #86EFAC;border-radius:14px;padding:20px 24px;margin:2rem 0 0;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#16A34A" stroke-width="2.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1 2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:1rem;color:#14532D;letter-spacing:-0.01em;">Hva du lærte i denne modulen</span>
+        </div>
+        <ul style="margin:0;padding-left:20px;">
+          <li style="font-size:0.95rem;line-height:1.55;color:#15803D;margin-bottom:6px;list-style:disc;">DNS er internettets adressebok — den peker domenet ditt til GitHub sine servere</li>
+          <li style="font-size:0.95rem;line-height:1.55;color:#15803D;margin-bottom:6px;list-style:disc;">A-postene (IP-adressene) er faste og identiske for alle GitHub Pages-sider</li>
+          <li style="font-size:0.95rem;line-height:1.55;color:#15803D;margin-bottom:0;list-style:disc;">CNAME-filen i GitHub-repoet er limet som kobler domenet til akkurat din nettside</li>
+        </ul>
+      </div>
+
+    </div>
+  </article>
+
+  <nav class="border-t border-zinc-200 bg-white py-8 px-6">
+    <div class="max-w-4xl mx-auto flex justify-between items-center">
+      <a href="../04-komme-i-gang" class="text-sm text-zinc-500 hover:text-blue-600 flex items-center gap-2"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>04: Komme i gang</a>
+      <a href="../06-klon-og-sett-opp" class="inline-flex items-center gap-2 bg-blue-600 text-white font-semibold px-5 py-3 rounded-lg hover:bg-blue-500 transition-colors text-sm">Modul 06: Klon og sett opp<svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+    </div>
+  </nav>
+  <footer class="bg-[#0F172A] text-white py-6 px-6"><div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-sm text-white/40"><div>© 2026 Dietrichs Marketing</div><div>Org.nr 932 612 583</div><div id="kurs-user-info"></div></div></footer>
+</body>
+</html>

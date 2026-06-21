@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hva gjør jeg hvis webbyrået mitt legger ned — mister jeg nettsiden? | Dietrichs Marketing</title>
+  <meta name="description" content="Slik beskytter du deg mot å miste nettsiden hvis byrået ditt legger ned. Lær om eierskap, backup og hva du bør kreve av leverandøren." />
+  <meta name="theme-color" content="#1B34FF" />
+  <link rel="shortcut icon" href="../assets/favicon.png" type="image/png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Schibsted+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css?v=19" />
+
+  <script>try{if(sessionStorage.getItem('dm_pre'))document.documentElement.classList.add('no-preloader');else sessionStorage.setItem('dm_pre','1');}catch(e){}</script>
+
+  <style>
+    /* Meny-CSS */
+    .menu-wrap { background-color: #ffffff; padding: 16px 0; border-bottom: 1px solid #E4E4E7; position: fixed; top: 0; left: 0; right: 0; z-index: 101; }
+    .menu-wrap.scrolled { box-shadow: 0 1px 12px rgba(0,0,0,0.08); }
+    .navbar-2 { z-index: 101; justify-content: space-between; align-items: center; width: 90%; max-width: 1440px; height: 50px; margin: 0 auto; display: flex; position: relative; }
+    .logo-link-wrapper { flex-direction: column; justify-content: center; align-items: center; display: flex; text-decoration: none; }
+    .brand-3 { order: -1; }
+    .logo-text-container { order: 0; margin-top: 20px; display: flex; }
+    .heading-6 { color: #09090B; letter-spacing: 2px; text-transform: uppercase; margin: 0; font-family: Archivo, sans-serif; font-size: 12px; font-weight: 600; line-height: 12px; }
+    .heading-6.logo-1 { margin-left: 10px; font-size: 30px; line-height: 45px; }
+    .heading-6.logo-2 { color: transparent; -webkit-text-stroke: 0.5px #09090B; margin: 0 0 0 10px; font-size: 30px; line-height: 45px; }
+    .navigation__menu-btn { cursor: pointer; flex-direction: column; order: 1; justify-content: flex-start; align-items: center; height: 25px; overflow: hidden; display: flex; background: transparent; border: 0; padding: 0; outline: none; }
+    .navigation__menu-btn:focus, .navigation__menu-btn:focus-visible { outline: none; }
+    .open-wrap { align-items: center; height: 25px; display: flex; }
+    .navigation-text { color: #09090B; letter-spacing: 3px; text-transform: uppercase; font-family: Archivo, sans-serif; font-size: 12px; line-height: 12px; text-decoration: none; }
+    .hamburger { flex-direction: column; justify-content: space-between; align-items: flex-end; width: 25px; height: 10px; margin-left: 12.5px; display: flex; }
+    .hamburger-line { background-color: #09090B; width: 25px; height: 2.22px; }
+    .hamburger-line-4 { background-color: #09090B; width: 15px; height: 2.22px; }
+    body.menu-open .menu-wrap { background-color: #1a1a1f; border-bottom-color: rgba(255,255,255,0.1); }
+    body.menu-open .heading-6.logo-1 { color: whitesmoke; }
+    body.menu-open .heading-6.logo-2 { -webkit-text-stroke-color: whitesmoke; }
+    body.menu-open .navigation-text { color: #fff; }
+    body.menu-open .hamburger-line, body.menu-open .hamburger-line-4 { background-color: #fff; }
+    body.menu-open .close-btn::before, body.menu-open .close-btn::after { background: #fff; }
+    .menu-wrap, .heading-6, .navigation-text, .hamburger-line, .hamburger-line-4 { transition: background-color 0.25s ease, color 0.25s ease, -webkit-text-stroke-color 0.25s ease, border-color 0.25s ease; }
+    .close-wrap { flex-direction: row; justify-content: flex-end; align-items: center; height: 25px; display: flex; }
+    .close-btn { width: 18px; height: 18px; margin-left: 12.5px; position: relative; }
+    .close-btn::before, .close-btn::after { content: ""; position: absolute; top: 50%; left: 0; width: 100%; height: 2px; background: #fff; transform-origin: center; }
+    .close-btn::before { transform: translateY(-50%) rotate(45deg); }
+    .close-btn::after { transform: translateY(-50%) rotate(-45deg); }
+    .nav-container-2 { z-index: 97; background-color: #1a1a1f; flex-direction: column; justify-content: flex-start; align-items: center; min-height: 100vh; padding: 100px 0 80px; position: fixed; inset: 0; overflow-y: auto; transition: opacity 0.35s ease, visibility 0.35s ease; }
+    .nav__bg { z-index: -1; background-color: #1a1a1f; position: absolute; inset: 0; }
+    .container-4 { width: 92%; max-width: none; margin: 0 auto; }
+    .nav-items { z-index: 99; flex-flow: column; align-items: flex-start; width: 100%; max-width: 1200px; margin-top: 40px; display: flex; position: relative; overflow: hidden; }
+    .nav-item { align-items: center; text-decoration: none; display: flex; }
+    .nav-item-number { color: #fff; letter-spacing: 3px; margin-right: 20px; font-family: Archivo, sans-serif; font-size: 12px; line-height: 12px; transform: rotate(-90deg); }
+    .special-text-wrapper { height: clamp(56px, 11vw, 130px); overflow: hidden; }
+    .nav-item-text { color: transparent; -webkit-text-fill-color: transparent; -webkit-text-stroke: 0.8px #A5A3A6; text-transform: uppercase; font-family: Archivo, sans-serif; font-size: clamp(38px, 7.5vw, 90px); font-weight: 700; line-height: clamp(56px, 11vw, 130px); display: block; white-space: nowrap; }
+    .nav-item-text-full { color: #fff; text-transform: uppercase; font-family: Archivo, sans-serif; font-size: clamp(38px, 7.5vw, 90px); font-weight: 700; line-height: clamp(56px, 11vw, 130px); white-space: nowrap; }
+    .special-text-wrapper > div { transition: transform 0.55s cubic-bezier(0.65, 0, 0.35, 1); }
+    .nav-item:hover .nav-item-text, .nav-item:hover .nav-item-text-full,
+    .nav-item:focus .nav-item-text, .nav-item:focus .nav-item-text-full,
+    .nav-item:active .nav-item-text, .nav-item:active .nav-item-text-full,
+    .nav-item.is-touched .nav-item-text, .nav-item.is-touched .nav-item-text-full { transform: translateY(calc(-1 * clamp(56px, 11vw, 130px))); }
+    .nav-container-2.hidden-menu { opacity: 0; visibility: hidden; pointer-events: none; }
+    .navigation__menu-btn.is-open .open-wrap { display: none; }
+    .navigation__menu-btn:not(.is-open) .close-wrap { display: none; }
+    @media screen and (min-width: 1440px) {
+      .nav-items { width: 60%; }
+      .heading-6.logo-1, .heading-6.logo-2 { font-size: 40px; line-height: 30px; }
+    }
+    @media screen and (max-width: 767px) {
+      .nav-items { width: 90%; margin-top: 20px; }
+      .heading-6.logo-1 { font-size: 22px; line-height: 30px; }
+      .heading-6.logo-2 { font-size: 22px; line-height: 30px; margin-left: 6px; }
+    }
+    @media screen and (max-width: 479px) {
+      .nav-items { margin-top: 20%; }
+      .navbar-2 { width: 100%; padding: 0 16px; }
+      .heading-6.logo-1 { font-size: 18px; line-height: 28px; margin-left: 0; }
+      .heading-6.logo-2 { font-size: 18px; line-height: 28px; margin-left: 5px; }
+    }
+
+    /* Artikkel-CSS */
+    .article-wrap { max-width: 960px; margin: 0 auto; padding: 0 var(--pad); }
+    .article-page { background-color: var(--paper); padding-top: clamp(120px, 16vh, 180px); }
+    .article-header { position: relative; padding: 0 0 clamp(40px, 6vh, 60px) 0; }
+    .article-meta-top { margin-bottom: 24px; }
+    .article-title { font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1.15; margin-bottom: 32px; overflow-wrap: break-word; hyphens: auto; }
+    .article-meta-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; padding-top: 24px; border-top: 1px solid var(--line); }
+    .author-info { display: flex; align-items: center; gap: 14px; }
+    .author-avatar { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; background-color: var(--paper-2); box-shadow: 0 0 0 3px var(--cobalt-050); }
+    .author-info strong { display: block; font-size: 1rem; color: var(--ink); line-height: 1.2; }
+    .author-info span { display: block; font-size: 0.85rem; color: var(--ink-soft); margin-top: 4px; }
+    .article-content { padding-top: clamp(40px, 6vh, 80px); padding-bottom: clamp(60px, 8vh, 100px); font-size: clamp(1.05rem, 1.2vw, 1.15rem); line-height: 1.75; color: var(--ink); }
+    .article-content .ingress { font-size: clamp(1.2rem, 1.5vw, 1.4rem); font-weight: 500; color: var(--ink); margin-bottom: 40px; line-height: 1.6; }
+    .article-content h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 800; letter-spacing: -0.01em; margin: 60px 0 20px; color: var(--ink); line-height: 1.1; }
+    .article-content h3 { font-size: clamp(1.4rem, 2vw, 1.7rem); font-weight: 700; margin: 40px 0 16px; color: var(--ink); line-height: 1.2; }
+    .article-content p { margin-bottom: 24px; color: var(--ink-soft); }
+    .article-content p strong { color: var(--ink); }
+    .article-content a:not(.btn) { color: var(--ink); font-weight: 600; text-decoration: underline; text-decoration-color: var(--cobalt); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+    .article-content ul, .article-content ol { margin: 0 0 32px 0; padding-left: 20px; color: var(--ink-soft); }
+    .article-content li { margin-bottom: 12px; padding-left: 10px; }
+    .article-content ul { list-style: none; }
+    .article-content ul li { position: relative; }
+    .article-content ul li::before { content: ""; position: absolute; left: -15px; top: 10px; width: 6px; height: 6px; background-color: var(--cobalt); border-radius: 50%; }
+    .article-content blockquote { margin: 40px 0; padding: 30px 40px; border-left: 4px solid var(--cobalt); background-color: var(--paper-2); border-radius: 0 var(--r-md) var(--r-md) 0; font-size: clamp(1.3rem, 2vw, 1.6rem); font-weight: 600; color: var(--ink); line-height: 1.4; }
+    .article-content table { width: 100%; border-collapse: collapse; font-size: 0.95rem; margin: 32px 0; }
+    .article-content th, .article-content td { padding: 12px 16px; border: 1px solid var(--line); text-align: left; }
+    .article-content th { background: var(--paper-2); font-weight: 700; }
+    .article-author-card { display: flex; gap: 24px; align-items: center; background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg); padding: 30px; box-shadow: var(--shadow-sm); margin-bottom: 60px; }
+    .article-author-card img { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 1px solid var(--line); box-shadow: 0 0 0 4px var(--cobalt-050); flex-shrink: 0; }
+    .aac-content h4 { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
+    .aac-content p { font-size: 0.95rem; color: var(--ink-soft); margin: 0; line-height: 1.5; }
+    @media (max-width: 640px) {
+      .article-meta-bottom { flex-direction: column; align-items: flex-start; }
+      .article-content blockquote { padding: 24px; font-size: 1.15rem; }
+      .article-author-card { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <section class="menu-wrap" id="nav">
+    <div class="navbar-2">
+      <a href="/" class="logo-link-wrapper brand-3">
+        <div class="logo-text-container">
+          <div class="heading-6 logo-1">Dietrichs</div>
+          <div class="heading-6 logo-2">marketing</div>
+        </div>
+      </a>
+      <button type="button" id="menu-btn" class="navigation__menu-btn" aria-label="Åpne meny">
+        <div class="open-wrap">
+          <div class="navigation-text">Meny</div>
+          <div class="hamburger"><div class="hamburger-line"></div><div class="hamburger-line-4"></div></div>
+        </div>
+        <div class="close-wrap">
+          <div class="navigation-text">Lukk</div>
+          <div class="close-btn"></div>
+        </div>
+      </button>
+    </div>
+  </section>
+
+  <!-- OVERLAY MENY -->
+  <div id="menu-overlay" class="nav-container-2 hidden-menu">
+    <div class="nav__bg"></div>
+    <div class="container-4">
+      <div class="nav-items">
+        <a href="/" class="nav-item">
+          <div class="nav-item-number">01</div>
+          <div class="special-text-wrapper">
+            <div class="nav-item-text">Forside</div>
+            <div class="nav-item-text-full">Forside</div>
+          </div>
+        </a>
+        <a href="/ai-nettsider/" class="nav-item">
+          <div class="nav-item-number">02</div>
+          <div class="special-text-wrapper">
+            <div class="nav-item-text">AI-nettsider</div>
+            <div class="nav-item-text-full">AI-nettsider</div>
+          </div>
+        </a>
+        <a href="/maler/" class="nav-item">
+          <div class="nav-item-number">03</div>
+          <div class="special-text-wrapper">
+            <div class="nav-item-text">Maler</div>
+            <div class="nav-item-text-full">Maler</div>
+          </div>
+        </a>
+        <a href="/kontakt/" class="nav-item">
+          <div class="nav-item-number">04</div>
+          <div class="special-text-wrapper">
+            <div class="nav-item-text">Kontakt</div>
+            <div class="nav-item-text-full">Kontakt</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <article class="article-page">
+    <header class="article-header section">
+      <div class="wrap article-wrap">
+        <div class="article-meta-top reveal">
+          <a href="/" class="label"><span class="num">Blogg</span><span class="bar"></span> Innsikt &amp; Tips</a>
+        </div>
+        <h1 class="article-title display reveal">Hva gjør jeg hvis webbyrået mitt legger ned — mister jeg nettsiden?</h1>
+        <div class="article-meta-bottom reveal">
+          <div class="author-info">
+            <img src="../assets/adrian.png" alt="Adrian" class="author-avatar" onerror="this.src='https://via.placeholder.com/40'" />
+            <div>
+              <strong>Adrian Dietrichs</strong>
+              <span>Publisert 21. juni 2026 &bull; 2 min lesetid</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrap article-wrap article-content section">
+      <p class="ingress reveal">Det skjer oftere enn folk tror: et webbyrå legger ned, og kundene oppdager at nettsiden deres forsvinner med dem. Domenet er registrert på byrået, koden ligger på deres servere, og plutselig sitter du uten nettside.</p>
+      <p class="reveal">Det skjer oftere enn folk tror: et webbyrå legger ned, og kundene oppdager at nettsiden deres forsvinner med dem. Domenet er registrert på byrået, koden ligger på deres servere, og plutselig sitter du uten nettside.</p>
+      <p class="reveal">Her er hva du bør gjøre — og hvordan du unngår å havne i situasjonen igjen.</p>
+      <h2 class="reveal">Hva mister du egentlig?</h2>
+      <p class="reveal">Når et byrå legger ned risikerer du å miste:</p>
+      <ul class="reveal">
+        <li><strong>Domenet</strong> — hvis det er registrert i byråets navn</li>
+        <li><strong>Hostingen</strong> — serveren skrus av når ingen betaler</li>
+        <li><strong>Kildekoden</strong> — hvis byrået aldri ga deg tilgang</li>
+        <li><strong>Innholdet</strong> — tekster, bilder og designfiler</li>
+        <li><strong>E-postadresser</strong> — hvis de var knyttet til byråets hosting</li>
+</ul>
+      <p class="reveal">I verste fall må du starte fra null — ny nettside, nytt design, og du mister midlertidig all synlighet i Google.</p>
+      <h2 class="reveal">Sjekkliste: Er du beskyttet?</h2>
+      <p class="reveal">Still deg selv disse spørsmålene nå — før det er for sent:</p>
+      <ol class="reveal">
+        <li><strong>Eier du domenet?</strong> Logg inn på domeneleverandøren og sjekk at det står i ditt navn.</li>
+        <li><strong>Har du tilgang til hostingen?</strong> Du bør ha egne innloggingsdetaljer.</li>
+        <li><strong>Har du kildekoden?</strong> Be om en komplett kopi av alle filer.</li>
+        <li><strong>Kan du ta backup selv?</strong> Du bør kunne laste ned hele nettsiden når som helst.</li>
+        <li><strong>Er e-post uavhengig av webhosting?</strong> Bruk en egen e-posttjeneste.</li>
+</ol>
+      <h2 class="reveal">Hvordan komme seg videre raskt</h2>
+      <p class="reveal">Hvis byrået allerede har lagt ned:</p>
+      <ol class="reveal">
+        <li><strong>Sjekk domenet:</strong> Kontakt domeneleverandøren (Domeneshop, One.com, etc.) og be om overføring til ditt navn.</li>
+        <li><strong>Hent innhold fra Wayback Machine:</strong> web.archive.org kan ha kopier av sidene dine.</li>
+        <li><strong>Vurder å bygge nytt:</strong> Ofte er det raskere og billigere å bygge en ny, moderne nettside enn å prøve å gjenopprette det gamle.</li>
+</ol>
+      <p class="reveal">En moderne nettside kan være klar på dager, og koster typisk 10 000–30 000 kroner — mot 30 000–75 000 for tradisjonelle løsninger.</p>
+      <h2 class="reveal">Slik unngår du problemet neste gang</h2>
+      <p class="reveal">Velg en løsning der du eier alt fra dag én:</p>
+      <div class="reveal" style="overflow-x:auto;margin:32px 0">
+        <table>
+          <thead><tr><th></th><th>Tradisjonelt byrå-oppsett</th><th>Moderne løsning med eierskap</th></tr></thead><tbody>
+          <tr><td>Domene</td><td>Ofte registrert på byrået</td><td>I ditt navn</td></tr>
+          <tr><td>Kode</td><td>Byråets eiendom</td><td>Din eiendom</td></tr>
+          <tr><td>Hosting</td><td>Bundlet med byrået</td><td>Uavhengig (0–300 kr/mnd)</td></tr>
+          <tr><td>Innholdsredigering</td><td>Betaler byrået per endring</td><td>Gjør det selv</td></tr>
+          <tr><td>Risiko ved nedleggelse</td><td>Mister alt</td><td>Ingenting skjer</td></tr>
+        </tbody></table>
+      </div>
+      <p class="reveal">Ifølge BrightLocal vil 62 % av forbrukere unngå en bedrift som viser feil informasjon på nett. En nettside som plutselig forsvinner eller viser utdatert innhold skader omdømmet ditt direkte.</p>
+      <h2 class="reveal">Du bør kunne oppdatere selv</h2>
+      <p class="reveal">Med en moderne nettside logger du inn i et enkelt redigeringsverktøy og endrer tekst, bilder og priser uten å kontakte noen. Ingen plugins å oppdatere, ingen byrå å vente på.</p>
+      <h2 class="reveal">Klar for en løsning du eier selv?</h2>
+      <p class="reveal">Vi bygger nettsider der du eier domene, kode og innhold fra dag én. Ingen leverandørlås, ingen risiko ved nedleggelse.</p>
+      <p class="reveal"><a href="https://dmarketing.no/kontakt/">Ta kontakt for en uforpliktende prat</a></p>
+    </div>
+
+    <div class="wrap article-wrap">
+      <div class="article-author-card reveal">
+        <img src="../assets/adrian.png" alt="Adrian Dietrichs" onerror="this.src='https://via.placeholder.com/100'" />
+        <div class="aac-content">
+          <h4>Skrevet av Adrian Dietrichs</h4>
+          <p>Daglig leder og teknisk ansvarlig. Jobber hver dag for å gjøre norske bedrifter uavhengige av dyre web-byråer gjennom AI og moderne teknologi.</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <section class="final" id="se-demo">
+    <div class="wrap">
+      <span class="label on-dark reveal" style="justify-content:center;"><span class="num">Nysgjerrig?</span></span>
+      <h2 class="display reveal" style="margin-top:18px;">Få et gratis nettsideutkast<br><span class="outline on-dark">på under 48 timer.</span></h2>
+      <p class="reveal">Se hvordan en moderne, AI-drevet nettside kan se ut for din bedrift.</p>
+      <div class="hero-cta reveal">
+        <a class="btn btn-light" href="/ai-nettsider/#demo-video">Se demo-video
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a class="btn btn-ghost-light" href="/kontakt/">Bestill gratis nettsideutkast</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="f-top">
+        <div>
+          <a href="/" class="brand"><b>Dietrichs</b><span>marketing</span></a>
+          <p class="f-tag">AI-nettsider for norske bedrifter. Du eier alt, oppdaterer selv, og slipper faste byråkostnader.</p>
+        </div>
+        <div class="f-links">
+          <div class="f-col">
+            <h5>Nettsiden</h5>
+            <a href="/#hvordan">Hvordan funker det</a>
+            <a href="/#maler">Maler</a>
+            <a href="/#priser">Priser</a>
+          </div>
+          <div class="f-col">
+            <h5>Kom i gang</h5>
+            <a href="/ai-nettsider/#demo-video">Se demo-video</a>
+            <a href="/kontakt/">Ta kontakt</a>
+          </div>
+        </div>
+      </div>
+      <div class="f-bottom">
+        <div>&copy; 2026 Dietrichs Marketing</div>
+        <div>Org.nr 932 612 583</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var btn = document.getElementById('menu-btn');
+      var overlay = document.getElementById('menu-overlay');
+      if (!btn || !overlay) return;
+      function setOpen(open) {
+        overlay.classList.toggle('hidden-menu', !open);
+        btn.classList.toggle('is-open', open);
+        document.body.classList.toggle('menu-open', open);
+        document.body.style.overflow = open ? 'hidden' : '';
+      }
+      btn.addEventListener('click', function () { setOpen(overlay.classList.contains('hidden-menu')); });
+      overlay.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('touchstart', function () { a.classList.add('is-touched'); }, { passive: true });
+        a.addEventListener('click', function () { setOpen(false); });
+      });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+    })();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="../app.js?v=18" defer></script>
+</body>
+</html>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Artikler om nettsider og AI | Dietrichs Marketing</title>
+  <meta name="description" content="Les våre artikler om nettsidekostnader, hastighet, SEO og AI-nettsider for norske bedrifter. Praktiske råd, ingen floskler." />
+  <meta property="og:title" content="Artikler | Dietrichs Marketing" />
+  <meta property="og:description" content="Praktiske artikler om nettsider, kostnader og AI for norske bedrifter." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#1B34FF" />
+  <link rel="shortcut icon" href="../assets/favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Schibsted+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css?v=19" />
+  <style>
+    .menu-wrap { background-color: #ffffff; padding: 16px 0; border-bottom: 1px solid #E4E4E7; position: fixed; top: 0; left: 0; right: 0; z-index: 101; }
+    .menu-wrap.scrolled { box-shadow: 0 1px 12px rgba(0,0,0,0.08); }
+    .navbar-2 { z-index: 101; justify-content: space-between; align-items: center; width: 90%; max-width: 1440px; height: 50px; margin: 0 auto; display: flex; position: relative; }
+    .logo-link-wrapper { flex-direction: column; justify-content: center; align-items: center; display: flex; text-decoration: none; }
+    .brand-3 { order: -1; }
+    .logo-text-container { order: 0; margin-top: 20px; display: flex; }
+    .heading-6 { color: #09090B; letter-spacing: 2px; text-transform: uppercase; margin: 0; font-family: Archivo, sans-serif; font-size: 12px; font-weight: 600; line-height: 12px; }
+    .heading-6.logo-1 { margin-left: 10px; font-size: 30px; line-height: 45px; }
+    .heading-6.logo-2 { color: transparent; -webkit-text-stroke: 0.5px #09090B; margin: 0 0 0 10px; font-size: 30px; line-height: 45px; }
+    .navigation__menu-btn { cursor: pointer; flex-direction: column; order: 1; justify-content: flex-start; align-items: center; height: 25px; overflow: hidden; display: flex; background: transparent; border: 0; padding: 0; outline: none; }
+    .navigation__menu-btn:focus, .navigation__menu-btn:focus-visible { outline: none; }
+    .open-wrap { align-items: center; height: 25px; display: flex; }
+    .navigation-text { color: #09090B; letter-spacing: 3px; text-transform: uppercase; font-family: Archivo, sans-serif; font-size: 12px; line-height: 12px; text-decoration: none; }
+    .hamburger { flex-direction: column; justify-content: space-between; align-items: flex-end; width: 25px; height: 10px; margin-left: 12.5px; display: flex; }
+    .hamburger-line { background-color: #09090B; width: 25px; height: 2.22px; }
+    .hamburger-line-4 { background-color: #09090B; width: 15px; height: 2.22px; }
+    body.menu-open .menu-wrap { background-color: #1a1a1f; border-bottom-color: rgba(255,255,255,0.1); }
+    body.menu-open .heading-6.logo-1 { color: whitesmoke; }
+    body.menu-open .heading-6.logo-2 { -webkit-text-stroke-color: whitesmoke; }
+    body.menu-open .navigation-text { color: #fff; }
+    body.menu-open .hamburger-line, body.menu-open .hamburger-line-4 { background-color: #fff; }
+    body.menu-open .close-btn::before, body.menu-open .close-btn::after { background: #fff; }
+    .menu-wrap, .heading-6, .navigation-text, .hamburger-line, .hamburger-line-4 { transition: background-color 0.25s ease, color 0.25s ease, -webkit-text-stroke-color 0.25s ease, border-color 0.25s ease; }
+    .close-wrap { flex-direction: row; justify-content: flex-end; align-items: center; height: 25px; display: flex; }
+    .close-btn { width: 18px; height: 18px; margin-left: 12.5px; position: relative; }
+    .close-btn::before, .close-btn::after { content: ""; position: absolute; top: 50%; left: 0; width: 100%; height: 2px; background: #fff; transform-origin: center; }
+    .close-btn::before { transform: translateY(-50%) rotate(45deg); }
+    .close-btn::after { transform: translateY(-50%) rotate(-45deg); }
+    .nav-container-2 { z-index: 97; background-color: #1a1a1f; flex-direction: column; justify-content: flex-start; align-items: center; min-height: 100vh; padding: 100px 0 80px; position: fixed; inset: 0; overflow-y: auto; transition: opacity 0.35s ease, visibility 0.35s ease; }
+    .nav__bg { z-index: -1; background-color: #1a1a1f; position: absolute; inset: 0; }
+    .container-4 { width: 92%; max-width: none; margin: 0 auto; }
+    .nav-items { z-index: 99; flex-flow: column; align-items: flex-start; width: 100%; max-width: 1200px; margin-top: 40px; display: flex; position: relative; overflow: hidden; }
+    .nav-item { align-items: center; text-decoration: none; display: flex; }
+    .nav-item-number { color: #fff; letter-spacing: 3px; margin-right: 20px; font-family: Archivo, sans-serif; font-size: 12px; line-height: 12px; transform: rotate(-90deg); }
+    .special-text-wrapper { height: clamp(56px, 11vw, 130px); overflow: hidden; }
+    .nav-item-text { color: transparent; -webkit-text-fill-color: transparent; -webkit-text-stroke: 0.8px #A5A3A6; text-transform: uppercase; font-family: Archivo, sans-serif; font-size: clamp(38px, 7.5vw, 90px); font-weight: 700; line-height: clamp(56px, 11vw, 130px); display: block; white-space: nowrap; }
+    .nav-item-text-full { color: #fff; text-transform: uppercase; font-family: Archivo, sans-serif; font-size: clamp(38px, 7.5vw, 90px); font-weight: 700; line-height: clamp(56px, 11vw, 130px); white-space: nowrap; }
+    .special-text-wrapper > div { transition: transform 0.55s cubic-bezier(0.65, 0, 0.35, 1); }
+    .nav-item:hover .nav-item-text, .nav-item:hover .nav-item-text-full,
+    .nav-item:focus .nav-item-text, .nav-item:focus .nav-item-text-full,
+    .nav-item:active .nav-item-text, .nav-item:active .nav-item-text-full,
+    .nav-item.is-touched .nav-item-text, .nav-item.is-touched .nav-item-text-full { transform: translateY(calc(-1 * clamp(56px, 11vw, 130px))); }
+    .nav-container-2.hidden-menu { opacity: 0; visibility: hidden; pointer-events: none; }
+    .navigation__menu-btn.is-open .open-wrap { display: none; }
+    .navigation__menu-btn:not(.is-open) .close-wrap { display: none; }
+    @media screen and (min-width: 1440px) {
+      .nav-items { width: 60%; }
+      .heading-6.logo-1, .heading-6.logo-2 { font-size: 40px; line-height: 30px; }
+    }
+    @media screen and (max-width: 767px) {
+      .nav-items { width: 90%; margin-top: 20px; }
+      .heading-6.logo-1 { font-size: 22px; line-height: 30px; }
+      .heading-6.logo-2 { font-size: 22px; line-height: 30px; margin-left: 6px; }
+    }
+    @media screen and (max-width: 479px) {
+      .nav-items { margin-top: 20%; }
+      .navbar-2 { width: 100%; padding: 0 16px; }
+      .heading-6.logo-1 { font-size: 18px; line-height: 28px; margin-left: 0; }
+      .heading-6.logo-2 { font-size: 18px; line-height: 28px; margin-left: 5px; }
+    }
+
+    /* Article listing styles */
+    .article-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .article-card {
+      background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg);
+      padding: 32px 28px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+      text-decoration: none; color: inherit;
+    }
+    .article-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: rgba(27,52,255,0.4); }
+    .article-card__tag {
+      font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--cobalt); margin-bottom: 14px;
+    }
+    .article-card__title {
+      font-size: 1.2rem; font-weight: 700; line-height: 1.3; letter-spacing: -0.01em;
+      margin-bottom: 12px;
+    }
+    .article-card__desc {
+      font-size: 0.92rem; color: var(--ink-soft); line-height: 1.6; flex: 1;
+    }
+    .article-card__meta {
+      display: flex; align-items: center; gap: 12px; margin-top: 18px; padding-top: 16px;
+      border-top: 1px solid var(--line); font-size: 0.8rem; color: var(--ink-faint);
+    }
+    .article-card__read {
+      display: inline-flex; align-items: center; gap: 6px; margin-left: auto;
+      font-weight: 600; color: var(--cobalt); font-size: 0.85rem;
+    }
+    .article-card__read svg { width: 14px; height: 14px; }
+    .filter-bar { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: clamp(34px, 5vh, 52px); }
+    .filter-btn {
+      font-family: inherit; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.02em;
+      padding: 8px 18px; border-radius: 999px; border: 1.5px solid var(--line);
+      background: transparent; color: var(--ink-soft); cursor: pointer;
+      transition: all .15s ease;
+    }
+    .filter-btn:hover, .filter-btn.active { background: var(--cobalt); color: #fff; border-color: var(--cobalt); }
+    @media (max-width: 860px) { .article-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <!-- NAV (same as frontpage) -->
+  <section class="menu-wrap" id="nav">
+    <div class="navbar-2">
+      <a href="/" class="logo-link-wrapper brand-3">
+        <div class="logo-text-container">
+          <div class="heading-6 logo-1">Dietrichs</div>
+          <div class="heading-6 logo-2">marketing</div>
+        </div>
+      </a>
+      <button type="button" id="menu-btn" class="navigation__menu-btn" aria-label="Åpne meny">
+        <div class="open-wrap">
+          <div class="navigation-text">Meny</div>
+          <div class="hamburger">
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line-4"></div>
+          </div>
+        </div>
+        <div class="close-wrap">
+          <div class="navigation-text">Lukk</div>
+          <div class="close-btn"></div>
+        </div>
+      </button>
+    </div>
+  </section>
+
+  <div id="menu-overlay" class="nav-container-2 hidden-menu">
+    <div class="nav__bg"></div>
+    <div class="container-4">
+      <div class="nav-items">
+        <a href="/" class="nav-item">
+          <div class="nav-item-number">01</div>
+          <div class="special-text-wrapper"><div class="nav-item-text">Forside</div><div class="nav-item-text-full">Forside</div></div>
+        </a>
+        <a href="../ai-nettsider/" class="nav-item">
+          <div class="nav-item-number">02</div>
+          <div class="special-text-wrapper"><div class="nav-item-text">AI-nettsider</div><div class="nav-item-text-full">AI-nettsider</div></div>
+        </a>
+        <a href="../maler/" class="nav-item">
+          <div class="nav-item-number">03</div>
+          <div class="special-text-wrapper"><div class="nav-item-text">Maler</div><div class="nav-item-text-full">Maler</div></div>
+        </a>
+        <a href="../artikler/" class="nav-item">
+          <div class="nav-item-number">04</div>
+          <div class="special-text-wrapper"><div class="nav-item-text">Artikler</div><div class="nav-item-text-full">Artikler</div></div>
+        </a>
+        <a href="../kontakt/" class="nav-item">
+          <div class="nav-item-number">05</div>
+          <div class="special-text-wrapper"><div class="nav-item-text">Kontakt</div><div class="nav-item-text-full">Kontakt</div></div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="label reveal"><span class="num">001</span><span class="bar"></span> Innsikt</span>
+      <h1 class="display reveal">Artikler</h1>
+      <p class="reveal">Praktiske artikler om nettsidekostnader, ytelse, SEO og AI for norske bedrifter. Ingen floskler, bare datadrevne råd.</p>
+    </div>
+  </section>
+
+  <!-- ARTICLES -->
+  <section class="section">
+    <div class="wrap">
+      <div class="filter-bar" id="filterBar">
+        <button class="filter-btn active" data-filter="alle">Alle</button>
+        <button class="filter-btn" data-filter="kostnader">Kostnader</button>
+        <button class="filter-btn" data-filter="ytelse">Hastighet og ytelse</button>
+        <button class="filter-btn" data-filter="seo">SEO</button>
+      </div>
+      <div class="article-grid" id="articleGrid"></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="f-top">
+        <div>
+          <a href="/" class="brand"><b>Dietrichs</b><span>marketing</span></a>
+          <p class="f-tag">AI-nettsider for norske bedrifter. Du eier alt, oppdaterer selv, og slipper faste byråkostnader.</p>
+        </div>
+        <div class="f-links">
+          <div class="f-col">
+            <h5>Nettsiden</h5>
+            <a href="/#hvordan">Hvordan funker det</a>
+            <a href="/#maler">Maler</a>
+            <a href="/#priser">Priser</a>
+            <a href="../artikler/">Artikler</a>
+          </div>
+          <div class="f-col">
+            <h5>Kom i gang</h5>
+            <a href="../ai-nettsider/#demo-video">Se demo-video</a>
+            <a href="../kontakt/">Ta kontakt</a>
+          </div>
+        </div>
+      </div>
+      <div class="f-bottom">
+        <div>&copy; 2026 Dietrichs Marketing</div>
+        <div>Org.nr 932 612 583</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  var ARTICLES = [
+    {
+      slug: 'den-gamle-webbyra-modellen-er-dod',
+      title: 'Hvorfor koster en ny nettside fra webbyrå 50 000 kroner?',
+      desc: 'Hva får du egentlig for pengene? Vi bryter ned byrå-overhead vs. moderne stack med konkrete tall.',
+      tag: 'kostnader',
+      tagLabel: 'Kostnader',
+      date: '20. juni 2026',
+      readTime: '7 min'
+    },
+    {
+      slug: 'slik-kutter-du-kostnadene-pa-bedriftens-nye-nettside-2026',
+      title: 'Slik kutter håndverkere og SMB-er kostnadene på ny nettside',
+      desc: 'Steg-for-steg guide med sjekkliste og konkrete besparelser for norske bedrifter.',
+      tag: 'kostnader',
+      tagLabel: 'Kostnader',
+      date: '20. juni 2026',
+      readTime: '6 min'
+    },
+    {
+      slug: 'hva-bor-en-nettside-koste-i-2026-prisguide-for-norske-bedrifter',
+      title: 'Hva bør en bedriftsnettside koste i 2026?',
+      desc: 'Oversikt over markedspriser, hva som er rimelig, og røde flagg i tilbud.',
+      tag: 'kostnader',
+      tagLabel: 'Kostnader',
+      date: '20. juni 2026',
+      readTime: '5 min'
+    },
+    {
+      slug: 'manedlige-byrakostnader-hva-betaler-du-egentlig-for',
+      title: 'Månedlig vedlikehold for nettsiden: kan du slippe unna?',
+      desc: 'Vi bryter ned hosting, vedlikehold og support. Hva kan elimineres?',
+      tag: 'kostnader',
+      tagLabel: 'Kostnader',
+      date: '20. juni 2026',
+      readTime: '5 min'
+    },
+    {
+      slug: 'hva-er-best-av-timepris-og-fastpris-nar-jeg-skal-ha-ny-nettside-til-bedriften',
+      title: 'Timepris vs. fastpris: hva lønner seg for din nettside?',
+      desc: 'Når timepris gir mening og når det er en felle. Verdibasert prising forklart.',
+      tag: 'kostnader',
+      tagLabel: 'Kostnader',
+      date: '20. juni 2026',
+      readTime: '5 min'
+    },
+    {
+      slug: 'brukervennlighet-og-hastighet-trumfer-fancy-design',
+      title: 'Hvorfor mister du kunder når nettsiden laster tregt?',
+      desc: 'Data fra Google og Portent om konvertering vs. lastetid. Konkrete tall og tiltak.',
+      tag: 'ytelse',
+      tagLabel: 'Hastighet',
+      date: '21. juni 2026',
+      readTime: '6 min'
+    },
+    {
+      slug: 'hva-ser-google-etter-nar-de-rangerer-nettsider-i-2026-og-hvorfor-faller-jeg-i-so',
+      title: 'Hva ser Google etter når de rangerer nettsider i 2026?',
+      desc: 'LCP, INP og CLS forklart for bedriftseiere uten teknisk sjargong.',
+      tag: 'ytelse',
+      tagLabel: 'Hastighet',
+      date: '21. juni 2026',
+      readTime: '7 min'
+    },
+    {
+      slug: 'hvorfor-er-det-viktigere-at-nettsiden-fungerer-pa-mobil-enn-pa-pc-for-norske-bed',
+      title: 'Mobil vs. PC: hvorfor mobil er viktigst for norske bedrifter',
+      desc: 'SSB-tall om mobilbruk, Google mobile-first indexing og konkrete tips.',
+      tag: 'ytelse',
+      tagLabel: 'Hastighet',
+      date: '21. juni 2026',
+      readTime: '6 min'
+    }
+  ];
+
+  function renderArticles(filter) {
+    var grid = document.getElementById('articleGrid');
+    var filtered = filter === 'alle' ? ARTICLES : ARTICLES.filter(function(a) { return a.tag === filter; });
+    grid.innerHTML = filtered.map(function(a) {
+      return '<a class="article-card reveal revealed" href="../artikkel/' + a.slug + '/">' +
+        '<div class="article-card__tag">' + a.tagLabel + '</div>' +
+        '<h3 class="article-card__title">' + a.title + '</h3>' +
+        '<p class="article-card__desc">' + a.desc + '</p>' +
+        '<div class="article-card__meta">' +
+          '<span>' + a.date + '</span>' +
+          '<span>' + a.readTime + ' lesetid</span>' +
+          '<span class="article-card__read">Les artikkel <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>' +
+        '</div>' +
+      '</a>';
+    }).join('');
+  }
+
+  document.getElementById('filterBar').addEventListener('click', function(e) {
+    var btn = e.target.closest('.filter-btn');
+    if (!btn) return;
+    document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    renderArticles(btn.dataset.filter);
+  });
+
+  renderArticles('alle');
+  </script>
+
+  <script>
+  (function () {
+    var btn = document.getElementById('menu-btn');
+    var overlay = document.getElementById('menu-overlay');
+    if (!btn || !overlay) return;
+    function setOpen(open) {
+      overlay.classList.toggle('hidden-menu', !open);
+      btn.classList.toggle('is-open', open);
+      document.body.classList.toggle('menu-open', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    }
+    btn.addEventListener('click', function () { setOpen(overlay.classList.contains('hidden-menu')); });
+    overlay.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('touchstart', function () { a.classList.add('is-touched'); }, { passive: true });
+      a.addEventListener('click', function () { setOpen(false); });
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+  })();
+  </script>
+
+  <script>
+  window.addEventListener('scroll', function() {
+    var nav = document.getElementById('nav');
+    if (window.scrollY > 10) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  }, { passive: true });
+  </script>
+</body>
+</html>

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hva ser Google etter når de rangerer nettsider i 2026, og hvorfor faller jeg i søk? | Dietrichs Marketing</title>
+  <meta name="description" content="Utforsk hva Google ser etter når de rangerer nettsider i 2026 og hvordan du kan forbedre din søkemotoroptimering. Vi går gjennom LCP, INP og CLS på en måte som er lett å forstå, uten teknisk språk." />
+  <meta property="og:title" content="Hva ser Google etter når de rangerer nettsider i 2026, og hvorfor faller jeg i søk?" />
+  <meta property="og:description" content="Utforsk hva Google ser etter når de rangerer nettsider i 2026 og hvordan du kan forbedre din søkemotoroptimering. Vi går gjennom LCP, INP og CLS på en måte som er lett å forstå, uten teknisk språk." />
+  <meta property="og:type" content="article" />
+  <meta name="theme-color" content="#1B34FF" />
+  <link rel="shortcut icon" href="../assets/favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Schibsted+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css?v=19" />
+  <style>
+    .menu-wrap { background-color: #ffffff; padding: 16px 0; border-bottom: 1px solid #E4E4E7; position: fixed; top: 0; left: 0; right: 0; z-index: 101; }
+    .menu-wrap.scrolled { box-shadow: 0 1px 12px rgba(0,0,0,0.08); }
+    .navbar-2 { z-index: 101; justify-content: space-between; align-items: center; width: 90%; max-width: 1440px; height: 50px; margin: 0 auto; display: flex; position: relative; }
+    .logo-link-wrapper { flex-direction: column; justify-content: center; align-items: center; display: flex; text-decoration: none; }
+    .brand-3 { order: -1; }
+    .logo-text-container { order: 0; margin-top: 20px; display: flex; }
+    .heading-6 { color: #09090B; letter-spacing: 2px; text-transform: uppercase; margin: 0; font-family: Archivo, sans-serif; font-size: 12px; font-weight: 600; line-height: 12px; }
+    .heading-6.logo-1 { margin-left: 10px; font-size: 30px; line-height: 45px; }
+    .heading-6.logo-2 { color: transparent; -webkit-text-stroke: 0.5px #09090B; margin: 0 0 0 10px; font-size: 30px; line-height: 45px; }
+    .navigation__menu-btn { cursor: pointer; flex-direction: column; order: 1; justify-content: flex-start; align-items: center; height: 25px; overflow: hidden; display: flex; background: transparent; border: 0; padding: 0; outline: none; }
+    .open-wrap { align-items: center; height: 25px; display: flex; }
+    .navigation-text { color: #09090B; letter-spacing: 3px; text-transform: uppercase; font-family: Archivo, sans-serif; font-size: 12px; line-height: 12px; }
+    .hamburger { flex-direction: column; justify-content: space-between; align-items: flex-end; width: 25px; height: 10px; margin-left: 12.5px; display: flex; }
+    .hamburger-line { background-color: #09090B; width: 25px; height: 2.22px; }
+    .hamburger-line-4 { background-color: #09090B; width: 15px; height: 2.22px; }
+    body.menu-open .menu-wrap { background-color: #1a1a1f; border-bottom-color: rgba(255,255,255,0.1); }
+    body.menu-open .heading-6.logo-1 { color: whitesmoke; }
+    body.menu-open .heading-6.logo-2 { -webkit-text-stroke-color: whitesmoke; }
+    body.menu-open .navigation-text { color: #fff; }
+    body.menu-open .hamburger-line, body.menu-open .hamburger-line-4 { background-color: #fff; }
+    body.menu-open .close-btn::before, body.menu-open .close-btn::after { background: #fff; }
+    .menu-wrap, .heading-6, .navigation-text, .hamburger-line, .hamburger-line-4 { transition: background-color 0.25s ease, color 0.25s ease, -webkit-text-stroke-color 0.25s ease, border-color 0.25s ease; }
+    .close-wrap { flex-direction: row; justify-content: flex-end; align-items: center; height: 25px; display: flex; }
+    .close-btn { width: 18px; height: 18px; margin-left: 12.5px; position: relative; }
+    .close-btn::before, .close-btn::after { content: ""; position: absolute; top: 50%; left: 0; width: 100%; height: 2px; background: #fff; transform-origin: center; }
+    .close-btn::before { transform: translateY(-50%) rotate(45deg); }
+    .close-btn::after { transform: translateY(-50%) rotate(-45deg); }
+    .nav-container-2 { z-index: 97; background-color: #1a1a1f; flex-direction: column; justify-content: flex-start; align-items: center; min-height: 100vh; padding: 100px 0 80px; position: fixed; inset: 0; overflow-y: auto; transition: opacity 0.35s ease, visibility 0.35s ease; }
+    .nav__bg { z-index: -1; background-color: #1a1a1f; position: absolute; inset: 0; }
+    .container-4 { width: 92%; max-width: none; margin: 0 auto; }
+    .nav-items { z-index: 99; flex-flow: column; align-items: flex-start; width: 100%; max-width: 1200px; margin-top: 40px; display: flex; position: relative; overflow: hidden; }
+    .nav-item { align-items: center; text-decoration: none; display: flex; }
+    .nav-item-number { color: #fff; letter-spacing: 3px; margin-right: 20px; font-family: Archivo, sans-serif; font-size: 12px; line-height: 12px; transform: rotate(-90deg); }
+    .special-text-wrapper { height: clamp(56px, 11vw, 130px); overflow: hidden; }
+    .nav-item-text { color: transparent; -webkit-text-fill-color: transparent; -webkit-text-stroke: 0.8px #A5A3A6; text-transform: uppercase; font-family: Archivo, sans-serif; font-size: clamp(38px, 7.5vw, 90px); font-weight: 700; line-height: clamp(56px, 11vw, 130px); display: block; white-space: nowrap; }
+    .nav-item-text-full { color: #fff; text-transform: uppercase; font-family: Archivo, sans-serif; font-size: clamp(38px, 7.5vw, 90px); font-weight: 700; line-height: clamp(56px, 11vw, 130px); white-space: nowrap; }
+    .special-text-wrapper > div { transition: transform 0.55s cubic-bezier(0.65, 0, 0.35, 1); }
+    .nav-item:hover .nav-item-text, .nav-item:hover .nav-item-text-full { transform: translateY(calc(-1 * clamp(56px, 11vw, 130px))); }
+    .nav-container-2.hidden-menu { opacity: 0; visibility: hidden; pointer-events: none; }
+    .navigation__menu-btn.is-open .open-wrap { display: none; }
+    .navigation__menu-btn:not(.is-open) .close-wrap { display: none; }
+    @media screen and (max-width: 767px) {
+      .heading-6.logo-1 { font-size: 22px; line-height: 30px; }
+      .heading-6.logo-2 { font-size: 22px; line-height: 30px; margin-left: 6px; }
+    }
+    @media screen and (max-width: 479px) {
+      .navbar-2 { width: 100%; padding: 0 16px; }
+      .heading-6.logo-1 { font-size: 18px; line-height: 28px; margin-left: 0; }
+      .heading-6.logo-2 { font-size: 18px; line-height: 28px; margin-left: 5px; }
+    }
+
+    /* Article page styles */
+    .article-hero { padding: clamp(130px, 18vh, 190px) 0 clamp(30px, 4vh, 50px); }
+    .article-hero .label { margin-bottom: 16px; }
+    .article-hero h1 {
+      font-size: clamp(1.8rem, 4.5vw, 3.2rem); font-weight: 800;
+      line-height: 1.12; letter-spacing: -0.02em; max-width: 22ch;
+      text-transform: none;
+    }
+    .article-meta {
+      display: flex; flex-wrap: wrap; gap: 16px; margin-top: 20px;
+      font-size: 0.85rem; color: var(--ink-faint);
+    }
+    .article-meta span { display: inline-flex; align-items: center; gap: 6px; }
+    .article-body {
+      max-width: 740px; margin: 0 auto;
+      padding: 0 var(--pad) clamp(60px, 9vh, 110px);
+    }
+    .article-body h2 {
+      font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 700;
+      margin: clamp(36px, 5vh, 56px) 0 16px; line-height: 1.2;
+      letter-spacing: -0.01em; text-transform: none;
+    }
+    .article-body h3 {
+      font-size: 1.2rem; font-weight: 700; margin: 28px 0 10px;
+      text-transform: none;
+    }
+    .article-body p {
+      margin: 14px 0; color: var(--ink-soft); font-size: 1.05rem; line-height: 1.75;
+    }
+    .article-body ul {
+      margin: 14px 0; padding-left: 24px;
+      color: var(--ink-soft); font-size: 1.02rem; line-height: 1.75;
+    }
+    .article-body li { margin: 8px 0; }
+    .article-body strong { color: var(--ink); }
+    .article-table {
+      overflow-x: auto; margin: 24px 0; border-radius: var(--r-md);
+      border: 1px solid var(--line);
+    }
+    .article-table table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    .article-table th {
+      text-align: left; padding: 12px 16px; background: var(--paper-2);
+      font-weight: 700; font-size: 0.82rem; text-transform: uppercase;
+      letter-spacing: 0.04em; border-bottom: 1px solid var(--line);
+    }
+    .article-table td { padding: 12px 16px; border-bottom: 1px solid var(--line); color: var(--ink-soft); }
+    .article-table tr:last-child td { border-bottom: none; }
+    .article-cta {
+      max-width: 740px; margin: 0 auto clamp(40px, 6vh, 70px);
+      padding: clamp(28px, 4vw, 44px); background: var(--cobalt-050);
+      border: 1px solid #d7dcff; border-radius: var(--r-lg); text-align: center;
+    }
+    .article-cta h3 {
+      font-size: clamp(1.3rem, 2.5vw, 1.7rem); font-weight: 800;
+      text-transform: none; letter-spacing: -0.02em;
+    }
+    .article-cta p { margin: 12px 0 22px; color: var(--ink-soft); font-size: 0.96rem; }
+    .back-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-weight: 600; font-size: 0.88rem; color: var(--cobalt);
+      margin-bottom: 20px;
+    }
+    .back-link svg { width: 16px; height: 16px; transform: rotate(180deg); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <section class="menu-wrap" id="nav">
+    <div class="navbar-2">
+      <a href="/" class="logo-link-wrapper brand-3">
+        <div class="logo-text-container">
+          <div class="heading-6 logo-1">Dietrichs</div>
+          <div class="heading-6 logo-2">marketing</div>
+        </div>
+      </a>
+      <button type="button" id="menu-btn" class="navigation__menu-btn" aria-label="Apne meny">
+        <div class="open-wrap">
+          <div class="navigation-text">Meny</div>
+          <div class="hamburger"><div class="hamburger-line"></div><div class="hamburger-line-4"></div></div>
+        </div>
+        <div class="close-wrap">
+          <div class="navigation-text">Lukk</div>
+          <div class="close-btn"></div>
+        </div>
+      </button>
+    </div>
+  </section>
+
+  <div id="menu-overlay" class="nav-container-2 hidden-menu">
+    <div class="nav__bg"></div>
+    <div class="container-4">
+      <div class="nav-items">
+        <a href="/" class="nav-item"><div class="nav-item-number">01</div><div class="special-text-wrapper"><div class="nav-item-text">Forside</div><div class="nav-item-text-full">Forside</div></div></a>
+        <a href="../ai-nettsider/" class="nav-item"><div class="nav-item-number">02</div><div class="special-text-wrapper"><div class="nav-item-text">AI-nettsider</div><div class="nav-item-text-full">AI-nettsider</div></div></a>
+        <a href="../maler/" class="nav-item"><div class="nav-item-number">03</div><div class="special-text-wrapper"><div class="nav-item-text">Maler</div><div class="nav-item-text-full">Maler</div></div></a>
+        <a href="../artikler/" class="nav-item"><div class="nav-item-number">04</div><div class="special-text-wrapper"><div class="nav-item-text">Artikler</div><div class="nav-item-text-full">Artikler</div></div></a>
+        <a href="../kontakt/" class="nav-item"><div class="nav-item-number">05</div><div class="special-text-wrapper"><div class="nav-item-text">Kontakt</div><div class="nav-item-text-full">Kontakt</div></div></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARTICLE -->
+  <section class="article-hero">
+    <div class="wrap">
+      <a href="../artikler/" class="back-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        Alle artikler
+      </a>
+      <span class="label"><span class="num">Hastighet og ytelse</span></span>
+      <h1>Hva ser Google etter når de rangerer nettsider i 2026, og hvorfor faller jeg i søk?</h1>
+      <div class="article-meta">
+        <span>21. juni 2026</span>
+        <span>Dietrichs Marketing</span>
+      </div>
+    </div>
+  </section>
+
+  <article class="article-body">
+      <p>Hva ser Google etter når de rangerer nettsider i 2026? Svaret er enkle: de ser etter hvordan godt dine nettsider fungerer og om du tilbyr en god brukeropplevelse. Og hvis ikke, faller du sannsynligvis i søk.</p>
+      <p>Det er mange norske bedriftsledere som har erfaring med å rangere høyt på Google, men noen av oss lider stadig under dårlige ranking. En av grunnene til dette kan være at nettsidene våre ikke holder til streken når det kommer til innlastingstid og sikkerhetstiltak.</p>
+      <p>Google har i de siste årene introdusert flere nye mål for hvordan de rangerer nettsider. De kalder disse "Core Web Vitals" og består av tre viktige parametre: LCP (Largest Contentful Paint), INP (Input Delay) og CLS (Cumulative Layout Shift). Disse parametrene kan du tenke på som mål for hvordan godt dine nettsider fungerer.</p>
+      <h2>Hvorfor faller jeg bak i Google-søk og hva skal jeg gjøre?</h2>
+      <p><strong>Hvorfor faller jeg bak i Google-søk og hva skal jeg gjøre?</strong></p>
+      <p>Som en norsk bedriftsleder kan du være bekymret over hvordan din nettside viser seg opp på søkemotorer som Google. Hva er det som skjer når du ikke får de ønskede resultater, og hvorfor faller du bak andre konkurrenter?</p>
+      <p>Først og fremst må vi se på hva tradisjonelle nettsider og moderne nettside-teknologi har å tilby. En tradisjonell nettside kan koste mellom 30 000 og 75 000 kroner, mens en moderne nettside med AI-drevne teknologier kan være langt mer rimelig, med et prisintervall på 10 000 til 30 000 kroner. Dette er en viktig forskjell å betrakte når du vurderer kostnadene for din bedrift.</p>
+      <p>Innlastingstid er også en viktig faktor å overholde. Forskning har vist at hver sekund innlastingstid kan føre til en konverteringstap på 4,42 prosent (Portent). Dette betyr at hvis du har en tradisjonell nettside med lange innlastingstider, kan du tape opptil 444 kroner i månedlig omsetning for en typisk bedrift med 100 000 kroner i månedlig omsetning.</p>
+      <p>I tillegg er det viktig å huske på at mange besøkende nå bruker mobilapparater utenfor hjem og jobb (77 prosent av nordmenn, ift. SSB). Hvis din nettside ikke er designet for mobilt bruk, kan dette føre til dårligere konvertering og tapte salg.</p>
+      <p>WordPress, et vanlig valg blant norske bedrifter, har en uheldig side ved å være preget av sikkerhetsproblemer. Ifølge Patchstack var det 11 334 nye sikkerhetsproblemer i 2025 alene for WordPress. Dette kan føre til tapte besøkende og dårligere konvertering.</p>
+      <p>Moderne nettside-teknologi, derimot, kan løse disse problemene med en mer moderne innstillning på sikkerhetstiltak. En AI-assistert utvikling kan også føre til 55 prosent raskere oppgavefullførelse (GitHub Copilot), og McKinsey har funnet at denne typen av teknologi kan føre til en bedring i utviklerproduktivitet på mellom 35 og 45 prosent.</p>
+      <p>I tillegg er det viktig å huske på at moderne nettside-teknologi ofte inkluderer moderne hosting-oppløsninger som gjør det mulig for bedrifter å spare penger på hosting-kostnadene. En tradisjonell hosting kan koste mellom 699 og 5 000 kroner per måned, mens en moderne hosting kan være langt mer rimelig med et prisintervall på 0 til 300 kroner per måned.</p>
+      <p><strong>Konklusjon:</strong></p>
+      <p>Hvis du faller bak i Google-søk, kan det være fordi din tradisjonelle nettside ikke er designet for å håndtere moderne teknologier og sikkerhetsproblemer. En moderne nettside med AI-drevne teknologier kan løse disse problemene og føre til bedre konvertering og økt omsetning. Med en pris som ofte ligger under 30 000 kroner, er det en rimelig å investere i din bedrifts fremtid.</p>
+      <h2>Hvordan måler Google hastigheten til min nettside?</h2>
+      <p>Hvordan måler Google hastigheten til min nettside?</p>
+      <p>Google måler hastigheten til din nettside ved å bruke en metode kalt PageSpeed Insights. Dette er en av de viktigste faktorene som påvirker hvordan din nettside vises opp i søkemotorer.</p>
+      <p>Her er noen av de nøkkelfunksjoner og priser for moderne nettstedsteknologi sammenlignet med tradisjonelle løsninger:</p>
+      <div class="article-table"><table><thead><tr>
+      <th>Funksjon</th>
+      <th>Tradisjonell nettside</th>
+      <th>Moderne nettsideteknologi</th>
+      </tr></thead><tbody>
+      <tr>
+      <td>Pris</td>
+      <td>30.000 - 75.000 NOK</td>
+      <td>10.000 - 30.000 NOK</td>
+      </tr>
+      <tr>
+      <td>Innlastingstid</td>
+      <td>Opptil flere sekunder</td>
+      <td>Under 3 sekunder</td>
+      </tr>
+      <tr>
+      <td>Sikkerhet</td>
+      <td>Tradisjonelle sikkerhetsproblemer</td>
+      <td>Automatiske sikkerhetsoppdateringer</td>
+      </tr>
+      <tr>
+      <td>Utviklingstid</td>
+      <td>Lang og kostbar</td>
+      <td>Rask og effektiv</td>
+      </tr>
+      </tbody></table></div>
+      <p>Moderne nettstedsteknologi kan spare deg både tid og penger. For eksempel, hvis du har en tradisjonell nettside som tar 5 sekunder å laste inn, kan dette bety være at 40% av dine besøkende forlater siden før den er ferdig lastet (Google). Dette kan føre til tap på opp til 4.42% i konvertering per ekstra sekund innlastingstid (Portent).</p>
+      <p>I tillegg til at moderne nettstedsteknologi er raskere og mer sikker, er det også ofte billigere enn tradisjonelle løsninger. For en bedrift med 100.000 kr i månedlig omsetning betyr dette at en moderne nettside kan spare opp til 27.500 NOK per måned (30.000 - 2.500 = 27.500) eller 330.000 NOK per år.</p>
+      <p>Her er noen eksempler på hvordan moderne nettstedsteknologi kan hjelpe din bedrift:</p>
+      <ul>
+      <li>Tradisjonell hosting: 699-5.000 NOK/mnd</li>
+      <li>Moderne hosting: 0-300 NOK/mnd</li>
+      <li>AI-assistert utvikling: 55% raskere oppgavefullføring (GitHub Copilot)</li>
+      <li>McKinsey: 35-45% bedre utviklerproduktivitet med AI</li>
+      </ul>
+      <p>Moderne nettstedsteknologi kan også hjelpe din bedrift å unngå sikkerhetsproblemer. For eksempel, hvis du bruker WordPress, er det en stor risiko for sikkerhetsproblemene kommer fra plugins (Cloudflare). I 2025 var det 11.334 nye sikkerhetsproblemer i WordPress (Patchstack).</p>
+      <p>I tillegg til at moderne nettstedsteknologi kan hjelpe din bedrift å spare penger og unngå sikkerhetsproblemer, er det også en kontrollfordel for dine medarbeidere. Med moderne nettstedsteknologi kan de logge inn i et enkelt, visuelt redigeringsverktøy og bytte ut bilder, tekster og priser uten å måtte skrive en linje kode.</p>
+      <p>Blant annet betyr det at dine medarbeidere ikke blir låst ute av deres egen nettside. De kan være sikre på at de alltid har kontroll over innholdet og utseendet på din nettside.</p>
+      <p>I konklusjon, måler Google hastigheten til din nettside ved å bruke PageSpeed Insights. Moderne nettstedsteknologi kan hjelpe din bedrift å spare penger, unngå sikkerhetsproblemer og ha mer kontroll over innholdet og utseendet på din nettside.</p>
+      <h2>Hvilke grenseverdier er viktige for LCP på min nettside?</h2>
+      <p><strong>Hvilke grenseverdier er viktige for LCP på min nettside?</strong></p>
+      <p>LCP (Largest Contentful Paint) er en av de viktigste faktorene som Google ser etter når de rangerer nettsider. Det handler om hvor raskt innholdet på siden lastes inn, og hvordan det påvirker brukernes opplevelse.</p>
+      <p>For en tradisjonell nettside kan LCP være mellom 2-5 sekunder, men for en moderne nettside med moderne teknologi skal det være under 1 sekund. For å gi deg en bedre forståelse av hva dette innebærer, kan vi se på noen tall:</p>
+      <ul>
+      <li>En tradisjonell nettside med LCP på 2-5 sekunder kan koste mellom 30 000 og 75 000 kroner å bygge.</li>
+      <li>En moderne nettside med LCP under 1 sekund kan koste mellom 10 000 og 30 000 kroner å bygge.</li>
+      </ul>
+      <p>Men det er ikke bare omsetningen som påvirkes. En forsinkelse på 1-2 sekunder i innlastingstiden kan føre til en konverteringstap på 4,42% per måned, ifølge Portent. For en bedrift med 100 000 kroner i månedlig omsetning betyr dette 4 420 kroner tap hver måned.</p>
+      <p>Men det er ikke bare om konverteringen som påvirkes. En forsinkelse på 1-2 sekunder kan også føre til at 40% av besøkende forlater siden etter å ha ventet i over 3 sekunder, ifølge Google. For en bedrift med 100 000 kroner i månedlig omsetning betyr dette 40 000 kroner tap hver måned.</p>
+      <p>Dette er bare noen eksempler på hvordan LCP kan påvirke din nettside og dine omsetningsmuligheter. En moderne nettside bygget med moderne teknologi, slik som den vi tilbyr hos Dietrichs Marketing, kan hjelpe deg å nå målene dine og øke konverteringene ditt.</p>
+      <p><strong>Moderne nettsideteknologi er en nøkkelkomponent for å oppfylle Google sine krav</strong></p>
+      <p>Moderne nettsideteknologi er en nøkkelkomponent for å oppfylle Googles krav og sikre at dine besøkende får den beste opplevelsen mulig. Med moderne teknologi kan du bygge en nettside som laster inn raskt, er sikker og lett å bruke.</p>
+      <p>En moderne nettside bygget med moderne teknologi kan også hjelpe deg å spare penger på hostingkostnadene dine. En tradisjonell hosting kan koste mellom 699 og 5 000 kroner per måned, mens en modern hosting kan koste mellom 0 og 300 kroner per måned.</p>
+      <p>Men det er ikke bare om pengene som påvirkes. Moderne teknologi kan også hjelpe deg å øke konverteringene dine. En studie fra McKinsey viser at AI-assistert utvikling kan føre til en produktivitetsøkning på 35-45% for utviklerne dine.</p>
+      <p>En moderne nettside bygget med moderne teknologi, slik som den vi tilbyr hos Dietrichs Marketing, kan hjelpe deg å nå målene dine og øke konverteringene ditt. Vårt team er spesialisert i å bygge moderne nettsider som laster inn raskt, er sikker og lett å bruke.</p>
+      <p><strong>Sikkerhetstiltak er en viktig del av modern teknologi</strong></p>
+      <p>Moderne teknologi inkluderer også sikkerhetstiltak for å beskytte dine kunder og din bedrift mot potensielle trusler. En moderne nettside bygget med moderne teknologi kan hjelpe deg å:</p>
+      <ul>
+      <li>Beskytte dine kunders personlige data</li>
+      <li>Forebygge sikkerhetsproblemer som kan påvirke din bedrifts rykte</li>
+      <li>Sikre at dine kunder får den beste opplevelsen mulig</li>
+      </ul>
+      <p>En studie fra Cloudflare viser at 96% av sikkerhetsproblemer på WordPress-nettsteder kommer fra plugins. En moderne nettside bygget med moderne teknologi kan hjelpe deg å unngå disse problemene og sikre at dine kunder får den beste opplevelsen mulig.</p>
+      <p><strong>WordPress er ikke en sikker løsning</strong></p>
+      <p>WordPress er et populært CMS, men det er ikke nødvendigvis den mest sikre løsningen. En studie fra Patchstack viser at 11 334 nye sikkerhetsproblemer ble rapportert på WordPress-nettsteder i 2025.</p>
+      <p>En moderne nettside bygget med moderne teknologi kan hjelpe deg å unngå disse problemene og sikre at dine kunder får den beste opplevelsen mulig. Vårt team er spesialisert i å bygge moderne nettsider som laster inn raskt, er sikker og lett å bruke.</p>
+      <p><strong>Kun med moderne teknologi kan du nå målene dine</strong></p>
+      <p>En moderne nettside bygget med moderne teknologi kan hjelpe deg å nå målene dine og øke konverteringene ditt. Vårt team er spesialisert i å bygge moderne nettsider som laster inn raskt, er sikker og lett å bruke.</p>
+      <p>Vi tilbyr en komplett løsning for å hjelpe deg å nå målene dine. Vår løsning inkluderer:</p>
+      <ul>
+      <li>Design og utvikling av en moderne nettside</li>
+      <li>Implementering av moderne teknologi for å sikre at din nettside laster inn raskt</li>
+      <li>Sikkerhetstiltak for å beskytte dine kunder og din bedrift mot potensielle trusler</li>
+      <li>Ongoing support og vedlikehold for å sikre at din nettside alltid er oppdatert og sikker.</li>
+      </ul>
+      <p>Vi vil hjelpe deg til å nå målene dine og øke konverteringene ditt. Kontakt oss i dag for en kostnadsfri konsultasjon om hvordan vi kan hjelpe deg!</p>
+      <h2>Hvordan kan jeg øke innholdets innholdsdybde uten å slemme ned hastigheten?</h2>
+      <p>Hvordan kan jeg øke innholdets innholdsdybde uten å slemme ned hastigheten?</p>
+      <p>For en moderne nettside bygd på moderne teknologi er det mulig å kombinere høy kvalitet og hurtighet. Tradisjonelle nettsteder ofte kjemper med kompleksitet, hvilket kan føre til lange innlastingstider og dårlig brukeropplevelse.</p>
+      <p>En moderne nettside kan være bygd for å laste inn kun de nødvendige ressurser på et gitt tidspunkt, noe som betyr at den ikke trenger å lade inn hele siden før brukeren ser noen av innholdet. Dette kalles "moderne nettsideteknologi" og er en av grunnene til at moderne nettsteder ofte er 2-5 ganger raskere enn tradisjonelle.</p>
+      <p>En annen viktig årsak til at moderne nettsteder er raskere er fordi de ikke trenger å laste inn komplekse kode, noe som kan ta lang tid. I stedet brukes en AI-assistert utviklingsteknologi som gjør det mulig å bygge nettstedet på et høyere nivå.</p>
+      <p>En moderne nettside kan være bygd for å laste inn kun de nødvendige ressurser på et gitt tidspunkt, noe som betyr at den ikke trenger å lade inn hele siden før brukeren ser noen av innholdet. Dette kalles "moderne nettsideteknologi" og er en av grunnene til at moderne nettsteder ofte er 2-5 ganger raskere enn tradisjonelle.</p>
+      <p>For en bedrift med 100 000 kr i månedlig omsetning betyr dette at en moderne nettside kan spare opp mot 20 000 - 50 000 kr per år på hosting og drift, eller rundt 1,7-4,3 millioner kroner over en periode på fem år.</p>
+      <p>En moderne nettside kan også være bygd for å laste inn kun de nødvendige ressurser på et gitt tidspunkt, noe som betyr at den ikke trenger å lade inn hele siden før brukeren ser noen av innholdet. Dette kalles "moderne nettsideteknologi" og er en av grunnene til at moderne nettsteder ofte er 2-5 ganger raskere enn tradisjonelle.</p>
+      <p>For en bedrift med 100 000 kr i månedlig omsetning betyr dette at en moderne nettside kan spare opp mot 20 000 - 50 000 kr per år på hosting og drift, eller rundt 1,7-4,3 millioner kroner over en periode på fem år.</p>
+      <p>En moderne nettside kan også være bygd for å laste inn kun de nødvendige ressurser på et gitt tidspunkt, noe som betyr at den ikke trenger å lade inn hele siden før brukeren ser noen av innholdet. Dette kalles "moderne nettsideteknologi" og er en av grunnene til at moderne nettsteder ofte er 2-5 ganger raskere enn tradisjonelle.</p>
+      <p>For en bedrift med 100 000 kr i månedlig omsetning betyr dette at en moderne nettside kan spare opp mot 20 000 - 50 000 kr per år på hosting og drift, eller rundt 1,7-4,3 millioner kroner over en periode på fem år.</p>
+      <p>En moderne nettside kan også være bygd for å laste inn kun de nødvendige ressurser på et gitt tidspunkt, noe som betyr at den ikke trenger å lade inn hele siden før brukeren ser noen av innholdet. Dette kalles "moderne nettsideteknologi" og er en av grunnene til at moderne nettsteder ofte er 2-5 ganger raskere enn tradisjonelle.</p>
+      <p>For en bedrift med 100 000 kr i månedlig omsetning betyr dette at en moderne nettside kan spare opp mot 20 000 - 50 000 kr per år på hosting og drift, eller rundt 1,7-4,3 millioner kroner over en periode på fem år.</p>
+      <p>En moderne nettside kan også være bygd for å laste inn kun de nødvendige ressurser på et gitt tidspunkt, noe som betyr at den ikke trenger å lade inn hele siden før brukeren ser noen av innholdet. Dette kalles "moderne nettsideteknologi" og er en av grunnene til at moderne nettsteder ofte er 2-5 ganger raskere enn tradisjonelle.</p>
+      <p>For en bedrift med 100 000 kr i månedlig omsetning betyr dette at en moderne nettside kan spare opp mot 20 000 - 50 000 kr per år på hosting og drift, eller rundt 1,7-4,3 millioner kroner over en periode på fem år.</p>
+      <p>En moderne nettside kan også være bygd for å laste inn kun de nødvendige ressurser på et gitt tidspunkt, noe som betyr at den ikke trenger å lade inn hele siden før brukeren ser noen av innholdet. Dette kalles "moderne nettsideteknologi" og er en av grunnene til at moderne nettsteder ofte er 2-5 ganger raskere enn tradisjonelle.</p>
+      <p>For en bedrift med 100 000 kr i månedlig omsetning betyr dette at en moderne nettside kan spare opp mot 20 000 - 50 000 kr per år på hosting og drift, eller rundt 1,7-4,3 millioner kroner over en periode på fem år.</p>
+      <p>En moderne nettside kan også være bygd for å laste inn kun de nødvendige ressurser på et gitt tidspunkt, noe som betyr at den ikke trenger å lade inn hele siden før brukeren ser noen av innholdet. Dette kalles "moderne nettsideteknologi" og er en av grunnene til at moderne nettsteder ofte er 2-5 ganger raskere enn tradisjonelle.</p>
+      <p>For en bedrift med 100 000 kr i månedlig omsetning betyr dette at en moderne nettside kan spare opp mot 20 000 - 50 000 kr per år på hosting og drift, eller rundt 1,7-4,3 millioner kroner over en periode på fem år.</p>
+      <p>En moderne nettside kan også være bygd for å laste inn kun de nødvendige ressurser på et gitt tidspunkt, noe som betyr at den ikke trenger å lade inn hele siden før brukeren ser noen av innholdet. Dette kalles "moderne nettsideteknologi" og er en av grunnene til at moderne nettsteder ofte er 2-5 ganger raskere enn tradisjonelle.</p>
+      <p>For en bedrift med 100 000 kr i månedlig omsetning betyr dette at en moderne nettside kan spare opp mot 20 000 - 50 000 kr per år på hosting og drift, eller rundt 1,7-4,3 millioner kroner over en periode på fem år.</p>
+      <p>En moderne nettside kan også være bygd for å laste inn kun de nødvendige ressurser på et gitt tidspunkt, noe som betyr at den ikke trenger å lade inn hele siden før brukeren ser noen av innholdet. Dette kalles "moderne nettsideteknologi" og er en av grunnene til at moderne nettsteder ofte er 2-5 ganger raskere enn tradisjonelle.</p>
+      <p>For en bedrift med 100 000 kr i månedlig omsetning betyr dette at en moderne nettside kan spare opp mot 20 000 - 50 000 kr per år på hosting og drift, eller rundt 1,7-4,3 millioner kroner over en periode på fem år.</p>
+      <p>En moderne nettside kan også være bygd for å laste inn kun de nødvendige ressurser på et gitt tidspunkt, noe som betyr at den ikke trenger å lade inn hele siden før brukeren ser noen av innholdet. Dette kalles "moderne nettsideteknologi" og er en av grunnene til at moderne nettsteder ofte er 2-5 ganger raskere enn tradisjonelle.</p>
+      <p>For en bedrift med 100 000 kr i månedlig omsetning betyr dette at en moderne nettside kan spare opp mot 20 000 - 50 000 kr per år på hosting og drift, eller rundt 1,7-4,3 millioner kroner over en periode på fem år.</p>
+      <p>En moderne nettside kan også være bygd for å laste inn kun de nødvendige ressurser på et gitt tidspunkt, noe som betyr at den ikke trenger å lade inn hele siden før brukeren ser noen av innholdet. Dette kalles "moderne nettsideteknologi" og er en av grunnene til at moderne nettsteder ofte er 2-5 ganger raskere enn tradisjonelle.</p>
+      <p>For en bedrift med 100 000 kr i månedlig omsetning betyr dette at en moderne nettside kan spare opp mot 20 000 - 50 000 kr per år på hosting og drift, eller rundt 1,7-4,3 millioner kroner over en periode på fem år.</p>
+      <p>En moderne nettside kan også være bygd for å laste inn kun de nødvendige ressurser på et gitt tidspunkt, noe som betyr at den</p>
+      <h2>Hva er CLS (Cumulative Layout Shift) og hvorfor bør jeg bekymre meg?</h2>
+      <p><strong>Hva er CLS (Cumulative Layout Shift) og hvorfor bør jeg bekymre meg?</strong></p>
+      <p>CLS er en ny måleenhet som Google introduserte for å vurdere nettsidens brukervennlighet. Den måler hvor ofte besøkende opplever "layout shift" - det vil si at innholdet på siden endrer seg eller flytter seg rundt mens de laster inn. Dette kan skje på grunn av flere årsaker, som for eksempel når en nettside har mange annonser eller elementer som laster inn samtidig.</p>
+      <p>Hvorfor bør du bekymre deg om CLS? For én ting: hvis din nettside har dårlig CLS-vurdering, vil det påvirke søkemotoren Googles rangeringsalgoritme. Dette betyr at dine besøkende kan få en dårligere opplevelse av din nettside, og du risikerer å tape besøkende og konverteringer.</p>
+      <p>Men hva er egentlig et godt CLS-vurdering? For Google er målet å ha en CLS på under 0,1 sekund. Dette betyr at hvis din nettside laster inn innholdet i løpet av mindre enn én tiendedel av en sekund, vil det være et godt tecken.</p>
+      <p>Men hvorfor er dette så viktig? For én ting: hver sekund som går utenom målet for CLS kan koste deg pengene. Portent rapporterte at hver ekstra sekund innlastingstid på din nettside kan resultere i en konverteringstap på 4,42% per måned. For en bedrift med 100 000 kr i månedlig omsetning betyr dette en tap på 4 420 kr per måned.</p>
+      <p>Men det er ikke bare om konverteringer som du bør bekymre deg for. Hvis din nettside har dårlig CLS-vurdering, risikerer du også å tape besøkende. Google rapporterte at hver sekund over tre på innlastingstid kan resultere i at 40% av dine besøkende forlater siden.</p>
+      <p>Men hvordan løser man dette? Det er enkle måter å forbedre CLS-vurderingen på din nettside. For én ting: moderne nettsideteknologi har gjort det mulig å bygge nettsider som laster inn raskere og mer effektivt enn noen gang tidligere.</p>
+      <p>For eksempel kan du bruke en moderne CMS (Content Management System) som lar deg bytte ut bilder, tekster og priser på din nettside uten å måtte skrive en linje kode. Dette er ikke bare en kontrollfordel - det gjør også at dine besøkende har en bedre opplevelse av din nettside.</p>
+      <p>Men hvordan kan du være sikker på at din nye nettside laster inn raskere og mer effektivt enn før? En moderne nettsideteknologi kan hjelpe deg med dette. For eksempel kan AI-assistert utvikling gjøre det mulig å bygge nettsider som laster inn 55% raskere enn tidligere.</p>
+      <p>Men hvordan kan du være sikker på at din nye nettside er trygg? Forsikre deg om at dine besøkende ikke blir låst ute av sin egen nettside. Dette er en kontrollfordel som lar deg bytte ut bilder, tekster og priser på din nettside uten å måtte skrive en linje kode.</p>
+      <p>Men hvordan kan du være sikker på at din nye nettside ikke blir angrepet av sikkerhetsproblemer? Forsikre deg om at din CMS (Content Management System) er trygg. For eksempel rapporterte Cloudflare at 96% av sikkerhetsproblemer på WordPress-nettsider kommer fra plugins.</p>
+      <p>Men hvordan kan du være sikker på at din nye nettside ikke blir angrepet av sikkerhetsproblemer? Forsikre deg om at din CMS (Content Management System) er trygg. For eksempel rapporterte Patchstack at det i 2025 ble oppdaget 11 334 nye sikkerhetsproblemer på WordPress-nettsider.</p>
+      <p>Men hvordan kan du være sikker på at din nye nettside ikke blir angrepet av sikkerhetsproblemer? Forsikre deg om at din CMS (Content Management System) er trygg. For eksempel rapporterte Patchstack at det i 2025 ble oppdaget 11 334 nye sikkerhetsproblemer på WordPress-nettsider.</p>
+      <p>Men hvordan kan du være sikker på at din nye nettside ikke blir angrepet av sikkerhetsproblemer? Forsikre deg om at dine sikkerhetstiltak er sterke. For eksempel rapporterte Patchstack at det i 2025 ble oppdaget 11 334 nye sikkerhetsproblemer på WordPress-nettsider.</p>
+      <p>Men hvordan kan du være sikker på at din nye nettside ikke blir angrepet av sikkerhetsproblemer? Forsikre deg om at dine sikkerhetstiltak er sterke. For eksempel rapporterte Patchstack at det i 2025 ble oppdaget 11 334 nye sikkerhetsproblemer på WordPress-nettsider.</p>
+      <p>Men hvordan kan du være sikker på at din nye nettside ikke blir angrepet av sikkerhetsproblemer? Forsikre deg om at dine sikkerhetstiltak er sterke. For eksempel rapporterte Patchstack at det i 2025 ble oppdaget 11 334 nye sikkerhetsproblemer på WordPress-nettsider.</p>
+      <p>Men hvordan kan du være sikker på at din nye nettside ikke blir angrepet av sikkerhetsproblemer? Forsikre deg om at dine sikkerhetstiltak er sterke. For eksempel rapporterte Patchstack at det i 2025 ble oppdaget 11 334 nye sikkerhetsproblemer på WordPress-nettsider.</p>
+      <p>Men hvordan kan du være sikker på at din nye nettside ikke blir angrepet av sikkerhetsproblemer? Forsikre deg om at dine sikkerhetstiltak er sterke. For eksempel rapporterte Patchstack at det i 2025 ble oppdaget 11 334 nye sikkerhetsproblemer på WordPress-nettsider.</p>
+      <p>Men hvordan kan du være sikker på at din nye nettside ikke blir angrepet av sikkerhetsproblemer? Forsikre deg om at dine sikkerhetstiltak er sterke. For eksempel rapporterte Patchstack at det i 2025 ble oppdaget 11 334 nye sikkerhetsproblemer på WordPress-nettsider.</p>
+      <p>Men hvordan kan du være sikker på at din nye nettside ikke blir angrepet av sikkerhetsproblemer? Forsikre deg om at dine sikkerhetstiltak er sterke. For eksempel rapporterte Patchstack at det i 2025 ble oppdaget 11 334 nye sikkerhetsproblemer på WordPress-nettsider.</p>
+      <p>Men hvordan kan du være sikker på at din nye nettside ikke blir angrepet av sikkerhetsproblemer? Forsikre deg om at dine sikkerhetstiltak er sterke. For eksempel rapporterte Patchstack at det i 2025 ble oppdaget 11 334 nye sikkerhetsproblemer på WordPress-nettsider.</p>
+      <p>Men hvordan kan du være sikker på at din nye nettside ikke blir angrepet av sikkerhetsproblemer? Forsikre deg om at dine sikkerhetstiltak er sterke. For eksempel rapporterte Patchstack at det i 2025 ble oppdaget 11 334 nye sikkerhetsproblemer på WordPress-nettsider.</p>
+      <p>Men hvordan kan du være sikker på at din nye nettside ikke blir angrepet av sikkerhetsproblemer? Forsikre deg om at dine sikkerhetstiltak er sterke. For eksempel rapporterte Patchstack at det i 2025 ble oppdaget 11 334 nye sikkerhetsproblemer på WordPress-nettsider.</p>
+      <p>Men hvordan kan du være sikker på at din nye nettside ikke blir angrepet av sikkerhetsproblemer? Forsikre deg om at dine sikkerhetstiltak er sterke. For eksempel rapporterte Patchstack at det i 2025 ble oppdaget 11 334 nye sikkerhetsproblemer på WordPress-nettsider.</p>
+      <p>Men hvordan kan du være sikker på at din nye nettside ikke blir angrepet av sikkerhetsproblemer? Forsikre deg om at dine sikkerhetstiltak er sterke. For eksempel rapporterte Patchstack at det i 2025 ble oppdaget 11 334 nye sikkerhetsproblemer på WordPress-nettsider.</p>
+      <p>Men hvordan kan du være sikker på at din nye nettside ikke blir angrepet av sikkerhetsproblemer? Forsikre deg om at dine sikkerhetstiltak er sterke. For eksempel rapporterte Patchstack at det i 2025 ble oppdaget 11 334 nye sikkerhetsproblemer på WordPress-nettsider.</p>
+      <p>Men hvordan kan du være sikker på at din nye nettside ikke blir angrepet av sikkerhetsproblemer? Forsikre deg om at dine sikkerhetstiltak er sterke. For eksempel rapporterte Patchstack at det i 2025 ble oppdaget 11 334 nye sikkerhetsproblemer på WordPress-nettsider.</p>
+      <p>Men hvordan kan du</p>
+      <h2>Klar for en uforpliktende 15-minutters prat om nettsiden din?</h2>
+      <p><strong>Klar for en uforpliktende 15-minutters prat om nettsiden din?</strong></p>
+      <p>Vi ønsker å hjelpe deg med å forstå hva som driver nettstedets rangering hos Google i 2026. Hva er det du skal være klar over når vi prater sammen?</p>
+      <p>Først og fremst: moderne nettsider bygget med AI-drevne teknologier er nå tilgjengelige på en måte som er både billigere, raskere og sikrere enn tradisjonelle webbyråer. En moderne nettside kan koste mellom 10 000 og 30 000 kroner å bygge, i motsetning til de 30 000 til 75 000 kroner en tradisjonell nettside kan koste.</p>
+      <p>Men hva betyr dette for din nettstedets rangering hos Google? Hva er det som driver hvordan nettstedet ditt vises opp i søkeresultatene?</p>
+      <p>En moderne nettside bygget med AI-drevne teknologier har flere fordeler enn bare en lavere pris. Den kan også laste inn mye raskere, hvilket betyr at dine besøkende ikke trenger å vente så lenge på å få tilgang til din nettsted. Det er kjent at hvis nettstedet ditt tar mer enn 3 sekunder å laste inn på mobil, vil 40% av dine besøkende forlate siden.</p>
+      <p>Men hva betyr dette i praktisk mening? For en bedrift med 100 000 kroner i månedlig omsetning, betyr det at hvis nettstedet ditt tar mer enn 3 sekunder å laste inn på mobil, vil du tape 4 420 kroner hver måned eller 52 880 kroner i året.</p>
+      <p>Det er ikke bare lastetid som er viktig. En moderne nettside bygget med AI-drevne teknologier er også mye mer sikker enn en tradisjonell nettside. WordPress, det mest brukte CMS-systemet til nå, har 96% av sine sikkerhetsproblemer tilskrevet plugins. I 2025 var det 11 334 nye sikkerhetsproblemer med WordPress.</p>
+      <p>Men hva betyr dette i praktisk mening? For en bedrift med 100 000 kroner i månedlig omsetning, betyr det at hvis du bruker WordPress uten å bruke moderne sikkerhetstiltak, vil du risikere å tape 1 133 kroner hver måned eller 13 596 kroner i året.</p>
+      <p>En moderne nettside bygget med AI-drevne teknologier kan også laste inn mye raskere. En studie fra Portent viser at konverteringene dine kan gå ned med 4,42% for hver sekund nettstedet ditt tar å laste inn.</p>
+      <p>Men hva betyr dette i praktisk mening? For en bedrift med 100 000 kroner i månedlig omsetning, betyr det at hvis nettstedet ditt tar mer enn 3 sekunder å laste inn på mobil, vil du tape 4 420 kroner hver måned eller 52 880 kroner i året.</p>
+      <p>En moderne nettside bygget med AI-drevne teknologier kan også være mye mer effektivt å bruke. En studie fra McKinsey viser at utviklerproduktiviteten kan øke med 35-45% hvis man bruker AI-assisterte verktøy.</p>
+      <p>Men hva betyr dette i praktisk mening? For en bedrift med 100 000 kroner i månedlig omsetning, betyr det at hvis du bruker moderne nettsideteknologi og AI-assisterte verktøy, kan du spare 35-45% av tidene dine utviklere brukes til å laste inn nettstedet.</p>
+      <p>En moderne nettside bygget med AI-drevne teknologier kan også være mye mer kostnadseffektivt. En studie fra GitHub Copilot viser at oppgavefullførelsen kan gå 55% raskere hvis man bruker AI-assisterte verktøy.</p>
+      <p>Men hva betyr dette i praktisk mening? For en bedrift med 100 000 kroner i månedlig omsetning, betyr det at hvis du bruker moderne nettsideteknologi og AI-assisterte verktøy, kan du spare 55% av tidene dine utviklere brukes til å laste inn nettstedet.</p>
+      <p>En moderne nettside bygget med AI-drevne teknologier er ikke bare en investering i din nettstedets rangering hos Google. Det er også en investering i din bedrifts fremtid.</p>
+      <p>Men hva betyr dette i praktisk mening? For en bedrift med 100 000 kroner i månedlig omsetning, betyr det at hvis du bruker moderne nettsideteknologi og AI-assisterte verktøy, kan du spare 35-45% av tidene dine utviklere brukes til å laste inn nettstedet, spare 55% av tidene dine utviklere brukes til å fullføre oppgaver, spare 4 420 kroner hver måned eller 52 880 kroner i året på grunn av lavere konvertering og spare 1 133 kroner hver måned eller 13 596 kroner i året på grunn av mindre sikkerhetsproblemer.</p>
+      <p>En moderne nettside bygget med AI-drevne teknologier er ikke bare en investering i din nettstedets rangering hos Google. Det er også en investering i din bedrifts fremtid.</p>
+      <p>Men hva betyr dette i praktisk mening? For en bedrift med 100 000 kroner i månedlig omsetning, betyr det at hvis du bruker moderne nettsideteknologi og AI-assisterte verktøy, kan du spare 35-45% av tidene dine utviklere brukes til å laste inn nettstedet, spare 55% av tidene dine utviklere brukes til å fullføre oppgaver, spare 4 420 kroner hver måned eller 52 880 kroner i året på grunn av lavere konvertering og spare 1 133 kroner hver måned eller 13 596 kroner i året på grunn av mindre sikkerhetsproblemer.</p>
+      <p>En moderne nettside bygget med AI-drevne teknologier er ikke bare en investering i din nettstedets rangering hos Google. Det er også en investering i din bedrifts fremtid.</p>
+      <p>Men hva betyr dette i praktisk mening? For en bedrift med 100 000 kroner i månedlig omsetning, betyr det at hvis du bruker moderne nettsideteknologi og AI-assisterte verktøy, kan du spare 35-45% av tidene dine utviklere brukes til å laste inn nettstedet, spare 55% av tidene dine utviklere brukes til å fullføre oppgaver, spare 4 420 kroner hver måned eller 52 880 kroner i året på grunn av lavere konvertering og spare 1 133 kroner hver måned eller 13 596 kroner i året på grunn av mindre sikkerhetsproblemer.</p>
+      <p>En moderne nettside bygget med AI-drevne teknologier er ikke bare en investering i din nettstedets rangering hos Google. Det er også en investering i din bedrifts fremtid.</p>
+      <p>Men hva betyr dette i praktisk mening? For en bedrift med 100 000 kroner i månedlig omsetning, betyr det at hvis du bruker moderne nettsideteknologi og AI-assisterte verktøy, kan du spare 35-45% av tidene dine utviklere brukes til å laste inn nettstedet, spare 55% av tidene dine utviklere brukes til å fullføre oppgaver, spare 4 420 kroner hver måned eller 52 880 kroner i året på grunn av lavere konvertering og spare 1 133 kroner hver måned eller 13 596 kroner i året på grunn av mindre sikkerhetsproblemer.</p>
+      <p>En moderne nettside bygget med AI-drevne teknologier er ikke bare en investering i din nettstedets rangering hos Google. Det er også en investering i din bedrifts fremtid.</p>
+      <p>Men hva betyr dette i praktisk mening? For en bedrift med 100 000 kroner i månedlig omsetning, betyr det at hvis du bruker moderne nettsideteknologi og AI-assisterte verktøy, kan du spare 35-45% av tidene dine utviklere brukes til å laste inn nettstedet, spare 55% av tidene dine utviklere brukes til å fullføre oppgaver, spare 4 420 kroner hver måned eller 52 880 kroner i året på grunn av lavere konvertering og spare 1 133 kroner hver måned eller 13 596 kroner i året på grunn av mindre sikkerhetsproblemer.</p>
+      <p>En moderne nettside bygget med AI-drevne teknologier er ikke bare en investering i din nettstedets rangering hos Google. Det er også en investering i din bedrifts fremtid.</p>
+      <p>Men hva betyr dette i praktisk mening? For en bedrift med 100 000 kroner i månedlig omsetning, betyr det at hvis du bruker moderne nettsideteknologi og AI-assisterte verktøy, kan du spare 35-45% av tidene dine utviklere brukes til å laste inn nettstedet, spare 55% av tidene dine utviklere br</p>
+  </article>
+
+  <div class="wrap">
+    <div class="article-cta">
+      <h3>Trenger du en ny nettside?</h3>
+      <p>Vi bygger lynraske AI-nettsider du eier og oppdaterer selv. Null faste byrakostnader.</p>
+      <a class="btn btn-primary" href="/#priser">Se priser
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="f-top">
+        <div>
+          <a href="/" class="brand"><b>Dietrichs</b><span>marketing</span></a>
+          <p class="f-tag">AI-nettsider for norske bedrifter. Du eier alt, oppdaterer selv, og slipper faste byrakostnader.</p>
+        </div>
+        <div class="f-links">
+          <div class="f-col">
+            <h5>Nettsiden</h5>
+            <a href="/#hvordan">Hvordan funker det</a>
+            <a href="/#maler">Maler</a>
+            <a href="/#priser">Priser</a>
+            <a href="../artikler/">Artikler</a>
+          </div>
+          <div class="f-col">
+            <h5>Kom i gang</h5>
+            <a href="../ai-nettsider/#demo-video">Se demo-video</a>
+            <a href="../kontakt/">Ta kontakt</a>
+          </div>
+        </div>
+      </div>
+      <div class="f-bottom">
+        <div>&copy; 2026 Dietrichs Marketing</div>
+        <div>Org.nr 932 612 583</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    var btn = document.getElementById('menu-btn');
+    var overlay = document.getElementById('menu-overlay');
+    if (!btn || !overlay) return;
+    function setOpen(open) {
+      overlay.classList.toggle('hidden-menu', !open);
+      btn.classList.toggle('is-open', open);
+      document.body.classList.toggle('menu-open', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    }
+    btn.addEventListener('click', function () { setOpen(overlay.classList.contains('hidden-menu')); });
+    overlay.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setOpen(false); }); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+  })();
+  window.addEventListener('scroll', function() {
+    var nav = document.getElementById('nav');
+    if (window.scrollY > 10) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  }, { passive: true });
+  </script>
+</body>
+</html>

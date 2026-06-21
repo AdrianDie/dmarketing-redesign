@@ -385,6 +385,28 @@ body.menu-open .brand span { color: var(--cobalt-ink); -webkit-text-stroke-color
 .review .who b { font-weight:700; display:block; }
 .review .who span { font-size:0.85rem; color:var(--ink-soft); }
 
+/* ---------- ARTIKLER (preview) ---------- */
+.artikler-preview { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.ap-card {
+  background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg);
+  padding: 30px 26px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  text-decoration: none; color: inherit;
+}
+.ap-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: rgba(27,52,255,0.4); }
+.ap-tag {
+  font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--cobalt); margin-bottom: 14px;
+}
+.ap-card h3 { font-size: 1.15rem; font-weight: 700; line-height: 1.3; letter-spacing: -0.01em; margin-bottom: 10px; }
+.ap-card p { font-size: 0.92rem; color: var(--ink-soft); line-height: 1.6; flex: 1; }
+.ap-read {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 18px; padding-top: 16px;
+  border-top: 1px solid var(--line); font-weight: 600; color: var(--cobalt); font-size: 0.85rem;
+}
+.ap-read svg { width: 14px; height: 14px; }
+@media (max-width: 860px) { .artikler-preview { grid-template-columns: 1fr; } }
+
 /* ---------- FINAL CTA (kobolt) ---------- */
 .final { background: var(--cobalt); color:#fff; position:relative; overflow:hidden; }
 .final .wrap { padding-top: clamp(80px,12vh,150px); padding-bottom: clamp(80px,12vh,150px); text-align:center; position:relative; z-index:1; }
