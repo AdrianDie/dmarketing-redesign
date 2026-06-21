@@ -386,14 +386,24 @@ body.menu-open .brand span { color: var(--cobalt-ink); -webkit-text-stroke-color
 .review .who span { font-size:0.85rem; color:var(--ink-soft); }
 
 /* ---------- ARTIKLER (preview) ---------- */
-.artikler-preview { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.artikler-preview { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .ap-card {
   background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg);
-  padding: 30px 26px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column;
+  box-shadow: var(--shadow-sm); display: flex; flex-direction: column;
   transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-  text-decoration: none; color: inherit;
+  text-decoration: none; color: inherit; overflow: hidden;
 }
-.ap-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: rgba(27,52,255,0.4); }
+.ap-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: rgba(27,52,255,0.4); }
+.ap-card:hover .ap-img svg { transform: scale(1.08); }
+.ap-img {
+  aspect-ratio: 16 / 9; display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.ap-img svg { width: 64px; height: 64px; transition: transform .3s ease; position: relative; z-index: 1; }
+.ap-img--price { background: linear-gradient(135deg, var(--cobalt-050) 0%, #d8dcff 100%); }
+.ap-img--cut   { background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%); }
+.ap-img--ai    { background: linear-gradient(135deg, #EDE7F6 0%, #D1C4E9 100%); }
+.ap-body { padding: 26px 26px 28px; display: flex; flex-direction: column; flex: 1; }
 .ap-tag {
   font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;
   color: var(--cobalt); margin-bottom: 14px;
