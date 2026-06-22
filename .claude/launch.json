@@ -24,6 +24,18 @@
       "runtimeExecutable": "python",
       "runtimeArgs": ["-m", "http.server", "8091", "--directory", "C:/Users/adria/website-mirrors/aktivit-redesign"],
       "port": 8091
+    },
+    {
+      "name": "heimdalbygg",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8092", "--directory", "C:/Users/adria/website-mirrors/heimdalbygg-redesign"],
+      "port": 8092
+    },
+    {
+      "name": "dashboard",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8093", "--directory", "C:/Users/adria/dmarketing-dashboard"],
+      "port": 8093
     }
   ]
 }

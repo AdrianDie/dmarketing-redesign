@@ -559,3 +559,23 @@ body.menu-open .brand span { color: var(--cobalt-ink); -webkit-text-stroke-color
 }
 @media (prefers-reduced-motion: reduce) { .preloader { display: none !important; } }
 html.no-preloader .preloader { display: none !important; }
+
+/* ---- Les også ---- */
+.les-ogsa { margin: 48px 0 40px; padding: 32px; background: var(--paper-2); border-radius: var(--r-md); border: 1px solid var(--line); }
+.les-ogsa h3 { font-size: 1.1rem; font-weight: 700; margin: 0 0 16px; color: var(--ink); }
+.les-ogsa ul { list-style: none; padding: 0; margin: 0; }
+.les-ogsa li { margin-bottom: 10px; }
+.les-ogsa li::before { display: none; }
+.les-ogsa a { color: var(--cobalt); font-weight: 600; text-decoration: none; font-size: 1rem; }
+.les-ogsa a:hover { text-decoration: underline; }
+
+/* ---- FAQ ---- */
+.faq-list { max-width: 800px; margin: 0 auto; }
+.faq { border-bottom: 1px solid var(--line); }
+.faq summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 28px 0; cursor: pointer; list-style: none; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::marker { display: none; }
+.faq summary h3 { font-size: clamp(1.05rem, 1.4vw, 1.25rem); font-weight: 600; margin: 0; color: var(--ink); }
+.faq summary svg { width: 20px; height: 20px; flex-shrink: 0; color: var(--cobalt); transition: transform 0.25s ease; }
+.faq[open] summary svg { transform: rotate(180deg); }
+.faq p { padding: 0 0 28px; margin: 0; color: var(--ink-soft); font-size: 1.05rem; line-height: 1.7; max-width: 70ch; }
