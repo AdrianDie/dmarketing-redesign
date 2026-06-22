@@ -8,6 +8,17 @@
   <meta property="og:title" content="AI-nettsider for norske bedrifter | Dietrichs Marketing">
   <meta property="og:description" content="Eier nettsiden selv. Oppdater på 60 sekunder med AI. Slipp faste byråkostnader.">
 
+  <!-- JSON-LD Organization Schema for Google Ads Business Name Prominence -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Dietrichs Marketing",
+    "url": "https://dietrichsmarketing.no",
+    "logo": "https://dietrichsmarketing.no/images/logo.png"
+  }
+  </script>
+
   <!-- Google Ads + GA4 tracking -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18193599749"></script>
   <script>
@@ -28,6 +39,12 @@
   <style>
     body { font-family: 'Inter', sans-serif; background: #FAFAFA; color: #09090B; }
     .font-display { font-family: 'Archivo', sans-serif; }
+
+    /* Visually hidden text for crawlers */
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border-width: 0;
+    }
 
     /* Logo (matcher hovedsiden — horisontal) */
     .logo-row { display: inline-flex; align-items: baseline; gap: 0.6rem; line-height: 1; }
@@ -291,8 +308,8 @@
       margin: 0; font-family: Archivo, sans-serif;
       font-size: 12px; font-weight: 600; line-height: 12px;
     }
-    .heading-6.logo-1 { margin-left: 10px; font-size: 30px; line-height: 45px; }
-    .heading-6.logo-2 {
+    .heading-6 .logo-1 { margin-left: 10px; font-size: 30px; line-height: 45px; }
+    .heading-6 .logo-2 {
       color: transparent; -webkit-text-stroke: 0.5px #09090B;
       margin: 0 0 0 10px; font-size: 30px; line-height: 45px;
     }
@@ -319,8 +336,8 @@
     .hamburger-line-4 { background-color: #09090B; width: 15px; height: 2.22px; }
     /* Når menyen er åpen: hele meny-stripen flipper til mørkt tema */
     body.menu-open .menu-wrap { background-color: #1a1a1f; border-bottom-color: rgba(255,255,255,0.1); }
-    body.menu-open .heading-6.logo-1 { color: whitesmoke; }
-    body.menu-open .heading-6.logo-2 { -webkit-text-stroke-color: whitesmoke; }
+    body.menu-open .heading-6 .logo-1 { color: whitesmoke; }
+    body.menu-open .heading-6 .logo-2 { -webkit-text-stroke-color: whitesmoke; }
     body.menu-open .navigation-text { color: #fff; }
     body.menu-open .hamburger-line,
     body.menu-open .hamburger-line-4 { background-color: #fff; }
@@ -421,12 +438,12 @@
     @media screen and (min-width: 1440px) {
       .nav-items { width: 60%; }
       .navigation-text { font-size: 15px; }
-      .heading-6.logo-1, .heading-6.logo-2 { font-size: 40px; line-height: 30px; }
+      .heading-6 .logo-1, .heading-6 .logo-2 { font-size: 40px; line-height: 30px; }
     }
     @media screen and (max-width: 767px) {
       .nav-items { width: 90%; margin-top: 20px; }
-      .heading-6.logo-1 { font-size: 22px; line-height: 30px; }
-      .heading-6.logo-2 { font-size: 22px; line-height: 30px; margin-left: 6px; }
+      .heading-6 .logo-1 { font-size: 22px; line-height: 30px; }
+      .heading-6 .logo-2 { font-size: 22px; line-height: 30px; margin-left: 6px; }
       /* Floating CTA: skjul på mobil — overlapper inline-CTAs */
       #floating-cta { display: none !important; }
     }
@@ -436,8 +453,8 @@
         justify-content: space-between; width: 100%;
         margin: 0 auto; padding: 0 16px;
       }
-      .heading-6.logo-1 { font-size: 18px; line-height: 28px; margin-left: 0; }
-      .heading-6.logo-2 { font-size: 18px; line-height: 28px; margin-left: 5px; }
+      .heading-6 .logo-1 { font-size: 18px; line-height: 28px; margin-left: 0; }
+      .heading-6 .logo-2 { font-size: 18px; line-height: 28px; margin-left: 5px; }
     }
   </style>
 </head>
@@ -448,8 +465,11 @@
     <div class="preloader-logo">
       <div class="preloader-image-wrapper">
         <div class="preloader-image">
-          <h1 class="logo-1">Dietrichs</h1>
-          <h1 class="logo-2">marketing</h1>
+          <div class="logo-row">
+            <span class="logo-1">Dietrichs</span>
+            <span class="logo-2">Marketing</span>
+            <span class="sr-only">Dietrichs Marketing</span>
+          </div>
         </div>
       </div>
     </div>
@@ -462,8 +482,11 @@
     <div class="navbar-2">
       <a href="/" class="logo-link-wrapper brand-3">
         <div class="logo-text-container">
-          <h1 class="heading-6 logo-1">Dietrichs</h1>
-          <h1 class="heading-6 logo-2">marketing</h1>
+          <div class="heading-6">
+            <span class="logo-1">Dietrichs</span>
+            <span class="logo-2">Marketing</span>
+            <span class="sr-only">Dietrichs Marketing</span>
+          </div>
         </div>
       </a>
       <button type="button" id="menu-btn" class="navigation__menu-btn" aria-label="Åpne meny">
@@ -1261,7 +1284,7 @@
       <div>© 2026 Dietrichs Marketing</div>
       <div class="flex items-center gap-4">
         <a href="tel:+4793439278" class="hover:text-white/70 transition-colors">Tlf: 934 39 278</a>
-        <span>Org.nr 932 612 583</span>
+        <span>Org.nr 928 758 737</span>
         <a href="../personvern/" class="hover:text-white/70 transition-colors">Personvern</a>
       </div>
     </div>
