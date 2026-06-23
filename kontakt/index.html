@@ -296,27 +296,31 @@
           btn.textContent = 'Sender…';
           btn.disabled = true;
           try { gtag('event', 'conversion', { send_to: 'AW-18193599749/wRthCOqP2sEcEIWaseND' }); } catch(ex) {}
-          fetch('https://formsubmit.co/ajax/adrian@dmarketing.no', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            body: JSON.stringify(Object.fromEntries(new FormData(form)))
-          })
-          .then(function(r) {
-            if (!r.ok) throw new Error('HTTP ' + r.status);
-            return r.json().catch(function() { return {}; });
-          })
-          .then(function(data) {
-            if (!data || String(data.success) === 'false') {
-              throw new Error(data && data.message || 'Ukjent feil');
+          var data = new FormData(form);
+          var xhr = new XMLHttpRequest();
+          xhr.open('POST', 'https://formsubmit.co/ajax/adrian@dmarketing.no');
+          xhr.setRequestHeader('Accept', 'application/json');
+          xhr.onload = function() {
+            try {
+              var res = JSON.parse(xhr.responseText);
+              if (String(res.success) === 'false') {
+                throw new Error(res.message || 'Feil');
+              }
+            } catch(ex) {
+              if (xhr.status < 200 || xhr.status >= 300) {
+                document.getElementById('contact-form').style.display = 'none';
+                document.getElementById('form-error').style.display = 'flex';
+                return;
+              }
             }
             document.getElementById('contact-form').style.display = 'none';
             document.getElementById('form-success').style.display = 'flex';
-          })
-          .catch(function(err) {
+          };
+          xhr.onerror = function() {
             document.getElementById('contact-form').style.display = 'none';
             document.getElementById('form-error').style.display = 'flex';
-            console.error('Skjemafeil:', err);
-          });
+          };
+          xhr.send(data);
         });
         </script>
       </div>
