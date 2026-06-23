@@ -279,27 +279,40 @@
           </button>
           <p class="form-note">Vi bruker opplysningene kun til å svare deg. Ingen spam.</p>
         </form>
-        <div id="form-success" style="display:none; text-align:center; padding:40px 0;">
-          <h3 style="font-family:Archivo,sans-serif; font-size:1.6rem; font-weight:700; margin-bottom:12px;">Takk for meldingen!</h3>
-          <p style="color:#5F6169; font-size:1.05rem;">Vi svarer deg så raskt vi kan.</p>
+        <div id="form-success" class="contact-form" style="display:none; text-align:center; padding:clamp(40px,6vw,72px) clamp(26px,3vw,40px); align-items:center; justify-content:center;">
+          <svg viewBox="0 0 48 48" fill="none" width="56" height="56" style="margin-bottom:18px;"><circle cx="24" cy="24" r="22" stroke="#1B34FF" stroke-width="2.5"/><path d="M15 25l6 6 12-13" stroke="#1B34FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3 style="font-family:Archivo,sans-serif; font-size:clamp(1.4rem,2.5vw,1.8rem); font-weight:700; margin-bottom:10px; color:#0E1116;">Takk for meldingen!</h3>
+          <p style="color:#5F6169; font-size:1.05rem; max-width:36ch;">Vi svarer deg så raskt vi kan — vanligvis innen én arbeidsdag.</p>
+        </div>
+        <div id="form-error" class="contact-form" style="display:none; text-align:center; padding:clamp(40px,6vw,72px) clamp(26px,3vw,40px); align-items:center; justify-content:center;">
+          <h3 style="font-family:Archivo,sans-serif; font-size:clamp(1.4rem,2.5vw,1.8rem); font-weight:700; margin-bottom:10px; color:#0E1116;">Noe gikk galt</h3>
+          <p style="color:#5F6169; font-size:1.05rem; max-width:40ch;">Skjemaet klarte ikke å sende. Prøv igjen, eller send oss en e-post direkte på <a href="mailto:post@dmarketing.no" style="color:#1B34FF;">post@dmarketing.no</a></p>
         </div>
         <script>
         document.getElementById('contact-form').addEventListener('submit', function(e) {
           e.preventDefault();
+          var form = this;
           var btn = document.getElementById('submit-btn');
           btn.textContent = 'Sender…';
           btn.disabled = true;
-          gtag('event', 'conversion', { send_to: 'AW-18193599749/wRthCOqP2sEcEIWaseND' });
+          try { gtag('event', 'conversion', { send_to: 'AW-18193599749/wRthCOqP2sEcEIWaseND' }); } catch(ex) {}
           fetch('https://formsubmit.co/ajax/adrian@dmarketing.no', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            body: JSON.stringify(Object.fromEntries(new FormData(this)))
-          }).then(function(r) { return r.json(); }).then(function() {
+            body: JSON.stringify(Object.fromEntries(new FormData(form)))
+          })
+          .then(function(r) { return r.json(); })
+          .then(function(data) {
+            if (data && data.success === 'true') {
+              document.getElementById('contact-form').style.display = 'none';
+              document.getElementById('form-success').style.display = 'flex';
+            } else {
+              throw new Error(data.message || 'Ukjent feil');
+            }
+          })
+          .catch(function() {
             document.getElementById('contact-form').style.display = 'none';
-            document.getElementById('form-success').style.display = 'block';
-          }).catch(function() {
-            btn.textContent = 'Noe gikk galt — prøv igjen';
-            btn.disabled = false;
+            document.getElementById('form-error').style.display = 'flex';
           });
         });
         </script>
