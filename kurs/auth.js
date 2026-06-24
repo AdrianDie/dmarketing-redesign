@@ -21,7 +21,7 @@
 
   if (!validToken || !session.email || expired) {
     localStorage.removeItem(TOKEN_KEY);
-    window.location.replace('/kurs/login.html');
+    window.location.replace('/kurs/login/');
     return;
   }
 
@@ -47,6 +47,6 @@
 
   window.kursLogout = function () {
     localStorage.removeItem(TOKEN_KEY);
-    window.location.replace('/kurs/login.html');
+    window.location.replace('/kurs/login/');
   };
 })();

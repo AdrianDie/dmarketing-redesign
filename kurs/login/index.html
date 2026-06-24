@@ -82,10 +82,9 @@
   </div>
 
   <script>
-    var USERS_JSON_URL = 'https://raw.githubusercontent.com/AdrianDie/dmarketing-redesign/main/kurs/users.json';
-    var TOKEN_KEY      = 'kurs_auth_v3';
+    var WORKER_URL = 'https://kurs-auth-worker.dietrichs-mkt.workers.dev';
+    var TOKEN_KEY  = 'kurs_auth_v3';
 
-    // Rydd opp gammelt token-format (kurs_authed_2026 e.l.) som ikke er 64-tegns hex
     try {
       var stored = JSON.parse(localStorage.getItem(TOKEN_KEY) || 'null');
       if (stored && stored.token && !/^[a-f0-9]{64}$/.test(stored.token)) {
@@ -119,22 +118,29 @@
       errMsg.style.display = 'none';
 
       try {
-        var res  = await fetch(USERS_JSON_URL + '?t=' + Date.now());
-        var db   = await res.json();
-        // authHash brukes for å verifisere mot users.json
         var authHash = await pbkdf2Derive(pw, email.toLowerCase());
-        var user = db.users.find(function(u) { return u.email === email && u.hash === authHash; });
+        var res = await fetch(WORKER_URL + '/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email, hash: authHash }),
+        });
+        var data = await res.json();
 
-        if (user) {
-          // sessionToken er avledet separat — kjent bare av den som kan passordet
+        if (data.ok) {
           var sessionToken = await pbkdf2Derive(pw + '\x00session', email.toLowerCase());
           localStorage.setItem(TOKEN_KEY, JSON.stringify({ email: email, token: sessionToken, loginAt: Date.now() }));
           window.location.replace('/kurs/');
         } else {
+          errMsg.textContent = data.error || 'Feil e-post eller passord.';
           errMsg.style.display = 'block';
           btn.disabled = false;
           btn.textContent = 'Logg inn';
-          document.getElementById('passord').value = '';
+          if (data.code === 'wrong_password') {
+            document.getElementById('passord').value = '';
+            document.getElementById('passord').focus();
+          } else {
+            document.getElementById('epost').focus();
+          }
         }
       } catch(err) {
         errMsg.textContent = 'Noe gikk galt. Sjekk internettforbindelsen og prøv igjen.';
