@@ -100,7 +100,7 @@
     fetch(WORKER_URL + '/validate-token', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ token: token }),
+      body: JSON.stringify({ token: token, reset: isReset }),
     })
       .then(function(r) { return r.json(); })
       .then(function(data) {
@@ -155,7 +155,8 @@
       try {
         var hash         = await pbkdf2Derive(pw1, email.toLowerCase());
         var sessionToken = await pbkdf2Derive(pw1 + '\x00session', email.toLowerCase());
-        var res  = await fetch(WORKER_URL + '/set-password', {
+        var endpoint = isReset ? '/reset-password' : '/set-password';
+        var res  = await fetch(WORKER_URL + endpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email: email, token: token, hash: hash }),
