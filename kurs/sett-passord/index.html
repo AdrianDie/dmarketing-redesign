@@ -97,17 +97,19 @@
       document.getElementById('viewError').style.display = 'block';
     }
 
-    // Hent e-post fra users.json basert på token (viser i feltet)
-    fetch('https://raw.githubusercontent.com/AdrianDie/dmarketing-redesign/main/kurs/users.json?t=' + Date.now())
+    fetch(WORKER_URL + '/validate-token', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token: token }),
+    })
       .then(function(r) { return r.json(); })
-      .then(function(db) {
-        var invite = db.invites.find(function(i) { return i.token === token; });
-        if (!invite) {
+      .then(function(data) {
+        if (!data.ok) {
           document.getElementById('viewForm').style.display = 'none';
           document.getElementById('viewError').style.display = 'block';
           return;
         }
-        document.getElementById('epostVis').value = invite.email;
+        document.getElementById('epostVis').value = data.email;
       })
       .catch(function() {
         document.getElementById('viewForm').style.display = 'none';
