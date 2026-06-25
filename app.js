@@ -3,17 +3,60 @@
 (function () {
   'use strict';
 
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* ---------- DEBUG LOGGING (fjern etter feilsøking) ---------- */
+  var _t0 = performance.now();
+  function _log(msg) {
+    console.log('[DM ' + (performance.now() - _t0).toFixed(1) + 'ms] ' + msg);
+  }
 
-  /* ---------- Preloader (akkurat samme som ai-nettsider) ---------- */
-  window.addEventListener('load', function () {
-    var pre = document.getElementById('preloader');
-    if (!pre) return;
-    requestAnimationFrame(function () {
-      setTimeout(function () { pre.classList.add('is-done'); }, 50);
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hasPreloader = !document.documentElement.classList.contains('no-preloader');
+  var pre = document.getElementById('preloader');
+
+  _log('init — preloader=' + !!pre + ', hasPreloader=' + hasPreloader + ', reduce=' + reduce);
+
+  /* ---------- Hero-reveals (ren CSS, ingen GSAP) ---------- */
+  function revealHero() {
+    _log('revealHero()');
+    document.querySelectorAll('.reveal-hero').forEach(function (el) {
+      el.classList.add('is-visible');
     });
-    setTimeout(function () { pre.style.display = 'none'; }, 2200);
-  });
+  }
+
+  if (!hasPreloader || !pre) {
+    _log('no preloader — revealing hero immediately');
+    revealHero();
+  }
+
+  /* ---------- Preloader ---------- */
+  if (pre && hasPreloader) {
+    var fontsReady = document.fonts ? document.fonts.ready : Promise.resolve();
+    var pageLoaded = new Promise(function (resolve) {
+      if (document.readyState === 'complete') { resolve(); }
+      else { window.addEventListener('load', resolve); }
+    });
+
+    Promise.all([fontsReady, pageLoaded]).then(function () {
+      _log('fonts + page loaded — dismissing preloader');
+
+      requestAnimationFrame(function () {
+        pre.classList.add('is-done');
+        _log('preloader is-done added');
+
+        // Reveal hero when preloader starts sliding open (1.1s CSS delay)
+        setTimeout(function () {
+          _log('preloader slide started — revealing hero');
+          revealHero();
+        }, 1050);
+
+        // Remove preloader from DOM after animation completes
+        setTimeout(function () {
+          pre.style.display = 'none';
+          _log('preloader hidden');
+        }, 2000);
+      });
+    });
+  }
 
   /* ---------- NAV: skygge/blur ved scroll ---------- */
   var nav = document.getElementById('nav');
@@ -39,17 +82,18 @@
       setMenu(!document.body.classList.contains('menu-open'));
     });
     overlay.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', function () { setMenu(false); });
+      a.addEventListener('click', function () {
+        var href = a.getAttribute('href') || '';
+        // Ankre på samme side: lukk menyen. Andre lenker: la nettleseren navigere direkte.
+        if (href.startsWith('#')) { setMenu(false); }
+      });
     });
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && document.body.classList.contains('menu-open')) setMenu(false);
     });
   }
 
-  /* ---------- Lead -> Supabase (config-styrt, ikke-blokkerende) ----------
-     Sender skjema-innsendinger til dashboard-databasen NÅR window.DM_SUPABASE
-     er fylt ut (url + anonKey). Tomt = av. preventDefault kalles ALDRI, så
-     skjemaet sender alltid til formsubmit (e-postvarsel) som før. */
+  /* ---------- Lead -> Supabase (config-styrt, ikke-blokkerende) ---------- */
   (function () {
     var form = document.querySelector('.contact-form');
     var sb = window.DM_SUPABASE;
@@ -78,14 +122,16 @@
 
   /* ---------- Redusert bevegelse: vis alt, hopp over animasjon ---------- */
   if (reduce || typeof gsap === 'undefined') {
+    _log('reduced motion or no GSAP — skipping animations');
     document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('revealed'); });
+    revealHero();
     runCounters(true);
     return;
   }
 
   gsap.registerPlugin(ScrollTrigger);
 
-  /* ---------- Scroll-reveals (myk fade + y) ---------- */
+  /* ---------- Scroll-reveals (myk fade + y) — kun below-fold ---------- */
   document.querySelectorAll('.reveal').forEach(function (el) {
     gsap.fromTo(el,
       { opacity: 0, y: 26 },
