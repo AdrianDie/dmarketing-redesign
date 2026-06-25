@@ -81,16 +81,6 @@
     menuBtn.addEventListener('click', function () {
       setMenu(!document.body.classList.contains('menu-open'));
     });
-    overlay.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', function () {
-        var href = a.getAttribute('href') || '';
-        // Ankre på samme side: lukk menyen. Andre lenker: la nettleseren navigere direkte.
-        if (href.startsWith('#')) { setMenu(false); }
-      });
-    });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && document.body.classList.contains('menu-open')) setMenu(false);
-    });
   }
 
   /* ---------- Lead -> Supabase (config-styrt, ikke-blokkerende) ---------- */
