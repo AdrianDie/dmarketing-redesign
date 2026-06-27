@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Apputvikling for næringslivet | Dietrichs Marketing</title>
+  <meta name="description" content="Vi bruker AI og moderne teknologi til å gjøre norske bedrifter mer lønnsomme. Apputvikling, programvare og AI-løsninger skreddersydd for din bedrift.">
+  <meta name="theme-color" content="#1B34FF">
+  <link rel="icon" href="../assets/ms-icon-256x256.png" type="image/png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Apputvikling for næringslivet | Dietrichs Marketing">
+  <meta property="og:description" content="Vi bruker AI og moderne teknologi til å gjøre norske bedrifter mer lønnsomme.">
+  <meta property="og:locale" content="nb_NO">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── Nav: eksakt kopi fra dmarketing index.html ── */
+    .menu-wrap { background-color: #ffffff; padding: 16px 0; border-bottom: 1px solid #E4E4E7; position: fixed; top: 0; left: 0; right: 0; z-index: 101; }
+    .menu-wrap.scrolled { box-shadow: 0 1px 12px rgba(0,0,0,0.08); }
+    .navbar-2 { z-index: 101; justify-content: space-between; align-items: center; width: 90%; max-width: 1440px; height: 50px; margin: 0 auto; display: flex; position: relative; }
+    .logo-link-wrapper { flex-direction: column; justify-content: center; align-items: center; display: flex; text-decoration: none; }
+    .brand-3 { order: -1; }
+    .logo-text-container { order: 0; margin-top: 20px; display: flex; }
+    .heading-6 { color: #09090B; letter-spacing: 2px; text-transform: uppercase; margin: 0; font-family: Archivo, sans-serif; font-size: 12px; font-weight: 600; line-height: 12px; }
+    .heading-6.logo-1 { margin-left: 10px; font-size: 30px; line-height: 45px; }
+    .heading-6.logo-2 { color: transparent; -webkit-text-stroke: 0.5px #09090B; margin: 0 0 0 10px; font-size: 30px; line-height: 45px; }
+    .navigation__menu-btn { cursor: pointer; flex-direction: column; order: 1; justify-content: flex-start; align-items: center; height: 25px; overflow: hidden; display: flex; background: transparent; border: 0; padding: 0; outline: none; }
+    .navigation__menu-btn:focus, .navigation__menu-btn:focus-visible { outline: none; }
+    .open-wrap { align-items: center; height: 25px; display: flex; }
+    .navigation-text { color: #09090B; letter-spacing: 3px; text-transform: uppercase; font-family: Archivo, sans-serif; font-size: 12px; line-height: 12px; text-decoration: none; }
+    .hamburger { flex-direction: column; justify-content: space-between; align-items: flex-end; width: 25px; height: 10px; margin-left: 12.5px; display: flex; }
+    .hamburger-line { background-color: #09090B; width: 25px; height: 2.22px; }
+    .hamburger-line-4 { background-color: #09090B; width: 15px; height: 2.22px; }
+    body.menu-open .menu-wrap { background-color: #1a1a1f; border-bottom: none; box-shadow: none; }
+    body.menu-open .heading-6.logo-1 { color: whitesmoke; }
+    body.menu-open .heading-6.logo-2 { -webkit-text-stroke-color: whitesmoke; }
+    body.menu-open .navigation-text { color: #fff; }
+    body.menu-open .hamburger-line, body.menu-open .hamburger-line-4 { background-color: #fff; }
+    body.menu-open .close-btn::before, body.menu-open .close-btn::after { background: #fff; }
+    .menu-wrap, .heading-6, .navigation-text, .hamburger-line, .hamburger-line-4 { transition: background-color 0.25s ease, color 0.25s ease, -webkit-text-stroke-color 0.25s ease, border-color 0.25s ease; }
+    .close-wrap { flex-direction: row; justify-content: flex-end; align-items: center; height: 25px; display: flex; }
+    .close-btn { width: 18px; height: 18px; margin-left: 12.5px; position: relative; }
+    .close-btn::before, .close-btn::after { content: ""; position: absolute; top: 50%; left: 0; width: 100%; height: 2px; background: #09090B; transform-origin: center; }
+    .close-btn::before { transform: translateY(-50%) rotate(45deg); }
+    .close-btn::after { transform: translateY(-50%) rotate(-45deg); }
+    .nav-container-2 { z-index: 97; background-color: #1a1a1f; flex-direction: column; justify-content: flex-start; align-items: center; min-height: 100vh; padding: 100px 0 80px; position: fixed; inset: 0; overflow-y: auto; transition: opacity 0.35s ease, visibility 0.35s ease; }
+    .nav__bg { z-index: -1; background-color: #1a1a1f; position: absolute; inset: 0; }
+    .container-4 { width: 92%; max-width: none; margin: 0 auto; }
+    .nav-items { z-index: 99; flex-flow: column; align-items: flex-start; width: 100%; max-width: 1200px; margin-top: 40px; display: flex; position: relative; overflow: hidden; }
+    .nav-item { align-items: center; text-decoration: none; display: flex; }
+    .nav-item-number { color: #fff; letter-spacing: 3px; margin-right: 20px; font-family: Archivo, sans-serif; font-size: 12px; line-height: 12px; transform: rotate(-90deg); }
+    .special-text-wrapper { height: clamp(56px, 11vw, 130px); overflow: hidden; }
+    .nav-item-text { color: transparent; -webkit-text-fill-color: transparent; -webkit-text-stroke: 0.8px #A5A3A6; text-transform: uppercase; font-family: Archivo, sans-serif; font-size: clamp(38px, 7.5vw, 90px); font-weight: 700; line-height: clamp(56px, 11vw, 130px); display: block; white-space: nowrap; }
+    .nav-item-text-full { color: #fff; text-transform: uppercase; font-family: Archivo, sans-serif; font-size: clamp(38px, 7.5vw, 90px); font-weight: 700; line-height: clamp(56px, 11vw, 130px); white-space: nowrap; }
+    .special-text-wrapper > div { transition: transform 0.55s cubic-bezier(0.65, 0, 0.35, 1); }
+    .nav-item:hover .nav-item-text, .nav-item:hover .nav-item-text-full,
+    .nav-item:focus .nav-item-text, .nav-item:focus .nav-item-text-full,
+    .nav-item:active .nav-item-text, .nav-item:active .nav-item-text-full,
+    .nav-item.is-touched .nav-item-text, .nav-item.is-touched .nav-item-text-full { transform: translateY(calc(-1 * clamp(56px, 11vw, 130px))); }
+    .nav-container-2.hidden-menu { opacity: 0; visibility: hidden; pointer-events: none; }
+    .navigation__menu-btn.is-open .open-wrap { display: none; }
+    .navigation__menu-btn:not(.is-open) .close-wrap { display: none; }
+    @media screen and (min-width: 1440px) {
+      .nav-items { width: 60%; }
+      .heading-6.logo-1, .heading-6.logo-2 { font-size: 40px; line-height: 30px; }
+    }
+    @media screen and (max-width: 767px) {
+      .nav-items { width: 90%; margin-top: 20px; }
+      .heading-6.logo-1 { font-size: 22px; line-height: 30px; }
+      .heading-6.logo-2 { font-size: 22px; line-height: 30px; margin-left: 6px; }
+    }
+    @media screen and (max-width: 479px) {
+      .nav-items { margin-top: 20%; }
+      .navbar-2 { width: 100%; padding: 0 16px; }
+      .heading-6.logo-1 { font-size: 18px; line-height: 28px; margin-left: 0; }
+      .heading-6.logo-2 { font-size: 18px; line-height: 28px; margin-left: 5px; }
+    }
+    /* ── Footer: eksakt kopi fra dmarketing style.css ── */
+    .dm-footer { background: #09090B; color: #fff; padding: clamp(48px,7vh,80px) 0 36px; }
+    .dm-footer .dm-wrap { width: 90%; max-width: 1200px; margin: 0 auto; }
+    .dm-footer .f-top { display:flex; flex-wrap:wrap; justify-content:space-between; gap:30px; padding-bottom:40px; border-bottom:1px solid rgba(255,255,255,0.1); }
+    .dm-footer .brand b { font-family:'Archivo',sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:0.01em; font-size:clamp(17px,2.2vw,22px); color:#fff; }
+    .dm-footer .brand span { font-family:'Archivo',sans-serif; font-weight:600; text-transform:uppercase; letter-spacing:0.04em; font-size:clamp(17px,2.2vw,22px); color:#09090B; -webkit-text-stroke:1.6px #fff; paint-order:stroke fill; }
+    .dm-footer .brand { display:flex; align-items:center; gap:4px; line-height:1; text-decoration:none; }
+    .dm-footer .f-tag { color:rgba(255,255,255,0.6); max-width:34ch; margin-top:14px; font-size:0.92rem; font-family:'Schibsted Grotesk',sans-serif; }
+    .dm-footer .f-links { display:flex; gap:40px; flex-wrap:wrap; }
+    .dm-footer .f-col h5 { font-size:0.72rem; text-transform:uppercase; letter-spacing:0.16em; color:rgba(255,255,255,0.45); font-weight:600; margin:0 0 14px; font-family:'Archivo',sans-serif; }
+    .dm-footer .f-col a { display:block; color:rgba(255,255,255,0.8); font-size:0.92rem; padding:4px 0; transition:color .15s; text-decoration:none; font-family:'Schibsted Grotesk',sans-serif; }
+    .dm-footer .f-col a:hover { color:#fff; }
+    .dm-footer .f-bottom { display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; padding-top:28px; font-size:0.82rem; color:rgba(255,255,255,0.45); font-family:'Schibsted Grotesk',sans-serif; }
+    /* Push content below fixed nav */
+    main { padding-top: 82px; }
+  </style>
+</head>
+<body>
+
+  <a class="skip-link" href="#hovedinnhold">Hopp til innhold</a>
+
+  <!-- ============ NAV ============ -->
+  <section class="menu-wrap" id="nav">
+    <div class="navbar-2">
+      <a href="../" class="logo-link-wrapper brand-3">
+        <div class="logo-text-container">
+          <div class="heading-6 logo-1">Dietrichs</div>
+          <div class="heading-6 logo-2">marketing</div>
+        </div>
+      </a>
+      <button type="button" id="menu-btn" class="navigation__menu-btn" aria-label="Åpne meny">
+        <div class="open-wrap">
+          <div class="navigation-text">Meny</div>
+          <div class="hamburger">
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line-4"></div>
+          </div>
+        </div>
+        <div class="close-wrap">
+          <div class="navigation-text">Lukk</div>
+          <div class="close-btn"></div>
+        </div>
+      </button>
+    </div>
+  </section>
+
+  <div id="menu-overlay" class="nav-container-2 hidden-menu">
+    <div class="nav__bg"></div>
+    <div class="container-4">
+      <div class="nav-items">
+        <a href="../" class="nav-item">
+          <div class="nav-item-number">01</div>
+          <div class="special-text-wrapper">
+            <div class="nav-item-text">Forside</div>
+            <div class="nav-item-text-full">Forside</div>
+          </div>
+        </a>
+        <a href="../apputvikling/" class="nav-item">
+          <div class="nav-item-number">02</div>
+          <div class="special-text-wrapper">
+            <div class="nav-item-text">Apputvikling</div>
+            <div class="nav-item-text-full">Apputvikling</div>
+          </div>
+        </a>
+        <a href="../ai-nettsider/" class="nav-item">
+          <div class="nav-item-number">03</div>
+          <div class="special-text-wrapper">
+            <div class="nav-item-text">AI-nettsider</div>
+            <div class="nav-item-text-full">AI-nettsider</div>
+          </div>
+        </a>
+        <a href="../kontakt/" class="nav-item">
+          <div class="nav-item-number">04</div>
+          <div class="special-text-wrapper">
+            <div class="nav-item-text">Kontakt</div>
+            <div class="nav-item-text-full">Kontakt</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main id="hovedinnhold">
+
+    <span id="top"></span>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="floaters" aria-hidden="true">
+        <span class="floater f2"></span>
+        <span class="floater f3"></span>
+      </div>
+
+      <div class="wrap hero__grid">
+        <div class="hero__copy">
+          <p class="kicker" data-reveal>Apputvikling og programvare for næringslivet</p>
+          <h1 class="hero__title" data-reveal>
+            Vi gjør norske bedrifter <span class="ink-cobalt">mer lønnsomme</span> med AI.
+          </h1>
+          <p class="hero__lead" data-reveal>
+            Vi bygger apper, verktøy og systemer som automatiserer prosesser
+            og kutter kostnader. Fra idé til ferdig produkt — skreddersydd
+            for din bedrift.
+          </p>
+          <div class="hero__actions" data-reveal>
+            <a class="btn btn--solid btn--lg" href="#kontakt">
+              Ta kontakt
+              <svg class="btn__arrow" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero__demo" data-reveal>
+          <div class="demo-card">
+            <div class="demo-card__bar">
+              <span class="demo-card__dot"></span>
+              <span class="demo-card__title">Eksempel: feltapp for fagfolk</span>
+            </div>
+            <div class="demo-chat" id="heroScenes" aria-hidden="true">
+              <div class="scene" data-scene="1">
+                <div class="bubble bubble--user">Elektrikeren fyller ut målinger på mobil ute på byggeplassen.</div>
+                <ul class="actions">
+                  <li class="action"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Validerte verdier mot NEK 400 <span class="action__sys">automatisk</span></li>
+                  <li class="action"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Genererte sluttrapport og samsvarserklæring</li>
+                  <li class="action"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Publiserte til kunde og Boligmappa</li>
+                </ul>
+                <div class="bubble bubble--sent">
+                  <span class="bubble__who bubble__who--ok"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Ferdig på stedet</span>
+                  Dokumentasjonen er sendt. Det som tok 1–2 timer papirarbeid etter arbeidstid er nå gjort mens elektrikeren packer ned.
+                </div>
+              </div>
+
+              <div class="scene" data-scene="2">
+                <div class="bubble bubble--user">Lederen vil se status på alle pågående jobber i kjeden.</div>
+                <ul class="actions">
+                  <li class="action"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Hentet data fra alle 180 bedrifter <span class="action__sys">live</span></li>
+                  <li class="action"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Viste dashboard med nøkkeltall</li>
+                </ul>
+                <div class="bubble bubble--sent">
+                  <span class="bubble__who bubble__who--ok"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Full oversikt</span>
+                  Alt på ett skjerm. Kjededashboardet viser hvilke jobber som er dokumentert, hvilke som avventer og hvor det trengs oppfølging.
+                </div>
+              </div>
+            </div>
+            <div class="demo-card__input" aria-hidden="true">
+              <span>Hva kan vi bygge for deg?</span>
+              <span class="demo-card__send">
+                <svg viewBox="0 0 24 24" width="16" height="16"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROOF (LEVERT TIL) ============ -->
+    <section class="section proof" id="proof">
+      <div class="wrap proof__trust" data-reveal>
+        <p class="kicker">Levert til</p>
+        <div class="proof__card">
+          <div class="proof__logobox">
+            <img src="e-wheels-logo_blue-dark-blue.webp" alt="E-Wheels" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROBLEM ============ -->
+    <section class="section problem" id="problem">
+      <div class="wrap problem__grid">
+        <div class="problem__intro" data-reveal>
+          <h2 class="h2">Manuelle prosesser koster mer enn du tror.</h2>
+          <p class="lead">
+            De fleste bedrifter har oppgaver som gjentas dag etter dag —
+            rapportering, dokumentasjon, oppfølging, registrering. Én time
+            daglig er over 200 timer i året borte fra det som faktisk gir inntekt.
+          </p>
+          <p class="problem__stat">
+            Riktig programvare gjør ikke bare jobben raskere — den gjør det
+            mulig å skalere uten å ansette proporsjonalt mer.
+          </p>
+        </div>
+        <ul class="problem__bubbles" data-reveal>
+          <li>Papirskjemaer som scannes inn etterpå</li>
+          <li>Excel-ark delt på e-post</li>
+          <li>Rapporter som skrives manuelt etter arbeidstid</li>
+          <li>Ingen oversikt over status på tvers av team</li>
+          <li>Systemer som ikke snakker sammen</li>
+          <li>Prosesser som sitter i hodet til én person</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ SLIK FUNKER DET ============ -->
+    <section class="section steps" id="slik">
+      <div class="wrap">
+        <header class="section__head" data-reveal>
+          <h2 class="h2">Slik jobber vi</h2>
+          <p class="lead">Tre steg fra idé til ferdig produkt du eier selv.</p>
+        </header>
+
+        <ol class="steps__list">
+          <li class="step" data-reveal>
+            <span class="step__num">1</span>
+            <h3 class="step__title">Vi kartlegger behovet ditt</h3>
+            <p>
+              Vi starter med en prat om hva som faktisk tar tid eller koster
+              penger i dag. Sammen finner vi ut hva som gir mest igjen å
+              automatisere eller bygge — uten å overkomplisere.
+            </p>
+          </li>
+          <li class="step" data-reveal>
+            <span class="step__num">2</span>
+            <h3 class="step__title">Vi designer og bygger</h3>
+            <p>
+              Vi bygger minste fungerende versjon først, slik at du kan se og
+              bruke produktet tidlig. Du gir tilbakemeldinger underveis.
+              Ingen store overraskelser ved levering.
+            </p>
+          </li>
+          <li class="step step--key" data-reveal>
+            <span class="step__num">3</span>
+            <span class="step__flag">100 % ditt</span>
+            <h3 class="step__title">Du eier alt — kode og produkt</h3>
+            <p>
+              Koden er din. Du kan videreutvikle med oss eller med hvem du
+              vil. Ingen abonnement, ingen binding, ingen lock-in. Produktet
+              lever videre uansett hva som skjer.
+            </p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ FUNKSJONER (BENTO) ============ -->
+    <section class="section features" id="funksjoner">
+      <div class="wrap">
+        <header class="section__head" data-reveal>
+          <h2 class="h2">Bygd for å gi deg mer igjen, ikke mer å vedlikeholde.</h2>
+        </header>
+
+        <div class="bento">
+          <article class="cell cell--wide cell--cobalt" data-reveal>
+            <div class="cell__body">
+              <h3 class="cell__title">AI der det gir mening. Ikke overalt.</h3>
+              <p>
+                Vi bruker AI til å automatisere det som er trygt å automatisere —
+                og holder mennesker i løypen der det kreves faglig skjønn.
+                Resultatet er systemer som faktisk kan stoles på i produksjon.
+              </p>
+            </div>
+            <div class="cell__visual" aria-hidden="true">
+              <div class="mini-approve">
+                <span class="mini-bubble">Automatisert</span>
+                <span class="mini-check">
+                  <svg viewBox="0 0 24 24" width="16" height="16"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Verifisert
+                </span>
+              </div>
+            </div>
+          </article>
+
+          <article class="cell" data-reveal>
+            <span class="chip-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18"><rect x="5" y="2" width="14" height="20" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 18h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </span>
+            <h3 class="cell__title">Mobil-først</h3>
+            <p>Fagfolk jobber i felt, ikke ved skrivebordet. Vi bygger for mobil fra dag én — rask, offline-kapabel og enkel å bruke med arbeidshanskene på.</p>
+          </article>
+
+          <article class="cell" data-reveal>
+            <span class="chip-icon chip-icon--warm" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18"><path d="M4 7h16M4 12h16M4 17h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </span>
+            <h3 class="cell__title">Integrerer med systemene du allerede har</h3>
+            <p>Vi kobler oss til det du bruker i dag — enten det er et fagsystem, et regneark eller en ekstern API. Ingen grunn til å starte fra scratch.</p>
+          </article>
+
+          <article class="cell" data-reveal>
+            <span class="chip-icon chip-icon--green" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            </span>
+            <h3 class="cell__title">Du eier koden</h3>
+            <p>Ingen abonnement, ingen lock-in. Kildekoden er din fra dag én. Du kan bygge videre med oss eller med hvem du vil.</p>
+          </article>
+
+          <article class="cell" data-reveal>
+            <span class="chip-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <h3 class="cell__title">GDPR og sikkerhet fra start</h3>
+            <p>Persondata håndteres riktig fra første linje kode. Ikke noe som legges til etterpå.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HVA VI BYGGER ============ -->
+    <section class="section integrate" id="integrasjoner">
+      <div class="wrap">
+        <header class="section__head" data-reveal>
+          <h2 class="h2">Hva vi bygger for norske bedrifter.</h2>
+          <p class="lead">
+            Fra enkle interne verktøy til komplette systemer med AI-integrasjon.
+            Vi tilpasser oss hva som faktisk gir verdi for deg — ikke hva som
+            ser imponerende ut i en presentasjon.
+          </p>
+        </header>
+
+        <div class="integrate__systems" data-reveal>
+          <span class="sys-chip">Feltapper</span>
+          <span class="sys-chip">Dokumentasjonsverktøy</span>
+          <span class="sys-chip">Kundeportaler</span>
+          <span class="sys-chip">Dashboards og rapportering</span>
+          <span class="sys-chip">AI-agenter</span>
+          <span class="sys-chip">Bookingsystemer</span>
+          <span class="sys-chip sys-chip--more">+ ditt behov</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EKSEMPEL ============ -->
+    <section class="section epost" id="eksempel">
+      <div class="wrap epost__grid">
+        <div class="epost__copy" data-reveal>
+          <h2 class="h2">Eksempel: AI-kundeservice for E-Wheels</h2>
+          <p class="lead">
+            E-Wheels trengte en løsning som håndterte tekniske spørsmål fra
+            kunder om sparkesykler — feilsøking, returprosess og ordrestatus —
+            uten å belaste supportteamet for hvert enkelt spørsmål.
+          </p>
+          <ul class="epost__points">
+            <li>AI-agent trent på produktdokumentasjon og returvilkår</li>
+            <li>Svarer kunder direkte, eskalerer til menneske ved behov</li>
+            <li>Integrert med ordresystem og fraktleverandør</li>
+          </ul>
+        </div>
+
+        <div class="epost__demo" data-reveal>
+          <article class="mailcard">
+            <div class="mailcard__bar">
+              <img src="e-wheels-logo_blue-dark-blue.webp" alt="E-Wheels" style="height:18px; width:auto;">
+              <span>E-Wheels kundeservice</span>
+            </div>
+            <div class="mailcard__mail">
+              <div class="mailcard__row"><span>Fra</span> kunde@epost.no</div>
+              <div class="mailcard__row"><span>Sak</span> Sparkesykkel starter ikke</div>
+              <p class="mailcard__body">Sykkelen dør plutselig og starter bare igjen når jeg kobler til laderen.</p>
+            </div>
+            <ul class="actions">
+              <li class="action"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Kjente igjen symptomet: BMS-kutt</li>
+              <li class="action"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Ga BMS-reset steg for steg</li>
+              <li class="action"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Klargjorde servicesak hvis feilen vedvarer</li>
+            </ul>
+            <div class="mailcard__draft">
+              <span class="bubble__who bubble__who--auto"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Løst automatisk</span>
+              <p>Det høres ut som en BMS-feil. Lad helt opp til lampen lyser grønt og ta en testtur. Kutter den fortsatt, er det trolig en svak celle — jeg har klargjort en servicesak for deg.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SAMMENLIGNING ============ -->
+    <section class="section compare">
+      <div class="wrap">
+        <header class="section__head" data-reveal>
+          <h2 class="h2">Tre måter å få bygget det på. Vi er den tredje.</h2>
+        </header>
+        <div class="compare__cols">
+          <article class="vcol" data-reveal>
+            <h3 class="vcol__title">Frilans-utvikler</h3>
+            <p class="vcol__note">Uforutsigbart</p>
+            <ul class="vcol__list vcol__list--muted">
+              <li>Vanskelig å vite hvem du får</li>
+              <li>Ingen garanti for vedlikehold eller support</li>
+              <li>Forsvinner når jobben er gjort</li>
+            </ul>
+          </article>
+
+          <article class="vcol" data-reveal>
+            <h3 class="vcol__title">Stort byrå</h3>
+            <p class="vcol__note">Bygd for de store</p>
+            <ul class="vcol__list vcol__list--muted">
+              <li>Du er lav prioritet som liten kunde</li>
+              <li>Lang leveringstid og høy pris</li>
+              <li>Mye prosess, lite direkte kontakt</li>
+            </ul>
+          </article>
+
+          <article class="vcol vcol--win" data-reveal>
+            <h3 class="vcol__title">Dietrichs Marketing</h3>
+            <p class="vcol__note">Kompakt og direkte</p>
+            <ul class="vcol__list">
+              <li>Direkte kontakt med den som bygger</li>
+              <li>Du eier koden — ingen lock-in</li>
+              <li>Bygger minste versjon først, itererer</li>
+              <li>Fast pris, ingen overraskelser</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRIS ============ -->
+    <section class="section pricing" id="pris">
+      <div class="wrap pricing__grid">
+        <div class="pricing__intro" data-reveal>
+          <h2 class="h2">Pris etter hva du faktisk trenger.</h2>
+          <p class="lead">
+            Apputvikling prises individuelt — størrelsen og kompleksiteten
+            varierer for mye til faste pakker. Vi starter alltid med en prat
+            om hva du vil oppnå, og gir deg et klart tilbud før vi begynner.
+          </p>
+          <p class="pricing__note">
+            Ingen skjulte gebyrer. Fast pris per leveranse. Du eier alt.
+          </p>
+        </div>
+
+        <div class="pricing__cards">
+          <article class="plan plan--primary" data-reveal>
+            <h3 class="plan__name">Start med en gratis prat</h3>
+            <p class="plan__desc">Fortell oss hva du vil løse. Vi ser på om det er noe vi kan hjelpe med, og hva det ville kostet. Ingen forpliktelse, ingen skjulte agendaer.</p>
+
+            <p class="plan__phase">Hva du kan forvente</p>
+            <ul class="plan__list">
+              <li>Vi kartlegger behovet ditt i detalj</li>
+              <li>Du får et klart tilbud med fast pris</li>
+              <li>Vi bygger minste fungerende versjon først</li>
+              <li>Du eier koden fra dag én</li>
+            </ul>
+
+            <p class="plan__phase">Etter levering</p>
+            <ul class="plan__list plan__list--muted">
+              <li>Ingen løpende kostnader til oss</li>
+              <li>Videreutvikling etter behov</li>
+              <li>Direkte kontakt med den som bygde det</li>
+            </ul>
+
+            <a class="btn btn--solid btn--block" href="#kontakt">Ta kontakt</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section faq" id="faq">
+      <div class="wrap faq__grid">
+        <header class="faq__head" data-reveal>
+          <h2 class="h2">Vanlige spørsmål</h2>
+          <p class="lead">Det folk lurer mest på før de tar kontakt.</p>
+        </header>
+        <div class="faq__list" data-reveal>
+          <details class="qa">
+            <summary>Hva slags apper og systemer bygger dere?</summary>
+            <p>Vi bygger skreddersydde mobilapper, webapper og interne verktøy for norske bedrifter. Typiske eksempler er feltapper for fagfolk, dokumentasjons- og rapporteringsverktøy, kundeportaler, dashboards og AI-agenter som automatiserer repetitive oppgaver.</p>
+          </details>
+          <details class="qa">
+            <summary>Hva koster det å få bygget en app?</summary>
+            <p>Det varierer etter hva som skal bygges. Vi starter alltid med en gratis prat om behovet ditt, og gir deg et fast tilbud før vi begynner. Ingen timepris-overraskelser etterpå.</p>
+          </details>
+          <details class="qa">
+            <summary>Eier jeg koden selv?</summary>
+            <p>Ja, 100 %. Kildekoden leveres til deg og er din fra dag én. Ingen abonnement, ingen lock-in — du kan bygge videre med oss eller med hvem du vil.</p>
+          </details>
+          <details class="qa">
+            <summary>Hvor lang tid tar det å få levert?</summary>
+            <p>Det kommer an på størrelsen. En enkel feltapp eller et internt verktøy kan være klart på noen uker. Større systemer tar lengre tid. Vi er alltid tydelige på leveringstid i tilbudet.</p>
+          </details>
+          <details class="qa">
+            <summary>Bruker dere AI i utviklingen?</summary>
+            <p>Ja — vi bruker moderne teknologi for å bygge raskere og bedre. Men vi er nøye med hva vi automatiserer: AI brukes der det gir mening, og ikke der det krever faglig skjønn eller presisjon.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FINAL CTA ============ -->
+    <section class="finalcta" id="kontakt">
+      <div class="floaters floaters--cta" aria-hidden="true">
+        <span class="floater f1"></span>
+        <span class="floater f5"></span>
+      </div>
+      <div class="wrap finalcta__grid">
+        <div class="finalcta__copy" data-reveal>
+          <h2 class="finalcta__title">Klar til å bygge noe som faktisk virker?</h2>
+          <p class="finalcta__lead">
+            Ta kontakt for en gratis prat. Vi ser på hva du vil løse, og
+            om vi kan hjelpe — uten forpliktelse.
+          </p>
+          <ul class="finalcta__points">
+            <li>Vi kartlegger behovet ditt gratis</li>
+            <li>Fast pris i tilbudet — ingen timepris-overraskelser</li>
+            <li>Du eier koden fra dag én</li>
+          </ul>
+          <p class="finalcta__contact">
+            Eller ta direkte kontakt:
+            <a href="mailto:post@dmarketing.no">post@dmarketing.no</a> ·
+            <a href="tel:+4793439278">+47 93 43 92 78</a>
+          </p>
+        </div>
+
+        <div class="contact-card" data-reveal>
+          <span class="kicker">Gratis prat</span>
+          <form class="contact-form" id="contactForm" novalidate>
+            <p class="contact-form__intro">Tar under ett minutt. Ingen forpliktelse.</p>
+            <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+
+            <div class="contact-row">
+              <div class="field">
+                <label for="cf-name">Navn</label>
+                <input id="cf-name" name="navn" type="text" autocomplete="name" required>
+              </div>
+              <div class="field">
+                <label for="cf-email">E-post</label>
+                <input id="cf-email" name="epost" type="email" autocomplete="email" required>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="cf-systems">Hva vil du løse? <span class="field__opt">(valgfritt)</span></label>
+              <input id="cf-systems" name="systemer" type="text" placeholder="f.eks. feltapp, rapportering, AI-integrasjon">
+            </div>
+
+            <div class="field">
+              <label for="cf-site">Bedriftens nettside <span class="field__opt">(valgfritt)</span></label>
+              <input id="cf-site" name="nettside" type="text" inputmode="url" autocomplete="url" placeholder="dittfirma.no">
+            </div>
+
+            <button class="btn btn--solid btn--block btn--lg" type="submit">
+              <span id="cf-submit-text">Book demo</span>
+              <svg class="btn__arrow" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <p class="contact-form__fineprint">Vi svarer vanligvis innen en virkedag. Ingen forpliktelse.</p>
+          </form>
+          <div class="contact-ok" id="contactOk" hidden>
+            <span class="contact-ok__check" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <h3>Takk for henvendelsen!</h3>
+            <p>Vi tar kontakt snart, vanligvis innen en virkedag.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="dm-footer">
+    <div class="dm-wrap">
+      <div class="f-top">
+        <div>
+          <a href="../" class="brand"><b>Dietrichs</b><span>marketing</span></a>
+          <p class="f-tag">Vi bruker AI og moderne teknologi til å gjøre norske bedrifter mer lønnsomme.</p>
+        </div>
+        <div class="f-links">
+          <div class="f-col">
+            <h5>Tjenester</h5>
+            <a href="../apputvikling/">Apputvikling</a>
+            <a href="../ai-nettsider/">AI-nettsider</a>
+          </div>
+          <div class="f-col">
+            <h5>Kontakt</h5>
+            <a href="mailto:post@dmarketing.no">post@dmarketing.no</a>
+            <a href="tel:+4793439278">+47 93 43 92 78</a>
+            <a href="../kontakt/">Ta kontakt</a>
+          </div>
+        </div>
+      </div>
+      <div class="f-bottom">
+        <div>© 2026 Dietrichs Marketing</div>
+        <div>Org.nr 932 612 583</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var btn = document.getElementById('menu-btn');
+      var overlay = document.getElementById('menu-overlay');
+      var nav = document.getElementById('nav');
+      if (!btn || !overlay) return;
+      function setOpen(open) {
+        overlay.classList.toggle('hidden-menu', !open);
+        btn.classList.toggle('is-open', open);
+        document.body.classList.toggle('menu-open', open);
+        document.body.style.overflow = open ? 'hidden' : '';
+      }
+      btn.addEventListener('click', function () { setOpen(overlay.classList.contains('hidden-menu')); });
+      overlay.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('touchstart', function () { a.classList.add('is-touched'); }, { passive: true });
+        a.addEventListener('click', function () { setOpen(false); });
+      });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+      window.addEventListener('scroll', function () {
+        nav.classList.toggle('scrolled', window.scrollY > 10);
+      });
+    })();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
