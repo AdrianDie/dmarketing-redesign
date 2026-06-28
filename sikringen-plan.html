@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sikringen Elektro — Plan og analyse | Dietrichs Marketing</title>
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --paper:      #FCFBF7;
+      --paper-2:    #F5F3EA;
+      --ink:        #0E1116;
+      --ink-soft:   #5F6169;
+      --ink-faint:  #9A9A93;
+      --cobalt:     #1B34FF;
+      --cobalt-050: #ECEEFF;
+      --cobalt-ink: #060B2E;
+      --line:       #E7E4D8;
+      --white:      #ffffff;
+      --green:      #0A7A4B;
+      --green-050:  #E6F4EE;
+      --red:        #C0392B;
+      --red-050:    #FDECEA;
+      --r-md:       18px;
+      --r-sm:       12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Schibsted Grotesk', system-ui, sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.65;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Layout */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 240px;
+      height: 100vh;
+      background: var(--cobalt-ink);
+      color: #fff;
+      padding: 32px 24px;
+      overflow-y: auto;
+      z-index: 10;
+    }
+    .sidebar__logo {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      opacity: 0.5;
+      margin-bottom: 24px;
+    }
+    .sidebar__title {
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: 32px;
+      line-height: 1.3;
+    }
+    .sidebar__title span {
+      color: #6B88FF;
+    }
+    .nav__section {
+      margin-bottom: 24px;
+    }
+    .nav__section-label {
+      font-size: 0.62rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      opacity: 0.4;
+      margin-bottom: 8px;
+    }
+    .nav__link {
+      display: block;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      padding: 5px 0;
+      transition: color 0.15s;
+    }
+    .nav__link:hover { color: #fff; }
+
+    .main {
+      margin-left: 240px;
+      padding: clamp(40px, 6vw, 80px) clamp(24px, 5vw, 64px);
+      max-width: 900px;
+    }
+
+    /* Seksjoner */
+    section {
+      margin-bottom: 72px;
+    }
+
+    .section-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--cobalt);
+      margin-bottom: 10px;
+    }
+    h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      margin-top: 48px;
+    }
+    h2:first-child { margin-top: 0; }
+    h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      margin-top: 32px;
+    }
+    h3:first-child { margin-top: 0; }
+    p {
+      color: var(--ink-soft);
+      margin-bottom: 16px;
+      max-width: 680px;
+    }
+    p:last-child { margin-bottom: 0; }
+
+    /* Divider */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--line);
+      margin: 48px 0;
+    }
+
+    /* Highlight-boks */
+    .highlight {
+      padding: 24px 28px;
+      border-radius: var(--r-md);
+      margin-bottom: 24px;
+    }
+    .highlight--cobalt {
+      background: var(--cobalt);
+      color: #fff;
+    }
+    .highlight--cobalt p { color: rgba(255,255,255,0.85); }
+    .highlight--cobalt h3 { color: #fff; margin-top: 0; }
+    .highlight--soft {
+      background: var(--cobalt-050);
+    }
+    .highlight--soft p { color: var(--ink-soft); }
+    .highlight--green {
+      background: var(--green-050);
+      border-left: 3px solid var(--green);
+    }
+    .highlight--green p { color: var(--ink-soft); }
+    .highlight--red {
+      background: var(--red-050);
+      border-left: 3px solid var(--red);
+    }
+    .highlight--red p { color: var(--ink-soft); }
+    .highlight--warn {
+      background: #FFF8E6;
+      border-left: 3px solid #E6A817;
+    }
+    .highlight--warn p { color: var(--ink-soft); }
+
+    /* Kortgrid */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--r-md);
+      padding: 20px 22px;
+    }
+    .card__label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--ink-faint);
+      margin-bottom: 6px;
+    }
+    .card__value {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--cobalt);
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+    .card__desc {
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+    }
+
+    /* Tabell */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      margin-bottom: 24px;
+    }
+    th {
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--ink-faint);
+      padding: 0 0 10px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    td {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+      color: var(--ink-soft);
+      vertical-align: top;
+    }
+    td:first-child { color: var(--ink); font-weight: 500; }
+    tr:last-child td { border-bottom: none; }
+
+    /* Prosess-steg */
+    .process {
+      margin-bottom: 24px;
+    }
+    .process__step {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 16px;
+      align-items: flex-start;
+    }
+    .process__num {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      background: var(--cobalt);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-top: 2px;
+    }
+    .process__content strong {
+      display: block;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 2px;
+    }
+    .process__content span {
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+    }
+
+    /* Sjekkliste */
+    .checklist {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 24px;
+    }
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+    }
+    .checklist li:last-child { border-bottom: none; }
+    .checklist__icon {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      background: var(--cobalt);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+    .checklist__icon svg { width: 10px; height: 10px; }
+    .checklist li strong { color: var(--ink); }
+
+    /* Spørsmål til møtet */
+    .questions {
+      counter-reset: q;
+    }
+    .question {
+      counter-increment: q;
+      padding: 20px 24px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--r-md);
+      margin-bottom: 12px;
+      position: relative;
+      padding-left: 60px;
+    }
+    .question::before {
+      content: counter(q);
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      width: 28px;
+      height: 28px;
+      background: var(--cobalt-050);
+      color: var(--cobalt);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.8rem;
+    }
+    .question__text {
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .question__why {
+      font-size: 0.82rem;
+      color: var(--ink-faint);
+    }
+
+    /* Konkurrent-kort */
+    .competitor {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--r-md);
+      padding: 22px 24px;
+      margin-bottom: 16px;
+    }
+    .competitor__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+    .competitor__name {
+      font-weight: 800;
+      font-size: 1.05rem;
+    }
+    .competitor__threat {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+    .threat--high { background: var(--red-050); color: var(--red); }
+    .threat--mid  { background: #FFF3E0; color: #E65100; }
+    .threat--low  { background: var(--green-050); color: var(--green); }
+    .competitor__desc { font-size: 0.88rem; color: var(--ink-soft); margin-bottom: 12px; }
+    .competitor__tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      background: var(--paper-2);
+      border-radius: 100px;
+      color: var(--ink-soft);
+    }
+
+    /* Flow-diagram */
+    .flow {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 24px;
+    }
+    .flow__item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--r-sm);
+      font-size: 0.9rem;
+    }
+    .flow__item--cobalt {
+      background: var(--cobalt);
+      color: #fff;
+      border-color: var(--cobalt);
+    }
+    .flow__arrow {
+      text-align: center;
+      color: var(--ink-faint);
+      font-size: 0.8rem;
+      padding: 2px 0;
+    }
+    .flow__icon {
+      font-size: 1.1rem;
+      width: 24px;
+      text-align: center;
+    }
+
+    /* Badge */
+    .badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 3px 10px;
+      border-radius: 100px;
+      margin-bottom: 8px;
+    }
+    .badge--cobalt { background: var(--cobalt); color: #fff; }
+    .badge--green  { background: var(--green-050); color: var(--green); }
+
+    /* Footer */
+    .foot {
+      margin-top: 80px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      font-size: 0.78rem;
+      color: var(--ink-faint);
+    }
+
+    @media (max-width: 768px) {
+      .sidebar { display: none; }
+      .main { margin-left: 0; }
+    }
+
+    @media print {
+      .sidebar { display: none; }
+      .main { margin-left: 0; padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="sidebar">
+    <div class="sidebar__logo">Dietrichs Marketing</div>
+    <div class="sidebar__title">Sikringen<br><span>Elektro</span></div>
+
+    <div class="nav__section">
+      <div class="nav__section-label">Situasjon</div>
+      <a href="#mote" class="nav__link">Møtet</a>
+      <a href="#mulighet" class="nav__link">Muligheten</a>
+      <a href="#team" class="nav__link">Team</a>
+    </div>
+
+    <div class="nav__section">
+      <div class="nav__section-label">Research</div>
+      <a href="#prosess" class="nav__link">Dokumentasjonsprosessen</a>
+      <a href="#konkurrenter" class="nav__link">Konkurrenter</a>
+      <a href="#integrasjoner" class="nav__link">Integrasjoner</a>
+      <a href="#marked" class="nav__link">Markedsstørrelse</a>
+    </div>
+
+    <div class="nav__section">
+      <div class="nav__section-label">Plan</div>
+      <a href="#hva-bygge" class="nav__link">Hva vi bygger</a>
+      <a href="#forretningsmodell" class="nav__link">Forretningsmodell</a>
+      <a href="#sporsmal" class="nav__link">Spørsmål til møtet</a>
+      <a href="#neste-steg" class="nav__link">Neste steg</a>
+    </div>
+  </nav>
+
+  <main class="main">
+
+    <!-- HEADER -->
+    <section id="mote">
+      <div class="section-label">Konfidensielt — Dietrichs Marketing</div>
+      <h1>Sikringen Elektro</h1>
+      <p style="font-size:1.05rem; color: var(--ink);">Plan, research og møteforberedelse for samarbeid om AI-baserte verktøy for elektrobransjen.</p>
+
+      <div class="highlight highlight--cobalt">
+        <h3>Møtet — hva som skjedde</h3>
+        <p>Første samtale med lederen i Sikringen — en kjede med <strong>180 medlemsbedrifter</strong>. Han er ikke interessert i nettsider fordi han ikke har innflytelse over, eller får fordeler av, at enkeltbedriftene sparer hostingkostnader.</p>
+        <p>Men: han spurte om vi kan <strong>utvikle AI-baserte programvareverktøy</strong> som kan effektivisere og standardisere prosesser i elektrobransjen. Han var veldig positiv og vil ha et møte med partneren sin.</p>
+      </div>
+
+      <div class="card-grid">
+        <div class="card">
+          <div class="card__label">Kjeden</div>
+          <div class="card__value">180</div>
+          <div class="card__desc">Medlemsbedrifter i Sikringen</div>
+        </div>
+        <div class="card">
+          <div class="card__label">Møte</div>
+          <div class="card__value">Avtalt</div>
+          <div class="card__desc">Leder + partner. Ta med Espen og Bjarte.</div>
+        </div>
+        <div class="card">
+          <div class="card__label">Fokus</div>
+          <div class="card__value">Software</div>
+          <div class="card__desc">AI-verktøy, ikke nettsider</div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- MULIGHETEN -->
+    <section id="mulighet">
+      <div class="section-label">Muligheten</div>
+      <h2>Hva han etterspurte</h2>
+
+      <p>Lederen nevnte tre konkrete problemområder han vil løse for sine 180 bedrifter:</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Problem</th>
+            <th>Dagens situasjon</th>
+            <th>Muligheten</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Dokumentasjonsverktøy</td>
+            <td>Papirbasert eller tungvinte PC-systemer</td>
+            <td>Mobil-app for feltbruk</td>
+          </tr>
+          <tr>
+            <td>Overdimensjonerte systemer</td>
+            <td>Nelfo Integrator er laget for store bedrifter</td>
+            <td>Lett verktøy for 1–10 ansatte</td>
+          </tr>
+          <tr>
+            <td>Standardisering</td>
+            <td>Hver bedrift gjør ting ulikt</td>
+            <td>Felles prosesser, Sikringen-branding</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="highlight highlight--soft">
+        <h3>Hva "standardisere prosesser" trolig betyr</h3>
+        <p>Fire mulige tolkninger — vi må stille dette spørsmålet i møtet:</p>
+        <ul style="list-style:none; padding:0;">
+          <li style="padding: 6px 0; border-bottom: 1px solid var(--line); color: var(--ink-soft); font-size: 0.9rem;"><strong style="color: var(--ink);">A —</strong> At alle 180 bedrifter dokumenterer likt, med Sikringen-logo på alt</li>
+          <li style="padding: 6px 0; border-bottom: 1px solid var(--line); color: var(--ink-soft); font-size: 0.9rem;"><strong style="color: var(--ink);">B —</strong> At kjedeledelsen kan se status og aktivitet på tvers av bedriftene</li>
+          <li style="padding: 6px 0; border-bottom: 1px solid var(--line); color: var(--ink-soft); font-size: 0.9rem;"><strong style="color: var(--ink);">C —</strong> At nye medlemsbedrifter får et ferdig verktøy fra dag én</li>
+          <li style="padding: 6px 0; color: var(--ink-soft); font-size: 0.9rem;"><strong style="color: var(--ink);">D —</strong> At Sikringen kan garantere compliance for alle 180 overfor forsikring og kommuner</li>
+        </ul>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- TEAM -->
+    <section id="team">
+      <div class="section-label">Team</div>
+      <h2>Hvem er med</h2>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card__label">Salg & prosjekt</div>
+          <div class="card__value" style="font-size: 1.2rem;">Adrian</div>
+          <div class="card__desc">Kundekontakt, møteansvarlig, Dietrichs Marketing</div>
+        </div>
+        <div class="card">
+          <div class="card__label">Utvikler</div>
+          <div class="card__value" style="font-size: 1.2rem;">Espen</div>
+          <div class="card__desc">Med i møtet med Sikringen</div>
+        </div>
+        <div class="card">
+          <div class="card__label">Utvikler</div>
+          <div class="card__value" style="font-size: 1.2rem;">Bjarte</div>
+          <div class="card__desc">Med i møtet med Sikringen</div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- DOKUMENTASJONSPROSESSEN -->
+    <section id="prosess">
+      <div class="section-label">Research</div>
+      <h2>Dokumentasjonsprosessen — hva elektrikeren gjør per jobb</h2>
+
+      <p>Elektrikere er lovpålagt å dokumentere alt arbeid. Kravene kommer fra FEL, FSE, NEK 400 og Internkontrollforskriften. Slik ser en typisk jobb ut:</p>
+
+      <div class="process">
+        <div class="process__step">
+          <div class="process__num">1</div>
+          <div class="process__content">
+            <strong>Risikovurdering (FSE) — 5–15 min</strong>
+            <span>Skal gjøres før arbeidet starter. Hva er spenningsnivå, er anlegget koblet fra, hvem er i nærheten? Gjøres i dag på papir eller i hodet — sjelden dokumentert digitalt.</span>
+          </div>
+        </div>
+        <div class="process__step">
+          <div class="process__num">2</div>
+          <div class="process__content">
+            <strong>Utførelse — noterer underveis</strong>
+            <span>Elektrikeren noterer kabeltype, sikringsstørrelser og kursnummer mens han jobber. Disse trenger han i neste steg.</span>
+          </div>
+        </div>
+        <div class="process__step">
+          <div class="process__num">3</div>
+          <div class="process__content">
+            <strong>Sluttkontroll (NEK 400) — 10–30 min målinger + 20–45 min registrering</strong>
+            <span>Den tyngste jobben. Krever fire typer målinger som alle skal registreres:</span>
+          </div>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Måling</th>
+            <th>Hva det sjekker</th>
+            <th>Krav</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Kontinuitetsmåling</td>
+            <td>At beskyttelsesledere og jordledere ikke er brutt</td>
+            <td>200 mA målestrøm, alle kurser</td>
+          </tr>
+          <tr>
+            <td>Isolasjonsmåling</td>
+            <td>Ingen kontakt mellom fase og jord</td>
+            <td>Min. 0,5 MΩ per kurs, 500 VDC</td>
+          </tr>
+          <tr>
+            <td>Kortslutningsstrøm</td>
+            <td>Vernet kobler ut ved feil</td>
+            <td>Måles i enden av hver kabel, må overstige I5-verdi</td>
+          </tr>
+          <tr>
+            <td>Jordelektrode</td>
+            <td>Overgangsmotstanden på jord</td>
+            <td>Måling, beregning eller tabellverdier</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="process">
+        <div class="process__step">
+          <div class="process__num">4</div>
+          <div class="process__content">
+            <strong>Samsvarserklæring — 10–20 min</strong>
+            <span>Lovpålagt etter <em>hvert eneste oppdrag</em> — selv én stikkontakt. Må inneholde: bedriftsnavn, type arbeid, beskrivelse, bekreftelse på at krav er oppfylt, signatur fra faglig ansvarlig. Bedriften oppbevarer kopi i 5 år.</span>
+          </div>
+        </div>
+        <div class="process__step">
+          <div class="process__num">5</div>
+          <div class="process__content">
+            <strong>Levering til kunde og Boligmappa — 5–10 min</strong>
+            <span>Samsvarserklæringen skal til kunden, og helst lastes opp til Boligmappa (digital boligmappe). Gjøres i dag manuelt — ofte glemmes eller utsettes.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="highlight highlight--red">
+        <h3 style="color: var(--red); margin-top:0;">Tidstap i dag</h3>
+        <p>En elektriker som tar 3 jobber om dagen bruker <strong>1–2 timer på papirarbeid</strong> — etter at arbeidsdagen er ferdig. Det er ubetalt administrasjonstid som stjeler kvelden.</p>
+      </div>
+
+      <h3>Internkontroll — løpende (ikke per jobb)</h3>
+      <p>Separat fra jobbdokumentasjonen. Bedriften må dokumentere HMS-rutiner, kompetanseoversikt, avviksbehandling og vernerunder. Dette er det Nelfo Integrator primært er bygget for — og det er her det er overdimensjonert for de minste.</p>
+    </section>
+
+    <hr class="divider">
+
+    <!-- KONKURRENTER -->
+    <section id="konkurrenter">
+      <div class="section-label">Research</div>
+      <h2>Konkurrenter og eksisterende løsninger</h2>
+
+      <div class="competitor">
+        <div class="competitor__header">
+          <div class="competitor__name">Nelfo Integrator (NHO Elektro)</div>
+          <div class="competitor__threat threat--low">Lav trussel</div>
+        </div>
+        <div class="competitor__desc">Bransjens offisielle totalløsning. Fem moduler: NIK (internkontroll), IKK (internkontroll for kunde), KS (kvalitetssikring), PBL (plan og bygningsloven), FDV (forvaltning/drift/vedlikehold). Selges per bruker per år. Priser ikke publisert åpent — trolig 3 000–8 000 kr/år. <strong>Problemet: laget for store bedrifter, ikke feltbruk på mobil.</strong> En soloelektriker trenger kanskje én modul men betaler for alle fem.</div>
+        <div class="competitor__tags">
+          <span class="tag">Komplekst</span>
+          <span class="tag">Desktop-fokus</span>
+          <span class="tag">Overkill for små</span>
+          <span class="tag">Per bruker/år</span>
+        </div>
+      </div>
+
+      <div class="competitor">
+        <div class="competitor__header">
+          <div class="competitor__name">Aceve</div>
+          <div class="competitor__threat threat--high">Høy trussel</div>
+        </div>
+        <div class="competitor__desc">Nyeste og nærmeste konkurrent. Heldigital løsning: tilbud → jobb → dokumentasjon → faktura i én flyt. Teknikeren registrerer alt på mobil i felten. Har bransjespesifikk internkontroll og Boligmappa-integrasjon. <strong>Dette er det vi vil bygge — men de har kommet oss i forkjøpet.</strong> Pris ikke publisert. Ikke Sikringen-spesifikk.</div>
+        <div class="competitor__tags">
+          <span class="tag">Mobil-app</span>
+          <span class="tag">Boligmappa-integrasjon</span>
+          <span class="tag">Heldigital flyt</span>
+          <span class="tag">Generisk — ikke kjede</span>
+        </div>
+      </div>
+
+      <div class="competitor">
+        <div class="competitor__header">
+          <div class="competitor__name">Tripletex</div>
+          <div class="competitor__threat threat--low">Lav trussel</div>
+        </div>
+        <div class="competitor__desc">Regnskapssystem som mange elektrikere bruker. Har elektrikertilpasninger, men dokumentasjon er en sidefunksjon — ikke kjernen. Har Boligmappa-integrasjon. <strong>Konkurrerer ikke på dokumentasjon — konkurrerer på økonomi.</strong></div>
+        <div class="competitor__tags">
+          <span class="tag">Regnskap-fokus</span>
+          <span class="tag">Boligmappa-integrasjon</span>
+          <span class="tag">Ikke feltverktøy</span>
+        </div>
+      </div>
+
+      <div class="highlight highlight--green">
+        <h3 style="color: var(--green); margin-top: 0;">Vår fordel ingen kan kopiere</h3>
+        <p>En løsning <strong>eksklusivt for Sikringen-kjeden</strong> — med Sikringen-branding, kjededashboard og integrasjon mot kjedens egne systemer — er noe verken Aceve, Tripletex eller Nelfo kan tilby. Det er den eneste posisjonen der vi vinner.</p>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- INTEGRASJONER -->
+    <section id="integrasjoner">
+      <div class="section-label">Research</div>
+      <h2>Nøkkelintegrasjoner</h2>
+
+      <h3>Boligmappa — åpent API</h3>
+      <p>Boligmappa er der samsvarserklæringer skal lagres knyttet til boligadresse. Over 50 systemer er allerede integrert (Tripletex, Visma, Cordel m.fl.).</p>
+
+      <ul class="checklist">
+        <li>
+          <div class="checklist__icon"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5.5L3.5 7.5L8.5 2.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <span><strong>API er åpent</strong> — tilgjengelig for partnere via søknad</span>
+        </li>
+        <li>
+          <div class="checklist__icon"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5.5L3.5 7.5L8.5 2.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <span><strong>Krever partneravtale</strong> — etablert prosess, ikke teknisk barriere</span>
+        </li>
+        <li>
+          <div class="checklist__icon"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5.5L3.5 7.5L8.5 2.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <span><strong>Test- og produksjonsmiljø</strong> — separate credentials</span>
+        </li>
+        <li>
+          <div class="checklist__icon"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5.5L3.5 7.5L8.5 2.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <span><strong>Automatisk utsending</strong> — samsvarserklæring sendes til boligadresse med ett klikk</span>
+        </li>
+      </ul>
+
+      <h3>DSB-rapportering</h3>
+      <p>Elektrikere har <strong>ikke løpende meldeplikt per jobb</strong> til DSB. Bedriften må være registrert i Elvirksomhetsregisteret. DLE (Det lokale eltilsyn) kan komme på tilsyn og kreve dokumentasjon — men det er ikke noe vi trenger å automatisere. Ingen teknisk integrasjon nødvendig her.</p>
+
+      <h3>Elvirksomhetsregisteret</h3>
+      <p>Nice-to-have: verktøyet kan sjekke at bedriften er autorisert ved opprettelse. Gir kjeden trygghet for at alle 180 bedrifter er lovlige.</p>
+    </section>
+
+    <hr class="divider">
+
+    <!-- MARKEDSSTØRRELSE -->
+    <section id="marked">
+      <div class="section-label">Research</div>
+      <h2>Markedsstørrelse</h2>
+
+      <div class="card-grid">
+        <div class="card">
+          <div class="card__label">Totalt i Norge</div>
+          <div class="card__value">~4 000</div>
+          <div class="card__desc">Autoriserte elektrikerbedrifter (DSB)</div>
+        </div>
+        <div class="card">
+          <div class="card__label">Små bedrifter (1–5 ans.)</div>
+          <div class="card__value">~2 800</div>
+          <div class="card__desc">Ca. 70% av totalmarkedet</div>
+        </div>
+        <div class="card">
+          <div class="card__label">Sikringen alene</div>
+          <div class="card__value">180</div>
+          <div class="card__desc">Betalende medlemmer i kjeden</div>
+        </div>
+        <div class="card">
+          <div class="card__label">Potensielt marked</div>
+          <div class="card__value">~10 mill</div>
+          <div class="card__desc">kr/år ved 299 kr/mnd × 2 800 bedrifter</div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- HVA VI BYGGER -->
+    <section id="hva-bygge">
+      <div class="section-label">Plan</div>
+      <h2>Hva vi bygger</h2>
+
+      <p>Et verktøy som gjør tre ting og ingenting annet — mobil-først, ferdig utfylt på byggeplassen, ikke på kontoret etterpå.</p>
+
+      <div class="flow">
+        <div class="flow__item">
+          <span class="flow__icon">📱</span>
+          <span><strong>Elektriker åpner app på mobil ute på jobb</strong></span>
+        </div>
+        <div class="flow__arrow">↓</div>
+        <div class="flow__item">
+          <span class="flow__icon">📍</span>
+          <span><strong>Registrerer adresse og jobbtype</strong> — søker opp boligadresse fra Boligmappa</span>
+        </div>
+        <div class="flow__arrow">↓</div>
+        <div class="flow__item">
+          <span class="flow__icon">⚡</span>
+          <span><strong>Fyller inn målinger</strong> — isolasjon, kontinuitet, kortslutning direkte i app</span>
+        </div>
+        <div class="flow__arrow">↓</div>
+        <div class="flow__item">
+          <span class="flow__icon">📄</span>
+          <span><strong>Sluttrapport genereres automatisk</strong> — NEK 400-kompatibel, med Sikringen-logo</span>
+        </div>
+        <div class="flow__arrow">↓</div>
+        <div class="flow__item">
+          <span class="flow__icon">✅</span>
+          <span><strong>Samsvarserklæring genereres med ett klikk</strong> — forhåndsutfylt fra jobdata</span>
+        </div>
+        <div class="flow__arrow">↓</div>
+        <div class="flow__item flow__item--cobalt">
+          <span class="flow__icon">🚀</span>
+          <span><strong>Sendes til kunde og Boligmappa automatisk</strong> — ferdig. 10 minutter. Ingen PC. Ingen papir.</span>
+        </div>
+      </div>
+
+      <h3>Tre kjernemoduler</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Modul</th>
+            <th>Hva det gjør</th>
+            <th>Prioritet</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Jobboversikt</td>
+            <td>Opprett jobb, koble til adresse, legg til bilder, tidslinje</td>
+            <td><span class="badge badge--cobalt">Må ha</span></td>
+          </tr>
+          <tr>
+            <td>Dokumentasjon</td>
+            <td>Fyll inn målinger, generer sluttrapport og samsvarserklæring automatisk</td>
+            <td><span class="badge badge--cobalt">Må ha</span></td>
+          </tr>
+          <tr>
+            <td>Internkontroll</td>
+            <td>Enkel HMS-sjekkliste som oppfyller lovkravet — 10 minutter, ikke 10 timer</td>
+            <td><span class="badge badge--cobalt">Må ha</span></td>
+          </tr>
+          <tr>
+            <td>Kjededashboard</td>
+            <td>Sikringen-ledelsen ser aktivitet, compliance og status på tvers av 180 bedrifter</td>
+            <td><span class="badge badge--green">Viktig</span></td>
+          </tr>
+          <tr>
+            <td>Boligmappa-integrasjon</td>
+            <td>Automatisk opplasting av samsvarserklæring</td>
+            <td><span class="badge badge--cobalt">Må ha</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <hr class="divider">
+
+    <!-- FORRETNINGSMODELL -->
+    <section id="forretningsmodell">
+      <div class="section-label">Plan</div>
+      <h2>Forretningsmodell</h2>
+
+      <div class="highlight highlight--warn">
+        <h3 style="margin-top:0;">Det viktigste ubesvarte spørsmålet</h3>
+        <p>Betaler <strong>Sikringen som kjede</strong> for alle 180 bedrifter — eller betaler <strong>hver enkelt bedrift</strong> selv? Svaret avgjør alt: pris, salgsmodell og hvem vi selger til.</p>
+      </div>
+
+      <h3>Alternativ A — Kjeden betaler</h3>
+      <p>Sikringen kjøper én lisens som dekker alle 180 bedrifter. Verktøyet er en del av kjedemedlemskapet. Enklere å selge (én beslutning), men én stor kontrakt å forhandle.</p>
+
+      <table>
+        <thead>
+          <tr><th>Pris til Sikringen</th><th>Per bedrift/mnd</th><th>Årlig inntekt</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>180 × 199 kr/mnd</td><td>199 kr</td><td>430 560 kr</td></tr>
+          <tr><td>180 × 299 kr/mnd</td><td>299 kr</td><td>645 840 kr</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Alternativ B — Bedriftene betaler selv</h3>
+      <p>Sikringen anbefaler verktøyet, men bedriftene tegner egne abonnement. Lavere enhetspris, men vi må selge til 180 enkeltbedrifter.</p>
+
+      <h3>Anbefaling</h3>
+      <p>Start med <strong>Alternativ A</strong> — selg én avtale til Sikringen, lever til alle 180. Etter at verktøyet er etablert, åpne for andre kjeder og enkeltelektrikere utenfor Sikringen.</p>
+    </section>
+
+    <hr class="divider">
+
+    <!-- SPØRSMÅL TIL MØTET -->
+    <section id="sporsmal">
+      <div class="section-label">Plan</div>
+      <h2>Spørsmål til møtet</h2>
+      <p>Still disse i rekkefølge. De tidlige spørsmålene avgjør om vi i det hele tatt bygger det riktige.</p>
+
+      <div class="questions">
+        <div class="question">
+          <div class="question__text">"Når du sier standardisere prosesser — er det viktigst at dere som kjede får oversikt, eller at den enkelte elektriker får det enklere i hverdagen?"</div>
+          <div class="question__why">Avgjør om vi bygger nedenfra og opp (verktøy for elektrikeren) eller ovenfra og ned (dashboard for kjedeledelsen)</div>
+        </div>
+        <div class="question">
+          <div class="question__text">"Hvilken løsning bruker de fleste av de 180 bedriftene i dag — og hva klager de på?"</div>
+          <div class="question__why">Gir oss innsikt i faktisk smerte, ikke antatt smerte</div>
+        </div>
+        <div class="question">
+          <div class="question__text">"Ville Sikringen betale for et verktøy dere kan tilby alle 180 bedriftene, eller skal bedriftene betale individuelt?"</div>
+          <div class="question__why">Det viktigste kommersielle spørsmålet — avgjør hele forretningsmodellen</div>
+        </div>
+        <div class="question">
+          <div class="question__text">"Er dokumentasjonskravet en barriere for nye bedrifter som vil bli Sikringen-medlem?"</div>
+          <div class="question__why">Avdekker om verktøyet kan brukes som rekrutteringsverktøy for kjeden</div>
+        </div>
+        <div class="question">
+          <div class="question__text">"Hva er det dyreste problemet for en liten elektrikerbedrift i Sikringen i dag?"</div>
+          <div class="question__why">Åpent spørsmål — svaret kan avdekke muligheter vi ikke har tenkt på</div>
+        </div>
+        <div class="question">
+          <div class="question__text">"Har dere snakket med Aceve eller andre leverandører om lignende løsninger?"</div>
+          <div class="question__why">Avdekker om vi er i konkurranse allerede</div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- NESTE STEG -->
+    <section id="neste-steg">
+      <div class="section-label">Plan</div>
+      <h2>Neste steg</h2>
+
+      <div class="process">
+        <div class="process__step">
+          <div class="process__num">1</div>
+          <div class="process__content">
+            <strong>Bekreft møtetidspunkt med Sikringen-lederen</strong>
+            <span>Adrian kontakter ham og setter dato. Ta med Espen og Bjarte.</span>
+          </div>
+        </div>
+        <div class="process__step">
+          <div class="process__num">2</div>
+          <div class="process__content">
+            <strong>Lag en enkel prototype / clickthrough</strong>
+            <span>Vis hvordan appen ser ut for elektrikeren i felten. Ikke fungerende kode — bare skjermbilde som viser flyten. Gjør møtet konkret.</span>
+          </div>
+        </div>
+        <div class="process__step">
+          <div class="process__num">3</div>
+          <div class="process__content">
+            <strong>Søk om Boligmappa API-tilgang</strong>
+            <span>Registrer som integrasjonspartner nå — det tar tid å få godkjenning. Ikke vent til etter møtet.</span>
+          </div>
+        </div>
+        <div class="process__step">
+          <div class="process__num">4</div>
+          <div class="process__content">
+            <strong>Forbered prismodell til møtet</strong>
+            <span>Ha to alternativer klart: kjeden betaler samlet, eller bedriftene betaler individuelt. Med tall.</span>
+          </div>
+        </div>
+        <div class="process__step">
+          <div class="process__num">5</div>
+          <div class="process__content">
+            <strong>Snakk med 2–3 elektrikere før møtet</strong>
+            <span>Ring to Sikringen-elektrikere og spør: "Hva er det mest tidkrevende papirarbeidet du gjør?" Det er gull å ha direkte sitat fra elektrikerne når vi sitter i møtet med ledelsen.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="highlight highlight--cobalt">
+        <h3>Vår sterkeste posisjon</h3>
+        <p>Vi selger ikke et generisk verktøy. Vi selger <strong>Sikringens eget dokumentasjonssystem</strong> — med deres logo, deres prosesser, deres dashboard. Det er noe ingen andre kan gi dem.</p>
+      </div>
+    </section>
+
+    <div class="foot">
+      Konfidensielt — Dietrichs Marketing · Oppdatert juni 2026
+    </div>
+
+  </main>
+
+</body>
+</html>

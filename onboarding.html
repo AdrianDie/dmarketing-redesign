@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Onboarding — Din nye nettside på 10 minutter | Dietrichs Marketing</title>
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --paper:      #FCFBF7;
+      --ink:        #0E1116;
+      --ink-soft:   #5F6169;
+      --ink-faint:  #9A9A93;
+      --cobalt:     #1B34FF;
+      --cobalt-050: #ECEEFF;
+      --line:       #E7E4D8;
+      --white:      #ffffff;
+      --r-md:       18px;
+      --r-sm:       12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Schibsted Grotesk', system-ui, sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.65;
+      font-size: 17px;
+      -webkit-font-smoothing: antialiased;
+      padding: 0;
+    }
+
+    .page {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: clamp(40px, 8vw, 80px) clamp(20px, 5vw, 48px);
+    }
+
+    /* Header */
+    .header {
+      margin-bottom: 56px;
+    }
+    .header__label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--cobalt);
+      margin-bottom: 12px;
+    }
+    .header__title {
+      font-size: clamp(1.8rem, 5vw, 2.6rem);
+      font-weight: 800;
+      line-height: 1.08;
+      margin-bottom: 16px;
+    }
+    .header__sub {
+      font-size: 1.1rem;
+      color: var(--ink-soft);
+      max-width: 540px;
+    }
+
+    /* Hero-tall */
+    .hero-stat {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-top: 32px;
+      padding: 24px 28px;
+      background: var(--cobalt);
+      color: #fff;
+      border-radius: var(--r-md);
+    }
+    .hero-stat__number {
+      font-size: clamp(2.4rem, 6vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1;
+    }
+    .hero-stat__text {
+      font-size: 1.05rem;
+      opacity: 0.9;
+    }
+
+    /* Fordeler-sjekkliste */
+    .benefits {
+      margin-top: 56px;
+    }
+    .benefits__title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+    .benefits__sub {
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+      margin-bottom: 24px;
+    }
+    .benefits__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .benefit {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 14px 16px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--r-sm);
+      font-size: 0.9rem;
+      line-height: 1.45;
+    }
+    .benefit__check {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      background: var(--cobalt);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+    .benefit__check svg {
+      width: 12px;
+      height: 12px;
+    }
+    .benefit__text strong {
+      display: block;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .benefit__text span {
+      color: var(--ink-soft);
+      font-size: 0.82rem;
+    }
+
+    @media (max-width: 520px) {
+      .benefits__grid { grid-template-columns: 1fr; }
+    }
+
+    /* Kostnadsseksjon */
+    .costs {
+      margin-top: 56px;
+    }
+    .costs__title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+    .costs__sub {
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+      margin-bottom: 28px;
+    }
+    .costs__compare {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 16px;
+      align-items: stretch;
+      margin-bottom: 28px;
+    }
+    .costs__card {
+      padding: 24px;
+      border-radius: var(--r-md);
+      text-align: center;
+    }
+    .costs__card--old {
+      background: var(--white);
+      border: 1px solid var(--line);
+    }
+    .costs__card--new {
+      background: var(--cobalt);
+      color: #fff;
+    }
+    .costs__card-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+    .costs__card--old .costs__card-label { color: var(--ink-faint); }
+    .costs__card--new .costs__card-label { opacity: 0.75; }
+    .costs__card-price {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 800;
+      line-height: 1.1;
+    }
+    .costs__card-unit {
+      font-size: 0.85rem;
+      margin-top: 4px;
+    }
+    .costs__card--old .costs__card-unit { color: var(--ink-soft); }
+    .costs__card--new .costs__card-unit { opacity: 0.8; }
+    .costs__card-note {
+      font-size: 0.78rem;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--line);
+    }
+    .costs__card--old .costs__card-note { color: var(--ink-faint); }
+    .costs__card--new .costs__card-note { opacity: 0.7; border-top-color: rgba(255,255,255,0.2); }
+    .costs__arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: var(--ink-faint);
+    }
+
+    .costs__table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+    }
+    .costs__table th {
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--ink-faint);
+      padding: 0 0 10px 0;
+    }
+    .costs__table th:not(:first-child) { text-align: right; }
+    .costs__table td {
+      padding: 10px 0;
+      border-top: 1px solid var(--line);
+    }
+    .costs__table td:not(:first-child) { text-align: right; }
+    .costs__table .costs__row-old { color: var(--ink-soft); }
+    .costs__table .costs__row-new { color: var(--cobalt); font-weight: 600; }
+    .costs__table .costs__row-total {
+      font-weight: 700;
+      border-top: 2px solid var(--ink);
+    }
+    .costs__table .costs__row-saved {
+      color: var(--cobalt);
+      font-weight: 800;
+      font-size: 1rem;
+    }
+    .costs__table .costs__strikethrough {
+      text-decoration: line-through;
+      color: var(--ink-faint);
+    }
+
+    .costs__note {
+      font-size: 0.82rem;
+      color: var(--ink-faint);
+      line-height: 1.55;
+      margin-bottom: 24px;
+    }
+
+    .costs__revenue {
+      padding: 24px 28px;
+      background: var(--cobalt-050);
+      border-radius: var(--r-md);
+    }
+    .costs__revenue-title {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+    .costs__revenue-text {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 520px) {
+      .costs__compare { grid-template-columns: 1fr; }
+      .costs__arrow { transform: rotate(90deg); }
+      .costs__table { font-size: 0.82rem; }
+    }
+
+    /* Tidslinje */
+    .timeline {
+      margin-top: 56px;
+    }
+    .timeline__intro {
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+      margin-bottom: 32px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 0 24px;
+      position: relative;
+      padding-bottom: 40px;
+    }
+    .step:last-child { padding-bottom: 0; }
+
+    /* Vertikal linje mellom steg */
+    .step::before {
+      content: '';
+      position: absolute;
+      left: 35px;
+      top: 56px;
+      bottom: 0;
+      width: 2px;
+      background: var(--line);
+    }
+    .step:last-child::before { display: none; }
+
+    .step__badge {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--cobalt-050);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+    .step__num {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--cobalt);
+      line-height: 1;
+    }
+    .step__time {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--cobalt);
+      line-height: 1.2;
+    }
+
+    .step__content {
+      padding-top: 8px;
+    }
+    .step__title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .step__desc {
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+      margin-bottom: 10px;
+    }
+    .step__how {
+      font-size: 0.85rem;
+      color: var(--ink-faint);
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--r-sm);
+      padding: 12px 16px;
+      line-height: 1.55;
+    }
+    .step__how strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    /* Oppsummering */
+    .summary {
+      margin-top: 56px;
+      padding: 32px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--r-md);
+    }
+    .summary__title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .summary__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .summary__item {
+      text-align: center;
+      padding: 20px 12px;
+      background: var(--cobalt-050);
+      border-radius: var(--r-sm);
+    }
+    .summary__value {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--cobalt);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .summary__label {
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+    }
+
+    /* Etter onboarding */
+    .after {
+      margin-top: 40px;
+      padding: 28px 32px;
+      background: var(--cobalt);
+      color: #fff;
+      border-radius: var(--r-md);
+    }
+    .after__title {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+    .after__text {
+      font-size: 0.95rem;
+      opacity: 0.9;
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    .foot {
+      margin-top: 56px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      font-size: 0.8rem;
+      color: var(--ink-faint);
+      text-align: center;
+    }
+    .foot a { color: var(--cobalt); }
+
+    @media (max-width: 520px) {
+      .step { grid-template-columns: 56px 1fr; gap: 0 16px; }
+      .step__badge { width: 56px; height: 56px; }
+      .step::before { left: 27px; top: 48px; }
+      .summary__grid { grid-template-columns: 1fr; }
+      .hero-stat { flex-direction: column; gap: 4px; }
+    }
+
+    @media print {
+      body { font-size: 14px; }
+      .page { padding: 20px; }
+      .hero-stat, .after { color-adjust: exact; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <div class="header">
+      <div class="header__label">Onboarding</div>
+      <h1 class="header__title">Din nye nettside på<br>10 minutter</h1>
+      <p class="header__sub">Alt det tekniske er gjort av oss på forhånd. Du trenger bare å gjøre fire korte steg — totalt ca 12 minutter.</p>
+    </div>
+
+    <div class="hero-stat">
+      <span class="hero-stat__number">12 min</span>
+      <span class="hero-stat__text">total tidsbruk for deg som kunde</span>
+    </div>
+
+    <div class="benefits">
+      <h2 class="benefits__title">Dette får du som kunde</h2>
+      <p class="benefits__sub">Alt dette er inkludert — ingen ekstra kostnader, ingen skjulte avgifter.</p>
+      <div class="benefits__grid">
+
+        <div class="benefit">
+          <div class="benefit__check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5L4.5 9L10 3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="benefit__text"><strong>0 kr i løpende kostnader</strong><span>Ingen månedlig hosting, ingen årsavgift — for alltid</span></div>
+        </div>
+
+        <div class="benefit">
+          <div class="benefit__check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5L4.5 9L10 3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="benefit__text"><strong>Du eier nettsiden 100%</strong><span>Overført til din konto — ingen leverandørlåsing</span></div>
+        </div>
+
+        <div class="benefit">
+          <div class="benefit__check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5L4.5 9L10 3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="benefit__text"><strong>Gratis hosting — for alltid</strong><span>Ingen server å betale for, ingen fornyelse</span></div>
+        </div>
+
+        <div class="benefit">
+          <div class="benefit__check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5L4.5 9L10 3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="benefit__text"><strong>Ingen bindingstid</strong><span>Du eier alt — bytt eller endre når du vil</span></div>
+        </div>
+
+        <div class="benefit">
+          <div class="benefit__check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5L4.5 9L10 3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="benefit__text"><strong>Oppdater selv på 60 sekunder</strong><span>Kurs inkludert — ingen teknisk kunnskap nødvendig</span></div>
+        </div>
+
+        <div class="benefit">
+          <div class="benefit__check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5L4.5 9L10 3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="benefit__text"><strong>Uavhengig av byrå</strong><span>Du trenger aldri ringe et byrå for å endre en tekst</span></div>
+        </div>
+
+        <div class="benefit">
+          <div class="benefit__check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5L4.5 9L10 3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="benefit__text"><strong>4x raskere nettside</strong><span>Kundene dine slipper å vente — siden laster på et øyeblikk</span></div>
+        </div>
+
+        <div class="benefit">
+          <div class="benefit__check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5L4.5 9L10 3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="benefit__text"><strong>Høyere på Google</strong><span>Raskere nettside gir bedre plassering i søkeresultater</span></div>
+        </div>
+
+        <div class="benefit">
+          <div class="benefit__check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5L4.5 9L10 3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="benefit__text"><strong>Mobiltilpasset design</strong><span>Ser perfekt ut på mobil, nettbrett og PC</span></div>
+        </div>
+
+        <div class="benefit">
+          <div class="benefit__check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5L4.5 9L10 3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="benefit__text"><strong>Personlig support</strong><span>Vi hjelper deg på telefon eller e-post — inkludert</span></div>
+        </div>
+
+        <div class="benefit">
+          <div class="benefit__check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5L4.5 9L10 3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="benefit__text"><strong>Alltid tilgjengelig</strong><span>Siden er alltid oppe — ingen nedetid eller serverproblemer</span></div>
+        </div>
+
+        <div class="benefit">
+          <div class="benefit__check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5L4.5 9L10 3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="benefit__text"><strong>Sikker nettside med hengelås</strong><span>Kundene ser at siden er trygg — den grønne hengelåsen er på plass</span></div>
+        </div>
+
+        <div class="benefit">
+          <div class="benefit__check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5L4.5 9L10 3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="benefit__text"><strong>Ingen hackingfare</strong><span>Ingen innlogging eller systemer som kan bli angrepet</span></div>
+        </div>
+
+        <div class="benefit">
+          <div class="benefit__check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5L4.5 9L10 3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="benefit__text"><strong>Ingen cookie-banner</strong><span>Siden sporer ingen besøkende, så du slipper den irriterende cookie-boksen</span></div>
+        </div>
+
+        <div class="benefit">
+          <div class="benefit__check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5L4.5 9L10 3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="benefit__text"><strong>Besøksstatistikk kan legges til</strong><span>Vil du se hvor mange som besøker siden? Vi setter det opp for deg</span></div>
+        </div>
+
+        <div class="benefit">
+          <div class="benefit__check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5L4.5 9L10 3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="benefit__text"><strong>Moderne teknologi</strong><span>Bygget med den nyeste teknologien — lett, rask og fremtidssikker</span></div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="costs">
+      <h2 class="costs__title">Hva sparer du egentlig?</h2>
+      <p class="costs__sub">De fleste bedrifter betaler rundt 333 kr i måneden for nettside-løsningen sin — og den prisen stiger hvert år. Slik ser regnestykket ut over 5 år:</p>
+
+      <div class="costs__compare">
+        <div class="costs__card costs__card--old">
+          <div class="costs__card-label">I dag</div>
+          <div class="costs__card-price">~333 kr</div>
+          <div class="costs__card-unit">per måned, hvert år</div>
+          <div class="costs__card-note">Øker med prisstigninger hvert år</div>
+        </div>
+        <div class="costs__arrow">→</div>
+        <div class="costs__card costs__card--new">
+          <div class="costs__card-label">Med oss</div>
+          <div class="costs__card-price">0 kr</div>
+          <div class="costs__card-unit">per måned, for alltid</div>
+          <div class="costs__card-note">Engangskostnad 2 900 kr — ferdig</div>
+        </div>
+      </div>
+
+      <table class="costs__table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Gammel løsning</th>
+            <th>Vår løsning</th>
+            <th>Du sparer</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>År 1</td>
+            <td class="costs__row-old">4 000 kr</td>
+            <td class="costs__row-new">2 900 kr</td>
+            <td>1 100 kr</td>
+          </tr>
+          <tr>
+            <td>År 2</td>
+            <td class="costs__row-old">4 320 kr</td>
+            <td class="costs__row-new">0 kr</td>
+            <td>4 320 kr</td>
+          </tr>
+          <tr>
+            <td>År 3</td>
+            <td class="costs__row-old">4 666 kr</td>
+            <td class="costs__row-new">0 kr</td>
+            <td>4 666 kr</td>
+          </tr>
+          <tr>
+            <td>År 4</td>
+            <td class="costs__row-old">5 039 kr</td>
+            <td class="costs__row-new">0 kr</td>
+            <td>5 039 kr</td>
+          </tr>
+          <tr>
+            <td>År 5</td>
+            <td class="costs__row-old">5 442 kr</td>
+            <td class="costs__row-new">0 kr</td>
+            <td>5 442 kr</td>
+          </tr>
+          <tr class="costs__row-total">
+            <td>Totalt 5 år</td>
+            <td class="costs__strikethrough">23 467 kr</td>
+            <td class="costs__row-new">2 900 kr</td>
+            <td class="costs__row-saved">20 567 kr</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="costs__note">Prisene på den gamle løsningen er beregnet med ca 8% årlig prisøkning, som er vanlig for denne typen abonnementer. I tillegg slipper du å betale for et redesign — det er allerede inkludert i engangsprisen.</p>
+
+      <div class="costs__revenue">
+        <div class="costs__revenue-title">Det handler ikke bare om å spare — men om å tjene mer</div>
+        <p class="costs__revenue-text">En raskere nettside gjør at flere kunder tar kontakt. Erfaringsmessig ser bedrifter som bytter til en raskere løsning en merkbar økning i henvendelser. Selv én ekstra kunde i måneden kan bety titusener i ekstra omsetning i året — hvert år, i år etter år.</p>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <p class="timeline__intro">Her er hvert steg, med nøyaktig tidsbruk og hva du gjør:</p>
+
+      <div class="step">
+        <div class="step__badge">
+          <span class="step__num">Steg 1</span>
+          <span class="step__time">2 min</span>
+        </div>
+        <div class="step__content">
+          <h3 class="step__title">Lag konto og aksepter invitasjon</h3>
+          <p class="step__desc">Du får en e-post med invitasjon til nettsiden din. Lag en gratis konto og klikk «Accept invitation» — ferdig.</p>
+          <div class="step__how">
+            <strong>Hva du gjør:</strong> Åpne e-post → lag konto med e-post og passord → klikk «Accept invitation» → ferdig.
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step__badge">
+          <span class="step__num">Steg 2</span>
+          <span class="step__time">30 sek</span>
+        </div>
+        <div class="step__content">
+          <h3 class="step__title">Aksepter tilgang til kurset</h3>
+          <p class="step__desc">Du får en invitasjon til et kurs som viser deg hvordan du oppdaterer nettsiden selv. Klikk «Accept» for å få tilgang.</p>
+          <div class="step__how">
+            <strong>Hva du gjør:</strong> Åpne e-post → klikk «Accept» → ferdig.
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step__badge">
+          <span class="step__num">Steg 3</span>
+          <span class="step__time">1 min</span>
+        </div>
+        <div class="step__content">
+          <h3 class="step__title">Overfør eierskap</h3>
+          <p class="step__desc">Vi overfører nettsiden til din konto — du eier den 100%. Du skriver inn brukernavnet ditt, og klikker «Transfer».</p>
+          <div class="step__how">
+            <strong>Hva du gjør:</strong> Logg inn → skriv inn brukernavnet ditt i feltet → klikk «Transfer» → bekreft.
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step__badge">
+          <span class="step__num">Steg 4</span>
+          <span class="step__time">8 min</span>
+        </div>
+        <div class="step__content">
+          <h3 class="step__title">Pek domenet til nettsiden</h3>
+          <p class="step__desc">Logg inn hos domene-leverandøren din og legg inn fire DNS-oppføringer. Vi sender deg nøyaktig hva du skal skrive inn.</p>
+          <div class="step__how">
+            <strong>Hva du gjør:</strong> Logg inn hos domene-leverandøren (f.eks. Domeneshop, One.com) → gå til DNS-innstillinger → legg inn 4 oppføringer vi sender deg → lagre. Vi hjelper deg over telefon om du trenger det.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="summary">
+      <h2 class="summary__title">Oppsummert</h2>
+      <div class="summary__grid">
+        <div class="summary__item">
+          <div class="summary__value">4</div>
+          <div class="summary__label">steg totalt</div>
+        </div>
+        <div class="summary__item">
+          <div class="summary__value">12 min</div>
+          <div class="summary__label">din tidsbruk</div>
+        </div>
+        <div class="summary__item">
+          <div class="summary__value">0 kr</div>
+          <div class="summary__label">løpende kostnader</div>
+        </div>
+        <div class="summary__item">
+          <div class="summary__value">100%</div>
+          <div class="summary__label">du eier nettsiden</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="after">
+      <div class="after__title">Etter onboarding</div>
+      <div class="after__text">Nettsiden er live på ditt domene. Du kan oppdatere tekst, bilder og innhold selv via kurset — uten å kunne noe teknisk. Vi er tilgjengelige for spørsmål når som helst.</div>
+    </div>
+
+    <div class="foot">
+      Spørsmål? <a href="mailto:adrian@dmarketing.no">adrian@dmarketing.no</a> · <a href="tel:+4741532telefonxxxx">Ring oss</a>
+    </div>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sikringen Elektro — Strategidokument | Konfidensielt</title>
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --paper:      #FCFBF7;
+      --paper-2:    #F5F3EA;
+      --ink:        #0E1116;
+      --ink-soft:   #5F6169;
+      --ink-faint:  #9A9A93;
+      --cobalt:     #1B34FF;
+      --cobalt-050: #ECEEFF;
+      --cobalt-ink: #060B2E;
+      --line:       #E7E4D8;
+      --white:      #ffffff;
+      --green:      #0A7A4B;
+      --green-050:  #E6F4EE;
+      --red:        #C0392B;
+      --red-050:    #FDECEA;
+      --amber:      #B45309;
+      --amber-050:  #FEF3C7;
+      --r-md: 18px;
+      --r-sm: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Schibsted Grotesk', system-ui, sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.65;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0; left: 0;
+      width: 230px;
+      height: 100vh;
+      background: var(--cobalt-ink);
+      color: #fff;
+      padding: 28px 20px;
+      overflow-y: auto;
+      z-index: 10;
+    }
+    .sidebar__logo { font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; opacity: 0.4; margin-bottom: 20px; }
+    .sidebar__title { font-size: 0.95rem; font-weight: 800; margin-bottom: 28px; line-height: 1.3; }
+    .sidebar__title span { color: #6B88FF; }
+    .nav-group { margin-bottom: 20px; }
+    .nav-group__label { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; opacity: 0.35; margin-bottom: 6px; }
+    .nav-group a { display: block; font-size: 0.8rem; color: rgba(255,255,255,0.65); text-decoration: none; padding: 4px 0; }
+    .nav-group a:hover { color: #fff; }
+
+    .main { margin-left: 230px; padding: clamp(36px,6vw,72px) clamp(24px,5vw,60px); max-width: 860px; }
+
+    section { margin-bottom: 64px; }
+    .section-label { font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--cobalt); margin-bottom: 8px; }
+    h1 { font-size: clamp(1.8rem,5vw,2.8rem); font-weight: 800; line-height: 1.05; margin-bottom: 14px; }
+    h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 12px; margin-top: 44px; }
+    h2:first-child { margin-top: 0; }
+    h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; margin-top: 28px; }
+    h3:first-child { margin-top: 0; }
+    p { color: var(--ink-soft); margin-bottom: 14px; max-width: 660px; line-height: 1.7; }
+    p:last-child { margin-bottom: 0; }
+    ul, ol { padding-left: 20px; color: var(--ink-soft); margin-bottom: 14px; }
+    li { margin-bottom: 6px; line-height: 1.6; }
+    hr { border: none; border-top: 1px solid var(--line); margin: 48px 0; }
+    strong { color: var(--ink); }
+
+    .box { padding: 22px 26px; border-radius: var(--r-md); margin-bottom: 20px; }
+    .box--cobalt { background: var(--cobalt); color: #fff; }
+    .box--cobalt p { color: rgba(255,255,255,0.85); max-width: 100%; }
+    .box--cobalt h3 { color: #fff; margin-top: 0; }
+    .box--soft { background: var(--cobalt-050); }
+    .box--green { background: var(--green-050); border-left: 3px solid var(--green); }
+    .box--green h3 { color: var(--green); margin-top: 0; }
+    .box--red { background: var(--red-050); border-left: 3px solid var(--red); }
+    .box--red h3 { color: var(--red); margin-top: 0; }
+    .box--amber { background: var(--amber-050); border-left: 3px solid var(--amber); }
+    .box--amber h3 { color: var(--amber); margin-top: 0; }
+
+    .card-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: 14px; margin-bottom: 20px; }
+    .card { background: var(--white); border: 1px solid var(--line); border-radius: var(--r-md); padding: 18px 20px; }
+    .card__label { font-size: 0.63rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-faint); margin-bottom: 5px; }
+    .card__value { font-size: 1.5rem; font-weight: 800; color: var(--cobalt); line-height: 1.1; margin-bottom: 3px; }
+    .card__desc { font-size: 0.8rem; color: var(--ink-soft); }
+
+    table { width: 100%; border-collapse: collapse; font-size: 0.87rem; margin-bottom: 20px; }
+    th { text-align: left; font-size: 0.67rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint); padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+    td { padding: 11px 0; border-bottom: 1px solid var(--line); color: var(--ink-soft); vertical-align: top; padding-right: 16px; }
+    td:first-child { color: var(--ink); font-weight: 600; }
+    tr:last-child td { border-bottom: none; }
+
+    /* Tidslinje */
+    .timeline { margin-bottom: 24px; }
+    .tl-week { margin-bottom: 28px; }
+    .tl-week__header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+    .tl-week__badge { background: var(--cobalt); color: #fff; font-size: 0.72rem; font-weight: 700; padding: 4px 12px; border-radius: 100px; white-space: nowrap; }
+    .tl-week__title { font-weight: 700; font-size: 1rem; color: var(--ink); }
+    .tl-tasks { list-style: none; padding: 0; }
+    .tl-tasks li { display: flex; gap: 10px; align-items: flex-start; padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 0.88rem; }
+    .tl-tasks li:last-child { border-bottom: none; }
+    .tl-dot { flex-shrink: 0; width: 8px; height: 8px; border-radius: 50%; margin-top: 6px; }
+    .tl-dot--must { background: var(--cobalt); }
+    .tl-dot--should { background: var(--green); }
+    .tl-dot--nice { background: var(--ink-faint); }
+    .tl-tasks strong { color: var(--ink); display: block; }
+    .tl-tasks span { color: var(--ink-soft); font-size: 0.82rem; }
+
+    /* Teamkort */
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 14px; margin-bottom: 20px; }
+    .team-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--r-md); padding: 20px; }
+    .team-card__role { font-size: 0.63rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--cobalt); margin-bottom: 6px; }
+    .team-card__name { font-size: 1.1rem; font-weight: 800; margin-bottom: 8px; }
+    .team-card__desc { font-size: 0.82rem; color: var(--ink-soft); line-height: 1.55; }
+
+    /* Risiko */
+    .risk { background: var(--white); border: 1px solid var(--line); border-radius: var(--r-md); padding: 18px 20px; margin-bottom: 10px; display: flex; gap: 14px; align-items: flex-start; }
+    .risk__level { flex-shrink: 0; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; padding: 4px 10px; border-radius: 100px; }
+    .risk__level--high { background: var(--red-050); color: var(--red); }
+    .risk__level--mid  { background: var(--amber-050); color: var(--amber); }
+    .risk__level--low  { background: var(--green-050); color: var(--green); }
+    .risk__text strong { display: block; font-size: 0.9rem; margin-bottom: 3px; }
+    .risk__text span { font-size: 0.82rem; color: var(--ink-soft); }
+
+    .checklist { list-style: none; padding: 0; margin-bottom: 20px; }
+    .checklist li { display: flex; gap: 10px; align-items: flex-start; padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 0.88rem; color: var(--ink-soft); }
+    .checklist li:last-child { border-bottom: none; }
+    .check { flex-shrink: 0; width: 20px; height: 20px; background: var(--cobalt); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+    .check svg { width: 10px; height: 10px; }
+
+    .foot { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 0.76rem; color: var(--ink-faint); }
+
+    @media (max-width: 768px) { .sidebar { display: none; } .main { margin-left: 0; } }
+    @media print { .sidebar { display: none; } .main { margin-left: 0; padding: 20px; } }
+  </style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <div class="sidebar__logo">Konfidensielt</div>
+  <div class="sidebar__title">Sikringen<br><span>Strategi 2026</span></div>
+  <div class="nav-group">
+    <div class="nav-group__label">Kontekst</div>
+    <a href="#bakgrunn">Hvem er Adrian</a>
+    <a href="#team">Teamet</a>
+    <a href="#situasjon">Situasjonen</a>
+    <a href="#malet">Målet</a>
+  </div>
+  <div class="nav-group">
+    <div class="nav-group__label">Profesjonalitet</div>
+    <a href="#selskap">Selskapsstruktur</a>
+    <a href="#fremstaa">Fremstå som proff</a>
+  </div>
+  <div class="nav-group">
+    <div class="nav-group__label">Plan</div>
+    <a href="#tidslinje">Tidslinje jun–aug</a>
+    <a href="#prototype">Hva vi bygger nå</a>
+    <a href="#motet">Møtestrategien</a>
+  </div>
+  <div class="nav-group">
+    <div class="nav-group__label">Business</div>
+    <a href="#risiko">Risikoer</a>
+    <a href="#avtale">Hva en avtale ser ut som</a>
+    <a href="#kontekst">Kontekst for Claude</a>
+  </div>
+</nav>
+
+<main class="main">
+
+  <!-- HEADER -->
+  <section>
+    <div class="section-label">Strategidokument — juni 2026</div>
+    <h1>Plan for å lande Sikringen Elektro</h1>
+    <p style="font-size: 1.05rem; color: var(--ink);">Dette dokumentet gir full kontekst om hvem Adrian er, hva han vil bygge, og hva som må skje mellom nå og møtet i august for at Sikringen Elektro sier ja.</p>
+
+    <div class="box box--cobalt">
+      <h3>Situasjonen i én setning</h3>
+      <p>Roger, toppleder i Sikringen Elektro (180 medlemsbedrifter), vil ha et møte om AI-baserte verktøy for å effektivisere og standardisere prosesser i elektrobransjen. Partneren hans har ferie nå — møtet skjer i august. Adrian har ~7 uker til å gjøre alt riktig.</p>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- BAKGRUNN -->
+  <section id="bakgrunn">
+    <div class="section-label">Kontekst</div>
+    <h2>Hvem er Adrian</h2>
+
+    <p>Adrian er 22 år og har betydelig mer erfaring enn alderen tilsier. Dette er viktig kontekst for alle fremtidige chatter.</p>
+
+    <div class="card-row">
+      <div class="card">
+        <div class="card__label">Alder</div>
+        <div class="card__value">22 år</div>
+        <div class="card__desc">Starter på master høst 2026</div>
+      </div>
+      <div class="card">
+        <div class="card__label">IT-erfaring</div>
+        <div class="card__value">10 år</div>
+        <div class="card__desc">Begynte med utvikling som 12-åring</div>
+      </div>
+      <div class="card">
+        <div class="card__label">Byrå</div>
+        <div class="card__value">4 år</div>
+        <div class="card__desc">Dietrichs Marketing, startet som 18-åring</div>
+      </div>
+      <div class="card">
+        <div class="card__label">Kapasitet</div>
+        <div class="card__value">~80%</div>
+        <div class="card__desc">Tilgjengelig fra 18. august</div>
+      </div>
+    </div>
+
+    <table>
+      <thead><tr><th>Erfaring</th><th>Detaljer</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Utdanning</td>
+          <td>Dataingeniør (bachelor). Starter master i indøk (industriell økonomi + data = sivilingeniør) høst 2026 — tar lite tid, gir mye rom for eget arbeid.</td>
+        </tr>
+        <tr>
+          <td>DNB</td>
+          <td>Backend-utvikler, 1 år. Apputvikling i profesjonell setting. Sommerjobb slutter 18. august.</td>
+        </tr>
+        <tr>
+          <td>E-Wheels Norge AS</td>
+          <td>Bygget AI-app / AI-system over 2 år (40–50%+ kapasitet). Prosjektet er satt på pause — ikke avsluttet. Viser evne til å bygge komplekse systemer over tid.</td>
+        </tr>
+        <tr>
+          <td>Dietrichs Marketing</td>
+          <td>Markedsføringsbyrå drevet deltid i 4 år. Redesign av nettsider, hosting, AI-nettsider. Ca. 20+ kunder, inkl. elektrikerbedrifter.</td>
+        </tr>
+        <tr>
+          <td>Selskapsstruktur</td>
+          <td>Enkeltpersonsforetak i dag. Ingen AS. Ingen kontor. <strong>Dette må endres før møtet.</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="box box--green">
+      <h3>Styrken som ikke er åpenbar</h3>
+      <p>De fleste 22-åringer har enten forretningserfaring <em>eller</em> teknisk dybde. Adrian har begge — 10 år utvikling, 4 år forretning, DNB-erfaring, og en AI-systemleveranse bak seg. Det er uvanlig. Bruk det aktivt i møtet.</p>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- TEAMET -->
+  <section id="team">
+    <div class="section-label">Kontekst</div>
+    <h2>Teamet</h2>
+
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-card__role">Leder / Utvikling / Salg</div>
+        <div class="team-card__name">Adrian</div>
+        <div class="team-card__desc">Dataingeniør, backend-utvikler (DNB), 10 år IT-erfaring, 4 år markedsføring. Hovedansvarlig for alt. ~80% kapasitet fra august.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-card__role">Senior arkitekt — deltid</div>
+        <div class="team-card__name">Far</div>
+        <div class="team-card__desc">IT-arkitekt med 35–40 års erfaring. Tilgjengelig deltid. Gir prosjektet en erfaren teknisk stemme som veier tungt i møter med bedriftsledere.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-card__role">Utvikler / møtedeltaker</div>
+        <div class="team-card__name">Kompis</div>
+        <div class="team-card__desc">Går samme masterprogram (indøk). Kan delta i møter og bidra teknisk ved behov. Gir teamfølelse uten fast ansettelse.</div>
+      </div>
+    </div>
+
+    <div class="box box--amber">
+      <h3>Hva teamet mangler — og hva vi gjør med det</h3>
+      <p>Ingen med bransjekunnskap om elektro fra innsiden. Dette løser vi ved å <strong>snakke med 2–3 elektrikere</strong> før møtet — da kan vi si "vi har snakket med elektrikere i Sikringen som forteller oss at..." Det er mer verdt enn generell research.</p>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- SITUASJONEN -->
+  <section id="situasjon">
+    <div class="section-label">Kontekst</div>
+    <h2>Situasjonen med Sikringen</h2>
+
+    <table>
+      <thead><tr><th>Punkt</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Kontakt</td><td>Roger — toppleder i Sikringen Elektro</td></tr>
+        <tr><td>Kjeden</td><td>180 medlemsbedrifter over hele Norge</td></tr>
+        <tr><td>Møte</td><td>Avtalt — Roger + partner. Partner har ferie nå. Møte skjer i august.</td></tr>
+        <tr><td>Hva Roger vil</td><td>AI-baserte verktøy som effektiviserer og standardiserer prosesser i elektrobransjen</td></tr>
+        <tr><td>Hva han IKKE vil</td><td>Nettsider — han har ingen innflytelse over enkeltbedriftenes hosting-kostnader</td></tr>
+        <tr><td>Hva vi vil selge</td><td>Dokumentasjonsverktøy for feltbruk — mobil-app som erstatter papirarbeid</td></tr>
+        <tr><td>Tidsvindu</td><td>Ca. 7 uker: 26. juni → august</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <hr>
+
+  <!-- MÅLET -->
+  <section id="malet">
+    <div class="section-label">Kontekst</div>
+    <h2>Målet</h2>
+
+    <p>Å komme ut av møtet i august med én av disse:</p>
+
+    <table>
+      <thead><tr><th>Utfall</th><th>Hva det betyr</th><th>Sannsynlighet</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Pilotkjøp</td>
+          <td>Sikringen betaler for et pilotprosjekt med 10–20 bedrifter. Fast sum, begrenset scope.</td>
+          <td>Beste realistiske utfall</td>
+        </tr>
+        <tr>
+          <td>Intensjonsavtale</td>
+          <td>Skriftlig intensjon om å gå videre når prototype er klar. Ingen penger ennå, men forplikter dem.</td>
+          <td>Sannsynlig utfall</td>
+        </tr>
+        <tr>
+          <td>Nytt møte</td>
+          <td>De vil se mer — ny demo, flere spørsmål. Ikke et nei.</td>
+          <td>Akseptabelt</td>
+        </tr>
+        <tr>
+          <td>Nei</td>
+          <td>Ikke interessert.</td>
+          <td>Mulig — men unngåelig med riktig forberedelse</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="box box--soft">
+      <h3>Viktig: ikke selg for mye i møtet</h3>
+      <p>Målet med møtet er <strong>ikke</strong> å selge. Målet er å forstå nøyaktig hva de trenger — og deretter komme tilbake med et tilbud som treffer perfekt. Still spørsmål, lytt, ta notater. La dem snakke mer enn deg.</p>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- SELSKAPSSTRUKTUR -->
+  <section id="selskap">
+    <div class="section-label">Profesjonalitet</div>
+    <h2>Selskapsstruktur</h2>
+
+    <div class="box box--red">
+      <h3>Problem: Enkeltpersonsforetak holder ikke</h3>
+      <p>Når Sikringen inngår en avtale med en leverandør av forretningskritisk software, forventer de et aksjeselskap. Enkeltpersonsforetak signaliserer "frilanser" — AS signaliserer "selskap". Det er forskjell på ansvarsforhold, troverdighet og profesjonalitet.</p>
+    </div>
+
+    <h3>Hva du gjør</h3>
+    <ul class="checklist">
+      <li>
+        <div class="check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5.5L3.5 7.5L8.5 2.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><strong>Stift AS så fort som mulig</strong> — gjøres via Brønnøysundregistrene på nett. Koster 2 500–5 000 kr. Kan fullføres på under en uke. Aksjekapital: 30 000 kr (minimum).</div>
+      </li>
+      <li>
+        <div class="check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5.5L3.5 7.5L8.5 2.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><strong>Skaff en forretningsadresse</strong> — ikke nødvendig med fysisk kontor. Bruk en virtuell kontortjeneste (f.eks. Regus, Spaces, eller en bekjent med næringslokale). Koster 200–500 kr/mnd.</div>
+      </li>
+      <li>
+        <div class="check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5.5L3.5 7.5L8.5 2.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><strong>Lag profesjonell e-post</strong> — @selskapsnavn.no, ikke Gmail. Google Workspace koster 140 kr/mnd.</div>
+      </li>
+      <li>
+        <div class="check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5.5L3.5 7.5L8.5 2.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><strong>Lag nettside for det nye selskapet</strong> — én side er nok. Navn, hva dere gjør, teamet. Adrian kan lage dette på én dag.</div>
+      </li>
+    </ul>
+
+    <div class="box box--green">
+      <h3>Hva du kaller selskapet</h3>
+      <p>Ikke "Dietrichs Marketing AS" — det signaliserer reklame og nettsider. Du trenger et navn som signaliserer <strong>software og teknologi</strong>. Eksempler på retning: noe som kombinerer "elektro" + "tech/system/data". Alternativt: et nøytralt navn som fungerer på tvers av bransjer. Unngå navn som låser deg til én kunde.</p>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- FREMSTÅ SOM PROFF -->
+  <section id="fremstaa">
+    <div class="section-label">Profesjonalitet</div>
+    <h2>Fremstå som profesjonell aktør</h2>
+
+    <p>Roger og partneren hans vil vurdere om dere er en leverandør de kan stole på over tid. Her er hva som teller:</p>
+
+    <table>
+      <thead><tr><th>Element</th><th>Hva det signaliserer</th><th>Prioritet</th></tr></thead>
+      <tbody>
+        <tr><td>AS-selskap</td><td>Seriøsitet, ansvarlighet, profesjonelt rammeverk</td><td>Kritisk</td></tr>
+        <tr><td>Profesjonell e-post</td><td>Ikke en person — et selskap</td><td>Kritisk</td></tr>
+        <tr><td>Nettside for selskapet</td><td>Finnes, er ekte, har et team</td><td>Høy</td></tr>
+        <tr><td>Prototype / demo</td><td>Dere har tenkt gjennom løsningen, ikke bare ideen</td><td>Kritisk</td></tr>
+        <tr><td>Far med i møtet</td><td>IT-arkitekt med 35+ år = teknisk tyngde de ikke forventet</td><td>Høy</td></tr>
+        <tr><td>Sitater fra elektrikere</td><td>Vi forstår bransjen, ikke bare teknologien</td><td>Høy</td></tr>
+        <tr><td>Ferdig prismodell</td><td>Vi har gjort hjemmeleksen, ikke bare kommet med en idé</td><td>Høy</td></tr>
+        <tr><td>NDA klar</td><td>Vi er vant til forretningsavtaler</td><td>Medium</td></tr>
+        <tr><td>Fysisk kontor</td><td>Ikke nødvendig — ingen spør</td><td>Lav</td></tr>
+      </tbody>
+    </table>
+
+    <div class="box box--amber">
+      <h3>Alderen — ta det i forkjøpet</h3>
+      <p>Roger kommer til å merke at Adrian er ung. Ikke prøv å skjule det — det funker ikke og det ser svakt ut. Si heller tidlig i møtet: <em>"Jeg har jobbet med IT siden jeg var 12 og drevet eget byrå siden jeg var 18 — jeg er vant til å levere."</em> Gjort riktig er alder en fordel: energi, moderne teknologi, ingen dyr overhead.</p>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- TIDSLINJE -->
+  <section id="tidslinje">
+    <div class="section-label">Plan</div>
+    <h2>Tidslinje: 26. juni → august</h2>
+
+    <p style="margin-bottom: 24px;">
+      <span style="display:inline-flex; align-items:center; gap:6px; margin-right:16px; font-size:0.82rem;"><span style="width:10px;height:10px;border-radius:50%;background:var(--cobalt);display:inline-block;"></span> Må gjøres</span>
+      <span style="display:inline-flex; align-items:center; gap:6px; margin-right:16px; font-size:0.82rem;"><span style="width:10px;height:10px;border-radius:50%;background:var(--green);display:inline-block;"></span> Bør gjøres</span>
+      <span style="display:inline-flex; align-items:center; gap:6px; font-size:0.82rem;"><span style="width:10px;height:10px;border-radius:50%;background:var(--ink-faint);display:inline-block;"></span> Nice to have</span>
+    </p>
+
+    <div class="timeline">
+
+      <div class="tl-week">
+        <div class="tl-week__header">
+          <div class="tl-week__badge">Uke 1–2 · 26. juni – 10. juli</div>
+          <div class="tl-week__title">Fundament</div>
+        </div>
+        <ul class="tl-tasks">
+          <li><div class="tl-dot tl-dot--must"></div><div><strong>Stift AS</strong><span>Start prosessen på Altinn nå. Velg navn nøye — ikke "Dietrichs Marketing".</span></div></li>
+          <li><div class="tl-dot tl-dot--must"></div><div><strong>Kjøp domene og sett opp e-post</strong><span>@selskapsnavn.no via Google Workspace. Profesjonell e-post til alle møter.</span></div></li>
+          <li><div class="tl-dot tl-dot--must"></div><div><strong>Søk om Boligmappa API-tilgang</strong><span>Registrer som integrasjonspartner. Tar tid å få godkjenning — søk nå, ikke etter møtet.</span></div></li>
+          <li><div class="tl-dot tl-dot--must"></div><div><strong>Ring 2–3 Sikringen-elektrikere</strong><span>Spør: "Hva er det mest tidkrevende papirarbeidet du gjør etter en jobb?" Sitater er gull i møtet.</span></div></li>
+          <li><div class="tl-dot tl-dot--should"></div><div><strong>Lag nettside for det nye selskapet</strong><span>Én side. Navn, hva dere gjør, teamet. Adrian lager dette på én dag.</span></div></li>
+          <li><div class="tl-dot tl-dot--should"></div><div><strong>Lag LinkedIn-profil for selskapet</strong><span>Minst mulig, men det skal finnes.</span></div></li>
+        </ul>
+      </div>
+
+      <div class="tl-week">
+        <div class="tl-week__header">
+          <div class="tl-week__badge">Uke 3–4 · 10. – 24. juli</div>
+          <div class="tl-week__title">Prototype</div>
+        </div>
+        <ul class="tl-tasks">
+          <li><div class="tl-dot tl-dot--must"></div><div><strong>Bygg klikkbar prototype</strong><span>Ikke fungerende kode — Figma eller enkel HTML/CSS som viser flyten. Elektriker åpner app → registrerer målinger → samsvarserklæring genereres. Må se ekte ut.</span></div></li>
+          <li><div class="tl-dot tl-dot--must"></div><div><strong>Design brukerflyt for alle 5 steg</strong><span>Risikovurdering → målinger → sluttrapport → samsvarserklæring → Boligmappa. Hvert skjermbilde designes.</span></div></li>
+          <li><div class="tl-dot tl-dot--must"></div><div><strong>Design kjededashboard (Sikringen-siden)</strong><span>Viser Roger hva han som kjedeleder ser: aktivitet, compliance-status, antall jobber dokumentert.</span></div></li>
+          <li><div class="tl-dot tl-dot--should"></div><div><strong>Start teknisk arkitektur</strong><span>Far (IT-arkitekt) bidrar her. Hvilken stack, database, API-struktur. Ikke kode — arkitektur.</span></div></li>
+          <li><div class="tl-dot tl-dot--nice"></div><div><strong>Sett opp GitHub-repo med basic struktur</strong><span>Viser at dere faktisk bygger, ikke bare snakker om det.</span></div></li>
+        </ul>
+      </div>
+
+      <div class="tl-week">
+        <div class="tl-week__header">
+          <div class="tl-week__badge">Uke 5–6 · 24. juli – 7. august</div>
+          <div class="tl-week__title">Møteforberedelse</div>
+        </div>
+        <ul class="tl-tasks">
+          <li><div class="tl-dot tl-dot--must"></div><div><strong>Lag pitch-presentasjon</strong><span>Maks 10 slides: problem → løsning → demo → team → pris → neste steg. Ikke mer.</span></div></li>
+          <li><div class="tl-dot tl-dot--must"></div><div><strong>Definer prismodell</strong><span>Ha to alternativer klare: kjeden betaler samlet vs. enkeltbedrifter. Med konkrete tall.</span></div></li>
+          <li><div class="tl-dot tl-dot--must"></div><div><strong>Øv på møtet</strong><span>Adrian, far og kompis gjennomfører mock-møte. Tren på alle innvendinger.</span></div></li>
+          <li><div class="tl-dot tl-dot--should"></div><div><strong>Klargjør NDA-mal</strong><span>En standard NDA du kan tilby å signere — viser at du er vant til forretningsavtaler.</span></div></li>
+          <li><div class="tl-dot tl-dot--should"></div><div><strong>Bekreft møtetidspunkt med Roger</strong><span>Send e-post og sett dato. Profesjonell oppfølging — ikke la det bli uklart.</span></div></li>
+        </ul>
+      </div>
+
+      <div class="tl-week">
+        <div class="tl-week__header">
+          <div class="tl-week__badge">Uke 7–8 · 7. – 18. august</div>
+          <div class="tl-week__title">Møte + siste dag DNB</div>
+        </div>
+        <ul class="tl-tasks">
+          <li><div class="tl-dot tl-dot--must"></div><div><strong>Gjennomfør møtet med Roger og partner</strong><span>Adrian, far, kompis. Lytt mer enn dere snakker. Mål: forstå nøyaktig hva de vil, og avslutt med konkret neste steg.</span></div></li>
+          <li><div class="tl-dot tl-dot--must"></div><div><strong>Send møtereferat samme dag</strong><span>Oppsummer hva dere ble enige om. Profesjonelt og viser at dere følger opp.</span></div></li>
+          <li><div class="tl-dot tl-dot--must"></div><div><strong>18. august: siste dag DNB</strong><span>Fra denne datoen er Adrian tilgjengelig ~80% for dette prosjektet.</span></div></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- HVA VI BYGGER NÅ -->
+  <section id="prototype">
+    <div class="section-label">Plan</div>
+    <h2>Hva vi bygger før møtet</h2>
+
+    <p><strong>Ikke en ferdig app.</strong> En prototype som viser at løsningen er gjennomtenkt og realistisk. Tre ting:</p>
+
+    <table>
+      <thead><tr><th>Leveranse</th><th>Hva det er</th><th>Hvem gjør det</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Elektriker-app (mobil)</td>
+          <td>Klikkbar prototype: registrer jobb → fyll inn målinger → generer samsvarserklæring. Ser ekte ut, fungerer ikke teknisk.</td>
+          <td>Adrian (Figma eller HTML)</td>
+        </tr>
+        <tr>
+          <td>Kjededashboard</td>
+          <td>Skjermbilde av hva Roger ser: antall bedrifter aktive, jobber dokumentert, compliance-status.</td>
+          <td>Adrian</td>
+        </tr>
+        <tr>
+          <td>Teknisk arkitektur</td>
+          <td>Enkel diagram: hvilken stack, hvordan Boligmappa-integrasjon fungerer, skalering til 180 bedrifter.</td>
+          <td>Adrian + far</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="box box--soft">
+      <h3>Etter møtet — hvis de sier ja</h3>
+      <p>Da begynner den ekte byggingen. Med far som arkitekt og 80% kapasitet fra 18. august kan et MVP (minimum viable product) realistisk leveres innen 3–4 måneder. Det er raskt nok til å ikke miste momentumet fra møtet.</p>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- MØTESTRATEGI -->
+  <section id="motet">
+    <div class="section-label">Plan</div>
+    <h2>Møtestrategien</h2>
+
+    <h3>Rollene i møtet</h3>
+    <table>
+      <thead><tr><th>Person</th><th>Rolle</th></tr></thead>
+      <tbody>
+        <tr><td>Adrian</td><td>Leder møtet. Presenterer, stiller spørsmål, håndterer salg.</td></tr>
+        <tr><td>Far</td><td>Sitter taus til tekniske spørsmål kommer — svar med autoritet. "Jeg har bygget systemer for store norske selskaper i 35 år, og dette er fullt gjennomførbart."</td></tr>
+        <tr><td>Kompis</td><td>Ta notater. Bidra med perspektiv fra mastergrad (økonomi + data). Viser at teamet er bredere enn én person.</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Spørsmål som MÅ stilles</h3>
+    <ol>
+      <li><strong>"Når du sier standardisere prosesser — er det viktigst at dere som kjede får oversikt, eller at den enkelte elektriker får det enklere i hverdagen?"</strong></li>
+      <li><strong>"Hva bruker de fleste av de 180 bedriftene i dag — og hva klager de på?"</strong></li>
+      <li><strong>"Ville Sikringen betale for verktøyet samlet, eller skal bedriftene tegne egne abonnement?"</strong></li>
+      <li><strong>"Er dokumentasjonskravet en barriere for nye bedrifter som vil bli Sikringen-medlem?"</strong></li>
+      <li><strong>"Hva er det dyreste problemet for en liten elektrikerbedrift i Sikringen i dag?"</strong></li>
+    </ol>
+
+    <h3>Hva du IKKE gjør i møtet</h3>
+    <ul>
+      <li>Ikke nevn at du er 22 år med mindre de spør</li>
+      <li>Ikke si "vi jobber på dette" — si "vi har bygget"</li>
+      <li>Ikke presenter priser uten å ha spurt hva de trenger først</li>
+      <li>Ikke prøv å close i første møte — be om neste steg i stedet</li>
+      <li>Ikke kom uten prototype</li>
+    </ul>
+
+    <div class="box box--cobalt">
+      <h3>Avslutt møtet med dette</h3>
+      <p>"Basert på det dere har fortalt oss i dag, sender vi dere et konkret tilbud innen [dato]. Kan vi avtale 15 minutter på Teams om to uker for å gå gjennom det?" — Alltid avslutt med konkret neste steg, aldri la det henge i luften.</p>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- RISIKOER -->
+  <section id="risiko">
+    <div class="section-label">Business</div>
+    <h2>Risikoer å ta på alvor</h2>
+
+    <div class="risk">
+      <div class="risk__level risk__level--high">Høy</div>
+      <div class="risk__text">
+        <strong>Aceve er allerede der</strong>
+        <span>Aceve bygger noe veldig likt. Sjekk dem grundig — hva har de, hva mangler de? Din fordel er Sikringen-eksklusivitet og kjededashboard som Aceve ikke har.</span>
+      </div>
+    </div>
+    <div class="risk">
+      <div class="risk__level risk__level--high">Høy</div>
+      <div class="risk__text">
+        <strong>Roger sier ja i møtet, men ingenting skjer</strong>
+        <span>Klassisk fallgruve. Sikre deg alltid et skriftlig neste steg — intensjonsavtale, pilotkontrakt, eller møtereferat begge parter bekrefter.</span>
+      </div>
+    </div>
+    <div class="risk">
+      <div class="risk__level risk__level--mid">Middels</div>
+      <div class="risk__text">
+        <strong>Boligmappa-integrasjon tar for lang tid å godkjenne</strong>
+        <span>Søk nå. Logg søknaden som bevis i møtet — "vi er allerede i prosess med Boligmappa."</span>
+      </div>
+    </div>
+    <div class="risk">
+      <div class="risk__level risk__level--mid">Middels</div>
+      <div class="risk__text">
+        <strong>For lite kapasitet frem til august</strong>
+        <span>Adrian jobber i DNB frem til 18. august. Prioriter prototype + AS-stiftelse over alt annet. Ikke prøv å bygge fungerende kode nå.</span>
+      </div>
+    </div>
+    <div class="risk">
+      <div class="risk__level risk__level--low">Lav</div>
+      <div class="risk__text">
+        <strong>Enkeltpersonsforetak i møtet</strong>
+        <span>Løses ved å stifte AS umiddelbart. Ikke gå inn i møtet uten AS.</span>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- AVTALEN -->
+  <section id="avtale">
+    <div class="section-label">Business</div>
+    <h2>Hva en avtale kan se ut som</h2>
+
+    <h3>Alternativ A — Kjeden betaler (anbefalt)</h3>
+    <p>Sikringen kjøper én lisens som dekker alle 180 bedrifter. Verktøyet er inkludert i kjedemedlemskapet.</p>
+    <table>
+      <thead><tr><th>Pris per bedrift/mnd</th><th>Sikringens årlige kostnad</th><th>Vår årsomsetning</th></tr></thead>
+      <tbody>
+        <tr><td>199 kr</td><td>430 560 kr</td><td>430 560 kr</td></tr>
+        <tr><td>299 kr</td><td>645 840 kr</td><td>645 840 kr</td></tr>
+        <tr><td>399 kr</td><td>861 120 kr</td><td>861 120 kr</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Pilotstrategi (enklere å si ja til)</h3>
+    <p>Tilby 10 bedrifter gratis i 3 måneder. Etter piloten: full kjøpsavtale basert på resultater. Reduserer risiko for Roger og gir oss ekte brukertesting.</p>
+
+    <div class="box box--green">
+      <h3>Etter Sikringen — skaleringspotensialet</h3>
+      <p>Hvis løsningen fungerer for Sikringens 180 bedrifter, er det ~2 800 små elektrikerbedrifter i Norge som trenger det samme. Og deretter: rørleggere, malere, snekkere — alle med lignende dokumentasjonskrav. Sikringen er inngangsporten, ikke slutten.</p>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- KONTEKST FOR CLAUDE -->
+  <section id="kontekst">
+    <div class="section-label">For fremtidige chatter</div>
+    <h2>Kontekst Claude trenger å vite</h2>
+
+    <p>Lim inn dette øverst i nye chatter for å gi kontekst:</p>
+
+    <div style="background: var(--cobalt-ink); color: #e0e0e0; padding: 24px 28px; border-radius: var(--r-md); font-family: monospace; font-size: 0.82rem; line-height: 1.7; white-space: pre-wrap;">Jeg heter Adrian, er 22 år, dataingeniør og starter på master i indøk (sivilingeniør) høst 2026.
+
+Jeg driver Dietrichs Marketing (enkeltpersonsforetak) som et markedsføringsbyrå. Jeg holder på å stifte et nytt AS for et software-produkt.
+
+Teamet:
+- Adrian: leder, backend-utvikler (DNB), 10 år IT-erfaring, 4 år markedsføring
+- Far: IT-arkitekt, 35–40 års erfaring, deltid
+- Kompis: går indøk-master, deltid
+
+Prosjektet:
+Jeg skal bygge et AI-basert dokumentasjonsverktøy for elektrikere — mobil-app for feltbruk som erstatter papirarbeid. Automatisk generering av samsvarserklæring, sluttkontrollrapport og internkontroll. Med integrasjon mot Boligmappa.
+
+Kunden vi prøver å lande:
+Sikringen Elektro — Norges elektrikerkjede med 180 medlemsbedrifter. Toppleder Roger er positiv. Møte i august (partner har ferie nå).
+
+Nåværende status:
+- Sommerjobb i DNB frem til 18. august
+- Skal stifte AS
+- Skal bygge klikkbar prototype
+- Søker Boligmappa API-tilgang
+
+Regler:
+- Aldri avslør tech-stack eller AI-verktøy — si bare "moderne teknologi"
+- Si "publiser/publisert", ikke "pushe/pushet"
+- Jeg jobber alene frem til etter 18. august</div>
+  </section>
+
+  <div class="foot">
+    Konfidensielt — Dietrichs Marketing / Adrian · Oppdatert 26. juni 2026
+  </div>
+
+</main>
+</body>
+</html>
