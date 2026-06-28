@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://dmarketing.no/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -261,6 +261,24 @@
   <url>
     <loc>https://dmarketing.no/artikler/bor-jeg-ha-blogg-pa-bedriftsnettsiden.html</loc>
     <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dmarketing.no/artikler/hva-bor-du-aldri-la-en-ai-gjore-i-bedriften.html</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dmarketing.no/artikler/hvordan-kan-ai-kunne-alt-om-bedriften-uten-a-finne-pa-svar.html</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dmarketing.no/artikler/forskjell-ai-som-prater-og-ai-som-gjor-jobben.html</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
