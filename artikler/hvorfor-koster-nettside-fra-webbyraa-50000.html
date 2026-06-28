@@ -5,6 +5,39 @@
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+
+    /* --- Cookie-samtykke (Google Consent Mode v2) — Dietrichs Marketing --- */
+    gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});
+    (function(){
+      var KEY='dm-cookie-consent', choice=null;
+      try{ choice=localStorage.getItem(KEY); }catch(e){}
+      function grant(){ gtag('consent','update',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'}); }
+      if(choice==='granted'){ grant(); }
+      if(choice){ return; }
+      function showBanner(){
+        if(document.getElementById('dm-cc')) return;
+        var css='#dm-cc{position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0F172A;color:#fff;font-family:Inter,system-ui,sans-serif;box-shadow:0 -8px 30px rgba(0,0,0,.25)}'
+          +'#dm-cc .dm-cc-in{max-width:1100px;margin:0 auto;padding:18px 24px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px;justify-content:space-between}'
+          +'#dm-cc p{margin:0;font-size:13.5px;line-height:1.55;color:rgba(255,255,255,.78);max-width:62ch}'
+          +'#dm-cc a{color:#fff;text-decoration:underline;text-underline-offset:2px}'
+          +'#dm-cc .dm-cc-btns{display:flex;gap:10px;flex-shrink:0}'
+          +'#dm-cc button{font-family:inherit;font-size:13.5px;font-weight:600;border:0;border-radius:9px;padding:10px 18px;cursor:pointer;transition:opacity .15s,background .15s}'
+          +'#dm-cc .dm-cc-no{background:transparent;color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.22)}'
+          +'#dm-cc .dm-cc-no:hover{color:#fff;border-color:rgba(255,255,255,.45)}'
+          +'#dm-cc .dm-cc-yes{background:#fff;color:#0F172A}'
+          +'#dm-cc .dm-cc-yes:hover{opacity:.88}'
+          +'@media(max-width:640px){#dm-cc .dm-cc-in{flex-direction:column;align-items:flex-start;padding:16px 18px}#dm-cc .dm-cc-btns{width:100%}#dm-cc button{flex:1}}';
+        var st=document.createElement('style'); st.textContent=css; document.head.appendChild(st);
+        var bar=document.createElement('div'); bar.id='dm-cc';
+        bar.setAttribute('role','dialog'); bar.setAttribute('aria-label','Samtykke til informasjonskapsler');
+        bar.innerHTML='<div class="dm-cc-in"><p>Vi bruker informasjonskapsler for analyse og annonsering for \u00e5 forbedre nettsiden. N\u00f8dvendige kapsler er alltid p\u00e5. Les mer i <a href="https://dmarketing.no/personvern/">personvernerkl\u00e6ringen</a>.</p><div class="dm-cc-btns"><button type="button" class="dm-cc-no">Bare n\u00f8dvendige</button><button type="button" class="dm-cc-yes">Godta alle</button></div></div>';
+        document.body.appendChild(bar);
+        function close(val){ try{localStorage.setItem(KEY,val);}catch(e){} if(val==='granted'){grant();} if(bar.parentNode){bar.parentNode.removeChild(bar);} }
+        bar.querySelector('.dm-cc-yes').addEventListener('click',function(){close('granted');});
+        bar.querySelector('.dm-cc-no').addEventListener('click',function(){close('denied');});
+      }
+      if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',showBanner); } else { showBanner(); }
+    })();
     gtag("js", new Date());
     gtag("config", "G-9MZXTCLH1H");
     gtag("config", "AW-18193599749");
