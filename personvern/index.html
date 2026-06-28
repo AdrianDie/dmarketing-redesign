@@ -53,14 +53,46 @@
   <link rel="stylesheet" href="../tailwind-compiled.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link href="../assets/ms-icon-256x256.png" rel="shortcut icon" type="image/x-icon" />
   <style>
-    body { font-family: 'Inter', sans-serif; background: #FAFAFA; color: #09090B; }
+    body { font-family: 'neue-haas-grotesk-text', 'Schibsted Grotesk', system-ui, sans-serif; background: #FAFAFA; color: #09090B; }
     .font-display { font-family: 'Archivo', sans-serif; }
+    /* Header: dmarketing standard-komponent */
+    .dm-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.9);backdrop-filter:saturate(160%) blur(12px);-webkit-backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid #ECEAE0;font-family:'neue-haas-grotesk-text','Schibsted Grotesk',system-ui,sans-serif;}
+    .dm-header .dm-nav{max-width:1440px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 clamp(16px,4vw,40px);height:74px;}
+    .dm-header .dm-logo{display:flex;align-items:center;gap:9px;text-decoration:none;flex-shrink:0;}
+    .dm-header .dm-logo .mark{width:34px;height:34px;border-radius:9px;background:#1B34FF;color:#fff;display:flex;align-items:center;justify-content:center;font-family:Archivo,sans-serif;font-weight:800;font-size:18px;}
+    .dm-header .dm-logo .word{font-family:Archivo,sans-serif;font-weight:700;font-size:20px;letter-spacing:0.01em;text-transform:uppercase;color:#0E1116;white-space:nowrap;}
+    .dm-header .dm-logo .word b{color:#1B34FF;font-weight:700;}
+    .dm-header .dm-right{display:flex;align-items:center;gap:28px;}
+    .dm-header .dm-links{display:flex;align-items:center;gap:26px;list-style:none;margin:0;padding:0;}
+    .dm-header .dm-links a{font-size:0.95rem;font-weight:500;color:#3F4452;text-decoration:none;transition:color .15s ease;}
+    .dm-header .dm-links a:hover{color:#0E1116;}
+    .dm-header .dm-cta{display:inline-flex;align-items:center;justify-content:center;height:40px;padding:0 18px;border-radius:10px;background:#1B34FF;color:#fff;font-size:0.9rem;font-weight:600;text-decoration:none;white-space:nowrap;transition:background .15s ease;}
+    .dm-header .dm-cta:hover{background:#1226C9;}
+    .dm-header .dm-burger{display:none;background:none;border:0;cursor:pointer;padding:8px;}
+    .dm-header .dm-burger span{display:block;width:24px;height:2px;background:#0E1116;border-radius:2px;margin:5px 0;}
+    @media(max-width:820px){.dm-header .dm-links{display:none;}.dm-header .dm-burger{display:block;}}
   </style>
+  <link rel="preconnect" href="https://use.typekit.net" crossorigin>
+  <link rel="stylesheet" href="https://use.typekit.net/lfk6nyu.css">
 </head>
 <body>
+  <!-- ============ HEADER ============ -->
+  <header class="dm-header"><nav class="dm-nav">
+    <a class="dm-logo" href="/"><span class="mark">D</span><span class="word">Dietrichs <b>marketing</b></span></a>
+    <div class="dm-right">
+      <ul class="dm-links">
+        <li><a href="/apputvikling/">Programvareutvikling</a></li>
+        <li><a href="/ai-nettsider/">AI-nettsider</a></li>
+        <li><a href="/kontakt/">Kontakt</a></li>
+      </ul>
+      <a class="dm-cta" href="/kontakt/">Ta kontakt</a>
+      <button class="dm-burger" aria-label="Meny"><span></span><span></span><span></span></button>
+    </div>
+  </nav></header>
+
 
   <div class="max-w-3xl mx-auto px-6 py-20 md:py-32">
 

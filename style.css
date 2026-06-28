@@ -31,7 +31,7 @@
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
-  font-family: 'Schibsted Grotesk', system-ui, sans-serif;
+  font-family: 'neue-haas-grotesk-text', 'Schibsted Grotesk', system-ui, sans-serif;
   background: var(--paper);
   color: var(--ink);
   line-height: 1.65;
