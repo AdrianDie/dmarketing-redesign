@@ -192,6 +192,7 @@
         <button class="filter-btn" data-filter="kostnader">Kostnader</button>
         <button class="filter-btn" data-filter="ytelse">Hastighet og ytelse</button>
         <button class="filter-btn" data-filter="seo">SEO</button>
+        <button class="filter-btn" data-filter="ai">AI</button>
       </div>
       <div class="article-grid" id="articleGrid"></div>
     </div>
@@ -229,6 +230,36 @@
 
   <script>
   var ARTICLES = [
+    {
+      slug: 'hva-bor-du-aldri-la-en-ai-gjore-i-bedriften',
+      url: '../artikler/hva-bor-du-aldri-la-en-ai-gjore-i-bedriften.html',
+      title: 'Hva bør du aldri la en AI gjøre i bedriften din?',
+      desc: 'AI gir verdi nesten overalt — men noen avgjørelser bør et menneske alltid ta. Slik vet du hvor grensen går, og hvorfor de som kjenner den er til å stole på.',
+      tag: 'ai',
+      tagLabel: 'AI',
+      date: '28. juni 2026',
+      readTime: '5 min'
+    },
+    {
+      slug: 'hvordan-kan-ai-kunne-alt-om-bedriften-uten-a-finne-pa-svar',
+      url: '../artikler/hvordan-kan-ai-kunne-alt-om-bedriften-uten-a-finne-pa-svar.html',
+      title: 'Hvordan kan en AI kunne alt om bedriften din — uten å finne på svar?',
+      desc: 'Hvorfor AI noen ganger «finner på» svar, og hvordan en AI forankret i dine egne data svarer ut fra fakta i stedet for å gjette.',
+      tag: 'ai',
+      tagLabel: 'AI',
+      date: '28. juni 2026',
+      readTime: '5 min'
+    },
+    {
+      slug: 'forskjell-ai-som-prater-og-ai-som-gjor-jobben',
+      url: '../artikler/forskjell-ai-som-prater-og-ai-som-gjor-jobben.html',
+      title: 'Hva er forskjellen på en AI som bare prater, og en AI som faktisk gjør jobben?',
+      desc: 'En chatbot svarer og stopper. En handlende AI utfører faktiske oppgaver i systemene dine. Slik skiller du prat fra reell tidsbesparelse.',
+      tag: 'ai',
+      tagLabel: 'AI',
+      date: '28. juni 2026',
+      readTime: '5 min'
+    },
     {
       slug: 'den-gamle-webbyra-modellen-er-dod',
       title: 'Hvorfor koster en ny nettside fra webbyrå 50 000 kroner?',
@@ -307,7 +338,7 @@
     var grid = document.getElementById('articleGrid');
     var filtered = filter === 'alle' ? ARTICLES : ARTICLES.filter(function(a) { return a.tag === filter; });
     grid.innerHTML = filtered.map(function(a) {
-      return '<a class="article-card reveal revealed" href="../artikkel/' + a.slug + '/">' +
+      return '<a class="article-card reveal revealed" href="' + (a.url || ('../artikkel/' + a.slug + '/')) + '">' +
         '<div class="article-card__tag">' + a.tagLabel + '</div>' +
         '<h3 class="article-card__title">' + a.title + '</h3>' +
         '<p class="article-card__desc">' + a.desc + '</p>' +
