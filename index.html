@@ -1,870 +1,653 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dietrichs Marketing | Programvare for håndverksbransjen</title>
-  <meta name="description" content="Vi bygger programvare som effektiviserer dokumentasjon og prosesser for norske håndverksbedrifter.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
-  <link href="assets/ms-icon-256x256.png" rel="shortcut icon" type="image/x-icon">
-
-  <!-- OG / SEO -->
-  <meta property="og:title" content="Dietrichs Marketing | Programvare for elektrikerbransjen">
-  <meta property="og:description" content="Vi bygger verktøy elektrikere faktisk bruker — feltdokumentasjon, samsvarserklæringer og kjededashboard som kutter timer med papirarbeid.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://dmarketing.no/">
-  <link rel="canonical" href="https://dmarketing.no/">
-
-  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-9MZXTCLH1H"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-9MZXTCLH1H');
-    gtag('config', 'AW-18193599749');
+    gtag("js", new Date());
+    gtag("config", "G-9MZXTCLH1H");
+    gtag("config", "AW-18193599749");
   </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apputvikling og AI for næringslivet | Dietrichs Marketing</title>
+  <meta name="description" content="Vi bruker apputvikling, programvare og AI til å gjøre norske bedrifter mer lønnsomme. Kutt kostnader, automatiser prosesser, bygg verktøy som virker." />
+  <meta property="og:title" content="Apputvikling og AI for næringslivet | Dietrichs Marketing" />
+  <meta property="og:description" content="Vi bruker apputvikling og AI til å gjøre norske bedrifter mer lønnsomme." />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://dmarketing.no/" />
+  <meta property="og:url" content="https://dmarketing.no/" />
+  <meta property="og:image" content="https://dmarketing.no/assets/og-image.svg" />
+  <meta property="og:site_name" content="Dietrichs Marketing" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Apputvikling og AI for næringslivet | Dietrichs Marketing" />
+  <meta name="twitter:description" content="Vi bruker apputvikling og AI til å gjøre norske bedrifter mer lønnsomme. Kutt kostnader, automatiser prosesser, bygg verktøy som virker." />
+  <meta name="twitter:image" content="https://dmarketing.no/assets/og-image.svg" />
+  <meta name="theme-color" content="#1B34FF" />
+  <link rel="shortcut icon" href="assets/ms-icon-256x256.png" type="image/png" />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" href="https://fonts.gstatic.com/s/archivo/v19/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLydOxI.woff2" as="font" type="font/woff2" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Schibsted+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=19" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://dmarketing.no/#organization",
+        "name": "Dietrichs Marketing",
+        "url": "https://dmarketing.no",
+        "logo": "https://dmarketing.no/assets/ms-icon-256x256.png",
+        "image": "https://dmarketing.no/assets/og-image.svg",
+        "description": "Vi bruker apputvikling, programvare og moderne teknologi til å gjøre norske bedrifter mer lønnsomme — gjennom skreddersydde apper, AI-løsninger og nettsider du eier 100 %.",
+        "foundingDate": "2024",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "NO"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "sales",
+          "url": "https://dmarketing.no/kontakt/"
+        },
+        "sameAs": [
+          "https://www.proff.no/selskap/dietrichs-marketing/932612583"
+        ],
+        "knowsAbout": ["apputvikling", "programvareutvikling", "AI-løsninger", "AI-nettsider", "webdesign for norsk næringsliv", "statiske nettsider", "automatisering"]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://dmarketing.no/#adrian",
+        "name": "Adrian Dietrichs",
+        "jobTitle": "Daglig leder",
+        "worksFor": { "@id": "https://dmarketing.no/#organization" },
+        "knowsAbout": ["AI", "webdesign", "digital markedsføring", "norske småbedrifter"],
+        "description": "Daglig leder og teknisk ansvarlig i Dietrichs Marketing. Jobber med å gjøre norske bedrifter uavhengige av dyre web-byråer gjennom AI og moderne teknologi."
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://dmarketing.no/#website",
+        "name": "Dietrichs Marketing",
+        "url": "https://dmarketing.no",
+        "publisher": { "@id": "https://dmarketing.no/#organization" },
+        "inLanguage": "nb-NO"
+      },
+      {
+        "@type": "Service",
+        "name": "AI-nettsider for norske bedrifter",
+        "provider": { "@id": "https://dmarketing.no/#organization" },
+        "description": "Lynraske, AI-klare nettsider du eier 100 % og oppdaterer selv på 60 sekunder. Engangskostnad, ingen faste byråavgifter.",
+        "areaServed": { "@type": "Country", "name": "Norge" },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Prispakker",
+          "itemListElement": [
+            { "@type": "Offer", "name": "Gjør-det-selv", "price": "1900", "priceCurrency": "NOK", "description": "AI-klar kildekode, videokurs, 100 % eierskap" },
+            { "@type": "Offer", "name": "Digital Grunnmur", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "7900", "maxPrice": "8900", "priceCurrency": "NOK" }, "description": "Vi bygger og designer, inntil 3 undersider, SEO-oppsett, lansert på ditt domene" },
+            { "@type": "Offer", "name": "Autopilot Pro", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "12900", "maxPrice": "13900", "priceCurrency": "NOK" }, "description": "Inntil 7 undersider, integrasjoner, skreddersydd AI, 1 mnd gratis support" },
+            { "@type": "Offer", "name": "Premium Skreddersøm", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "24900", "maxPrice": "39000", "priceCurrency": "NOK" }, "description": "Inntil 15 undersider, spesialdesign, CRM-integrasjon, dedikert prosjektleder" }
+          ]
+        }
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Hva er apputvikling?", "acceptedAnswer": { "@type": "Answer", "text": "Vi bygger skreddersydde apper og programvareløsninger — alt fra mobilapper og webapper til interne verktøy og AI-integrasjoner. Resultatet er programvare som passer nøyaktig til din bedrift, ikke et hylleprodukt du må tilpasse deg." } },
+      { "@type": "Question", "name": "Hva koster apputvikling?", "acceptedAnswer": { "@type": "Answer", "text": "Prisen avhenger av hva som skal bygges. Vi kartlegger behovet i et gratis møte og gir et konkret prisestimat etterpå — ingen skjulte kostnader. Ta kontakt for en uforpliktende prat." } },
+      { "@type": "Question", "name": "Eier jeg koden selv?", "acceptedAnswer": { "@type": "Answer", "text": "Ja, 100 %. Kode, design og alt innhold tilhører deg. Ingen binding, ingen abonnement til oss. Du kan bygge videre selv eller med andre — vi leverer fullt eierskap fra dag én." } },
+      { "@type": "Question", "name": "Hvor lang tid tar det å bygge en app?", "acceptedAnswer": { "@type": "Answer", "text": "Det varierer med scope. Enkle verktøy og MVP-er kan være klare på 2–4 uker. Større løsninger tar lengre tid. Vi er tydelige på tidsramme i tilbudet — og du ser fremgang underveis, ikke bare på leveringsdagen." } },
+      { "@type": "Question", "name": "Hva er forskjellen mellom apputvikling og en AI-nettside?", "acceptedAnswer": { "@type": "Answer", "text": "En AI-nettside er et ferdig konsept med faste pakker — raskt og rimelig. Apputvikling er skreddersøm: vi bygger det du trenger fra grunnen av, enten det er en mobilapp, et internt system eller en AI-løsning. Trenger du begge deler, kan vi kombinere det." } },
+      { "@type": "Question", "name": "Kan dere integrere med systemene vi allerede bruker?", "acceptedAnswer": { "@type": "Answer", "text": "Ja. Vi bygger integrasjoner mot de fleste systemer — enten via API, webhook eller direktetilkobling. Ta kontakt og fortell oss hvilke systemer dere bruker, så ser vi hva som er mulig." } }
+    ]
+  }
+  </script>
+  <script>try{if(sessionStorage.getItem('dm_pre'))document.documentElement.classList.add('no-preloader');else sessionStorage.setItem('dm_pre','1');}catch(e){}</script>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --blue: #1B34FF;
-      --blue-soft: rgba(27,52,255,0.08);
-      --bg: #FCFBF7;
-      --ink: #0C0D14;
-      --muted: #5A5B6A;
-      --border: rgba(12,13,20,0.10);
-      --radius: 16px;
+    .menu-wrap { background-color: #ffffff; padding: 16px 0; border-bottom: 1px solid #E4E4E7; position: fixed; top: 0; left: 0; right: 0; z-index: 101; }
+    .menu-wrap.scrolled { box-shadow: 0 1px 12px rgba(0,0,0,0.08); }
+    .navbar-2 { z-index: 101; justify-content: space-between; align-items: center; width: 90%; max-width: 1440px; height: 50px; margin: 0 auto; display: flex; position: relative; }
+    .logo-link-wrapper { flex-direction: column; justify-content: center; align-items: center; display: flex; text-decoration: none; }
+    .brand-3 { order: -1; }
+    .logo-text-container { order: 0; margin-top: 20px; display: flex; }
+    .heading-6 { color: #09090B; letter-spacing: 2px; text-transform: uppercase; margin: 0; font-family: Archivo, sans-serif; font-size: 12px; font-weight: 600; line-height: 12px; }
+    .heading-6.logo-1 { margin-left: 10px; font-size: 30px; line-height: 45px; }
+    .heading-6.logo-2 { color: transparent; -webkit-text-stroke: 0.5px #09090B; margin: 0 0 0 10px; font-size: 30px; line-height: 45px; }
+    .navigation__menu-btn { cursor: pointer; flex-direction: column; order: 1; justify-content: flex-start; align-items: center; height: 25px; overflow: hidden; display: flex; background: transparent; border: 0; padding: 0; outline: none; }
+    .navigation__menu-btn:focus, .navigation__menu-btn:focus-visible { outline: none; }
+    .open-wrap { align-items: center; height: 25px; display: flex; }
+    .navigation-text { color: #09090B; letter-spacing: 3px; text-transform: uppercase; font-family: Archivo, sans-serif; font-size: 12px; line-height: 12px; text-decoration: none; }
+    .hamburger { flex-direction: column; justify-content: space-between; align-items: flex-end; width: 25px; height: 10px; margin-left: 12.5px; display: flex; }
+    .hamburger-line { background-color: #09090B; width: 25px; height: 2.22px; }
+    .hamburger-line-4 { background-color: #09090B; width: 15px; height: 2.22px; }
+    body.menu-open .menu-wrap { background-color: #1a1a1f; border-bottom: none; box-shadow: none; }
+    body.menu-open .heading-6.logo-1 { color: whitesmoke; }
+    body.menu-open .heading-6.logo-2 { -webkit-text-stroke-color: whitesmoke; }
+    body.menu-open .navigation-text { color: #fff; }
+    body.menu-open .hamburger-line, body.menu-open .hamburger-line-4 { background-color: #fff; }
+    body.menu-open .close-btn::before, body.menu-open .close-btn::after { background: #fff; }
+    .menu-wrap, .heading-6, .navigation-text, .hamburger-line, .hamburger-line-4 { transition: background-color 0.25s ease, color 0.25s ease, -webkit-text-stroke-color 0.25s ease, border-color 0.25s ease; }
+    .close-wrap { flex-direction: row; justify-content: flex-end; align-items: center; height: 25px; display: flex; }
+    .close-btn { width: 18px; height: 18px; margin-left: 12.5px; position: relative; }
+    .close-btn::before, .close-btn::after { content: ""; position: absolute; top: 50%; left: 0; width: 100%; height: 2px; background: #fff; transform-origin: center; }
+    .close-btn::before { transform: translateY(-50%) rotate(45deg); }
+    .close-btn::after { transform: translateY(-50%) rotate(-45deg); }
+    .nav-container-2 { z-index: 97; background-color: #1a1a1f; flex-direction: column; justify-content: flex-start; align-items: center; min-height: 100vh; padding: 100px 0 80px; position: fixed; inset: 0; overflow-y: auto; transition: opacity 0.35s ease, visibility 0.35s ease; }
+    .nav__bg { z-index: -1; background-color: #1a1a1f; position: absolute; inset: 0; }
+    .container-4 { width: 92%; max-width: none; margin: 0 auto; }
+    .nav-items { z-index: 99; flex-flow: column; align-items: flex-start; width: 100%; max-width: 1200px; margin-top: 40px; display: flex; position: relative; overflow: hidden; }
+    .nav-item { align-items: center; text-decoration: none; display: flex; }
+    .nav-item-number { color: #fff; letter-spacing: 3px; margin-right: 20px; font-family: Archivo, sans-serif; font-size: 12px; line-height: 12px; transform: rotate(-90deg); }
+    /* Font-størrelse skalerer flytende: AI-NETTSIDER (12 tegn) må passe innen overlay-bredden på alle viewports */
+    .special-text-wrapper { height: clamp(56px, 11vw, 130px); overflow: hidden; }
+    .nav-item-text { color: transparent; -webkit-text-fill-color: transparent; -webkit-text-stroke: 0.8px #A5A3A6; text-transform: uppercase; font-family: Archivo, sans-serif; font-size: clamp(38px, 7.5vw, 90px); font-weight: 700; line-height: clamp(56px, 11vw, 130px); display: block; white-space: nowrap; }
+    .nav-item-text-full { color: #fff; text-transform: uppercase; font-family: Archivo, sans-serif; font-size: clamp(38px, 7.5vw, 90px); font-weight: 700; line-height: clamp(56px, 11vw, 130px); white-space: nowrap; }
+    .special-text-wrapper > div { transition: transform 0.55s cubic-bezier(0.65, 0, 0.35, 1); }
+    .nav-item:hover .nav-item-text, .nav-item:hover .nav-item-text-full,
+    .nav-item:focus .nav-item-text, .nav-item:focus .nav-item-text-full,
+    .nav-item:active .nav-item-text, .nav-item:active .nav-item-text-full,
+    .nav-item.is-touched .nav-item-text, .nav-item.is-touched .nav-item-text-full { transform: translateY(calc(-1 * clamp(56px, 11vw, 130px))); }
+    .nav-container-2.hidden-menu { opacity: 0; visibility: hidden; pointer-events: none; }
+    .navigation__menu-btn.is-open .open-wrap { display: none; }
+    .navigation__menu-btn:not(.is-open) .close-wrap { display: none; }
+    @media screen and (min-width: 1440px) {
+      .nav-items { width: 60%; }
+      .heading-6.logo-1, .heading-6.logo-2 { font-size: 40px; line-height: 30px; }
+    }
+    @media screen and (max-width: 767px) {
+      .nav-items { width: 90%; margin-top: 20px; }
+      .heading-6.logo-1 { font-size: 22px; line-height: 30px; }
+      .heading-6.logo-2 { font-size: 22px; line-height: 30px; margin-left: 6px; }
+    }
+    @media screen and (max-width: 479px) {
+      .nav-items { margin-top: 20%; }
+      .navbar-2 { width: 100%; padding: 0 16px; }
+      .heading-6.logo-1 { font-size: 18px; line-height: 28px; margin-left: 0; }
+      .heading-6.logo-2 { font-size: 18px; line-height: 28px; margin-left: 5px; }
     }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Schibsted Grotesk', sans-serif;
-      background: var(--bg);
-      color: var(--ink);
-      line-height: 1.55;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      padding: 0 5%;
-      height: 72px;
-      display: flex; align-items: center; justify-content: space-between;
-      background: rgba(252,251,247,0.92);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-logo {
-      display: flex; align-items: center; gap: 10px;
-      text-decoration: none;
-    }
-    .nav-logo-mark {
-      width: 36px; height: 36px; border-radius: 10px;
-      background: var(--blue);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 15px; font-weight: 800; color: #fff;
-      letter-spacing: -0.02em;
-      flex-shrink: 0;
-    }
-    .nav-logo-text {
-      font-size: 15px; font-weight: 700; color: var(--ink);
-      letter-spacing: -0.02em; line-height: 1.2;
-    }
-    .nav-logo-sub {
-      font-size: 11px; font-weight: 500; color: var(--muted);
-      letter-spacing: 0.01em;
-    }
-
-    .nav-center {
-      display: flex; align-items: center; gap: 4px;
-      list-style: none;
-    }
-    .nav-center a {
-      font-size: 14px; font-weight: 500; color: var(--muted);
-      text-decoration: none; padding: 7px 14px; border-radius: 8px;
-      transition: background .15s, color .15s;
-    }
-    .nav-center a:hover { background: var(--blue-soft); color: var(--blue); }
-
-    .nav-right { display: flex; align-items: center; gap: 12px; }
-
-    .nav-cta {
-      background: var(--blue); color: #fff;
-      padding: 9px 20px; border-radius: 10px;
-      font-size: 14px; font-weight: 600; text-decoration: none;
-      transition: opacity .2s, transform .15s;
-      white-space: nowrap;
-    }
-    .nav-cta:hover { opacity: .88; transform: translateY(-1px); }
-
-    /* Hamburger */
-    .nav-burger {
-      display: none;
-      flex-direction: column; gap: 5px;
-      background: none; border: none; cursor: pointer;
-      padding: 8px; border-radius: 8px;
-    }
-    .nav-burger span {
-      display: block; width: 22px; height: 2px;
-      background: var(--ink); border-radius: 2px;
-      transition: transform .25s, opacity .25s;
-    }
-    .nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .nav-burger.open span:nth-child(2) { opacity: 0; }
-    .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    /* Mobile drawer */
-    .nav-drawer {
-      display: none;
-      position: fixed; top: 72px; left: 0; right: 0;
-      background: rgba(252,251,247,0.98);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-      padding: 16px 5% 24px;
-      z-index: 99;
-      flex-direction: column; gap: 4px;
-    }
-    .nav-drawer.open { display: flex; }
-    .nav-drawer a {
-      font-size: 17px; font-weight: 500; color: var(--ink);
-      text-decoration: none; padding: 12px 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-drawer a:last-child { border-bottom: none; }
-    .nav-drawer .drawer-cta {
-      margin-top: 12px;
-      background: var(--blue); color: #fff;
-      padding: 14px 20px; border-radius: 12px;
-      font-weight: 600; font-size: 15px;
-      text-align: center; border-bottom: none;
-    }
-
-    @media (max-width: 700px) {
-      .nav-center { display: none; }
-      .nav-right .nav-cta { display: none; }
-      .nav-burger { display: flex; }
-    }
-
-    /* ── HERO ── */
-    .hero {
-      padding: 148px 5% 100px;
-      max-width: 1200px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 64px; align-items: center;
-    }
-
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--blue-soft); border: 1px solid rgba(27,52,255,0.18);
-      padding: 6px 14px; border-radius: 999px;
-      font-size: 12px; font-weight: 600; color: var(--blue);
-      margin-bottom: 28px;
-    }
-    .hero-badge-dot {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--blue); flex-shrink: 0;
-    }
-
-    .hero h1 {
-      font-size: clamp(44px, 5.5vw, 72px);
-      font-weight: 800; line-height: 1.06;
-      letter-spacing: -0.035em;
-      margin-bottom: 24px;
-    }
-    .hero h1 .accent { color: var(--blue); }
-
-    .hero-lead {
-      font-size: 18px; line-height: 1.65;
-      color: var(--muted); max-width: 480px;
-      margin-bottom: 40px;
-    }
-
-    .hero-actions {
-      display: flex; gap: 14px; flex-wrap: wrap;
-    }
-    .btn-primary {
-      background: var(--blue); color: #fff;
-      padding: 14px 28px; border-radius: 12px;
-      font-size: 15px; font-weight: 600; text-decoration: none;
-      transition: transform .15s, box-shadow .15s;
-      display: inline-flex; align-items: center; gap: 8px;
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(27,52,255,0.28);
-    }
-    .btn-ghost {
-      border: 1.5px solid var(--border); color: var(--ink);
-      padding: 14px 28px; border-radius: 12px;
-      font-size: 15px; font-weight: 500; text-decoration: none;
-      transition: border-color .2s;
-      display: inline-flex; align-items: center; gap: 8px;
-    }
-    .btn-ghost:hover { border-color: var(--ink); }
-
-    /* Hero visual */
-    .hero-visual {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 28px;
-      box-shadow: 0 12px 48px rgba(12,13,20,0.08);
-      position: relative;
-    }
-    .hero-visual-tag {
-      font-size: 11px; font-weight: 700; letter-spacing: .06em;
-      text-transform: uppercase; color: var(--muted);
-      margin-bottom: 20px;
-    }
-    .doc-step {
-      display: flex; align-items: flex-start; gap: 12px;
-      padding: 12px 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .doc-step:last-child { border-bottom: none; padding-bottom: 0; }
-    .doc-check {
-      width: 22px; height: 22px; border-radius: 50%;
-      background: var(--blue); flex-shrink: 0; margin-top: 1px;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .doc-check svg { width: 11px; height: 11px; }
-    .doc-check.pending {
-      background: transparent;
-      border: 1.5px solid var(--border);
-    }
-    .doc-check.pending svg { display: none; }
-    .doc-step-text { font-size: 14px; font-weight: 500; }
-    .doc-step-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
-    .doc-badge {
-      margin-top: 16px; padding: 10px 14px;
-      background: rgba(27,52,255,0.06); border-radius: 10px;
-      font-size: 13px; color: var(--blue); font-weight: 600;
-    }
-
-    @media (max-width: 860px) {
-      .hero { grid-template-columns: 1fr; gap: 48px; padding-top: 120px; }
-    }
-
-    /* ── CREDIBILITY STRIP ── */
-    .cred-strip {
-      background: var(--blue);
-      padding: 28px 5%;
-    }
-    .cred-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: flex; align-items: center; gap: 48px; flex-wrap: wrap;
-    }
-    .cred-label {
-      font-size: 12px; font-weight: 700; letter-spacing: .08em;
-      text-transform: uppercase; color: rgba(255,255,255,0.55);
-      white-space: nowrap;
-    }
-    .cred-items {
-      display: flex; gap: 40px; flex-wrap: wrap;
-    }
-    .cred-item {
-      font-size: 15px; font-weight: 600; color: #fff;
-      display: flex; align-items: center; gap: 8px;
-    }
-    .cred-item::before {
-      content: '';
-      width: 6px; height: 6px; border-radius: 50%;
-      background: rgba(255,255,255,0.4);
-    }
-
-    /* ── PROBLEM ── */
-    .section {
-      padding: 100px 5%;
-      max-width: 1200px; margin: 0 auto;
-    }
-    .section-label {
-      font-size: 12px; font-weight: 700; letter-spacing: .08em;
-      text-transform: uppercase; color: var(--blue);
-      margin-bottom: 16px;
-    }
-    .section-title {
-      font-size: clamp(32px, 4vw, 52px);
-      font-weight: 800; line-height: 1.1;
-      letter-spacing: -0.03em;
-      max-width: 720px;
-      margin-bottom: 20px;
-    }
-    .section-title .accent { color: var(--blue); }
-    .section-lead {
-      font-size: 18px; line-height: 1.65;
-      color: var(--muted); max-width: 560px;
-      margin-bottom: 56px;
-    }
-
-    .problem-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    .problem-card {
-      background: #fff; border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 28px;
-    }
-    .problem-number {
-      font-size: 40px; font-weight: 800;
-      color: var(--blue); letter-spacing: -0.03em;
-      margin-bottom: 8px;
-    }
-    .problem-card h4 {
-      font-size: 17px; font-weight: 700; margin-bottom: 8px;
-    }
-    .problem-card p {
-      font-size: 15px; color: var(--muted); line-height: 1.6;
-    }
-
-    @media (max-width: 720px) {
-      .problem-grid { grid-template-columns: 1fr; }
-    }
-
-    /* ── WHAT WE BUILD ── */
-    .build-section {
-      padding: 100px 5%;
-      background: var(--blue);
-    }
-    .build-inner { max-width: 1200px; margin: 0 auto; }
-    .build-section .section-label { color: rgba(255,255,255,0.55); }
-    .build-section .section-title { color: #fff; }
-    .build-section .section-lead { color: rgba(255,255,255,0.7); }
-
-    .build-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    .build-card {
-      background: rgba(255,255,255,0.10);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: var(--radius); padding: 32px;
-    }
-    .build-icon {
-      width: 44px; height: 44px; border-radius: 12px;
-      background: rgba(255,255,255,0.15);
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 20px;
-    }
-    .build-icon svg { width: 22px; height: 22px; color: #fff; }
-    .build-card h3 {
-      font-size: 20px; font-weight: 700; color: #fff;
-      margin-bottom: 10px;
-    }
-    .build-card p {
-      font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.65;
-    }
-    .build-card ul {
-      list-style: none; margin-top: 16px;
-    }
-    .build-card ul li {
-      font-size: 14px; color: rgba(255,255,255,0.6);
-      padding: 5px 0; display: flex; align-items: center; gap: 8px;
-    }
-    .build-card ul li::before {
-      content: '';
-      width: 5px; height: 5px; border-radius: 50%;
-      background: rgba(255,255,255,0.4); flex-shrink: 0;
-    }
-
-    @media (max-width: 860px) {
-      .build-grid { grid-template-columns: 1fr; }
-    }
-
-    /* ── INTEGRASJONER ── */
-    .integrations-section {
-      padding: 80px 5%;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-    .integrations-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: flex; align-items: center; gap: 48px; flex-wrap: wrap;
-    }
-    .integrations-label {
-      font-size: 12px; font-weight: 700; letter-spacing: .08em;
-      text-transform: uppercase; color: var(--muted);
-      white-space: nowrap;
-    }
-    .integrations-list {
-      display: flex; gap: 12px; flex-wrap: wrap;
-    }
-    .integration-pill {
-      background: #fff; border: 1px solid var(--border);
-      border-radius: 999px; padding: 8px 18px;
-      font-size: 14px; font-weight: 600; color: var(--ink);
-    }
-
-    /* ── TEAM ── */
-    .team-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: 24px; margin-top: 56px;
-    }
-    .team-card {
-      background: #fff; border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 28px;
-    }
-    .team-avatar {
-      width: 52px; height: 52px; border-radius: 14px;
-      background: var(--blue-soft);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 20px; font-weight: 800; color: var(--blue);
-      margin-bottom: 16px;
-    }
-    .team-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
-    .team-card .team-title { font-size: 13px; color: var(--blue); font-weight: 600; margin-bottom: 8px; }
-    .team-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
-
-    @media (max-width: 860px) {
-      .team-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 480px) {
-      .team-grid { grid-template-columns: 1fr; }
-    }
-
-    /* ── CTA SECTION ── */
-    .cta-section {
-      padding: 100px 5%;
-      background: var(--bg);
-    }
-    .cta-inner {
-      max-width: 720px; margin: 0 auto; text-align: center;
-    }
-    .cta-inner h2 {
-      font-size: clamp(36px, 4.5vw, 56px);
-      font-weight: 800; line-height: 1.08;
-      letter-spacing: -0.03em; margin-bottom: 20px;
-    }
-    .cta-inner h2 .accent { color: var(--blue); }
-    .cta-inner p {
-      font-size: 18px; color: var(--muted);
-      line-height: 1.65; margin-bottom: 40px;
-    }
-    .cta-actions {
-      display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      background: var(--ink); color: rgba(255,255,255,0.6);
-      padding: 48px 5%;
-    }
-    .footer-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: flex; justify-content: space-between;
-      align-items: center; flex-wrap: wrap; gap: 24px;
-    }
-    .footer-logo {
-      font-size: 17px; font-weight: 800;
-      color: #fff; text-decoration: none;
-    }
-    .footer-logo span { color: var(--blue); }
-    .footer-info { font-size: 13px; line-height: 1.7; }
-    .footer-info a { color: rgba(255,255,255,0.6); }
-
-    /* ── DECO SHAPES ── */
-    .deco {
-      position: absolute; pointer-events: none; z-index: 0;
-      border-radius: 50%;
-    }
-    .deco-1 {
-      width: 320px; height: 320px;
-      background: radial-gradient(circle, rgba(27,52,255,0.06) 0%, transparent 70%);
-      top: -80px; right: -80px;
-    }
-    .deco-2 {
-      width: 200px; height: 200px;
-      background: radial-gradient(circle, rgba(27,52,255,0.05) 0%, transparent 70%);
-      bottom: -60px; left: 5%;
-    }
-
-    /* ── REVEAL ANIMATION ── */
-    .reveal { opacity: 0; transform: translateY(32px); }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <a href="/" class="nav-logo">
-      <div class="nav-logo-mark">dm</div>
-      <div>
-        <div class="nav-logo-text">dmarketing</div>
-        <div class="nav-logo-sub">Programvare</div>
+  <!-- ============ PRELOADER ============ -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader-top"></div>
+    <div class="preloader-bottom"></div>
+    <div class="preloader-logo">
+      <div class="preloader-image-wrapper">
+        <div class="preloader-image">
+          <h1 class="logo-1">Dietrichs</h1>
+          <h1 class="logo-2">marketing</h1>
+        </div>
       </div>
-    </a>
-    <ul class="nav-center">
-      <li><a href="#hva-vi-bygger">Hva vi bygger</a></li>
-      <li><a href="#teamet">Teamet</a></li>
-      <li><a href="artikler">Artikler</a></li>
-    </ul>
-    <div class="nav-right">
-      <a href="https://calendly.com/dietrichsmarketing/15min" target="_blank" rel="noopener" class="nav-cta">Book en samtale</a>
-      <button class="nav-burger" aria-label="Meny" onclick="toggleMenu(this)">
-        <span></span><span></span><span></span>
+    </div>
+  </div>
+
+  <!-- ============ NAV ============ -->
+  <section class="menu-wrap" id="nav">
+    <div class="navbar-2">
+      <a href="/" class="logo-link-wrapper brand-3">
+        <div class="logo-text-container">
+          <div class="heading-6 logo-1">Dietrichs</div>
+          <div class="heading-6 logo-2">marketing</div>
+        </div>
+      </a>
+      <button type="button" id="menu-btn" class="navigation__menu-btn" aria-label="Åpne meny">
+        <div class="open-wrap">
+          <div class="navigation-text">Meny</div>
+          <div class="hamburger">
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line-4"></div>
+          </div>
+        </div>
+        <div class="close-wrap">
+          <div class="navigation-text">Lukk</div>
+          <div class="close-btn"></div>
+        </div>
       </button>
     </div>
-  </nav>
-
-  <!-- MOBILE DRAWER -->
-  <div class="nav-drawer" id="nav-drawer">
-    <a href="#hva-vi-bygger" onclick="closeMenu()">Hva vi bygger</a>
-    <a href="#teamet" onclick="closeMenu()">Teamet</a>
-    <a href="artikler" onclick="closeMenu()">Artikler</a>
-    <a href="https://calendly.com/dietrichsmarketing/15min" target="_blank" rel="noopener" class="drawer-cta">Book en gratis samtale</a>
-  </div>
-
-  <!-- HERO -->
-  <section style="position:relative; overflow:hidden;">
-    <div class="deco deco-1"></div>
-    <div class="hero">
-      <div class="hero-left reveal">
-        <div class="hero-badge">
-          <div class="hero-badge-dot"></div>
-          Programvare for bransjen
-        </div>
-        <h1>Vi bygger verktøy<br>elektrikere<br><span class="accent">faktisk bruker</span></h1>
-        <p class="hero-lead">Moderne programvare som kutter timer med papirarbeid, digitaliserer dokumentasjonskrav og gir kjedeledelsen full oversikt, i sanntid.</p>
-        <div class="hero-actions">
-          <a href="https://calendly.com/dietrichsmarketing/15min" target="_blank" rel="noopener" class="btn-primary">
-            Book en samtale
-            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-          </a>
-          <a href="#hva-vi-bygger" class="btn-ghost">Se hva vi bygger</a>
-        </div>
-      </div>
-      <div class="hero-visual reveal">
-        <div class="hero-visual-tag">Feltdokumentasjon, dag i dag</div>
-        <div class="doc-step">
-          <div class="doc-check">
-            <svg fill="none" viewBox="0 0 12 12" stroke="#fff" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2 6l3 3 5-5"/></svg>
-          </div>
-          <div>
-            <div class="doc-step-text">Risikovurdering registrert</div>
-            <div class="doc-step-sub">FSE-krav oppfylt, 3 min</div>
-          </div>
-        </div>
-        <div class="doc-step">
-          <div class="doc-check">
-            <svg fill="none" viewBox="0 0 12 12" stroke="#fff" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2 6l3 3 5-5"/></svg>
-          </div>
-          <div>
-            <div class="doc-step-text">Sluttkontroll fullfort</div>
-            <div class="doc-step-sub">NEK 400, alle 4 malinger</div>
-          </div>
-        </div>
-        <div class="doc-step">
-          <div class="doc-check">
-            <svg fill="none" viewBox="0 0 12 12" stroke="#fff" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2 6l3 3 5-5"/></svg>
-          </div>
-          <div>
-            <div class="doc-step-text">Samsvarerklaring generert</div>
-            <div class="doc-step-sub">Klar for signatur, 1 klikk</div>
-          </div>
-        </div>
-        <div class="doc-step">
-          <div class="doc-check pending"></div>
-          <div>
-            <div class="doc-step-text">Publisert til Boligmappa</div>
-            <div class="doc-step-sub">Sender til kunde og register...</div>
-          </div>
-        </div>
-        <div class="doc-badge">Spart: 90 min papirarbeid per jobb</div>
-      </div>
-    </div>
-    <div class="deco deco-2"></div>
   </section>
 
-  <!-- CREDIBILITY STRIP -->
-  <div class="cred-strip">
-    <div class="cred-inner">
-      <span class="cred-label">Erfaring fra</span>
-      <div class="cred-items">
-        <span class="cred-item">DNB</span>
-        <span class="cred-item">Sparebank 1</span>
-        <span class="cred-item">4 ar i bransjen</span>
-        <span class="cred-item">Elektrikersystemer fra innsiden</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- PROBLEM -->
-  <div class="section reveal">
-    <div class="section-label">Problemet</div>
-    <h2 class="section-title">Elektrikere mister timer<br>pa <span class="accent">papirarbeid</span> hver dag</h2>
-    <p class="section-lead">Lovpliktig dokumentasjon gjores pa papir eller tungvinte PC-systemer. Det tar lang tid, gjores etter arbeidstid og er ubetalt.</p>
-    <div class="problem-grid">
-      <div class="problem-card">
-        <div class="problem-number">90+</div>
-        <h4>Minutter per jobb</h4>
-        <p>Risikovurdering, sluttkontroll og samsvarerklaring tar 1,5 time per oppdrag nar det gjores manuelt.</p>
-      </div>
-      <div class="problem-card">
-        <div class="problem-number">3+</div>
-        <h4>Systemer a holde orden pa</h4>
-        <p>Prosjektstyring, regnskap og dokumentasjon lever i separate systemer uten integrasjon.</p>
-      </div>
-      <div class="problem-card">
-        <div class="problem-number">5 ar</div>
-        <h4>Oppbevaringsplikt</h4>
-        <p>Samsvarerklaeringer ma lagres og finnes frem pa forspursel. Papir og lokale filer holder ikke.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- WHAT WE BUILD -->
-  <div id="hva-vi-bygger" class="build-section">
-    <div class="build-inner">
-      <div class="section-label">Hva vi bygger</div>
-      <h2 class="section-title" style="color:#fff; max-width:640px;">Programvare skreddersydd<br>for bransjen</h2>
-      <p class="section-lead">Vi bygger verktoy som loser de konkrete problemene, og integrerer med systemene bedriftene allerede bruker.</p>
-      <div class="build-grid">
-
-        <div class="build-card">
-          <div class="build-icon">
-            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+  <div id="menu-overlay" class="nav-container-2 hidden-menu">
+    <div class="nav__bg"></div>
+    <div class="container-4">
+      <div class="nav-items">
+        <a href="/" class="nav-item">
+          <div class="nav-item-number">01</div>
+          <div class="special-text-wrapper">
+            <div class="nav-item-text">Forside</div>
+            <div class="nav-item-text-full">Forside</div>
           </div>
-          <h3>Feltdokumentasjon</h3>
-          <p>Fullforer lovpalagt dokumentasjon pa byggeplassen. Fra maling til ferdig samsvaerklaring og publisering til Boligmappa.</p>
-          <ul>
-            <li>Risikovurdering (FSE)</li>
-            <li>Sluttkontroll (NEK 400)</li>
-            <li>Samsvaerklaring med ett klikk</li>
-            <li>Automatisk til Boligmappa</li>
-          </ul>
-        </div>
-
-        <div class="build-card">
-          <div class="build-icon">
-            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-          </div>
-          <h3>Kjededashboard</h3>
-          <p>Ledelsen far full oversikt over alle bedrifter i kjeden. Compliance-status, aktivitet og dokumentasjon i sanntid.</p>
-          <ul>
-            <li>Status per bedrift</li>
-            <li>Compliance-oversikt</li>
-            <li>Aktivitet pa tvers av kjeden</li>
-            <li>Eksport og rapportering</li>
-          </ul>
-        </div>
-
-        <div class="build-card">
-          <div class="build-icon">
-            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-          </div>
-          <h3>Systemintegrasjoner</h3>
-          <p>Kobler prosjektstyring, regnskap og dokumentasjon slik at data flyter automatisk mellom systemene bedriftene allerede har.</p>
-          <ul>
-            <li>Tripletex og PowerOffice</li>
-            <li>Contracting Works og SpeedyCraft</li>
-            <li>Boligmappa og Kartverket</li>
-            <li>Elinn og andre bransjeverktoy</li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- INTEGRASJONER -->
-  <div class="integrations-section">
-    <div class="integrations-inner">
-      <span class="integrations-label">Integrerer mot</span>
-      <div class="integrations-list">
-        <span class="integration-pill">Boligmappa</span>
-        <span class="integration-pill">Tripletex</span>
-        <span class="integration-pill">PowerOffice Go</span>
-        <span class="integration-pill">Contracting Works</span>
-        <span class="integration-pill">SpeedyCraft</span>
-        <span class="integration-pill">Elinn</span>
-        <span class="integration-pill">Kartverket</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- TEAM -->
-  <div id="teamet" class="section reveal">
-    <div class="section-label">Teamet</div>
-    <h2 class="section-title">Vi kjenner bransjen<br><span class="accent">fra innsiden</span></h2>
-    <p class="section-lead">Vi er utviklere med direkte erfaring fra elektrikerbransjens systemer og prosesser, ikke bare som teknologer.</p>
-    <div class="team-grid">
-      <div class="team-card">
-        <div class="team-avatar">A</div>
-        <h4>Adrian Dietrichs</h4>
-        <div class="team-title">Daglig leder, utvikling</div>
-        <p>Dataingeniør og apputvikler i DNB. Har tidligere hjulpet elektrikerbedrifter i gang med prosjektstyringssystemer fra Sparebank 1.</p>
-      </div>
-      <div class="team-card">
-        <div class="team-avatar">E</div>
-        <h4>Espen</h4>
-        <div class="team-title">Utvikler</div>
-        <p>Full-stack utvikler med erfaring fra ytelseskritiske systemer og teknisk leveranse.</p>
-      </div>
-      <div class="team-card">
-        <div class="team-avatar">B</div>
-        <h4>Bjarte</h4>
-        <div class="team-title">Utvikler</div>
-        <p>Spesialisert pa integrasjoner og backend-systemer for bransjerettet programvare.</p>
-      </div>
-      <div class="team-card">
-        <div class="team-avatar">IT</div>
-        <h4>IT-arkitekt</h4>
-        <div class="team-title">Teknisk arkitektur</div>
-        <p>35+ ars erfaring med systemarkitektur. Sikrer at losningene vi bygger er robuste, sikre og skalerbare.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- ANMELDELSER -->
-  <div class="section reveal" style="background:#fff; border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
-    <div class="section-label">Kundeanmeldelser</div>
-    <h2 class="section-title">5,0 på Google.<br><span class="accent">Hva kundene sier.</span></h2>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px; margin-top:48px;">
-      <div style="background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); padding:28px; display:flex; flex-direction:column; gap:16px;">
-        <div style="font-size:1.1rem; color:var(--blue); letter-spacing:2px;">★★★★★</div>
-        <blockquote style="margin:0; font-size:1rem; line-height:1.65; color:var(--muted); font-style:italic; flex:1;">Fantastisk service og talent. Veldig hyggelig å jobbe med Adrian — effektiv, kreativ og leverer alltid. Kan ikke anbefale tjenestene hans nok!</blockquote>
-        <div style="display:flex; align-items:center; gap:12px; margin-top:auto;">
-          <div style="width:38px;height:38px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px;flex-shrink:0;">EL</div>
-          <div><b style="display:block;font-size:0.9rem;font-weight:700;color:var(--ink);">Elmer Laahne</b><span style="font-size:0.8rem;color:var(--muted);">Daglig leder</span></div>
-        </div>
-      </div>
-      <div style="background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); padding:28px; display:flex; flex-direction:column; gap:16px;">
-        <div style="font-size:1.1rem; color:var(--blue); letter-spacing:2px;">★★★★★</div>
-        <blockquote style="margin:0; font-size:1rem; line-height:1.65; color:var(--muted); font-style:italic; flex:1;">Dietrichs Marketing har bistått meg med nettside til mitt AS, og jeg har kun gode opplevelser. Adrian er effektiv, dyktig og veldig hjelpsom — følger opp og finner gode løsninger.</blockquote>
-        <div style="display:flex; align-items:center; gap:12px; margin-top:auto;">
-          <div style="width:38px;height:38px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px;flex-shrink:0;">KH</div>
-          <div><b style="display:block;font-size:0.9rem;font-weight:700;color:var(--ink);">Kjersti H.</b><span style="font-size:0.8rem;color:var(--muted);">Kunde</span></div>
-        </div>
-      </div>
-      <div style="background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); padding:28px; display:flex; flex-direction:column; gap:16px;">
-        <div style="font-size:1.1rem; color:var(--blue); letter-spacing:2px;">★★★★★</div>
-        <blockquote style="margin:0; font-size:1rem; line-height:1.65; color:var(--muted); font-style:italic; flex:1;">Fikk laget en ny hjemmeside, raskt og profesjonelt. God kommunikasjon underveis i prosessen. Anbefales.</blockquote>
-        <div style="display:flex; align-items:center; gap:12px; margin-top:auto;">
-          <div style="width:38px;height:38px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px;flex-shrink:0;">IN</div>
-          <div><b style="display:block;font-size:0.9rem;font-weight:700;color:var(--ink);">Inge Njøten</b><span style="font-size:0.8rem;color:var(--muted);">Kunde</span></div>
-        </div>
-      </div>
-      <div style="background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); padding:28px; display:flex; flex-direction:column; gap:16px;">
-        <div style="font-size:1.1rem; color:var(--blue); letter-spacing:2px;">★★★★★</div>
-        <blockquote style="margin:0; font-size:1rem; line-height:1.65; color:var(--muted); font-style:italic; flex:1;">Vi fikk laget ny hjemmeside og den fungerer fint til vårt bruk. Besøkende finner lett frem siden og informasjonen som er på hjemmesiden.</blockquote>
-        <div style="display:flex; align-items:center; gap:12px; margin-top:auto;">
-          <div style="width:38px;height:38px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px;flex-shrink:0;">BS</div>
-          <div><b style="display:block;font-size:0.9rem;font-weight:700;color:var(--ink);">Balan Sivagurunathan</b><span style="font-size:0.8rem;color:var(--muted);">Kunde</span></div>
-        </div>
-      </div>
-    </div>
-    <div style="text-align:center; margin-top:32px;">
-      <a href="https://g.co/kgs/YqnBR97" target="_blank" rel="noopener" class="btn-ghost">Se alle anmeldelser på Google →</a>
-    </div>
-  </div>
-
-  <!-- CTA -->
-  <div class="cta-section">
-    <div class="cta-inner reveal">
-      <h2>Klar til a bygge<br><span class="accent">noe reelt?</span></h2>
-      <p>Vi er i dialog med ledende kjeder i bransjen. Ta kontakt og fortell oss hvilke prosesser som tar for lang tid.</p>
-      <div class="cta-actions">
-        <a href="https://calendly.com/dietrichsmarketing/15min" target="_blank" rel="noopener" class="btn-primary">
-          Book en gratis samtale
-          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </a>
-        <a href="mailto:adrian@dmarketing.no" class="btn-ghost">Send en e-post</a>
+        <a href="apputvikling/" class="nav-item">
+          <div class="nav-item-number">02</div>
+          <div class="special-text-wrapper">
+            <div class="nav-item-text">Apputvikling</div>
+            <div class="nav-item-text-full">Apputvikling</div>
+          </div>
+        </a>
+        <a href="ai-nettsider/" class="nav-item">
+          <div class="nav-item-number">03</div>
+          <div class="special-text-wrapper">
+            <div class="nav-item-text">AI-nettsider</div>
+            <div class="nav-item-text-full">AI-nettsider</div>
+          </div>
+        </a>
+        <a href="kontakt/" class="nav-item">
+          <div class="nav-item-number">04</div>
+          <div class="special-text-wrapper">
+            <div class="nav-item-text">Kontakt</div>
+            <div class="nav-item-text-full">Kontakt</div>
+          </div>
+        </a>
       </div>
     </div>
   </div>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-inner">
-      <a href="/" class="footer-logo">dm<span>.</span></a>
-      <div class="footer-info">
-        Dietrichs Marketing &nbsp;·&nbsp;
-        <a href="mailto:adrian@dmarketing.no">adrian@dmarketing.no</a> &nbsp;·&nbsp;
-        934 39 278
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <span class="decor decor-ring" data-parallax="0.18"></span>
+    <span class="decor decor-dot" data-parallax="-0.3"></span>
+    <div class="wrap">
+      <span class="label reveal-hero" data-delay="0"><span class="num">001</span><span class="bar"></span> AI & apputvikling</span>
+      <h1 class="hero-title display reveal-hero" data-delay="1">
+        <span class="line">Vi gjør</span>
+        <span class="line accent">norske bedrifter</span>
+        <span class="line outline">mer lønnsomme.</span>
+      </h1>
+      <div class="hero-bottom">
+        <div class="hero-foot">
+          <div class="scroll-hint reveal-hero" data-delay="3">
+            Rull ned
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+        </div>
+        <div class="hero-intro">
+          <p class="hero-lead reveal-hero" data-delay="2">
+            Med apputvikling, programvare og AI hjelper vi bedrifter å kutte kostnader, automatisere prosesser og bygge verktøy som faktisk fungerer.
+          </p>
+          <div class="hero-cta reveal-hero" data-delay="3">
+            <a class="btn btn-primary" href="kontakt/">Ta kontakt
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a class="btn btn-ghost" href="ai-nettsider/">Se AI-nettsider</a>
+          </div>
+        </div>
       </div>
-      <div class="footer-info">
-        &copy; 2026 Dietrichs Marketing
+    </div>
+  </section>
+
+  <!-- ============ INTEGRASJONER ============ -->
+  <section class="section alt" id="integrasjoner">
+    <div class="wrap">
+      <span class="label reveal"><span class="num">002</span><span class="bar"></span> Hva vi har levert</span>
+      <h2 class="display reveal sect-head" style="margin-top:18px; font-size:clamp(2rem,5vw,3.9rem);">
+        Ikke et hylleprodukt.<br><span class="accent">En løsning som faktisk gjør jobben.</span>
+      </h2>
+      <p class="reveal" style="margin-top:22px; color:var(--ink-soft); font-size:1.08rem; max-width:52ch;">
+        Vi bygger systemer som kobler seg til verktøyene du allerede bruker — og utfører faktiske oppgaver. Voltio, vår AI-agent for norske nettbutikker, slår opp ordre, oppretter returer og svarer på e-post automatisk.
+      </p>
+      <a class="btn btn-primary reveal" style="margin-top:28px;" href="https://voltio.no" target="_blank" rel="noopener">Se voltio.no
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <div class="reveal" style="margin-top:40px; display:flex; flex-wrap:wrap; gap:10px;">
+        <span class="sys-chip"><img class="sys-logo" src="assets/shopify.svg" alt="" aria-hidden="true"> Shopify</span>
+        <span class="sys-chip"><img class="sys-logo" src="assets/woocommerce.svg" alt="" aria-hidden="true"> WooCommerce</span>
+        <span class="sys-chip"><img class="sys-logo" src="assets/outlook.svg" alt="" aria-hidden="true"> Outlook</span>
+        <span class="sys-chip"><img class="sys-logo" src="assets/gmail.svg" alt="" aria-hidden="true"> Gmail</span>
+        <span class="sys-chip"><img class="sys-logo" src="assets/bring.svg" alt="" aria-hidden="true"> Bring</span>
+        <span class="sys-chip"><img class="sys-logo" src="assets/posten.svg" alt="" aria-hidden="true"> Posten</span>
+        <span class="sys-chip sys-chip--more">+ ditt system</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HVORDAN (3 etapper) ============ -->
+  <section class="section" id="hvordan">
+    <div class="wrap">
+      <div class="sect-head">
+        <span class="label reveal"><span class="num">003</span><span class="bar"></span> Slik jobber vi</span>
+        <h2 class="display reveal">Fra idé til <span class="outline">ferdig løsning.</span></h2>
+        <p class="reveal">Tre etapper. Enkelt og forutsigbart — uten unødvendig mellomledd.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-n"><span>Etappe 01</span></div>
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg></div>
+          <h3>Vi kartlegger og planlegger</h3>
+          <p>Vi setter oss inn i bedriften, prosessene og hva som skal automatiseres eller bygges. Du vet hva du får — før vi starter.</p>
+          <div class="branch"><span>Apputvikling</span><span>Eller AI-løsning</span></div>
+        </div>
+        <div class="step reveal">
+          <div class="step-n"><span>Etappe 02</span></div>
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/></svg></div>
+          <h3>Vi designer og bygger</h3>
+          <p>Vi bygger løsningen iterativt. Du ser fremgang tidlig og kan justere underveis — ingen overraskelser ved levering.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-n"><span>Etappe 03</span></div>
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 11-3-6.7M21 4v5h-5"/></svg></div>
+          <h3>Du eier alt, for alltid</h3>
+          <p>Kode, design og produkt er ditt. Ingen binding, ingen abonnement til oss. Du kan bygge videre selv eller med oss.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STATS-BÅND ============ -->
+  <section class="stats">
+    <div class="wrap">
+      <div class="stats-lead">
+        <span class="label on-dark reveal"><span class="num">005</span><span class="bar"></span> I tall</span>
+        <h2 class="display reveal">Bygget for å gi norske bedrifter et forsprang.</h2>
+      </div>
+      <div class="stats-grid">
+        <div class="stat reveal"><div class="n" data-count="4" data-suffix="+">4+</div><div class="t">År med apputvikling og digitale løsninger</div></div>
+        <div class="stat reveal"><div class="n" data-count="0" data-suffix=" kr">0 kr</div><div class="t">Faste kostnader etter levering</div></div>
+        <div class="stat reveal"><div class="n" data-count="100" data-suffix=" %">100 %</div><div class="t">Eierskap til kode og design</div></div>
+        <div class="stat reveal"><div class="n" data-count="2" data-suffix="">2</div><div class="t">Primærtjenester — apputvikling og AI-nettsider</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HVA VI BYGGER ============ -->
+  <section class="section" id="tjenester">
+    <div class="wrap">
+      <div class="mal-top">
+        <div>
+          <span class="label reveal"><span class="num">006</span><span class="bar"></span> Tjenester</span>
+          <h2 class="display reveal sect-head" style="margin:18px 0 0; font-size:clamp(2rem,5vw,3.9rem);">Hva vi bygger <span class="outline">for næringslivet.</span></h2>
+        </div>
+        <p class="reveal" style="color:var(--ink-soft); max-width:40ch;">Fra feltapper til AI-agenter. Vi finner den løsningen som gir mest igjen for pengene — og leverer den uten unødvendig kompleksitet.</p>
+      </div>
+      <div class="mal-grid">
+        <a class="mal reveal" href="apputvikling/"><span class="mn">01</span><span class="mt">Feltapper og mobile verktøy</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        <a class="mal reveal" href="apputvikling/"><span class="mn">02</span><span class="mt">Dokumentasjonsverktøy</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        <a class="mal reveal" href="apputvikling/"><span class="mn">03</span><span class="mt">Kundeportaler</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        <a class="mal reveal" href="apputvikling/"><span class="mn">04</span><span class="mt">AI-agenter og chatbots</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        <a class="mal reveal" href="apputvikling/"><span class="mn">05</span><span class="mt">Bookingsystemer</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        <a class="mal reveal" href="apputvikling/"><span class="mn">06</span><span class="mt">Rapportering og dashboards</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        <a class="mal reveal" href="apputvikling/"><span class="mn">07</span><span class="mt">Systemintegrasjoner</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        <a class="mal reveal" href="ai-nettsider/"><span class="mn">08</span><span class="mt">AI-nettsider</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        <a class="mal more reveal" href="kontakt/"><span class="mn">+ Din løsning</span><span class="mt">Ta kontakt for en prat</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AI-NETTSIDER TEASER ============ -->
+  <section class="section alt" id="ai-nettsider">
+    <div class="wrap">
+      <div class="sect-head" style="max-width:680px;">
+        <span class="label reveal"><span class="num">007</span><span class="bar"></span> AI-nettsider</span>
+        <h2 class="display reveal">Kutt alle nettsidekostnader. <span class="accent">Eig alt selv.</span></h2>
+        <p class="reveal">Vi bygger lynraske nettsider du eier 100&nbsp;% og oppdaterer selv på 60 sekunder — uten månedlige byråavgifter. Fra&nbsp;1&nbsp;900&nbsp;kr, engangskostnad.</p>
+      </div>
+      <div class="reveal" style="display:flex; flex-wrap:wrap; gap:14px; margin-top:8px;">
+        <a class="btn btn-primary" href="ai-nettsider/">Se pakker og demo
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="ai-nettsider/#demo-video">Se demo-video</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TEAM ============ -->
+  <section class="section" id="team">
+    <div class="wrap">
+      <div class="sect-head">
+        <span class="label reveal"><span class="num">008</span><span class="bar"></span> Hvem vi er</span>
+        <h2 class="display reveal">Teamet</h2>
+        <p class="reveal">Et lite, teknisk team som bygger apper, programvare og AI-løsninger for norske bedrifter — uten unødvendig mellomledd.</p>
+      </div>
+      <div class="team-grid">
+        <div class="member reveal">
+          <img class="avatar" src="assets/adrian-bw-modified.png" alt="Adrian" loading="lazy" />
+          <div class="m-body">
+            <h3>Adrian</h3>
+            <div class="role">Daglig leder & apputvikler</div>
+            <p>Dataingeniør og apputvikler med erfaring fra DNB og Sparebank 1. Leder Dietrichs Marketing og har de siste 4 årene levert apper og digitale løsninger for næringslivet.</p>
+          </div>
+        </div>
+        <div class="member reveal">
+          <img class="avatar" src="assets/hedvig.jpg" alt="Hedvig" loading="lazy" />
+          <div class="m-body">
+            <h3>Hedvig</h3>
+            <div class="role">Salg</div>
+            <p>Hjelper deg med å kartlegge behovene dine og finne den pakken som passer din bedrift best.</p>
+          </div>
+        </div>
+        <div class="member reveal">
+          <img class="avatar" src="assets/espen-bw.jpg" alt="Espen" loading="lazy" />
+          <div class="m-body">
+            <h3>Espen</h3>
+            <div class="role">Utvikler</div>
+            <p>Ansvarlig for koden og den tekniske ytelsen som gjør at nettsiden din er lynrask og optimalisert.</p>
+          </div>
+        </div>
+        <div class="member reveal">
+          <img class="avatar" src="assets/bjarte-bw.jpg" alt="Bjarte" loading="lazy" />
+          <div class="m-body">
+            <h3>Bjarte</h3>
+            <div class="role">Utvikler</div>
+            <p>Sørger for at nettsiden din er teknisk komplett og klar til å tas i bruk fra det øyeblikket vi leverer.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ANMELDELSER ============ -->
+  <section class="section alt">
+    <div class="wrap">
+      <div class="sect-head" style="text-align:center;">
+        <span class="label reveal" style="justify-content:center;"><span class="num">009</span><span class="bar"></span> Kundeanmeldelser</span>
+        <h2 class="display reveal" style="margin-top:16px;">5,0 på Google. <span class="accent">Hva kundene sier.</span></h2>
+      </div>
+      <div class="reviews-grid reveal">
+
+        <div class="review-card">
+          <div class="rc-stars" aria-label="Fem av fem stjerner">★★★★★</div>
+          <blockquote>Fantastisk service og talent. Veldig hyggelig å jobbe med Adrian — effektiv, kreativ og leverer alltid. Kan ikke anbefale tjenestene hans nok!</blockquote>
+          <div class="rc-who">
+            <img src="assets/elmer.png" alt="" onerror="this.style.display='none'" />
+            <div><b>Elmer Laahne</b><span>Daglig leder</span></div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="rc-stars" aria-label="Fem av fem stjerner">★★★★★</div>
+          <blockquote>Dietrichs Marketing har bistått meg i å lage nettside til mitt AS, og jeg har kun gode opplevelser med dette samarbeidet. Adrian er effektiv, dyktig og veldig hjelpsom! Han følger opp og bistår med å finne gode løsninger.</blockquote>
+          <div class="rc-who">
+            <div><b>Kjersti H.</b><span>Kunde</span></div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="rc-stars" aria-label="Fem av fem stjerner">★★★★★</div>
+          <blockquote>Fikk laget en ny hjemmeside, raskt og profesjonelt. God kommunikasjon underveis i prosessen. Anbefales.</blockquote>
+          <div class="rc-who">
+            <div><b>Inge Njøten</b><span>Kunde</span></div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="rc-stars" aria-label="Fem av fem stjerner">★★★★★</div>
+          <blockquote>Vi fikk laget ny hjemmeside og den fungerer fint til vårt bruk. Besøkende finner lett frem siden og informasjonen som er på hjemmesiden.</blockquote>
+          <div class="rc-who">
+            <div><b>Balan Sivagurunathan</b><span>Kunde</span></div>
+          </div>
+        </div>
+
+      </div>
+      <div class="reveal" style="text-align:center; margin-top:32px;">
+        <a href="https://g.co/kgs/dietrichsmarketing" target="_blank" rel="noopener" class="btn btn-ghost" style="display:inline-flex;">
+          Se alle anmeldelser på Google
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="section alt" id="faq">
+    <div class="wrap">
+      <div class="sect-head">
+        <span class="label reveal"><span class="num">010</span><span class="bar"></span> Spørsmål og svar</span>
+        <h2 class="display reveal">Vanlige spørsmål <span class="outline">om det vi gjør.</span></h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq reveal">
+          <summary><h3>Hva er apputvikling?</h3><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <p>Vi bygger skreddersydde apper og programvareløsninger — alt fra mobilapper og webapper til interne verktøy og AI-integrasjoner. Resultatet er programvare som passer nøyaktig til din bedrift, ikke et hylleprodukt du må tilpasse deg.</p>
+        </details>
+        <details class="faq reveal">
+          <summary><h3>Hva koster apputvikling?</h3><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <p>Prisen avhenger av hva som skal bygges. Vi kartlegger behovet i et gratis møte og gir et konkret prisestimat etterpå — ingen skjulte kostnader. Ta kontakt for en uforpliktende prat.</p>
+        </details>
+        <details class="faq reveal">
+          <summary><h3>Eier jeg koden selv?</h3><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <p>Ja, 100 %. Kode, design og alt innhold tilhører deg. Ingen binding, ingen abonnement til oss. Du kan bygge videre selv eller med andre — vi leverer fullt eierskap fra dag én.</p>
+        </details>
+        <details class="faq reveal">
+          <summary><h3>Hvor lang tid tar det å bygge en app?</h3><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <p>Det varierer med scope. Enkle verktøy og MVP-er kan være klare på 2–4 uker. Større løsninger tar lengre tid. Vi er tydelige på tidsramme i tilbudet — og du ser fremgang underveis, ikke bare på leveringsdagen.</p>
+        </details>
+        <details class="faq reveal">
+          <summary><h3>Hva er forskjellen mellom apputvikling og en AI-nettside?</h3><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <p>En AI-nettside er et ferdig konsept med faste pakker — raskt og rimelig. Apputvikling er skreddersøm: vi bygger det du trenger fra grunnen av, enten det er en mobilapp, et internt system eller en AI-løsning. Trenger du begge deler, kan vi kombinere det.</p>
+        </details>
+        <details class="faq reveal">
+          <summary><h3>Kan dere integrere med systemene vi allerede bruker?</h3><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <p>Ja. Vi bygger integrasjoner mot de fleste systemer — enten via API, webhook eller direktetilkobling. Ta kontakt og fortell oss hvilke systemer dere bruker, så ser vi hva som er mulig.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ARTIKLER (preview) ============ -->
+  <section class="section" id="artikler">
+    <div class="wrap">
+      <div class="sect-head">
+        <span class="label reveal"><span class="num">010</span><span class="bar"></span> Innsikt</span>
+        <h2 class="display reveal">Innsikt for smarte <span class="outline">bedriftseiere.</span></h2>
+        <p class="reveal">Praktiske guider om nettsidekostnader, eierskap og AI-synlighet for norske bedrifter.</p>
+      </div>
+      <div class="artikler-preview">
+        <a class="ap-card reveal" href="artikler/hva-bor-nettside-koste-2026.html">
+          <div class="ap-img">
+            <img src="assets/artikkel-prisguide.jpg" alt="Bærbar PC på skrivebordet" loading="lazy" />
+          </div>
+          <div class="ap-body">
+            <div class="ap-tag">Prisguide</div>
+            <h3>Hva bør en bedriftsnettside koste i 2026?</h3>
+            <p>Prisene varierer fra 10 000 til 200 000 kroner. Se hva som faktisk er normalt å betale, og lær hvordan du unngår byråenes skjulte prisfeller.</p>
+            <span class="ap-read">Se prisguiden <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          </div>
+        </a>
+        <a class="ap-card reveal" href="artikler/slippe-betale-webbyra-nettside.html">
+          <div class="ap-img">
+            <img src="assets/artikkel-kostnader.jpg" alt="Penger og saks" loading="lazy" />
+          </div>
+          <div class="ap-body">
+            <div class="ap-tag">Kostnader</div>
+            <h3>Hvordan slipper jeg å betale webbyrå noen gang igjen?</h3>
+            <p>Mange norske bedrifter betaler tusenvis i måneden for «vedlikehold». Se hvordan moderne teknologi lar deg kutte de faste utgiftene helt.</p>
+            <span class="ap-read">Les guiden <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          </div>
+        </a>
+        <a class="ap-card reveal" href="artikler/bli-funnet-chatgpt-ai-sok.html">
+          <div class="ap-img">
+            <img src="assets/artikkel-ai-fremtid.jpg" alt="AI-teknologi" loading="lazy" />
+          </div>
+          <div class="ap-body">
+            <div class="ap-tag">AI &amp; fremtid</div>
+            <h3>Hvordan blir bedriften min funnet i ChatGPT og AI-søk?</h3>
+            <p>Søkevanene endrer seg raskt. Stadig flere kunder bruker ChatGPT og AI for å finne lokale bedrifter. Slik sikrer du at det er din bedrift AI-en anbefaler.</p>
+            <span class="ap-read">Les guiden <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FINAL CTA ============ -->
+  <section class="final" id="se-demo">
+    <span class="decor decor-ring" data-parallax="0.2"></span>
+    <span class="decor decor-ring two" data-parallax="-0.15"></span>
+    <div class="wrap">
+      <span class="label on-dark reveal" style="justify-content:center;"><span class="num">011</span><span class="bar"></span> Klar?</span>
+      <h2 class="display reveal" style="margin-top:18px;">Klar til å gjøre<br><span class="outline on-dark">bedriften mer lønnsom?</span></h2>
+      <p class="reveal">Ta kontakt for et uforpliktende møte. Vi ser på hva som er mulig med apputvikling og AI for din bedrift.</p>
+      <div class="hero-cta reveal">
+        <a class="btn btn-light" href="kontakt/">Ta kontakt
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a class="btn btn-ghost-light" href="ai-nettsider/">Se AI-nettsider</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="f-top">
+        <div>
+          <a href="#top" class="brand"><b>Dietrichs</b><span>marketing</span></a>
+          <p class="f-tag">Apputvikling og AI for norske bedrifter. Vi gjør bedriften din mer lønnsom med moderne teknologi.</p>
+        </div>
+        <div class="f-links">
+          <div class="f-col">
+            <h5>Nettsiden</h5>
+            <a href="#eksempel">Eksempel</a>
+            <a href="#tjenester">Tjenester</a>
+            <a href="#priser">Priser</a>
+            <a href="#team">Team</a>
+            <a href="artikler/">Artikler</a>
+          </div>
+          <div class="f-col">
+            <h5>Kom i gang</h5>
+            <a href="apputvikling/">Apputvikling</a>
+            <a href="ai-nettsider/">AI-nettsider</a>
+            <a href="kontakt/">Ta kontakt</a>
+          </div>
+        </div>
+      </div>
+      <div class="f-bottom">
+        <div>© 2026 Dietrichs Marketing</div>
+        <div>Org.nr 932 612 583</div>
       </div>
     </div>
   </footer>
 
   <script>
-    function toggleMenu(btn) {
-      btn.classList.toggle('open');
-      document.getElementById('nav-drawer').classList.toggle('open');
-      document.body.style.overflow = btn.classList.contains('open') ? 'hidden' : '';
-    }
-    function closeMenu() {
-      document.querySelector('.nav-burger').classList.remove('open');
-      document.getElementById('nav-drawer').classList.remove('open');
-      document.body.style.overflow = '';
-    }
-    // Lukk ved klikk utenfor
-    document.addEventListener('click', e => {
-      if (!e.target.closest('nav') && !e.target.closest('.nav-drawer')) closeMenu();
-    });
+    (function () {
+      var btn = document.getElementById('menu-btn');
+      var overlay = document.getElementById('menu-overlay');
+      if (!btn || !overlay) return;
+      function setOpen(open) {
+        overlay.classList.toggle('hidden-menu', !open);
+        btn.classList.toggle('is-open', open);
+        document.body.classList.toggle('menu-open', open);
+        document.body.style.overflow = open ? 'hidden' : '';
+      }
+      btn.addEventListener('click', function () { setOpen(overlay.classList.contains('hidden-menu')); });
+      overlay.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('touchstart', function () { a.classList.add('is-touched'); }, { passive: true });
+        a.addEventListener('click', function () { setOpen(false); });
+      });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+    })();
   </script>
-
-  <!-- GSAP -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script>
-    gsap.registerPlugin(ScrollTrigger);
-
-    // Respect reduced motion
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    if (!prefersReduced) {
-      // Reveal on scroll
-      gsap.utils.toArray('.reveal').forEach(el => {
-        gsap.to(el, {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: 'expo.out',
-          scrollTrigger: {
-            trigger: el,
-            start: 'top 88%',
-            once: true
-          }
-        });
-      });
-
-      // Hero elements stagger
-      gsap.from('.hero-left', { opacity: 0, y: 40, duration: 1, ease: 'expo.out', delay: 0.1 });
-      gsap.from('.hero-visual', { opacity: 0, y: 40, duration: 1, ease: 'expo.out', delay: 0.28 });
-
-      // Decorative shape parallax
-      gsap.to('.deco-1', {
-        y: -60,
-        ease: 'none',
-        scrollTrigger: { scrub: 1.5 }
-      });
-      gsap.to('.deco-2', {
-        y: 40,
-        ease: 'none',
-        scrollTrigger: { scrub: 2 }
-      });
-
-      // Pending step pulse
-      gsap.to('.doc-check.pending', {
-        opacity: 0.3, duration: 0.9, repeat: -1, yoyo: true, ease: 'sine.inOut'
-      });
-    } else {
-      gsap.utils.toArray('.reveal').forEach(el => {
-        el.style.opacity = 1;
-        el.style.transform = 'none';
-      });
-    }
-  </script>
-
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="app.js?v=18" defer></script>
 </body>
 </html>
