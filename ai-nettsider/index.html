@@ -37,7 +37,7 @@
       if(choice){ return; }
       function showBanner(){
         if(document.getElementById('dm-cc')) return;
-        var css='#dm-cc{position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0F172A;color:#fff;font-family:Inter,system-ui,sans-serif;box-shadow:0 -8px 30px rgba(0,0,0,.25)}'
+        var css='#dm-cc{position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0F172A;color:#fff;font-family:'Schibsted Grotesk',system-ui,sans-serif;box-shadow:0 -8px 30px rgba(0,0,0,.25)}'
           +'#dm-cc .dm-cc-in{max-width:1100px;margin:0 auto;padding:18px 24px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px;justify-content:space-between}'
           +'#dm-cc p{margin:0;font-size:13.5px;line-height:1.55;color:rgba(255,255,255,.78);max-width:62ch}'
           +'#dm-cc a{color:#fff;text-decoration:underline;text-underline-offset:2px}'
@@ -68,12 +68,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" href="https://fonts.gstatic.com/s/archivo/v19/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLydOxI.woff2" as="font" type="font/woff2" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link href="../assets/ms-icon-256x256.png" rel="shortcut icon" type="image/x-icon" />
   <script>try{if(sessionStorage.getItem('dm_pre'))document.documentElement.classList.add('no-preloader');else sessionStorage.setItem('dm_pre','1');}catch(e){}</script>
 
   <style>
-    body { font-family: 'Inter', sans-serif; background: #FAFAFA; color: #09090B; }
+    body { font-family: 'Schibsted Grotesk', system-ui, sans-serif; background: #FAFAFA; color: #09090B; }
     .font-display { font-family: 'Archivo', sans-serif; }
 
     /* Visually hidden text for crawlers */
@@ -321,177 +321,22 @@
       .preloader-image .logo-2 { font-size: clamp(22px, 6vw, 32px); }
     }
 
-    /* ============================================== */
-    /* MENY (1:1 fra index.html / Webflow-side)         */
-    /* Scoped: bare meny-spesifikke klasser - ingen     */
-    /* webflow.css-import (Tailwind beholdes intakt)    */
-    /* ============================================== */
-    .menu-wrap { background-color: #ffffff; padding: 16px 0; border-bottom: 1px solid #E4E4E7; }
-    .navbar-2 {
-      z-index: 101; justify-content: space-between; align-items: center;
-      width: 90%; max-width: 1440px; height: 50px;
-      margin: 0 auto; display: flex; position: relative;
-    }
-    .logo-link-wrapper {
-      flex-direction: column; justify-content: center; align-items: center;
-      display: flex; text-decoration: none;
-    }
-    .brand-3 { order: -1; }
-    .brand-3.w--current { flex-flow: column; }
-    .logo-text-container { order: 0; margin-top: 20px; display: flex; }
-    .heading-6 {
-      color: #09090B; letter-spacing: 2px; text-transform: uppercase;
-      margin: 0; font-family: Archivo, sans-serif;
-      font-size: 12px; font-weight: 600; line-height: 12px;
-    }
-    .heading-6 .logo-1 { margin-left: 10px; font-size: 30px; line-height: 45px; }
-    .heading-6 .logo-2 {
-      color: transparent; -webkit-text-stroke: 0.5px #09090B;
-      margin: 0 0 0 10px; font-size: 30px; line-height: 45px;
-    }
-    .navigation__menu-btn {
-      cursor: pointer; flex-direction: column; order: 1;
-      justify-content: flex-start; align-items: center;
-      height: 25px; overflow: hidden; display: flex;
-      background: transparent; border: 0; padding: 0;
-      outline: none;
-    }
-    .navigation__menu-btn:focus,
-    .navigation__menu-btn:focus-visible { outline: none; }
-    .open-wrap { align-items: center; height: 25px; display: flex; }
-    .navigation-text {
-      color: #09090B; letter-spacing: 3px; text-transform: uppercase;
-      font-family: Archivo, sans-serif; font-size: 12px; line-height: 12px;
-      text-decoration: none;
-    }
-    .hamburger {
-      flex-direction: column; justify-content: space-between; align-items: flex-end;
-      width: 25px; height: 10px; margin-left: 12.5px; display: flex;
-    }
-    .hamburger-line { background-color: #09090B; width: 25px; height: 2.22px; }
-    .hamburger-line-4 { background-color: #09090B; width: 15px; height: 2.22px; }
-    /* Når menyen er åpen: hele meny-stripen flipper til mørkt tema */
-    body.menu-open .menu-wrap { background-color: #1a1a1f; border-bottom-color: rgba(255,255,255,0.1); }
-    body.menu-open .heading-6 .logo-1 { color: whitesmoke; }
-    body.menu-open .heading-6 .logo-2 { -webkit-text-stroke-color: whitesmoke; }
-    body.menu-open .navigation-text { color: #fff; }
-    body.menu-open .hamburger-line,
-    body.menu-open .hamburger-line-4 { background-color: #fff; }
-    body.menu-open .close-btn::before,
-    body.menu-open .close-btn::after { background: #fff; }
-    /* Smooth fargetransisjon */
-    .menu-wrap, .heading-6, .navigation-text,
-    .hamburger-line, .hamburger-line-4 {
-      transition: background-color 0.25s ease, color 0.25s ease, -webkit-text-stroke-color 0.25s ease, border-color 0.25s ease;
-    }
-    .close-wrap {
-      flex-direction: row; justify-content: flex-end; align-items: center;
-      height: 25px; display: flex;
-    }
-    .close-btn {
-      width: 18px; height: 18px; margin-left: 12.5px; position: relative;
-    }
-    .close-btn::before, .close-btn::after {
-      content: ""; position: absolute; top: 50%; left: 0;
-      width: 100%; height: 2px; background: #fff;
-      transform-origin: center;
-    }
-    .close-btn::before { transform: translateY(-50%) rotate(45deg); }
-    .close-btn::after { transform: translateY(-50%) rotate(-45deg); }
-
-    /* Nav-overlay (åpen meny) */
-    .nav-container-2 {
-      z-index: 97; background-color: #1a1a1f;
-      flex-direction: column; justify-content: flex-start; align-items: center;
-      min-height: 100vh; padding: 100px 0 80px;
-      position: fixed; inset: 0;
-      overflow-y: auto;
-    }
-    .nav__bg {
-      z-index: -1; background-color: #1a1a1f;
-      position: absolute; inset: 0;
-    }
-    .container-4 {
-      width: 92%; max-width: none; margin: 0 auto;
-    }
-    .nav-items {
-      z-index: 99; flex-flow: column; align-items: flex-start;
-      width: 100%; max-width: 1200px; margin-top: 40px;
-      display: flex; position: relative; overflow: hidden;
-    }
-    .nav-item {
-      align-items: center; text-decoration: none; display: flex;
-    }
-    .nav-item.hide { display: none; }
-    .nav-item-number {
-      color: #fff; letter-spacing: 3px; margin-right: 20px;
-      font-family: Archivo, sans-serif; font-size: 12px; line-height: 12px;
-      transform: rotate(-90deg);
-    }
-    .special-text-wrapper { height: clamp(56px, 11vw, 130px); overflow: hidden; }
-    .nav-item-text {
-      color: transparent; -webkit-text-fill-color: transparent;
-      -webkit-text-stroke: 0.8px #A5A3A6;
-      text-transform: uppercase; font-family: Archivo, sans-serif;
-      font-size: clamp(38px, 7.5vw, 90px); font-weight: 700;
-      line-height: clamp(56px, 11vw, 130px); display: block;
-      white-space: nowrap;
-    }
-    .nav-item-text-full {
-      color: #fff; text-transform: uppercase; font-family: Archivo, sans-serif;
-      font-size: clamp(38px, 7.5vw, 90px); font-weight: 700;
-      line-height: clamp(56px, 11vw, 130px);
-      white-space: nowrap;
-    }
-    /* Hover-animasjon: slide tekst opp, fill-versjon kommer inn */
-    .special-text-wrapper > div {
-      transition: transform 0.55s cubic-bezier(0.65, 0, 0.35, 1);
-    }
-    .nav-item:hover .nav-item-text,
-    .nav-item:hover .nav-item-text-full,
-    .nav-item:focus .nav-item-text,
-    .nav-item:focus .nav-item-text-full,
-    .nav-item:active .nav-item-text,
-    .nav-item:active .nav-item-text-full,
-    .nav-item.is-touched .nav-item-text,
-    .nav-item.is-touched .nav-item-text-full {
-      transform: translateY(calc(-1 * clamp(56px, 11vw, 130px)));
-    }
-
-    /* Toggle: skjul nav-container-2 når meny er stengt */
-    .nav-container-2.hidden-menu {
-      opacity: 0; visibility: hidden; pointer-events: none;
-    }
-    .nav-container-2 {
-      transition: opacity 0.35s ease, visibility 0.35s ease;
-      will-change: opacity;
-      transform: translateZ(0);
-    }
-    /* Toggle: bytt mellom open-wrap og close-wrap */
-    .navigation__menu-btn.is-open .open-wrap { display: none; }
-    .navigation__menu-btn:not(.is-open) .close-wrap { display: none; }
-
-    @media screen and (min-width: 1440px) {
-      .nav-items { width: 60%; }
-      .navigation-text { font-size: 15px; }
-      .heading-6 .logo-1, .heading-6 .logo-2 { font-size: 40px; line-height: 30px; }
-    }
-    @media screen and (max-width: 767px) {
-      .nav-items { width: 90%; margin-top: 20px; }
-      .heading-6 .logo-1 { font-size: 22px; line-height: 30px; }
-      .heading-6 .logo-2 { font-size: 22px; line-height: 30px; margin-left: 6px; }
-      /* Floating CTA: skjul på mobil — overlapper inline-CTAs */
-      #floating-cta { display: none !important; }
-    }
-    @media screen and (max-width: 479px) {
-      .nav-items { margin-top: 20%; }
-      .navbar-2 {
-        justify-content: space-between; width: 100%;
-        margin: 0 auto; padding: 0 16px;
-      }
-      .heading-6 .logo-1 { font-size: 18px; line-height: 28px; margin-left: 0; }
-      .heading-6 .logo-2 { font-size: 18px; line-height: 28px; margin-left: 5px; }
-    }
+    /* Header: dmarketing standard-komponent */
+    .dm-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.9);backdrop-filter:saturate(160%) blur(12px);-webkit-backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid #ECEAE0;font-family:'Schibsted Grotesk',system-ui,sans-serif;}
+    .dm-header .dm-nav{max-width:1440px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 clamp(16px,4vw,40px);height:74px;}
+    .dm-header .dm-logo{display:flex;align-items:center;gap:9px;text-decoration:none;flex-shrink:0;}
+    .dm-header .dm-logo .mark{width:34px;height:34px;border-radius:9px;background:#1B34FF;color:#fff;display:flex;align-items:center;justify-content:center;font-family:Archivo,sans-serif;font-weight:800;font-size:18px;}
+    .dm-header .dm-logo .word{font-family:Archivo,sans-serif;font-weight:700;font-size:20px;letter-spacing:0.01em;text-transform:uppercase;color:#0E1116;white-space:nowrap;}
+    .dm-header .dm-logo .word b{color:#1B34FF;font-weight:700;}
+    .dm-header .dm-right{display:flex;align-items:center;gap:28px;}
+    .dm-header .dm-links{display:flex;align-items:center;gap:26px;list-style:none;margin:0;padding:0;}
+    .dm-header .dm-links a{font-size:0.95rem;font-weight:500;color:#3F4452;text-decoration:none;transition:color .15s ease;}
+    .dm-header .dm-links a:hover{color:#0E1116;}
+    .dm-header .dm-cta{display:inline-flex;align-items:center;justify-content:center;height:40px;padding:0 18px;border-radius:10px;background:#1B34FF;color:#fff;font-size:0.9rem;font-weight:600;text-decoration:none;white-space:nowrap;transition:background .15s ease;}
+    .dm-header .dm-cta:hover{background:#1226C9;}
+    .dm-header .dm-burger{display:none;background:none;border:0;cursor:pointer;padding:8px;}
+    .dm-header .dm-burger span{display:block;width:24px;height:2px;background:#0E1116;border-radius:2px;margin:5px 0;}
+    @media(max-width:820px){.dm-header .dm-links{display:none;}.dm-header .dm-burger{display:block;}}
 
     /* ---------- FERDIGE MALER (bransje-galleri) ---------- */
     .maler-section { padding: clamp(84px,12vh,168px) 0; background: #FAFAFA; border-top: 1px solid #F4F4F5; }
@@ -535,72 +380,19 @@
     </div>
   </div>
 
-  <!-- ============================================== -->
-  <!-- MENY (1:1 fra index.html — Webflow-struktur)    -->
-  <!-- ============================================== -->
-  <section class="menu-wrap">
-    <div class="navbar-2">
-      <a href="/" class="logo-link-wrapper brand-3">
-        <div class="logo-text-container">
-          <div class="heading-6">
-            <span class="logo-1">Dietrichs</span>
-            <span class="logo-2">Marketing</span>
-            <span class="sr-only">Dietrichs Marketing</span>
-          </div>
-        </div>
-      </a>
-      <button type="button" id="menu-btn" class="navigation__menu-btn" aria-label="Åpne meny">
-        <div class="open-wrap">
-          <div class="navigation-text">Meny</div>
-          <div class="hamburger">
-            <div class="hamburger-line"></div>
-            <div class="hamburger-line-4"></div>
-          </div>
-        </div>
-        <div class="close-wrap">
-          <div class="navigation-text">Lukk</div>
-          <div class="close-btn"></div>
-        </div>
-      </button>
+  <!-- ============ HEADER ============ -->
+  <header class="dm-header"><nav class="dm-nav">
+    <a class="dm-logo" href="/"><span class="mark">D</span><span class="word">Dietrichs <b>marketing</b></span></a>
+    <div class="dm-right">
+      <ul class="dm-links">
+        <li><a href="/apputvikling/">Programvareutvikling</a></li>
+        <li><a href="/ai-nettsider/">AI-nettsider</a></li>
+        <li><a href="/kontakt/">Kontakt</a></li>
+      </ul>
+      <a class="dm-cta" href="/kontakt/">Ta kontakt</a>
+      <button class="dm-burger" aria-label="Meny"><span></span><span></span><span></span></button>
     </div>
-  </section>
-
-  <!-- Meny-overlay (åpen tilstand) -->
-  <div id="menu-overlay" class="nav-container-2 hidden-menu">
-    <div class="nav__bg"></div>
-    <div class="container-4">
-      <div class="nav-items">
-        <a href="/" class="nav-item">
-          <div class="nav-item-number">01</div>
-          <div class="special-text-wrapper">
-            <div class="nav-item-text">Forside</div>
-            <div class="nav-item-text-full">Forside</div>
-          </div>
-        </a>
-        <a href="../ai-nettsider/" class="nav-item">
-          <div class="nav-item-number">02</div>
-          <div class="special-text-wrapper">
-            <div class="nav-item-text">AI-nettsider</div>
-            <div class="nav-item-text-full">AI-nettsider</div>
-          </div>
-        </a>
-        <a href="../maler/" class="nav-item">
-          <div class="nav-item-number">03</div>
-          <div class="special-text-wrapper">
-            <div class="nav-item-text">Maler</div>
-            <div class="nav-item-text-full">Maler</div>
-          </div>
-        </a>
-        <a href="../kontakt/" class="nav-item">
-          <div class="nav-item-number">04</div>
-          <div class="special-text-wrapper">
-            <div class="nav-item-text">Kontakt</div>
-            <div class="nav-item-text-full">Kontakt</div>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
+  </nav></header>
 
   <!-- ============================================== -->
   <!-- SEKSJON 1: HERO                                 -->
@@ -1381,7 +1173,7 @@
   <div id="floating-cta"
        style="position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(20px) scale(0.9); z-index:999; opacity:0; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); pointer-events:none;">
     <a href="../kontakt/"
-       style="display:inline-flex; align-items:center; gap:10px; background:#1B34FF; color:#fff; font-family:'Inter',sans-serif; font-weight:600; font-size:15px; padding:14px 24px; border-radius:999px; text-decoration:none; white-space:nowrap; box-shadow: 0 10px 25px rgba(27, 52, 255, 0.35); border: 1px solid rgba(255,255,255,0.1);">
+       style="display:inline-flex; align-items:center; gap:10px; background:#1B34FF; color:#fff; font-family:'Schibsted Grotesk',sans-serif; font-weight:600; font-size:15px; padding:14px 24px; border-radius:999px; text-decoration:none; white-space:nowrap; box-shadow: 0 10px 25px rgba(27, 52, 255, 0.35); border: 1px solid rgba(255,255,255,0.1);">
       Bestill gratis utkast
       <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
         <path d="M5 12h14M13 5l7 7-7 7"/>
@@ -1390,34 +1182,6 @@
   </div>
 
   <script>
-    // Meny toggle (Webflow-stil)
-    (function () {
-      const btn = document.getElementById('menu-btn');
-      const overlay = document.getElementById('menu-overlay');
-      if (!btn || !overlay) return;
-      const setOpen = (open) => {
-        overlay.classList.toggle('hidden-menu', !open);
-        btn.classList.toggle('is-open', open);
-        document.body.classList.toggle('menu-open', open);
-        btn.setAttribute('aria-label', open ? 'Lukk meny' : 'Åpne meny');
-        document.body.style.overflow = open ? 'hidden' : '';
-      };
-      btn.addEventListener('click', () => setOpen(overlay.classList.contains('hidden-menu')));
-      overlay.querySelectorAll('a').forEach(a => {
-        a.addEventListener('touchstart', () => a.classList.add('is-touched'), { passive: true });
-        a.addEventListener('click', (e) => {
-          const href = a.getAttribute('href');
-          const isExternal = href && !href.startsWith('#');
-          if (isExternal) {
-            e.preventDefault();
-            overlay.style.transition = 'none';
-            window.location.href = href;
-          } else {
-            setOpen(false);
-          }
-        });
-      });
-    })();
 
 
 // Floating CTA logikk (Midtstilt versjon)
