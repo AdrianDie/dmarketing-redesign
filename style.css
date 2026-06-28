@@ -594,3 +594,8 @@ html.no-preloader .preloader { display: none !important; }
 .faq summary svg { width: 20px; height: 20px; flex-shrink: 0; color: var(--cobalt); transition: transform 0.25s ease; }
 .faq[open] summary svg { transform: rotate(180deg); }
 .faq p { padding: 0 0 28px; margin: 0; color: var(--ink-soft); font-size: 1.05rem; line-height: 1.7; max-width: 70ch; }
+
+/* ---- Integrasjons-chips (sys-chip) ---- */
+.sys-chip { display: inline-flex; align-items: center; gap: 0.45em; font-size: 0.83rem; font-weight: 600; color: var(--ink-soft); background: #fff; border: 1px solid var(--line); padding: 0.5em 1em; border-radius: 999px; }
+.sys-chip--more { background: rgba(27,52,255,0.08); color: var(--cobalt); border-color: transparent; }
+.sys-logo { height: 18px; width: auto; flex: none; }
