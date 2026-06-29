@@ -125,6 +125,18 @@ button { font: inherit; cursor: pointer; }
 .btn--ghost { background: var(--card); color: var(--ink); border-color: var(--line-2); }
 .btn--ghost:hover { transform: translateY(-2px); border-color: var(--cobalt); color: var(--cobalt); box-shadow: var(--sh-1); }
 
+.btn--white {
+  background: #fff;
+  color: var(--cobalt);
+  border-color: rgba(27,52,255,0.20);
+  box-shadow: 0 6px 28px rgba(27,52,255,0.13), 0 1px 5px rgba(14,17,22,0.06);
+}
+.btn--white:hover {
+  transform: translateY(-2px) scale(1.015);
+  box-shadow: 0 14px 42px rgba(27,52,255,0.22), 0 3px 10px rgba(14,17,22,0.07);
+  border-color: rgba(27,52,255,0.38);
+}
+
 .btn--play { background: transparent; color: var(--ink); border-color: transparent; padding-left: 0.5em; }
 .btn--play:hover { color: var(--cobalt); }
 .btn__playdot {
