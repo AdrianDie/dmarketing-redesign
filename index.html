@@ -88,6 +88,13 @@ header nav a[href="kontakt/"]{height:40px !important;padding-left:18px !importan
 li:has(.css-ocean-gradient){will-change:transform;transform:translateZ(0);contain:paint;}
 /* Hint browser about scroll-reveal transitions (opacity+transform only) */
 .fade-in{will-change:opacity,transform;}
+/* Sticky header: backdrop-filter is recalculated every scroll frame.
+   Promoting to own GPU layer reduces compositor overhead. */
+header[class*="sticky"],header.sticky{will-change:transform;transform:translateZ(0);}
+/* Sections that already clip overflow: tell the browser their paint
+   is self-contained so decorative overlays don't trigger full-page
+   repaints when the compositor processes them */
+section[class*="overflow-hidden"]{contain:paint;}
 </style>
 </head>
   <body data-sveltekit-preload-data="hover"><div class="dm-pre" id="dmPre" aria-hidden="true"><div class="dm-pre-top"></div><div class="dm-pre-bottom"></div><div class="dm-pre-logo"><span class="l1">Dietrichs</span><span class="l2">marketing</span></div></div>
