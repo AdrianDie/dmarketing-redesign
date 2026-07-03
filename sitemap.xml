@@ -25,6 +25,18 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://dmarketing.no/personvern/</loc>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://dmarketing.no/gdpr/</loc>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
     <loc>https://dmarketing.no/artikler/bedrift-overst-google-lokalt-sok.html</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>monthly</changefreq>
