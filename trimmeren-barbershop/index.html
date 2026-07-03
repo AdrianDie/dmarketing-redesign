@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trimmeren Barbershop | Herreklipp og skjegg i Drammen</title>
+  <meta name="description" content="Trimmeren Barbershop på Svelvikveien i Drammen. Skarpe klipp, skjeggstell og varmt håndkle. 5,0 i snitt på Google. Book time på under ett minutt." />
+  <meta property="og:title" content="Trimmeren Barbershop | Drammen" />
+  <meta property="og:description" content="Herreklipp, skjegg og varmt håndkle på Svelvikveien i Drammen. 5,0 på Google." />
+  <meta property="og:type" content="website" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Manrope', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            gold: '#8FB6D6',
+            'gold-light': '#BCDAF0',
+            dark: '#0B0E12',
+            'dark-2': '#13171D',
+            'dark-3': '#191E25',
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <script>
+    // Enable reveal-on-scroll only when JS runs and motion is allowed.
+    // If this never runs, content stays fully visible (no opacity:0 without this class).
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('reveal-ready');
+    }
+  </script>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: #0B0E12; color: #E6EBF0; font-family: 'Inter', sans-serif; margin: 0; }
+    .font-display { font-family: 'Manrope', sans-serif; }
+    a { -webkit-tap-highlight-color: transparent; }
+
+    /* Nav */
+    .nav-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 50; padding: 0 6%; height: 66px; display: flex; align-items: center; justify-content: space-between; transition: background 0.3s, border-color 0.3s; border-bottom: 1px solid transparent; }
+    .nav-bar.scrolled { background: rgba(11,14,18,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(143,182,214,0.15); }
+    .nav-logo { font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 18px; letter-spacing: 0.14em; text-transform: uppercase; color: #8FB6D6; text-decoration: none; }
+    .nav-cta { background: #8FB6D6; color: #0B0E12; font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; padding: 11px 24px; text-decoration: none; transition: background 0.2s; border-radius: 2px; }
+    .nav-cta:hover { background: #BCDAF0; }
+    .nav-links { display: flex; gap: 34px; }
+    .nav-link { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s; font-family: 'Manrope', sans-serif; font-weight: 500; }
+    .nav-link:hover { color: #8FB6D6; }
+
+    .gold-line { width: 48px; height: 2px; background: #8FB6D6; }
+    .label { font-family: 'Manrope', sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #8FB6D6; font-weight: 600; }
+
+    /* Hero */
+    .hero { position: relative; height: 100vh; min-height: 720px; overflow: hidden; }
+    .hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; filter: grayscale(10%) contrast(1.03); }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(11,14,18,0.9) 28%, rgba(11,14,18,0.45) 72%, rgba(11,14,18,0.65) 100%); }
+
+    /* Service cards */
+    .service-card { background: #13171D; border: 1px solid rgba(255,255,255,0.06); padding: 34px 30px; transition: border-color 0.25s, transform 0.25s; position: relative; }
+    .service-card:hover { border-color: rgba(143,182,214,0.45); transform: translateY(-3px); }
+    .service-icon { width: 46px; height: 46px; border: 1px solid rgba(143,182,214,0.3); display: flex; align-items: center; justify-content: center; margin-bottom: 22px; border-radius: 2px; }
+    .service-badge { position: absolute; top: 18px; right: 18px; font-family: 'Manrope', sans-serif; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #0B0E12; background: #8FB6D6; padding: 4px 10px; border-radius: 2px; font-weight: 700; }
+
+    /* Price table */
+    .price-row { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .price-row:last-child { border-bottom: none; }
+
+    /* Gallery */
+    .gallery-img { overflow: hidden; }
+    .gallery-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease, filter 0.6s ease; filter: grayscale(25%); display: block; }
+    .gallery-img:hover img { transform: scale(1.06); filter: grayscale(0%); }
+
+    .stat-num { font-family: 'Manrope', sans-serif; font-size: 46px; font-weight: 800; color: #8FB6D6; line-height: 1; letter-spacing: -0.03em; }
+
+    .contact-card { background: #13171D; border: 1px solid rgba(255,255,255,0.07); padding: 26px 28px; border-radius: 3px; }
+
+    /* Sticky mobile book bar */
+    .mobile-book { position: fixed; bottom: 0; left: 0; right: 0; z-index: 45; background: rgba(11,14,18,0.95); backdrop-filter: blur(10px); border-top: 1px solid rgba(143,182,214,0.2); padding: 12px 16px; display: none; }
+    @media (max-width: 767px) { .mobile-book { display: block; } body { padding-bottom: 68px; } }
+
+    /* Reveal-on-scroll (self-contained, no external lib) */
+    html.reveal-ready [data-animate] { opacity: 0; transform: translateY(28px); transition: opacity 0.6s cubic-bezier(0.25,0.46,0.45,0.94), transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94); }
+    html.reveal-ready [data-animate].in { opacity: 1; transform: none; }
+    html.reveal-ready [data-stagger] > * { opacity: 0; transform: translateY(22px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    html.reveal-ready [data-stagger].in > * { opacity: 1; transform: none; }
+    html.reveal-ready [data-stagger].in > *:nth-child(2) { transition-delay: 0.1s; }
+    html.reveal-ready [data-stagger].in > *:nth-child(3) { transition-delay: 0.2s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      [data-animate], [data-stagger] > * { opacity: 1 !important; transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav-bar" id="navbar">
+  <a href="#top" class="nav-logo">Trimmeren</a>
+  <div class="nav-links hidden md:flex">
+    <a href="#tjenester" class="nav-link">Tjenester</a>
+    <a href="#priser" class="nav-link">Priser</a>
+    <a href="#galleri" class="nav-link">Galleri</a>
+    <a href="#kontakt" class="nav-link">Kontakt</a>
+  </div>
+  <a href="https://trimmerendrammen.setmore.com/" target="_blank" rel="noopener" class="nav-cta">Book time</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <img src="images/setmore/g6.webp" alt="Barberstolene hos Trimmeren Barbershop med signaturbelysning" class="hero-img" />
+  <div class="hero-overlay"></div>
+  <div class="absolute inset-0 flex items-center" style="padding: 0 6%; padding-top: 66px;">
+    <div data-animate style="max-width: 640px;">
+      <p class="label mb-6">Barbershop · Svelvikveien, Drammen</p>
+      <h1 class="font-display font-extrabold text-white mb-6" style="font-size: clamp(46px, 7vw, 90px); line-height: 0.98; letter-spacing: -0.03em;">
+        Skarp klipp.<br/><span style="color: #8FB6D6;">Hver gang.</span>
+      </h1>
+      <p class="mb-9" style="font-size: 17px; color: rgba(255,255,255,0.66); line-height: 1.7; max-width: 440px;">
+        Bygget av unge barberere med lidenskap for faget. Herreklipp, skjeggstell og varmt håndkle, midt i Drammen.
+      </p>
+      <div class="flex gap-4 flex-wrap items-center">
+        <a href="https://trimmerendrammen.setmore.com/" target="_blank" rel="noopener" class="nav-cta" style="font-size: 13px; padding: 15px 34px;">Book time nå</a>
+        <a href="#priser" style="border: 1px solid rgba(143,182,214,0.4); color: #8FB6D6; font-family: 'Manrope', sans-serif; font-weight: 600; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; padding: 15px 30px; text-decoration: none; border-radius: 2px;">Se priser</a>
+      </div>
+      <div class="mt-9 flex items-center gap-3" style="color: rgba(255,255,255,0.6); font-size: 14px;">
+        <span style="color:#8FB6D6; letter-spacing: 2px;">★★★★★</span>
+        <span><strong style="color:#fff;">5,0</strong> i snitt · 59 anmeldelser på Google</span>
+      </div>
+    </div>
+  </div>
+  <!-- Stats strip -->
+  <div class="absolute bottom-0 left-0 right-0" style="background: rgba(11,14,18,0.82); backdrop-filter: blur(10px); border-top: 1px solid rgba(143,182,214,0.15);">
+    <div class="max-w-5xl mx-auto px-6 py-6 grid grid-cols-3 gap-6 text-center">
+      <div>
+        <div class="stat-num">5,0</div>
+        <div style="font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.42); margin-top: 6px;">Snitt på Google</div>
+      </div>
+      <div>
+        <div class="stat-num">59</div>
+        <div style="font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.42); margin-top: 6px;">Anmeldelser</div>
+      </div>
+      <div>
+        <div class="stat-num">3&nbsp;min</div>
+        <div style="font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.42); margin-top: 6px;">Å booke time</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TJENESTER -->
+<section id="tjenester" class="px-6" style="background: #0B0E12; padding-top: 120px; padding-bottom: 120px;">
+  <div class="max-w-5xl mx-auto">
+    <div data-animate class="mb-16">
+      <p class="label mb-4">Hva vi tilbyr</p>
+      <div class="gold-line mb-6"></div>
+      <h2 class="font-display font-extrabold text-white" style="font-size: clamp(32px, 4vw, 48px); letter-spacing: -0.03em;">Våre tjenester</h2>
+    </div>
+    <div data-stagger class="grid md:grid-cols-3 gap-px" style="background: rgba(255,255,255,0.05);">
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#8FB6D6" stroke-width="1.5"><path d="M6 3v18M6 12h12M18 3v18"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-white mb-2" style="font-size: 19px;">Hårklipp</h3>
+        <p style="font-size: 14px; color: rgba(255,255,255,0.48); line-height: 1.7;">Klassisk eller moderne klipp tilpasset deg, med vask og styling. Vi tar oss tid til å gjøre det ordentlig.</p>
+        <div class="mt-5 flex items-baseline justify-between">
+          <span style="font-size: 13px; color: rgba(255,255,255,0.4);">40 min</span>
+          <span style="font-size: 15px; color: #8FB6D6; font-family: 'Manrope', sans-serif; font-weight: 700;">499 kr</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <span class="service-badge">Mest populær</span>
+        <div class="service-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#8FB6D6" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-white mb-2" style="font-size: 19px;">Hårklipp + skjegg</h3>
+        <p style="font-size: 14px; color: rgba(255,255,255,0.48); line-height: 1.7;">Den komplette runden. Klipp, styling og skjeggstell med forming og varmt håndkle. Du går ut klar for hva som helst.</p>
+        <div class="mt-5 flex items-baseline justify-between">
+          <span style="font-size: 13px; color: rgba(255,255,255,0.4);">1 time</span>
+          <span style="font-size: 15px; color: #8FB6D6; font-family: 'Manrope', sans-serif; font-weight: 700;">599 kr</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#8FB6D6" stroke-width="1.5"><path d="M4 6c4 0 6 2 8 2s4-2 8-2M4 6c0 6 3 10 8 12 5-2 8-6 8-12"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-white mb-2" style="font-size: 19px;">Skjeggstell</h3>
+        <p style="font-size: 14px; color: rgba(255,255,255,0.48); line-height: 1.7;">Trimming og forming som sitter, avsluttet med varmt håndkle. Rask, presis og skikkelig forfriskende.</p>
+        <div class="mt-5 flex items-baseline justify-between">
+          <span style="font-size: 13px; color: rgba(255,255,255,0.4);">20 min</span>
+          <span style="font-size: 15px; color: #8FB6D6; font-family: 'Manrope', sans-serif; font-weight: 700;">349 kr</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / PHOTO SPLIT -->
+<section style="background: #13171D;">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 items-stretch">
+    <div class="overflow-hidden" style="min-height: 520px;">
+      <img src="images/setmore/g7.webp" alt="Barberstang og stol med panoramautsikt hos Trimmeren" class="w-full h-full object-cover" style="filter: grayscale(15%);" />
+    </div>
+    <div data-animate class="flex flex-col justify-center px-10 md:px-14 py-20">
+      <p class="label mb-4">Om oss</p>
+      <div class="gold-line mb-6"></div>
+      <h2 class="font-display font-extrabold text-white mb-6" style="font-size: clamp(28px, 3.5vw, 42px); letter-spacing: -0.03em; line-height: 1.15;">Faget vårt,<br/>gjort ordentlig.</h2>
+      <p style="font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.85; margin-bottom: 22px;">Trimmeren Barbershop er bygget av unge barberere og entreprenører med ekte lidenskap for faget. Hos oss handler det om mer enn et klipp: god stemning, kvalitet og at du går ut og føler deg skikkelig bra.</p>
+      <p style="font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.85; margin-bottom: 34px;">Kundene kommer tilbake fordi klippet holder seg, uke etter uke. Det er sånn vi vil ha det.</p>
+      <div class="grid grid-cols-2 gap-6">
+        <div>
+          <div class="stat-num" style="font-size: 34px;">5,0 ★</div>
+          <div style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.38); margin-top: 6px;">Snitt på Google</div>
+        </div>
+        <div>
+          <div class="stat-num" style="font-size: 34px;">Drammen</div>
+          <div style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.38); margin-top: 6px;">Svelvikveien 61d</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRISER -->
+<section id="priser" class="px-6" style="background: #0B0E12; padding-top: 120px; padding-bottom: 120px;">
+  <div class="max-w-3xl mx-auto">
+    <div data-animate class="text-center mb-14">
+      <p class="label mb-4">Enkle, tydelige priser</p>
+      <div class="gold-line mx-auto mb-6"></div>
+      <h2 class="font-display font-extrabold text-white" style="font-size: clamp(28px, 4vw, 44px); letter-spacing: -0.03em;">Prisliste</h2>
+    </div>
+    <div data-animate style="background:#13171D; border:1px solid rgba(255,255,255,0.07); border-radius:4px; padding: 12px 28px;">
+      <div class="price-row">
+        <div>
+          <p class="font-display font-semibold text-white" style="font-size:16px;">Hårklipp</p>
+          <p style="font-size:12px;color:rgba(255,255,255,0.38);">Klipp, vask og styling · 40 min</p>
+        </div>
+        <p class="font-display font-bold" style="color:#8FB6D6;font-size:17px;">499 kr</p>
+      </div>
+      <div class="price-row" style="background: rgba(143,182,214,0.05); margin: 0 -28px; padding: 18px 28px; border-top:1px solid rgba(143,182,214,0.18); border-bottom:1px solid rgba(143,182,214,0.18);">
+        <div>
+          <p class="font-display font-bold text-white" style="font-size:16px;">Hårklipp + skjegg <span style="color:#8FB6D6;">★</span></p>
+          <p style="font-size:12px;color:rgba(255,255,255,0.38);">Klipp, styling og skjegg med varmt håndkle · 1 time</p>
+        </div>
+        <p class="font-display font-bold" style="color:#8FB6D6;font-size:19px;">599 kr</p>
+      </div>
+      <div class="price-row">
+        <div>
+          <p class="font-display font-semibold text-white" style="font-size:16px;">Skjeggstell</p>
+          <p style="font-size:12px;color:rgba(255,255,255,0.38);">Trim, forming og varmt håndkle · 20 min</p>
+        </div>
+        <p class="font-display font-bold" style="color:#8FB6D6;font-size:17px;">349 kr</p>
+      </div>
+    </div>
+    <p class="text-center" style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:18px;line-height:1.7;">Avbestilling senest 24 timer før timen. Ved sen avbestilling eller manglende oppmøte belastes 50 % av prisen.</p>
+    <div class="text-center mt-10" data-animate>
+      <a href="https://trimmerendrammen.setmore.com/" target="_blank" rel="noopener" class="nav-cta" style="font-size:13px;padding:15px 40px;">Book time nå</a>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERI -->
+<section id="galleri" class="px-6" style="background: #13171D; padding-top: 120px; padding-bottom: 120px;">
+  <div class="max-w-6xl mx-auto">
+    <div data-animate class="text-center mb-14">
+      <p class="label mb-4">Vårt arbeid</p>
+      <div class="gold-line mx-auto mb-6"></div>
+      <h2 class="font-display font-extrabold text-white" style="font-size: clamp(28px, 4vw, 44px); letter-spacing: -0.03em;">Galleri</h2>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+      <div class="gallery-img" style="aspect-ratio:3/4;">
+        <img src="images/setmore/g2.webp" alt="Lokalet hos Trimmeren med hexagon-belysning" loading="lazy" />
+      </div>
+      <div class="gallery-img" style="aspect-ratio:3/4; margin-top:44px;">
+        <img src="images/setmore/g5.webp" alt="Loungeområdet hos Trimmeren" loading="lazy" />
+      </div>
+      <div class="gallery-img" style="aspect-ratio:3/4;">
+        <img src="images/setmore/g1.webp" alt="Trimmeren-logo og sitteområde" loading="lazy" />
+      </div>
+      <div class="gallery-img" style="aspect-ratio:3/4; margin-top:44px;">
+        <img src="images/setmore/g3.webp" alt="Trimmeren Barbershop fasade i Drammen" loading="lazy" />
+      </div>
+    </div>
+    <p class="text-center" style="font-size:13px;color:rgba(255,255,255,0.4);margin-top:26px;">Følg oss på <a href="https://www.instagram.com/trimmerenbarbershop_drammen/" target="_blank" rel="noopener" style="color:#8FB6D6;text-decoration:none;">Instagram</a> for ferske klipp.</p>
+  </div>
+</section>
+
+<!-- ANMELDELSER -->
+<section class="px-6" style="background: #0B0E12; padding-top: 100px; padding-bottom: 100px;">
+  <div class="max-w-5xl mx-auto">
+    <div data-animate class="text-center mb-14">
+      <p class="label mb-4">Hva kundene sier</p>
+      <div class="gold-line mx-auto mb-6"></div>
+      <h2 class="font-display font-extrabold text-white" style="font-size: clamp(26px, 3.5vw, 40px); letter-spacing: -0.03em;">5,0 av 5 på Google</h2>
+    </div>
+    <div data-stagger class="grid md:grid-cols-3 gap-6">
+      <div style="border:1px solid rgba(255,255,255,0.07);padding:28px;background:#13171D;border-radius:3px;">
+        <div style="color:#8FB6D6;font-size:14px;letter-spacing:2px;margin-bottom:16px;">★★★★★</div>
+        <p style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.75;margin-bottom:20px;">"Første gang jeg var her. Veldig fornøyd med kundeservicen og anbefalingene dem kom med. Definitivt beste lokalet jeg har vært på. Kommer til å fortsette å klippe hos dem."</p>
+        <p class="font-display font-semibold text-white" style="font-size:13px;">Mithun A.</p>
+      </div>
+      <div style="border:1px solid rgba(143,182,214,0.25);padding:28px;background:#13171D;border-radius:3px;">
+        <div style="color:#8FB6D6;font-size:14px;letter-spacing:2px;margin-bottom:16px;">★★★★★</div>
+        <p style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.75;margin-bottom:20px;">"Jeg går jevnlig til Tunahan og er superfornøyd. Frisyren er ikke fin i bare noen dager, men holder seg bra i mange uker. Anbefaler sterkt."</p>
+        <p class="font-display font-semibold text-white" style="font-size:13px;">Sander L.</p>
+      </div>
+      <div style="border:1px solid rgba(255,255,255,0.07);padding:28px;background:#13171D;border-radius:3px;">
+        <div style="color:#8FB6D6;font-size:14px;letter-spacing:2px;margin-bottom:16px;">★★★★★</div>
+        <p style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.75;margin-bottom:20px;">"Veldig flink frisør. Jeg ble tatt godt imot og er meget fornøyd med klippet."</p>
+        <p class="font-display font-semibold text-white" style="font-size:13px;">Ahmet O.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT / BOOK -->
+<section id="kontakt" class="px-6" style="background: #13171D; padding-top: 110px; padding-bottom: 110px; border-top: 1px solid rgba(143,182,214,0.1);">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-14 items-center">
+    <div data-animate>
+      <p class="label mb-4">Ta kontakt</p>
+      <div class="gold-line mb-6"></div>
+      <h2 class="font-display font-extrabold text-white mb-4" style="font-size: clamp(30px, 4vw, 48px); letter-spacing: -0.03em; line-height:1.1;">Klar for en ny klipp?</h2>
+      <p style="font-size:16px;color:rgba(255,255,255,0.5);margin-bottom:32px;line-height:1.7;">Book enkelt på nett, det tar under ett minutt. Eller ta en telefon, så finner vi en tid som passer.</p>
+      <div class="flex flex-col sm:flex-row gap-4 mb-10">
+        <a href="https://trimmerendrammen.setmore.com/" target="_blank" rel="noopener" class="nav-cta" style="font-size:13px;padding:16px 34px; text-align:center;">Book time på nett</a>
+        <a href="tel:+4790957994" style="border:1px solid rgba(143,182,214,0.4);color:#8FB6D6;font-family:'Manrope',sans-serif;font-weight:600;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;padding:16px 30px;text-decoration:none;border-radius:2px;text-align:center;">Ring 90 95 79 94</a>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="contact-card">
+          <p class="label mb-2" style="font-size:10px;">Adresse</p>
+          <p style="font-size:14px;color:rgba(255,255,255,0.7);line-height:1.6;">Svelvikveien 61d<br/>3039 Drammen</p>
+        </div>
+        <div class="contact-card">
+          <p class="label mb-2" style="font-size:10px;">Kontakt</p>
+          <p style="font-size:14px;color:rgba(255,255,255,0.7);line-height:1.7;">90 95 79 94<br/><a href="mailto:trimmerendrammen@gmail.com" style="color:rgba(255,255,255,0.7);text-decoration:none;">trimmerendrammen@gmail.com</a></p>
+        </div>
+      </div>
+      <div class="flex gap-5 mt-6">
+        <a href="https://www.instagram.com/trimmerenbarbershop_drammen/" target="_blank" rel="noopener" class="nav-link">Instagram</a>
+        <a href="https://www.tiktok.com/@trimmernbarbershop" target="_blank" rel="noopener" class="nav-link">TikTok</a>
+      </div>
+    </div>
+    <div data-animate style="border:1px solid rgba(255,255,255,0.08); border-radius:4px; overflow:hidden; min-height:380px; height:100%;">
+      <iframe
+        title="Kart til Trimmeren Barbershop"
+        src="https://maps.google.com/maps?q=Svelvikveien%2061d%203039%20Drammen&z=15&output=embed"
+        style="width:100%; height:100%; min-height:380px; border:0; filter: grayscale(0.3) invert(0.9) hue-rotate(180deg);"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#080A0D;border-top:1px solid rgba(255,255,255,0.05);padding:40px 6%;">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+    <a href="#top" class="nav-logo">Trimmeren</a>
+    <p style="font-size:12px;color:rgba(255,255,255,0.28);letter-spacing:0.05em;">© 2026 Trimmeren Barbershop · Svelvikveien 61d, Drammen</p>
+    <div style="display:flex;gap:22px;">
+      <a href="#tjenester" class="nav-link">Tjenester</a>
+      <a href="#priser" class="nav-link">Priser</a>
+      <a href="#kontakt" class="nav-link">Kontakt</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Sticky mobile book bar -->
+<div class="mobile-book">
+  <a href="https://trimmerendrammen.setmore.com/" target="_blank" rel="noopener" class="nav-cta" style="display:block;text-align:center;font-size:13px;padding:14px;">Book time nå</a>
+</div>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Reveal-on-scroll via IntersectionObserver (no external dependency)
+  if (document.documentElement.classList.contains('reveal-ready')) {
+    const els = document.querySelectorAll('[data-animate], [data-stagger]');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      els.forEach((el) => io.observe(el));
+    } else {
+      els.forEach((el) => el.classList.add('in'));
+    }
+  }
+</script>
+</body>
+</html>
