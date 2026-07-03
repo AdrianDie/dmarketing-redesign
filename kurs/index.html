@@ -161,9 +161,10 @@
             melding: 'Kursdeltaker vil vite mer om Voltio-chatboten.'
           })
         }).then(function(res) { return res.json(); }).then(function(data) {
+          if (String(data.success) === 'false') throw new Error(data.message || 'FormSubmit-feil');
           visSendt(btn);
         }).catch(function() {
-          visSendt(btn);
+          visFeil(btn);
         });
       }
 
@@ -171,6 +172,13 @@
         btn.textContent = 'Sendt! Vi tar kontakt ✓';
         btn.classList.remove('bg-white', 'text-[#0B1F4A]', 'hover:bg-blue-50');
         btn.classList.add('bg-emerald-500', 'text-white');
+      }
+
+      function visFeil(btn) {
+        btn.disabled = false;
+        btn.textContent = 'Noe gikk galt — prøv igjen, eller send e-post til adrian@dmarketing.no';
+        btn.classList.remove('bg-white', 'text-[#0B1F4A]', 'hover:bg-blue-50');
+        btn.classList.add('bg-red-500', 'text-white');
       }
       </script>
 
