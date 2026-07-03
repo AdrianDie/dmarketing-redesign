@@ -72,7 +72,7 @@
     <div id="viewError" style="display:none;" class="text-center">
       <div class="text-5xl mb-4">⚠️</div>
       <h2 class="font-display font-bold text-2xl text-ink mb-2">Ugyldig lenke</h2>
-      <p class="text-zinc-500 text-sm">Lenken er ugyldig eller utløpt.<br>
+      <p class="text-zinc-500 text-sm"><span id="errorDetail">Lenken er ugyldig eller utløpt.</span><br>
         Kontakt <a href="mailto:adrian@dmarketing.no" class="underline">adrian@dmarketing.no</a>.
       </p>
     </div>
@@ -105,6 +105,9 @@
       .then(function(r) { return r.json(); })
       .then(function(data) {
         if (!data.ok) {
+          if (data.error) {
+            document.getElementById('errorDetail').textContent = data.error;
+          }
           document.getElementById('viewForm').style.display = 'none';
           document.getElementById('viewError').style.display = 'block';
           return;
