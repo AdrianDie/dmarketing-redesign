@@ -42,8 +42,10 @@
     .dm-header .dm-links{display:flex;align-items:center;gap:26px;list-style:none;margin:0;padding:0;}
     .dm-header .dm-links a{font-size:0.95rem;font-weight:500;color:#3F4452;text-decoration:none;transition:color .15s ease;position:relative;}.dm-header .dm-links a::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:100%;background:#1B34FF;transform:scaleX(0);transform-origin:left center;transition:transform .4s cubic-bezier(.16,1,.3,1);}.dm-header .dm-links a:hover::after{transform:scaleX(1);}
     .dm-header .dm-links a:hover{color:#0E1116;}
-    .dm-header .dm-cta{display:inline-flex;align-items:center;justify-content:center;height:40px;padding:0 18px;border-radius:10px;background:#1B34FF;color:#fff;font-size:0.9rem;font-weight:600;text-decoration:none;white-space:nowrap;transition:background .15s ease;}
-    .dm-header .dm-cta:hover{background:#1226C9;}
+    .dm-header .dm-cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:40px;padding:0 20px;border-radius:10px;background:#1B34FF;color:#fff;font-size:0.9rem;font-weight:600;text-decoration:none;white-space:nowrap;box-shadow:0 6px 18px rgba(27,52,255,0.28),0 1px 3px rgba(14,17,22,0.08);transition:background .2s ease,transform .25s cubic-bezier(.16,1,.3,1),box-shadow .25s cubic-bezier(.16,1,.3,1);}
+    .dm-header .dm-cta svg{width:15px;height:15px;flex-shrink:0;transition:transform .25s cubic-bezier(.16,1,.3,1);}
+    .dm-header .dm-cta:hover{background:#1226C9;transform:translateY(-2px);box-shadow:0 12px 28px rgba(27,52,255,0.38),0 2px 6px rgba(14,17,22,0.1);}
+    .dm-header .dm-cta:hover svg{transform:translateX(3px);}
     .dm-header .dm-burger{display:none;background:none;border:0;cursor:pointer;padding:8px;}
     .dm-header .dm-burger span{display:block;width:24px;height:2px;background:#0E1116;border-radius:2px;margin:5px 0;}
     @media(max-width:820px){.dm-header .dm-logo .word{display:none;}.dm-header .dm-links{display:none;}.dm-header .dm-cta{height:36px;padding:0 14px;font-size:0.84rem;}.dm-header .dm-burger{display:block;}.dm-header .dm-links.dm-nav-open{display:flex;flex-direction:column;align-items:flex-start;position:fixed;top:74px;left:0;right:0;background:rgba(255,255,255,0.98);border-bottom:1px solid #ECEAE0;padding:20px clamp(16px,4vw,40px) 24px;gap:18px;z-index:49;box-shadow:0 8px 24px rgba(0,0,0,0.08);}.dm-header .dm-links.dm-nav-open a{font-size:1.05rem;color:#0E1116;font-weight:600;}}
@@ -126,7 +128,7 @@
         <li><a href="/ai-nettsider/">AI-nettsider</a></li>
         
       </ul>
-      <a class="dm-cta" href="/kontakt/">Ta kontakt</a>
+      <a class="dm-cta" href="/kontakt/">Ta kontakt<svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       <button class="dm-burger" aria-label="Meny"><span></span><span></span><span></span></button>
     </div>
   </nav></header>
@@ -150,17 +152,57 @@
           </h1>
           <p class="hero__lead" data-reveal>
             Vi bygger apper, verktøy og systemer som automatiserer prosesser
-            og kutter kostnader. Fra idé til ferdig produkt — skreddersydd
+            og kutter kostnader: fra idé til ferdig produkt, skreddersydd
             for din bedrift.
           </p>
           <div class="hero__actions" data-reveal>
-            <a class="btn btn--white btn--lg" href="#kontakt">
+            <a class="btn btn--solid" href="#kontakt">
               Ta kontakt
               <svg class="btn__arrow" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
           </div>
         </div>
 
+        <div class="hero__demo" data-reveal>
+          <div class="demo-card">
+            <div class="demo-card__bar">
+              <span class="demo-card__dot"></span>
+              <span class="demo-card__title">Eksempel: prosess vi har automatisert</span>
+            </div>
+            <div class="demo-chat" id="heroScenes" aria-hidden="true">
+              <div class="scene" data-scene="1">
+                <div class="bubble bubble--user">Vi bruker fortsatt Excel-ark og papirskjema som må føres inn manuelt etterpå.</div>
+                <ul class="actions">
+                  <li class="action"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Bygget skjema med automatisk validering</li>
+                  <li class="action"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Genererte rapport direkte fra dataene <span class="action__sys">automatisk</span></li>
+                  <li class="action"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Sendt videre uten manuelt arbeid</li>
+                </ul>
+                <div class="bubble bubble--sent">
+                  <span class="bubble__who bubble__who--ok"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Ferdig automatisert</span>
+                  Det som tok timer med manuelt arbeid, tar nå sekunder, uten at noen må huske å gjøre det.
+                </div>
+              </div>
+
+              <div class="scene" data-scene="2">
+                <div class="bubble bubble--user">Vi mangler oversikt over status på tvers av team og systemer.</div>
+                <ul class="actions">
+                  <li class="action"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Koblet sammen systemer som ikke snakket sammen</li>
+                  <li class="action"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Bygget dashboard med status i sanntid <span class="action__sys">live</span></li>
+                </ul>
+                <div class="bubble bubble--sent">
+                  <span class="bubble__who bubble__who--ok"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Full oversikt</span>
+                  Alle ser samme bilde, oppdatert automatisk, uten at noen må sende status manuelt.
+                </div>
+              </div>
+            </div>
+            <div class="demo-card__input" aria-hidden="true">
+              <span>Hva kan vi bygge for deg?</span>
+              <span class="demo-card__send">
+                <svg viewBox="0 0 24 24" width="16" height="16"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 

@@ -199,11 +199,11 @@ button { font: inherit; cursor: pointer; }
 .hero { position: relative; padding-top: clamp(3.5rem, 2rem + 5vw, 6rem); padding-bottom: var(--section-y); }
 .hero__grid {
   position: relative; z-index: 1;
-  display: grid; grid-template-columns: 1.05fr 0.95fr;
+  display: grid; grid-template-columns: 1.25fr 0.85fr;
   gap: clamp(3rem, 1.5rem + 5vw, 6.5rem); align-items: center;
 }
-.hero__title { font-size: var(--fs-4); font-weight: 820; margin-block: 0.6rem 1.7rem; max-width: 14ch; }
-.hero__lead { font-size: var(--fs-1); color: var(--ink-soft); max-width: 46ch; line-height: 1.55; }
+.hero__title { font-size: var(--fs-4); font-weight: 820; margin-block: 0.6rem 1.7rem; max-width: 17ch; }
+.hero__lead { font-size: var(--fs-1); color: var(--ink-soft); max-width: 50ch; line-height: 1.55; }
 .hero__actions { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 2.4rem; }
 .hero__trust { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 0.6rem 1.6rem; margin-top: 2.6rem; color: var(--muted); font-size: var(--fs--1); font-weight: 560; }
 .hero__trust li { display: flex; align-items: center; gap: 0.45rem; }
