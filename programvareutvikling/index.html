@@ -164,43 +164,53 @@
         </div>
 
         <div class="hero__demo" data-reveal>
-          <div class="demo-card">
-            <div class="demo-card__bar">
-              <span class="demo-card__dot"></span>
-              <span class="demo-card__title">Eksempel: prosess vi har automatisert</span>
-            </div>
-            <div class="demo-chat" id="heroScenes" aria-hidden="true">
-              <div class="scene" data-scene="1">
-                <div class="bubble bubble--user">Vi bruker fortsatt Excel-ark og papirskjema som må føres inn manuelt etterpå.</div>
-                <ul class="actions">
-                  <li class="action"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Bygget skjema med automatisk validering</li>
-                  <li class="action"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Genererte rapport direkte fra dataene <span class="action__sys">automatisk</span></li>
-                  <li class="action"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Sendt videre uten manuelt arbeid</li>
-                </ul>
-                <div class="bubble bubble--sent">
-                  <span class="bubble__who bubble__who--ok"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Ferdig automatisert</span>
-                  Det som tok timer med manuelt arbeid, tar nå sekunder, uten at noen må huske å gjøre det.
-                </div>
-              </div>
+          <div class="diagram" aria-hidden="true">
+            <div class="diagram__node diagram__node--dark">Oppgave kommer inn</div>
+            <span class="diagram__connector"></span>
 
-              <div class="scene" data-scene="2">
-                <div class="bubble bubble--user">Vi mangler oversikt over status på tvers av team og systemer.</div>
-                <ul class="actions">
-                  <li class="action"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Koblet sammen systemer som ikke snakket sammen</li>
-                  <li class="action"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Bygget dashboard med status i sanntid <span class="action__sys">live</span></li>
-                </ul>
-                <div class="bubble bubble--sent">
-                  <span class="bubble__who bubble__who--ok"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Full oversikt</span>
-                  Alle ser samme bilde, oppdatert automatisk, uten at noen må sende status manuelt.
-                </div>
+            <div class="diagram__panel">
+              <h4>Skreddersydd for din bedrift</h4>
+              <div class="diagram__item">
+                <span class="diagram-icon"><svg viewBox="0 0 24 24" width="14" height="14"><path d="M4 7h16M4 12h16M4 17h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+                Dine rutiner og din tone
+              </div>
+              <div class="diagram__item">
+                <span class="diagram-icon"><svg viewBox="0 0 24 24" width="14" height="14"><rect x="3" y="3" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="14" y="3" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="3" y="14" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="14" y="14" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
+                Full oversikt over systemene dine
+              </div>
+              <div class="diagram__item">
+                <span class="diagram-icon"><svg viewBox="0 0 24 24" width="14" height="14"><rect x="5" y="2" width="14" height="20" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 8h6M9 12h6M9 16h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+                Dine regler for hva som skal automatiseres
               </div>
             </div>
-            <div class="demo-card__input" aria-hidden="true">
-              <span>Hva kan vi bygge for deg?</span>
-              <span class="demo-card__send">
-                <svg viewBox="0 0 24 24" width="16" height="16"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
+
+            <span class="diagram__connector diagram__connector--both"></span>
+
+            <div class="diagram__core">
+              <div class="diagram__core-ring">
+                <img src="/assets/ms-icon-256x256.png" alt="" width="38" height="38">
+              </div>
+              <span class="diagram__core-label">Automatiseringsmotoren</span>
             </div>
+
+            <span class="diagram__connector diagram__connector--both"></span>
+
+            <div class="diagram__panel">
+              <h4>Dypt integrert med systemene dine</h4>
+              <div class="diagram__item">
+                <span class="diagram-icon"><svg viewBox="0 0 24 24" width="14" height="14"><rect x="3" y="8" width="8" height="8" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><rect x="13" y="8" width="8" height="8" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 12h2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+                Sømløse integrasjoner
+              </div>
+              <div class="diagram__item">
+                <span class="diagram-icon"><svg viewBox="0 0 24 24" width="14" height="14"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z" fill="currentColor"/></svg></span>
+                Skreddersydde automatiseringer
+              </div>
+            </div>
+
+            <span class="diagram__connector"></span>
+            <div class="diagram__node">Grundig kvalitetssikring</div>
+            <span class="diagram__connector"></span>
+            <div class="diagram__node diagram__node--dark">Utfører oppgaven og svarer i din stemme</div>
           </div>
         </div>
       </div>
