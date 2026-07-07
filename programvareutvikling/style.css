@@ -209,8 +209,51 @@ button { font: inherit; cursor: pointer; }
 .hero__trust li { display: flex; align-items: center; gap: 0.45rem; }
 .hero__trust li::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
 
-/* Hero demo card */
+/* Hero diagram: how the automation flows through us */
 .hero__demo { position: relative; }
+.diagram { display: flex; flex-direction: column; align-items: center; gap: 0; max-width: 430px; margin-inline: auto; }
+
+.diagram__node {
+  width: 100%; text-align: center; background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--r); padding: 0.75rem 1.2rem; font-size: var(--fs--1); font-weight: 640;
+  color: var(--ink-soft); box-shadow: var(--sh-1);
+}
+.diagram__node--dark { background: var(--ink); border-color: var(--ink); color: #fff; }
+
+.diagram__connector { width: 2px; height: 24px; border-left: 2px dashed var(--cobalt-tint-2); position: relative; }
+.diagram__connector::after {
+  content: ""; position: absolute; left: -4px; bottom: -1px;
+  border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 6px solid var(--cobalt-tint-2);
+}
+.diagram__connector--both::before {
+  content: ""; position: absolute; left: -4px; top: -1px;
+  border-left: 4px solid transparent; border-right: 4px solid transparent; border-bottom: 6px solid var(--cobalt-tint-2);
+}
+
+.diagram__panel {
+  width: 100%; background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--r-lg);
+  padding: 1.1rem 1.3rem; display: flex; flex-direction: column; gap: 0.65rem;
+}
+.diagram__panel h4 { font-size: var(--fs--1); font-weight: 720; color: var(--ink); }
+.diagram__item {
+  display: flex; align-items: center; gap: 0.6rem; background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--r-sm); padding: 0.5rem 0.75rem; font-size: 0.85rem; font-weight: 560; color: var(--ink-soft);
+}
+.diagram-icon {
+  display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 8px;
+  background: var(--cobalt-tint); color: var(--cobalt); flex: none;
+}
+
+.diagram__core { display: flex; flex-direction: column; align-items: center; gap: 0.55rem; padding: 0.3rem 0; }
+.diagram__core-ring {
+  position: relative; width: 82px; height: 82px; border-radius: 50%;
+  background: #fff; border: 1px solid var(--line); box-shadow: var(--sh-2);
+  display: grid; place-items: center;
+}
+.diagram__core-ring::before { content: ""; position: absolute; inset: -8px; border-radius: 50%; border: 1.5px dashed var(--cobalt-tint-2); }
+.diagram__core-label { font-size: var(--fs--1); font-weight: 640; color: var(--ink-soft); }
+
+/* Legacy hero demo card (currently unused, kept for reuse) */
 .scene { display: flex; flex-direction: column; gap: 0.8rem; }
 .demo-card {
   position: relative; z-index: 2;
