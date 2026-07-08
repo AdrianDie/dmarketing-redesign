@@ -1,7 +1,11 @@
 name: Mirror molinettbarbers.no
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - claude/mirror-molinett-barbers-mf2s80
+    paths:
+      - '.github/workflows/mirror-molinett.yml'
 
 permissions:
   contents: write
