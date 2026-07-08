@@ -19,7 +19,7 @@ jobs:
         with:
           ref: ${{ github.ref_name }}
 
-      - name: Mirror site
+      - name: Mirror site shell (HTML/JS/CSS)
         run: |
           rm -rf molinett-barbers
           mkdir -p molinett-barbers
@@ -31,6 +31,29 @@ jobs:
                --no-parent \
                --directory-prefix=molinett-barbers \
                https://www.molinettbarbers.no/ || true
+
+      - name: Fetch images referenced by the JS bundle (not linked in static HTML)
+        run: |
+          mkdir -p molinett-barbers/images
+          for f in \
+            3ae320f2-3cb5-49de-bd37-d150c35b9c84.jpg \
+            5eb484f6-bb85-4acc-abab-a707cb923fa0.jpg \
+            customer-gallery-1.png \
+            customer-gallery-2.png \
+            customer-gallery-3.png \
+            customer-gallery-4.png \
+            customer-gallery-5.png \
+            customer-gallery-6.png \
+            felix-molinett.png \
+            molinett-barber-at-work.png \
+            molinett-logo-hero.png \
+            molinett-logo-transparent.png \
+            molinett-logo.png \
+            shop-lounge-seating.png \
+            shop-wash-station.png \
+          ; do
+            wget -q -P molinett-barbers/images "https://www.molinettbarbers.no/images/$f" || echo "FEIL: $f"
+          done
           find molinett-barbers -type f | sort
 
       - name: Commit mirrored files
@@ -38,5 +61,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A molinett-barbers
-          git commit -m "Speil molinettbarbers.no inn i molinett-barbers/" || echo "Ingen endringer"
+          git commit -m "Speil molinettbarbers.no inn i molinett-barbers/ (inkl. bilder)" || echo "Ingen endringer"
           git push origin HEAD:${{ github.ref_name }}
