@@ -1,0 +1,38 @@
+name: Mirror molinettbarbers.no
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+
+      - name: Mirror site
+        run: |
+          rm -rf molinett-barbers
+          mkdir -p molinett-barbers
+          wget --mirror \
+               --page-requisites \
+               --adjust-extension \
+               --convert-links \
+               --no-host-directories \
+               --no-parent \
+               --directory-prefix=molinett-barbers \
+               https://www.molinettbarbers.no/ || true
+          find molinett-barbers -type f | sort
+
+      - name: Commit mirrored files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A molinett-barbers
+          git commit -m "Speil molinettbarbers.no inn i molinett-barbers/" || echo "Ingen endringer"
+          git push origin HEAD:${{ github.ref_name }}
