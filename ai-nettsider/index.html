@@ -435,6 +435,20 @@
 .dm-fs-cta:hover{transform:translateY(-2px) scale(1.025);
   box-shadow:0 14px 44px rgba(255,255,255,0.32),0 4px 16px rgba(0,0,0,0.20);}
 .dm-fs-cta svg{width:18px;height:18px;flex-shrink:0;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;fill:none;}
+
+    /* ---------- FAQ (accordion) ---------- */
+    .faq-list { max-width: 780px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid #E7E4D8; }
+    .faq-item:first-child { border-top: 1px solid #E7E4D8; }
+    .faq-q { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; text-align: left; background: none; border: 0; cursor: pointer; padding: 26px 4px; font-family: 'neue-haas-grotesk-display','neue-haas-grotesk-text',sans-serif; font-weight: 600; font-size: clamp(1.05rem,2.2vw,1.3rem); letter-spacing: -0.01em; line-height: 1.35; color: #0E1116; transition: color .18s ease; }
+    .faq-q:hover { color: #1B34FF; }
+    .faq-icon { flex-shrink: 0; width: 22px; height: 22px; position: relative; }
+    .faq-icon::before, .faq-icon::after { content: ''; position: absolute; top: 50%; left: 50%; background: #1B34FF; border-radius: 2px; transition: transform .25s cubic-bezier(.16,1,.3,1); }
+    .faq-icon::before { width: 14px; height: 2px; transform: translate(-50%,-50%); }
+    .faq-icon::after { width: 2px; height: 14px; transform: translate(-50%,-50%); }
+    .faq-item.open .faq-icon::after { transform: translate(-50%,-50%) scaleY(0); }
+    .faq-a { overflow: hidden; max-height: 0; transition: max-height .32s cubic-bezier(.16,1,.3,1); }
+    .faq-a-inner { padding: 0 4px 26px; color: #5F6169; font-size: 1.02rem; line-height: 1.7; max-width: 64ch; }
 </style>
 
     <link rel="preconnect" href="https://use.typekit.net" crossorigin />
@@ -1041,6 +1055,105 @@
   </section>
 
   <!-- ============================================== -->
+  <!-- SEKSJON 6.5: OFTE STILTE SPØRSMÅL (FAQ)         -->
+  <!-- ============================================== -->
+  <section id="faq" class="py-32 md:py-48 px-6 bg-[#FCFBF7] border-t border-zinc-100">
+    <div class="max-w-3xl mx-auto">
+
+      <div data-animate class="text-center mb-14 md:mb-20">
+        <p class="text-sm font-semibold tracking-widest uppercase text-blue-600 mb-4">Spørsmål &amp; svar</p>
+        <h2 class="font-display font-extrabold text-3xl md:text-4xl tracking-[-0.02em] text-[#0E1116] leading-[1.1]">
+          Ofte stilte spørsmål
+        </h2>
+      </div>
+
+      <div class="faq-list" data-animate>
+
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            <span>Hva er inkludert i engangsbetalingen?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
+            Hele nettsiden, alle filer og design, ferdig satt opp og publisert på ditt eget domene, pluss tilgang til et kort kurs som lærer deg å styre og endre siden selv. Én betaling, uten bindinger.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            <span>Er det noen løpende kostnader?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
+            Nei, ingen løpende kostnader til oss for hosting eller vedlikehold. Siden kjører på gratis, driftssikker hosting (samme infrastruktur som store teknologiselskaper bruker). Det eneste du fortsatt betaler for, er fornyelsen av ditt eget domene, noe du uansett betaler for i dag.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            <span>Hvordan kobles nettsiden til domenet mitt?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
+            Eier du domenet fra før, peker vi det bare til den nye siden ved å endre en enkel DNS-innstilling hos domeneleverandøren din. Vi guider deg gjennom det, eller gjør det sammen på en telefon. Det tar noen få minutter.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            <span>Får jeg full eierskap til nettsiden og alle filene?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
+            Ja, 100 %. Du eier hver eneste fil, og alt ligger under din egen konto. Ingenting er låst til oss.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            <span>Hvis dere slutter å tilby tjenesten, vil siden fortsette å fungere?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
+            Ja. Fordi siden ligger på din egen konto og du eier alle filene, fortsetter den å kjøre som normalt uansett. Du er aldri avhengig av oss for å være på nett.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            <span>Hvor enkelt er det å gjøre endringer selv etter kurset?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
+            Daglige endringer (tekst, priser, bilder, åpningstider) er enkelt, og kurset viser deg nøyaktig hvordan. De fleste kunder er komfortable etter å ha gått gjennom det én gang.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            <span>Kan jeg legge til nye sider eller funksjoner selv senere?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
+            Ja, du kan gjøre det selv med det du lærer i kurset. Og fordi siden er bygget på standard, åpen teknologi, ikke en låst plattform, kan du når som helst leie inn hvem du vil for større endringer. Du er aldri bundet til oss.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            <span>Hva er den største forskjellen på lang sikt?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
+            Du betaler én gang, du eier alt, det er ingen løpende avgifter til oss, og du blir aldri låst inne, i motsetning til de fleste abonnementsbaserte løsninger.
+          </div></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================== -->
   <!-- SEKSJON 7: SISTE MULIGHET (footer-CTA)          -->
   <!-- ============================================== -->
   <section id="signup" class="dot-grid-dark bg-[#0B1F4A] text-white py-32 md:py-48 px-6">
@@ -1157,6 +1270,29 @@
         });
       }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
       document.querySelectorAll('[data-animate],[data-stagger]').forEach(el => io.observe(el));
+    })();
+
+    // FAQ-accordion — kun ett åpent felt om gangen
+    (function () {
+      const items = Array.from(document.querySelectorAll('.faq-item'));
+      if (!items.length) return;
+      items.forEach(item => {
+        const btn = item.querySelector('.faq-q');
+        const panel = item.querySelector('.faq-a');
+        btn.addEventListener('click', function () {
+          const isOpen = item.classList.contains('open');
+          items.forEach(other => {
+            other.classList.remove('open');
+            other.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+            other.querySelector('.faq-a').style.maxHeight = null;
+          });
+          if (!isOpen) {
+            item.classList.add('open');
+            btn.setAttribute('aria-expanded', 'true');
+            panel.style.maxHeight = panel.scrollHeight + 'px';
+          }
+        });
+      });
     })();
   </script>
 
