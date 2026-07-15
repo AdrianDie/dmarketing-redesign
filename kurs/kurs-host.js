@@ -78,6 +78,11 @@
   document.head.appendChild(style);
 
   function getHost() {
+    var h = (location.hash || '').replace('#', '');
+    if (h === 'cloudflare' || h === 'github') {
+      localStorage.setItem(HOST_KEY, h);
+      return h;
+    }
     return localStorage.getItem(HOST_KEY) || 'github';
   }
 
