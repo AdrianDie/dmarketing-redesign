@@ -13,6 +13,7 @@
   <link href="../../assets/ms-icon-256x256.png" rel="shortcut icon" type="image/x-icon" />
   <script src="/kurs/auth.js"></script>
   <script src="/kurs/kurs-track.js"></script>
+  <script src="/kurs/kurs-host.js?v=2"></script>
   <script src="/kurs/kurs-progress.js" defer></script>
   <style>
     body { font-family: 'Inter', sans-serif; background: #FAFAFA; color: #09090B; }
@@ -67,7 +68,11 @@
   <article class="px-6 py-12 md:py-16">
     <div class="max-w-4xl mx-auto prose-custom">
 
-      <p>Det meste skjer automatisk — men du må sende endringen til GitHub <em>én gang</em> etter at du er ferdig. Deretter publiserer GitHub Pages siden på egen hånd. Møter du et ord du ikke kjenner, kan du alltid slå det opp i <a href="../ordliste" class="text-blue-600 underline">ordlisten</a>.</p>
+      <p>Det meste skjer automatisk — men du må sende endringen til GitHub <em>én gang</em> etter at du er ferdig. Deretter publiserer løsningen siden på egen hånd. Møter du et ord du ikke kjenner, kan du alltid slå det opp i <a href="../ordliste" class="text-blue-600 underline">ordlisten</a>.</p>
+
+      <div class="callout" style="background:#FFF7ED;border-left-color:#F38020;">
+        <p style="color:#7C2D12;"><strong>To løsninger, samme flyt.</strong> Enten nettsiden din ligger på <strong>GitHub Pages</strong> eller på den nyere <strong>Cloudflare Pages</strong>-løsningen, publiserer den seg selv når Claude lagrer. Forskjellen er bare hvem som gjør publiseringen, og hvor du eventuelt ser status. Tommelfingerregel: <strong>fikk du nettsiden din etter 15. juli 2026, er du på Cloudflare Pages.</strong> Under «Hvor du kan se status» velger du løsningen din, så viser vi riktig oversikt.</p>
+      </div>
 
       <h2>Steg 1: Send endringen til GitHub</h2>
       <p>Dette er det eneste steget der de to sporene skiller seg — velg ditt:</p>
@@ -208,6 +213,23 @@
 
       <p>Du <em>kan</em> selv se at en endring er på vei ut, hvis du vil. Men du <em>må</em> ikke — alt går av seg selv.</p>
 
+      <!-- ═══ Løsning-velger: GitHub Pages / Cloudflare Pages ═══ -->
+      <div class="host-toggle not-prose">
+        <p class="host-toggle__intro">Hvilken løsning er nettsiden din på?</p>
+        <div class="host-toggle__buttons">
+          <button class="host-btn" data-host="github" onclick="setHost('github')">
+            <span class="host-btn__name">⚫ GitHub Pages</span>
+            <span class="host-btn__sub">Den opprinnelige løsningen</span>
+          </button>
+          <button class="host-btn" data-host="cloudflare" onclick="setHost('cloudflare')">
+            <span class="host-btn__name">🟠 Cloudflare Pages</span>
+            <span class="host-btn__sub">Ny — fikk du siden etter 15. juli 2026</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ══════ GITHUB PAGES-OVERSIKTEN ══════ -->
+      <div class="host-github">
       <h3>GitHub-oversikten</h3>
       <p>Logg inn på <code>github.com</code> → Pages → prosjektet ditt. Dette er en oversiktsside (et «dashboard») der du ser hver gang nettsiden har blitt oppdatert:</p>
       <ul>
@@ -267,6 +289,67 @@
         </svg>
         <p class="text-center text-xs text-zinc-400 mt-3">«Building» = holder på. «Success» = live. «Failed» = noe gikk galt — klikk «View logs» og lim inn feilen til Claude.</p>
       </figure>
+      </div><!-- /host-github -->
+
+      <!-- ══════ CLOUDFLARE PAGES-OVERSIKTEN ══════ -->
+      <div class="host-cloudflare">
+      <h3 style="color:#C2410C;">Cloudflare Pages-oversikten</h3>
+      <p>På Cloudflare Pages er det <strong>Cloudflare</strong> som publiserer siden (ikke GitHub Pages) — men det fungerer helt likt: hver gang Claude lagrer en endring på GitHub, bygger og publiserer Cloudflare den nye versjonen automatisk. Vil du se status, logger du inn på <a href="https://dash.cloudflare.com" target="_blank" rel="noopener" class="text-blue-600 underline">dash.cloudflare.com</a> → prosjektet ditt → fanen <strong>«Deployments»</strong>. Der ser du akkurat det samme som på GitHub: hva som ble endret, status, og hvor lang tid det tok.</p>
+
+      <figure class="not-prose my-6 rounded-2xl border border-zinc-200 bg-white p-5 md:p-6">
+        <p class="text-center text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-4">Slik ser Cloudflare Pages-oversikten ut</p>
+        <svg viewBox="0 0 530 210" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Cloudflare Pages Deployments-oversikt med tre publiseringer: Building, Success og Failed">
+          <!-- Browser chrome -->
+          <rect x="10" y="10" width="510" height="190" rx="8" fill="white" stroke="#E4E4E7" stroke-width="1.5"/>
+          <rect x="10" y="10" width="510" height="32" rx="8" fill="#F4F4F5"/>
+          <rect x="10" y="32" width="510" height="10" fill="#F4F4F5"/>
+          <circle cx="27" cy="26" r="4.5" fill="#EF4444"/>
+          <circle cx="40" cy="26" r="4.5" fill="#F59E0B"/>
+          <circle cx="53" cy="26" r="4.5" fill="#22C55E"/>
+          <rect x="72" y="18" width="270" height="16" rx="8" fill="white" stroke="#E4E4E7" stroke-width="1"/>
+          <text x="207" y="30" text-anchor="middle" font-size="9" fill="#71717A">dash.cloudflare.com › ditt-prosjekt › Deployments</text>
+
+          <!-- Header row -->
+          <rect x="22" y="50" width="496" height="24" rx="4" fill="#FFF7ED"/>
+          <text x="36" y="66" font-size="10" font-weight="700" fill="#9A3412">Publisering</text>
+          <text x="230" y="66" font-size="10" font-weight="700" fill="#9A3412">Tidspunkt</text>
+          <text x="360" y="66" font-size="10" font-weight="700" fill="#9A3412">Status</text>
+          <text x="450" y="66" font-size="10" font-weight="700" fill="#9A3412">Tid brukt</text>
+
+          <!-- Row 1: Building -->
+          <rect x="22" y="78" width="496" height="34" rx="4" fill="#FFF7ED" stroke="#FED7AA" stroke-width="1"/>
+          <text x="36" y="91" font-size="10.5" font-weight="700" fill="#9A3412">Oppdater åpningstider</text>
+          <text x="36" y="104" font-size="9.5" fill="#EA580C">Production · a3f4c12</text>
+          <text x="230" y="98" font-size="10" fill="#EA580C">I dag 14:32</text>
+          <rect x="350" y="85" width="72" height="18" rx="9" fill="#FFEDD5"/>
+          <text x="386" y="98" text-anchor="middle" font-size="9" font-weight="700" fill="#C2410C">⟳ Building…</text>
+          <text x="450" y="98" font-size="10" fill="#71717A">—</text>
+
+          <!-- Row 2: Success -->
+          <rect x="22" y="116" width="496" height="34" rx="4" fill="white"/>
+          <text x="36" y="129" font-size="10.5" font-weight="600" fill="#09090B">Legg til ny tjeneste-seksjon</text>
+          <text x="36" y="142" font-size="9.5" fill="#71717A">Production · b7e9d04</text>
+          <text x="230" y="136" font-size="10" fill="#71717A">I dag 11:07</text>
+          <rect x="350" y="123" width="72" height="18" rx="9" fill="#DCFCE7"/>
+          <text x="386" y="136" text-anchor="middle" font-size="9" font-weight="700" fill="#15803D">✓ Success</text>
+          <text x="450" y="136" font-size="10" fill="#71717A">41 sek</text>
+
+          <!-- Row 3: Failed -->
+          <rect x="22" y="154" width="496" height="34" rx="4" fill="#FFF1F2" stroke="#FECDD3" stroke-width="1"/>
+          <text x="36" y="167" font-size="10.5" font-weight="600" fill="#9F1239">Prøvde ny hero-seksjon</text>
+          <text x="36" y="180" font-size="9.5" fill="#E11D48">Production · c2a1f88</text>
+          <text x="230" y="174" font-size="10" fill="#71717A">I går 16:44</text>
+          <rect x="350" y="161" width="72" height="18" rx="9" fill="#FFE4E6"/>
+          <text x="386" y="174" text-anchor="middle" font-size="9" font-weight="700" fill="#BE123C">✗ Failed</text>
+          <text x="432" y="174" font-size="9" fill="#BE123C">View details →</text>
+        </svg>
+        <p class="text-center text-xs text-zinc-400 mt-3">Samme tre statuser som på GitHub — «Building», «Success» og «Failed». Feilet noe? Lim inn det du ser til Claude.</p>
+      </figure>
+
+      <div class="callout callout-ok">
+        <p><strong>Angre på Cloudflare Pages?</strong> Cloudflare tar vare på hver eneste publisering. Du kan trykke <strong>«Rollback to this deployment»</strong> på en tidligere versjon i listen — eller bare be Claude: <em>«Angre den siste endringen»</em>, så ordner Claude det i GitHub, og Cloudflare publiserer den forrige versjonen automatisk.</p>
+      </div>
+      </div><!-- /host-cloudflare -->
 
       <h3>Historikken på GitHub</h3>
       <p>På din GitHub-side finner du en liste over hver eneste endring som er gjort på nettsiden. Hvert steg (en «commit») har en kort beskrivelse av hva som ble endret (Claude skriver disse selv), klokkeslett, og hvilke filer det gjaldt. Fint hvis du vil bla tilbake og se hva som skjedde når.</p>
