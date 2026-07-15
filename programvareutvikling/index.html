@@ -114,24 +114,56 @@
 </style>
   <link rel="preconnect" href="https://use.typekit.net" crossorigin>
   <link rel="stylesheet" href="https://use.typekit.net/lfk6nyu.css">
+  <link rel="stylesheet" href="/css/dm-chrome.css">
 </head>
 <body>
+<div class="dm-chrome"><header class="sticky top-0 z-40 bg-white/90 backdrop-blur-sm"><nav class="max-w-[1440px] mx-auto flex items-center justify-between px-4 h-16"><div class="flex items-center gap-10"><a href="/" class="flex items-center gap-2 group/logo flex-shrink-0"><img src="/assets/ms-icon-256x256.png" style="width:34px;height:34px;flex-shrink:0;" alt="Dietrichs Marketing logo"> <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:20px;letter-spacing:0.01em;text-transform:uppercase;color:#0E1116;white-space:nowrap;">Dietrichs <span style="color:#1B34FF;">marketing</span><span class="sr-only">Dietrichs Marketing</span></div></a></div> <div class="hidden md:flex items-center gap-4"><ul class="hidden md:flex items-center gap-6 text-sm text-nav"><li><a href="/programvareutvikling/" class="hover:text-grey-900 transition-colors">Programvareutvikling</a></li><li><a href="/ai-nettsider/" class="hover:text-grey-900 transition-colors">AI-nettsider</a></li></ul>  <!----><a href="/kontakt/" type="button" class="cursor-pointer transition-[background-color,border-color] duration-150 ease-out bg-blue-500 border-blue-500 hover:bg-blue-600 hover:border-blue-600 active:bg-blue-700 active:border-blue-700 text-white disabled:bg-grey-200 disabled:border-grey-200 disabled:text-grey-400 h-8 pl-3 pr-3 gap-2 text-xs focus-visible:outline-focus rounded-lg font-normal justify-center border inline-flex items-center whitespace-nowrap" disabled="false"><!--[-1--><!--]--> <!--[0--><!--[-1--><!---->Ta kontakt<!----><!--]--><!--]--> <!--[-1--><!--]--> <!--[-1--><!--]--><!----></a><!----><!----></div> <button type="button" class="md:hidden flex items-center justify-center size-8 -mr-1.5" aria-label="Open menu" aria-expanded="false"><!--[-1--><span class="flex flex-col gap-1.5"><span class="block h-0.5 w-6 bg-grey-900 rounded-sm"></span> <span class="block h-0.5 w-6 bg-grey-900 rounded-sm"></span> <span class="block h-0.5 w-6 bg-grey-900 rounded-sm"></span></span><!--]--></button></nav> <!--[-1--><!--]--></header></div>
+<div class="dmc-fs-menu" id="dmc-fs-menu" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="dmc-fs-top">
+    <a class="dmc-fs-logo" href="/">
+      <img src="/assets/ms-icon-256x256.png" alt="">
+      <span class="dmc-fs-logo-word">Dietrichs <b>marketing</b></span>
+    </a>
+    <button class="dmc-fs-close" id="dmc-fs-close" aria-label="Lukk meny">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M18 6 6 18M6 6l12 12" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <nav class="dmc-fs-nav">
+    <a href="/programvareutvikling/">Programvareutvikling<svg width="1.5" viewBox="0 0 94 67" fill="currentColor"><path d="M60.7333 66.112L58.0667 63.5786L86.4667 35.1786H0.600006V31.4453H86.6L58.2 3.0453L60.7333 0.511963L93.5333 33.312L60.7333 66.112Z"/></svg></a>
+    <a href="/ai-nettsider/">AI-nettsider<svg width="1.5" viewBox="0 0 94 67" fill="currentColor"><path d="M60.7333 66.112L58.0667 63.5786L86.4667 35.1786H0.600006V31.4453H86.6L58.2 3.0453L60.7333 0.511963L93.5333 33.312L60.7333 66.112Z"/></svg></a>
+    
+  </nav>
+  <div class="dmc-fs-bottom">
+    <a class="dmc-fs-cta" href="/kontakt/">Ta kontakt<svg width="1.5" viewBox="0 0 94 67" fill="currentColor"><path d="M60.7333 66.112L58.0667 63.5786L86.4667 35.1786H0.600006V31.4453H86.6L58.2 3.0453L60.7333 0.511963L93.5333 33.312L60.7333 66.112Z"/></svg></a>
+  </div>
+</div>
+
+<script>
+(function(){
+  var burger=document.querySelector('[aria-label="Open menu"]');
+  var menu=document.getElementById('dmc-fs-menu');
+  var close=document.getElementById('dmc-fs-close');
+  if(!burger||!menu)return;
+  function openMenu(){
+    menu.classList.add('dmc-fs-open');
+    menu.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+    burger.setAttribute('aria-expanded','true');
+  }
+  function closeMenu(){
+    menu.classList.remove('dmc-fs-open');
+    menu.setAttribute('aria-hidden','true');
+    document.body.style.overflow='';
+    burger.setAttribute('aria-expanded','false');
+  }
+  burger.addEventListener('click',openMenu);
+  if(close)close.addEventListener('click',closeMenu);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();});
+})();
+</script>
+
 
   <a class="skip-link" href="#hovedinnhold">Hopp til innhold</a>
-
-  <!-- ============ HEADER ============ -->
-  <header class="dm-header"><nav class="dm-nav">
-    <a class="dm-logo" href="/"><img class="mark" src="/assets/ms-icon-256x256.png" alt="Dietrichs Marketing logo"><span class="word">Dietrichs <b>marketing</b></span></a>
-    <div class="dm-right">
-      <ul class="dm-links">
-        <li><a href="/programvareutvikling/">Programvareutvikling</a></li>
-        <li><a href="/ai-nettsider/">AI-nettsider</a></li>
-        
-      </ul>
-      <a class="dm-cta" href="/kontakt/">Ta kontakt<svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      <button class="dm-burger" aria-label="Meny"><span></span><span></span><span></span></button>
-    </div>
-  </nav></header>
 
   <main id="hovedinnhold">
 
@@ -542,58 +574,11 @@
 
   </main>
 
-  <!-- ============ FOOTER ============ -->
-  <footer class="dm-footer">
-    <div class="dm-wrap">
-      <div class="f-top">
-        <div>
-          <a href="../" class="brand"><b>Dietrichs</b><span>marketing</span></a>
-          <p class="f-tag">Vi bruker AI og moderne teknologi til å gjøre norske bedrifter mer lønnsomme.</p>
-        </div>
-        <div class="f-links">
-          <div class="f-col">
-            <h5>Tjenester</h5>
-            <a href="/programvareutvikling/">Programvareutvikling</a>
-            <a href="../ai-nettsider/">AI-nettsider</a>
-          </div>
-          <div class="f-col">
-            <h5>Kontakt</h5>
-            <a href="mailto:post@dmarketing.no">post@dmarketing.no</a>
-            <a href="tel:+4793439278">+47 93 43 92 78</a>
-            <a href="../kontakt/">Ta kontakt</a>
-          </div>
-        </div>
-      </div>
-      <div class="f-bottom">
-        <div>© 2026 Dietrichs Marketing</div>
-        <div>Org.nr 932 612 583</div>
-      </div>
-    </div>
-  </footer>
-
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="app.js"></script>
 
-<div class="dm-fs-menu" id="dm-fs-menu" role="dialog" aria-modal="true" aria-hidden="true">
-  <div class="dm-fs-top">
-    <a class="dm-fs-logo" href="/">
-      <img src="/assets/ms-icon-256x256.png" alt="">
-      <span class="dm-fs-logo-word">Dietrichs <b>marketing</b></span>
-    </a>
-    <button class="dm-fs-close" id="dm-fs-close" aria-label="Lukk meny">
-      <svg viewBox="0 0 24 24" fill="none"><path d="M18 6 6 18M6 6l12 12" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/></svg>
-    </button>
-  </div>
-  <nav class="dm-fs-nav">
-    <a href="/programvareutvikling/">Programvareutvikling<svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
-    <a href="/ai-nettsider/">AI-nettsider<svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
-    
-  </nav>
-  <div class="dm-fs-bottom">
-    <a class="dm-fs-cta" href="/kontakt/">Ta kontakt<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-  </div>
-</div>
+
 
 <script>
 (function(){
@@ -618,5 +603,6 @@
   document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();});
 })();
 </script>
+<div class="dm-chrome"><footer class="bg-white px-6 pt-12 pb-7"><div class="max-w-[1140px] mx-auto flex flex-col gap-10"><div class="flex flex-col md:flex-row md:justify-between gap-10"><div class="flex flex-col gap-6"><div class="flex flex-col gap-4.5"><a href="/" class="flex items-center gap-2 flex-shrink-0" aria-label="Dietrichs Marketing"><img src="/assets/ms-icon-256x256.png" style="width:28px;height:28px;flex-shrink:0;" alt="Dietrichs Marketing logo"> <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:17px;letter-spacing:0.01em;text-transform:uppercase;color:#0E1116;white-space:nowrap;">Dietrichs <span style="color:#1B34FF;">marketing</span><span class="sr-only">Dietrichs Marketing</span></div></a> <p class="text-sm leading-relaxed text-ink-600">Dietrichs Marketing <br> Org.nr 932 612 583 <br> Norge <br> adrian@dmarketing.no</p> </div> <!----><a href="kontakt/" type="button" class="cursor-pointer transition-[background-color,border-color] duration-150 ease-out bg-blue-500 border-blue-500 hover:bg-blue-600 hover:border-blue-600 active:bg-blue-700 active:border-blue-700 text-white disabled:bg-grey-200 disabled:border-grey-200 disabled:text-grey-400 h-9 pl-3 pr-3 gap-2 text-sm focus-visible:outline-focus rounded-lg font-normal justify-center border inline-flex items-center whitespace-nowrap" disabled="false"><!--[-1--><!--]--> <!--[0--><!--[-1--><!---->Ta kontakt<!----><!--]--><!--]--> <!--[-1--><!--]--> <!--[-1--><!--]--><!----></a><!----><!----></div> <div class="flex flex-col gap-3"><a href="/programvareutvikling/" class="text-sm text-ink-600 hover:text-grey-950 transition-colors">Programvareutvikling</a><a href="/ai-nettsider/" class="text-sm text-ink-600 hover:text-grey-950 transition-colors">AI-nettsider</a><a href="/kontakt/" class="text-sm text-ink-600 hover:text-grey-950 transition-colors">Kontakt</a></div></div> <div class="border-t border-grey-100 pt-7 flex flex-col sm:flex-row justify-between gap-4 text-sm text-black/60"><div class="flex gap-6"><a href="/personvern/" class="hover:text-grey-900 transition-colors">Personvern</a> <a href="/vilkar/" class="hover:text-grey-900 transition-colors">Vilkår</a></div> <p>© 2026 Dietrichs Marketing</p></div></div></footer></div>
 </body>
 </html>
