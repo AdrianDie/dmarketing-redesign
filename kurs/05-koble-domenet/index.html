@@ -511,11 +511,13 @@ Vennligst:
       <!-- ══════ CLOUDFLARE PAGES-VEIEN ══════ -->
       <div class="host-cloudflare">
 
-      <h2 style="color:#9A3412;">Slik kobler du domenet på <span style="color:#F38020;">Cloudflare Pages</span></h2>
+      <h2 style="color:#9A3412;">Slik setter du opp <span style="color:#F38020;">Cloudflare Pages</span></h2>
 
-      <p>Cloudflare Pages er den nyere løsningen vi bruker for nettsider. For deg fungerer den helt likt i det daglige — Claude lagrer, og siden publiseres av seg selv. Forskjellen er bare at selve domene-koblingen gjør du inne i <strong>Cloudflare</strong> i stedet for hos GitHub.</p>
+      <p>Cloudflare Pages er den nyere løsningen vi bruker for nettsider. Her setter du opp hostingen på <strong>din egen gratis Cloudflare-konto</strong> — da eier du alt selv, uten noe mellomledd. Det høres teknisk ut, men det er noen få klikk, og du gjør det bare denne ene gangen. I det daglige er alt som før: Claude lagrer, og siden publiseres av seg selv.</p>
 
-      <p>Adrian har allerede satt opp prosjektet ditt i Cloudflare, så nettsiden din ligger klar på en midlertidig adresse (noe som <code>ditt-prosjekt.pages.dev</code>). Nå skal du bare fortelle Cloudflare at ditt eget domene — <code>dittfirma.no</code> — hører til den siden.</p>
+      <div class="callout-warn callout">
+        <p><strong>Forutsetning:</strong> du må ha fått nettside-repoet overført til din egen GitHub-konto først (det gjorde du i modulen om overgangen). Cloudflare kobler seg nemlig til <em>ditt</em> repo — så gjør dette <strong>etter</strong> at overføringen er ferdig, ikke før.</p>
+      </div>
 
       <figure class="not-prose my-8 rounded-2xl border border-zinc-200 bg-white p-5 md:p-7">
         <p class="text-center text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-5">Slik henger det sammen på Cloudflare Pages</p>
@@ -544,16 +546,54 @@ Vennligst:
       <div class="step not-prose">
         <div class="step-num">1</div>
         <div class="step-content">
-          <h3>Logg inn på Cloudflare</h3>
-          <p>Gå til <a href="https://dash.cloudflare.com" target="_blank" rel="noopener">dash.cloudflare.com</a> og logg inn. Adrian har invitert deg inn på prosjektet, eller opprettet en konto til deg — bruk «Glemt passord» hvis du er usikker på passordet.</p>
+          <h3>Opprett en gratis Cloudflare-konto</h3>
+          <p>Gå til <a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener">dash.cloudflare.com/sign-up</a> og lag en konto med e-post og passord. Det er <strong>gratis</strong>, krever ikke kredittkort, og tar et par minutter. Har du allerede en konto, logger du bare inn.</p>
         </div>
       </div>
 
       <div class="step not-prose">
         <div class="step-num">2</div>
         <div class="step-content">
-          <h3>Åpne prosjektet ditt</h3>
-          <p>I menyen til venstre klikker du på <strong>«Workers &amp; Pages»</strong>. Klikk deretter på prosjektet med nettsiden din i listen (det heter som regel firmaet ditt).</p>
+          <h3>Koble GitHub-repoet ditt til Cloudflare Pages</h3>
+          <p>Dette er selve oppsettet — du gjør det bare denne ene gangen. I menyen til venstre: <strong>«Workers &amp; Pages»</strong> → <strong>«Create»</strong> → fanen <strong>«Pages»</strong> → <strong>«Connect to Git»</strong>. Godkjenn at Cloudflare får se GitHub-kontoen din, og velg <strong>repoet med nettsiden din</strong> i listen.</p>
+          <p>På siste side spør Cloudflare om «build-innstillinger». Nettsiden din er ferdige filer (ingen bygging), så du lar dem stå slik:</p>
+          <ul>
+            <li><strong>Framework preset:</strong> None</li>
+            <li><strong>Build command:</strong> (la stå tom)</li>
+            <li><strong>Build output directory:</strong> <code>/</code></li>
+          </ul>
+          <p>Klikk <strong>«Save and Deploy»</strong>. Cloudflare henter filene og legger nettsiden ut på en midlertidig adresse — noe som <code>ditt-prosjekt.pages.dev</code>. Åpne den adressen: ser du nettsiden din der, fungerer hostingen. Nå gjenstår bare å koble ditt eget domene.</p>
+          <figure style="margin:1.25rem 0 0;">
+            <svg viewBox="0 0 530 210" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Cloudflare Pages Connect to Git-skjerm der du velger repoet med nettsiden din og klikker Begin setup">
+              <rect x="10" y="10" width="510" height="190" rx="8" fill="white" stroke="#E4E4E7" stroke-width="1.5"/>
+              <rect x="10" y="10" width="510" height="32" rx="8" fill="#F4F4F5"/>
+              <rect x="10" y="32" width="510" height="10" fill="#F4F4F5"/>
+              <circle cx="27" cy="26" r="4.5" fill="#EF4444"/>
+              <circle cx="40" cy="26" r="4.5" fill="#F59E0B"/>
+              <circle cx="53" cy="26" r="4.5" fill="#22C55E"/>
+              <rect x="72" y="18" width="300" height="16" rx="8" fill="white" stroke="#E4E4E7" stroke-width="1"/>
+              <text x="222" y="30" text-anchor="middle" font-size="9" fill="#71717A">dash.cloudflare.com › Create an application › Pages</text>
+              <text x="26" y="62" font-size="11" font-weight="800" fill="#09090B">Connect to Git</text>
+              <text x="26" y="78" font-size="9.5" fill="#71717A">Velg repoet du vil publisere:</text>
+              <!-- repo row selected -->
+              <rect x="22" y="88" width="486" height="30" rx="6" fill="#FFF7ED" stroke="#F38020" stroke-width="1.5"/>
+              <circle cx="40" cy="103" r="6" fill="none" stroke="#F38020" stroke-width="2"/>
+              <circle cx="40" cy="103" r="2.8" fill="#F38020"/>
+              <text x="56" y="107" font-size="10.5" font-weight="700" fill="#9A3412">dittfirma-nettside</text>
+              <text x="470" y="107" font-size="9" fill="#C2410C">ditt repo</text>
+              <!-- other repo rows greyed -->
+              <rect x="22" y="122" width="486" height="26" rx="6" fill="white" stroke="#EFEFF1" stroke-width="1"/>
+              <circle cx="40" cy="135" r="6" fill="none" stroke="#D4D4D8" stroke-width="2"/>
+              <text x="56" y="139" font-size="10" fill="#A1A1AA">et-annet-repo</text>
+              <rect x="22" y="152" width="486" height="26" rx="6" fill="white" stroke="#EFEFF1" stroke-width="1"/>
+              <circle cx="40" cy="165" r="6" fill="none" stroke="#D4D4D8" stroke-width="2"/>
+              <text x="56" y="169" font-size="10" fill="#A1A1AA">enda-et-repo</text>
+              <!-- Begin setup button -->
+              <rect x="404" y="150" width="104" height="30" rx="7" fill="#F38020"/>
+              <text x="456" y="169" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">Begin setup →</text>
+            </svg>
+            <p class="text-center text-xs text-zinc-400 mt-3">Velg ditt eget repo, la build-feltene stå tomme, og klikk «Begin setup» / «Save and Deploy».</p>
+          </figure>
         </div>
       </div>
 
