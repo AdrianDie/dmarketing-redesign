@@ -89,10 +89,10 @@
         Klon og sett opp arbeidsmiljøet
       </h1>
       <p class="text-lg md:text-xl text-zinc-600 leading-relaxed">
-        Kopier filene til datamaskinen din, forhåndsvis nettsiden og velg arbeidsmetode.
+        Installer VS Code, kopier filene til datamaskinen din, forhåndsvis nettsiden og velg arbeidsmetode.
       </p>
       <p class="text-base text-zinc-500 leading-relaxed mt-3">
-        Nettsiden din ligger på GitHub — men for å redigere den trenger du filene tilgjengelig på datamaskinen din. VS Code har Git innebygd, så du kloner repoet direkte derfra og sender endringer live uten noe ekstra verktøy.
+        Nettsiden din er allerede live. Nå setter du opp verktøyene så du kan endre den selv. Du installerer VS Code (editoren du redigerer i), og henter ned filene. VS Code har Git innebygd, så du kloner repoet direkte derfra og sender endringer live uten noe ekstra verktøy.
       </p>
     </div>
   </header>
@@ -107,7 +107,122 @@
       <!-- ═══════════════════════════════════════════
            STEG 1: KLON
       ══════════════════════════════════════════════ -->
-      <h2>Steg 1 — Kopier nettsidefilene til datamaskinen din</h2>
+      <!-- ═══════════════════════════════════════════
+           FELLES DEL 2: VS CODE
+      ══════════════════════════════════════════════ -->
+      <h2>Steg 1 — Installer VS Code</h2>
+      <p>VS Code er editoren du redigerer filer i. Den er gratis, brukes av millioner av folk verden over, og har alt du trenger innebygd: filviser, koderedigering og git (så du kan sende endringer til GitHub direkte).</p>
+
+      <!-- OS-velger -->
+      <div class="not-prose" style="display:flex;gap:0.5rem;margin:1.5rem 0 0.5rem;">
+        <button id="os-win" onclick="setOS('win')" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 1.1rem;border-radius:8px;border:2px solid #0339f8;background:#0339f8;color:white;font-family:'Archivo',sans-serif;font-weight:700;font-size:0.9rem;cursor:pointer;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
+          Windows
+        </button>
+        <button id="os-mac" onclick="setOS('mac')" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 1.1rem;border-radius:8px;border:2px solid #D4D4D8;background:white;color:#3F3F46;font-family:'Archivo',sans-serif;font-weight:700;font-size:0.9rem;cursor:pointer;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          Mac
+        </button>
+      </div>
+      <script>
+        function setOS(os) {
+          document.querySelectorAll('.os-win').forEach(el => el.style.display = os === 'win' ? '' : 'none');
+          document.querySelectorAll('.os-mac').forEach(el => el.style.display = os === 'mac' ? '' : 'none');
+          var wb = document.getElementById('os-win');
+          var mb = document.getElementById('os-mac');
+          if (os === 'win') {
+            wb.style.background = '#0339f8'; wb.style.color = 'white'; wb.style.borderColor = '#0339f8';
+            mb.style.background = 'white'; mb.style.color = '#3F3F46'; mb.style.borderColor = '#D4D4D8';
+          } else {
+            mb.style.background = '#0339f8'; mb.style.color = 'white'; mb.style.borderColor = '#0339f8';
+            wb.style.background = 'white'; wb.style.color = '#3F3F46'; wb.style.borderColor = '#D4D4D8';
+          }
+          localStorage.setItem('kurs-os', os);
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+          setOS(localStorage.getItem('kurs-os') || 'win');
+        });
+      </script>
+
+      <div class="os-win not-prose" style="margin-bottom:1rem;">
+        <a href="https://www.youtube.com/watch?v=wU7IQLIOwoo&t=117s" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.6rem;background:#FEF2F2;border:1.5px solid #FECACA;border-radius:10px;padding:0.75rem 1.1rem;text-decoration:none;color:#991B1B;font-family:'Archivo',sans-serif;font-weight:700;font-size:0.9rem;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#DC2626"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          Se videoguide for Windows-installasjon
+        </a>
+      </div>
+      <div class="os-mac not-prose" style="margin-bottom:1rem;">
+        <a href="https://www.youtube.com/watch?v=DA03DODTP5w" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.6rem;background:#FEF2F2;border:1.5px solid #FECACA;border-radius:10px;padding:0.75rem 1.1rem;text-decoration:none;color:#991B1B;font-family:'Archivo',sans-serif;font-weight:700;font-size:0.9rem;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#DC2626"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          Se videoguide for Mac-installasjon
+        </a>
+      </div>
+
+      <div class="step not-prose">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>Last ned VS Code</h3>
+          <p>Gå til <a href="https://code.visualstudio.com" target="_blank" rel="noopener">code.visualstudio.com</a>.</p>
+
+          <!-- Windows -->
+          <div class="os-win">
+            <p>Klikk den store <strong>«Download for Windows»</strong>-knappen midt på siden.</p>
+            <img src="../images/vscode-windows.png" alt="VS Code nedlasting Windows" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
+          </div>
+
+          <!-- Mac -->
+          <div class="os-mac">
+            <p>Klikk <strong>«Download»</strong>-knappen øverst til høyre på siden.</p>
+            <img src="../images/vscode-mac-home.png" alt="VS Code nedlasting Mac steg 1" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
+            <p>Du blir sendt til nedlastingssiden. Klikk den store <strong>«Mac»</strong>-knappen.</p>
+            <img src="../images/vscode-mac-download.png" alt="VS Code nedlasting Mac steg 2" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
+          </div>
+        </div>
+      </div>
+
+      <div class="step not-prose">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>Nedlastingen starter</h3>
+          <p>Nettleseren begynner å laste ned installasjonsfilen. Du ser fremdriften nede i nettleseren (eller i et nedlastingsvindu øverst til høyre). Vent til den er ferdig — filen er ca. 176 MB.</p>
+          <img src="../images/vscode-nedlasting.png" alt="VS Code laster ned" style="width:360px;max-width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
+          <p>Når det står <strong>«Ferdig»</strong>, klikk på selve filnavnet eller raden for å kjøre installatøren.</p>
+          <img src="../images/vscode-ferdig.png" alt="VS Code nedlasting ferdig" style="width:360px;max-width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
+        </div>
+      </div>
+
+      <div class="step not-prose os-win">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>Start installasjonen</h3>
+          <p>Windows spør om du vil kjøre filen — klikk <strong>OK</strong> eller <strong>Kjør</strong>. Installasjonsprogrammet åpner seg og viser lisensavtalen. Velg <strong>«I accept the agreement»</strong> og klikk <strong>Next</strong>.</p>
+          <img src="../images/vscode-lisens.png" alt="VS Code lisensavtale" style="width:100%;max-width:520px;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
+          <p>Klikk deg gjennom de neste skjermbildene med <strong>Next</strong> — standardvalgene er fine. På skjermbildet «Select Additional Tasks» trykker du bare <strong>Next</strong>.</p>
+          <img src="../images/vscode-tasks.png" alt="VS Code ekstra oppgaver" style="width:100%;max-width:520px;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
+          <p>Klikk <strong>Install</strong> — installasjonen tar et par minutter. Når den er ferdig klikker du <strong>Finish</strong>. VS Code åpner seg automatisk.</p>
+        </div>
+      </div>
+
+      <div class="callout callout-ok not-prose" style="margin-top:2rem;">
+        <p><strong>VS Code er installert.</strong> Du har nå verktøyet du trenger for å se og redigere filene nettsiden din består av — <code>index.html</code>, <code>style.css</code>, bilder og alt annet. I neste steg henter du selve filene ned til PC-en din.</p>
+      </div>
+
+      <div class="step not-prose os-mac">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>Installer VS Code</h3>
+          <p>Åpne .zip-filen du lastet ned. Dra <strong>«Visual Studio Code»</strong>-ikonet til <strong>Applications</strong>-mappen din. Åpne deretter appen fra Applications.</p>
+        </div>
+      </div>
+
+      <div class="step not-prose">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h3>Åpne VS Code</h3>
+          <p>Start programmet. Du ser en velkomstskjerm med noen snarveier. Du trenger ikke gjøre noe her ennå — bare la den stå åpen til neste steg.</p>
+        </div>
+      </div>
+
+      <h2>Steg 2 — Kopier nettsidefilene til datamaskinen din</h2>
       <p>Nå skal du kopiere alle filene til nettsiden din fra GitHub over til datamaskinen din. Denne operasjonen kalles «kloning». VS Code har Git innebygd, så du gjør det direkte derfra — ingen ekstra verktøy å installere.</p>
 
       <div class="step not-prose">
@@ -206,7 +321,7 @@
       <!-- ═══════════════════════════════════════════
            STEG 2: FORHÅNDSVISNING
       ══════════════════════════════════════════════ -->
-      <h2>Steg 2 — Forhåndsvis nettsiden</h2>
+      <h2>Steg 3 — Forhåndsvis nettsiden</h2>
       <p>Alle filene til nettsiden din ligger nå på datamaskinen din. La oss åpne forsiden og se at alt ser riktig ut. Forsiden heter <code>index.html</code> — det er den du åpner i nettleseren for å se nettsiden slik den ser ut i dag.</p>
       <div class="step not-prose">
         <div class="step-num">1</div>
@@ -232,7 +347,7 @@
       <!-- ═══════════════════════════════════════════
            STEG 3: VELG ARBEIDSMETODE
       ══════════════════════════════════════════════ -->
-      <h2>Steg 3 — Velg din arbeidsmetode</h2>
+      <h2>Steg 4 — Velg din arbeidsmetode</h2>
       <p>Her skiller veiene seg. Begge metodene fungerer — forskjellen er pris og hvor mye du gjør manuelt.</p>
 
       <div class="track-toggle not-prose">
