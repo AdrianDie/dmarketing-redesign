@@ -505,31 +505,48 @@ Vennligst:
       </div>
 
       <h3 style="color:#9A3412;">3c — Legg til domenet ditt</h3>
+      <p>Nå ligger siden på en <code>.workers.dev</code>-adresse. For å få den på ditt eget domene må domenet flyttes til Cloudflare. Det er tryggere enn det høres ut, så lenge du følger stegene under.</p>
 
       <div class="step not-prose">
         <div class="step-num">1</div>
         <div class="step-content">
-          <h3>Åpne Domains-fanen</h3>
-          <p>I prosjektet ditt: klikk fanen <strong>Domains</strong> øverst. Under «Custom Domains and Routes» klikker du den blå <strong>Add Domain</strong>-knappen.</p>
+          <h3>Start domene-koblingen</h3>
+          <p>I prosjektet ditt: klikk fanen <strong>Domains</strong> øverst, og deretter den blå <strong>Add Domain</strong>-knappen. Skriv inn <code>dittfirma.no</code>.</p>
           <img src="../images/cloudflare-add-domain.png" alt="Klikk fanen Domains og deretter Add Domain-knappen" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
-          <p>Skriv inn <code>dittfirma.no</code> og bekreft. Gjenta gjerne for <code>www.dittfirma.no</code>.</p>
+          <p>Ligger ikke domenet på Cloudflare fra før, starter Cloudflare en «legg domenet inn på Cloudflare»-flyt og skanner DNS-postene dine (velg <strong>Free</strong>-planen). Følg den videre.</p>
         </div>
       </div>
 
       <div class="step not-prose">
         <div class="step-num">2</div>
         <div class="step-content">
-          <h3>Følg det Cloudflare viser deg</h3>
-          <p>Ligger domenet allerede hos Cloudflare, ordner Cloudflare alt selv. Ellers viser den deg nøyaktig hvilken post (som regel én <code>CNAME</code>) du skal legge inn hos domeneleverandøren din. Er du usikker, lim inn det Cloudflare viser til <a href="https://aistudio.google.com" target="_blank" rel="noopener">Google AI Studio</a> og be om en trygg steg-for-steg-veiledning.</p>
-          <p><strong>Ikke rør MX-, TXT- eller NS-postene</strong> — de styrer e-posten din.</p>
+          <h3>Rydd i DNS-postene</h3>
+          <p>Cloudflare viser deg alle postene den fant. Her rydder du, og dette er det viktigste steget:</p>
+          <ul>
+            <li><strong>Fjern</strong> de gamle nettside-postene som peker på din forrige leverandør: <code>A</code> (og evt. <code>AAAA</code>) på selve domenet, og <code>CNAME www</code>. Klikk <strong>Delete</strong> på hver. De byttes ut med den nye siden.</li>
+            <li><strong>Behold</strong> alle e-postposter: <code>MX</code>, <code>TXT</code> (SPF, DKIM, DMARC) og <code>autoconfig</code>/<code>autodiscover</code>. Sett dem til <strong>DNS only</strong> (grå sky), aldri Proxied.</li>
+            <li><strong>Usikker på hva en post er?</strong> Ikke slett den. Lim hele lista inn i <a href="https://aistudio.google.com" target="_blank" rel="noopener">Google AI Studio</a> og spør hva som trygt kan fjernes.</li>
+          </ul>
+          <img src="../images/cloudflare-dns-fjern-poster.png" alt="Klikk Delete på de gamle nettside-postene, behold e-postpostene" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
+          <p>Tips: åpne DNS-oversikten hos den gamle leverandøren i en egen fane og sammenlign, så du er sikker på at alt (særlig e-post) er kommet med. Klikk så <strong>Continue to activation</strong>.</p>
         </div>
       </div>
 
       <div class="step not-prose">
         <div class="step-num">3</div>
         <div class="step-content">
-          <h3>Vent til det står «Active»</h3>
-          <p>Når raden for domenet viser grønn <strong>Active</strong>, er siden live. <strong>HTTPS og hengelåsen ordnes automatisk på Cloudflare</strong> — du trenger ingen avhukingsboks slik som på GitHub.</p>
+          <h3>Bytt nameservere hos domeneleverandøren</h3>
+          <p>Cloudflare gir deg <strong>to nameservere</strong> (typ <code>noe.ns.cloudflare.com</code>). Logg inn hos leverandøren der domenet er registrert, og bytt ut de nåværende nameserverne med Cloudflares to. Det er dette steget som faktisk kobler domenet til Cloudflare.</p>
+          <p>Ikke rør noe annet hos leverandøren. Er du usikker på hvor nameserverne endres, lim leverandørens navn inn i <a href="https://aistudio.google.com" target="_blank" rel="noopener">Google AI Studio</a> og spør.</p>
+        </div>
+      </div>
+
+      <div class="step not-prose">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h3>Vent til «Active», og koble domenet til siden</h3>
+          <p>Cloudflare sender deg en e-post når domenet er <strong>Active</strong> (tar som regel noen minutter, i sjeldne tilfeller opptil 24 timer). Gå da tilbake til prosjektet → fanen <strong>Domains</strong> → <strong>Add Domain</strong> → nå matcher <code>dittfirma.no</code>, så du kan koble det. Gjenta for <code>www.dittfirma.no</code>.</p>
+          <p><strong>HTTPS og hengelåsen ordnes automatisk på Cloudflare.</strong> Du trenger ingen avhukingsboks slik som på GitHub.</p>
         </div>
       </div>
 
