@@ -12,7 +12,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link href="../../assets/ms-icon-256x256.png" rel="shortcut icon" type="image/x-icon" />
   <script src="/kurs/auth.js"></script>
-  <script src="/kurs/kurs-host.js?v=3"></script>
   <script src="/kurs/kurs-progress.js" defer></script>
   <style>
     body { font-family: 'Inter', sans-serif; background: #FAFAFA; color: #09090B; }
@@ -45,6 +44,7 @@
     .dns-table td { padding: 10px 14px; border: 1px solid #E4E4E7; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #09090B; }
     .dns-table tr:nth-child(even) td { background: #FAFAFA; }
     details summary::-webkit-details-marker { display: none; }
+    details:not([open]) > *:not(summary) { display: none; }
     details[open] .details-arrow { transform: rotate(90deg); }
     details summary:hover { background: #FAFAFA; }
 
@@ -315,28 +315,15 @@
       <div class="callout callout-warn not-prose">
         <p><strong>Forutsetning:</strong> Du må ha godkjent overføringen fra steg 2 («Accept repository transfer» i e-posten fra GitHub) før du fortsetter her.</p>
       </div>
-      <p>Nettsiden ligger klar, men på en midlertidig adresse. For at <code>dittfirma.no</code> skal vise den nye siden, må du sette opp hostingen og peke domenet dit. Velg løsningen din under, så bytter stegene seg ut deretter.</p>
+      <p>Nettsiden ligger klar, men på en midlertidig adresse. For at <code>dittfirma.no</code> skal vise den nye siden, må du sette opp hostingen og peke domenet dit. Slik gjør du det på Cloudflare Pages:</p>
 
       <!-- ═══ Løsning-velger: GitHub Pages / Cloudflare Pages ═══ -->
-      <div class="host-toggle not-prose">
-        <p class="host-toggle__intro">Hvilken løsning er nettsiden din på?</p>
-        <div class="host-toggle__buttons">
-          <button class="host-btn" data-host="github" onclick="setHost('github')">
-            <span class="host-btn__name">⚫ GitHub Pages</span>
-            <span class="host-btn__sub">Den opprinnelige løsningen</span>
-          </button>
-          <button class="host-btn" data-host="cloudflare" onclick="setHost('cloudflare')">
-            <span class="host-btn__name">🟠 Cloudflare Pages</span>
-            <span class="host-btn__sub">Ny — fikk du siden etter 15. juli 2026</span>
-          </button>
-        </div>
-        <p style="font-size:0.85rem;color:#71717A;margin:14px 0 0;line-height:1.5;">Usikker? Sjekk når du fikk velkomstmailen for kurset. Stegene under bytter seg ut etter hva du velger.</p>
-      </div>
-
-      <!-- ══════ GITHUB PAGES-VEIEN ══════ -->
-      <div class="host-github">
-
-      <h3>3a — Registrer domenet i GitHub</h3>
+      <!-- Cloudflare Pages er standard. Gammel GitHub Pages-løsning ligger i boksen under. -->
+      <div class="not-prose" style="background:#F4F4F5;border-left:3px solid #A1A1AA;border-radius:0.5rem;padding:1rem 1.25rem;margin:1.25rem 0 2rem;">
+        <details>
+          <summary style="cursor:pointer;list-style:none;"><span style="display:inline-flex;align-items:flex-start;gap:10px;font-weight:600;color:#3F3F46;"><svg class="details-arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="transition:transform 0.2s;flex-shrink:0;margin-top:3px;"><path d="M9 18l6-6-6-6"/></svg><span>Fikk du nettsiden din før 15. juli 2026? Da er du nok på GitHub Pages, ikke Cloudflare Pages. Trykk her for de stegene i stedet.</span></span></summary>
+          <div style="margin-top:1.25rem;">
+<h3>3a — Registrer domenet i GitHub</h3>
       <div class="step not-prose">
         <div class="step-num">1</div>
         <div class="step-content">
@@ -463,13 +450,12 @@ Vennligst:
         <li>Gå tilbake til GitHub → <strong>Settings</strong> → <strong>Pages</strong></li>
         <li>Huk av for <strong>Enforce HTTPS</strong> — da får nettsiden hengelåsen. Boksen kan være grå til DNS har rukket å spre seg.</li>
       </ol>
+          </div>
+        </details>
+      </div>
 
-      </div><!-- /host-github -->
-
-      <!-- ══════ CLOUDFLARE PAGES-VEIEN ══════ -->
-      <div class="host-cloudflare">
-
-      <h3 style="color:#9A3412;">3a — Lag en gratis Cloudflare-konto</h3>
+      <!-- ══════ CLOUDFLARE PAGES (standard) ══════ -->
+<h3 style="color:#9A3412;">3a — Lag en gratis Cloudflare-konto</h3>
       <p>Gå til <a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener">dash.cloudflare.com/sign-up</a>, registrer deg med e-post og passord, og bekreft e-posten. Gratis, ingen kredittkort, tar et par minutter.</p>
 
       <h3 style="color:#9A3412;">3b — Koble repoet ditt til Cloudflare Pages</h3>
@@ -532,7 +518,6 @@ Vennligst:
         </div>
       </div>
 
-      </div><!-- /host-cloudflare -->
 
       <div style="background:#F0FDF4;border:1.5px solid #86EFAC;border-radius:14px;padding:20px 24px;margin:2rem 0 0;" class="not-prose">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
