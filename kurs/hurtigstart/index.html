@@ -521,9 +521,9 @@ Vennligst:
         <div class="step-num">2</div>
         <div class="step-content">
           <h3>Rydd i DNS-postene</h3>
-          <p>Cloudflare viser deg alle postene den fant. Her rydder du, og dette er det viktigste steget:</p>
+          <p>Cloudflare viser deg alle postene den fant. Dette er det viktigste steget, så les nøye: <strong>du skal ikke slette alt, bare de gamle A-postene som peker på den forrige nettsiden din.</strong> Alt annet, spesielt e-postpostene, skal stå.</p>
           <ul>
-            <li><strong>Fjern</strong> de gamle nettside-postene som peker på din forrige leverandør: <code>A</code> (og evt. <code>AAAA</code>) på selve domenet, og <code>CNAME www</code>. Klikk <strong>Delete</strong> på hver. De byttes ut med den nye siden.</li>
+            <li><strong>Fjern A-postene</strong> som peker på din forrige nettside: <code>A</code> (og evt. <code>AAAA</code>) på selve domenet. Har du en gammel <code>CNAME www</code> til den gamle siden, fjern den også. Klikk <strong>Delete</strong> på hver. De byttes ut med den nye siden.</li>
             <li><strong>Behold</strong> alle e-postposter: <code>MX</code>, <code>TXT</code> (SPF, DKIM, DMARC) og <code>autoconfig</code>/<code>autodiscover</code>. <strong>Ikke slett dem.</strong></li>
             <li><strong>Usikker på hva en post er?</strong> Ikke slett den. Lim hele lista inn i <a href="https://aistudio.google.com" target="_blank" rel="noopener">Google AI Studio</a> og spør hva som trygt kan fjernes.</li>
           </ul>
