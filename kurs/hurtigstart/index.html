@@ -592,7 +592,29 @@ Vennligst:
           </div>
 
           <p>Slett de gamle navnetjenerne (f.eks. <code>ns.datacenter.no</code>) så bare Cloudflares to står igjen, og lagre. Rør ikke noe annet hos leverandøren.</p>
-          <p><strong>Tips:</strong> Usikker på hvor eller hvordan du bytter navnetjenerne hos akkurat din leverandør? Ta et skjermbilde av navnetjener-skjermen i Cloudflare og av innstillingene hos leverandøren din, og last dem opp i <a href="https://aistudio.google.com" target="_blank" rel="noopener">Google AI Studio</a> eller <a href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a>. Da får du en trygg steg-for-steg-veiledning tilpasset deg.</p>
+          <div class="callout-ok callout not-prose">
+            <p><strong>Usikker på hvordan?</strong> Kopier teksten under og lim inn i <a href="https://aistudio.google.com" target="_blank" rel="noopener" style="color:#14532D;font-weight:600;">Google AI Studio</a> (eller ChatGPT/Claude). Du kan også ta et skjermbilde av navnetjener-skjermen og laste det opp. Den guider deg gjennom akkurat din leverandør.</p>
+          </div>
+
+          <div style="background:linear-gradient(135deg,#EDE9FE,#E0E7FF);border:2px solid #A78BFA;border-radius:16px;padding:28px 28px 24px;margin:1.5rem 0;" class="not-prose">
+            <div style="position:relative;">
+              <button onclick="navigator.clipboard.writeText(document.getElementById('ns-prompt').innerText).then(()=>{this.textContent='Kopiert ✓';this.style.background='#16A34A';setTimeout(()=>{this.textContent='Kopier teksten';this.style.background='#7C3AED'},2000)})" style="position:absolute;top:10px;right:10px;background:#7C3AED;color:white;border:none;padding:8px 16px;border-radius:8px;font-size:0.8rem;font-weight:600;cursor:pointer;z-index:1;font-family:'Inter',sans-serif;">Kopier teksten</button>
+              <div id="ns-prompt" style="background:white;border:1.5px solid #C4B5FD;border-radius:12px;padding:20px 20px 20px;font-size:0.85rem;line-height:1.6;color:#1E1B3A;max-height:260px;overflow-y:auto;white-space:pre-wrap;font-family:'Inter',sans-serif;">Jeg trenger hjelp med å bytte navnetjenerne (nameservers) for domenet mitt, slik at domenet begynner å bruke Cloudflare. Jeg er ikke teknisk, så jeg trenger en enkel steg-for-steg veiledning.
+
+Cloudflare har gitt meg disse to navnetjenerne som skal legges inn (bytt ut med dine egne):
+
+navn1.ns.cloudflare.com
+navn2.ns.cloudflare.com
+
+De gamle navnetjenerne skal fjernes, slik at bare Cloudflares to står igjen.
+
+Vennligst:
+1. Spør meg hvilken domeneleverandør (registrar) jeg bruker
+2. Gi meg en steg-for-steg veiledning tilpasset akkurat den leverandøren for hvor jeg finner og endrer navnetjenerne
+3. Minn meg på å lagre, og forklar at endringen kan ta fra noen minutter til opptil et døgn
+4. Fortell meg hvordan jeg sjekker at byttet har gått gjennom</div>
+            </div>
+          </div>
         </div>
       </div>
 
