@@ -524,7 +524,7 @@ Vennligst:
           <p>Cloudflare viser deg alle postene den fant. Her rydder du, og dette er det viktigste steget:</p>
           <ul>
             <li><strong>Fjern</strong> de gamle nettside-postene som peker på din forrige leverandør: <code>A</code> (og evt. <code>AAAA</code>) på selve domenet, og <code>CNAME www</code>. Klikk <strong>Delete</strong> på hver. De byttes ut med den nye siden.</li>
-            <li><strong>Behold</strong> alle e-postposter: <code>MX</code>, <code>TXT</code> (SPF, DKIM, DMARC) og <code>autoconfig</code>/<code>autodiscover</code>. Sett dem til <strong>DNS only</strong> (grå sky), aldri Proxied.</li>
+            <li><strong>Behold</strong> alle e-postposter: <code>MX</code>, <code>TXT</code> (SPF, DKIM, DMARC) og <code>autoconfig</code>/<code>autodiscover</code>. <strong>Ikke slett dem.</strong></li>
             <li><strong>Usikker på hva en post er?</strong> Ikke slett den. Lim hele lista inn i <a href="https://aistudio.google.com" target="_blank" rel="noopener">Google AI Studio</a> og spør hva som trygt kan fjernes.</li>
           </ul>
           <img src="../images/cloudflare-dns-fjern-poster.png" alt="Klikk Delete på de gamle nettside-postene, behold e-postpostene" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
