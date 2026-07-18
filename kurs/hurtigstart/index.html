@@ -492,13 +492,15 @@ Vennligst:
       <div class="step not-prose">
         <div class="step-num">3</div>
         <div class="step-content">
-          <h3>Velg repoet — og la build-feltene stå tomme</h3>
-          <p>Velg nettside-repoet ditt. Cloudflare spør om «build-innstillinger». Nettsiden din er ferdige filer (ingen bygging), så:</p>
+          <h3>Velg repoet og la build-feltene stå tomme</h3>
+          <p>På «Select a repository»: sjekk at GitHub-kontoen din står i nedtrekksmenyen, klikk nettside-repoet ditt, og trykk <strong>Next</strong>.</p>
+          <img src="../images/cloudflare-velg-repo.png" alt="Velg nettside-repoet ditt og klikk Next" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
+          <p>Cloudflare spør så om «build-innstillinger». Nettsiden din er ferdige filer (ingen bygging), så:</p>
           <ul>
             <li><strong>Framework preset:</strong> None</li>
             <li><strong>Build command:</strong> (la stå tom)</li>
           </ul>
-          <p>Klikk <strong>Save and Deploy</strong>. Etter et minutt ligger siden på en midlertidig adresse som <code>ditt-prosjekt.pages.dev</code> — åpne den og sjekk at den ser riktig ut.</p>
+          <p>Klikk <strong>Create and deploy</strong>. Etter et minutt ligger siden på en midlertidig adresse som slutter på <code>.workers.dev</code>. Åpne den og sjekk at den ser riktig ut.</p>
         </div>
       </div>
 
@@ -507,8 +509,10 @@ Vennligst:
       <div class="step not-prose">
         <div class="step-num">1</div>
         <div class="step-content">
-          <h3>Custom domains</h3>
-          <p>I prosjektet: fanen <strong>Custom domains</strong> → <strong>Set up a custom domain</strong> → skriv inn <code>dittfirma.no</code> → <strong>Continue</strong>. Gjenta gjerne for <code>www.dittfirma.no</code>.</p>
+          <h3>Åpne Domains-fanen</h3>
+          <p>I prosjektet ditt: klikk fanen <strong>Domains</strong> øverst. Under «Custom Domains and Routes» klikker du den blå <strong>Add Domain</strong>-knappen.</p>
+          <img src="../images/cloudflare-add-domain.png" alt="Klikk fanen Domains og deretter Add Domain-knappen" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
+          <p>Skriv inn <code>dittfirma.no</code> og bekreft. Gjenta gjerne for <code>www.dittfirma.no</code>.</p>
         </div>
       </div>
 
