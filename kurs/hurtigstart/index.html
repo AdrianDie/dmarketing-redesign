@@ -304,9 +304,7 @@
       <p style="font-size:1rem;line-height:1.65;color:#3F3F46;margin-top:0.5rem;">Klikk lenken i e-posten og godkjenn overføringen. Etterpå ser du repoet i din egen GitHub-profil — slik:</p>
       <img src="../images/github-overfoering-dashboard.png" alt="GitHub dashboard etter overføring" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0 1.5rem;" />
 
-      <div class="callout not-prose" style="margin-top:0;margin-bottom:2.5rem;">
-        <p><strong>Fungerer ikke knappen?</strong> Send GitHub-brukernavnet ditt til <a href="mailto:post@dmarketing.no" style="color:#1E3A8A;font-weight:600;">post@dmarketing.no</a> — så ordner vi overføringen manuelt.</p>
-      </div>
+      <p class="not-prose" style="font-size:0.95rem;color:#52525B;margin-top:0.75rem;margin-bottom:2.5rem;"><strong style="color:#3F3F46;">Fungerer ikke knappen?</strong> Send GitHub-brukernavnet ditt til <a href="mailto:post@dmarketing.no" style="color:#0339f8;font-weight:600;">post@dmarketing.no</a>, så ordner vi overføringen manuelt.</p>
 
       <!-- ═══════════════════════════════════════════
            STEG 3: DOMENE / DNS
@@ -456,7 +454,12 @@ Vennligst:
 
       <!-- ══════ CLOUDFLARE PAGES (standard) ══════ -->
 <h3 style="color:#9A3412;">3a — Lag en gratis Cloudflare-konto</h3>
-      <p>Gå til <a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener">dash.cloudflare.com/sign-up</a>, registrer deg med e-post og passord, og bekreft e-posten. Gratis, ingen kredittkort, tar et par minutter.</p>
+      <p>Gå til <a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener">dash.cloudflare.com/sign-up</a>, fyll inn e-post og passord, og trykk <strong>Sign up</strong>. Gratis, ingen kredittkort.</p>
+      <img src="../images/cloudflare-registrer.png" alt="Cloudflare-registrering: fyll inn e-post og passord" style="width:100%;max-width:520px;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
+      <p>Du får en e-post fra Cloudflare. Åpne den og klikk <strong>Verify your email</strong>.</p>
+      <img src="../images/cloudflare-verifiser-mail.png" alt="Bekreft e-postadressen din hos Cloudflare" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
+      <p>Nå er du logget inn og ser Cloudflare-dashbordet:</p>
+      <img src="../images/cloudflare-dashboard.png" alt="Cloudflare-dashbordet etter innlogging" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
 
       <h3 style="color:#9A3412;">3b — Koble repoet ditt til Cloudflare Pages</h3>
 
@@ -464,7 +467,10 @@ Vennligst:
         <div class="step-num">1</div>
         <div class="step-content">
           <h3>Start et Pages-prosjekt</h3>
-          <p>I Cloudflare: venstremenyen → <strong>Workers &amp; Pages</strong> → <strong>Create</strong> → fanen <strong>Pages</strong> → <strong>Connect to Git</strong>.</p>
+          <p>Bruk <strong>Quick search</strong> øverst til venstre (eller trykk <strong>Ctrl + K</strong>), skriv <strong>workers</strong>, og velg <strong>Workers &amp; Pages</strong> i lista.</p>
+          <img src="../images/cloudflare-quick-search.png" alt="Søk opp Workers og Pages med Quick search" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
+          <p>Klikk deretter <strong>Create application</strong> oppe til høyre, velg fanen <strong>Pages</strong>, og trykk <strong>Connect to Git</strong>.</p>
+          <img src="../images/cloudflare-workers-pages.png" alt="Workers og Pages-siden med Create application-knappen øverst til høyre" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0 0;" />
         </div>
       </div>
 
