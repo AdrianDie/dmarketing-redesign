@@ -467,11 +467,11 @@ Vennligst:
         <div class="step-num">1</div>
         <div class="step-content">
           <h3>Start et nytt prosjekt</h3>
-          <p>Bruk <strong>Quick search</strong> øverst til venstre (eller trykk <strong>Ctrl + K</strong>), skriv <strong>workers</strong>, og velg <strong>Workers &amp; Pages</strong> i lista.</p>
+          <p><strong style="color:#0339f8;">a.</strong> Bruk <strong>Quick search</strong> øverst til venstre (eller trykk <strong>Ctrl + K</strong>), skriv <strong>workers</strong>, og velg <strong>Workers &amp; Pages</strong> i lista.</p>
           <img src="../images/cloudflare-quick-search.png" alt="Søk opp Workers og Pages med Quick search" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
-          <p>Klikk deretter <strong>Create application</strong> oppe til høyre.</p>
+          <p><strong style="color:#0339f8;">b.</strong> Klikk deretter <strong>Create application</strong> oppe til høyre.</p>
           <img src="../images/cloudflare-workers-pages.png" alt="Workers og Pages-siden med Create application-knappen øverst til høyre" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
-          <p>Da får du opp «Ship something new». Klikk <strong>Connect GitHub</strong>.</p>
+          <p><strong style="color:#0339f8;">c.</strong> Da får du opp «Ship something new». Klikk <strong>Connect GitHub</strong>.</p>
           <img src="../images/cloudflare-create-application.png" alt="Velg Connect GitHub på Ship something new-skjermen" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0 0;" />
         </div>
       </div>
@@ -480,11 +480,10 @@ Vennligst:
         <div class="step-num">2</div>
         <div class="step-content">
           <h3>Gi Cloudflare tilgang til GitHub-kontoen din</h3>
-          <p>Cloudflare sender deg til GitHub. Logg inn med <strong>din egen</strong> GitHub-konto (den du nettopp fikk repoet overført til), og gå til <strong>Install &amp; Authorize</strong>.</p>
-          <p>Velg <strong>Only select repositories</strong>, klikk <strong>Select repositories</strong>, søk opp og velg nettside-repoet ditt, og fullfør installasjonen.</p>
+          <p><strong style="color:#0339f8;">a.</strong> Cloudflare sender deg til GitHub. Logg inn med <strong>din egen</strong> GitHub-konto (den du nettopp fikk repoet overført til), og gå til <strong>Install &amp; Authorize</strong>.</p>
+          <p><strong style="color:#0339f8;">b.</strong> Velg <strong>Only select repositories</strong>, klikk <strong>Select repositories</strong>, søk opp og velg nettside-repoet ditt, og fullfør installasjonen. Ser du ikke repoet i lista, er du som regel logget inn på feil GitHub-konto.</p>
           <img src="../images/cloudflare-connect-github.png" alt="Velg Only select repositories og velg ditt eget repo" style="width:100%;max-width:520px;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
-          <p>Ser du ikke repoet i lista, er du som regel logget inn på feil GitHub-konto.</p>
-          <p>Etter installasjonen sendes du tilbake til Cloudflare. Knappen heter nå <strong>Continue with GitHub</strong>. Klikk den for å gå videre.</p>
+          <p><strong style="color:#0339f8;">c.</strong> Etter installasjonen sendes du tilbake til Cloudflare. Knappen heter nå <strong>Continue with GitHub</strong>. Klikk den for å gå videre.</p>
           <img src="../images/cloudflare-continue-github.png" alt="Klikk Continue with GitHub for å gå videre" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0 0;" />
         </div>
       </div>
@@ -493,14 +492,14 @@ Vennligst:
         <div class="step-num">3</div>
         <div class="step-content">
           <h3>Velg repoet og la build-feltene stå tomme</h3>
-          <p>På «Select a repository»: sjekk at GitHub-kontoen din står i nedtrekksmenyen, klikk nettside-repoet ditt, og trykk <strong>Next</strong>.</p>
+          <p><strong style="color:#0339f8;">a.</strong> På «Select a repository»: sjekk at GitHub-kontoen din står i nedtrekksmenyen, klikk nettside-repoet ditt, og trykk <strong>Next</strong>.</p>
           <img src="../images/cloudflare-velg-repo.png" alt="Velg nettside-repoet ditt og klikk Next" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
-          <p>Cloudflare spør så om «build-innstillinger». Nettsiden din er ferdige filer (ingen bygging), så:</p>
+          <p><strong style="color:#0339f8;">b.</strong> Cloudflare spør så om «build-innstillinger». Nettsiden din er ferdige filer (ingen bygging), så la dem stå slik:</p>
           <ul>
             <li><strong>Framework preset:</strong> None</li>
             <li><strong>Build command:</strong> (la stå tom)</li>
           </ul>
-          <p>Klikk <strong>Create and deploy</strong>. Etter et minutt ligger siden på en midlertidig adresse som slutter på <code>.workers.dev</code>. Åpne den og sjekk at den ser riktig ut.</p>
+          <p><strong style="color:#0339f8;">c.</strong> Klikk <strong>Create and deploy</strong>. Etter et minutt ligger siden på en midlertidig adresse som slutter på <code>.workers.dev</code>. Åpne den og sjekk at den ser riktig ut.</p>
         </div>
       </div>
 
@@ -511,9 +510,9 @@ Vennligst:
         <div class="step-num">1</div>
         <div class="step-content">
           <h3>Start domene-koblingen</h3>
-          <p>I prosjektet ditt: klikk fanen <strong>Domains</strong> øverst, og deretter den blå <strong>Add Domain</strong>-knappen. Skriv inn <code>dittfirma.no</code>.</p>
+          <p><strong style="color:#0339f8;">a.</strong> I prosjektet ditt: klikk fanen <strong>Domains</strong> øverst, og deretter den blå <strong>Add Domain</strong>-knappen. Skriv inn <code>dittfirma.no</code>.</p>
           <img src="../images/cloudflare-add-domain.png" alt="Klikk fanen Domains og deretter Add Domain-knappen" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
-          <p>Ligger ikke domenet på Cloudflare fra før, starter Cloudflare en «legg domenet inn på Cloudflare»-flyt og skanner DNS-postene dine (velg <strong>Free</strong>-planen). Følg den videre.</p>
+          <p><strong style="color:#0339f8;">b.</strong> Ligger ikke domenet på Cloudflare fra før, starter Cloudflare en «legg domenet inn på Cloudflare»-flyt og skanner DNS-postene dine (velg <strong>Free</strong>-planen). Følg den videre.</p>
         </div>
       </div>
 
@@ -522,13 +521,11 @@ Vennligst:
         <div class="step-content">
           <h3>Rydd i DNS-postene</h3>
           <p>Cloudflare viser deg alle postene den fant. Dette er det viktigste steget, så les nøye: <strong>du skal ikke slette alt, bare de gamle A-postene som peker på den forrige nettsiden din.</strong> Alt annet, spesielt e-postpostene, skal stå.</p>
-          <ul>
-            <li><strong>Fjern A-postene</strong> som peker på din forrige nettside: <code>A</code> (og evt. <code>AAAA</code>) på selve domenet. Har du en gammel <code>CNAME www</code> til den gamle siden, fjern den også. Klikk <strong>Delete</strong> på hver. De byttes ut med den nye siden.</li>
-            <li><strong>Behold</strong> alle e-postposter: <code>MX</code>, <code>TXT</code> (SPF, DKIM, DMARC) og <code>autoconfig</code>/<code>autodiscover</code>. <strong>Ikke slett dem.</strong></li>
-            <li><strong>Usikker på hva en post er?</strong> Ikke slett den. Lim hele lista inn i <a href="https://aistudio.google.com" target="_blank" rel="noopener">Google AI Studio</a> og spør hva som trygt kan fjernes.</li>
-          </ul>
+          <p><strong style="color:#0339f8;">a.</strong> <strong>Fjern A-postene</strong> som peker på din forrige nettside: <code>A</code> (og evt. <code>AAAA</code>) på selve domenet. Har du en gammel <code>CNAME www</code> til den gamle siden, fjern den også. Klikk <strong>Delete</strong> på hver. De byttes ut med den nye siden.</p>
+          <p><strong style="color:#0339f8;">b.</strong> <strong>Behold</strong> alle e-postposter: <code>MX</code>, <code>TXT</code> (SPF, DKIM, DMARC) og <code>autoconfig</code>/<code>autodiscover</code>. <strong>Ikke slett dem.</strong></p>
+          <p><strong style="color:#0339f8;">c.</strong> <strong>Usikker på hva en post er?</strong> Ikke slett den. Lim hele lista inn i <a href="https://aistudio.google.com" target="_blank" rel="noopener">Google AI Studio</a> og spør hva som trygt kan fjernes.</p>
           <img src="../images/cloudflare-dns-fjern-poster.png" alt="Klikk Delete på de gamle nettside-postene, behold e-postpostene" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
-          <p>Når du er ferdig, klikk <strong>Continue to activation</strong>.</p>
+          <p><strong style="color:#0339f8;">d.</strong> Når du er ferdig, klikk <strong>Continue to activation</strong>.</p>
         </div>
       </div>
 
@@ -536,9 +533,9 @@ Vennligst:
         <div class="step-num">3</div>
         <div class="step-content">
           <h3>Bytt navnetjenere hos domeneleverandøren</h3>
-          <p>Til slutt viser Cloudflare deg <strong>to navnetjenere</strong> (typ <code>navn.ns.cloudflare.com</code>). Dette er selve koblingen: du logger inn hos leverandøren der domenet er registrert, bytter ut de nåværende navnetjenerne med Cloudflares to, og lagrer.</p>
+          <p><strong style="color:#0339f8;">a.</strong> Til slutt viser Cloudflare deg <strong>to navnetjenere</strong> (typ <code>navn.ns.cloudflare.com</code>). Dette er selve koblingen: du logger inn hos leverandøren der domenet er registrert, og bytter ut de nåværende navnetjenerne med Cloudflares to.</p>
           <img src="../images/cloudflare-nameservere.png" alt="Cloudflare viser de to navnetjenerne du skal bytte til" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
-          <p>Klikk på din leverandør under for hvor du finner navnetjener-innstillingen:</p>
+          <p><strong style="color:#0339f8;">b.</strong> Klikk på din leverandør under for hvor du finner navnetjener-innstillingen:</p>
 
           <div class="not-prose" style="display:flex;flex-direction:column;gap:8px;margin:1.25rem 0;">
             <details style="background:white;border:1.5px solid #E4E4E7;border-radius:12px;overflow:hidden;">
@@ -591,7 +588,7 @@ Vennligst:
             </details>
           </div>
 
-          <p>Slett de gamle navnetjenerne (f.eks. <code>ns.datacenter.no</code>) så bare Cloudflares to står igjen, og lagre. Rør ikke noe annet hos leverandøren.</p>
+          <p><strong style="color:#0339f8;">c.</strong> Slett de gamle navnetjenerne (f.eks. <code>ns.datacenter.no</code>) så bare Cloudflares to står igjen, og lagre. Rør ikke noe annet hos leverandøren.</p>
           <div class="callout-ok callout not-prose">
             <p><strong>Usikker på hvordan?</strong> Kopier teksten under og lim inn i <a href="https://aistudio.google.com" target="_blank" rel="noopener" style="color:#14532D;font-weight:600;">Google AI Studio</a> (eller ChatGPT/Claude). Du kan også ta et skjermbilde av navnetjener-skjermen og laste det opp. Den guider deg gjennom akkurat din leverandør.</p>
           </div>
@@ -622,11 +619,11 @@ Vennligst:
         <div class="step-num">4</div>
         <div class="step-content">
           <h3>Legg til domenet, så skjer resten av seg selv</h3>
-          <p>Gå tilbake til prosjektet ditt: bruk <strong>Quick search</strong> igjen (eller <strong>Ctrl + K</strong>), skriv <strong>workers</strong>, velg <strong>Workers &amp; Pages</strong>, og klikk deg inn på prosjektet. Klikk så fanen <strong>Domains</strong> → <strong>Add Domain</strong> → skriv <code>dittfirma.no</code> (gjenta gjerne for <code>www.dittfirma.no</code>). Dette gjør du bare <strong>én gang</strong>.</p>
+          <p><strong style="color:#0339f8;">a.</strong> Gå tilbake til prosjektet ditt: bruk <strong>Quick search</strong> igjen (eller <strong>Ctrl + K</strong>), skriv <strong>workers</strong>, velg <strong>Workers &amp; Pages</strong>, og klikk deg inn på prosjektet. Klikk så fanen <strong>Domains</strong> → <strong>Add Domain</strong> → skriv <code>dittfirma.no</code> (gjenta gjerne for <code>www.dittfirma.no</code>). Dette gjør du bare <strong>én gang</strong>.</p>
           <img src="../images/cloudflare-add-domain.png" alt="Klikk fanen Domains og deretter Add Domain-knappen" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
-          <p>Du kan gjøre det med en gang, mens navnetjenerne fortsatt sprer seg. Så snart navnetjenerne er <strong>Active</strong> og domenet er lagt til, dukker det opp under <strong>«Custom Domains and Routes»</strong>, og <strong>siden publiseres på domenet helt automatisk</strong>. Du trenger ikke gjøre noe mer. Cloudflare sender deg en e-post når det er klart (som regel noen minutter, i sjeldne tilfeller opptil 24 timer).</p>
+          <p><strong style="color:#0339f8;">b.</strong> Du kan gjøre det med en gang, mens navnetjenerne fortsatt sprer seg. Så snart navnetjenerne er <strong>Active</strong> og domenet er lagt til, dukker det opp under <strong>«Custom Domains and Routes»</strong>, og <strong>siden publiseres på domenet helt automatisk</strong>. Du trenger ikke gjøre noe mer. Cloudflare sender deg en e-post når det er klart (som regel noen minutter, i sjeldne tilfeller opptil 24 timer).</p>
           <img src="../images/cloudflare-domene-koblet.png" alt="Domenet ditt vises nå under Custom Domains and Routes" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
-          <p><strong>HTTPS og hengelåsen ordnes automatisk på Cloudflare.</strong> Og fra nå av publiseres hver fremtidig endring du gjør på siden av seg selv på domenet, uten flere klikk.</p>
+          <p><strong style="color:#0339f8;">c.</strong> <strong>HTTPS og hengelåsen ordnes automatisk på Cloudflare.</strong> Og fra nå av publiseres hver fremtidig endring du gjør på siden av seg selv på domenet, uten flere klikk.</p>
         </div>
       </div>
 
