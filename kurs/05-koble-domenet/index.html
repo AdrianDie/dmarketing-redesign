@@ -13,7 +13,6 @@
   <link href="../../assets/ms-icon-256x256.png" rel="shortcut icon" type="image/x-icon" />
   <script src="/kurs/auth.js"></script>
   <script src="/kurs/kurs-track.js"></script>
-  <script src="/kurs/kurs-host.js?v=3"></script>
   <script src="/kurs/kurs-progress.js" defer></script>
   <style>
     body { font-family: 'Inter', sans-serif; background: #FAFAFA; color: #09090B; }
@@ -54,6 +53,7 @@
     details summary::-webkit-details-marker { display: none; }
     details[open] .details-arrow { transform: rotate(90deg); }
     details summary:hover { background: #FAFAFA; }
+    details:not([open]) > *:not(summary) { display: none; }
   </style>
 </head>
 <body>
@@ -72,7 +72,7 @@
         Koble domenet til nettsiden
       </h1>
       <p class="text-lg md:text-xl text-zinc-600 leading-relaxed">
-        Pek domenet ditt til den nye nettsiden — slik at besøkende kommer til riktig sted.
+        Pek domenet ditt til den nye nettsiden, slik at besøkende kommer til riktig sted.
       </p>
     </div>
   </header>
@@ -81,40 +81,24 @@
     <div class="max-w-4xl mx-auto prose-custom">
 
       <div class="callout-warn callout">
-        <p><strong>Forutsetning:</strong> Denne modulen forutsetter at du har akseptert overføringen av nettsiden i GitHub. Du fikk en e-post fra GitHub med tittelen «Accept repository transfer» — klikk lenken og godkjenn <em>før</em> du fortsetter her. Hvis du ikke har fått den ennå, vent til Adrian har sendt den.</p>
+        <p><strong>Forutsetning:</strong> Denne modulen forutsetter at du har akseptert overføringen av nettsiden i GitHub. Du fikk en e-post fra GitHub med tittelen «Accept repository transfer», klikk lenken og godkjenn <em>før</em> du fortsetter her. Hvis du ikke har fått den ennå, vent til Adrian har sendt den.</p>
       </div>
 
       <div class="callout">
-        <p><strong>Tips:</strong> Denne modulen inneholder noen tekniske steg. Bruk gjerne en AI-assistent som <a href="https://aistudio.google.com" target="_blank" rel="noopener" style="color:#1E3A8A;font-weight:600;">Google AI Studio</a> underveis for å forsikre deg om at alt gjøres riktig — i steg 3 finner du en ferdig tekst du kan lime inn for å få hjelp.</p>
-      </div>
-
-      <!-- ═══ Løsning-velger: GitHub Pages / Cloudflare Pages ═══ -->
-      <div class="host-toggle not-prose">
-        <p class="host-toggle__intro">Hvilken løsning er nettsiden din på?</p>
-        <div class="host-toggle__buttons">
-          <button class="host-btn" data-host="github" onclick="setHost('github')">
-            <span class="host-btn__name">⚫ GitHub Pages</span>
-            <span class="host-btn__sub">Den opprinnelige løsningen</span>
-          </button>
-          <button class="host-btn" data-host="cloudflare" onclick="setHost('cloudflare')">
-            <span class="host-btn__name">🟠 Cloudflare Pages</span>
-            <span class="host-btn__sub">Ny — fikk du siden etter 15. juli 2026</span>
-          </button>
-        </div>
-        <p style="font-size:0.85rem;color:#71717A;margin:14px 0 0;line-height:1.5;">Usikker? Sjekk når du fikk velkomstmailen for kurset. Fikk du nettsiden din etter <strong style="color:#3F3F46;">15. juli 2026</strong>, velg <strong style="color:#C2410C;">Cloudflare Pages</strong>. Stegene under bytter seg ut etter hva du velger.</p>
+        <p><strong>Tips:</strong> Denne modulen inneholder noen tekniske steg. Bruk gjerne en AI-assistent som <a href="https://aistudio.google.com" target="_blank" rel="noopener" style="color:#1E3A8A;font-weight:600;">Google AI Studio</a> underveis for å forsikre deg om at alt gjøres riktig, i steg 3 finner du en ferdig tekst du kan lime inn for å få hjelp.</p>
       </div>
 
       <!-- ═══════════════════════════════════════════════ -->
       <!--  INTRO                                          -->
       <!-- ═══════════════════════════════════════════════ -->
 
-      <p style="font-size:1.125rem;line-height:1.65;color:#09090B;font-weight:500;">Nå skal vi gjøre slik at når noen søker opp <code>dittfirma.no</code>, kommer de rett inn på den nye nettsiden — den som ligger på den kostnadsfrie løsningen vi satte opp i forrige modul.</p>
+      <p style="font-size:1.125rem;line-height:1.65;color:#09090B;font-weight:500;">Nå skal vi gjøre slik at når noen søker opp <code>dittfirma.no</code>, kommer de rett inn på den nye nettsiden, den som ligger på den kostnadsfrie løsningen vi satte opp i forrige modul.</p>
 
       <h2>Hva betyr det å «koble domenet»?</h2>
 
-      <p>Nettsiden din ligger allerede klar på en midlertidig adresse (noe som <code>brukernavn.github.io</code> eller <code>ditt-prosjekt.pages.dev</code>). For at folk skal finne siden på din vanlige nettadresse — for eksempel <code>dittfirma.no</code> — må du fortelle internett at domenet ditt nå skal vise den nye nettsiden.</p>
+      <p>Nettsiden din ligger allerede klar på en midlertidig adresse (noe som <code>brukernavn.github.io</code> eller <code>ditt-prosjekt.workers.dev</code>). For at folk skal finne siden på din vanlige nettadresse, for eksempel <code>dittfirma.no</code>, må du fortelle internett at domenet ditt nå skal vise den nye nettsiden.</p>
 
-      <p>Det gjør du ved å legge inn noen <strong>DNS-innstillinger</strong> hos domeneleverandøren din. DNS er internettets adressebok — du oppdaterer hvilken adresse boken peker til, som å endre destinasjonen i en GPS.</p>
+      <p>Det gjør du ved å legge inn noen <strong>DNS-innstillinger</strong> hos domeneleverandøren din. DNS er internettets adressebok, du oppdaterer hvilken adresse boken peker til, som å endre destinasjonen i en GPS.</p>
 
       <div class="explain">
         <div class="explain-label">
@@ -122,19 +106,24 @@
           Hvorfor må jeg gjøre dette selv?
         </div>
         <p>Dette krever innlogging hos <em>din</em> domeneleverandør. Av sikkerhetsmessige årsaker ber vi aldri om kundens passord, og vi har derfor ikke tilgang til å gjøre dette for deg.</p>
-        <p>I tillegg er et av hovedmålene med dette kurset at <strong>du eier og har kontroll over alt selv</strong>. Når du forstår hvordan du styrer ditt eget domene, er du ikke lenger avhengig av dyre mellomledd. Innstillingene du legger inn nå er de samme uansett — og du trenger aldri gjøre det igjen med mindre du bytter leverandør.</p>
+        <p>I tillegg er et av hovedmålene med dette kurset at <strong>du eier og har kontroll over alt selv</strong>. Når du forstår hvordan du styrer ditt eget domene, er du ikke lenger avhengig av dyre mellomledd. Innstillingene du legger inn nå er de samme uansett, og du trenger aldri gjøre det igjen med mindre du bytter leverandør.</p>
       </div>
 
-      <!-- ══════ GITHUB PAGES-VEIEN ══════ -->
-      <div class="host-github">
+      <p style="font-size:1.05rem;font-weight:500;color:#09090B;">Nye nettsider settes opp på <strong style="color:#C2410C;">Cloudflare</strong>, og de detaljerte stegene finner du rett under boksen her. Fikk du nettsiden din før 15. juli 2026, ligger den på GitHub Pages, og da følger du stegene i boksen under i stedet.</p>
 
-      <h2>Det du skal gjøre — oversikt</h2>
+      <!-- ══════ GITHUB PAGES (eldre løsning, kollapset) ══════ -->
+      <div class="not-prose" style="background:#F4F4F5;border-left:3px solid #A1A1AA;border-radius:0.5rem;padding:1rem 1.25rem;margin:1.5rem 0 2.5rem;">
+        <details>
+          <summary style="cursor:pointer;font-weight:600;color:#3F3F46;">Fikk du nettsiden din før 15. juli 2026? Da er du nok på GitHub Pages, ikke Cloudflare. Trykk her for de stegene i stedet.</summary>
+          <div class="host-github" style="margin-top:1.25rem;">
+
+      <h2>GitHub Pages: det du skal gjøre</h2>
       <p>Det er fire steg:</p>
       <ol>
-        <li><strong>Registrer domenet i GitHub</strong> — fortell GitHub hvilket domene som hører til nettsiden</li>
-        <li><strong>Finn og logg inn hos domeneleverandøren</strong> — finn ut hvem som styrer domenet ditt, og åpne DNS-innstillingene</li>
-        <li><strong>Legg inn DNS-postene</strong> — bruk AI-assistent (anbefalt) eller gjør det manuelt</li>
-        <li><strong>Vent, sjekk og slå på HTTPS</strong> — bekreft at alt fungerer</li>
+        <li><strong>Registrer domenet i GitHub</strong>, fortell GitHub hvilket domene som hører til nettsiden</li>
+        <li><strong>Finn og logg inn hos domeneleverandøren</strong>, finn ut hvem som styrer domenet ditt, og åpne DNS-innstillingene</li>
+        <li><strong>Legg inn DNS-postene</strong>, bruk AI-assistent (anbefalt) eller gjør det manuelt</li>
+        <li><strong>Vent, sjekk og slå på HTTPS</strong>, bekreft at alt fungerer</li>
       </ol>
 
       <div class="callout">
@@ -179,7 +168,7 @@
         <div class="step-num">1</div>
         <div class="step-content">
           <h3>Gå til repoet ditt på GitHub</h3>
-          <p>Logg inn på <a href="https://github.com" target="_blank" rel="noopener">github.com</a>. Klikk på repoet (mappen) med nettsiden din — du finner det på forsiden etter innlogging.</p>
+          <p>Logg inn på <a href="https://github.com" target="_blank" rel="noopener">github.com</a>. Klikk på repoet (mappen) med nettsiden din, du finner det på forsiden etter innlogging.</p>
           <img src="../images/Click-repo.png" alt="Oversikt over repositories på GitHub" class="w-full h-auto mt-5 rounded-lg border border-zinc-200 shadow-sm" />
         </div>
       </div>
@@ -206,8 +195,8 @@
         <div class="step-num">4</div>
         <div class="step-content">
           <h3>Skriv inn domenet ditt</h3>
-          <p>Under <strong>Custom domain</strong>, skriv inn domenenavnet ditt — for eksempel <code>dittfirma.no</code> — og klikk <strong>Save</strong>.</p>
-          <p>GitHub oppretter automatisk en fil som heter <code>CNAME</code> i repoet ditt. Det er denne filen som kobler domenet til nettsiden. Du vil se en gul melding som sier «DNS check in progress» — det er forventet, og den forsvinner etter steg 3.</p>
+          <p>Under <strong>Custom domain</strong>, skriv inn domenenavnet ditt, for eksempel <code>dittfirma.no</code>, og klikk <strong>Save</strong>.</p>
+          <p>GitHub oppretter automatisk en fil som heter <code>CNAME</code> i repoet ditt. Det er denne filen som kobler domenet til nettsiden. Du vil se en gul melding som sier «DNS check in progress», det er forventet, og den forsvinner etter steg 3.</p>
           <img src="../images/GIthub-pages.png" alt="Fyll inn domenenavnet under Custom domain" class="w-full h-auto mt-5 rounded-lg border border-zinc-200 shadow-sm" />
         </div>
       </div>
@@ -225,18 +214,18 @@
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
           Hva er en domeneleverandør?
         </div>
-        <p>Domeneleverandøren er selskapet du kjøpte nettadressen din hos — for eksempel <a href="#domeneshop-guide" style="color:#6D28D9;font-weight:600;">Domeneshop</a>, <a href="#webhuset-guide" style="color:#6D28D9;font-weight:600;">Webhuset</a>, <a href="#onecom-guide" style="color:#6D28D9;font-weight:600;">One.com</a>, <a href="#namecheap-guide" style="color:#6D28D9;font-weight:600;">Namecheap</a> eller <a href="#godaddy-guide" style="color:#6D28D9;font-weight:600;">GoDaddy</a>. Det er her du logger inn for å styre hvor domenet ditt peker.</p>
+        <p>Domeneleverandøren er selskapet du kjøpte nettadressen din hos, for eksempel <a href="#domeneshop-guide" style="color:#6D28D9;font-weight:600;">Domeneshop</a>, <a href="#webhuset-guide" style="color:#6D28D9;font-weight:600;">Webhuset</a>, <a href="#onecom-guide" style="color:#6D28D9;font-weight:600;">One.com</a>, <a href="#namecheap-guide" style="color:#6D28D9;font-weight:600;">Namecheap</a> eller <a href="#godaddy-guide" style="color:#6D28D9;font-weight:600;">GoDaddy</a>. Det er her du logger inn for å styre hvor domenet ditt peker.</p>
       </div>
 
       <h3>Vet du ikke hvor domenet ditt er registrert?</h3>
 
-      <p>Ingen grunn til bekymring — det er enkelt å finne ut:</p>
+      <p>Ingen grunn til bekymring, det er enkelt å finne ut:</p>
 
       <div class="step not-prose">
         <div class="step-num">1</div>
         <div class="step-content">
           <h3>Søk opp domenet ditt</h3>
-          <p>Gå til <a href="https://lookup.icann.org/en/lookup" target="_blank" rel="noopener">lookup.icann.org</a> og skriv inn domenet ditt (for eksempel <code>dittfirma.no</code>). Trykk «Lookup». Dette fungerer for alle domener — både .no, .com og andre.</p>
+          <p>Gå til <a href="https://lookup.icann.org/en/lookup" target="_blank" rel="noopener">lookup.icann.org</a> og skriv inn domenet ditt (for eksempel <code>dittfirma.no</code>). Trykk «Lookup». Dette fungerer for alle domener, både .no, .com og andre.</p>
         </div>
       </div>
 
@@ -244,7 +233,7 @@
         <div class="step-num">2</div>
         <div class="step-content">
           <h3>Finn registraren</h3>
-          <p>Scroll ned til seksjonen <strong>«Registrar Information»</strong>. Under <strong>«Name»</strong> ser du hvem leverandøren din er — for eksempel «WEBHUSET AS» eller «DOMENESHOP AS». Det er hos <em>dem</em> du skal logge inn.</p>
+          <p>Scroll ned til seksjonen <strong>«Registrar Information»</strong>. Under <strong>«Name»</strong> ser du hvem leverandøren din er, for eksempel «WEBHUSET AS» eller «DOMENESHOP AS». Det er hos <em>dem</em> du skal logge inn.</p>
         </div>
       </div>
 
@@ -257,7 +246,7 @@
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
           Husker du ikke innloggingen?
         </div>
-        <p>Bruk «Glemt passord»-funksjonen — det er helt normalt. Vet du ikke hvilken e-post du brukte? Søk i innboksen din etter navnet på leverandøren (f.eks. «Domeneshop» eller «Webhuset»). Du har sannsynligvis fått kvitteringer eller fornyelsespåminnelser fra dem. Du kan også kontakte leverandørens kundeservice direkte.</p>
+        <p>Bruk «Glemt passord»-funksjonen, det er helt normalt. Vet du ikke hvilken e-post du brukte? Søk i innboksen din etter navnet på leverandøren (f.eks. «Domeneshop» eller «Webhuset»). Du har sannsynligvis fått kvitteringer eller fornyelsespåminnelser fra dem. Du kan også kontakte leverandørens kundeservice direkte.</p>
       </div>
 
       <div class="not-prose" style="display:flex;flex-direction:column;gap:8px;margin:1.25rem 0;">
@@ -272,7 +261,7 @@
               <li style="margin-bottom:6px;">Gå til <a href="https://www.domeneshop.no/login" target="_blank" rel="noopener" style="color:#0339f8;">domeneshop.no/login</a> og logg inn</li>
               <li style="margin-bottom:6px;">Klikk på <strong>«Mine domener»</strong></li>
               <li style="margin-bottom:6px;">Klikk på domenet ditt (f.eks. <code style="background:#F4F4F5;padding:2px 6px;border-radius:4px;font-size:0.85em;">dittfirma.no</code>)</li>
-              <li>Klikk på fanen <strong>«DNS-pekere»</strong> øverst — her skal du legge inn de nye postene</li>
+              <li>Klikk på fanen <strong>«DNS-pekere»</strong> øverst, her skal du legge inn de nye postene</li>
             </ol>
             <p style="margin:12px 0 0;font-size:0.85rem;color:#71717A;">Se også <a href="https://domene.shop/faq?id=15" target="_blank" rel="noopener" style="color:#0339f8;">Domeneshop sin egen veiledning</a></p>
           </div>
@@ -287,7 +276,7 @@
             <ol style="margin:16px 0 0;padding-left:20px;font-size:0.95rem;line-height:1.7;color:#3F3F46;">
               <li style="margin-bottom:6px;">Gå til <a href="https://kundesenter.webhuset.no" target="_blank" rel="noopener" style="color:#0339f8;">Webhuset sitt kundesenter</a> og logg inn</li>
               <li style="margin-bottom:6px;">Klikk <strong>«Domene»</strong> → velg domenet ditt</li>
-              <li>Klikk <strong>«DNS»</strong> → <strong>«DNS-oppføringer»</strong> — her skal du legge inn de nye postene</li>
+              <li>Klikk <strong>«DNS»</strong> → <strong>«DNS-oppføringer»</strong>, her skal du legge inn de nye postene</li>
             </ol>
             <p style="margin:12px 0 0;font-size:0.85rem;color:#71717A;">Se også <a href="https://www.webhuset.no/hjelp/diverse/legge-til-endre-og-slette-dns-oppf-ringer" target="_blank" rel="noopener" style="color:#0339f8;">Webhuset sin egen veiledning</a></p>
           </div>
@@ -303,7 +292,7 @@
               <li style="margin-bottom:6px;">Gå til <a href="https://www.one.com/admin" target="_blank" rel="noopener" style="color:#0339f8;">one.com/admin</a> og logg inn</li>
               <li style="margin-bottom:6px;">Velg riktig domene i nedtrekkslisten øverst til venstre (under «Domenenavn»)</li>
               <li style="margin-bottom:6px;">Klikk på <strong>«Domene»</strong> i venstremenyen</li>
-              <li>Klikk på <strong>«DNS-innstillinger»</strong> — her skal du legge inn de nye postene</li>
+              <li>Klikk på <strong>«DNS-innstillinger»</strong>, her skal du legge inn de nye postene</li>
             </ol>
             <p style="margin:12px 0 0;font-size:0.85rem;color:#71717A;">Se også <a href="https://help.one.com/hc/no/articles/115005595925-Administrer-dine-DNS-innstillinger" target="_blank" rel="noopener" style="color:#0339f8;">One.com sin egen veiledning</a></p>
           </div>
@@ -319,7 +308,7 @@
               <li style="margin-bottom:6px;">Gå til <a href="https://www.namecheap.com/myaccount/login/" target="_blank" rel="noopener" style="color:#0339f8;">namecheap.com</a> og logg inn</li>
               <li style="margin-bottom:6px;">Klikk på <strong>«Domain List»</strong> i venstremenyen</li>
               <li style="margin-bottom:6px;">Klikk <strong>«Manage»</strong> ved siden av domenet ditt</li>
-              <li>Klikk på fanen <strong>«Advanced DNS»</strong> — her skal du legge inn de nye postene</li>
+              <li>Klikk på fanen <strong>«Advanced DNS»</strong>, her skal du legge inn de nye postene</li>
             </ol>
             <p style="margin:12px 0 0;font-size:0.85rem;color:#71717A;">Se også <a href="https://www.namecheap.com/support/knowledgebase/article.aspx/767/10/how-to-change-dns-for-a-domain/" target="_blank" rel="noopener" style="color:#0339f8;">Namecheap sin egen veiledning</a></p>
           </div>
@@ -334,7 +323,7 @@
             <ol style="margin:16px 0 0;padding-left:20px;font-size:0.95rem;line-height:1.7;color:#3F3F46;">
               <li style="margin-bottom:6px;">Gå til <a href="https://www.godaddy.com" target="_blank" rel="noopener" style="color:#0339f8;">godaddy.com</a> og logg inn</li>
               <li style="margin-bottom:6px;">Gå til <strong>«Mine produkter»</strong> og finn domenet ditt</li>
-              <li>Klikk <strong>«DNS»</strong> eller <strong>«Administrer DNS»</strong> — her skal du legge inn de nye postene</li>
+              <li>Klikk <strong>«DNS»</strong> eller <strong>«Administrer DNS»</strong>, her skal du legge inn de nye postene</li>
             </ol>
             <p style="margin:12px 0 0;font-size:0.85rem;color:#71717A;">Se også <a href="https://no.godaddy.com/help/administrer-dns-oppforinger-680" target="_blank" rel="noopener" style="color:#0339f8;">GoDaddy sin egen veiledning</a></p>
           </div>
@@ -346,7 +335,7 @@
             Annen leverandør
           </summary>
           <div style="padding:0 20px 20px;border-top:1px solid #F4F4F5;">
-            <p style="margin:16px 0 0;font-size:0.95rem;line-height:1.7;color:#3F3F46;">Logg inn hos leverandøren din og finn siden for DNS-innstillinger — den kan hete «DNS-poster», «DNS Records», «Soneinnstillinger» eller lignende. Bruk gjerne <a href="https://aistudio.google.com" target="_blank" rel="noopener" style="color:#0339f8;font-weight:600;">AI-assistenten</a> i steg 3 — den tilpasser veiledningen til akkurat din leverandør.</p>
+            <p style="margin:16px 0 0;font-size:0.95rem;line-height:1.7;color:#3F3F46;">Logg inn hos leverandøren din og finn siden for DNS-innstillinger, den kan hete «DNS-poster», «DNS Records», «Soneinnstillinger» eller lignende. Bruk gjerne <a href="https://aistudio.google.com" target="_blank" rel="noopener" style="color:#0339f8;font-weight:600;">AI-assistenten</a> i steg 3, den tilpasser veiledningen til akkurat din leverandør.</p>
           </div>
         </details>
 
@@ -361,7 +350,7 @@
       <p>Nå som du har DNS-innstillingene åpne hos leverandøren din, er det på tide å legge inn de riktige postene. Du har to valg:</p>
 
       <div class="callout-ok callout" style="margin-bottom:1.25rem;">
-        <p><strong>Vi anbefaler at du bruker AI-assistenten under</strong> i stedet for å gjøre det manuelt. Den guider deg gjennom hvert steg, tilpasser seg din leverandør, og kontrollerer at alt er riktig til slutt — slik at du slipper å lure på om du har gjort noe feil.</p>
+        <p><strong>Vi anbefaler at du bruker AI-assistenten under</strong> i stedet for å gjøre det manuelt. Den guider deg gjennom hvert steg, tilpasser seg din leverandør, og kontrollerer at alt er riktig til slutt, slik at du slipper å lure på om du har gjort noe feil.</p>
       </div>
 
       <h3>Alternativ A: Bruk AI-assistent (anbefalt)</h3>
@@ -389,7 +378,7 @@ A-POSTER (alle fire er obligatoriske, alle på @):
 CNAME-POST (obligatorisk):
 - CNAME www → [mitt GitHub-brukernavn].github.io
 
-AAAA-POSTER for IPv6 (valgfritt — spør meg om jeg vil legge dem inn):
+AAAA-POSTER for IPv6 (valgfritt, spør meg om jeg vil legge dem inn):
 - AAAA @ 2606:50c0:8000::153
 - AAAA @ 2606:50c0:8001::153
 - AAAA @ 2606:50c0:8002::153
@@ -399,13 +388,13 @@ Forklar kort hva AAAA-poster er (IPv6-versjonen av A-postene, en nyere måte å 
 
 VIKTIGE REGLER:
 - Gamle A-poster, AAAA-poster og CNAME på www som peker til den forrige hostingen MÅ slettes
-- MX-poster (e-post), TXT-poster (SPF/DKIM) og NS-poster MÅ IKKE røres — da slutter e-posten å fungere
+- MX-poster (e-post), TXT-poster (SPF/DKIM) og NS-poster MÅ IKKE røres, da slutter e-posten å fungere
 - Er jeg usikker på hva en post gjør, lar jeg den stå
 
 Vennligst:
 1. Spør meg hvilken domeneleverandør jeg bruker (f.eks. Domeneshop, One.com, Namecheap, GoDaddy, osv.)
 2. Spør meg hva mitt GitHub-brukernavn er (for CNAME-posten)
-3. Gi meg en steg-for-steg veiledning for å slette de gamle postene og legge inn de nye — tilpasset min leverandør
+3. Gi meg en steg-for-steg veiledning for å slette de gamle postene og legge inn de nye, tilpasset min leverandør
 4. Når jeg er ferdig, be meg beskrive eller ta skjermbilde av hva jeg ser i DNS-oversikten, og sjekk om alt ser riktig ut</div>
         </div>
       </div>
@@ -424,7 +413,7 @@ Vennligst:
         <div style="padding:4px 20px 20px;border-top:1px solid #F4F4F5;">
 
           <h4 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:1.05rem;margin:1.5rem 0 0.75rem;color:#09090B;">Først: rydd opp i gamle poster</h4>
-          <p style="font-size:0.95rem;line-height:1.65;color:#3F3F46;margin-bottom:1rem;">Før du legger inn de nye postene, må du fjerne de gamle som peker til den forrige nettsiden. Men <strong style="color:#09090B;">det er viktig at du bare sletter de riktige</strong> — noen poster styrer e-posten din og må ikke røres.</p>
+          <p style="font-size:0.95rem;line-height:1.65;color:#3F3F46;margin-bottom:1rem;">Før du legger inn de nye postene, må du fjerne de gamle som peker til den forrige nettsiden. Men <strong style="color:#09090B;">det er viktig at du bare sletter de riktige</strong>, noen poster styrer e-posten din og må ikke røres.</p>
 
           <div style="background:#FEF2F2;border:2px solid #FCA5A5;border-radius:14px;padding:20px 24px;margin:1rem 0;">
             <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
@@ -443,13 +432,13 @@ Vennligst:
               <div style="background:white;border:1.5px solid #86EFAC;border-radius:10px;padding:14px;">
                 <p style="font-weight:700;font-size:0.85rem;color:#14532D;margin:0 0 8px;">BEHOLD disse:</p>
                 <ul style="margin:0;padding-left:16px;font-size:0.875rem;color:#15803D;line-height:1.6;">
-                  <li style="list-style:disc;margin-bottom:2px;"><strong>MX-poster</strong> — styrer e-posten din</li>
-                  <li style="list-style:disc;margin-bottom:2px;"><strong>TXT-poster</strong> — e-postverifisering (SPF, DKIM)</li>
-                  <li style="list-style:disc;margin-bottom:0;"><strong>NS-poster</strong> — styrer selve domenet</li>
+                  <li style="list-style:disc;margin-bottom:2px;"><strong>MX-poster</strong>, styrer e-posten din</li>
+                  <li style="list-style:disc;margin-bottom:2px;"><strong>TXT-poster</strong>, e-postverifisering (SPF, DKIM)</li>
+                  <li style="list-style:disc;margin-bottom:0;"><strong>NS-poster</strong>, styrer selve domenet</li>
                 </ul>
               </div>
             </div>
-            <p style="font-size:0.85rem;color:#991B1B;margin:12px 0 0;">Er du usikker? La posten stå — eller spør oss på <strong>adrian@dmarketing.no</strong>.</p>
+            <p style="font-size:0.85rem;color:#991B1B;margin:12px 0 0;">Er du usikker? La posten stå, eller spør oss på <strong>adrian@dmarketing.no</strong>.</p>
           </div>
 
           <h4 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:1.05rem;margin:1.5rem 0 0.75rem;color:#09090B;">Legg inn de nye A-postene (obligatorisk)</h4>
@@ -473,7 +462,7 @@ Vennligst:
           <p style="font-size:0.95rem;line-height:1.65;color:#3F3F46;">Bytt ut <code style="background:#F4F4F5;padding:2px 6px;border-radius:4px;font-size:0.9em;">ditt-brukernavn</code> med ditt faktiske GitHub-brukernavn.</p>
 
           <h4 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:1.05rem;margin:1.5rem 0 0.5rem;color:#09090B;">AAAA-poster for IPv6 (valgfritt)</h4>
-          <p style="font-size:0.9rem;line-height:1.6;color:#3F3F46;margin:0 0 0.75rem;">AAAA-poster er IPv6-versjonen av A-postene — en nyere måte å koble til internett på. Fordelen er at nettsiden kan laste litt raskere for besøkende som bruker IPv6, og flere og flere enheter og nett gjør det. Men nettsiden fungerer helt fint uten dem også. Vil du ha dem på plass kan du legge inn disse:</p>
+          <p style="font-size:0.9rem;line-height:1.6;color:#3F3F46;margin:0 0 0.75rem;">AAAA-poster er IPv6-versjonen av A-postene, en nyere måte å koble til internett på. Fordelen er at nettsiden kan laste litt raskere for besøkende som bruker IPv6, og flere og flere enheter og nett gjør det. Men nettsiden fungerer helt fint uten dem også. Vil du ha dem på plass kan du legge inn disse:</p>
           <table style="width:100%;border-collapse:collapse;margin:0.75rem 0;font-size:0.9375rem;">
             <thead><tr><th style="background:#F4F4F5;font-weight:700;text-align:left;padding:10px 14px;border:1px solid #E4E4E7;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.04em;color:#52525B;">Type</th><th style="background:#F4F4F5;font-weight:700;text-align:left;padding:10px 14px;border:1px solid #E4E4E7;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.04em;color:#52525B;">Vert / Navn</th><th style="background:#F4F4F5;font-weight:700;text-align:left;padding:10px 14px;border:1px solid #E4E4E7;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.04em;color:#52525B;">Verdi</th></tr></thead>
             <tbody>
@@ -498,168 +487,53 @@ Vennligst:
       <p>Når nettsiden viser seg:</p>
       <ol>
         <li>Gå tilbake til GitHub → <strong>Settings</strong> → <strong>Pages</strong></li>
-        <li>Huk av for <strong>Enforce HTTPS</strong> — da får nettsiden hengelåsen i nettleseren. Det er gratis.</li>
+        <li>Huk av for <strong>Enforce HTTPS</strong>, da får nettsiden hengelåsen i nettleseren. Det er gratis.</li>
       </ol>
-      <p>Denne avhukingsboksen kan være grå akkurat nå — det er normalt. Den blir klikkbar etter at DNS-endringene har spredd seg, som regel innen noen minutter.</p>
+      <p>Denne avhukingsboksen kan være grå akkurat nå, det er normalt. Den blir klikkbar etter at DNS-endringene har spredd seg, som regel innen noen minutter.</p>
 
       <div class="callout-ok callout">
-        <p><strong>Ferdig!</strong> Når domenet viser den nye nettsiden med hengelås, er koblingen på plass. Du trenger aldri gjøre dette igjen — med mindre du en dag bytter til en helt annen hostingleverandør.</p>
+        <p><strong>Ferdig!</strong> Når domenet viser den nye nettsiden med hengelås, er koblingen på plass. Du trenger aldri gjøre dette igjen, med mindre du en dag bytter til en helt annen hostingleverandør.</p>
       </div>
 
+          </div>
+        </details>
       </div><!-- /host-github -->
 
-      <!-- ══════ CLOUDFLARE PAGES-VEIEN ══════ -->
+      <!-- ══════ CLOUDFLARE-VEIEN (standard) ══════ -->
       <div class="host-cloudflare">
 
-      <h2 style="color:#9A3412;">Slik setter du opp <span style="color:#F38020;">Cloudflare Pages</span></h2>
+      <h2 style="color:#9A3412;">Slik setter du opp <span style="color:#F38020;">Cloudflare</span></h2>
 
-      <p>Cloudflare Pages er den nyere løsningen vi bruker for nettsider. Her setter du opp hostingen på <strong>din egen gratis Cloudflare-konto</strong> — da eier du alt selv, uten noe mellomledd. Det høres teknisk ut, men det er noen få klikk, og du gjør det bare denne ene gangen. I det daglige er alt som før: Claude lagrer, og siden publiseres av seg selv.</p>
+      <p>Cloudflare er løsningen vi bruker for nye nettsider. Du setter opp hostingen på <strong>din egen gratis Cloudflare-konto</strong>, så du eier alt selv, uten mellomledd. Det er noen få klikk, og du gjør det bare denne ene gangen. I det daglige er alt som før: Claude lagrer, og siden publiseres av seg selv.</p>
 
       <div class="callout-warn callout">
-        <p><strong>Forutsetning:</strong> du må ha fått nettside-repoet overført til din egen GitHub-konto først (det gjorde du i modulen om overgangen). Cloudflare kobler seg nemlig til <em>ditt</em> repo — så gjør dette <strong>etter</strong> at overføringen er ferdig, ikke før.</p>
-      </div>
-
-      <figure class="not-prose my-8 rounded-2xl border border-zinc-200 bg-white p-5 md:p-7">
-        <p class="text-center text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-5">Slik henger det sammen på Cloudflare Pages</p>
-        <svg viewBox="0 0 560 140" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Cloudflare Pages har nettsiden, du legger domenet til i Cloudflare, besøkende kommer inn på dittfirma.no">
-          <rect x="10" y="20" width="160" height="100" rx="12" fill="#FFF7ED" stroke="#FDBA74" stroke-width="2"/>
-          <text x="90" y="48" text-anchor="middle" font-size="11" font-weight="800" fill="#9A3412">Cloudflare Pages</text>
-          <text x="90" y="66" text-anchor="middle" font-size="10" fill="#C2410C">nettsiden ligger her</text>
-          <text x="90" y="84" text-anchor="middle" font-size="9.5" fill="#C2410C">ditt-prosjekt</text>
-          <text x="90" y="96" text-anchor="middle" font-size="9.5" fill="#C2410C">.pages.dev</text>
-          <line x1="170" y1="70" x2="205" y2="70" stroke="#F38020" stroke-width="2"/>
-          <polygon points="200,65 210,70 200,75" fill="#F38020"/>
-          <rect x="210" y="20" width="150" height="100" rx="12" fill="#FFFBEB" stroke="#FDE68A" stroke-width="2"/>
-          <text x="285" y="48" text-anchor="middle" font-size="11" font-weight="800" fill="#92400E">Custom domain</text>
-          <text x="285" y="66" text-anchor="middle" font-size="10" fill="#B45309">du legger inn</text>
-          <text x="285" y="84" text-anchor="middle" font-size="9.5" fill="#B45309">«dittfirma.no</text>
-          <text x="285" y="96" text-anchor="middle" font-size="9.5" fill="#B45309">hører til her»</text>
-          <line x1="360" y1="70" x2="395" y2="70" stroke="#16A34A" stroke-width="2"/>
-          <polygon points="390,65 400,70 390,75" fill="#16A34A"/>
-          <rect x="400" y="20" width="150" height="100" rx="12" fill="#FAFAFA" stroke="#E4E4E7" stroke-width="2"/>
-          <text x="475" y="52" text-anchor="middle" font-size="11" font-weight="800" fill="#09090B">Besøkende</text>
-          <text x="475" y="70" text-anchor="middle" font-size="10" fill="#71717A">skriver dittfirma.no</text>
-          <text x="475" y="98" text-anchor="middle" font-size="10" fill="#71717A">og ser nettsiden din</text>
-        </svg>
-      </figure>
-
-      <div class="step not-prose">
-        <div class="step-num">1</div>
-        <div class="step-content">
-          <h3>Opprett en gratis Cloudflare-konto</h3>
-          <p>Gå til <a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener">dash.cloudflare.com/sign-up</a> og lag en konto med e-post og passord. Det er <strong>gratis</strong>, krever ikke kredittkort, og tar et par minutter. Har du allerede en konto, logger du bare inn.</p>
-        </div>
-      </div>
-
-      <div class="step not-prose">
-        <div class="step-num">2</div>
-        <div class="step-content">
-          <h3>Koble GitHub-repoet ditt til Cloudflare Pages</h3>
-          <p>Dette er selve oppsettet — du gjør det bare denne ene gangen. I menyen til venstre: <strong>«Workers &amp; Pages»</strong> → <strong>«Create»</strong> → fanen <strong>«Pages»</strong> → <strong>«Connect to Git»</strong>. Godkjenn at Cloudflare får se GitHub-kontoen din, og velg <strong>repoet med nettsiden din</strong> i listen.</p>
-          <p>På siste side spør Cloudflare om «build-innstillinger». Nettsiden din er ferdige filer (ingen bygging), så du lar dem stå slik:</p>
-          <ul>
-            <li><strong>Framework preset:</strong> None</li>
-            <li><strong>Build command:</strong> (la stå tom)</li>
-          </ul>
-          <p>Klikk <strong>«Save and Deploy»</strong>. Cloudflare henter filene og legger nettsiden ut på en midlertidig adresse — noe som <code>ditt-prosjekt.pages.dev</code>. Åpne den adressen: ser du nettsiden din der, fungerer hostingen. Nå gjenstår bare å koble ditt eget domene.</p>
-          <figure style="margin:1.25rem 0 0;">
-            <svg viewBox="0 0 530 210" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Cloudflare Pages Connect to Git-skjerm der du velger repoet med nettsiden din og klikker Begin setup">
-              <rect x="10" y="10" width="510" height="190" rx="8" fill="white" stroke="#E4E4E7" stroke-width="1.5"/>
-              <rect x="10" y="10" width="510" height="32" rx="8" fill="#F4F4F5"/>
-              <rect x="10" y="32" width="510" height="10" fill="#F4F4F5"/>
-              <circle cx="27" cy="26" r="4.5" fill="#EF4444"/>
-              <circle cx="40" cy="26" r="4.5" fill="#F59E0B"/>
-              <circle cx="53" cy="26" r="4.5" fill="#22C55E"/>
-              <rect x="72" y="18" width="300" height="16" rx="8" fill="white" stroke="#E4E4E7" stroke-width="1"/>
-              <text x="222" y="30" text-anchor="middle" font-size="9" fill="#71717A">dash.cloudflare.com › Create an application › Pages</text>
-              <text x="26" y="62" font-size="11" font-weight="800" fill="#09090B">Connect to Git</text>
-              <text x="26" y="78" font-size="9.5" fill="#71717A">Velg repoet du vil publisere:</text>
-              <!-- repo row selected -->
-              <rect x="22" y="88" width="486" height="30" rx="6" fill="#FFF7ED" stroke="#F38020" stroke-width="1.5"/>
-              <circle cx="40" cy="103" r="6" fill="none" stroke="#F38020" stroke-width="2"/>
-              <circle cx="40" cy="103" r="2.8" fill="#F38020"/>
-              <text x="56" y="107" font-size="10.5" font-weight="700" fill="#9A3412">dittfirma-nettside</text>
-              <text x="470" y="107" font-size="9" fill="#C2410C">ditt repo</text>
-              <!-- other repo rows greyed -->
-              <rect x="22" y="122" width="486" height="26" rx="6" fill="white" stroke="#EFEFF1" stroke-width="1"/>
-              <circle cx="40" cy="135" r="6" fill="none" stroke="#D4D4D8" stroke-width="2"/>
-              <text x="56" y="139" font-size="10" fill="#A1A1AA">et-annet-repo</text>
-              <rect x="22" y="152" width="486" height="26" rx="6" fill="white" stroke="#EFEFF1" stroke-width="1"/>
-              <circle cx="40" cy="165" r="6" fill="none" stroke="#D4D4D8" stroke-width="2"/>
-              <text x="56" y="169" font-size="10" fill="#A1A1AA">enda-et-repo</text>
-              <!-- Begin setup button -->
-              <rect x="404" y="150" width="104" height="30" rx="7" fill="#F38020"/>
-              <text x="456" y="169" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">Begin setup →</text>
-            </svg>
-            <p class="text-center text-xs text-zinc-400 mt-3">Velg ditt eget repo, la build-feltene stå tomme, og klikk «Begin setup» / «Save and Deploy».</p>
-          </figure>
-        </div>
-      </div>
-
-      <div class="step not-prose">
-        <div class="step-num">3</div>
-        <div class="step-content">
-          <h3>Gå til «Custom domains» og legg inn domenet</h3>
-          <p>Øverst i prosjektet klikker du på fanen <strong>«Custom domains»</strong>. Klikk <strong>«Set up a custom domain»</strong>, skriv inn domenet ditt — <code>dittfirma.no</code> — og trykk <strong>«Continue»</strong>. Gjenta gjerne for <code>www.dittfirma.no</code> etterpå.</p>
-          <figure style="margin:1.25rem 0 0;">
-            <svg viewBox="0 0 530 208" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" role="img" aria-label="Cloudflare Pages Custom domains-skjerm med knappen Set up a custom domain og domenet dittfirma.no med grønn Active-status">
-              <!-- Browser chrome -->
-              <rect x="10" y="10" width="510" height="188" rx="8" fill="white" stroke="#E4E4E7" stroke-width="1.5"/>
-              <rect x="10" y="10" width="510" height="32" rx="8" fill="#F4F4F5"/>
-              <rect x="10" y="32" width="510" height="10" fill="#F4F4F5"/>
-              <circle cx="27" cy="26" r="4.5" fill="#EF4444"/>
-              <circle cx="40" cy="26" r="4.5" fill="#F59E0B"/>
-              <circle cx="53" cy="26" r="4.5" fill="#22C55E"/>
-              <rect x="72" y="18" width="290" height="16" rx="8" fill="white" stroke="#E4E4E7" stroke-width="1"/>
-              <text x="217" y="30" text-anchor="middle" font-size="9" fill="#71717A">dash.cloudflare.com › ditt-prosjekt › Custom domains</text>
-              <!-- Tabs -->
-              <text x="26" y="60" font-size="10" font-weight="700" fill="#A1A1AA">Deployments</text>
-              <text x="120" y="60" font-size="10" font-weight="800" fill="#F38020">Custom domains</text>
-              <rect x="118" y="66" width="86" height="2.5" rx="1" fill="#F38020"/>
-              <text x="230" y="60" font-size="10" font-weight="700" fill="#A1A1AA">Settings</text>
-              <line x1="22" y1="68" x2="508" y2="68" stroke="#F1F1F3" stroke-width="1"/>
-              <!-- Set up button -->
-              <rect x="380" y="80" width="128" height="26" rx="7" fill="#F38020"/>
-              <text x="444" y="97" text-anchor="middle" font-size="9.5" font-weight="700" fill="#FFFFFF">+ Set up a custom domain</text>
-              <!-- Domain row 1: active -->
-              <rect x="22" y="118" width="486" height="32" rx="6" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1"/>
-              <text x="36" y="138" font-size="11" font-weight="700" fill="#09090B">dittfirma.no</text>
-              <rect x="410" y="125" width="86" height="18" rx="9" fill="#DCFCE7"/>
-              <text x="453" y="138" text-anchor="middle" font-size="9" font-weight="700" fill="#15803D">✓ Active</text>
-              <!-- Domain row 2: www active -->
-              <rect x="22" y="156" width="486" height="32" rx="6" fill="white" stroke="#EFEFF1" stroke-width="1"/>
-              <text x="36" y="176" font-size="11" font-weight="600" fill="#09090B">www.dittfirma.no</text>
-              <rect x="410" y="163" width="86" height="18" rx="9" fill="#DCFCE7"/>
-              <text x="453" y="176" text-anchor="middle" font-size="9" font-weight="700" fill="#15803D">✓ Active</text>
-            </svg>
-            <p class="text-center text-xs text-zinc-400 mt-3">Når statusen blir grønn og sier «Active», er domenet koblet.</p>
-          </figure>
-        </div>
-      </div>
-
-      <div class="step not-prose">
-        <div class="step-num">4</div>
-        <div class="step-content">
-          <h3>Følg det Cloudflare viser deg</h3>
-          <p>Nå sjekker Cloudflare hvor domenet ditt styres fra, og gjør én av to ting:</p>
-          <p><strong>Automatisk:</strong> Hvis domenet ditt allerede administreres av Cloudflare, ordner Cloudflare alt selv — du trenger ikke gjøre noe mer. Status blir grønn av seg selv.</p>
-          <p><strong>Én post å legge inn:</strong> Hvis domenet ditt fortsatt ligger hos en vanlig leverandør (Domeneshop, One.com osv.), viser Cloudflare deg <em>nøyaktig</em> hvilken post du skal legge inn der — som regel én <code>CNAME</code>. Logg inn hos leverandøren din (samme sted som i steg 2 lenger opp), og legg inn akkurat den posten Cloudflare oppgir.</p>
-          <div class="callout-warn callout" style="margin-top:0.75rem;">
-            <p><strong>Ikke rør e-post-postene.</strong> Akkurat som på GitHub-løsningen: la <strong>MX</strong>, <strong>TXT</strong> og <strong>NS</strong> stå i fred — de styrer e-posten din. Er du usikker, lim inn det Cloudflare viser til <a href="https://aistudio.google.com" target="_blank" rel="noopener" style="color:#78350F;font-weight:600;">Google AI Studio</a> og be om en trygg steg-for-steg-veiledning før du endrer noe.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="step not-prose">
-        <div class="step-num">5</div>
-        <div class="step-content">
-          <h3>Vent til det blir «Active»</h3>
-          <p>Det tar som regel noen minutter (opptil noen timer). Når raden for domenet ditt viser grønn <strong>«Active»</strong>, er koblingen på plass. <strong>HTTPS og hengelåsen ordnes automatisk på Cloudflare</strong> — du trenger ingen avhukingsboks slik som på GitHub.</p>
-        </div>
+        <p><strong>Forutsetning:</strong> nettside-repoet må være overført til din egen GitHub-konto først (det gjorde du i modulen om overgangen). Cloudflare kobler seg til <em>ditt</em> repo, så gjør dette <strong>etter</strong> at overføringen er ferdig.</p>
       </div>
 
       <div class="callout-ok callout">
-        <p><strong>Ferdig!</strong> Når <code>dittfirma.no</code> viser nettsiden din med hengelås, er domenet koblet til Cloudflare Pages. Du trenger aldri gjøre dette igjen.</p>
+        <p><strong>Full steg-for-steg med ekte skjermbilder</strong> finner du i <a href="../hurtigstart#steg-3" style="color:#14532D;font-weight:600;">Hurtigstart, steg 3</a>. Der vises hele Cloudflare-oppsettet klikk for klikk, med skjermbilder og en ferdig AI-prompt for navnetjenerbyttet. Under er den samme veien oppsummert.</p>
+      </div>
+
+      <h3 style="color:#9A3412;">1. Lag en gratis Cloudflare-konto</h3>
+      <p>Gå til <a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener">dash.cloudflare.com/sign-up</a>, registrer deg med e-post og passord, og bekreft e-posten. Gratis, ingen kredittkort.</p>
+
+      <h3 style="color:#9A3412;">2. Koble GitHub-repoet og publiser</h3>
+      <p>Bruk <strong>Quick search</strong> (Ctrl + K), skriv <strong>workers</strong>, og velg <strong>Workers &amp; Pages</strong>. Klikk <strong>Create application</strong>, deretter <strong>Connect GitHub</strong>, godkjenn GitHub-kontoen din, og velg nettside-repoet ditt. På build-innstillingene lar du feltene stå tomme:</p>
+      <ul>
+        <li><strong>Framework preset:</strong> None</li>
+        <li><strong>Build command:</strong> (la stå tom)</li>
+      </ul>
+      <p>Klikk <strong>Create and deploy</strong>. Etter et minutt ligger siden på en midlertidig adresse som slutter på <code>.workers.dev</code>. Åpne den og sjekk at den ser riktig ut.</p>
+
+      <h3 style="color:#9A3412;">3. Legg til ditt eget domene</h3>
+      <p>I prosjektet: fanen <strong>Domains</strong>, deretter <strong>Add Domain</strong>, og skriv inn <code>dittfirma.no</code>. Ligger ikke domenet på Cloudflare fra før, ber Cloudflare deg først flytte domenet dit. Det gjør du ved å <strong>bytte navnetjenerne</strong> hos domeneleverandøren til de to Cloudflare oppgir. Når domenet er <strong>Active</strong>, publiseres siden på domenet automatisk.</p>
+
+      <div class="callout-warn callout">
+        <p><strong>Ikke rør e-post-postene</strong> når du rydder i DNS: la <strong>MX</strong>, <strong>TXT</strong> (SPF/DKIM/DMARC) og autoconfig/autodiscover stå. Fjern kun gamle A-poster som peker på den forrige nettsiden. Er du usikker, lim inn det Cloudflare viser til <a href="https://aistudio.google.com" target="_blank" rel="noopener" style="color:#78350F;font-weight:600;">Google AI Studio</a> og be om en trygg veiledning.</p>
+      </div>
+
+      <div class="callout-ok callout">
+        <p><strong>Ferdig!</strong> Når <code>dittfirma.no</code> viser nettsiden din med hengelås, er domenet koblet. <strong>HTTPS ordnes automatisk på Cloudflare</strong>, og du trenger aldri gjøre dette igjen.</p>
       </div>
 
       </div><!-- /host-cloudflare -->
@@ -667,14 +541,14 @@ Vennligst:
       <h2>Trøbbel?</h2>
       <p>Hvis domenet ikke viser den nye nettsiden etter noen timer:</p>
       <ul>
-        <li><strong>Dobbeltsjekk DNS-postene</strong> — en liten skrivefeil i IP-adressen er nok til at det ikke fungerer.</li>
-        <li><strong>Sjekk at det ikke ligger gamle A-poster igjen</strong> — de kan kræsje med de nye. Du skal bare ha de fire GitHub-adressene, ingen andre A-poster på <code>@</code>.</li>
+        <li><strong>Dobbeltsjekk DNS-postene</strong>, en liten skrivefeil i IP-adressen er nok til at det ikke fungerer.</li>
+        <li><strong>Sjekk at det ikke ligger gamle A-poster igjen</strong>, de kan kræsje med de nye. Du skal bare ha de fire GitHub-adressene, ingen andre A-poster på <code>@</code>.</li>
         <li><strong>Sjekk at domenenavnet i GitHub</strong> er stavet nøyaktig likt som domenet du eier (inkludert <code>.no</code> på slutten).</li>
-        <li><strong>Tøm nettleserens hurtigminne</strong> — trykk <kbd>Ctrl+Shift+R</kbd> (Windows) eller <kbd>Cmd+Shift+R</kbd> (Mac) for å laste siden uten cache.</li>
-        <li><strong>Kontakt oss</strong> på <strong>adrian@dmarketing.no</strong> — vi kan sjekke om DNS-innstillingene dine er riktige og guide deg videre.</li>
+        <li><strong>Tøm nettleserens hurtigminne</strong>, trykk <kbd>Ctrl+Shift+R</kbd> (Windows) eller <kbd>Cmd+Shift+R</kbd> (Mac) for å laste siden uten cache.</li>
+        <li><strong>Kontakt oss</strong> på <strong>adrian@dmarketing.no</strong>, vi kan sjekke om DNS-innstillingene dine er riktige og guide deg videre.</li>
       </ul>
 
-      <p style="font-size:1.125rem;line-height:1.65;color:#09090B;font-weight:500;margin-top:2.5rem;">Ferdig! Du har nå pekt domenet ditt til nettsiden på den kostnadsfrie løsningen. Søk opp <code>dittfirma.no</code> i nettleseren og se selv — det er din nye nettside.</p>
+      <p style="font-size:1.125rem;line-height:1.65;color:#09090B;font-weight:500;margin-top:2.5rem;">Ferdig! Du har nå pekt domenet ditt til nettsiden på den kostnadsfrie løsningen. Søk opp <code>dittfirma.no</code> i nettleseren og se selv, det er din nye nettside.</p>
 
       <div style="background:#F0FDF4;border:1.5px solid #86EFAC;border-radius:14px;padding:20px 24px;margin:2rem 0 0;">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
@@ -682,7 +556,7 @@ Vennligst:
           <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:1rem;color:#14532D;letter-spacing:-0.01em;">Hva du lærte i denne modulen</span>
         </div>
         <ul style="margin:0;padding-left:20px;">
-          <li style="font-size:0.95rem;line-height:1.55;color:#15803D;margin-bottom:6px;list-style:disc;">DNS er internettets adressebok — den peker domenet ditt til GitHub sine servere</li>
+          <li style="font-size:0.95rem;line-height:1.55;color:#15803D;margin-bottom:6px;list-style:disc;">DNS er internettets adressebok, den peker domenet ditt til GitHub sine servere</li>
           <li style="font-size:0.95rem;line-height:1.55;color:#15803D;margin-bottom:6px;list-style:disc;">A-postene (IP-adressene) er faste og identiske for alle GitHub Pages-sider</li>
           <li style="font-size:0.95rem;line-height:1.55;color:#15803D;margin-bottom:0;list-style:disc;">CNAME-filen i GitHub-repoet er limet som kobler domenet til akkurat din nettside</li>
         </ul>
