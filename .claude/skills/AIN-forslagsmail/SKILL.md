@@ -56,7 +56,7 @@ Fyll inn de skreddersydde delene (uthevet med `[...]`), behold resten av teksten
 
 ```
 Heisann,
-Gøy å høre at du er interessert i denne nye kostnadsfrie nettsideløsningen. Her er nettsiden på ny løsning med samme innhold som dere har på eksisterende side.
+Gøy å høre at du er interessert i denne nye kostnadsfrie nettsideløsningen! Her er nettsiden på ny løsning med samme innhold som dere har på eksisterende side.
 [lenke til demoside]
 Kort om hva som er forskjellen fra løsningen dere har i dag:
 
@@ -67,9 +67,10 @@ Kort om hva som er forskjellen fra løsningen dere har i dag:
 
 Det tar ca 14 minutter for kundene våre å flytte til ny løsning. Dere får alt av instrukser i kurset.
 Dersom dere vil gjøre endringer, går det helt fint. Det kan vi gjøre for dere sånn at nettsiden blir slik dere ønsker fra begynnelsen.
-Bare for å sette det litt i perspektiv: dere sparer nettsidekostnaden (kanskje [årlig besparelse] kr i året?), så siden er nedbetalt i besparelser alene på [nedbetalingstid]. I tillegg: skal vi være forsiktige og si nettsiden bidrar til [antall] ekstra kunder i året ([fortjeneste per ordre] kr i fortjeneste per ordre?), har den betalt seg selv [avkastningsfaktor] allerede første år — til sammen rundt [total gevinst år 1] kr i spart kostnad og ekstra fortjeneste.
+Bare for å sette det litt i perspektiv: dere sparer nettsidekostnaden (kanskje [årlig besparelse] kr i året?), så siden er nedbetalt i besparelser alene på [nedbetalingstid]. I tillegg: skal vi være forsiktige og si nettsiden bidrar til [antall] ekstra kunder i året ([fortjeneste per ordre] kr i fortjeneste per ordre?), har den betalt seg selv [avkastningsfaktor] allerede første år. Det blir rundt [total gevinst år 1] kr i spart kostnad og ekstra fortjeneste årlig.
 For alt dette kan dere betale en engangssum og aldri mer. Den ligger på nå [pris] kr.
-Hvis dere liker det dere ser, kan vi publisere den på deres egne domene ([kundens domene]) allerede i dag eller i morgen. Ingen forpliktelser bare for å ta en titt først, og vi kan ta en rask samtale hvis det er ønskelig.
+Hvis dere liker det dere ser, kan vi publisere den på deres egne domene ([kundens domene]) allerede denne uken. Vi kan ta en rask prat først om du ønsker det. Ellers finner du mer info her: 
+https://dmarketing.no/ai-nettsider/#faq
 ```
 
 ## Eksempel (Ergabygg, snekker)
@@ -80,7 +81,7 @@ Utregning: årlig besparelse 2 400 kr → nedbetalt på under 2 år · ekstra fo
 
 Resulterende avsnitt:
 
-> Bare for å sette det litt i perspektiv: dere sparer nettsidekostnaden (kanskje 2 400 kr i året?), så siden er nedbetalt i besparelser alene på under to år. I tillegg: skal vi være forsiktige og si nettsiden bidrar til 6 ekstra kunder i året (4 000 kr i fortjeneste per ordre?), har den betalt seg selv nesten 7 ganger allerede første år — til sammen rundt 26 400 kr i spart kostnad og ekstra fortjeneste.
+> Bare for å sette det litt i perspektiv: dere sparer nettsidekostnaden (kanskje 2 400 kr i året?), så siden er nedbetalt i besparelser alene på under to år. I tillegg: skal vi være forsiktige og si nettsiden bidrar til 6 ekstra kunder i året (4 000 kr i fortjeneste per ordre?), har den betalt seg selv nesten 7 ganger allerede første år. Det blir rundt 26 400 kr i spart kostnad og ekstra fortjeneste årlig.
 
 ## Levering
 
