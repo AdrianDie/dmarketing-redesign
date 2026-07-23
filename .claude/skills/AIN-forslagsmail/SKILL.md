@@ -29,6 +29,16 @@ Du trenger tre ting for å regne ut ROI-avsnittet. Spør brukeren om dem samlet 
 2. **Fortjeneste per ordre** — helst et direkte tall (kr fortjeneste per jobb), ikke bare ordreverdi. Hvis brukeren bare vet ordreverdien, be om en marginprosent (konservativt forslag: 20 %) og regn ut fortjeneste = ordreverdi × margin. Hvis brukeren ikke har noen anelse, bruk tjenestene du fant i steg 1 til å foreslå et forsiktig, bransjetilpasset anslag — vær tydelig på at det er en gjetning de bør justere.
 3. **Antall ekstra kunder nettsiden bidrar til per år** — konservativt forslag: 4–6 i året (ca. 1 per kvartal til 1 annenhver måned). Er brukeren mer optimistisk (f.eks. "1 ekstra kunde i måneden" = 12 i året), si tydelig ifra at dette er vanskelig å forsvare siden nettsiden ofte har samme innhold som før, bare ny teknisk løsning — foreslå heller 4–6 og la brukeren velge selv om de likevel vil ha et mer offensivt tall.
 
+### Tilpass tallene til bransjen — ikke gjenbruk snekker-tallene
+
+Eksempelet nederst i denne filen (Ergabygg) er for en **snekker/håndverksbedrift** med relativt høy ordreverdi (fasade, bad, trapp osv.) og lav kundefrekvens. Andre bransjer har helt andre økonomier, og tallene må reflektere det:
+
+- En **frisør** eller lignende har lav ordreverdi men mye høyere kundefrekvens — der er "6 ekstra kunder i året" latterlig lavt, og bør heller være noe sånt som "6 ekstra kunder i måneden" med en ordreverdi på noen hundre kroner.
+- En **regnskapsfører, advokat eller lignende med løpende kunder** tjener på én ny kunde over tid (årsverdi av et kundeforhold), ikke per "ordre" — her bør du regne fortjeneste per ny kunde det første året, ikke per jobb.
+- En **tannlege/psykolog** har ofte høyere verdi per pasientforhold enn ett enkeltbesøk, men lavere enn en snekkerjobb.
+
+Bruk bransjen og tjenestene du fant i steg 1 til å velge riktig *type* enhet (per jobb, per kunde, per måned) og et rimelig, konservativt tall for den. Målet er ikke å kopiere Ergabygg-tallene, men å lande på et **sluttresultat i samme ånd** — et tydelig, forsvarlig kronebeløp i spart kostnad + ekstra fortjeneste som gjør prisen til en no-brainer for akkurat denne bransjen. Hvis bransjens økonomi ærlig talt ikke gir et sterkt regnestykke (f.eks. veldig lav marginer eller få kunder totalt), ikke press tallene for å tvinge frem en imponerende sum — si ifra til brukeren at argumentet blir svakere for denne bransjen, og la dem vurdere om ROI-avsnittet bør tones ned eller utelates.
+
 Still også hvilken pakke/pris som gjelder, hvis det ikke er opplagt fra samtalen. Prisene er hentet fra `ai-nettsider/index.html` i dette repoet:
 
 | Pakke | Pris |
@@ -73,7 +83,7 @@ Hvis dere liker det dere ser, kan vi publisere den på deres egne domene ([kunde
 https://dmarketing.no/ai-nettsider/#faq
 ```
 
-## Eksempel (Ergabygg, snekker)
+## Eksempel (Ergabygg, snekker — kun eksempel på stil/formel, ikke tall å gjenbruke for andre bransjer)
 
 Input: 200 kr/mnd i dag, 20 000 kr snittordre × 20 % margin = 4 000 kr fortjeneste/ordre, 6 ekstra kunder/år, Digital Grunnmur (3 900 kr).
 
