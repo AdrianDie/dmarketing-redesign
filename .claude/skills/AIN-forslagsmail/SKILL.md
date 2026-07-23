@@ -48,7 +48,7 @@ Bruk disse formlene:
 - Total gevinst år 1 = årlig besparelse + ekstra fortjeneste
 - Avkastningsfaktor = total gevinst år 1 ÷ pris → fras som "betalt seg selv X ganger" eller "nesten X ganger" (rund ned til nærmeste hele tall for en litt konservativ formulering)
 
-Vev disse tallene inn i ett kort avsnitt (2–3 setninger, ikke punktliste), og hedge tallene som er antagelser med en parentetisk "(kanskje X kr?)"-formulering — dette er anslag Adrian skal kunne justere med et blikk før han sender, ikke påstander presentert som fakta. Se eksempelet under for nøyaktig stil.
+Vev disse tallene inn i ett kort avsnitt (2–3 setninger, ikke punktliste), og hedge tallene som er antagelser med en parentetisk "(kanskje X kr?)"-formulering — dette er anslag Adrian skal kunne justere med et blikk før han sender, ikke påstander presentert som fakta. Avslutt setningen med det konkrete kronebeløpet for total gevinst år 1 (f.eks. "— til sammen rundt [total gevinst år 1] kr i spart kostnad og ekstra fortjeneste"), ikke bare avkastningsfaktoren alene — tallet i kroner gjør argumentet mer konkret enn en ren multiplikator. Se eksempelet under for nøyaktig stil.
 
 ## Malen
 
@@ -67,7 +67,7 @@ Kort om hva som er forskjellen fra løsningen dere har i dag:
 
 Det tar ca 14 minutter for kundene våre å flytte til ny løsning. Dere får alt av instrukser i kurset.
 Dersom dere vil gjøre endringer, går det helt fint. Det kan vi gjøre for dere sånn at nettsiden blir slik dere ønsker fra begynnelsen.
-Bare for å sette det litt i perspektiv: dere sparer nettsidekostnaden (kanskje [årlig besparelse] kr i året?), så siden er nedbetalt i besparelser alene på [nedbetalingstid]. I tillegg: skal vi være forsiktige og si nettsiden bidrar til [antall] ekstra kunder i året ([fortjeneste per ordre] kr i fortjeneste per ordre?), har den betalt seg selv [avkastningsfaktor] allerede første år.
+Bare for å sette det litt i perspektiv: dere sparer nettsidekostnaden (kanskje [årlig besparelse] kr i året?), så siden er nedbetalt i besparelser alene på [nedbetalingstid]. I tillegg: skal vi være forsiktige og si nettsiden bidrar til [antall] ekstra kunder i året ([fortjeneste per ordre] kr i fortjeneste per ordre?), har den betalt seg selv [avkastningsfaktor] allerede første år — til sammen rundt [total gevinst år 1] kr i spart kostnad og ekstra fortjeneste.
 For alt dette kan dere betale en engangssum og aldri mer. Den ligger på nå [pris] kr.
 Hvis dere liker det dere ser, kan vi publisere den på deres egne domene ([kundens domene]) allerede i dag eller i morgen. Ingen forpliktelser bare for å ta en titt først, og vi kan ta en rask samtale hvis det er ønskelig.
 ```
@@ -80,7 +80,7 @@ Utregning: årlig besparelse 2 400 kr → nedbetalt på under 2 år · ekstra fo
 
 Resulterende avsnitt:
 
-> Bare for å sette det litt i perspektiv: dere sparer nettsidekostnaden (kanskje 2 400 kr i året?), så siden er nedbetalt i besparelser alene på under to år. I tillegg: skal vi være forsiktige og si nettsiden bidrar til 6 ekstra kunder i året (4 000 kr i fortjeneste per ordre?), har den betalt seg selv nesten 7 ganger allerede første år.
+> Bare for å sette det litt i perspektiv: dere sparer nettsidekostnaden (kanskje 2 400 kr i året?), så siden er nedbetalt i besparelser alene på under to år. I tillegg: skal vi være forsiktige og si nettsiden bidrar til 6 ekstra kunder i året (4 000 kr i fortjeneste per ordre?), har den betalt seg selv nesten 7 ganger allerede første år — til sammen rundt 26 400 kr i spart kostnad og ekstra fortjeneste.
 
 ## Levering
 
