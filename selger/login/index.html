@@ -99,7 +99,7 @@
   </main>
 
 <script>
-  var ENDEPUNKT = 'ERSTATT_MED_WEB_APP_URL';
+  var ENDEPUNKT = 'https://selger-worker.dietrichs-mkt.workers.dev';
   var TOKEN_KEY = 'selger_auth_v1';
 
   // samme utledning som kurset bruker, e-posten er salt
@@ -150,7 +150,7 @@
       var hash = await pbkdf2(passord, epost);
       var res = await fetch(ENDEPUNKT, {
         method: 'POST',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ handling: 'login', epost: epost, hash: hash })
       });
       var data = await res.json();

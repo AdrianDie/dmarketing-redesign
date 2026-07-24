@@ -74,7 +74,7 @@
   </main>
 
 <script>
-  var ENDEPUNKT = 'ERSTATT_MED_WEB_APP_URL';
+  var ENDEPUNKT = 'https://selger-worker.dietrichs-mkt.workers.dev';
 
   document.getElementById('form').addEventListener('submit', async function (e) {
     e.preventDefault();
@@ -94,7 +94,7 @@
     try {
       await fetch(ENDEPUNKT, {
         method: 'POST',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ handling: 'glemt', epost: epost })
       });
       // svarer alltid likt, uansett om e-posten finnes

@@ -1,17 +1,11 @@
 (function () {
   // ============================================================
-  //  Datalag. Regnearket er databasen, Apps Script er API-et.
-  //
-  //  Hvorfor Sheets og ikke en egen database: Adrian skal kunne
-  //  aapne leadsene, rette en telefon og sette en booking til Betalt
-  //  uten aa spoerre noen. Data eies der han allerede jobber.
-  //
-  //  Apps Script bruker gjerne 1 til 2 sekunder per kall. Derfor
-  //  oppdaterer sidene skjermen med én gang og sender i bakgrunnen.
-  //  Feiler kallet, rulles endringen tilbake i grensesnittet.
+  //  Datalag. Cloudflare Worker + D1-database, samme opplegg som
+  //  kurset. Worker-en svarer raskt (titalls millisekunder), saa
+  //  sidene kan vente paa svaret uten at det foeles tregt.
   // ============================================================
 
-  var ENDEPUNKT = 'ERSTATT_MED_WEB_APP_URL';
+  var ENDEPUNKT = 'https://selger-worker.dietrichs-mkt.workers.dev';
 
   var DEMO = {
     tall: {
@@ -55,15 +49,14 @@
   }
 
   /**
-   * Apps Script svarer ikke paa CORS-preflight. Derfor sendes alt som
-   * text/plain, som er en "enkel" foresporsel nettleseren slipper gjennom
-   * uten preflight. Innholdet er fortsatt JSON.
+   * Sender en handling til Worker-en med selgerens token. Worker-en svarer
+   * med ekte CORS-headere, saa vanlig application/json gaar fint.
    */
   function be(data) {
     var token = (window.SELGER && window.SELGER.token) || '';
     return fetch(ENDEPUNKT, {
       method: 'POST',
-      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(Object.assign({ token: token }, data))
     }).then(function (r) {
       if (!r.ok) throw new Error('Serverfeil ' + r.status);

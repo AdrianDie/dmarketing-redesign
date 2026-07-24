@@ -1,0 +1,11 @@
+name = "selger-worker"
+main = "index.js"
+compatibility_date = "2024-12-01"
+
+# Secrets (sett med wrangler secret put):
+#   RESEND_API_KEY  — for glemt-passord-e-post (samme konto som kurset)
+
+[[d1_databases]]
+binding = "DB"
+database_name = "dm-salg"
+database_id = "bb444ea0-ee42-4807-a73c-fc463638fc8f"
