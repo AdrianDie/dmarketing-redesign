@@ -13,6 +13,14 @@
     document.addEventListener('DOMContentLoaded', function () {
       var info = document.getElementById('selger-user-info');
       if (info) info.textContent = 'Demovisning';
+
+      // tydelig stripe saa ingen tror demo-frisorene er ekte kunder
+      var stripe = document.createElement('div');
+      stripe.textContent = 'DEMOVISNING, ikke ekte kunder. Tallene og leadsene her er oppdiktet.';
+      stripe.style.cssText =
+        'position:sticky;top:0;z-index:60;background:#7A5B00;color:#FFE9A8;' +
+        'font:600 13px Inter,sans-serif;text-align:center;padding:7px 12px;';
+      document.body.insertBefore(stripe, document.body.firstChild);
     });
     return;
   }
