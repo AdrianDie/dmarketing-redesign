@@ -1,0 +1,89 @@
+/* ============================================================
+   DM Salg: moerkt tema.
+   Ett lag som legges over Tailwind-klassene sidene allerede bruker.
+   Hele paletten bor her. Fjern <link>-en, saa er du tilbake til lyst.
+
+   Moerkt, men ikke ren svart, og med hoy kontrast paa tekst, slik at
+   telefonnumre er lette aa lese ogsaa i dagslys paa mobil.
+   ============================================================ */
+
+:root {
+  --flate:      #0B0E14;  /* sidebakgrunn */
+  --kort:       #151A22;  /* kort og flater */
+  --hev:        #1E2531;  /* hevet: hover, aktiv meny, felt */
+  --kant:       #252D3A;  /* streker og rammer */
+  --blek:       #EAEEF4;  /* primaertekst, naer hvit */
+  --mute:       #9BA6B4;  /* sekundaertekst */
+  --svak:       #AAB3C0;  /* smaa etiketter paa moerke paneler */
+  --brand:      #0339f8;  /* knappebakgrunn, uendret */
+  --brand-lys:  #5B8CFF;  /* aksenttekst og rammer paa moerk flate */
+  --dot:        #212938;  /* prikkraster */
+  --felt-bg:    #1B222D;  /* skjemafelt */
+  --felt-kant:  #2C3644;
+
+  /* status, moerke varianter */
+  --gronn-bg:#0F2419; --gronn-tx:#86EFAC;
+  --bla-bg:  #13223F; --bla-tx:  #9DC1FF;
+  --gul-bg:  #2A2110; --gul-tx:  #FCD34D;
+  --rod-bg:  #2A1618; --rod-tx:  #FCA5A5;
+}
+
+body { background: var(--flate) !important; color: var(--blek); }
+
+/* flater og streker */
+.bg-white   { background-color: var(--kort) !important; }
+.border-line, .border-zinc-200, .border-zinc-300, .border-zinc-400 { border-color: var(--kant) !important; }
+.border-zinc-800 { border-color: #2B3A57 !important; }   /* skille inne i pengekortet */
+
+/* tekst */
+.text-ink, .hover\:text-ink:hover { color: var(--blek) !important; }
+.text-mute  { color: var(--mute) !important; }
+.text-zinc-700 { color: #C7CED9 !important; }
+.text-zinc-500 { color: var(--mute) !important; }
+.text-zinc-400 { color: var(--svak) !important; }
+
+/* hevede flater: aktiv meny, hover, tomme rader */
+.bg-zinc-100, .hover\:bg-zinc-100:hover { background-color: var(--hev) !important; }
+.bg-zinc-50,  .hover\:bg-zinc-50:hover  { background-color: var(--hev) !important; }
+.bg-zinc-200 { background-color: #2A3444 !important; }
+.rad:hover   { background-color: var(--hev) !important; }
+
+/* merkeaksent: knappebakgrunn beholder brand, tekst og rammer lysner */
+.text-brand  { color: var(--brand-lys) !important; }
+.border-brand { border-color: var(--brand-lys) !important; }
+.focus\:border-brand:focus { border-color: var(--brand-lys) !important; }
+
+/* pengekortet: dypt merkeblaatt panel, det mest premium elementet */
+.bg-ink {
+  background: linear-gradient(150deg, #16294E 0%, #0C1424 78%) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.05), 0 20px 40px -24px rgba(0,0,0,.7);
+}
+
+/* skjemafelt */
+input, textarea, select {
+  background-color: var(--felt-bg) !important;
+  border-color: var(--felt-kant) !important;
+  color: var(--blek) !important;
+}
+input::placeholder, textarea::placeholder { color: var(--svak) !important; }
+
+/* dialog og prikkraster */
+dialog { background: var(--kort) !important; color: var(--blek); }
+.dot-grid {
+  background-image: radial-gradient(circle, var(--dot) 1px, transparent 1px) !important;
+}
+
+/* lasteskjelett i moerkt */
+.skjelett {
+  background: linear-gradient(90deg, #1B222D 25%, #232C39 50%, #1B222D 75%) !important;
+  background-size: 200% 100% !important;
+}
+
+/* statusfarger, moerke varianter */
+.bg-green-50 { background-color: var(--gronn-bg) !important; } .text-green-800 { color: var(--gronn-tx) !important; }
+.bg-blue-50  { background-color: var(--bla-bg)  !important; }  .text-blue-800  { color: var(--bla-tx)  !important; }
+.hover\:bg-blue-50:hover { background-color: var(--bla-bg) !important; }
+.bg-amber-50 { background-color: var(--gul-bg)  !important; }  .text-amber-800, .text-amber-700 { color: var(--gul-tx) !important; }
+.bg-red-50   { background-color: var(--rod-bg)  !important; }  .text-red-800   { color: var(--rod-tx)  !important; }
+.border-red-200   { border-color: #4A2528 !important; }
+.border-amber-200 { border-color: #40350F !important; }
