@@ -310,7 +310,13 @@
 
         '<div class="flex flex-wrap items-start gap-x-4 gap-y-2 mb-3.5">' +
           '<div class="min-w-0 flex-1">' +
-            '<h2 class="font-display font-bold text-[17px] tracking-[-0.01em] leading-snug">' + esc(l.bedrift) + '</h2>' +
+            '<div class="flex items-center gap-2 flex-wrap">' +
+              '<h2 class="font-display font-bold text-[17px] tracking-[-0.01em] leading-snug">' + esc(l.bedrift) + '</h2>' +
+              (l.nyetablert
+                ? '<span class="shrink-0 text-[12px] font-medium text-emerald-300 ' +
+                  'bg-emerald-500/15 border border-emerald-500/30 rounded-md px-2 py-0.5">Nyetablert</span>'
+                : '') +
+            '</div>' +
             '<p class="text-sm text-mute mt-0.5">' + esc(l.sted || '') +
               (l.bransje ? ' <span aria-hidden="true">·</span> ' + esc(l.bransje) : '') + '</p>' +
           '</div>' +

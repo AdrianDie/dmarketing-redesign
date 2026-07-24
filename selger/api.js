@@ -30,7 +30,7 @@
       { id: 1, bedrift: 'BEAUTY VIBES AS', sted: 'Oslo', bransje: 'Frisering og barbering',
         telefon: '97262222', nettside: 'beautyvibes.no', status: 'ikke_ringt' },
       { id: 2, bedrift: 'DE NADA FRISØR AS', sted: 'Oslo', bransje: 'Frisering og barbering',
-        telefon: '98129816', nettside: 'denadafrisor.no', status: 'ikke_ringt' },
+        telefon: '98129816', nettside: 'denadafrisor.no', nyetablert: true, status: 'ikke_ringt' },
       { id: 3, bedrift: 'HAAR OSLO', sted: 'Oslo', bransje: 'Frisering og barbering',
         telefon: '90778781', nettside: '', status: 'ikke_ringt' },
       { id: 4, bedrift: 'HEXAGON FRISØR AS', sted: 'Oslo', bransje: 'Frisering og barbering',
