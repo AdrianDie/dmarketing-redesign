@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mine bookinger: Dietrichs Salg</title>
+  <title>Mine bookinger: DM Salg</title>
   <meta name="robots" content="noindex, nofollow" />
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -20,6 +20,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link href="../../assets/ms-icon-256x256.png" rel="shortcut icon" type="image/x-icon" />
   <script src="/selger/auth.js"></script>
+  <script src="/selger/format.js"></script>
   <script src="/selger/api.js" defer></script>
 
   <style>
@@ -47,7 +48,7 @@
   <div class="max-w-4xl mx-auto px-4 sm:px-6">
     <div class="flex items-center gap-3 h-16">
       <a href="/selger/" class="font-display font-extrabold text-lg tracking-[-0.02em] shrink-0 inline-flex items-center h-11 pr-1">
-        Dietrichs <span class="text-brand">&nbsp;Salg</span>
+        DM <span class="text-brand">Salg</span>
       </a>
       <nav aria-label="Hovedmeny" class="hidden sm:flex items-center gap-1 ml-3">
         <a href="/selger/" class="px-3 h-11 inline-flex items-center rounded-lg hover:bg-zinc-100 text-mute text-sm transition-colors">Min uke</a>
@@ -108,18 +109,7 @@
     { kode: 'tapt',            navn: 'Ble ikke noe av',   farge: 'bg-zinc-100 text-zinc-500' }
   ];
 
-  function esc(s) {
-    return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;')
-      .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-  }
-
-  function pentDato(d) {
-    if (!d) return '';
-    var deler = String(d).slice(0,10).split('-');
-    if (deler.length !== 3) return d;
-    var mnd = ['jan','feb','mar','apr','mai','jun','jul','aug','sep','okt','nov','des'];
-    return Number(deler[2]) + '. ' + mnd[Number(deler[1]) - 1];
-  }
+  var esc = Fmt.esc, pentDato = Fmt.pentDato;
 
   document.addEventListener('DOMContentLoaded', function () {
     API.mineBookinger().then(function (b) {

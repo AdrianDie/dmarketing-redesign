@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ringeliste: Dietrichs Salg</title>
+  <title>Ringeliste: DM Salg</title>
   <meta name="robots" content="noindex, nofollow" />
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -23,6 +23,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link href="../../assets/ms-icon-256x256.png" rel="shortcut icon" type="image/x-icon" />
   <script src="/selger/auth.js"></script>
+  <script src="/selger/format.js"></script>
   <script src="/selger/api.js" defer></script>
 
   <style>
@@ -66,7 +67,7 @@
   <div class="max-w-5xl mx-auto px-4 sm:px-6">
     <div class="flex items-center gap-3 h-16">
       <a href="/selger/" class="font-display font-extrabold text-lg tracking-[-0.02em] shrink-0 inline-flex items-center h-11 pr-1">
-        Dietrichs <span class="text-brand">&nbsp;Salg</span>
+        DM <span class="text-brand">Salg</span>
       </a>
       <nav aria-label="Hovedmeny" class="hidden sm:flex items-center gap-1 ml-3">
         <a href="/selger/" class="px-3 h-11 inline-flex items-center rounded-lg hover:bg-zinc-100 text-mute text-sm transition-colors">Min uke</a>
@@ -181,12 +182,9 @@
     { kode: 'interessert',navn: 'Interessert' }
   ];
 
-  var aktivBunke = null, leads = [], aktivtLead = null;
+  var aktivBunke = null, leads = [], aktivtLead = null, harRingt = false, pollId = null;
 
-  function esc(s) {
-    return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;')
-      .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-  }
+  var esc = Fmt.esc, tlfLenke = Fmt.telLenke, pentTlf = Fmt.pentTlf;
 
   function toast(tekst) {
     var t = document.getElementById('toast');
@@ -196,20 +194,32 @@
     t._t = setTimeout(function () { t.classList.add('hidden'); }, 3200);
   }
 
-  function tlfLenke(n) {
-    return 'tel:+47' + String(n).replace(/\D/g, '');
-  }
-
-  function pentTlf(n) {
-    var d = String(n).replace(/\D/g, '');
-    return d.length === 8 ? d.slice(0,3) + ' ' + d.slice(3,5) + ' ' + d.slice(5) : n;
-  }
-
   /* ---------------------------------------------------------- bunkemeny */
   function visBunker() {
     document.getElementById('velg-bunke').classList.remove('hidden');
     document.getElementById('ringing').classList.add('hidden');
+    startPoll();
+    tegnBunker();
+  }
 
+  // menyen holdes fersk: en bunke en annen tar forsvinner uten at du gjor noe.
+  // Dette er sanntid nok for et lite team, uten en apen forbindelse.
+  function startPoll() {
+    stoppPoll();
+    pollId = setInterval(function () {
+      if (!document.getElementById('velg-bunke').classList.contains('hidden')) tegnBunker();
+    }, 30000);
+  }
+  function stoppPoll() { if (pollId) { clearInterval(pollId); pollId = null; } }
+
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden &&
+        !document.getElementById('velg-bunke').classList.contains('hidden')) {
+      tegnBunker();
+    }
+  });
+
+  function tegnBunker() {
     API.bunker().then(function (bunker) {
       var el = document.getElementById('bunkeliste');
       if (!bunker.length) {
@@ -234,7 +244,7 @@
       }).join('');
 
       el.querySelectorAll('[data-bunke]').forEach(function (b) {
-        b.addEventListener('click', function () { aapneBunke(b.dataset.bunke); });
+        b.addEventListener('click', function () { aapneBunke(b.dataset.bunke, b); });
       });
     }).catch(function () {
       document.getElementById('bunkeliste').innerHTML =
@@ -243,18 +253,42 @@
   }
 
   /* ---------------------------------------------------------- ringing */
-  function aapneBunke(navn) {
-    aktivBunke = navn;
-    document.getElementById('velg-bunke').classList.add('hidden');
-    document.getElementById('ringing').classList.remove('hidden');
-    document.querySelector('[data-felt="bunkenavn"]').textContent = navn;
-    document.getElementById('liste').innerHTML =
-      '<div class="skjelett h-[104px]"></div><div class="skjelett h-[104px]"></div>';
+  function aapneBunke(navn, knapp) {
+    if (knapp) { knapp.disabled = true; knapp.style.opacity = '.5'; }
 
-    API.leads(navn).then(function (data) {
-      leads = data;
-      tegnListe();
+    // reserver foer vi gaar inn, saa ingen annen tar den samtidig
+    API.reserver(navn).then(function (res) {
+      if (!res || !res.ok) {
+        if (knapp) { knapp.disabled = false; knapp.style.opacity = ''; }
+        toast(res && res.grunn === 'opptatt'
+          ? 'En annen tok nettopp denne bunken. Velg en annen.'
+          : 'Fikk ikke reservert bunken. Prøv igjen.');
+        tegnBunker();
+        return;
+      }
+
+      stoppPoll();
+      aktivBunke = navn;
+      harRingt = false;
+      document.getElementById('velg-bunke').classList.add('hidden');
+      document.getElementById('ringing').classList.remove('hidden');
+      document.getElementById('tom').classList.add('hidden');
+      document.querySelector('[data-felt="bunkenavn"]').textContent = navn;
+      document.getElementById('liste').innerHTML =
+        '<div class="skjelett h-[104px]"></div><div class="skjelett h-[104px]"></div>';
+
+      API.leads(navn).then(function (data) {
+        leads = data;
+        tegnListe();
+      });
     });
+  }
+
+  // gaar selgeren tilbake uten aa ha ringt noe, frigis bunken saa andre kan ta den
+  function forlatBunke() {
+    if (aktivBunke && !harRingt) API.frigi(aktivBunke);
+    aktivBunke = null;
+    visBunker();
   }
 
   function tegnListe() {
@@ -338,6 +372,7 @@
 
     var forrige = lead.status;
     lead.status = kode;
+    harRingt = true;
     tegnListe();
 
     API.loggUtfall(id, kode, '').then(function () {
@@ -393,6 +428,7 @@
       notat: document.getElementById('b-notat').value.trim()
     }).then(function () {
       aktivtLead.status = 'interessert';
+      harRingt = true;
       dialogEl.close();
       tegnListe();
       toast('Booking sendt. Adrian tar over herfra.');
@@ -406,10 +442,18 @@
   });
 
   /* ---------------------------------------------------------- oppstart */
-  document.getElementById('tilbake').addEventListener('click', visBunker);
+  document.getElementById('tilbake').addEventListener('click', forlatBunke);
   document.getElementById('tilbake2').addEventListener('click', function () {
     document.getElementById('tom').classList.add('hidden');
-    visBunker();
+    forlatBunke();
+  });
+
+  // rakk hun ikke frigi bunken foer hun lukket fanen, gjoeres et forsoek
+  window.addEventListener('pagehide', function () {
+    if (aktivBunke && !harRingt && navigator.sendBeacon) {
+      // best effort, ingen garanti, men bedre enn aa la bunken staa laast
+      API.frigi(aktivBunke);
+    }
   });
 
   document.addEventListener('DOMContentLoaded', visBunker);

@@ -84,6 +84,14 @@
       return erDemo() ? demo('bunker') : be({ handling: 'bunker' });
     },
 
+    reserver: function (bunke) {
+      return erDemo() ? Promise.resolve({ ok: true }) : be({ handling: 'reserver', bunke: bunke });
+    },
+
+    frigi: function (bunke) {
+      return erDemo() ? Promise.resolve({ ok: true }) : be({ handling: 'frigi', bunke: bunke });
+    },
+
     leads: function (bunke) {
       return erDemo() ? demo('leads') : be({ handling: 'leads', bunke: bunke });
     },

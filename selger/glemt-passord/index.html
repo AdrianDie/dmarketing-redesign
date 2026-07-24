@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glemt passord: DM Salg</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { display: ['Archivo', 'sans-serif'], body: ['Inter', 'sans-serif'] },
+        colors: { ink: '#09090B', brand: '#0339f8', mute: '#52525B', line: '#E4E4E7' }
+      } }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="../../assets/ms-icon-256x256.png" rel="shortcut icon" type="image/x-icon" />
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #FAFAFA; color: #09090B; }
+    .font-display { font-family: 'Archivo', sans-serif; }
+    a:focus-visible, button:focus-visible, input:focus-visible {
+      outline: 3px solid #0339f8; outline-offset: 2px; border-radius: 8px;
+    }
+    .dot-grid { background-image: radial-gradient(circle,#d4d4d8 1px,transparent 1px); background-size: 24px 24px; }
+  </style>
+</head>
+<body class="min-h-dvh flex flex-col items-center justify-center px-6 py-12 dot-grid">
+
+  <main class="w-full max-w-sm">
+    <div class="mb-7 text-center">
+      <p class="font-display font-extrabold text-xl tracking-[-0.02em]">
+        DM <span class="text-brand">Salg</span>
+      </p>
+    </div>
+
+    <div class="bg-white border border-line rounded-2xl p-7 sm:p-8">
+      <h1 class="font-display font-extrabold text-2xl tracking-[-0.02em] mb-2">Glemt passord</h1>
+      <p class="text-mute text-[15px] mb-7 leading-relaxed">
+        Skriv inn e-posten din, så sender vi deg en lenke for å velge nytt passord.
+      </p>
+
+      <form id="form" class="space-y-4" novalidate>
+        <div>
+          <label for="epost" class="block text-sm font-medium mb-1.5">E-post</label>
+          <input type="email" id="epost" inputmode="email" autocomplete="email" autofocus
+                 placeholder="fornavn@dmarketing.no"
+                 class="w-full border border-zinc-300 rounded-xl px-4 min-h-[48px] text-[15px] focus:border-brand" />
+        </div>
+
+        <p id="feil" class="hidden bg-red-50 border border-red-200 text-red-800 text-sm rounded-lg px-4 py-3" role="alert"></p>
+
+        <button type="submit" id="send"
+                class="w-full bg-brand text-white font-semibold min-h-[48px] rounded-xl hover:bg-blue-700 transition-colors text-[15px]">
+          Send lenke
+        </button>
+      </form>
+
+      <div id="sendt" class="hidden text-center py-2">
+        <p class="font-display font-bold text-lg mb-2">Sjekk e-posten</p>
+        <p class="text-mute text-[15px] leading-relaxed">
+          Finnes e-posten hos oss, ligger det nå en lenke i innboksen. Den varer i én time.
+        </p>
+      </div>
+    </div>
+
+    <p class="mt-6 text-center">
+      <a href="/selger/login/" class="text-sm text-mute hover:text-brand transition-colors">Tilbake til innlogging</a>
+    </p>
+  </main>
+
+<script>
+  var ENDEPUNKT = 'ERSTATT_MED_WEB_APP_URL';
+
+  document.getElementById('form').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    var knapp = document.getElementById('send');
+    var feil = document.getElementById('feil');
+    var epost = document.getElementById('epost').value.toLowerCase().trim();
+    feil.classList.add('hidden');
+
+    if (!epost) {
+      feil.textContent = 'Skriv inn e-postadressen din.';
+      feil.classList.remove('hidden');
+      return;
+    }
+
+    knapp.disabled = true;
+    knapp.textContent = 'Sender …';
+    try {
+      await fetch(ENDEPUNKT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({ handling: 'glemt', epost: epost })
+      });
+      // svarer alltid likt, uansett om e-posten finnes
+      document.getElementById('form').classList.add('hidden');
+      document.getElementById('sendt').classList.remove('hidden');
+    } catch (err) {
+      feil.textContent = 'Fikk ikke kontakt. Sjekk nettet og prøv igjen.';
+      feil.classList.remove('hidden');
+      knapp.disabled = false;
+      knapp.textContent = 'Send lenke';
+    }
+  });
+</script>
+
+</body>
+</html>
