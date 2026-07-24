@@ -411,7 +411,7 @@ async function sendReset(env, epost, navn, lenke) {
     method: 'POST',
     headers: { 'Authorization': `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      from: `Dietrichs Salg <${FROM_EMAIL}>`,
+      from: `DM Selgerportal <${FROM_EMAIL}>`,
       to: [epost],
       subject: 'Nytt passord til selgerportalen',
       html: `<div style="font-family:Inter,sans-serif;max-width:480px;color:#09090B">
@@ -431,9 +431,9 @@ async function sendVelkomst(env, epost, navn, lenke) {
     method: 'POST',
     headers: { 'Authorization': `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      from: `Dietrichs Salg <${FROM_EMAIL}>`,
+      from: `DM Selgerportal <${FROM_EMAIL}>`,
       to: [epost],
-      subject: 'Velkommen til DM Salg',
+      subject: "Velkommen til DM Selgerportal",
       html: `<div style="font-family:Inter,sans-serif;max-width:480px;color:#09090B">
         <p>Hei ${navn},</p>
         <p>Du har fått tilgang til selgerportalen. Trykk under for å velge et passord og komme i gang.</p>
