@@ -56,12 +56,13 @@ export default {
       if (!selger) return cors(j({ error: 'ikke_innlogget' }), 200, origin);
 
       // admin-handlinger, bare for administratorer
-      if (['selgere', 'opprett_selger', 'sett_aktiv', 'sett_admin'].indexOf(h) !== -1) {
+      if (['selgere', 'opprett_selger', 'sett_aktiv', 'sett_admin', 'oversikt'].indexOf(h) !== -1) {
         if (!(await erAdmin(env, selger.epost))) {
           return cors(j({ error: 'ikke_admin' }), 200, origin);
         }
         let ar;
         if (h === 'selgere') ar = await listSelgere(env);
+        else if (h === 'oversikt') ar = await oversikt(env);
         else if (h === 'opprett_selger') ar = await opprettSelger(env, body);
         else if (h === 'sett_admin') ar = await settAdmin(env, selger, body);
         else ar = await settAktiv(env, selger, body);
@@ -179,6 +180,35 @@ async function listSelgere(env) {
     admin: r.admin === 1 || BOOTSTRAP_ADMINS.indexOf(r.epost) !== -1,
     // sikkerhets-admin kan ikke fjernes fra grensesnittet
     fastAdmin: BOOTSTRAP_ADMINS.indexOf(r.epost) !== -1,
+  }));
+}
+
+// hvem jobber i hvilken bunke akkurat naa, med fremdrift
+async function oversikt(env) {
+  const rows = (await env.DB.prepare(
+    `SELECT bunke, selger,
+       COUNT(*) AS totalt,
+       SUM(CASE WHEN status IS NOT NULL AND status != '' AND status != 'ikke_ringt' THEN 1 ELSE 0 END) AS ringt,
+       SUM(CASE WHEN status IS NULL OR status IN ('','ikke_ringt','ring_igjen') THEN 1 ELSE 0 END) AS igjen,
+       MAX(dato) AS sist
+     FROM leads
+     WHERE selger IS NOT NULL AND selger != ''
+     GROUP BY bunke, selger
+     ORDER BY (sist IS NULL), sist DESC, bunke`
+  ).all()).results;
+
+  const navn = {};
+  (await env.DB.prepare('SELECT epost, navn FROM selgere').all()).results
+    .forEach(s => { navn[s.epost] = s.navn; });
+
+  return rows.map(r => ({
+    bunke: r.bunke,
+    selger: navn[r.selger] || r.selger,
+    epost: r.selger,
+    totalt: r.totalt,
+    ringt: r.ringt,
+    igjen: r.igjen,
+    sist: r.sist || '',
   }));
 }
 

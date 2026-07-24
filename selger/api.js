@@ -109,6 +109,7 @@
 
     // admin, bare for Adrian
     selgere: function () { return be({ handling: 'selgere' }); },
+    oversikt: function () { return be({ handling: 'oversikt' }); },
     opprettSelger: function (epost, navn) {
       return be({ handling: 'opprett_selger', epost: epost, navn: navn });
     },

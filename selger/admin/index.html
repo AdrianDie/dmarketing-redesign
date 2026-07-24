@@ -92,6 +92,15 @@
       </button>
     </form>
 
+    <!-- HVEM JOBBER HVOR -->
+    <div class="flex items-center justify-between mb-3">
+      <p class="text-[11px] font-semibold uppercase tracking-[0.1em] text-mute">Hvem jobber hvor nå</p>
+      <button id="oppdater" class="text-[13px] text-brand hover:underline">Oppdater</button>
+    </div>
+    <div id="oversikt" class="space-y-2.5 mb-8">
+      <div class="skjelett h-[76px]"></div>
+    </div>
+
     <!-- LISTE -->
     <p class="text-[11px] font-semibold uppercase tracking-[0.1em] text-mute mb-3">De som har tilgang</p>
     <div id="liste" class="space-y-2.5">
@@ -182,6 +191,40 @@
     API.selgere().then(tegn).catch(function () {
       document.getElementById('liste').innerHTML = '<p class="text-mute">Fikk ikke hentet selgere. Last siden på nytt.</p>';
     });
+    lastOversikt();
+  }
+
+  function pentSist(d) {
+    if (!d) return 'ikke ringt ennå';
+    var idag = new Date().toLocaleDateString('sv-SE');
+    return d === idag ? 'sist ringt i dag' : 'sist ringt ' + Fmt.pentDato(d);
+  }
+
+  function lastOversikt() {
+    API.oversikt().then(function (rader) {
+      var el = document.getElementById('oversikt');
+      if (!rader.length) {
+        el.innerHTML = '<div class="rounded-2xl border border-dashed border-line bg-white p-5 text-mute text-[15px]">Ingen har en bunke i gang akkurat nå.</div>';
+        return;
+      }
+      el.innerHTML = rader.map(function (r, i) {
+        var pst = r.totalt ? Math.round(r.ringt / r.totalt * 100) : 0;
+        return '<article class="inn rounded-2xl border border-line bg-white p-4 sm:p-5" style="animation-delay:' + Math.min(i*40,300) + 'ms">' +
+          '<div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 mb-2.5">' +
+            '<div class="min-w-0">' +
+              '<span class="font-display font-bold text-[16px] tracking-[-0.01em]">' + esc(r.bunke) + '</span>' +
+              '<span class="text-sm text-mute"> · ' + esc(r.selger) + '</span>' +
+            '</div>' +
+            '<span class="text-[13px] text-mute tall shrink-0">' + r.ringt + ' av ' + r.totalt + ' · ' + pentSist(r.sist) + '</span>' +
+          '</div>' +
+          '<div class="h-2 rounded-full bg-zinc-100 overflow-hidden">' +
+            '<div class="h-full rounded-full bg-brand" style="width:' + pst + '%"></div>' +
+          '</div>' +
+        '</article>';
+      }).join('');
+    }).catch(function () {
+      document.getElementById('oversikt').innerHTML = '<p class="text-mute">Fikk ikke hentet oversikten.</p>';
+    });
   }
 
   function endre(epost, aktiv) {
@@ -216,11 +259,14 @@
     });
   });
 
+  document.getElementById('oppdater').addEventListener('click', lastOversikt);
+
   document.addEventListener('DOMContentLoaded', function () {
     // sjekk om denne brukeren er admin ved aa proeve aa hente selgerlista
     API.selgere().then(function (selgere) {
       document.getElementById('admin').classList.remove('hidden');
       tegn(selgere);
+      lastOversikt();
     }).catch(function (err) {
       if (String(err.message) === 'ikke_admin') {
         document.getElementById('ikke-admin').classList.remove('hidden');
