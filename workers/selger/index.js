@@ -17,8 +17,15 @@ const FROM_EMAIL = 'salg@dmarketing.no';
 const SITE_URL = 'https://dmarketing.no';
 const RESET_TTL_MS = 60 * 60 * 1000;
 
-// hvem som kan legge til og stenge selgere via admin-siden
-const ADMINS = ['adrian@dmarketing.no'];
+// permanente sikkerhets-admins, alltid admin uansett hva databasen sier,
+// saa en uheldig endring aldri kan laase alle ute
+const BOOTSTRAP_ADMINS = ['adrian@dmarketing.no'];
+
+async function erAdmin(env, epost) {
+  if (BOOTSTRAP_ADMINS.indexOf(epost) !== -1) return true;
+  const r = await env.DB.prepare('SELECT admin FROM selgere WHERE lower(epost) = ?').bind(epost).first();
+  return !!(r && r.admin === 1);
+}
 
 const ALLOWED = [
   'https://dmarketing.no',
@@ -48,15 +55,16 @@ export default {
       const selger = await finnSelger(env, body.token);
       if (!selger) return cors(j({ error: 'ikke_innlogget' }), 200, origin);
 
-      // admin-handlinger, bare for Adrian
-      if (['selgere', 'opprett_selger', 'sett_aktiv'].indexOf(h) !== -1) {
-        if (ADMINS.indexOf(selger.epost) === -1) {
+      // admin-handlinger, bare for administratorer
+      if (['selgere', 'opprett_selger', 'sett_aktiv', 'sett_admin'].indexOf(h) !== -1) {
+        if (!(await erAdmin(env, selger.epost))) {
           return cors(j({ error: 'ikke_admin' }), 200, origin);
         }
         let ar;
         if (h === 'selgere') ar = await listSelgere(env);
         else if (h === 'opprett_selger') ar = await opprettSelger(env, body);
-        else ar = await settAktiv(env, body);
+        else if (h === 'sett_admin') ar = await settAdmin(env, selger, body);
+        else ar = await settAktiv(env, selger, body);
         return cors(j(ar), 200, origin);
       }
 
@@ -158,7 +166,7 @@ async function nullstill(env, { epost, token, hash }) {
 
 async function listSelgere(env) {
   const rows = (await env.DB.prepare(
-    `SELECT s.epost, s.navn, s.aktiv,
+    `SELECT s.epost, s.navn, s.aktiv, s.admin,
        CASE WHEN s.passordhash IS NULL OR s.passordhash = '' THEN 0 ELSE 1 END AS harpassord,
        (SELECT COUNT(*) FROM bookinger b WHERE b.selger = s.epost) AS bookinger,
        (SELECT COUNT(*) FROM leads l WHERE l.selger = s.epost
@@ -168,8 +176,23 @@ async function listSelgere(env) {
   return rows.map(r => ({
     epost: r.epost, navn: r.navn, aktiv: String(r.aktiv).toLowerCase() !== 'nei',
     harPassord: r.harpassord === 1, bookinger: r.bookinger, ringt: r.ringt,
-    admin: ADMINS.indexOf(r.epost) !== -1,
+    admin: r.admin === 1 || BOOTSTRAP_ADMINS.indexOf(r.epost) !== -1,
+    // sikkerhets-admin kan ikke fjernes fra grensesnittet
+    fastAdmin: BOOTSTRAP_ADMINS.indexOf(r.epost) !== -1,
   }));
+}
+
+async function settAdmin(env, kaller, { epost, admin }) {
+  epost = String(epost || '').toLowerCase().trim();
+  if (BOOTSTRAP_ADMINS.indexOf(epost) !== -1 && admin === false) {
+    return { error: 'fast_admin', melding: 'Denne kontoen er fast administrator og kan ikke endres.' };
+  }
+  if (epost === kaller.epost && admin === false) {
+    return { error: 'ikke_deg_selv', melding: 'Du kan ikke fjerne din egen admintilgang.' };
+  }
+  await env.DB.prepare('UPDATE selgere SET admin = ? WHERE lower(epost) = ?')
+    .bind(admin ? 1 : 0, epost).run();
+  return { ok: true };
 }
 
 async function opprettSelger(env, { epost, navn }) {
@@ -200,10 +223,13 @@ async function opprettSelger(env, { epost, navn }) {
   return { ok: true, epost, navn };
 }
 
-async function settAktiv(env, { epost, aktiv }) {
+async function settAktiv(env, kaller, { epost, aktiv }) {
   epost = String(epost || '').toLowerCase().trim();
-  if (ADMINS.indexOf(epost) !== -1 && aktiv === false) {
+  if (epost === kaller.epost && aktiv === false) {
     return { error: 'ikke_deg_selv', melding: 'Du kan ikke stenge deg selv ute.' };
+  }
+  if (BOOTSTRAP_ADMINS.indexOf(epost) !== -1 && aktiv === false) {
+    return { error: 'fast_admin', melding: 'Denne kontoen kan ikke stenges.' };
   }
   await env.DB.prepare('UPDATE selgere SET aktiv = ? WHERE lower(epost) = ?')
     .bind(aktiv ? 'ja' : 'nei', epost).run();

@@ -114,6 +114,9 @@
     },
     settAktiv: function (epost, aktiv) {
       return be({ handling: 'sett_aktiv', epost: epost, aktiv: aktiv });
+    },
+    settAdmin: function (epost, admin) {
+      return be({ handling: 'sett_admin', epost: epost, admin: admin });
     }
   };
 })();

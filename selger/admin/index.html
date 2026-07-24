@@ -66,7 +66,8 @@
     <h1 class="font-display font-extrabold text-3xl tracking-[-0.03em] mb-1.5">Selgere</h1>
     <p class="text-mute text-[15px] mb-7 max-w-xl leading-relaxed">
       Legg til en selger, så får de en e-post med lenke der de velger sitt eget passord.
-      Sett noen til Stengt for å ta bort tilgangen, uten å slette historikken.
+      Steng noen ute for å ta bort tilgangen uten å slette historikken. Gjør til admin
+      for å gi noen tilgang til denne siden. Din egen konto er alltid admin.
     </p>
 
     <!-- LEGG TIL -->
@@ -130,19 +131,29 @@
             ? '<span class="text-[13px] font-medium px-2.5 py-1 rounded-lg bg-green-50 text-green-800">Aktiv</span>'
             : '<span class="text-[13px] font-medium px-2.5 py-1 rounded-lg bg-amber-50 text-amber-800">Venter på passord</span>');
 
-      var knapp = s.admin ? ''
-        : (s.aktiv
-            ? '<button data-steng="' + esc(s.epost) + '" class="h-10 px-4 rounded-lg border border-zinc-300 text-sm text-mute hover:bg-zinc-50 hover:text-ink transition-colors">Steng ute</button>'
-            : '<button data-aapne="' + esc(s.epost) + '" class="h-10 px-4 rounded-lg border border-brand text-sm text-brand hover:bg-blue-50 transition-colors">Åpne igjen</button>');
+      // knapper: fast-admin (deg) faar ingen. Andre faar steng/aapne + admin-bryter.
+      var knapper = '';
+      if (!s.fastAdmin) {
+        knapper += s.aktiv
+          ? '<button data-steng="' + esc(s.epost) + '" class="h-10 px-4 rounded-lg border border-zinc-300 text-sm text-mute hover:bg-zinc-50 hover:text-ink transition-colors">Steng ute</button>'
+          : '<button data-aapne="' + esc(s.epost) + '" class="h-10 px-4 rounded-lg border border-brand text-sm text-brand hover:bg-blue-50 transition-colors">Åpne igjen</button>';
+        knapper += s.admin
+          ? '<button data-avadmin="' + esc(s.epost) + '" class="h-10 px-4 rounded-lg border border-zinc-300 text-sm text-mute hover:bg-zinc-50 hover:text-ink transition-colors">Fjern admin</button>'
+          : '<button data-tiladmin="' + esc(s.epost) + '" class="h-10 px-4 rounded-lg border border-zinc-300 text-sm text-mute hover:bg-zinc-50 hover:text-ink transition-colors">Gjør til admin</button>';
+      }
 
-      return '<article class="inn rounded-2xl border border-line bg-white p-4 sm:p-5 flex flex-wrap items-center gap-3" style="animation-delay:' + Math.min(i*40,300) + 'ms">' +
+      var merke = s.admin
+        ? ' <span class="text-[12px] font-medium px-2 py-0.5 rounded-md bg-blue-50 text-brand">' +
+          (s.fastAdmin ? 'admin (deg)' : 'admin') + '</span>'
+        : '';
+
+      return '<article class="inn rounded-2xl border border-line bg-white p-4 sm:p-5 flex flex-wrap items-center gap-2.5" style="animation-delay:' + Math.min(i*40,300) + 'ms">' +
         '<div class="min-w-0 flex-1">' +
-          '<p class="font-display font-bold text-[16px] tracking-[-0.01em]">' + esc(s.navn) +
-            (s.admin ? ' <span class="text-[12px] font-medium text-brand">(deg)</span>' : '') + '</p>' +
+          '<p class="font-display font-bold text-[16px] tracking-[-0.01em]">' + esc(s.navn) + merke + '</p>' +
           '<p class="text-sm text-mute truncate">' + esc(s.epost) + '</p>' +
           '<p class="text-[13px] text-mute mt-0.5 tall">' + s.ringt + ' ringt · ' + s.bookinger + ' bookinger</p>' +
         '</div>' +
-        status + knapp +
+        status + knapper +
       '</article>';
     }).join('');
 
@@ -152,6 +163,19 @@
     el.querySelectorAll('[data-aapne]').forEach(function (b) {
       b.addEventListener('click', function () { endre(b.dataset.aapne, true); });
     });
+    el.querySelectorAll('[data-tiladmin]').forEach(function (b) {
+      b.addEventListener('click', function () { endreAdmin(b.dataset.tiladmin, true); });
+    });
+    el.querySelectorAll('[data-avadmin]').forEach(function (b) {
+      b.addEventListener('click', function () { endreAdmin(b.dataset.avadmin, false); });
+    });
+  }
+
+  function endreAdmin(epost, admin) {
+    API.settAdmin(epost, admin).then(function () {
+      toast(admin ? 'Gjort til admin.' : 'Admin fjernet.');
+      last();
+    }).catch(function () { toast('Fikk ikke endret. Prøv igjen.'); });
   }
 
   function last() {
