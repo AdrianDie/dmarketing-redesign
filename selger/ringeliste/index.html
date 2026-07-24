@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ringeliste: Dietrichs Salg</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { display: ['Archivo', 'sans-serif'], body: ['Inter', 'sans-serif'] },
+        colors: {
+          ink: '#09090B', brand: '#0339f8', navy: '#0B1F4A',
+          mute: '#52525B', line: '#E4E4E7'
+        }
+      } }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="../../assets/ms-icon-256x256.png" rel="shortcut icon" type="image/x-icon" />
+  <script src="/selger/auth.js"></script>
+  <script src="/selger/api.js" defer></script>
+
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #FAFAFA; color: #09090B; }
+    .font-display { font-family: 'Archivo', sans-serif; }
+    .tall { font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+
+    a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible, textarea:focus-visible {
+      outline: 3px solid #0339f8; outline-offset: 2px; border-radius: 8px;
+    }
+
+    .rad { transition: background-color .15s ease, opacity .25s ease; }
+    .rad[data-ferdig="1"] { opacity: .5; }
+    .rad:hover { background-color: #FAFAFA; }
+
+    .valgt { box-shadow: inset 0 0 0 2px #0339f8; }
+
+    .skjelett {
+      background: linear-gradient(90deg,#E4E4E7 25%,#F4F4F5 50%,#E4E4E7 75%);
+      background-size: 200% 100%; border-radius: 8px;
+      animation: skimre 1.4s ease-in-out infinite;
+    }
+    @keyframes skimre { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+
+    .inn { opacity:0; transform:translateY(6px); animation: opp .3s cubic-bezier(.16,1,.3,1) forwards; }
+    @keyframes opp { to { opacity:1; transform:none } }
+
+    dialog::backdrop { background: rgba(9,9,11,.55); }
+    dialog[open] { animation: dukk .22s cubic-bezier(.16,1,.3,1); }
+    @keyframes dukk { from { opacity:0; transform:translateY(10px) scale(.98) } }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,*::before,*::after { animation-duration:.01ms !important; transition-duration:.01ms !important; }
+      .inn { opacity:1; transform:none; }
+    }
+  </style>
+</head>
+<body class="min-h-dvh flex flex-col">
+
+<header class="border-b border-line bg-white sticky top-0 z-20">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="flex items-center gap-3 h-16">
+      <a href="/selger/" class="font-display font-extrabold text-lg tracking-[-0.02em] shrink-0 inline-flex items-center h-11 pr-1">
+        Dietrichs <span class="text-brand">&nbsp;Salg</span>
+      </a>
+      <nav aria-label="Hovedmeny" class="hidden sm:flex items-center gap-1 ml-3">
+        <a href="/selger/" class="px-3 h-11 inline-flex items-center rounded-lg hover:bg-zinc-100 text-mute text-sm transition-colors">Min uke</a>
+        <a href="/selger/ringeliste/" aria-current="page" class="px-3 h-11 inline-flex items-center rounded-lg bg-zinc-100 font-semibold text-sm">Ringeliste</a>
+        <a href="/selger/bookinger/" class="px-3 h-11 inline-flex items-center rounded-lg hover:bg-zinc-100 text-mute text-sm transition-colors">Mine bookinger</a>
+      </nav>
+      <div id="selger-user-info" class="ml-auto text-sm text-mute"></div>
+    </div>
+    <nav aria-label="Hovedmeny mobil" class="sm:hidden flex gap-1 pb-2 -mt-1">
+      <a href="/selger/" class="flex-1 h-11 inline-flex items-center justify-center rounded-lg text-mute text-sm">Min uke</a>
+      <a href="/selger/ringeliste/" aria-current="page" class="flex-1 h-11 inline-flex items-center justify-center rounded-lg bg-zinc-100 font-semibold text-sm">Ringeliste</a>
+      <a href="/selger/bookinger/" class="flex-1 h-11 inline-flex items-center justify-center rounded-lg text-mute text-sm">Bookinger</a>
+    </nav>
+  </div>
+</header>
+
+<main class="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 py-7">
+
+  <!-- VELG BUNKE -->
+  <section id="velg-bunke" class="mb-7" aria-labelledby="bunke-h">
+    <h1 id="bunke-h" class="font-display font-extrabold text-2xl sm:text-3xl tracking-[-0.03em] mb-1.5">
+      Velg en bunke
+    </h1>
+    <p class="text-mute text-[15px] mb-5 max-w-xl leading-relaxed">
+      Ta én om gangen og gjør den ferdig. Da vet vi alltid hvem som er ringt,
+      og ingen bedrift får to telefoner fra oss.
+    </p>
+    <div id="bunkeliste" class="grid sm:grid-cols-2 gap-3">
+      <div class="skjelett h-[92px]"></div>
+      <div class="skjelett h-[92px]"></div>
+    </div>
+  </section>
+
+  <!-- RINGING -->
+  <section id="ringing" class="hidden" aria-labelledby="ringer-h">
+    <div class="flex flex-wrap items-center gap-3 mb-5">
+      <button type="button" id="tilbake"
+              class="inline-flex items-center gap-1.5 h-11 px-3 -ml-3 rounded-lg text-mute hover:bg-zinc-100 hover:text-ink transition-colors text-sm">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+        Alle bunker
+      </button>
+      <div class="flex-1 min-w-0">
+        <h1 id="ringer-h" class="font-display font-extrabold text-xl sm:text-2xl tracking-[-0.02em] truncate" data-felt="bunkenavn">Bunke</h1>
+      </div>
+      <p class="text-sm text-mute tall shrink-0"><span data-felt="igjen">0</span> igjen</p>
+    </div>
+
+    <div id="liste" class="space-y-2"></div>
+
+    <div id="tom" class="hidden text-center py-16">
+      <p class="font-display font-bold text-xl mb-2">Bunken er ferdig</p>
+      <p class="text-mute mb-6">Alle er logget. Velg en ny bunke når du er klar.</p>
+      <button type="button" id="tilbake2"
+              class="inline-flex items-center justify-center bg-brand text-white font-semibold px-6 min-h-[48px] rounded-xl hover:bg-blue-700 transition-colors">
+        Velg neste bunke
+      </button>
+    </div>
+  </section>
+
+</main>
+
+<!-- BOOKINGSKJEMA -->
+<dialog id="booking" class="rounded-2xl border border-line p-0 w-[min(560px,92vw)] backdrop:backdrop-blur-sm">
+  <form method="dialog" id="booking-form" class="p-6 sm:p-7">
+    <h2 class="font-display font-extrabold text-2xl tracking-[-0.02em] mb-1">De sa ja</h2>
+    <p class="text-mute text-[15px] mb-6" data-felt="booking-bedrift">Bedrift</p>
+
+    <div class="space-y-4">
+      <div>
+        <label for="b-kontakt" class="block text-sm font-medium mb-1.5">Hvem snakket du med</label>
+        <input id="b-kontakt" name="kontakt" type="text" autocomplete="name" required
+               class="w-full border border-zinc-300 rounded-xl px-4 min-h-[48px] text-[15px] focus:border-brand" />
+        <p class="text-[13px] text-mute mt-1.5">Fornavn holder hvis du ikke fikk etternavn.</p>
+      </div>
+      <div>
+        <label for="b-epost" class="block text-sm font-medium mb-1.5">E-post</label>
+        <input id="b-epost" name="epost" type="email" inputmode="email" autocomplete="email" required
+               class="w-full border border-zinc-300 rounded-xl px-4 min-h-[48px] text-[15px] focus:border-brand" />
+        <p class="text-[13px] text-mute mt-1.5">Hit sender Adrian utkastet. Les den opp igjen for å være sikker.</p>
+      </div>
+      <div>
+        <label for="b-notat" class="block text-sm font-medium mb-1.5">Noe Adrian bør vite <span class="text-mute font-normal">(valgfritt)</span></label>
+        <textarea id="b-notat" name="notat" rows="3"
+                  class="w-full border border-zinc-300 rounded-xl px-4 py-3 text-[15px] focus:border-brand"></textarea>
+      </div>
+    </div>
+
+    <p id="booking-feil" class="hidden mt-4 bg-red-50 border border-red-200 text-red-800 text-sm rounded-lg px-4 py-3" role="alert"></p>
+
+    <div class="flex flex-col-reverse sm:flex-row gap-2.5 mt-7">
+      <button type="button" id="booking-avbryt"
+              class="sm:flex-1 min-h-[48px] px-5 rounded-xl border border-zinc-300 font-medium hover:bg-zinc-50 transition-colors">
+        Avbryt
+      </button>
+      <button type="submit" id="booking-send"
+              class="sm:flex-[2] min-h-[48px] px-5 rounded-xl bg-brand text-white font-semibold hover:bg-blue-700 transition-colors">
+        Send til Adrian
+      </button>
+    </div>
+  </form>
+</dialog>
+
+<div id="toast" class="hidden fixed bottom-5 left-1/2 -translate-x-1/2 z-50 bg-ink text-white text-[15px]
+                       px-5 py-3.5 rounded-xl shadow-xl" role="status" aria-live="polite"></div>
+
+<script>
+  var UTFALL = [
+    { kode: 'ingen_svar', navn: 'Ingen svar' },
+    { kode: 'ring_igjen', navn: 'Ring igjen' },
+    { kode: 'nei',        navn: 'Nei takk' },
+    { kode: 'interessert',navn: 'Interessert' }
+  ];
+
+  var aktivBunke = null, leads = [], aktivtLead = null;
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function toast(tekst) {
+    var t = document.getElementById('toast');
+    t.textContent = tekst;
+    t.classList.remove('hidden');
+    clearTimeout(t._t);
+    t._t = setTimeout(function () { t.classList.add('hidden'); }, 3200);
+  }
+
+  function tlfLenke(n) {
+    return 'tel:+47' + String(n).replace(/\D/g, '');
+  }
+
+  function pentTlf(n) {
+    var d = String(n).replace(/\D/g, '');
+    return d.length === 8 ? d.slice(0,3) + ' ' + d.slice(3,5) + ' ' + d.slice(5) : n;
+  }
+
+  /* ---------------------------------------------------------- bunkemeny */
+  function visBunker() {
+    document.getElementById('velg-bunke').classList.remove('hidden');
+    document.getElementById('ringing').classList.add('hidden');
+
+    API.bunker().then(function (bunker) {
+      var el = document.getElementById('bunkeliste');
+      if (!bunker.length) {
+        el.innerHTML = '<p class="text-mute">Ingen bunker tilgjengelig ennå. Si fra til Adrian.</p>';
+        return;
+      }
+      el.innerHTML = bunker.map(function (b, i) {
+        var ferdig = b.igjen === 0;
+        var pst = b.totalt ? Math.round((b.totalt - b.igjen) / b.totalt * 100) : 0;
+        return '<button type="button" data-bunke="' + esc(b.navn) + '" ' +
+          (ferdig ? 'disabled ' : '') +
+          'class="inn text-left rounded-2xl border border-line bg-white p-5 transition-colors ' +
+          (ferdig ? 'opacity-50 cursor-not-allowed' : 'hover:border-brand') + '" ' +
+          'style="animation-delay:' + (i * 40) + 'ms">' +
+            '<span class="block font-display font-bold text-[17px] tracking-[-0.01em] mb-1">' + esc(b.navn) + '</span>' +
+            '<span class="block text-sm text-mute mb-3 tall">' +
+              (ferdig ? 'Ferdig ringt' : b.igjen + ' av ' + b.totalt + ' igjen') + '</span>' +
+            '<span class="block h-1.5 rounded-full bg-zinc-100 overflow-hidden">' +
+              '<span class="block h-full rounded-full bg-brand" style="width:' + pst + '%"></span>' +
+            '</span>' +
+          '</button>';
+      }).join('');
+
+      el.querySelectorAll('[data-bunke]').forEach(function (b) {
+        b.addEventListener('click', function () { aapneBunke(b.dataset.bunke); });
+      });
+    }).catch(function () {
+      document.getElementById('bunkeliste').innerHTML =
+        '<p class="text-mute">Fikk ikke kontakt med serveren. Last siden på nytt.</p>';
+    });
+  }
+
+  /* ---------------------------------------------------------- ringing */
+  function aapneBunke(navn) {
+    aktivBunke = navn;
+    document.getElementById('velg-bunke').classList.add('hidden');
+    document.getElementById('ringing').classList.remove('hidden');
+    document.querySelector('[data-felt="bunkenavn"]').textContent = navn;
+    document.getElementById('liste').innerHTML =
+      '<div class="skjelett h-[104px]"></div><div class="skjelett h-[104px]"></div>';
+
+    API.leads(navn).then(function (data) {
+      leads = data;
+      tegnListe();
+    });
+  }
+
+  function tegnListe() {
+    var igjen = leads.filter(function (l) { return !l.status || l.status === 'ikke_ringt'; }).length;
+    document.querySelector('[data-felt="igjen"]').textContent = igjen;
+
+    if (!leads.length) {
+      document.getElementById('liste').innerHTML = '';
+      document.getElementById('tom').classList.remove('hidden');
+      return;
+    }
+
+    document.getElementById('liste').innerHTML = leads.map(function (l, i) {
+      var ferdig = l.status && l.status !== 'ikke_ringt' && l.status !== 'ring_igjen';
+      return '<article class="rad inn rounded-2xl border border-line bg-white p-4 sm:p-5" ' +
+        'data-id="' + esc(l.id) + '" data-ferdig="' + (ferdig ? 1 : 0) + '" ' +
+        'style="animation-delay:' + Math.min(i * 30, 300) + 'ms">' +
+
+        '<div class="flex flex-wrap items-start gap-x-4 gap-y-2 mb-3.5">' +
+          '<div class="min-w-0 flex-1">' +
+            '<h2 class="font-display font-bold text-[17px] tracking-[-0.01em] leading-snug">' + esc(l.bedrift) + '</h2>' +
+            '<p class="text-sm text-mute mt-0.5">' + esc(l.sted || '') +
+              (l.bransje ? ' <span aria-hidden="true">·</span> ' + esc(l.bransje) : '') + '</p>' +
+          '</div>' +
+          (l.nettside
+            ? '<a href="https://' + esc(l.nettside) + '" target="_blank" rel="noopener noreferrer" ' +
+              'class="shrink-0 inline-flex items-center gap-1.5 h-11 px-3 rounded-lg border border-line ' +
+              'text-sm text-mute hover:text-ink hover:border-zinc-400 transition-colors">' +
+              '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" ' +
+              'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+              '<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>' +
+              '<path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>' +
+              'Se siden</a>'
+            : '<span class="shrink-0 text-[13px] text-amber-700 bg-amber-50 border border-amber-200 ' +
+              'rounded-lg px-2.5 py-1.5">Ingen nettside</span>') +
+        '</div>' +
+
+        '<a href="' + tlfLenke(l.telefon) + '" ' +
+           'class="inline-flex items-center gap-2 font-display font-extrabold text-2xl tall ' +
+           'tracking-[-0.02em] hover:text-brand transition-colors mb-4 min-h-[44px]">' +
+          '<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" ' +
+          'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+          '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>' +
+          pentTlf(l.telefon) +
+        '</a>' +
+
+        '<div class="flex flex-wrap gap-2" role="group" aria-label="Hva skjedde med ' + esc(l.bedrift) + '">' +
+          UTFALL.map(function (u) {
+            var aktiv = l.status === u.kode;
+            var primaer = u.kode === 'interessert';
+            return '<button type="button" data-utfall="' + u.kode + '" ' +
+              'class="min-h-[44px] px-4 rounded-xl text-sm font-medium transition-colors ' +
+              (aktiv
+                ? (primaer ? 'bg-brand text-white' : 'bg-ink text-white')
+                : (primaer
+                    ? 'border border-brand text-brand hover:bg-blue-50'
+                    : 'border border-zinc-300 text-mute hover:bg-zinc-50 hover:text-ink')) +
+              '" aria-pressed="' + (aktiv ? 'true' : 'false') + '">' + u.navn + '</button>';
+          }).join('') +
+        '</div>' +
+      '</article>';
+    }).join('');
+
+    document.querySelectorAll('.rad').forEach(function (rad) {
+      rad.querySelectorAll('[data-utfall]').forEach(function (knapp) {
+        knapp.addEventListener('click', function () {
+          loggUtfall(rad.dataset.id, knapp.dataset.utfall);
+        });
+      });
+    });
+  }
+
+  function loggUtfall(id, kode) {
+    var lead = leads.filter(function (l) { return String(l.id) === String(id); })[0];
+    if (!lead) return;
+
+    if (kode === 'interessert') {
+      aapneBooking(lead);
+      return;
+    }
+
+    var forrige = lead.status;
+    lead.status = kode;
+    tegnListe();
+
+    API.loggUtfall(id, kode, '').then(function () {
+      var navn = UTFALL.filter(function (u) { return u.kode === kode; })[0].navn;
+      toast(lead.bedrift + ': ' + navn.toLowerCase());
+    }).catch(function () {
+      lead.status = forrige;
+      tegnListe();
+      toast('Fikk ikke lagret. Prøv igjen.');
+    });
+  }
+
+  /* ---------------------------------------------------------- booking */
+  var dialogEl = document.getElementById('booking');
+
+  function aapneBooking(lead) {
+    aktivtLead = lead;
+    document.querySelector('[data-felt="booking-bedrift"]').textContent = lead.bedrift;
+    document.getElementById('booking-form').reset();
+    document.getElementById('booking-feil').classList.add('hidden');
+    dialogEl.showModal();
+    setTimeout(function () { document.getElementById('b-kontakt').focus(); }, 60);
+  }
+
+  document.getElementById('booking-avbryt').addEventListener('click', function () {
+    dialogEl.close();
+  });
+
+  document.getElementById('booking-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var knapp = document.getElementById('booking-send');
+    var feil = document.getElementById('booking-feil');
+    var kontakt = document.getElementById('b-kontakt').value.trim();
+    var epost = document.getElementById('b-epost').value.trim();
+
+    if (!kontakt || !epost) {
+      feil.textContent = 'Fyll ut både navn og e-post, ellers når ikke utkastet fram.';
+      feil.classList.remove('hidden');
+      return;
+    }
+
+    knapp.disabled = true;
+    knapp.textContent = 'Sender …';
+    feil.classList.add('hidden');
+
+    API.booking({
+      lead_id: aktivtLead.id,
+      bedrift: aktivtLead.bedrift,
+      telefon: aktivtLead.telefon,
+      nettside: aktivtLead.nettside,
+      kontakt: kontakt,
+      epost: epost,
+      notat: document.getElementById('b-notat').value.trim()
+    }).then(function () {
+      aktivtLead.status = 'interessert';
+      dialogEl.close();
+      tegnListe();
+      toast('Booking sendt. Adrian tar over herfra.');
+    }).catch(function () {
+      feil.textContent = 'Fikk ikke sendt. Sjekk nettet og prøv igjen.';
+      feil.classList.remove('hidden');
+    }).then(function () {
+      knapp.disabled = false;
+      knapp.textContent = 'Send til Adrian';
+    });
+  });
+
+  /* ---------------------------------------------------------- oppstart */
+  document.getElementById('tilbake').addEventListener('click', visBunker);
+  document.getElementById('tilbake2').addEventListener('click', function () {
+    document.getElementById('tom').classList.add('hidden');
+    visBunker();
+  });
+
+  document.addEventListener('DOMContentLoaded', visBunker);
+</script>
+
+</body>
+</html>
