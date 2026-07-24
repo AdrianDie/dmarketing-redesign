@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Selgere: DM Salg</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { display: ['Archivo', 'sans-serif'], body: ['Inter', 'sans-serif'] },
+        colors: { ink: '#09090B', brand: '#0339f8', mute: '#52525B', line: '#E4E4E7' }
+      } }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="../../assets/ms-icon-256x256.png" rel="shortcut icon" type="image/x-icon" />
+  <script src="/selger/auth.js"></script>
+  <script src="/selger/format.js"></script>
+  <script src="/selger/api.js" defer></script>
+  <link rel="stylesheet" href="/selger/tema.css" />
+
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #FAFAFA; color: #09090B; }
+    .font-display { font-family: 'Archivo', sans-serif; }
+    .tall { font-variant-numeric: tabular-nums; }
+    a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid #0339f8; outline-offset: 2px; border-radius: 8px; }
+    .skjelett { background: linear-gradient(90deg,#E4E4E7 25%,#F4F4F5 50%,#E4E4E7 75%); background-size:200% 100%; border-radius:12px; animation:skimre 1.4s ease-in-out infinite; }
+    @keyframes skimre { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+    .inn { opacity:0; transform:translateY(6px); animation:opp .3s cubic-bezier(.16,1,.3,1) forwards; }
+    @keyframes opp { to { opacity:1; transform:none } }
+    @media (prefers-reduced-motion: reduce){ *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important} .inn{opacity:1;transform:none} }
+  </style>
+</head>
+<body class="min-h-dvh flex flex-col">
+
+<header class="border-b border-line bg-white sticky top-0 z-20">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6">
+    <div class="flex items-center gap-3 h-16">
+      <a href="/selger/" class="font-display font-extrabold text-lg tracking-[-0.02em] shrink-0 inline-flex items-center h-11 pr-1">
+        DM <span class="text-brand">&nbsp;Salg</span>
+      </a>
+      <nav aria-label="Hovedmeny" class="hidden sm:flex items-center gap-1 ml-3">
+        <a href="/selger/" class="px-3 h-11 inline-flex items-center rounded-lg hover:bg-zinc-100 text-mute text-sm transition-colors">Min uke</a>
+        <a href="/selger/ringeliste/" class="px-3 h-11 inline-flex items-center rounded-lg hover:bg-zinc-100 text-mute text-sm transition-colors">Ringeliste</a>
+        <a href="/selger/admin/" aria-current="page" class="px-3 h-11 inline-flex items-center rounded-lg bg-zinc-100 font-semibold text-sm">Selgere</a>
+      </nav>
+      <div id="selger-user-info" class="ml-auto text-sm text-mute"></div>
+    </div>
+  </div>
+</header>
+
+<main class="flex-1 max-w-4xl w-full mx-auto px-4 sm:px-6 py-8">
+
+  <div id="ikke-admin" class="hidden text-center py-20">
+    <p class="font-display font-bold text-xl mb-2">Bare for Adrian</p>
+    <p class="text-mute">Denne siden er for den som styrer selgerteamet.</p>
+    <a href="/selger/" class="inline-block mt-6 text-brand underline">Til Min uke</a>
+  </div>
+
+  <div id="admin" class="hidden">
+    <h1 class="font-display font-extrabold text-3xl tracking-[-0.03em] mb-1.5">Selgere</h1>
+    <p class="text-mute text-[15px] mb-7 max-w-xl leading-relaxed">
+      Legg til en selger, så får de en e-post med lenke der de velger sitt eget passord.
+      Sett noen til Stengt for å ta bort tilgangen, uten å slette historikken.
+    </p>
+
+    <!-- LEGG TIL -->
+    <form id="ny-form" class="rounded-2xl border border-line bg-white p-5 sm:p-6 mb-7">
+      <p class="text-[11px] font-semibold uppercase tracking-[0.1em] text-mute mb-4">Legg til en selger</p>
+      <div class="grid sm:grid-cols-2 gap-3 mb-3">
+        <div>
+          <label for="ny-navn" class="block text-sm font-medium mb-1.5">Fornavn</label>
+          <input id="ny-navn" type="text" autocomplete="off"
+                 class="w-full border border-zinc-300 rounded-xl px-4 min-h-[48px] text-[15px] focus:border-brand" />
+        </div>
+        <div>
+          <label for="ny-epost" class="block text-sm font-medium mb-1.5">E-post</label>
+          <input id="ny-epost" type="email" inputmode="email" autocomplete="off" placeholder="fornavn@dmarketing.no"
+                 class="w-full border border-zinc-300 rounded-xl px-4 min-h-[48px] text-[15px] focus:border-brand" />
+        </div>
+      </div>
+      <p id="ny-melding" class="hidden text-sm rounded-lg px-4 py-3 mb-3" role="alert"></p>
+      <button type="submit" id="ny-send"
+              class="inline-flex items-center justify-center bg-brand text-white font-semibold px-6 min-h-[48px] rounded-xl hover:bg-blue-700 transition-colors text-[15px]">
+        Legg til og send invitasjon
+      </button>
+    </form>
+
+    <!-- LISTE -->
+    <p class="text-[11px] font-semibold uppercase tracking-[0.1em] text-mute mb-3">De som har tilgang</p>
+    <div id="liste" class="space-y-2.5">
+      <div class="skjelett h-[76px]"></div>
+      <div class="skjelett h-[76px]"></div>
+    </div>
+  </div>
+
+</main>
+
+<div id="toast" class="hidden fixed bottom-5 left-1/2 -translate-x-1/2 z-50 bg-ink text-white text-[15px] px-5 py-3.5 rounded-xl shadow-xl" role="status" aria-live="polite"></div>
+
+<script>
+  var esc = Fmt.esc;
+
+  function toast(t) {
+    var el = document.getElementById('toast');
+    el.textContent = t; el.classList.remove('hidden');
+    clearTimeout(el._t); el._t = setTimeout(function () { el.classList.add('hidden'); }, 3200);
+  }
+
+  function melding(tekst, feil) {
+    var m = document.getElementById('ny-melding');
+    m.textContent = tekst;
+    m.className = 'text-sm rounded-lg px-4 py-3 mb-3 ' +
+      (feil ? 'bg-red-50 border border-red-200 text-red-800' : 'bg-green-50 border border-green-200 text-green-800');
+  }
+
+  function tegn(selgere) {
+    var el = document.getElementById('liste');
+    if (!selgere.length) { el.innerHTML = '<p class="text-mute">Ingen selgere ennå.</p>'; return; }
+
+    el.innerHTML = selgere.map(function (s, i) {
+      var status = !s.aktiv
+        ? '<span class="text-[13px] font-medium px-2.5 py-1 rounded-lg bg-zinc-100 text-zinc-500">Stengt</span>'
+        : (s.harPassord
+            ? '<span class="text-[13px] font-medium px-2.5 py-1 rounded-lg bg-green-50 text-green-800">Aktiv</span>'
+            : '<span class="text-[13px] font-medium px-2.5 py-1 rounded-lg bg-amber-50 text-amber-800">Venter på passord</span>');
+
+      var knapp = s.admin ? ''
+        : (s.aktiv
+            ? '<button data-steng="' + esc(s.epost) + '" class="h-10 px-4 rounded-lg border border-zinc-300 text-sm text-mute hover:bg-zinc-50 hover:text-ink transition-colors">Steng ute</button>'
+            : '<button data-aapne="' + esc(s.epost) + '" class="h-10 px-4 rounded-lg border border-brand text-sm text-brand hover:bg-blue-50 transition-colors">Åpne igjen</button>');
+
+      return '<article class="inn rounded-2xl border border-line bg-white p-4 sm:p-5 flex flex-wrap items-center gap-3" style="animation-delay:' + Math.min(i*40,300) + 'ms">' +
+        '<div class="min-w-0 flex-1">' +
+          '<p class="font-display font-bold text-[16px] tracking-[-0.01em]">' + esc(s.navn) +
+            (s.admin ? ' <span class="text-[12px] font-medium text-brand">(deg)</span>' : '') + '</p>' +
+          '<p class="text-sm text-mute truncate">' + esc(s.epost) + '</p>' +
+          '<p class="text-[13px] text-mute mt-0.5 tall">' + s.ringt + ' ringt · ' + s.bookinger + ' bookinger</p>' +
+        '</div>' +
+        status + knapp +
+      '</article>';
+    }).join('');
+
+    el.querySelectorAll('[data-steng]').forEach(function (b) {
+      b.addEventListener('click', function () { endre(b.dataset.steng, false); });
+    });
+    el.querySelectorAll('[data-aapne]').forEach(function (b) {
+      b.addEventListener('click', function () { endre(b.dataset.aapne, true); });
+    });
+  }
+
+  function last() {
+    API.selgere().then(tegn).catch(function () {
+      document.getElementById('liste').innerHTML = '<p class="text-mute">Fikk ikke hentet selgere. Last siden på nytt.</p>';
+    });
+  }
+
+  function endre(epost, aktiv) {
+    API.settAktiv(epost, aktiv).then(function () {
+      toast(aktiv ? 'Åpnet igjen.' : 'Stengt ute.');
+      last();
+    }).catch(function () { toast('Fikk ikke endret. Prøv igjen.'); });
+  }
+
+  document.getElementById('ny-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var knapp = document.getElementById('ny-send');
+    var navn = document.getElementById('ny-navn').value.trim();
+    var epost = document.getElementById('ny-epost').value.toLowerCase().trim();
+    document.getElementById('ny-melding').classList.add('hidden');
+
+    if (!navn || !epost) { melding('Fyll ut både navn og e-post.', true); document.getElementById('ny-melding').classList.remove('hidden'); return; }
+
+    knapp.disabled = true; knapp.textContent = 'Legger til …';
+    API.opprettSelger(epost, navn).then(function (r) {
+      melding(navn + ' er lagt til. En invitasjon er sendt til ' + epost + '.', false);
+      document.getElementById('ny-melding').classList.remove('hidden');
+      document.getElementById('ny-navn').value = '';
+      document.getElementById('ny-epost').value = '';
+      last();
+    }).catch(function (err) {
+      melding(String(err.message) === 'finnes' ? 'Den e-posten er allerede lagt til.'
+        : 'Fikk ikke lagt til. Sjekk e-posten og prøv igjen.', true);
+      document.getElementById('ny-melding').classList.remove('hidden');
+    }).then(function () {
+      knapp.disabled = false; knapp.textContent = 'Legg til og send invitasjon';
+    });
+  });
+
+  document.addEventListener('DOMContentLoaded', function () {
+    // sjekk om denne brukeren er admin ved aa proeve aa hente selgerlista
+    API.selgere().then(function (selgere) {
+      document.getElementById('admin').classList.remove('hidden');
+      tegn(selgere);
+    }).catch(function (err) {
+      if (String(err.message) === 'ikke_admin') {
+        document.getElementById('ikke-admin').classList.remove('hidden');
+      } else {
+        document.getElementById('admin').classList.remove('hidden');
+        document.getElementById('liste').innerHTML = '<p class="text-mute">Fikk ikke kontakt. Last siden på nytt.</p>';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

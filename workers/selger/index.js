@@ -17,6 +17,9 @@ const FROM_EMAIL = 'salg@dmarketing.no';
 const SITE_URL = 'https://dmarketing.no';
 const RESET_TTL_MS = 60 * 60 * 1000;
 
+// hvem som kan legge til og stenge selgere via admin-siden
+const ADMINS = ['adrian@dmarketing.no'];
+
 const ALLOWED = [
   'https://dmarketing.no',
   'https://www.dmarketing.no',
@@ -44,6 +47,18 @@ export default {
       // krever gyldig token
       const selger = await finnSelger(env, body.token);
       if (!selger) return cors(j({ error: 'ikke_innlogget' }), 200, origin);
+
+      // admin-handlinger, bare for Adrian
+      if (['selgere', 'opprett_selger', 'sett_aktiv'].indexOf(h) !== -1) {
+        if (ADMINS.indexOf(selger.epost) === -1) {
+          return cors(j({ error: 'ikke_admin' }), 200, origin);
+        }
+        let ar;
+        if (h === 'selgere') ar = await listSelgere(env);
+        else if (h === 'opprett_selger') ar = await opprettSelger(env, body);
+        else ar = await settAktiv(env, body);
+        return cors(j(ar), 200, origin);
+      }
 
       let res;
       switch (h) {
@@ -137,6 +152,62 @@ async function nullstill(env, { epost, token, hash }) {
     'UPDATE selgere SET passordhash = ?, resettoken = NULL, resettoken_utlop = NULL WHERE lower(epost) = ?'
   ).bind(hash, epost).run();
   return { ok: true, token: r.token, navn: r.navn, epost };
+}
+
+/* -------------------------------------------------------------- admin */
+
+async function listSelgere(env) {
+  const rows = (await env.DB.prepare(
+    `SELECT s.epost, s.navn, s.aktiv,
+       CASE WHEN s.passordhash IS NULL OR s.passordhash = '' THEN 0 ELSE 1 END AS harpassord,
+       (SELECT COUNT(*) FROM bookinger b WHERE b.selger = s.epost) AS bookinger,
+       (SELECT COUNT(*) FROM leads l WHERE l.selger = s.epost
+          AND l.status IS NOT NULL AND l.status != '' AND l.status != 'ikke_ringt') AS ringt
+     FROM selgere s ORDER BY s.navn`
+  ).all()).results;
+  return rows.map(r => ({
+    epost: r.epost, navn: r.navn, aktiv: String(r.aktiv).toLowerCase() !== 'nei',
+    harPassord: r.harpassord === 1, bookinger: r.bookinger, ringt: r.ringt,
+    admin: ADMINS.indexOf(r.epost) !== -1,
+  }));
+}
+
+async function opprettSelger(env, { epost, navn }) {
+  epost = String(epost || '').toLowerCase().trim();
+  navn = String(navn || '').trim();
+  if (!epost || !navn) return { error: 'mangler_felt', melding: 'Fyll ut både navn og e-post.' };
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(epost)) {
+    return { error: 'ugyldig_epost', melding: 'Det ser ikke ut som en gyldig e-post.' };
+  }
+
+  const finnes = await env.DB.prepare('SELECT 1 FROM selgere WHERE lower(epost) = ?').bind(epost).first();
+  if (finnes) return { error: 'finnes', melding: 'Den e-posten er allerede lagt til.' };
+
+  const token = crypto.randomUUID().replace(/-/g, '') + crypto.randomUUID().replace(/-/g, '');
+  await env.DB.prepare(
+    "INSERT INTO selgere (epost, navn, token, aktiv) VALUES (?, ?, ?, 'ja')"
+  ).bind(epost, navn, token).run();
+
+  // send dem en lenke der de setter sitt eget passord
+  const rtoken = crypto.randomUUID().replace(/-/g, '') + crypto.randomUUID().replace(/-/g, '');
+  await env.DB.prepare(
+    'UPDATE selgere SET resettoken = ?, resettoken_utlop = ? WHERE lower(epost) = ?'
+  ).bind(rtoken, Date.now() + 7 * 24 * 60 * 60 * 1000, epost).run(); // velkomstlenke varer en uke
+
+  const lenke = `${SITE_URL}/selger/sett-passord/?token=${rtoken}&epost=${encodeURIComponent(epost)}`;
+  await sendVelkomst(env, epost, navn, lenke);
+
+  return { ok: true, epost, navn };
+}
+
+async function settAktiv(env, { epost, aktiv }) {
+  epost = String(epost || '').toLowerCase().trim();
+  if (ADMINS.indexOf(epost) !== -1 && aktiv === false) {
+    return { error: 'ikke_deg_selv', melding: 'Du kan ikke stenge deg selv ute.' };
+  }
+  await env.DB.prepare('UPDATE selgere SET aktiv = ? WHERE lower(epost) = ?')
+    .bind(aktiv ? 'ja' : 'nei', epost).run();
+  return { ok: true };
 }
 
 /* ------------------------------------------------------------- bunker */
@@ -323,6 +394,26 @@ async function sendReset(env, epost, navn, lenke) {
         <p><a href="${lenke}" style="display:inline-block;background:#0339f8;color:#fff;
            font-weight:600;padding:14px 28px;border-radius:10px;text-decoration:none">Velg nytt passord</a></p>
         <p style="font-size:13px;color:#71717A">Ba du ikke om dette, kan du se bort fra e-posten.</p>
+      </div>`,
+    }),
+  });
+}
+
+async function sendVelkomst(env, epost, navn, lenke) {
+  if (!env.RESEND_API_KEY) return;
+  await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: { 'Authorization': `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      from: `Dietrichs Salg <${FROM_EMAIL}>`,
+      to: [epost],
+      subject: 'Velkommen til DM Salg',
+      html: `<div style="font-family:Inter,sans-serif;max-width:480px;color:#09090B">
+        <p>Hei ${navn},</p>
+        <p>Du har fått tilgang til selgerportalen. Trykk under for å velge et passord og komme i gang.</p>
+        <p><a href="${lenke}" style="display:inline-block;background:#0339f8;color:#fff;
+           font-weight:600;padding:14px 28px;border-radius:10px;text-decoration:none">Velg passord og logg inn</a></p>
+        <p style="font-size:13px;color:#71717A">Lenken varer i en uke. Etterpå kan du alltid bruke Glemt passord.</p>
       </div>`,
     }),
   });

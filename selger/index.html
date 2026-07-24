@@ -88,6 +88,8 @@
            class="px-3 h-11 inline-flex items-center rounded-lg hover:bg-zinc-100 text-mute text-sm transition-colors">Ringeliste</a>
         <a href="/selger/bookinger/"
            class="px-3 h-11 inline-flex items-center rounded-lg hover:bg-zinc-100 text-mute text-sm transition-colors">Mine bookinger</a>
+        <a href="/selger/admin/" data-admin-lenke
+           class="hidden px-3 h-11 items-center rounded-lg hover:bg-zinc-100 text-mute text-sm transition-colors">Selgere</a>
       </nav>
       <div id="selger-user-info" class="ml-auto text-sm text-mute"></div>
     </div>
@@ -98,6 +100,8 @@
          class="flex-1 h-11 inline-flex items-center justify-center rounded-lg text-mute text-sm">Ringeliste</a>
       <a href="/selger/bookinger/"
          class="flex-1 h-11 inline-flex items-center justify-center rounded-lg text-mute text-sm">Bookinger</a>
+      <a href="/selger/admin/" data-admin-lenke
+         class="hidden flex-1 h-11 items-center justify-center rounded-lg text-mute text-sm">Selgere</a>
     </nav>
   </div>
 </header>
@@ -297,6 +301,12 @@
     if (window.SELGER) {
       var f = window.SELGER.navn.split(/[\s._-]/)[0];
       document.getElementById('fornavn').textContent = f.charAt(0).toUpperCase() + f.slice(1);
+      // vis admin-lenken bare for Adrian (ekte sperre ligger i Worker-en)
+      if (window.SELGER.epost === 'adrian@dmarketing.no') {
+        document.querySelectorAll('[data-admin-lenke]').forEach(function (a) {
+          a.classList.remove('hidden'); a.classList.add('inline-flex');
+        });
+      }
     }
 
     API.tall().then(function (t) {

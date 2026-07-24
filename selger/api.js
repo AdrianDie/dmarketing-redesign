@@ -105,6 +105,15 @@
 
     mineBookinger: function () {
       return erDemo() ? demo('bookinger') : be({ handling: 'bookinger' });
+    },
+
+    // admin, bare for Adrian
+    selgere: function () { return be({ handling: 'selgere' }); },
+    opprettSelger: function (epost, navn) {
+      return be({ handling: 'opprett_selger', epost: epost, navn: navn });
+    },
+    settAktiv: function (epost, aktiv) {
+      return be({ handling: 'sett_aktiv', epost: epost, aktiv: aktiv });
     }
   };
 })();
