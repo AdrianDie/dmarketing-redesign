@@ -15,10 +15,10 @@
       aktiv_bunke: 'Frisør - Oslo og Bærum'
     },
     bunker: [
-      { navn: 'Frisør - Oslo og Bærum', igjen: 18, totalt: 21 },
-      { navn: 'Frisør - Rogaland', igjen: 11, totalt: 11 },
-      { navn: 'Frisør - Vestland og Møre', igjen: 13, totalt: 13 },
-      { navn: 'Frisør - Trøndelag og Nord-Norge', igjen: 0, totalt: 14 }
+      { navn: 'Frisør - Oslo og Bærum', igjen: 18, totalt: 21, reservert: false, minEgen: false, reservertAv: null },
+      { navn: 'Frisør - Rogaland', igjen: 11, totalt: 11, reservert: false, minEgen: false, reservertAv: null },
+      { navn: 'Frisør - Vestland og Møre', igjen: 7, totalt: 13, reservert: true, minEgen: false, reservertAv: 'Kari' },
+      { navn: 'Frisør - Trøndelag og Nord-Norge', igjen: 0, totalt: 14, reservert: false, minEgen: false, reservertAv: null }
     ],
     leads: [
       { id: 1, bedrift: 'BEAUTY VIBES AS', sted: 'Oslo', bransje: 'Frisering og barbering',

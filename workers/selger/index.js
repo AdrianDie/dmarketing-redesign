@@ -277,13 +277,31 @@ async function hentBunker(env, selger) {
      FROM leads GROUP BY bunke`
   ).all()).results;
 
-  return rows.filter(b => {
+  // epost -> navn, saa vi kan vise HVEM som jobber paa en reservert bunke
+  const navn = {};
+  (await env.DB.prepare('SELECT epost, navn FROM selgere').all()).results
+    .forEach(s => { navn[s.epost] = s.navn; });
+
+  // alle bunker vises. En som en ANNEN eier merkes reservert, men skjules ikke.
+  return rows.map(b => {
     const eiere = (b.eiere || '').split(',').filter(Boolean);
-    return eiere.length === 0 || (eiere.length === 1 && eiere[0] === selger.epost);
-  }).map(b => ({ navn: b.bunke, totalt: b.totalt, igjen: b.igjen }))
-    .sort((a, b) => (a.igjen === 0) !== (b.igjen === 0)
-      ? (a.igjen === 0 ? 1 : -1)
-      : a.navn.localeCompare(b.navn, 'nb'));
+    const eier = eiere.length ? eiere[0] : null;
+    const minEgen = eier === selger.epost;
+    const reservert = !!eier && !minEgen;
+    return {
+      navn: b.bunke, totalt: b.totalt, igjen: b.igjen,
+      minEgen, reservert,
+      reservertAv: reservert ? (navn[eier] || eier) : null,
+    };
+  }).sort((a, b) => rangBunke(a) - rangBunke(b) || a.navn.localeCompare(b.navn, 'nb'));
+}
+
+// rekkefolge: ledige forst, sa dine egne, sa reservert av andre, sa ferdige
+function rangBunke(b) {
+  if (b.igjen === 0) return 3;
+  if (b.reservert) return 2;
+  if (b.minEgen) return 1;
+  return 0;
 }
 
 async function reserver(env, selger, bunke) {
