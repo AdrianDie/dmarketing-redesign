@@ -13,7 +13,7 @@
  * Alle svar er JSON. Ekte CORS, saa portalen kan sende application/json.
  */
 
-const FROM_EMAIL = 'salg@dmarketing.no';
+const FROM_EMAIL = 'salg@post.dmarketing.no'; // verifisert Resend-domene
 const SITE_URL = 'https://dmarketing.no';
 const RESET_TTL_MS = 60 * 60 * 1000;
 
