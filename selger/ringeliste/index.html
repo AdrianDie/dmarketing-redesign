@@ -151,6 +151,12 @@
         <p class="text-[13px] text-mute mt-1.5">Hit sender Adrian utkastet. Les den opp igjen for å være sikker.</p>
       </div>
       <div>
+        <label for="b-nettside" class="block text-sm font-medium mb-1.5">Nettside <span class="text-mute font-normal">(hvis de har)</span></label>
+        <input id="b-nettside" name="nettside" type="text" inputmode="url" autocomplete="off" placeholder="f.eks. bedrift.no"
+               class="w-full border border-zinc-300 rounded-xl px-4 min-h-[48px] text-[15px] focus:border-brand" />
+        <p class="text-[13px] text-mute mt-1.5">Den Adrian skal forbedre. Fyll inn eller rett hvis de nevner en annen.</p>
+      </div>
+      <div>
         <label for="b-notat" class="block text-sm font-medium mb-1.5">Kommentar <span class="text-mute font-normal">(valgfritt)</span></label>
         <textarea id="b-notat" name="notat" rows="3"
                   class="w-full border border-zinc-300 rounded-xl px-4 py-3 text-[15px] focus:border-brand"></textarea>
@@ -439,6 +445,8 @@
     aktivtLead = lead;
     document.querySelector('[data-felt="booking-bedrift"]').textContent = lead.bedrift;
     document.getElementById('booking-form').reset();
+    // forhaandsfyll nettsiden vi allerede kjenner, saa selgeren slipper aa skrive den
+    document.getElementById('b-nettside').value = lead.nettside || '';
     document.getElementById('booking-feil').classList.add('hidden');
     dialogEl.showModal();
     setTimeout(function () { document.getElementById('b-kontakt').focus(); }, 60);
@@ -469,7 +477,7 @@
       lead_id: aktivtLead.id,
       bedrift: aktivtLead.bedrift,
       telefon: aktivtLead.telefon,
-      nettside: aktivtLead.nettside,
+      nettside: document.getElementById('b-nettside').value.trim(),
       kontakt: kontakt,
       epost: epost,
       notat: document.getElementById('b-notat').value.trim()

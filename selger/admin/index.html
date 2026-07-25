@@ -276,6 +276,7 @@
             '<p class="text-sm text-mute truncate">' +
               (r.kontakt ? esc(r.kontakt) + ' · ' : '') + esc(r.selger) + ' · <span class="tall">' + Fmt.pentDato(r.dato) + '</span></p>' +
             (r.epost ? '<p class="text-[13px] text-mute truncate">' + esc(r.epost) + '</p>' : '') +
+            (r.nettside ? '<p class="text-[13px] truncate"><a href="https://' + esc(r.nettside) + '" target="_blank" rel="noopener noreferrer" class="text-brand hover:underline">' + esc(r.nettside) + '</a></p>' : '') +
           '</div>' +
           '<select data-booking="' + r.id + '" class="h-11 px-3 rounded-lg border ' +
             (betalt ? 'border-green-400 text-green-800 bg-white' : 'border-zinc-300 text-ink bg-white') +
