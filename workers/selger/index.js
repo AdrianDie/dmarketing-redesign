@@ -56,13 +56,16 @@ export default {
       if (!selger) return cors(j({ error: 'ikke_innlogget' }), 200, origin);
 
       // admin-handlinger, bare for administratorer
-      if (['selgere', 'opprett_selger', 'sett_aktiv', 'sett_admin', 'oversikt'].indexOf(h) !== -1) {
+      if (['selgere', 'opprett_selger', 'sett_aktiv', 'sett_admin', 'oversikt',
+           'alle_bookinger', 'sett_booking_status'].indexOf(h) !== -1) {
         if (!(await erAdmin(env, selger.epost))) {
           return cors(j({ error: 'ikke_admin' }), 200, origin);
         }
         let ar;
         if (h === 'selgere') ar = await listSelgere(env);
         else if (h === 'oversikt') ar = await oversikt(env);
+        else if (h === 'alle_bookinger') ar = await alleBookinger(env);
+        else if (h === 'sett_booking_status') ar = await settBookingStatus(env, body);
         else if (h === 'opprett_selger') ar = await opprettSelger(env, body);
         else if (h === 'sett_admin') ar = await settAdmin(env, selger, body);
         else ar = await settAktiv(env, selger, body);
@@ -181,6 +184,29 @@ async function listSelgere(env) {
     // sikkerhets-admin kan ikke fjernes fra grensesnittet
     fastAdmin: BOOTSTRAP_ADMINS.indexOf(r.epost) !== -1,
   }));
+}
+
+// alle bookinger paa tvers av selgere, nyeste forst, for Adrians oppfolging
+const BOOKING_STATUSER = ['sendt', 'utkast_laget', 'sendt_til_kunde', 'godtatt', 'betalt', 'tapt'];
+
+async function alleBookinger(env) {
+  const rows = (await env.DB.prepare(
+    'SELECT id, dato, selger, bedrift, kontakt, epost, telefon, nettside, notat, status FROM bookinger ORDER BY id DESC'
+  ).all()).results;
+  const navn = {};
+  (await env.DB.prepare('SELECT epost, navn FROM selgere').all()).results
+    .forEach(s => { navn[s.epost] = s.navn; });
+  return rows.map(r => ({
+    id: r.id, dato: r.dato, selger: navn[r.selger] || r.selger,
+    bedrift: r.bedrift, kontakt: r.kontakt, epost: r.epost, telefon: String(r.telefon || ''),
+    nettside: r.nettside, notat: r.notat || '', status: r.status || 'sendt',
+  }));
+}
+
+async function settBookingStatus(env, { id, status }) {
+  if (BOOKING_STATUSER.indexOf(status) === -1) return { error: 'ugyldig_status' };
+  await env.DB.prepare('UPDATE bookinger SET status = ? WHERE id = ?').bind(status, id).run();
+  return { ok: true };
 }
 
 // hvem jobber i hvilken bunke akkurat naa, med fremdrift

@@ -111,6 +111,10 @@
     // admin, bare for Adrian
     selgere: function () { return be({ handling: 'selgere' }); },
     oversikt: function () { return be({ handling: 'oversikt' }); },
+    alleBookinger: function () { return be({ handling: 'alle_bookinger' }); },
+    settBookingStatus: function (id, status) {
+      return be({ handling: 'sett_booking_status', id: id, status: status });
+    },
     opprettSelger: function (epost, navn) {
       return be({ handling: 'opprett_selger', epost: epost, navn: navn });
     },

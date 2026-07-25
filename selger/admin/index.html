@@ -103,9 +103,22 @@
 
     <!-- LISTE -->
     <p class="text-[11px] font-semibold uppercase tracking-[0.1em] text-mute mb-3">De som har tilgang</p>
-    <div id="liste" class="space-y-2.5">
+    <div id="liste" class="space-y-2.5 mb-8">
       <div class="skjelett h-[76px]"></div>
       <div class="skjelett h-[76px]"></div>
+    </div>
+
+    <!-- BOOKINGER -->
+    <div class="flex items-center justify-between mb-1">
+      <p class="text-[11px] font-semibold uppercase tracking-[0.1em] text-mute">Bookinger</p>
+      <button id="oppdater-bookinger" class="text-[13px] text-brand hover:underline">Oppdater</button>
+    </div>
+    <p class="text-mute text-[15px] mb-3 max-w-xl leading-relaxed">
+      Flytt en booking framover etter hvert som du bygger og sender. Når du setter den
+      til <strong>Betalt</strong>, teller den i selgerens provisjon.
+    </p>
+    <div id="bookinger" class="space-y-2.5">
+      <div class="skjelett h-[72px]"></div>
     </div>
   </div>
 
@@ -192,6 +205,7 @@
       document.getElementById('liste').innerHTML = '<p class="text-mute">Fikk ikke hentet selgere. Last siden på nytt.</p>';
     });
     lastOversikt();
+    lastBookinger();
   }
 
   function pentSist(d) {
@@ -234,6 +248,54 @@
     }).catch(function () { toast('Fikk ikke endret. Prøv igjen.'); });
   }
 
+  var BSTATUS = [
+    { kode: 'sendt', navn: 'Sendt til meg' },
+    { kode: 'utkast_laget', navn: 'Utkast laget' },
+    { kode: 'sendt_til_kunde', navn: 'Sendt til kunde' },
+    { kode: 'godtatt', navn: 'Godtatt' },
+    { kode: 'betalt', navn: 'Betalt' },
+    { kode: 'tapt', navn: 'Ble ikke noe av' }
+  ];
+
+  function lastBookinger() {
+    API.alleBookinger().then(function (b) {
+      var el = document.getElementById('bookinger');
+      if (!b.length) {
+        el.innerHTML = '<div class="rounded-2xl border border-dashed border-line bg-white p-5 text-mute text-[15px]">Ingen bookinger ennå. De dukker opp her når en selger booker noen.</div>';
+        return;
+      }
+      el.innerHTML = b.map(function (r, i) {
+        var betalt = r.status === 'betalt';
+        var opsjoner = BSTATUS.map(function (s) {
+          return '<option value="' + s.kode + '"' + (s.kode === r.status ? ' selected' : '') + '>' + s.navn + '</option>';
+        }).join('');
+        return '<article class="inn rounded-2xl border ' + (betalt ? 'border-green-300 bg-green-50' : 'border-line bg-white') +
+          ' p-4 sm:p-5 flex flex-wrap items-center gap-3" style="animation-delay:' + Math.min(i*40,300) + 'ms">' +
+          '<div class="min-w-0 flex-1">' +
+            '<p class="font-display font-bold text-[16px] tracking-[-0.01em]">' + esc(r.bedrift) + '</p>' +
+            '<p class="text-sm text-mute truncate">' +
+              (r.kontakt ? esc(r.kontakt) + ' · ' : '') + esc(r.selger) + ' · <span class="tall">' + Fmt.pentDato(r.dato) + '</span></p>' +
+            (r.epost ? '<p class="text-[13px] text-mute truncate">' + esc(r.epost) + '</p>' : '') +
+          '</div>' +
+          '<select data-booking="' + r.id + '" class="h-11 px-3 rounded-lg border ' +
+            (betalt ? 'border-green-400 text-green-800 bg-white' : 'border-zinc-300 text-ink bg-white') +
+            ' text-sm font-medium focus:border-brand">' + opsjoner + '</select>' +
+        '</article>';
+      }).join('');
+
+      el.querySelectorAll('[data-booking]').forEach(function (sel) {
+        sel.addEventListener('change', function () {
+          API.settBookingStatus(Number(sel.dataset.booking), sel.value).then(function () {
+            toast('Status oppdatert.');
+            lastBookinger();
+          }).catch(function () { toast('Fikk ikke oppdatert. Prøv igjen.'); });
+        });
+      });
+    }).catch(function () {
+      document.getElementById('bookinger').innerHTML = '<p class="text-mute">Fikk ikke hentet bookingene.</p>';
+    });
+  }
+
   document.getElementById('ny-form').addEventListener('submit', function (e) {
     e.preventDefault();
     var knapp = document.getElementById('ny-send');
@@ -260,6 +322,7 @@
   });
 
   document.getElementById('oppdater').addEventListener('click', lastOversikt);
+  document.getElementById('oppdater-bookinger').addEventListener('click', lastBookinger);
 
   document.addEventListener('DOMContentLoaded', function () {
     // sjekk om denne brukeren er admin ved aa proeve aa hente selgerlista
@@ -267,6 +330,7 @@
       document.getElementById('admin').classList.remove('hidden');
       tegn(selgere);
       lastOversikt();
+      lastBookinger();
     }).catch(function (err) {
       if (String(err.message) === 'ikke_admin') {
         document.getElementById('ikke-admin').classList.remove('hidden');
