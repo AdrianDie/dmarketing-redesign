@@ -37,11 +37,12 @@
         </div>
 
         <h1 class="font-display font-extrabold text-[2.1rem] sm:text-4xl md:text-[3.25rem] leading-[1.05] tracking-[-0.03em] mb-5">
-          Spar timer hver uke.<br>La AI gjøre det kjedelige.
+          Spar timer hver uke.<br>La AI ta det kjedelige.
         </h1>
         <p class="text-lg text-white/70 leading-relaxed max-w-2xl mb-4">
-          «Drift med AI» er en egen seksjon med praktiske, stegvise oppskrifter for å drive bedriften smartere.
-          Ferdige grep du kan ta i bruk med en gang, uansett bransje. Du får se nøyaktig hva du skal gjøre, steg for steg.
+          Ferdige oppskrifter som viser deg, steg for steg, hvordan du får kundesvar, tilbud, faktura, booking og
+          markedsføring til nesten å gjøre seg selv. Kopier, lim inn, ferdig på minutter. Ingen teknisk kunnskap,
+          og det funker uansett bransje.
         </p>
 
         <!-- Verdi-strip -->
@@ -86,9 +87,10 @@
   <!-- AVSLUTTENDE CTA -->
   <section class="bg-[#0B1F4A] text-white">
     <div class="max-w-3xl mx-auto px-6 py-16 md:py-20 text-center">
-      <h2 class="font-display font-extrabold text-3xl md:text-4xl tracking-[-0.03em] mb-4">Klar til å låse opp?</h2>
+      <h2 class="font-display font-extrabold text-3xl md:text-4xl tracking-[-0.03em] mb-4">Én betaling. Alt låst opp, for godt.</h2>
       <p class="text-white/70 leading-relaxed mb-8 max-w-xl mx-auto">
-        Lås opp hele seksjonen én gang, og få tilgang til alt, også modulene som kommer senere.
+        Du får hele seksjonen nå, og hver nye modul vi legger til senere, uten å betale igjen.
+        Akkurat som resten av kurset: du eier tilgangen. Fra Dietrichs Marketing, de samme som bygde nettsiden din.
       </p>
       <div id="betalKnapperBunn" class="flex flex-col sm:flex-row gap-3 justify-center mb-4"></div>
       <p class="text-sm text-white/40">Spørsmål? <a href="mailto:adrian@dmarketing.no" class="underline hover:text-white/70">adrian@dmarketing.no</a></p>
@@ -108,6 +110,8 @@
       { tittel: 'AI som svarer på telefonen', desc: 'La en AI-assistent ta unna enkle henvendelser når du ikke rekker.' },
       { tittel: 'Selg mer i nettbutikken', desc: 'Produkttekster og kampanjer skrevet av AI, tilpasset kundene dine.' },
       { tittel: 'Forstå tallene dine', desc: 'La AI lese regnskapet og forklare hva du bør gjøre.' },
+      { tittel: 'AI som rydder innboksen din', desc: 'Få e-postene sortert, oppsummert og besvart, uten å drukne.' },
+      { tittel: 'Planlegg uka på autopilot', desc: 'La AI sette opp lister, ruter og oppgaver, så du slipper å holde alt i hodet.' },
     ];
 
     var s = window.kursSession || {};
@@ -118,10 +122,10 @@
     (function () {
       var strip = document.getElementById('verdiStrip');
       var punkter = [
-        moduler.length + ' moduler',
-        'Stegvise oppskrifter',
-        'Ferdige AI-prompts å kopiere',
-        'På tvers av bransjer'
+        moduler.length + ' moduler, mer på vei',
+        'Ferdige prompts å kopiere',
+        'Klar til bruk på minutter',
+        'Funker i alle bransjer'
       ];
       punkter.forEach(function (p) {
         var el = document.createElement('span');
