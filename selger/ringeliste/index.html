@@ -235,12 +235,12 @@
 
         // undertekst og eventuelt merke
         var undertekst = ferdig ? 'Ferdig ringt'
-          : laast ? 'Jobbes på av ' + esc(b.reservertAv)
+          : laast ? '<span class="text-red-700 font-medium">' + esc(b.reservertAv) + ' jobber her nå</span>'
           : b.igjen + ' av ' + b.totalt + ' igjen';
 
         var merke = laast
-          ? '<span class="inline-flex items-center gap-1.5 text-[12px] font-medium text-amber-800 bg-amber-50 border border-amber-200 rounded-md px-2 py-0.5 mb-2">' +
-            '<span class="w-1.5 h-1.5 rounded-full bg-amber-500 inline-block"></span>Reservert</span><br>'
+          ? '<span class="inline-flex items-center gap-1.5 text-[12px] font-semibold text-white bg-red-600 rounded-md px-2 py-0.5 mb-2">' +
+            '<span class="w-1.5 h-1.5 rounded-full bg-white inline-block"></span>Opptatt</span><br>'
           : b.minEgen
           ? '<span class="inline-flex items-center text-[12px] font-medium text-brand bg-blue-50 border border-blue-200 rounded-md px-2 py-0.5 mb-2">Din bunke</span><br>'
           : '';
@@ -249,14 +249,14 @@
           (kanKlikke ? '' : 'disabled ') +
           'class="inn text-left rounded-2xl border p-5 transition-colors ' +
           (kanKlikke ? 'border-line bg-white hover:border-brand'
-            : laast ? 'border-line bg-zinc-50 cursor-not-allowed'
+            : laast ? 'border-2 border-red-500 ring-2 ring-red-200 bg-red-50 cursor-not-allowed'
             : 'border-line bg-white opacity-50 cursor-not-allowed') + '" ' +
           'style="animation-delay:' + (i * 40) + 'ms">' +
             merke +
             '<span class="block font-display font-bold text-[17px] tracking-[-0.01em] mb-1">' + esc(b.navn) + '</span>' +
             '<span class="block text-sm text-mute mb-3 tall">' + undertekst + '</span>' +
-            '<span class="block h-1.5 rounded-full bg-zinc-100 overflow-hidden">' +
-              '<span class="block h-full rounded-full ' + (laast ? 'bg-amber-400' : 'bg-brand') + '" style="width:' + pst + '%"></span>' +
+            '<span class="block h-1.5 rounded-full ' + (laast ? 'bg-red-100' : 'bg-zinc-100') + ' overflow-hidden">' +
+              '<span class="block h-full rounded-full ' + (laast ? 'bg-red-500' : 'bg-brand') + '" style="width:' + pst + '%"></span>' +
             '</span>' +
           '</button>';
       }).join('');
