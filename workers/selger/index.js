@@ -479,9 +479,10 @@ async function hentBookinger(env, selger) {
 }
 
 async function hentTall(env, selger) {
+  // provisjon regnes av salgssummen EKS MVA (3 120 kr ved standardpris 3 900 inkl MVA)
   const pris = Number((await env.DB.prepare(
-    "SELECT verdi FROM innstillinger WHERE noekkel = 'pris'"
-  ).first())?.verdi || 3900);
+    "SELECT verdi FROM innstillinger WHERE noekkel = 'provisjonsgrunnlag'"
+  ).first())?.verdi || 3120);
 
   const e = selger.epost;
   const idag = iDag(), mandag = mandagISO();

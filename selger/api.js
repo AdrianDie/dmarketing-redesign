@@ -11,7 +11,7 @@
     tall: {
       ringt_i_dag: 23, ringt_totalt: 147, igjen_i_bunke: 18, ring_igjen: 9,
       bookinger_uke: 4, bookinger_totalt: 11, bookingrate: 0.075, betalte: 3,
-      opptjent: 1755, pipeline: 4680, sats: 0.15, til_neste: 7,
+      opptjent: 1404, pipeline: 3744, sats: 0.15, til_neste: 7,
       neste_sats: 0.20, dager_igjen: 12,
       aktiv_bunke: 'Frisør - Oslo og Bærum'
     },

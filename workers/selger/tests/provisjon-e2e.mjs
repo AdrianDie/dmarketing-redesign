@@ -12,7 +12,7 @@ import { execSync } from 'node:child_process';
 const WORKER = 'https://selger-worker.dietrichs-mkt.workers.dev';
 const EPOST = 'e2e-provisjon@test.no';
 const TOKEN = 'e2eprovisjontoken1234567890';
-const PRIS = 3900;
+const PRIS = 3120;
 
 // datoer: i dag (denne mnd) og en dato i forrige maaned
 const idag = new Date();
