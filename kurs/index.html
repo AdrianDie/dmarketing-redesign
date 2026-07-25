@@ -99,6 +99,12 @@
       box-shadow: 0 16px 42px -6px rgba(3,57,248,0.8);
       transform: translateY(-1px);
     }
+    /* Myk overgang fra lys kursside ned i det mørke bandet */
+    .ai-drift-overgang {
+      height: 150px;
+      background: linear-gradient(to bottom, #ffffff 0%, #eef1f8 26%, #a9b7d6 52%, #26324f 78%, #080a12 100%);
+    }
+    @media (min-width: 768px) { .ai-drift-overgang { height: 210px; } }
     @media (prefers-reduced-motion: reduce) {
       .ai-drift-card, .ai-drift-cta { transition: none; }
       a.ai-drift-card:hover, .ai-drift-cta:hover { transform: none; }
@@ -418,8 +424,11 @@
     </div>
   </section>
 
+  <!-- Myk overgang lys -> mørk -->
+  <div class="ai-drift-overgang" aria-hidden="true"></div>
+
   <!-- DEL 3: Premium-tillegg — AI-drift (mørkt premium-band) -->
-  <section class="ai-drift-band relative overflow-hidden py-20 md:py-28 px-6">
+  <section class="ai-drift-band relative overflow-hidden pt-4 pb-20 md:pt-6 md:pb-28 px-6">
     <div class="ai-drift-glow" aria-hidden="true"></div>
     <div class="ai-drift-swirl" aria-hidden="true"></div>
     <div class="relative max-w-6xl mx-auto">
