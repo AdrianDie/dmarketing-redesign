@@ -16,56 +16,77 @@
   <link href="../../../assets/ms-icon-256x256.png" rel="shortcut icon" type="image/x-icon" />
   <script src="/kurs/auth.js"></script>
   <style>
-    body{font-family:'Inter',sans-serif;background:#FAFAFA;color:#09090B}
+    body{font-family:'Inter',sans-serif;background:#080a12;color:#ffffff}
     .font-display{font-family:'Archivo',sans-serif}
-    .dot-grid{background-image:radial-gradient(circle,rgba(255,255,255,0.06) 1px,transparent 1px);background-size:22px 22px}
+
+    /* Mørkt premium-tema, matcher AI-drift-bandet på kurs-forsiden */
+    .ai-glow{position:absolute;inset:0;pointer-events:none;
+      background:
+        radial-gradient(55% 45% at 50% -5%, rgba(3,57,248,0.22), transparent 70%),
+        radial-gradient(40% 40% at 88% 12%, rgba(59,130,246,0.14), transparent 70%),
+        radial-gradient(45% 55% at 8% 95%, rgba(3,57,248,0.12), transparent 72%);}
+    .ai-swirl{position:absolute;left:50%;top:-170px;width:1400px;max-width:160%;height:540px;
+      transform:translateX(-50%) rotate(-7deg);border-radius:50%;
+      border:1px solid rgba(120,150,255,0.10);box-shadow:inset 0 0 140px 10px rgba(3,57,248,0.10);pointer-events:none}
+    .ai-swirl::after{content:"";position:absolute;inset:70px 130px;border-radius:50%;border:1px solid rgba(120,150,255,0.06)}
+    .ai-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:600;
+      letter-spacing:.18em;text-transform:uppercase;color:#a9b6ff;background:rgba(3,57,248,0.10);
+      border:1px solid rgba(99,130,255,0.28);padding:.4rem .9rem;border-radius:999px}
+    .ai-card{background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.08);border-radius:1rem;
+      transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease,background .2s ease}
+    .ai-cta{background:#0339f8;color:#fff;box-shadow:0 12px 34px -8px rgba(3,57,248,0.65);
+      transition:background .2s ease,box-shadow .2s ease,transform .2s ease}
+    .ai-cta:hover{background:#1e50ff;box-shadow:0 16px 42px -6px rgba(3,57,248,0.8);transform:translateY(-1px)}
     .laast-kort{position:relative}
     .laast-kort .innhold{filter:blur(0.4px);opacity:0.85}
+    @media (prefers-reduced-motion: reduce){.ai-cta{transition:none}.ai-cta:hover{transform:none}}
   </style>
 </head>
 <body>
 
   <!-- HERO -->
-  <header class="bg-[#0B1F4A] text-white">
-    <div class="dot-grid">
-      <div class="max-w-4xl mx-auto px-6 pt-10 pb-16 md:pt-12 md:pb-20">
-        <a href="/kurs/" class="text-sm font-medium text-white/50 hover:text-white transition-colors">← Tilbake til kurset</a>
+  <header class="relative overflow-hidden">
+    <div class="ai-glow" aria-hidden="true"></div>
+    <div class="ai-swirl" aria-hidden="true"></div>
+    <div class="relative max-w-4xl mx-auto px-6 pt-10 pb-16 md:pt-12 md:pb-20">
+      <a href="/kurs/" class="text-sm font-medium text-white/50 hover:text-white transition-colors">← Tilbake til kurset</a>
 
-        <div class="mt-10 inline-flex items-center gap-2 bg-white/10 border border-white/15 text-xs font-semibold uppercase tracking-widest text-blue-200 px-3 py-1.5 rounded-full mb-6">
+      <div class="mt-10 mb-6">
+        <span class="ai-eyebrow">
           <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
           Premium-tillegg · låst
-        </div>
-
-        <h1 class="font-display font-extrabold text-[2.1rem] sm:text-4xl md:text-[3.25rem] leading-[1.05] tracking-[-0.03em] mb-5">
-          Spar timer hver uke.<br>La AI ta det kjedelige.
-        </h1>
-        <p class="text-lg text-white/70 leading-relaxed max-w-2xl mb-4">
-          Ferdige oppskrifter som viser deg, steg for steg, hvordan du får kundesvar, tilbud, faktura, booking og
-          markedsføring til nesten å gjøre seg selv. Kopier, lim inn, ferdig på minutter. Ingen teknisk kunnskap,
-          og det funker uansett bransje.
-        </p>
-
-        <!-- Verdi-strip -->
-        <div id="verdiStrip" class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/60 mb-9"></div>
-
-        <!-- CTA -->
-        <div id="betalKnapper" class="flex flex-col sm:flex-row gap-3 mb-4"></div>
-        <button onclick="meldInteresse(this)" id="interesseBtn"
-          class="text-sm text-white/60 underline hover:text-white transition-colors">
-          Eller meld interesse, så tar vi kontakt
-        </button>
+        </span>
       </div>
+
+      <h1 class="font-display font-extrabold text-[2.1rem] sm:text-4xl md:text-[3.25rem] leading-[1.05] tracking-[-0.03em] text-white mb-5">
+        Spar timer hver uke.<br>La AI ta det kjedelige.
+      </h1>
+      <p class="text-lg text-white/60 leading-relaxed max-w-2xl mb-4">
+        Ferdige oppskrifter som viser deg, steg for steg, hvordan du får kundesvar, tilbud, faktura, booking og
+        markedsføring til nesten å gjøre seg selv. Kopier, lim inn, ferdig på minutter. Ingen teknisk kunnskap,
+        og det funker uansett bransje.
+      </p>
+
+      <!-- Verdi-strip -->
+      <div id="verdiStrip" class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/60 mb-9"></div>
+
+      <!-- CTA -->
+      <div id="betalKnapper" class="flex flex-col sm:flex-row gap-3 mb-4"></div>
+      <button onclick="meldInteresse(this)" id="interesseBtn"
+        class="text-sm text-white/60 underline hover:text-white transition-colors">
+        Eller meld interesse, så tar vi kontakt
+      </button>
     </div>
   </header>
 
   <!-- HVA DU FÅR -->
   <section class="max-w-5xl mx-auto px-6 py-14 md:py-20">
     <div class="text-center max-w-2xl mx-auto mb-10 md:mb-14">
-      <p class="text-xs font-semibold tracking-widest uppercase text-blue-600 mb-3">Dette låser du opp</p>
-      <h2 class="font-display font-extrabold text-3xl md:text-4xl tracking-[-0.03em] text-ink leading-tight mb-4">
+      <p class="text-xs font-semibold tracking-widest uppercase text-[#8fa2ff] mb-3">Dette låser du opp</p>
+      <h2 class="font-display font-extrabold text-3xl md:text-4xl tracking-[-0.03em] text-white leading-tight mb-4">
         En hel verktøykasse, klar til bruk
       </h2>
-      <p class="text-zinc-600 leading-relaxed">
+      <p class="text-white/55 leading-relaxed">
         Hver modul tar deg gjennom ett konkret område, fra første oppsett til at det går nesten av seg selv.
         Du trenger ingen teknisk bakgrunn.
       </p>
@@ -76,25 +97,26 @@
     <!-- KOMMER SNART -->
     <div class="mt-14">
       <div class="flex items-center gap-3 mb-5">
-        <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400">Kommer snart</p>
-        <span class="h-px flex-1 bg-zinc-200"></span>
+        <p class="text-xs font-semibold tracking-widest uppercase text-white/40">Kommer snart</p>
+        <span class="h-px flex-1 bg-white/10"></span>
       </div>
       <div id="kommerSnartGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
-      <p class="text-xs text-zinc-400 mt-4">Seksjonen utvides jevnlig. Nye moduler blir automatisk tilgjengelige for deg når du først har låst opp.</p>
+      <p class="text-xs text-white/40 mt-4">Seksjonen utvides jevnlig. Nye moduler blir automatisk tilgjengelige for deg når du først har låst opp.</p>
     </div>
   </section>
 
   <!-- AVSLUTTENDE CTA -->
-  <section class="bg-[#0B1F4A] text-white">
-    <div class="max-w-3xl mx-auto px-6 py-16 md:py-20 text-center">
-      <h2 class="font-display font-extrabold text-3xl md:text-4xl tracking-[-0.03em] mb-4">Én betaling. Alt låst opp, for godt.</h2>
-      <p class="text-white/70 leading-relaxed mb-8 max-w-xl mx-auto">
+  <section class="relative overflow-hidden border-t border-white/5">
+    <div class="ai-glow" aria-hidden="true"></div>
+    <div class="relative max-w-3xl mx-auto px-6 py-16 md:py-24 text-center">
+      <h2 class="font-display font-extrabold text-3xl md:text-4xl tracking-[-0.03em] text-white mb-4">Én betaling. Alt låst opp, for godt.</h2>
+      <p class="text-white/60 leading-relaxed mb-8 max-w-xl mx-auto">
         Du får hele seksjonen nå, og hver nye modul vi legger til senere, uten å betale igjen.
         Akkurat som resten av kurset: du eier tilgangen. Fra Dietrichs Marketing, de samme som bygde nettsiden din.
       </p>
       <div class="mb-8">
         <div class="flex items-baseline justify-center gap-2 mb-2">
-          <span class="font-display font-extrabold text-4xl md:text-5xl">790 kr</span>
+          <span class="font-display font-extrabold text-4xl md:text-5xl text-white">790 kr</span>
           <span class="text-white/50 text-lg">engangs</span>
         </div>
         <p class="inline-flex items-center gap-2 text-sm text-emerald-300">
@@ -154,16 +176,16 @@
       var grid = document.getElementById('modulGrid');
       moduler.forEach(function (m, i) {
         var kort = document.createElement('div');
-        kort.className = 'laast-kort bg-white border border-zinc-200 rounded-2xl p-6';
+        kort.className = 'laast-kort ai-card p-6';
         kort.innerHTML =
           '<div class="flex items-center gap-3 mb-3">' +
-            '<span class="text-xs text-zinc-400 font-mono">' + String(i + 1).padStart(2, '0') + '</span>' +
-            '<span class="ml-auto inline-flex items-center gap-1 text-xs font-medium text-zinc-400">' + laasIkon() + 'Låst</span>' +
+            '<span class="text-xs text-white/40 font-mono">' + String(i + 1).padStart(2, '0') + '</span>' +
+            '<span class="ml-auto inline-flex items-center gap-1 text-xs font-medium text-white/40">' + laasIkon() + 'Låst</span>' +
           '</div>' +
           '<div class="innhold">' +
-            '<h3 class="font-display font-bold text-lg text-ink mb-2 leading-snug"></h3>' +
-            '<p class="text-sm text-zinc-600 leading-relaxed"></p>' +
-            '<span class="mt-3 inline-block text-xs text-zinc-400">~' + (m.min || 6) + ' min</span>' +
+            '<h3 class="font-display font-bold text-lg text-white mb-2 leading-snug"></h3>' +
+            '<p class="text-sm text-white/55 leading-relaxed"></p>' +
+            '<span class="mt-3 inline-block text-xs text-white/40">~' + (m.min || 6) + ' min</span>' +
           '</div>';
         kort.querySelector('h3').textContent = m.tittel;
         kort.querySelector('p').textContent = m.desc;
@@ -178,13 +200,13 @@
       var grid = document.getElementById('kommerSnartGrid');
       KOMMER_SNART.forEach(function (m) {
         var kort = document.createElement('div');
-        kort.className = 'bg-zinc-50 border border-dashed border-zinc-200 rounded-2xl p-6';
+        kort.className = 'border border-dashed border-white/12 rounded-2xl p-6 bg-white/[0.02]';
         kort.innerHTML =
           '<div class="flex items-center gap-3 mb-3">' +
-            '<span class="inline-flex items-center gap-1 text-xs font-medium text-amber-600 bg-amber-50 border border-amber-100 px-2 py-0.5 rounded-full">Kommer snart</span>' +
+            '<span class="inline-flex items-center gap-1 text-xs font-medium text-amber-300 bg-amber-400/10 border border-amber-400/20 px-2 py-0.5 rounded-full">Kommer snart</span>' +
           '</div>' +
-          '<h3 class="font-display font-bold text-lg text-zinc-500 mb-2 leading-snug"></h3>' +
-          '<p class="text-sm text-zinc-400 leading-relaxed"></p>';
+          '<h3 class="font-display font-bold text-lg text-white/70 mb-2 leading-snug"></h3>' +
+          '<p class="text-sm text-white/45 leading-relaxed"></p>';
         kort.querySelector('h3').textContent = m.tittel;
         kort.querySelector('p').textContent = m.desc;
         grid.appendChild(kort);
@@ -199,7 +221,7 @@
           '&client_reference_id=' + encodeURIComponent(epost);
         var a = document.createElement('a');
         a.href = url;
-        a.className = 'inline-flex items-center justify-center gap-2 bg-white text-[#0B1F4A] font-semibold px-6 py-3 rounded-xl text-sm hover:bg-blue-50 transition-colors';
+        a.className = 'ai-cta inline-flex items-center justify-center gap-2 font-semibold px-6 py-3 rounded-xl text-sm';
         a.textContent = 'Betal med kort, lås opp';
         container.appendChild(a);
       }
@@ -212,13 +234,13 @@
       }
       if (!STRIPE_LENKE && !VIPPS_LENKE && !midtstill) {
         var ib = document.getElementById('interesseBtn');
-        ib.className = 'inline-flex items-center gap-2 bg-white text-[#0B1F4A] font-semibold px-6 py-3 rounded-xl text-sm hover:bg-blue-50 transition-colors';
+        ib.className = 'ai-cta inline-flex items-center gap-2 font-semibold px-6 py-3 rounded-xl text-sm';
         ib.textContent = 'Meld interesse, jeg vil låse opp';
       }
       if (!STRIPE_LENKE && !VIPPS_LENKE && midtstill) {
         var b = document.createElement('button');
         b.onclick = function () { meldInteresse(b); };
-        b.className = 'inline-flex items-center gap-2 bg-white text-[#0B1F4A] font-semibold px-6 py-3 rounded-xl text-sm hover:bg-blue-50 transition-colors';
+        b.className = 'ai-cta inline-flex items-center gap-2 font-semibold px-6 py-3 rounded-xl text-sm';
         b.textContent = 'Meld interesse, få betalingslenka';
         container.appendChild(b);
       }
