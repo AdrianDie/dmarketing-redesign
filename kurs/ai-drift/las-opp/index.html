@@ -49,7 +49,7 @@
 
         <!-- CTA -->
         <div id="betalKnapper" class="flex flex-col sm:flex-row gap-3 mb-4"></div>
-        <button onclick="meldInteresse()" id="interesseBtn"
+        <button onclick="meldInteresse(this)" id="interesseBtn"
           class="text-sm text-white/60 underline hover:text-white transition-colors">
           Eller meld interesse, så tar vi kontakt
         </button>
@@ -202,19 +202,18 @@
         ib.textContent = 'Meld interesse, jeg vil låse opp';
       }
       if (!STRIPE_LENKE && !VIPPS_LENKE && midtstill) {
-        var lenke = document.createElement('a');
-        lenke.href = '#';
-        lenke.onclick = function (e) { e.preventDefault(); meldInteresse(); };
-        lenke.className = 'inline-flex items-center gap-2 bg-white text-[#0B1F4A] font-semibold px-6 py-3 rounded-xl text-sm hover:bg-blue-50 transition-colors';
-        lenke.textContent = 'Meld interesse';
-        container.appendChild(lenke);
+        var b = document.createElement('button');
+        b.onclick = function () { meldInteresse(b); };
+        b.className = 'inline-flex items-center gap-2 bg-white text-[#0B1F4A] font-semibold px-6 py-3 rounded-xl text-sm hover:bg-blue-50 transition-colors';
+        b.textContent = 'Meld interesse';
+        container.appendChild(b);
       }
     }
     byggBetalKnapper(document.getElementById('betalKnapper'), false);
     byggBetalKnapper(document.getElementById('betalKnapperBunn'), true);
 
-    function meldInteresse() {
-      var btn = document.getElementById('interesseBtn');
+    function meldInteresse(btn) {
+      btn = btn || document.getElementById('interesseBtn');
       if (btn.disabled) return;
       btn.disabled = true; btn.textContent = 'Sender…';
       fetch('https://formsubmit.co/ajax/adrian@dmarketing.no', {
