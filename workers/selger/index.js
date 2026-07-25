@@ -250,7 +250,7 @@ const BOOKING_STATUSER = ['sendt', 'utkast_laget', 'sendt_til_kunde', 'godtatt',
 
 async function alleBookinger(env) {
   const rows = (await env.DB.prepare(
-    'SELECT id, dato, selger, bedrift, kontakt, epost, telefon, nettside, notat, status FROM bookinger ORDER BY id DESC'
+    'SELECT id, dato, selger, bedrift, kontakt, epost, telefon, nettside, notat, status, jira_key FROM bookinger ORDER BY id DESC'
   ).all()).results;
   const navn = {};
   (await env.DB.prepare('SELECT epost, navn FROM selgere').all()).results
@@ -259,6 +259,7 @@ async function alleBookinger(env) {
     id: r.id, dato: r.dato, selger: navn[r.selger] || r.selger,
     bedrift: r.bedrift, kontakt: r.kontakt, epost: r.epost, telefon: String(r.telefon || ''),
     nettside: r.nettside, notat: r.notat || '', status: r.status || 'sendt',
+    jira_key: r.jira_key || null,
   }));
 }
 
@@ -268,6 +269,10 @@ async function settBookingStatus(env, { id, status }) {
   const betaltDato = status === 'betalt' ? iDag() : null;
   await env.DB.prepare('UPDATE bookinger SET status = ?, betalt_dato = ? WHERE id = ?')
     .bind(status, betaltDato, id).run();
+
+  // flytt Jira-kortet tilsvarende
+  const b = await env.DB.prepare('SELECT jira_key FROM bookinger WHERE id = ?').bind(id).first();
+  if (b && b.jira_key) await jiraFlytt(env, b.jira_key, status);
   return { ok: true };
 }
 
@@ -454,16 +459,23 @@ async function loggUtfall(env, selger, { lead_id, status, notat }) {
 }
 
 async function lagreBooking(env, selger, d) {
-  await env.DB.prepare(
+  const res = await env.DB.prepare(
     `INSERT INTO bookinger (dato, selger, bedrift, telefon, nettside, kontakt, epost, notat, status)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'sendt')`
   ).bind(iDag(), selger.epost, d.bedrift || '', String(d.telefon || ''),
          d.nettside || '', d.kontakt || '', d.epost || '', d.notat || '').run();
+  const bookingId = res.meta.last_row_id;
 
   if (d.lead_id) {
     await env.DB.prepare(
       'UPDATE leads SET status = ?, selger = ?, dato = ? WHERE id = ?'
     ).bind('interessert', selger.epost, iDag(), d.lead_id).run();
+  }
+
+  // speil til Jira-boardet (feiler stille, bookingen staar uansett)
+  const key = await jiraOpprett(env, selger, d);
+  if (key) {
+    await env.DB.prepare('UPDATE bookinger SET jira_key = ? WHERE id = ?').bind(key, bookingId).run();
   }
   return { ok: true };
 }
@@ -619,6 +631,85 @@ async function sendVelkomst(env, epost, navn, lenke) {
       </div>`,
     }),
   });
+}
+
+/* --------------------------------------------------------- Jira-speiling */
+// Portalen eier bookingene. Worker-en speiler dem til AN-boardet i Jira: lager
+// et kort ved booking, flytter det naar Adrian endrer status i portalen.
+// Alt bak JIRA_TOKEN-sperren, saa uten nokkel gjor speilingen ingenting og
+// bookingene virker som for. Feiler et Jira-kall, velter det aldri portalen.
+
+const JIRA_CLOUD = '908c62df-9d92-4a66-ac59-0ccd8f40dc6e';
+const JIRA_EPOST = 'adrian@dmarketing.no';
+const JIRA_PROSJEKT = 'AN';
+const JIRA_ISSUETYPE = 'Oppgave';
+
+// portal-status -> statusnavn paa AN-boardet
+const JIRA_STATUS = {
+  sendt: 'Interessert',
+  utkast_laget: 'Utkast laget',
+  sendt_til_kunde: 'Sendt til kunde',
+  godtatt: 'Godtatt',
+  betalt: 'Betalt',
+  tapt: 'Tapt/Ikke nå',
+};
+
+async function jiraKall(env, metode, sti, kropp) {
+  const auth = btoa(`${JIRA_EPOST}:${env.JIRA_TOKEN}`);
+  const url = `https://api.atlassian.com/ex/jira/${JIRA_CLOUD}/rest/api/3${sti}`;
+  for (let forsok = 0; forsok < 2; forsok++) {
+    const r = await fetch(url, {
+      method: metode,
+      headers: { Authorization: `Basic ${auth}`, 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: kropp ? JSON.stringify(kropp) : undefined,
+    });
+    if (r.status === 429) { await new Promise(s => setTimeout(s, 1500)); continue; } // vent og proev igjen
+    return r;
+  }
+}
+
+// Atlassian Document Format: en enkel liste avsnitt
+function adf(linjer) {
+  return {
+    type: 'doc', version: 1,
+    content: linjer.filter(Boolean).map(t => ({ type: 'paragraph', content: [{ type: 'text', text: t }] })),
+  };
+}
+
+async function jiraOpprett(env, selger, d) {
+  if (!env.JIRA_TOKEN) return null;
+  try {
+    const r = await jiraKall(env, 'POST', '/issue', {
+      fields: {
+        project: { key: JIRA_PROSJEKT },
+        issuetype: { name: JIRA_ISSUETYPE },
+        summary: d.bedrift || 'Ny booking',
+        description: adf([
+          `Booket av ${selger.navn} (${selger.epost})`,
+          d.kontakt ? `Kontakt: ${d.kontakt}` : '',
+          d.epost ? `E-post: ${d.epost}` : '',
+          d.telefon ? `Telefon: ${d.telefon}` : '',
+          d.nettside ? `Nettside: ${d.nettside}` : '',
+          d.notat ? `Kommentar: ${d.notat}` : '',
+        ]),
+      },
+    });
+    if (!r || !r.ok) return null;
+    return (await r.json()).key || null;
+  } catch (e) { return null; }
+}
+
+async function jiraFlytt(env, key, portalStatus) {
+  if (!env.JIRA_TOKEN || !key) return;
+  const maal = JIRA_STATUS[portalStatus];
+  if (!maal) return;
+  try {
+    const r = await jiraKall(env, 'GET', `/issue/${key}/transitions`);
+    if (!r || !r.ok) return;
+    const t = ((await r.json()).transitions || []).find(x => x.to && x.to.name === maal);
+    if (!t) return; // fant ikke overgangen, la kortet staa der det er
+    await jiraKall(env, 'POST', `/issue/${key}/transitions`, { transition: { id: t.id } });
+  } catch (e) { /* speiling skal aldri velte portalen */ }
 }
 
 /* ------------------------------------------------------------- helpers */
