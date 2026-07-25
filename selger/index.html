@@ -181,7 +181,7 @@
       </div>
       <div class="kort kort-hover rounded-2xl border border-line bg-white p-5" style="animation-delay:320ms">
         <p class="text-[32px] leading-none font-display font-extrabold tall mb-2"><span class="skjelett" data-tall="betalte"></span></p>
-        <p class="text-sm text-mute">Betalte kunder</p>
+        <p class="text-sm text-mute">Betalte denne mnd</p>
       </div>
     </div>
   </section>
@@ -193,11 +193,11 @@
     <div class="grid lg:grid-cols-5 gap-3">
 
       <div class="kort rounded-2xl bg-ink text-white p-6 sm:p-8 lg:col-span-3" style="animation-delay:360ms">
-        <p class="text-[11px] font-semibold uppercase tracking-[0.1em] text-zinc-400 mb-3">Opptjent så langt</p>
+        <p class="text-[11px] font-semibold uppercase tracking-[0.1em] text-zinc-400 mb-3">Opptjent denne måneden</p>
         <p class="font-display font-extrabold text-[44px] sm:text-[56px] leading-none tall mb-2">
           <span class="skjelett" data-tall="opptjent" style="min-width:5ch"></span>
         </p>
-        <p class="text-sm text-zinc-400">Utbetales når kunden har betalt.</p>
+        <p class="text-sm text-zinc-400">Utbetales når kunden har betalt. Trappa nullstilles hver måned.</p>
 
         <div class="mt-7 pt-6 border-t border-zinc-800 grid grid-cols-2 gap-6">
           <div>
@@ -236,15 +236,15 @@
 
         <ul class="space-y-0.5 text-sm">
           <li class="flex items-center justify-between py-2 px-2 -mx-2 rounded-lg" data-trinn="15">
-            <span class="text-mute">0 til 4 salg</span>
+            <span class="text-mute">0 til 9 salg</span>
             <span class="font-semibold tall">15 %</span>
           </li>
           <li class="flex items-center justify-between py-2 px-2 -mx-2 rounded-lg" data-trinn="20">
-            <span class="text-mute">5 til 14</span>
+            <span class="text-mute">10 til 19</span>
             <span class="font-semibold tall">20 %</span>
           </li>
           <li class="flex items-center justify-between py-2 px-2 -mx-2 rounded-lg" data-trinn="25">
-            <span class="text-mute">15 til 29</span>
+            <span class="text-mute">20 til 29</span>
             <span class="font-semibold tall">25 %</span>
           </li>
           <li class="flex items-center justify-between py-2 px-2 -mx-2 rounded-lg" data-trinn="30">
@@ -274,9 +274,9 @@
 
 <script>
   var TRINN = [
-    { fra: 0,  til: 5,    sats: 15 },
-    { fra: 5,  til: 15,   sats: 20 },
-    { fra: 15, til: 30,   sats: 25 },
+    { fra: 0,  til: 10,   sats: 15 },
+    { fra: 10, til: 20,   sats: 20 },
+    { fra: 20, til: 30,   sats: 25 },
     { fra: 30, til: null, sats: 30 }
   ];
 
@@ -330,16 +330,23 @@
 
       if (aktiv.til === null) {
         felt('til-neste-tekst', 'Du står på høyeste sats.');
-        felt('stolpe-tekst', 'Ingenting igjen å klatre. Bra jobbet.');
+        felt('stolpe-tekst', 'Ingenting igjen å klatre denne måneden. Bra jobbet.');
         document.getElementById('stolpe').style.width = '100%';
         document.getElementById('stolpe-spor').setAttribute('aria-valuenow', 100);
       } else {
         var spenn = aktiv.til - aktiv.fra;
         var gjort = t.betalte - aktiv.fra;
         var pst = Math.max(0, Math.min(100, Math.round(gjort / spenn * 100)));
-        felt('til-neste-tekst', t.til_neste === 1 ? 'salg igjen' : 'salg igjen');
-        felt('stolpe-tekst', gjort + ' av ' + spenn + ' på vei mot ' +
-             (aktiv.sats + 5) + ' prosent.');
+        felt('til-neste-tekst', 'salg igjen til ' + (t.neste_sats
+          ? Math.round(t.neste_sats * 100) + ' %' : (aktiv.sats + 5) + ' %'));
+
+        // takt: fordel gjenstaaende salg paa dagene og ukene som er igjen av maaneden
+        var dager = t.dager_igjen || 1;
+        var perDag = Math.max(1, Math.ceil(t.til_neste / dager));
+        var uker = Math.max(1, Math.round(dager / 7));
+        var perUke = Math.max(1, Math.ceil(t.til_neste / uker));
+        felt('stolpe-tekst', t.til_neste + ' salg igjen denne måneden. Cirka ' +
+             perUke + ' i uka, ' + perDag + ' om dagen resten av måneden.');
         setTimeout(function () {
           document.getElementById('stolpe').style.width = pst + '%';
         }, 120);

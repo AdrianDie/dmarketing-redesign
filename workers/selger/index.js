@@ -264,7 +264,10 @@ async function alleBookinger(env) {
 
 async function settBookingStatus(env, { id, status }) {
   if (BOOKING_STATUSER.indexOf(status) === -1) return { error: 'ugyldig_status' };
-  await env.DB.prepare('UPDATE bookinger SET status = ? WHERE id = ?').bind(status, id).run();
+  // stemple naar den ble betalt, saa provisjonen kan telles per maaned
+  const betaltDato = status === 'betalt' ? iDag() : null;
+  await env.DB.prepare('UPDATE bookinger SET status = ?, betalt_dato = ? WHERE id = ?')
+    .bind(status, betaltDato, id).run();
   return { ok: true };
 }
 
@@ -499,14 +502,26 @@ async function hentTall(env, selger) {
   const igjenIBunke = aktivBunke ? (await q(
     "SELECT COUNT(*) n FROM leads WHERE bunke = ? AND (status IS NULL OR status IN ('','ikke_ringt','ring_igjen'))", aktivBunke)).n : 0;
 
+  const maaned = idag.slice(0, 7); // yyyy-mm
+
   const bookTotalt = (await q('SELECT COUNT(*) n FROM bookinger WHERE selger = ?', e)).n;
   const bookUke = (await q('SELECT COUNT(*) n FROM bookinger WHERE selger = ? AND dato >= ?', e, mandag)).n;
-  const betalte = (await q("SELECT COUNT(*) n FROM bookinger WHERE selger = ? AND status = 'betalt'", e)).n;
   const pipeline = (await q(
     `SELECT COUNT(*) n FROM bookinger WHERE selger = ? AND status IN ('${I_PIPELINE.join("','")}')`, e)).n;
 
-  const sats = betalte >= 30 ? 0.30 : betalte >= 15 ? 0.25 : betalte >= 5 ? 0.20 : 0.15;
-  const tilNeste = betalte >= 30 ? 0 : betalte >= 15 ? 30 - betalte : betalte >= 5 ? 15 - betalte : 5 - betalte;
+  // BETALTE DENNE MAANEDEN driver provisjonen. Trappa nullstilles hver maaned.
+  const betalteMnd = (await q(
+    "SELECT COUNT(*) n FROM bookinger WHERE selger = ? AND status = 'betalt' AND substr(betalt_dato,1,7) = ?",
+    e, maaned)).n;
+
+  const t = provisjonstall(betalteMnd);
+  const opptjent = progressivOpptjent(betalteMnd, pris);
+  const paaVeiInn = pipeline * pris * 0.15; // alltid basissats, de er ikke betalt ennaa
+
+  // takt mot neste trinn: fordel gjenstaaende salg paa dagene som er igjen av maaneden
+  const naa = new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/Oslo' }));
+  const sisteDagIMnd = new Date(naa.getFullYear(), naa.getMonth() + 1, 0).getDate();
+  const dagerIgjen = Math.max(1, sisteDagIMnd - naa.getDate() + 1);
 
   return {
     ringt_i_dag: ringtIDag,
@@ -516,13 +531,39 @@ async function hentTall(env, selger) {
     bookinger_uke: bookUke,
     bookinger_totalt: bookTotalt,
     bookingrate: ringtTotalt ? bookTotalt / ringtTotalt : 0,
-    betalte,
-    opptjent: betalte * pris * sats,
-    pipeline: pipeline * pris * sats,
-    sats,
-    til_neste: tilNeste,
+    betalte: betalteMnd,
+    opptjent,
+    pipeline: paaVeiInn,
+    sats: t.sats,
+    til_neste: t.tilNeste,
+    neste_sats: t.nesteSats,
+    dager_igjen: dagerIgjen,
     aktiv_bunke: aktivBunke,
   };
+}
+
+// trappa: 0-9 = 15 %, 10-19 = 20 %, 20-29 = 25 %, 30+ = 30 %. Maalt per maaned.
+const TRAPP = [
+  { fra: 0, sats: 0.15 }, { fra: 10, sats: 0.20 },
+  { fra: 20, sats: 0.25 }, { fra: 30, sats: 0.30 },
+];
+
+function provisjonstall(betalte) {
+  let i = 0;
+  while (i + 1 < TRAPP.length && betalte >= TRAPP[i + 1].fra) i++;
+  const paaTopp = i === TRAPP.length - 1;
+  return {
+    sats: TRAPP[i].sats,
+    nesteSats: paaTopp ? TRAPP[i].sats : TRAPP[i + 1].sats,
+    tilNeste: paaTopp ? 0 : TRAPP[i + 1].fra - betalte,
+  };
+}
+
+// progressiv: hvert salg tjener satsen for sitt eget trinn, ingen etterbetaling
+function progressivOpptjent(betalte, pris) {
+  let sum = 0;
+  for (let n = 1; n <= betalte; n++) sum += pris * provisjonstall(n - 1).sats;
+  return sum;
 }
 
 /* ------------------------------------------------------------- dato */

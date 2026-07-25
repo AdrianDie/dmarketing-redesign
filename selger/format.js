@@ -47,10 +47,11 @@
     return new Intl.NumberFormat('nb-NO').format(Math.round(n || 0)) + ' kr';
   }
 
+  // maanedlig trapp: 0-9 = 15 %, 10-19 = 20 %, 20-29 = 25 %, 30+ = 30 %
   var TRAPP = [
-    { fra: 0, til: 5, sats: 0.15 },
-    { fra: 5, til: 15, sats: 0.20 },
-    { fra: 15, til: 30, sats: 0.25 },
+    { fra: 0, til: 10, sats: 0.15 },
+    { fra: 10, til: 20, sats: 0.20 },
+    { fra: 20, til: 30, sats: 0.25 },
     { fra: 30, til: null, sats: 0.30 }
   ];
 
