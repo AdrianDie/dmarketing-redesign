@@ -15,26 +15,85 @@
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link href="../../../assets/ms-icon-256x256.png" rel="shortcut icon" type="image/x-icon" />
   <script src="/kurs/auth.js"></script>
-  <style>body{font-family:'Inter',sans-serif;background:#FAFAFA;color:#09090B}.font-display{font-family:'Archivo',sans-serif}</style>
+  <style>
+    body{font-family:'Inter',sans-serif;background:#FAFAFA;color:#09090B}
+    .font-display{font-family:'Archivo',sans-serif}
+    .dot-grid{background-image:radial-gradient(circle,rgba(255,255,255,0.06) 1px,transparent 1px);background-size:22px 22px}
+    .laast-kort{position:relative}
+    .laast-kort .innhold{filter:blur(0.4px);opacity:0.85}
+  </style>
 </head>
 <body>
-  <div class="max-w-2xl mx-auto px-6 py-16 md:py-24">
-    <a href="/kurs/" class="text-sm font-medium text-zinc-500 hover:text-blue-600">← Tilbake til kurset</a>
-    <div class="mt-8 rounded-2xl bg-[#0B1F4A] p-8 md:p-10 text-white">
-      <p class="text-xs font-semibold tracking-widest uppercase text-blue-300 mb-3">Premium-tillegg</p>
-      <h1 class="font-display font-extrabold text-3xl md:text-4xl leading-tight mb-4">Drift bedriften smartere med AI</h1>
-      <p class="text-white/70 leading-relaxed mb-6">
-        Praktiske, stegvise moduler som viser deg hvordan du sparer tid og gir kundene mer verdi,
-        uansett bransje. Du får konkrete oppskrifter du kan ta i bruk med en gang.
-      </p>
-      <ul id="modulListe" class="space-y-2 mb-8 text-white/80 text-sm"></ul>
-      <div id="betalKnapper" class="flex flex-col sm:flex-row gap-3 mb-4"></div>
-      <button onclick="meldInteresse()" id="interesseBtn"
-        class="text-sm text-white/60 underline hover:text-white transition-colors">
-        Eller meld interesse, så tar vi kontakt
-      </button>
+
+  <!-- HERO -->
+  <header class="bg-[#0B1F4A] text-white">
+    <div class="dot-grid">
+      <div class="max-w-4xl mx-auto px-6 pt-10 pb-16 md:pt-12 md:pb-20">
+        <a href="/kurs/" class="text-sm font-medium text-white/50 hover:text-white transition-colors">← Tilbake til kurset</a>
+
+        <div class="mt-10 inline-flex items-center gap-2 bg-white/10 border border-white/15 text-xs font-semibold uppercase tracking-widest text-blue-200 px-3 py-1.5 rounded-full mb-6">
+          <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Premium-tillegg · låst
+        </div>
+
+        <h1 class="font-display font-extrabold text-[2.1rem] sm:text-4xl md:text-[3.25rem] leading-[1.05] tracking-[-0.03em] mb-5">
+          Spar timer hver uke.<br>La AI gjøre det kjedelige.
+        </h1>
+        <p class="text-lg text-white/70 leading-relaxed max-w-2xl mb-4">
+          «Drift med AI» er en egen seksjon med praktiske, stegvise oppskrifter for å drive bedriften smartere.
+          Ferdige grep du kan ta i bruk med en gang, uansett bransje. Du får se nøyaktig hva du skal gjøre, steg for steg.
+        </p>
+
+        <!-- Verdi-strip -->
+        <div id="verdiStrip" class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/60 mb-9"></div>
+
+        <!-- CTA -->
+        <div id="betalKnapper" class="flex flex-col sm:flex-row gap-3 mb-4"></div>
+        <button onclick="meldInteresse()" id="interesseBtn"
+          class="text-sm text-white/60 underline hover:text-white transition-colors">
+          Eller meld interesse, så tar vi kontakt
+        </button>
+      </div>
     </div>
-  </div>
+  </header>
+
+  <!-- HVA DU FÅR -->
+  <section class="max-w-5xl mx-auto px-6 py-14 md:py-20">
+    <div class="text-center max-w-2xl mx-auto mb-10 md:mb-14">
+      <p class="text-xs font-semibold tracking-widest uppercase text-blue-600 mb-3">Dette låser du opp</p>
+      <h2 class="font-display font-extrabold text-3xl md:text-4xl tracking-[-0.03em] text-ink leading-tight mb-4">
+        En hel verktøykasse, klar til bruk
+      </h2>
+      <p class="text-zinc-600 leading-relaxed">
+        Hver modul tar deg gjennom ett konkret område, fra første oppsett til at det går nesten av seg selv.
+        Du trenger ingen teknisk bakgrunn.
+      </p>
+    </div>
+
+    <div id="modulGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+
+    <!-- KOMMER SNART -->
+    <div class="mt-14">
+      <div class="flex items-center gap-3 mb-5">
+        <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400">Kommer snart</p>
+        <span class="h-px flex-1 bg-zinc-200"></span>
+      </div>
+      <div id="kommerSnartGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+      <p class="text-xs text-zinc-400 mt-4">Seksjonen utvides jevnlig. Nye moduler blir automatisk tilgjengelige for deg når du først har låst opp.</p>
+    </div>
+  </section>
+
+  <!-- AVSLUTTENDE CTA -->
+  <section class="bg-[#0B1F4A] text-white">
+    <div class="max-w-3xl mx-auto px-6 py-16 md:py-20 text-center">
+      <h2 class="font-display font-extrabold text-3xl md:text-4xl tracking-[-0.03em] mb-4">Klar til å låse opp?</h2>
+      <p class="text-white/70 leading-relaxed mb-8 max-w-xl mx-auto">
+        Lås opp hele seksjonen én gang, og få tilgang til alt, også modulene som kommer senere.
+      </p>
+      <div id="betalKnapperBunn" class="flex flex-col sm:flex-row gap-3 justify-center mb-4"></div>
+      <p class="text-sm text-white/40">Spørsmål? <a href="mailto:adrian@dmarketing.no" class="underline hover:text-white/70">adrian@dmarketing.no</a></p>
+    </div>
+  </section>
 
   <script src="/kurs/ai-drift/moduler.js"></script>
   <script>
@@ -43,40 +102,116 @@
     var STRIPE_LENKE = ''; // f.eks. 'https://buy.stripe.com/xxxxxxxx'
     var VIPPS_LENKE  = ''; // f.eks. 'https://vipps.no/...' (Vipps Go betalingslenke)
 
+    // «Kommer snart»-moduler. Behold KUN de du faktisk skal lage.
+    // Tom liste ([]) skjuler hele Kommer snart-raden.
+    var KOMMER_SNART = [
+      { tittel: 'AI som svarer på telefonen', desc: 'La en AI-assistent ta unna enkle henvendelser når du ikke rekker.' },
+      { tittel: 'Selg mer i nettbutikken', desc: 'Produkttekster og kampanjer skrevet av AI, tilpasset kundene dine.' },
+      { tittel: 'Forstå tallene dine', desc: 'La AI lese regnskapet og forklare hva du bør gjøre.' },
+    ];
+
     var s = window.kursSession || {};
     var epost = s.email || '';
+    var moduler = window.AI_DRIFT_MODULER || [];
 
-    (window.AI_DRIFT_MODULER || []).forEach(function (m) {
-      var li = document.createElement('li');
-      li.textContent = '• ' + m.tittel;
-      document.getElementById('modulListe').appendChild(li);
-    });
+    // Verdi-strip (ekte tall)
+    (function () {
+      var strip = document.getElementById('verdiStrip');
+      var punkter = [
+        moduler.length + ' moduler',
+        'Stegvise oppskrifter',
+        'Ferdige AI-prompts å kopiere',
+        'På tvers av bransjer'
+      ];
+      punkter.forEach(function (p) {
+        var el = document.createElement('span');
+        el.className = 'inline-flex items-center gap-2';
+        el.innerHTML = '<svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#6EE7B7" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>' + p;
+        strip.appendChild(el);
+      });
+    })();
 
-    var knapper = document.getElementById('betalKnapper');
-    if (STRIPE_LENKE) {
-      // Forhåndsutfyll kundens kurs-epost så kvitteringen matcher kontoen du skal gi tilgang.
-      var url = STRIPE_LENKE + (STRIPE_LENKE.indexOf('?') === -1 ? '?' : '&') +
-        'prefilled_email=' + encodeURIComponent(epost) +
-        '&client_reference_id=' + encodeURIComponent(epost);
-      var a = document.createElement('a');
-      a.href = url;
-      a.className = 'inline-flex items-center justify-center gap-2 bg-white text-[#0B1F4A] font-semibold px-6 py-3 rounded-xl text-sm hover:bg-blue-50 transition-colors';
-      a.textContent = 'Betal med kort';
-      knapper.appendChild(a);
+    function laasIkon() {
+      return '<svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>';
     }
-    if (VIPPS_LENKE) {
-      var v = document.createElement('a');
-      v.href = VIPPS_LENKE;
-      v.className = 'inline-flex items-center justify-center gap-2 bg-[#ff5b24] text-white font-semibold px-6 py-3 rounded-xl text-sm hover:brightness-110 transition';
-      v.textContent = 'Betal med Vipps';
-      knapper.appendChild(v);
+
+    // Låste modulkort
+    (function () {
+      var grid = document.getElementById('modulGrid');
+      moduler.forEach(function (m, i) {
+        var kort = document.createElement('div');
+        kort.className = 'laast-kort bg-white border border-zinc-200 rounded-2xl p-6';
+        kort.innerHTML =
+          '<div class="flex items-center gap-3 mb-3">' +
+            '<span class="text-xs text-zinc-400 font-mono">' + String(i + 1).padStart(2, '0') + '</span>' +
+            '<span class="ml-auto inline-flex items-center gap-1 text-xs font-medium text-zinc-400">' + laasIkon() + 'Låst</span>' +
+          '</div>' +
+          '<div class="innhold">' +
+            '<h3 class="font-display font-bold text-lg text-ink mb-2 leading-snug"></h3>' +
+            '<p class="text-sm text-zinc-600 leading-relaxed"></p>' +
+            '<span class="mt-3 inline-block text-xs text-zinc-400">~' + (m.min || 6) + ' min</span>' +
+          '</div>';
+        kort.querySelector('h3').textContent = m.tittel;
+        kort.querySelector('p').textContent = m.desc;
+        grid.appendChild(kort);
+      });
+    })();
+
+    // Kommer snart-kort
+    (function () {
+      var rad = document.getElementById('kommerSnartGrid').parentElement;
+      if (!KOMMER_SNART.length) { rad.style.display = 'none'; return; }
+      var grid = document.getElementById('kommerSnartGrid');
+      KOMMER_SNART.forEach(function (m) {
+        var kort = document.createElement('div');
+        kort.className = 'bg-zinc-50 border border-dashed border-zinc-200 rounded-2xl p-6';
+        kort.innerHTML =
+          '<div class="flex items-center gap-3 mb-3">' +
+            '<span class="inline-flex items-center gap-1 text-xs font-medium text-amber-600 bg-amber-50 border border-amber-100 px-2 py-0.5 rounded-full">Kommer snart</span>' +
+          '</div>' +
+          '<h3 class="font-display font-bold text-lg text-zinc-500 mb-2 leading-snug"></h3>' +
+          '<p class="text-sm text-zinc-400 leading-relaxed"></p>';
+        kort.querySelector('h3').textContent = m.tittel;
+        kort.querySelector('p').textContent = m.desc;
+        grid.appendChild(kort);
+      });
+    })();
+
+    // Betalingsknapper (gjenbrukt i hero og bunn)
+    function byggBetalKnapper(container, midtstill) {
+      if (STRIPE_LENKE) {
+        var url = STRIPE_LENKE + (STRIPE_LENKE.indexOf('?') === -1 ? '?' : '&') +
+          'prefilled_email=' + encodeURIComponent(epost) +
+          '&client_reference_id=' + encodeURIComponent(epost);
+        var a = document.createElement('a');
+        a.href = url;
+        a.className = 'inline-flex items-center justify-center gap-2 bg-white text-[#0B1F4A] font-semibold px-6 py-3 rounded-xl text-sm hover:bg-blue-50 transition-colors';
+        a.textContent = 'Betal med kort, lås opp';
+        container.appendChild(a);
+      }
+      if (VIPPS_LENKE) {
+        var v = document.createElement('a');
+        v.href = VIPPS_LENKE;
+        v.className = 'inline-flex items-center justify-center gap-2 bg-[#ff5b24] text-white font-semibold px-6 py-3 rounded-xl text-sm hover:brightness-110 transition';
+        v.textContent = 'Betal med Vipps';
+        container.appendChild(v);
+      }
+      if (!STRIPE_LENKE && !VIPPS_LENKE && !midtstill) {
+        var ib = document.getElementById('interesseBtn');
+        ib.className = 'inline-flex items-center gap-2 bg-white text-[#0B1F4A] font-semibold px-6 py-3 rounded-xl text-sm hover:bg-blue-50 transition-colors';
+        ib.textContent = 'Meld interesse, jeg vil låse opp';
+      }
+      if (!STRIPE_LENKE && !VIPPS_LENKE && midtstill) {
+        var lenke = document.createElement('a');
+        lenke.href = '#';
+        lenke.onclick = function (e) { e.preventDefault(); meldInteresse(); };
+        lenke.className = 'inline-flex items-center gap-2 bg-white text-[#0B1F4A] font-semibold px-6 py-3 rounded-xl text-sm hover:bg-blue-50 transition-colors';
+        lenke.textContent = 'Meld interesse';
+        container.appendChild(lenke);
+      }
     }
-    if (!STRIPE_LENKE && !VIPPS_LENKE) {
-      // Ingen lenker satt ennå: løft interesse-knappen til primær.
-      var ib = document.getElementById('interesseBtn');
-      ib.className = 'inline-flex items-center gap-2 bg-white text-[#0B1F4A] font-semibold px-6 py-3 rounded-xl text-sm hover:bg-blue-50 transition-colors';
-      ib.textContent = 'Meld interesse, jeg vil låse opp';
-    }
+    byggBetalKnapper(document.getElementById('betalKnapper'), false);
+    byggBetalKnapper(document.getElementById('betalKnapperBunn'), true);
 
     function meldInteresse() {
       var btn = document.getElementById('interesseBtn');
