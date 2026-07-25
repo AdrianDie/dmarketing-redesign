@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI-drift: modul</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link href="../../../assets/ms-icon-256x256.png" rel="shortcut icon" type="image/x-icon" />
+  <script src="/kurs/auth.js"></script>
+  <style>
+    body { margin: 0; font-family: Inter, sans-serif; background: #FAFAFA; }
+    .topbar { display: flex; align-items: center; gap: 16px; padding: 12px 20px; border-bottom: 1px solid #e4e4e7; background: #fff; }
+    .topbar a { font-size: 14px; font-weight: 600; color: #0339f8; text-decoration: none; }
+    #feil { display: none; max-width: 520px; margin: 60px auto; text-align: center; color: #71717a; font-size: 15px; }
+    #modulramme { display: none; width: 100%; border: 0; }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <a href="/kurs/ai-drift/">← Alle moduler</a>
+  </div>
+  <div id="feil">Kunne ikke laste modulen. Prøv igjen, eller kontakt adrian@dmarketing.no.</div>
+  <iframe id="modulramme" title="Modulinnhold"></iframe>
+
+  <script>
+    (function () {
+      var WORKER = 'https://kurs-auth-worker.dietrichs-mkt.workers.dev';
+      var s = window.kursSession;
+
+      if (!window.kursHarTilgang || !window.kursHarTilgang('ai-drift')) {
+        window.location.replace('/kurs/ai-drift/las-opp/');
+        return;
+      }
+
+      var params = new URLSearchParams(location.search);
+      var modul = params.get('modul') || '';
+      if (!/^[a-z0-9-]{1,64}$/.test(modul)) {
+        window.location.replace('/kurs/ai-drift/');
+        return;
+      }
+
+      fetch(WORKER + '/premium', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: s.email, hash: s.hash, module: modul })
+      })
+        .then(function (r) { return r.json().then(function (d) { return { status: r.status, d: d }; }); })
+        .then(function (res) {
+          if (res.status === 403) { window.location.replace('/kurs/ai-drift/las-opp/'); return; }
+          if (!res.d.ok) { document.getElementById('feil').style.display = 'block'; return; }
+          var frame = document.getElementById('modulramme');
+          frame.onload = function () {
+            try { frame.style.height = frame.contentWindow.document.body.scrollHeight + 'px'; } catch (e) { frame.style.height = '100vh'; }
+          };
+          frame.srcdoc = res.d.html;
+          frame.style.display = 'block';
+        })
+        .catch(function () { document.getElementById('feil').style.display = 'block'; });
+    })();
+  </script>
+</body>
+</html>

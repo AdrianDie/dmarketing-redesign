@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI-drift: lås opp</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: {
+      fontFamily: { display: ['Archivo','sans-serif'], body: ['Inter','sans-serif'] },
+      colors: { ink: '#09090B', brand: '#0339f8', navy: '#0B1F4A' }
+    }}}
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="../../../assets/ms-icon-256x256.png" rel="shortcut icon" type="image/x-icon" />
+  <script src="/kurs/auth.js"></script>
+  <style>body{font-family:'Inter',sans-serif;background:#FAFAFA;color:#09090B}.font-display{font-family:'Archivo',sans-serif}</style>
+</head>
+<body>
+  <div class="max-w-2xl mx-auto px-6 py-16 md:py-24">
+    <a href="/kurs/" class="text-sm font-medium text-zinc-500 hover:text-blue-600">← Tilbake til kurset</a>
+    <div class="mt-8 rounded-2xl bg-[#0B1F4A] p-8 md:p-10 text-white">
+      <p class="text-xs font-semibold tracking-widest uppercase text-blue-300 mb-3">Premium-tillegg</p>
+      <h1 class="font-display font-extrabold text-3xl md:text-4xl leading-tight mb-4">Drift bedriften smartere med AI</h1>
+      <p class="text-white/70 leading-relaxed mb-6">
+        Praktiske, stegvise moduler som viser deg hvordan du sparer tid og gir kundene mer verdi,
+        uansett bransje. Du får konkrete oppskrifter du kan ta i bruk med en gang.
+      </p>
+      <ul id="modulListe" class="space-y-2 mb-8 text-white/80 text-sm"></ul>
+      <div id="betalKnapper" class="flex flex-col sm:flex-row gap-3 mb-4"></div>
+      <button onclick="meldInteresse()" id="interesseBtn"
+        class="text-sm text-white/60 underline hover:text-white transition-colors">
+        Eller meld interesse, så tar vi kontakt
+      </button>
+    </div>
+  </div>
+
+  <script src="/kurs/ai-drift/moduler.js"></script>
+  <script>
+    // Betalingslenkene dine. Opprettes i Stripe/Vipps (se planens Task 8).
+    // La en stå tom ('') for å skjule den knappen.
+    var STRIPE_LENKE = ''; // f.eks. 'https://buy.stripe.com/xxxxxxxx'
+    var VIPPS_LENKE  = ''; // f.eks. 'https://vipps.no/...' (Vipps Go betalingslenke)
+
+    var s = window.kursSession || {};
+    var epost = s.email || '';
+
+    (window.AI_DRIFT_MODULER || []).forEach(function (m) {
+      var li = document.createElement('li');
+      li.textContent = '• ' + m.tittel;
+      document.getElementById('modulListe').appendChild(li);
+    });
+
+    var knapper = document.getElementById('betalKnapper');
+    if (STRIPE_LENKE) {
+      // Forhåndsutfyll kundens kurs-epost så kvitteringen matcher kontoen du skal gi tilgang.
+      var url = STRIPE_LENKE + (STRIPE_LENKE.indexOf('?') === -1 ? '?' : '&') +
+        'prefilled_email=' + encodeURIComponent(epost) +
+        '&client_reference_id=' + encodeURIComponent(epost);
+      var a = document.createElement('a');
+      a.href = url;
+      a.className = 'inline-flex items-center justify-center gap-2 bg-white text-[#0B1F4A] font-semibold px-6 py-3 rounded-xl text-sm hover:bg-blue-50 transition-colors';
+      a.textContent = 'Betal med kort';
+      knapper.appendChild(a);
+    }
+    if (VIPPS_LENKE) {
+      var v = document.createElement('a');
+      v.href = VIPPS_LENKE;
+      v.className = 'inline-flex items-center justify-center gap-2 bg-[#ff5b24] text-white font-semibold px-6 py-3 rounded-xl text-sm hover:brightness-110 transition';
+      v.textContent = 'Betal med Vipps';
+      knapper.appendChild(v);
+    }
+    if (!STRIPE_LENKE && !VIPPS_LENKE) {
+      // Ingen lenker satt ennå: løft interesse-knappen til primær.
+      var ib = document.getElementById('interesseBtn');
+      ib.className = 'inline-flex items-center gap-2 bg-white text-[#0B1F4A] font-semibold px-6 py-3 rounded-xl text-sm hover:bg-blue-50 transition-colors';
+      ib.textContent = 'Meld interesse, jeg vil låse opp';
+    }
+
+    function meldInteresse() {
+      var btn = document.getElementById('interesseBtn');
+      if (btn.disabled) return;
+      btn.disabled = true; btn.textContent = 'Sender…';
+      fetch('https://formsubmit.co/ajax/adrian@dmarketing.no', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ _subject: 'AI-drift, ny interessent', email: epost || 'ukjent', melding: 'Kursdeltaker vil låse opp AI-drift-seksjonen.' })
+      }).then(function (r) { return r.json(); }).then(function (d) {
+        if (String(d.success) === 'false') throw new Error();
+        btn.textContent = 'Sendt! Vi tar kontakt ✓';
+      }).catch(function () {
+        btn.disabled = false; btn.textContent = 'Noe gikk galt, send e-post til adrian@dmarketing.no';
+      });
+    }
+  </script>
+</body>
+</html>
