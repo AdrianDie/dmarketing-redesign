@@ -15,9 +15,10 @@
       aktiv_bunke: 'Frisør - Oslo og Bærum'
     },
     bunker: [
+      { navn: 'Frisør - Vestland og Møre', igjen: 7, totalt: 13, reservert: true, minEgen: false, reservertAv: 'Kari' },
+      { navn: 'Frisør - Stavanger m.fl.', igjen: 4, totalt: 16, reservert: true, minEgen: false, reservertAv: 'Ola' },
       { navn: 'Frisør - Oslo og Bærum', igjen: 18, totalt: 21, reservert: false, minEgen: false, reservertAv: null },
       { navn: 'Frisør - Rogaland', igjen: 11, totalt: 11, reservert: false, minEgen: false, reservertAv: null },
-      { navn: 'Frisør - Vestland og Møre', igjen: 7, totalt: 13, reservert: true, minEgen: false, reservertAv: 'Kari' },
       { navn: 'Frisør - Trøndelag og Nord-Norge', igjen: 0, totalt: 14, reservert: false, minEgen: false, reservertAv: null }
     ],
     leads: [

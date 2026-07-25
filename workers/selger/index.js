@@ -296,12 +296,13 @@ async function hentBunker(env, selger) {
   }).sort((a, b) => rangBunke(a) - rangBunke(b) || a.navn.localeCompare(b.navn, 'nb'));
 }
 
-// rekkefolge: ledige forst, sa dine egne, sa reservert av andre, sa ferdige
+// rekkefolge: OPPTATTE overst (viser at teamet er i gang), sa din egen,
+// sa ledige, sa ferdige nederst
 function rangBunke(b) {
   if (b.igjen === 0) return 3;
-  if (b.reservert) return 2;
+  if (b.reservert) return 0;
   if (b.minEgen) return 1;
-  return 0;
+  return 2;
 }
 
 async function reserver(env, selger, bunke) {
