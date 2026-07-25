@@ -16,6 +16,8 @@
 const FROM_EMAIL = 'salg@post.dmarketing.no'; // verifisert Resend-domene
 const SITE_URL = 'https://dmarketing.no';
 const RESET_TTL_MS = 60 * 60 * 1000;
+// en bunkereservasjon uten livstegn paa denne tiden regnes som forlatt og frigis
+const RESERV_STALE_MS = 4 * 60 * 1000;
 
 // permanente sikkerhets-admins, alltid admin uansett hva databasen sier,
 // saa en uheldig endring aldri kan laase alle ute
@@ -211,31 +213,26 @@ async function settBookingStatus(env, { id, status }) {
 
 // hvem jobber i hvilken bunke akkurat naa, med fremdrift
 async function oversikt(env) {
-  const rows = (await env.DB.prepare(
-    `SELECT bunke, selger,
-       COUNT(*) AS totalt,
-       SUM(CASE WHEN status IS NOT NULL AND status != '' AND status != 'ikke_ringt' THEN 1 ELSE 0 END) AS ringt,
-       SUM(CASE WHEN status IS NULL OR status IN ('','ikke_ringt','ring_igjen') THEN 1 ELSE 0 END) AS igjen,
-       MAX(dato) AS sist
-     FROM leads
-     WHERE selger IS NOT NULL AND selger != ''
-     GROUP BY bunke, selger
-     ORDER BY (sist IS NULL), sist DESC, bunke`
-  ).all()).results;
+  // hvem har en fersk aktiv bunke akkurat naa
+  const fersk = Date.now() - RESERV_STALE_MS;
+  const aktive = (await env.DB.prepare(
+    'SELECT epost, navn, aktiv_bunke FROM selgere WHERE aktiv_bunke IS NOT NULL AND aktiv_bunke_tid > ? ORDER BY navn'
+  ).bind(fersk).all()).results;
 
-  const navn = {};
-  (await env.DB.prepare('SELECT epost, navn FROM selgere').all()).results
-    .forEach(s => { navn[s.epost] = s.navn; });
-
-  return rows.map(r => ({
-    bunke: r.bunke,
-    selger: navn[r.selger] || r.selger,
-    epost: r.selger,
-    totalt: r.totalt,
-    ringt: r.ringt,
-    igjen: r.igjen,
-    sist: r.sist || '',
-  }));
+  const ut = [];
+  for (const a of aktive) {
+    const p = await env.DB.prepare(
+      `SELECT COUNT(*) AS totalt,
+         SUM(CASE WHEN status IS NOT NULL AND status != '' AND status != 'ikke_ringt' THEN 1 ELSE 0 END) AS ringt,
+         MAX(dato) AS sist
+       FROM leads WHERE bunke = ?`
+    ).bind(a.aktiv_bunke).first();
+    ut.push({
+      bunke: a.aktiv_bunke, selger: a.navn, epost: a.epost,
+      totalt: p.totalt, ringt: p.ringt, sist: p.sist || '',
+    });
+  }
+  return ut;
 }
 
 async function settAdmin(env, kaller, { epost, admin }) {
@@ -298,28 +295,34 @@ async function hentBunker(env, selger) {
   const rows = (await env.DB.prepare(
     `SELECT bunke,
        COUNT(*) AS totalt,
-       SUM(CASE WHEN status IS NULL OR status IN ('','ikke_ringt','ring_igjen') THEN 1 ELSE 0 END) AS igjen,
-       GROUP_CONCAT(DISTINCT CASE WHEN selger IS NOT NULL AND selger != '' THEN selger END) AS eiere
+       SUM(CASE WHEN status IS NULL OR status IN ('','ikke_ringt','ring_igjen') THEN 1 ELSE 0 END) AS igjen
      FROM leads GROUP BY bunke`
   ).all()).results;
 
-  // epost -> navn, saa vi kan vise HVEM som jobber paa en reservert bunke
-  const navn = {};
-  (await env.DB.prepare('SELECT epost, navn FROM selgere').all()).results
-    .forEach(s => { navn[s.epost] = s.navn; });
+  // hvem har en FERSK aktiv reservasjon, paa hvilken bunke
+  const eierAv = await aktiveReservasjoner(env);
 
-  // alle bunker vises. En som en ANNEN eier merkes reservert, men skjules ikke.
   return rows.map(b => {
-    const eiere = (b.eiere || '').split(',').filter(Boolean);
-    const eier = eiere.length ? eiere[0] : null;
-    const minEgen = eier === selger.epost;
+    const eier = eierAv[b.bunke];
+    const minEgen = !!eier && eier.epost === selger.epost;
     const reservert = !!eier && !minEgen;
     return {
       navn: b.bunke, totalt: b.totalt, igjen: b.igjen,
       minEgen, reservert,
-      reservertAv: reservert ? (navn[eier] || eier) : null,
+      reservertAv: reservert ? eier.navn : null,
     };
   }).sort((a, b) => rangBunke(a) - rangBunke(b) || a.navn.localeCompare(b.navn, 'nb'));
+}
+
+// bunke -> { epost, navn } for selgere med fersk aktiv reservasjon
+async function aktiveReservasjoner(env) {
+  const fersk = Date.now() - RESERV_STALE_MS;
+  const rows = (await env.DB.prepare(
+    'SELECT epost, navn, aktiv_bunke FROM selgere WHERE aktiv_bunke IS NOT NULL AND aktiv_bunke_tid > ?'
+  ).bind(fersk).all()).results;
+  const ut = {};
+  rows.forEach(s => { ut[s.aktiv_bunke] = { epost: s.epost, navn: s.navn }; });
+  return ut;
 }
 
 // rekkefolge: OPPTATTE overst (viser at teamet er i gang), sa din egen,
@@ -331,35 +334,34 @@ function rangBunke(b) {
   return 2;
 }
 
+// En selger har HOEYST én aktiv bunke (den han er inne paa naa). Reservasjonen
+// er skilt fra hvem som ringte hva. Aa ringe stempler leaden (attribusjon, varig),
+// men laaser ikke bunken. Reservasjonen slippes naar han gaar videre, eller av
+// seg selv hvis livstegnet uteblir (lukket fane).
 async function reserver(env, selger, bunke) {
   bunke = String(bunke || '').trim();
   if (!bunke) return { ok: false, grunn: 'mangler_bunke' };
+  const naa = Date.now();
 
-  // atomisk: krev bunken oppgir seg til ingen andre, ellers oppdateres 0 rader
+  // atomisk: sett min aktive bunke, men bare hvis ingen ANNEN har en fersk paa den.
+  // Dette overskriver samtidig min forrige aktive bunke, saa den frigis.
   const res = await env.DB.prepare(
-    `UPDATE leads SET selger = ?1
-       WHERE bunke = ?2 AND (selger IS NULL OR selger = '')
+    `UPDATE selgere SET aktiv_bunke = ?1, aktiv_bunke_tid = ?2
+       WHERE epost = ?3
        AND NOT EXISTS (
-         SELECT 1 FROM leads WHERE bunke = ?2
-           AND selger IS NOT NULL AND selger != '' AND selger != ?1)`
-  ).bind(selger.epost, bunke).run();
+         SELECT 1 FROM selgere WHERE aktiv_bunke = ?1 AND epost != ?3
+           AND aktiv_bunke_tid > ?4)`
+  ).bind(bunke, naa, selger.epost, naa - RESERV_STALE_MS).run();
 
-  if (res.meta.changes > 0) return { ok: true };
-
-  // 0 endringer: enten eid av en annen, eller alt allerede mitt
-  const annen = await env.DB.prepare(
-    "SELECT 1 FROM leads WHERE bunke = ? AND selger IS NOT NULL AND selger != '' AND selger != ? LIMIT 1"
-  ).bind(bunke, selger.epost).first();
-  return annen ? { ok: false, grunn: 'opptatt' } : { ok: true };
+  return res.meta.changes > 0 ? { ok: true } : { ok: false, grunn: 'opptatt' };
 }
 
 async function frigi(env, selger, bunke) {
   bunke = String(bunke || '').trim();
-  if (!bunke) return { ok: true };
+  // slipp bare hvis det er den bunken jeg fortsatt staar oppfoert paa
   await env.DB.prepare(
-    `UPDATE leads SET selger = NULL
-       WHERE bunke = ? AND selger = ? AND (status IS NULL OR status IN ('','ikke_ringt'))`
-  ).bind(bunke, selger.epost).run();
+    'UPDATE selgere SET aktiv_bunke = NULL, aktiv_bunke_tid = NULL WHERE epost = ? AND aktiv_bunke = ?'
+  ).bind(selger.epost, bunke).run();
   return { ok: true };
 }
 

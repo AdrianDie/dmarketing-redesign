@@ -288,6 +288,7 @@
       stoppPoll();
       aktivBunke = navn;
       harRingt = false;
+      startLivstegn();
       document.getElementById('velg-bunke').classList.add('hidden');
       document.getElementById('ringing').classList.remove('hidden');
       document.getElementById('tom').classList.add('hidden');
@@ -302,9 +303,31 @@
     });
   }
 
-  // gaar selgeren tilbake uten aa ha ringt noe, frigis bunken saa andre kan ta den
+  // holder reservasjonen fersk mens selgeren er inne. Slutter naar fanen lukkes,
+  // saa bunken frigis av seg selv etter noen minutter uten livstegn.
+  var livstegnId = null;
+  function startLivstegn() {
+    stoppLivstegn();
+    livstegnId = setInterval(function () {
+      if (!aktivBunke) return;
+      API.reserver(aktivBunke).then(function (res) {
+        if (res && !res.ok) {
+          // en annen tok bunken mens jeg var borte
+          stoppLivstegn();
+          toast('Bunken ble overtatt av en annen.');
+          aktivBunke = null;
+          visBunker();
+        }
+      });
+    }, 60000);
+  }
+  function stoppLivstegn() { if (livstegnId) { clearInterval(livstegnId); livstegnId = null; } }
+
+  // naar selgeren gaar tilbake, frigis bunken ALLTID, ogsaa om han har ringt noen.
+  // De han ringte beholder ham som eier (attribusjon), men bunken laases ikke.
   function forlatBunke() {
-    if (aktivBunke && !harRingt) API.frigi(aktivBunke);
+    stoppLivstegn();
+    if (aktivBunke) API.frigi(aktivBunke);
     aktivBunke = null;
     visBunker();
   }
@@ -472,12 +495,10 @@
     forlatBunke();
   });
 
-  // rakk hun ikke frigi bunken foer hun lukket fanen, gjoeres et forsoek
+  // forsoek aa frigi ved lukking. Gaar det ikke, soerger livstegn-utlopet for at
+  // bunken frigis av seg selv etter noen minutter.
   window.addEventListener('pagehide', function () {
-    if (aktivBunke && !harRingt && navigator.sendBeacon) {
-      // best effort, ingen garanti, men bedre enn aa la bunken staa laast
-      API.frigi(aktivBunke);
-    }
+    if (aktivBunke) API.frigi(aktivBunke);
   });
 
   document.addEventListener('DOMContentLoaded', visBunker);
