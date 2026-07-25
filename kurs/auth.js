@@ -49,4 +49,9 @@
     localStorage.removeItem(TOKEN_KEY);
     window.location.replace('/kurs/login/');
   };
+
+  window.kursSession = session;
+  window.kursHarTilgang = function (ent) {
+    return !!(session && Array.isArray(session.entitlements) && session.entitlements.indexOf(ent) !== -1);
+  };
 })();

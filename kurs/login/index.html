@@ -128,7 +128,13 @@
 
         if (data.ok) {
           var sessionToken = await pbkdf2Derive(pw + '\x00session', email.toLowerCase());
-          localStorage.setItem(TOKEN_KEY, JSON.stringify({ email: email, token: sessionToken, loginAt: Date.now() }));
+          localStorage.setItem(TOKEN_KEY, JSON.stringify({
+            email: email,
+            token: sessionToken,
+            hash: authHash,
+            entitlements: data.entitlements || [],
+            loginAt: Date.now()
+          }));
           window.location.replace('/kurs/');
         } else {
           errMsg.textContent = data.error || 'Feil e-post eller passord.';
