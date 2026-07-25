@@ -9,3 +9,7 @@ compatibility_date = "2024-12-01"
 binding = "DB"
 database_name = "dm-salg"
 database_id = "bb444ea0-ee42-4807-a73c-fc463638fc8f"
+
+# daglig rapport kl 06 UTC (07-08 norsk tid): gaarsdagens interesserte paa e-post
+[triggers]
+crons = ["0 6 * * *"]

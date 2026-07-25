@@ -91,7 +91,64 @@ export default {
       return cors(j({ error: 'serverfeil', melding: String(err && err.message) }), 500, origin);
     }
   },
+
+  // daglig cron: e-post til admin med gaarsdagens interesserte
+  async scheduled(event, env, ctx) {
+    ctx.waitUntil(dagsrapport(env));
+  },
 };
+
+async function dagsrapport(env) {
+  const igaar = new Date(Date.now() - 24 * 60 * 60 * 1000)
+    .toLocaleDateString('sv-SE', { timeZone: 'Europe/Oslo' });
+
+  const nye = (await env.DB.prepare(
+    `SELECT b.bedrift, b.kontakt, b.nettside, b.status, s.navn AS selgernavn
+       FROM bookinger b LEFT JOIN selgere s ON s.epost = b.selger
+       WHERE b.dato = ? ORDER BY b.id`
+  ).bind(igaar).all()).results;
+
+  if (!nye.length) return; // ingen nye, ingen e-post (ellers blir det maset)
+
+  // aapen pipeline: alt som ikke er betalt eller tapt
+  const ipipe = (await env.DB.prepare(
+    `SELECT COUNT(*) n FROM bookinger WHERE status IN ('${I_PIPELINE.join("','")}')`
+  ).first()).n;
+
+  const mottakere = (await env.DB.prepare(
+    "SELECT epost FROM selgere WHERE admin = 1 AND lower(aktiv) != 'nei'"
+  ).all()).results.map(r => r.epost);
+  if (mottakere.indexOf('adrian@dmarketing.no') === -1) mottakere.push('adrian@dmarketing.no');
+
+  if (env.RESEND_API_KEY) {
+    const rader = nye.map(r =>
+      `<tr><td style="padding:6px 12px 6px 0"><strong>${esc(r.bedrift)}</strong>` +
+      (r.nettside ? ` <a href="https://${esc(r.nettside)}">${esc(r.nettside)}</a>` : '') +
+      `</td><td style="padding:6px 0;color:#52525B">${esc(r.selgernavn || '')}</td></tr>`
+    ).join('');
+    await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        from: `DM Selgerportal <${FROM_EMAIL}>`,
+        to: mottakere,
+        subject: `${nye.length} nye interesserte i går`,
+        html: `<div style="font-family:Inter,sans-serif;max-width:560px;color:#09090B">
+          <h2 style="font-family:Archivo,sans-serif">${nye.length} nye interesserte</h2>
+          <p style="color:#52525B">Booket ${igaar}. Åpne pipeline: ${ipipe} bookinger som ikke er avsluttet.</p>
+          <table style="border-collapse:collapse;font-size:14px;margin-top:8px">${rader}</table>
+          <p style="margin-top:20px"><a href="${SITE_URL}/selger/admin/"
+             style="background:#0339f8;color:#fff;padding:12px 22px;border-radius:10px;text-decoration:none;font-weight:600">Åpne selgerportalen</a></p>
+        </div>`,
+      }),
+    });
+  }
+}
+
+function esc(s) {
+  return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
 
 /* ---------------------------------------------------------------- auth */
 
