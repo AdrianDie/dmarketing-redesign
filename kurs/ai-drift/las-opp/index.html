@@ -20,12 +20,15 @@
 
     /* Storm-inspirert mørkt tema */
     .st-display{font-family:'Inter',sans-serif;font-weight:700;letter-spacing:-0.02em}
+    .st-hero{background:radial-gradient(130% 95% at 50% -10%, #121826 0%, #090c14 52%, #050608 100%);}
     .st-glow{position:absolute;inset:0;pointer-events:none;
       background:
-        radial-gradient(52% 46% at 50% 33%, rgba(91,108,255,0.42), transparent 72%),
-        radial-gradient(60% 45% at 50% -8%, rgba(59,80,255,0.20), transparent 70%),
-        radial-gradient(55% 50% at 100% 0%, rgba(255,255,255,0.045), transparent 60%),
-        radial-gradient(55% 55% at 0% 15%, rgba(255,255,255,0.035), transparent 62%);}
+        radial-gradient(72% 60% at 50% 34%, rgba(91,108,255,0.22), transparent 76%),
+        radial-gradient(60% 45% at 50% -8%, rgba(59,80,255,0.12), transparent 70%),
+        radial-gradient(55% 50% at 100% 0%, rgba(255,255,255,0.04), transparent 60%),
+        radial-gradient(55% 55% at 0% 15%, rgba(255,255,255,0.03), transparent 62%);}
+    .st-noise{position:absolute;inset:0;pointer-events:none;z-index:0;opacity:0.06;mix-blend-mode:overlay;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
     .st-swirl{position:absolute;left:50%;top:-160px;width:1500px;max-width:170%;height:560px;
       transform:translateX(-50%) rotate(-6deg);border-radius:50%;
       border:1px solid rgba(120,140,255,0.08);pointer-events:none}
@@ -48,8 +51,9 @@
 <body>
 
   <!-- HERO -->
-  <header class="relative overflow-hidden">
+  <header class="st-hero relative overflow-hidden">
     <div class="st-glow" aria-hidden="true"></div>
+    <div class="st-noise" aria-hidden="true"></div>
     <img src="bakgrunn/hero-right.svg" alt="" class="st-bg-left" aria-hidden="true">
     <img src="bakgrunn/hero-left.svg" alt="" class="st-bg-right" aria-hidden="true">
     <div class="relative z-10 max-w-4xl mx-auto px-6 pt-8 pb-20 md:pt-10 md:pb-28">
