@@ -29,6 +29,9 @@
       transform:translateX(-50%) rotate(-6deg);border-radius:50%;
       border:1px solid rgba(120,140,255,0.08);pointer-events:none}
     .st-swirl::after{content:"";position:absolute;inset:80px 140px;border-radius:50%;border:1px solid rgba(255,255,255,0.04)}
+    .st-bg-left,.st-bg-right{position:absolute;top:0;height:100%;max-height:860px;width:auto;opacity:.85;pointer-events:none;z-index:0}
+    .st-bg-left{left:0}
+    .st-bg-right{right:0}
     .st-eyebrow{color:#5b6cff;font-weight:600;font-size:.875rem;letter-spacing:.01em}
     .announce{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);border-radius:999px}
     .st-card{background:#0e0e12;border:1px solid rgba(255,255,255,0.06);border-radius:1.5rem}
@@ -46,8 +49,9 @@
   <!-- HERO -->
   <header class="relative overflow-hidden">
     <div class="st-glow" aria-hidden="true"></div>
-    <div class="st-swirl" aria-hidden="true"></div>
-    <div class="relative max-w-4xl mx-auto px-6 pt-8 pb-20 md:pt-10 md:pb-28">
+    <img src="bakgrunn/hero-left.svg" alt="" class="st-bg-left" aria-hidden="true">
+    <img src="bakgrunn/hero-right.svg" alt="" class="st-bg-right" aria-hidden="true">
+    <div class="relative z-10 max-w-4xl mx-auto px-6 pt-8 pb-20 md:pt-10 md:pb-28">
       <a href="/kurs/" class="text-sm font-medium text-white/50 hover:text-white transition-colors">← Tilbake til kurset</a>
 
       <div class="text-center max-w-3xl mx-auto mt-14 md:mt-20">
