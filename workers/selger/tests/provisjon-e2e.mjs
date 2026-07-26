@@ -89,12 +89,12 @@ async function run() {
     sjekk(`${ant} betalte gir sats`, t.sats, sats);
   }
 
-  // 3. PROGRESJON: 12 betalte = 10 a 15 % + 2 a 20 %
+  // 3. PROGRESJON: 12 betalte = 9 a 15 % + 3 a 20 % (salg 10 er forste 20 %-salg)
   console.log('3. Progressiv opptjening');
   nullstillBookinger();
   leggBetalte(12, denneMnd);
   t = await tall();
-  sjekk('opptjent ved 12', t.opptjent, 10 * PRIS * 0.15 + 2 * PRIS * 0.20);
+  sjekk('opptjent ved 12', t.opptjent, 9 * PRIS * 0.15 + 3 * PRIS * 0.20);
   sjekk('til neste trinn fra 12', t.til_neste, 8);
   sjekk('neste sats fra 12', t.neste_sats, 0.25);
 

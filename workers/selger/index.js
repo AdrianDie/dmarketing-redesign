@@ -572,10 +572,11 @@ function provisjonstall(betalte) {
   };
 }
 
-// progressiv: hvert salg tjener satsen for sitt eget trinn, ingen etterbetaling
+// progressiv: hvert salg tjener satsen for sitt eget trinn, ingen etterbetaling.
+// salg nr. n lonnes med satsen for antallet n (salg 10 = 20 %), i tråd med avtalen.
 function progressivOpptjent(betalte, pris) {
   let sum = 0;
-  for (let n = 1; n <= betalte; n++) sum += pris * provisjonstall(n - 1).sats;
+  for (let n = 1; n <= betalte; n++) sum += pris * provisjonstall(n).sats;
   return sum;
 }
 
