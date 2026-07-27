@@ -69,7 +69,12 @@
         window.location.replace('/selger/login/');
         throw new Error('Ikke innlogget');
       }
-      if (svar && svar.error) throw new Error(svar.error);
+      if (svar && svar.error) {
+        var feil = new Error(svar.error);
+        feil.melding = svar.melding;
+        feil.eier = svar.eier;
+        throw feil;
+      }
       return svar;
     });
   }
