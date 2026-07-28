@@ -287,8 +287,9 @@
 
       el.querySelectorAll('[data-booking]').forEach(function (sel) {
         sel.addEventListener('change', function () {
+          var tapt = sel.value === 'tapt';
           API.settBookingStatus(Number(sel.dataset.booking), sel.value).then(function () {
-            toast('Status oppdatert.');
+            toast(tapt ? 'Fjernet fra listen. Leaden er satt til nei takk.' : 'Status oppdatert.');
             lastBookinger();
           }).catch(function () { toast('Fikk ikke oppdatert. Prøv igjen.'); });
         });
