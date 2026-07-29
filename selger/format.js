@@ -70,8 +70,54 @@
     };
   }
 
+  /**
+   * Maalestokken: selgerens EGEN rytme. Hvor mange samtaler der han naadde fram
+   * ligger det bak én booking, og hvor langt inne i den runden staar han naa.
+   *
+   * Bevisst ikke lagets snitt: ett felles tall blir en skjult rangering, der den
+   * svakeste alltid ligger over det og den sterkeste alltid under.
+   *
+   * Nevneren er samtaler der han naadde noen, ikke oppringninger. Ingen svar er
+   * flaks. Det gir et mindre og sannere tall, og en stolpe som beveger seg.
+   *
+   * Uten en eneste booking finnes det ingen rytme aa maale mot, og da sier vi
+   * det heller enn aa dikte opp et tall (har = false).
+   */
+  function maalestokk(naaddTotalt, bookTotalt, sidenSist) {
+    var r = Math.max(0, Math.floor(Number(naaddTotalt) || 0));
+    var b = Math.max(0, Math.floor(Number(bookTotalt) || 0));
+    var inne = Math.max(0, Math.floor(Number(sidenSist) || 0));
+    if (b < 1 || r < 1) return { har: false, snitt: 0, igjen: 0, pst: 0, inne: inne };
+    var snitt = Math.max(1, Math.round(r / b));
+    return {
+      har: true,
+      snitt: snitt,
+      igjen: Math.max(0, snitt - inne),
+      pst: Math.max(0, Math.min(100, Math.round(inne / snitt * 100))),
+      inne: inne
+    };
+  }
+
+  /**
+   * Én linje i kvitteringssloyfa: hva skjedde med bookingen etter at den ble sendt.
+   * Tom streng betyr "ingen nyhet" (fersk booking eller ukjent status), og de
+   * linjene skal ikke vises.
+   */
+  function hendelseTekst(status, bedrift) {
+    var navn = String(bedrift == null ? '' : bedrift);
+    switch (status) {
+      case 'utkast_laget':    return 'Adrian lager utkastet til ' + navn;
+      case 'sendt_til_kunde': return 'Adrian sendte utkastet til ' + navn;
+      case 'godtatt':         return navn + ' takket ja';
+      case 'betalt':          return navn + ' har betalt';
+      case 'tapt':            return navn + ' ble det ikke noe av';
+      default:                return '';
+    }
+  }
+
   var API = { esc: esc, normTlf: normTlf, pentTlf: pentTlf, telLenke: telLenke,
-              pentDato: pentDato, kr: kr, provisjon: provisjon, TRAPP: TRAPP };
+              pentDato: pentDato, kr: kr, provisjon: provisjon, TRAPP: TRAPP,
+              maalestokk: maalestokk, hendelseTekst: hendelseTekst };
 
   if (typeof module !== 'undefined' && module.exports) module.exports = API;
   global.Fmt = API;

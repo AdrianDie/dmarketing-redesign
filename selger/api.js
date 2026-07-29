@@ -13,7 +13,13 @@
       bookinger_uke: 4, bookinger_totalt: 11, bookingrate: 0.075, betalte: 3,
       opptjent: 1404, pipeline: 3744, sats: 0.15, til_neste: 7,
       neste_sats: 0.20, dager_igjen: 12,
-      aktiv_bunke: 'Frisør - Oslo og Bærum'
+      aktiv_bunke: 'Frisør - Oslo og Bærum',
+      naadd_totalt: 55, naadd_siden_booking: 3,
+      hendelser: [
+        { bedrift: 'DE NADA FRISØR AS', status: 'sendt_til_kunde', dato: '2026-07-27' },
+        { bedrift: 'ECO CULT AS', status: 'betalt', dato: '2026-07-25' },
+        { bedrift: 'HEXAGON FRISØR AS', status: 'utkast_laget', dato: '2026-07-24' }
+      ]
     },
     bunker: [
       { navn: 'Frisør - Vestland og Møre', igjen: 7, totalt: 13, reservert: true, minEgen: false, reservertAv: 'Kari' },

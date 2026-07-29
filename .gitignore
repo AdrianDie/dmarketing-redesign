@@ -5,6 +5,10 @@ node_modules/
 .env
 .env.*
 
+# Lokale MCP-koblinger og nøkler (aldri publiser)
+.mcp.json
+.claude/settings.local.json
+
 # OS / editor
 .DS_Store
 Thumbs.db
@@ -22,3 +26,9 @@ temporary_screenshots/
 # Kurs — låste Pro-moduler (ikke publiser på GitHub Pages)
 kurs/09-seo.html
 kurs/13-integrasjoner.html
+
+# Worker-cache og lead-import (aldri publiser)
+workers/**/.wrangler/
+workers/**/leads-import.sql
+
+.superpowers/

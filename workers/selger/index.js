@@ -267,8 +267,16 @@ async function settBookingStatus(env, { id, status }) {
   if (BOOKING_STATUSER.indexOf(status) === -1) return { error: 'ugyldig_status' };
   // stemple naar den ble betalt, saa provisjonen kan telles per maaned
   const betaltDato = status === 'betalt' ? iDag() : null;
-  await env.DB.prepare('UPDATE bookinger SET status = ?, betalt_dato = ? WHERE id = ?')
-    .bind(status, betaltDato, id).run();
+  try {
+    // status_dato driver kvitteringssloyfa paa Min uke, saa selgeren ser at det skjer noe
+    await env.DB.prepare('UPDATE bookinger SET status = ?, betalt_dato = ?, status_dato = ? WHERE id = ?')
+      .bind(status, betaltDato, iDag(), id).run();
+  } catch (_) {
+    // databasen har ikke status_dato ennaa (migrering ikke kjort). Selve statusen
+    // er viktigst, og den skal aldri feile fordi kvitteringssloyfa mangler en kolonne.
+    await env.DB.prepare('UPDATE bookinger SET status = ?, betalt_dato = ? WHERE id = ?')
+      .bind(status, betaltDato, id).run();
+  }
 
   // flytt Jira-kortet tilsvarende
   const b = await env.DB.prepare('SELECT jira_key FROM bookinger WHERE id = ?').bind(id).first();
@@ -536,6 +544,39 @@ async function hentTall(env, selger) {
   const sisteDagIMnd = new Date(naa.getFullYear(), naa.getMonth() + 1, 0).getDate();
   const dagerIgjen = Math.max(1, sisteDagIMnd - naa.getDate() + 1);
 
+  // Maalestokk og kvitteringssloyfe er ekstra motivasjonstall. De maa aldri kunne
+  // velte selve dashbordet, saa alt her ligger bak try/catch med trygge nullverdier.
+  let maalestokk = { naadd_totalt: 0, naadd_siden_booking: 0 };
+  let hendelser = [];
+  try {
+    // Maalestokken er selgerens EGEN rytme, aldri lagets. Et felles snitt er en
+    // skjult rangering: den svakeste ligger alltid over det, den sterkeste under.
+    //
+    // Nevneren teller bare samtaler der han faktisk naadde fram (nei + interessert).
+    // Ingen svar er flaks og hoerer ikke hjemme i et tall som skal maale haandverk.
+    maalestokk.naadd_totalt = (await q(
+      "SELECT COUNT(*) n FROM leads WHERE selger = ? AND status IN ('nei','interessert')", e)).n;
+
+    const sisteBooking = await q(
+      'SELECT dato FROM bookinger WHERE selger = ? ORDER BY dato DESC, id DESC LIMIT 1', e);
+    maalestokk.naadd_siden_booking = sisteBooking && sisteBooking.dato
+      ? (await q("SELECT COUNT(*) n FROM leads WHERE selger = ? AND status IN ('nei','interessert') AND dato >= ?",
+          e, sisteBooking.dato)).n
+      : maalestokk.naadd_totalt;
+
+    // bookinger som har flyttet seg etter at de ble sendt inn
+    hendelser = (await env.DB.prepare(
+      `SELECT bedrift, status, COALESCE(status_dato, dato) AS naar
+         FROM bookinger
+        WHERE selger = ? AND status IS NOT NULL AND status != 'sendt'
+        ORDER BY naar DESC, id DESC LIMIT 4`
+    ).bind(e).all()).results.map(r => ({
+      bedrift: r.bedrift, status: r.status, dato: r.naar || '',
+    }));
+  } catch (_) {
+    // en manglende status_dato-kolonne eller lignende skal bare gi tomme moduler
+  }
+
   return {
     ringt_i_dag: ringtIDag,
     ringt_totalt: ringtTotalt,
@@ -552,6 +593,9 @@ async function hentTall(env, selger) {
     neste_sats: t.nesteSats,
     dager_igjen: dagerIgjen,
     aktiv_bunke: aktivBunke,
+    naadd_totalt: maalestokk.naadd_totalt,
+    naadd_siden_booking: maalestokk.naadd_siden_booking,
+    hendelser,
   };
 }
 

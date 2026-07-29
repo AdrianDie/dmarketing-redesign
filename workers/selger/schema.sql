@@ -45,7 +45,8 @@ CREATE TABLE IF NOT EXISTS bookinger (
   notat       TEXT,
   status      TEXT DEFAULT 'sendt',
   betalt_dato TEXT,                -- naar den ble betalt (styrer maanedlig provisjon)
-  jira_key    TEXT                 -- speilet Jira-kort i AN
+  jira_key    TEXT,                -- speilet Jira-kort i AN
+  status_dato TEXT                 -- naar statusen sist ble flyttet (kvitteringssloyfa)
 );
 CREATE INDEX IF NOT EXISTS idx_bookinger_selger ON bookinger(selger);
 

@@ -140,6 +140,38 @@
     </div>
   </section>
 
+  <!-- MAALESTOKKEN
+       Gjor nei-ene om til fremdrift i stedet for nederlag. Skjult til laget har
+       minst én booking, for uten den finnes det ingen aerlig maalestokk. -->
+  <section id="maalestokk" class="hidden mb-9" aria-labelledby="maal-h">
+    <h2 id="maal-h" class="font-display font-bold text-[13px] uppercase tracking-[0.1em] text-mute mb-3">
+      Veien til neste booking
+    </h2>
+    <div class="kort rounded-2xl border border-line bg-white p-5 sm:p-7" style="animation-delay:20ms">
+      <p class="text-[15px] sm:text-[17px] leading-relaxed" id="maal-tekst"></p>
+      <div class="mt-5">
+        <div class="h-2.5 rounded-full bg-zinc-100 overflow-hidden" role="progressbar"
+             aria-labelledby="maal-h" aria-valuemin="0" aria-valuemax="100"
+             aria-valuenow="0" id="maal-spor">
+          <div class="stolpe h-full rounded-full bg-brand" style="width:0%" id="maal-stolpe"></div>
+        </div>
+        <p class="text-[13px] text-mute mt-2.5" id="maal-under"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- KVITTERINGSSLOYFA
+       Bookingen skal ikke forsvinne i en svart boks. Her ser selgeren at Adrian
+       tok tak i den. Skjult naar ingen booking har flyttet seg ennaa. -->
+  <section id="kvittering" class="hidden mb-9" aria-labelledby="kvit-h">
+    <h2 id="kvit-h" class="font-display font-bold text-[13px] uppercase tracking-[0.1em] text-mute mb-3">
+      Det som skjedde mens du ringte
+    </h2>
+    <div class="kort rounded-2xl border border-line bg-white px-5 sm:px-6 py-1.5" style="animation-delay:60ms">
+      <ul id="kvit-liste"></ul>
+    </div>
+  </section>
+
   <!-- AKTIVITET -->
   <section class="mb-9" aria-labelledby="aktivitet-h">
     <h2 id="aktivitet-h" class="font-display font-bold text-[13px] uppercase tracking-[0.1em] text-mute mb-3">Aktivitet</h2>
@@ -376,6 +408,80 @@
         felt('neste-tittel', t.aktiv_bunke);
         felt('neste-tekst', t.igjen_i_bunke +
           ' igjen i denne bunken. Ta den ferdig før du velger en ny.');
+      }
+
+      // MAALESTOKKEN. Hans egen rytme, talt i samtaler der han naadde fram.
+      var m = Fmt.maalestokk(t.naadd_totalt, t.bookinger_totalt, t.naadd_siden_booking);
+      var samtaler = function (n) { return n + (n === 1 ? ' samtale' : ' samtaler'); };
+      var visMaal = true;
+
+      if (m.har && m.igjen > 0) {
+        document.getElementById('maal-tekst').innerHTML =
+          'Du booker hver <b>' + m.snitt + '. samtale</b> der du når fram. ' +
+          'Du er <b>' + m.inne + '</b> inne i denne runden.';
+        document.getElementById('maal-under').textContent = samtaler(m.igjen) +
+          ' igjen i din egen takt. Ingen svar teller ikke her, bare de du fikk snakket med.';
+      } else if (m.har) {
+        document.getElementById('maal-tekst').innerHTML =
+          'Du har snakket med <b>' + m.inne + '</b> siden forrige booking. ' +
+          'Din vanlige takt er <b>hver ' + m.snitt + '. samtale</b>.';
+        document.getElementById('maal-under').textContent =
+          'Over din egen takt nå. Det svinger mye fra runde til runde, ' +
+          'og en tørr periode betyr ikke at noe er galt.';
+      } else if (m.inne > 0) {
+        // ingen booking ennaa: ingen rytme aa maale mot, men vi later ikke som
+        // ingenting har skjedd. Samtalene han har tatt er det som bygger tallet.
+        document.getElementById('maal-tekst').innerHTML =
+          'Du har snakket med <b>' + m.inne + '</b> så langt.';
+        document.getElementById('maal-under').textContent =
+          'Når den første bookingen lander, regner vi ut din egen takt, ' +
+          'og da får du noe å måle mot. Til da teller hver samtale mot den.';
+      } else {
+        visMaal = false;
+      }
+
+      if (visMaal) {
+        document.getElementById('maal-spor').setAttribute('aria-valuenow', m.pst);
+        document.getElementById('maalestokk').classList.remove('hidden');
+        setTimeout(function () {
+          document.getElementById('maal-stolpe').style.width = m.pst + '%';
+        }, 120);
+      }
+
+      // KVITTERINGSSLOYFA. Bedriftsnavn settes med textContent, aldri innerHTML.
+      var rader = (t.hendelser || []).map(function (h) {
+        return { tekst: Fmt.hendelseTekst(h.status, h.bedrift), status: h.status, dato: h.dato };
+      }).filter(function (r) { return r.tekst; });
+
+      if (rader.length) {
+        var PRIKK = {
+          godtatt: 'bg-emerald-500', betalt: 'bg-emerald-500',
+          utkast_laget: 'bg-brand', sendt_til_kunde: 'bg-brand', tapt: 'bg-mute'
+        };
+        var liste = document.getElementById('kvit-liste');
+        rader.forEach(function (r, i) {
+          var li = document.createElement('li');
+          // border-line i stedet for divide-y, fordi tema.css bare demper border-line i moerk modus
+          li.className = 'flex items-center gap-3 py-3.5' + (i ? ' border-t border-line' : '');
+
+          var prikk = document.createElement('span');
+          prikk.className = 'shrink-0 w-2 h-2 rounded-full ' + (PRIKK[r.status] || 'bg-zinc-300');
+          prikk.setAttribute('aria-hidden', 'true');
+          li.appendChild(prikk);
+
+          var tekst = document.createElement('span');
+          tekst.className = 'text-[15px] min-w-0';
+          tekst.textContent = r.tekst;
+          li.appendChild(tekst);
+
+          var tid = document.createElement('span');
+          tid.className = 'ml-auto shrink-0 text-[13px] text-mute tall';
+          tid.textContent = Fmt.pentDato(r.dato);
+          li.appendChild(tid);
+
+          liste.appendChild(li);
+        });
+        document.getElementById('kvittering').classList.remove('hidden');
       }
     }).catch(function () {
       document.getElementById('undertekst').textContent =

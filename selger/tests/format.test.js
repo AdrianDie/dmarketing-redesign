@@ -126,6 +126,62 @@ test('Apps Script og visning er enige om sats og tilNeste', function () {
   }
 });
 
+/* ------------------------------------------------------------- maalestokk */
+test('maalestokk: uten bookinger finnes ingen maalestokk', function () {
+  var m = Fmt.maalestokk(40, 0, 40);
+  assert.strictEqual(m.har, false);
+  assert.strictEqual(m.snitt, 0);
+});
+test('maalestokk: uten samtaler finnes ingen maalestokk', function () {
+  assert.strictEqual(Fmt.maalestokk(0, 0, 0).har, false);
+});
+test('maalestokk: snitt er samtaler delt paa bookinger', function () {
+  var m = Fmt.maalestokk(68, 2, 0);
+  assert.strictEqual(m.snitt, 34);
+});
+test('maalestokk: snitt rundes til naermeste hele', function () {
+  assert.strictEqual(Fmt.maalestokk(100, 3, 0).snitt, 33);
+});
+test('maalestokk: snitt blir aldri null', function () {
+  assert.strictEqual(Fmt.maalestokk(1, 5, 0).snitt, 1);
+});
+test('maalestokk: igjen teller nedover fra snittet', function () {
+  var m = Fmt.maalestokk(68, 2, 19);
+  assert.strictEqual(m.igjen, 15);
+  assert.strictEqual(m.pst, 56);
+});
+test('maalestokk: passert snittet gir null igjen, ikke negativt', function () {
+  var m = Fmt.maalestokk(68, 2, 50);
+  assert.strictEqual(m.igjen, 0);
+  assert.strictEqual(m.pst, 100);
+});
+test('maalestokk: taaler soppel inn', function () {
+  var m = Fmt.maalestokk(null, undefined, 'tull');
+  assert.strictEqual(m.har, false);
+  assert.strictEqual(m.inne, 0);
+});
+
+/* ----------------------------------------------------------- hendelseTekst */
+test('hendelseTekst: fersk booking er ingen nyhet', function () {
+  assert.strictEqual(Fmt.hendelseTekst('sendt', 'Blomsterbua'), '');
+});
+test('hendelseTekst: ukjent status gir tom', function () {
+  assert.strictEqual(Fmt.hendelseTekst('noe_rart', 'Blomsterbua'), '');
+});
+test('hendelseTekst: utkast sendt nevner Adrian', function () {
+  assert.strictEqual(Fmt.hendelseTekst('sendt_til_kunde', 'Blomsterbua'),
+    'Adrian sendte utkastet til Blomsterbua');
+});
+test('hendelseTekst: ja fra kunden', function () {
+  assert.strictEqual(Fmt.hendelseTekst('godtatt', 'Kyrre Profil'), 'Kyrre Profil takket ja');
+});
+test('hendelseTekst: betalt', function () {
+  assert.strictEqual(Fmt.hendelseTekst('betalt', 'Kyrre Profil'), 'Kyrre Profil har betalt');
+});
+test('hendelseTekst: tapt sies noytralt', function () {
+  assert.strictEqual(Fmt.hendelseTekst('tapt', 'Kyrre Profil'), 'Kyrre Profil ble det ikke noe av');
+});
+
 /* -------------------------------------------------------------------- sum */
 console.log('\n' + (antall - feil) + '/' + antall + ' tester passerte.');
 process.exit(feil ? 1 : 0);
