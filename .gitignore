@@ -31,4 +31,16 @@ kurs/13-integrasjoner.html
 workers/**/.wrangler/
 workers/**/leads-import.sql
 
+# Leaddata og raadata om bedrifter. Repoet er OFFENTLIG, saa ingenting med
+# navn, telefon, e-post eller org.nr skal kunne bli med i en commit.
+Jira_Leads_Oversikt.xlsx
+all_blomster_issues.json
+blomster_data/
+*-leads*.csv
+*leads-starter*.csv
+KALL-LISTE-LEADS.md
+LEADS-*.md
+UTDATERTE-NETTSIDER-LEADS.md
+DIETRICHS-LEADS-TRACKER.xlsx
+
 .superpowers/
