@@ -106,6 +106,9 @@
   function hendelseTekst(status, bedrift) {
     var navn = String(bedrift == null ? '' : bedrift);
     switch (status) {
+      // egen booking hoerer hjemme i sloyfa: det er selve oyeblikket som skal
+      // bekreftes, og uten den staar lista tom til Adrian rekker aa flytte noe
+      case 'sendt':           return 'Du booket ' + navn;
       case 'utkast_laget':    return 'Adrian lager utkastet til ' + navn;
       case 'sendt_til_kunde': return 'Adrian sendte utkastet til ' + navn;
       case 'godtatt':         return navn + ' takket ja';

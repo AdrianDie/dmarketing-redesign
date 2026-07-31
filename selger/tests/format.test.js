@@ -162,8 +162,8 @@ test('maalestokk: taaler soppel inn', function () {
 });
 
 /* ----------------------------------------------------------- hendelseTekst */
-test('hendelseTekst: fersk booking er ingen nyhet', function () {
-  assert.strictEqual(Fmt.hendelseTekst('sendt', 'Blomsterbua'), '');
+test('hendelseTekst: egen booking vises i sloyfa', function () {
+  assert.strictEqual(Fmt.hendelseTekst('sendt', 'Blomsterbua'), 'Du booket Blomsterbua');
 });
 test('hendelseTekst: ukjent status gir tom', function () {
   assert.strictEqual(Fmt.hendelseTekst('noe_rart', 'Blomsterbua'), '');

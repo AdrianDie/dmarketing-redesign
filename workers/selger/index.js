@@ -564,12 +564,13 @@ async function hentTall(env, selger) {
           e, sisteBooking.dato)).n
       : maalestokk.naadd_totalt;
 
-    // bookinger som har flyttet seg etter at de ble sendt inn
+    // hele reisen til bookingene hans: egne bookinger OG det Adrian gjor med dem.
+    // Grensen er 6 saa ferske bookinger ikke skyver ut Adrians oppdateringer.
     hendelser = (await env.DB.prepare(
       `SELECT bedrift, status, COALESCE(status_dato, dato) AS naar
          FROM bookinger
-        WHERE selger = ? AND status IS NOT NULL AND status != 'sendt'
-        ORDER BY naar DESC, id DESC LIMIT 4`
+        WHERE selger = ? AND status IS NOT NULL AND status != ''
+        ORDER BY naar DESC, id DESC LIMIT 6`
     ).bind(e).all()).results.map(r => ({
       bedrift: r.bedrift, status: r.status, dato: r.naar || '',
     }));

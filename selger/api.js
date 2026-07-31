@@ -16,6 +16,7 @@
       aktiv_bunke: 'Frisør - Oslo og Bærum',
       naadd_totalt: 55, naadd_siden_booking: 3,
       hendelser: [
+        { bedrift: 'ARTISTINA STUDIO', status: 'sendt', dato: '2026-07-28' },
         { bedrift: 'DE NADA FRISØR AS', status: 'sendt_til_kunde', dato: '2026-07-27' },
         { bedrift: 'ECO CULT AS', status: 'betalt', dato: '2026-07-25' },
         { bedrift: 'HEXAGON FRISØR AS', status: 'utkast_laget', dato: '2026-07-24' }
