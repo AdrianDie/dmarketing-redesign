@@ -179,7 +179,8 @@
       <div class="callout callout-ok not-prose">
         <p><strong>Du har nå tilgang til nettsiden din.</strong> Slik ser det ut på GitHub, her ligger alle filene nettsiden består av:</p>
       </div>
-      <img src="../images/github-repo.png" alt="GitHub-repo etter akseptert invitasjon" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0 0 2.5rem;" />
+      <img src="../images/github-repo.png" alt="GitHub-repo etter akseptert invitasjon" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0 0 1rem;" />
+      <p class="not-prose" style="font-size:0.875rem;color:#52525B;font-style:italic;margin:0 0 2.5rem;">→ Du har nå opprettet en GitHub-konto og fått tilgang til nettsidefilene. Neste: gjøre nettsiden 100 % din egen.</p>
 
       <!-- ═══════════════════════════════════════════
            STEG 2: OVERFØR EIERSKAP
@@ -310,7 +311,8 @@
       <p style="font-size:1rem;line-height:1.65;color:#3F3F46;margin-top:0.5rem;">Klikk lenken i e-posten og godkjenn overføringen. Etterpå ser du repoet i din egen GitHub-profil, slik:</p>
       <img src="../images/github-overfoering-dashboard.png" alt="GitHub dashboard etter overføring" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0 1.5rem;" />
 
-      <p class="not-prose" style="font-size:0.95rem;color:#52525B;margin-top:0.75rem;margin-bottom:2.5rem;"><strong style="color:#3F3F46;">Fungerer ikke knappen?</strong> Send GitHub-brukernavnet ditt til <a href="mailto:adrian@dmarketing.no" style="color:#0339f8;font-weight:600;">adrian@dmarketing.no</a>, så ordner vi overføringen manuelt.</p>
+      <p class="not-prose" style="font-size:0.95rem;color:#52525B;margin-top:0.75rem;margin-bottom:0.75rem;"><strong style="color:#3F3F46;">Fungerer ikke knappen?</strong> Send GitHub-brukernavnet ditt til <a href="mailto:adrian@dmarketing.no" style="color:#0339f8;font-weight:600;">adrian@dmarketing.no</a>, så ordner vi overføringen manuelt.</p>
+      <p class="not-prose" style="font-size:0.875rem;color:#52525B;font-style:italic;margin:0 0 2.5rem;">→ Nettsiden er nå din egen, 100 %. To av tre steg er unnagjort. Siste steg er å publisere den på internett og koble til domenet ditt.</p>
 
       <!-- ═══════════════════════════════════════════
            STEG 3: DOMENE / DNS
@@ -329,6 +331,7 @@
       <img src="../images/cloudflare-verifiser-mail.png" alt="Bekreft e-postadressen din hos Cloudflare" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
       <p><strong style="color:#0339f8;">c.</strong> Nå er du logget inn og ser Cloudflare-dashbordet:</p>
       <img src="../images/cloudflare-dashboard.png" alt="Cloudflare-dashbordet etter innlogging" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
+      <p class="not-prose" style="font-size:0.875rem;color:#52525B;font-style:italic;margin:0 0 2.5rem;">→ Du har nå en gratis Cloudflare-konto, klar til å ta imot nettsiden din. Neste: koble repoet og publisere den.</p>
 
       <h3 style="color:#9A3412;">3b: Koble repoet og publiser nettsiden</h3>
 
@@ -371,6 +374,8 @@
           <p><strong style="color:#0339f8;">c.</strong> Klikk <strong>Create and deploy</strong>.</p>
         </div>
       </div>
+
+      <p class="not-prose" style="font-size:0.875rem;color:#52525B;font-style:italic;margin:0 0 2.5rem;">→ Nå har du lagt nettsidefilene i lagringsplassen på Cloudflare, og nettsiden er publisert på en midlertidig adresse. Siste steg er å koble den til ditt eget domene.</p>
 
       <h3 style="color:#9A3412;">3c: Legg til domenet ditt</h3>
       <p>Nå ligger siden på en <code>.workers.dev</code>-adresse. For å få den på ditt eget domene må domenet flyttes til Cloudflare. Det er tryggere enn det høres ut, så lenge du følger stegene under.</p>
@@ -426,6 +431,7 @@ Her er DNS-lista:
           </div>
 
           <p><strong style="color:#0339f8;">e.</strong> Når du er ferdig, klikk <strong>Continue to activation</strong>.</p>
+          <p class="not-prose" style="font-size:0.875rem;color:#52525B;font-style:italic;margin:0.75rem 0 0;">→ Domenet er lagt til hos Cloudflare og DNS-postene er ryddet. Nå gjenstår å bytte navnetjenerne hos domeneleverandøren din, det siste som må gjøres utenfor Cloudflare.</p>
         </div>
       </div>
 
@@ -528,6 +534,7 @@ Vennligst:
 4. Fortell meg hvordan jeg sjekker at byttet har gått gjennom</div>
             </div>
           </div>
+          <p class="not-prose" style="font-size:0.875rem;color:#52525B;font-style:italic;margin:0.75rem 0 0;">→ Navnetjenerne er byttet ut. Det siste som gjenstår er å legge domenet til inne i selve Cloudflare-prosjektet, ett enkelt steg til.</p>
         </div>
       </div>
 
@@ -553,6 +560,7 @@ Vennligst:
           <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:1rem;color:#14532D;letter-spacing:-0.01em;">Ferdig! Du har gjort din del.</span>
         </div>
         <p style="font-size:0.95rem;line-height:1.6;color:#15803D;margin:0 0 1rem;">Resten skjer helt automatisk, du trenger ikke røre dette igjen. Det kan ta alt fra 30 minutter til 24 timer før nettsiden er oppe og går på domenet ditt. Søk opp domenet ditt i nettleseren i mellomtiden, når du ser nettsiden med hengelås og alt, er den live. Neste steg er å lære hvordan du oppdaterer den selv.</p>
+        <p style="font-size:0.95rem;line-height:1.6;color:#15803D;margin:0 0 1rem;"><strong>Sjekk i morgen:</strong> søk opp domenet ditt igjen etter 24 timer. Får du ingen feilmelding, og ser den nye nettsiden, er den nye løsningen oppe og går. Da kan du trygt avslutte den gamle nettsideløsningen din.</p>
         <a href="../01-velkommen" style="display:inline-flex;align-items:center;gap:8px;background:#16A34A;color:white;font-family:'Archivo',sans-serif;font-weight:700;font-size:0.9rem;padding:0.6rem 1.25rem;border-radius:8px;text-decoration:none;">
           Start modul 01: Velkommen
           <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
