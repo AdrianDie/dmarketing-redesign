@@ -1,5 +1,5 @@
 window.AI_DRIFT_MODULER = [
-  { slug: '01-kartlegg-prosesser', tittel: 'Finn oppgavene som fortjener AI', desc: 'Kartlegg det som gjentar seg i driften, og lær å bygge en fast oppskrift AI-en husker for deg.', min: 7 },
+  { slug: '01-kartlegg-prosesser', tittel: 'Finn oppgavene som fortjener AI', desc: 'Kartlegg det som gjentar seg i driften, og lær å bygge en fast oppskrift AI-en husker for deg.', min: 10 },
   { slug: '02-kom-i-gang', tittel: 'Din AI-assistent for bedriften', desc: 'Sett den opp én gang, og bruk den til alt etterpå. Grunnmuren som gjør resten mye raskere.', min: 6 },
   { slug: '03-automatisere-kundesvar', tittel: 'Svar kunder på minutter', desc: 'Aldri mist en jobb fordi du ikke rakk telefonen. AI svarer i din tone, du bare godkjenner.', min: 8 },
   { slug: '04-booking-og-paaminnelser', tittel: 'Færre bomturer og no-shows', desc: 'Kundene booker selv, og automatiske påminnelser sørger for at de faktisk møter opp.', min: 7 },
