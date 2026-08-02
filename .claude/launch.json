@@ -14,6 +14,12 @@
       "port": 5053
     },
     {
+      "name": "dmarketing-redesign-2",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "5054", "--directory", "C:/Users/adria/website-mirrors/dmarketing-redesign"],
+      "port": 5054
+    },
+    {
       "name": "acom",
       "runtimeExecutable": "python",
       "runtimeArgs": ["-m", "http.server", "8090", "--directory", "C:/Users/adria/website-mirrors/acom-redesign"],
@@ -32,10 +38,76 @@
       "port": 8092
     },
     {
+      "name": "dmarketing-ny",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8094", "--directory", "C:/Users/adria/website-mirrors/dmarketing-ny"],
+      "port": 8094
+    },
+    {
       "name": "dashboard",
       "runtimeExecutable": "python",
       "runtimeArgs": ["-m", "http.server", "8093", "--directory", "C:/Users/adria/dmarketing-dashboard"],
       "port": 8093
+    },
+    {
+      "name": "trimmeren",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8095", "--directory", "C:/Users/adria/website-mirrors/trimmeren-drammen"],
+      "port": 8095
+    },
+    {
+      "name": "sithivinayagar",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8096", "--directory", "C:/Users/adria/website-mirrors/sithivinayagar-redesign"],
+      "port": 8096
+    },
+    {
+      "name": "dietrichs-marketing",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8098", "--directory", "C:/Users/adria/website-mirrors/dietrichs-marketing"],
+      "port": 8098
+    },
+    {
+      "name": "ink-og-fades",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8097", "--directory", "C:/Users/adria/website-mirrors/LEADS/utkast/ink-og-fades-tromso"],
+      "port": 8097
+    },
+    {
+      "name": "talsethoghusby",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8099", "--directory", "C:/Users/adria/website-mirrors/talsethoghusby-redesign"],
+      "port": 8099
+    },
+    {
+      "name": "igloo-inc-mirror",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["C:/Users/adria/httrack-mirrors/igloo-inc/serve.py"],
+      "port": 8765
+    },
+    {
+      "name": "midtinneklima-redesign",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8100", "--directory", "C:/Users/adria/website-mirrors/midtinneklima-redesign"],
+      "port": 8100
+    },
+    {
+      "name": "elite-workshop-redesign",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8101", "--directory", "C:/Users/adria/website-mirrors/elite-workshop-redesign"],
+      "port": 8101
+    },
+    {
+      "name": "arntharparykker-redesign",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8102", "--directory", "C:/Users/adria/website-mirrors/arntharparykker-redesign"],
+      "port": 8102
+    },
+    {
+      "name": "kurs-premium",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8103", "--directory", "C:/Users/adria/website-mirrors/dmarketing-kurs-premium"],
+      "port": 8103
     }
   ]
 }
