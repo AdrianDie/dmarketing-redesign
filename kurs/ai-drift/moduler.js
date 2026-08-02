@@ -6,6 +6,10 @@ window.AI_DRIFT_MODULER = [
   { slug: '05-anmeldelser-og-omdomme', tittel: 'La kundene selge for deg', desc: 'Be om anmeldelse på akkurat rett tidspunkt, og la AI svare på alle. Bedre omdømme, null ekstra jobb.', min: 6 },
   { slug: '06-bli-funnet-paa-google', tittel: 'Bli lettere å finne på Google', desc: 'Hold Google-profilen levende med innlegg og svar, så flere i nærområdet finner deg.', min: 7 },
   { slug: '07-innhold-og-sosiale-medier', tittel: 'En måneds innhold på 20 minutter', desc: 'En hel måned med innlegg, nyhetsbrev og bildetekster på rundt 20 minutter.', min: 8 },
-  { slug: '08-papirarbeid-og-admin', tittel: 'Få papirarbeidet unnagjort på dagtid', desc: 'La AI oppsummere, sortere og skrive referater, rutiner og sjekklister for deg.', min: 6 },
-  { slug: '09-koble-appene-sammen', tittel: 'Ferdig arbeid venter hver morgen', desc: 'Sett skillene dine på en fast tidsplan med Claude Cowork, så ferdig arbeid venter på deg neste morgen.', min: 9 },
+  { slug: '08-papirarbeid-og-admin', tittel: 'Få papirarbeidet unnagjort på dagtid', desc: 'La AI oppsummere, sortere og lage rutiner og sjekklister for deg.', min: 6 },
+  { slug: '09-mote-og-rapportering', tittel: 'Ferdig referat før møtet er over', desc: 'Faste maler for møtereferater og statusrapporter, så rot inn blir ryddig tekst ut på minutter.', min: 6 },
+  { slug: '10-kontrakter-og-dokumenter', tittel: 'Forstå enhver kontrakt før du signerer', desc: 'La AI oversette kontrakter til vanlig norsk, finne fristene som gjemmer seg i teksten, og lage egne avtaler.', min: 7 },
+  { slug: '11-innkjop-og-leverandor', tittel: 'Sammenlign leverandører på minutter', desc: 'Lim inn flere tilbud, og la AI stille dem opp i en tabell du faktisk kan sammenligne.', min: 6 },
+  { slug: '12-onboarding-nyansatte', tittel: 'Onboarding uten å bruke en hel dag', desc: 'Bygg én onboardingmappe med AI, gjenbruk den for hver nyansatt som begynner.', min: 7 },
+  { slug: '13-koble-appene-sammen', tittel: 'Ferdig arbeid venter hver morgen', desc: 'Sett skillene dine på en fast tidsplan med Claude Cowork, så ferdig arbeid venter på deg neste morgen.', min: 9 },
 ];
