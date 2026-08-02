@@ -433,8 +433,11 @@ Her er DNS-lista:
         <div class="step-num">3</div>
         <div class="step-content">
           <h3>Bytt navnetjenere hos domeneleverandøren</h3>
-          <p><strong style="color:#0339f8;">a.</strong> Til slutt viser Cloudflare deg <strong>to navnetjenere</strong> (typ <code>navn.ns.cloudflare.com</code>). Dette er selve koblingen: du logger inn hos leverandøren der domenet er registrert, og bytter ut de nåværende navnetjenerne med Cloudflares to.</p>
+          <p><strong style="color:#0339f8;">a.</strong> Til slutt viser Cloudflare deg <strong>to navnetjenere</strong> (typ <code>navn.ns.cloudflare.com</code>), som du ser på bildet under, i den røde boksen. Det første du gjør nå er å logge inn hos leverandøren der domenet er registrert, og bytte ut de nåværende navnetjenerne med Cloudflares to. Se under bildet for fremgangsmåte.</p>
           <img src="../images/cloudflare-nameservere.png" alt="Cloudflare viser de to navnetjenerne du skal bytte til" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
+
+          <p>Har du en av leverandørene under, følg instruksene der. Har du ikke en av dem, trykk gjerne på en av dem likevel, mest sannsynlig har din leverandør en lignende fremgangsmåte. Kommer du deg ikke fram til riktig steg, bruk en AI som for eksempel ChatGPT til å hjelpe deg: ta et skjermbilde av skjermen hos leverandøren din, slik som du ser på bildet ovenfor (på Windows: <strong>Windows-tast + Shift + S</strong>, på Mac: <strong>Cmd + Shift + 4</strong>), og kopier prompten lenger ned på denne siden.</p>
+
           <p><strong style="color:#0339f8;">b.</strong> Klikk på din leverandør under for hvor du finner navnetjener-innstillingen:</p>
 
           <div class="not-prose" style="display:flex;flex-direction:column;gap:8px;margin:1.25rem 0;">
@@ -532,8 +535,12 @@ Vennligst:
         <div class="step-num">4</div>
         <div class="step-content">
           <h3>Legg til domenet, så skjer resten av seg selv</h3>
-          <p><strong style="color:#0339f8;">a.</strong> Gå tilbake til prosjektet ditt: bruk <strong>Quick search</strong> igjen (eller <strong>Ctrl + K</strong>), skriv <strong>workers</strong>, velg <strong>Workers &amp; Pages</strong>, og klikk deg inn på prosjektet. Klikk så fanen <strong>Domains</strong> → <strong>Add Domain</strong> → skriv <code>dittfirma.no</code> (gjenta gjerne for <code>www.dittfirma.no</code>). Dette gjør du bare <strong>én gang</strong>.</p>
-          <img src="../images/cloudflare-add-domain.png" alt="Klikk fanen Domains og deretter Add Domain-knappen" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
+          <p><strong style="color:#0339f8;">a.</strong> Gå tilbake til prosjektet ditt: bruk <strong>Quick search</strong> igjen (eller <strong>Ctrl + K</strong>), skriv <strong>workers</strong>, velg <strong>Workers &amp; Pages</strong>, og klikk deg inn på prosjektet.</p>
+          <img src="../images/cloudflare-klikk-inn-prosjekt.png" alt="Klikk deg inn på prosjektet" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
+          <p>Klikk så fanen <strong>Domains</strong> → <strong>Add Domain</strong> → trykk på domenet ditt slik som den røde sirkelen på bildet under → klikk <strong>Add Domain</strong>.</p>
+          <img src="../images/cloudflare-trykk-domene.png" alt="Trykk på domenet ditt" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
+          <p>Gjenta det samme for <code>www</code>-versjonen: <strong>Domains</strong> → <strong>Add Domain</strong> → trykk på domenet ditt slik som den røde sirkelen på bildet over → skriv <code>www</code> slik at det ser ut som på bildet under → klikk <strong>Add Domain</strong>.</p>
+          <img src="../images/cloudflare-www-domene.png" alt="Legg til www-versjonen av domenet" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
           <p><strong style="color:#0339f8;">b.</strong> Dette er siste steg. Så snart navnetjenerne er <strong>Active</strong> og domenet er lagt til, publiseres siden på domenet <strong>helt automatisk</strong>, du trenger ikke gjøre noe mer. <strong>Cloudflare sender deg en e-post når det er klart.</strong> Det kan ta rundt en time før den er oppe, så søk opp <code>dittfirma.no</code> om et par timer eller dagen etter for å se den live.</p>
           <img src="../images/cloudflare-domene-koblet.png" alt="Domenet ditt vises nå under Custom Domains and Routes" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
         </div>
