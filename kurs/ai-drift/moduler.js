@@ -8,5 +8,5 @@ window.AI_DRIFT_MODULER = [
   { slug: '07-bli-funnet-paa-google', tittel: 'Bli funnet lokalt på Google', desc: 'Hold Google-profilen levende med innlegg og svar, så flere i nærområdet finner deg.', min: 7 },
   { slug: '08-innhold-og-sosiale-medier', tittel: 'Markedsføring uten å bruke timer', desc: 'En hel måned med innlegg, nyhetsbrev og bildetekster på rundt 20 minutter.', min: 8 },
   { slug: '09-papirarbeid-og-admin', tittel: 'Rydd unna papirarbeidet', desc: 'La AI oppsummere, sortere og skrive referater, rutiner og sjekklister for deg.', min: 6 },
-  { slug: '10-koble-appene-sammen', tittel: 'La ting skje av seg selv', desc: 'Koble sammen appene du allerede bruker, så oppgavene gjør seg selv mens du er ute på oppdrag.', min: 9 },
+  { slug: '10-koble-appene-sammen', tittel: 'La ting skje av seg selv', desc: 'Sett skillene dine på en fast tidsplan med Claude Cowork, så ferdig arbeid venter på deg neste morgen.', min: 9 },
 ];
