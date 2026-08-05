@@ -32,6 +32,15 @@ andre selgere) kan ringe fra `/selger/ringeliste/`.
   org.nr/telefon/nettside), `brreg.py` (Brønnøysund-oppslag per org.nr),
   `lag-ark.py`. Alt stdlib-Python, ingen pip-avhengigheter. Denne pipelinen
   bygger videre på det samme verktøyet, ikke noe parallelt.
+- **`leads-til-selgerportal.csv`** i samme mappe er den lokale speilingen av
+  akkurat det som ligger i D1 `leads` i dag. Verifisert linje for linje mot
+  `leads-import.sql` (samme 1442 rader, samme rekkefølge, samme id-er) — dette
+  er ikke en gjetning, det er sjekket. Brukes som en tredje dedup-kilde i
+  steg 2–3, og holdes oppdatert i steg 7–9 (se der).
+- `LES-MEG.md` og `bygg-database.py` i samme mappe beskriver fortsatt den
+  gamle Google Sheets/Apps Script-arkitekturen som ble erstattet av
+  Cloudflare Worker + D1 24.07.2026. Utdatert, ikke noe denne pipelinen
+  bygger videre på.
 
 ---
 
@@ -40,7 +49,8 @@ andre selgere) kan ringe fra `/selger/ringeliste/`.
 ```
 1. places.py hent            → rå CSV, alle 10 nisjer, Google Places
 2. dedup.py sjekk             → luker bort alt som ligger i det gamle registeret
-3. dedup_mot_d1.py            → luker bort alt som allerede ligger i D1 leads
+3. dedup_mot_d1.py            → luker bort alt som allerede ligger i D1 leads,
+                                 sjekker BÅDE live D1 og leads-til-selgerportal.csv
 4. finn_orgnr.py               → matcher hver rad mot Brreg, fyller Org.nr
 5. brreg.py (utvidet)          → henter status/ansatte/registreringsdato per org.nr
 6. filtrer.py                  → seriøs-regel + trim til ~20/bunke → godkjent + usikker
@@ -49,6 +59,7 @@ andre selgere) kan ringe fra `/selger/ringeliste/`.
 8. lag_sql.py                  → skriver INSERT-setninger til innlasting.sql
    --- gjennomgang av selve SQL-fila ---
 9. wrangler d1 execute --remote --file innlasting.sql
+10. append til leads-til-selgerportal.csv → speilet holdes i sync
 ```
 
 Hvert steg leser forrige stegs output og skriver en ny fil med lengre
@@ -112,19 +123,26 @@ Brreg-bransjen dårlig med søke-nisjen, er org.nr-matchen mistenkelig).
 - `dedup.py sjekk alle-nisjer-raa.csv` — uendret bruk av eksisterende script.
   Fanger overlapp mot e-postkampanjer, gamle ark og ANS-kortene registeret
   allerede kjenner.
-- `dedup_mot_d1.py <fil>` (nytt, ~30 linjer) — kjører
-  `wrangler d1 execute dm-salg --remote --command "SELECT telefon, orgnr,
-  nettside FROM leads" --json` via subprocess, bygger samme type
-  org/telefon/nettside-nøkkelsett som `dedup.py sin noekler()`, og filtrerer
-  input-fila på samme måte som `cmd_sjekk`. Importerer `dedup.py` sine
+- `dedup_mot_d1.py <fil>` (nytt, ~35 linjer) — to kilder, samme sjekk:
+  1. `wrangler d1 execute dm-salg --remote --command "SELECT telefon, orgnr,
+     nettside FROM leads" --json` via subprocess — den **faktiske**,
+     ferskeste D1-tabellen.
+  2. `leads-til-selgerportal.csv` lest lokalt — den verifiserte speilingen
+     av D1 (se Utgangspunktet).
+
+  Bygger org/telefon/nettside-nøkkelsett fra begge kilder samlet (samme type
+  nøkler som `dedup.py` sin `noekler()`), og filtrerer input-fila på samme
+  måte som `cmd_sjekk`. Importerer `dedup.py` sine
   `norm_tlf`/`norm_web`/`norm_org`-funksjoner direkte i stedet for å
   duplisere dem.
 
-  Grunnen til at dette må sjekkes separat fra registeret: registeret ble
-  sist bygget 23.07, én dag før D1-migreringen. Det er trolig i sync, men
-  "trolig" er ikke godt nok når konsekvensen er at et selskap blir ringt av
-  to selgere — så jeg sjekker mot den **faktiske** D1-tabellen i tillegg,
-  ikke i stedet for.
+  Grunnen til at begge sjekkes, ikke bare én: registeret (`register.csv`) ble
+  sist bygget 23.07, én dag før D1-migreringen, og kan i teorien ha driftet
+  fra D1 siden. `leads-til-selgerportal.csv` er verifisert i sync med D1 nå,
+  men live D1-spørringen er den eneste kilden som garantert reflekterer
+  eventuelle manuelle endringer noen har gjort direkte i databasen mellom nå
+  og forrige gang CSV-en ble oppdatert. Begge er billige å sjekke, så jeg
+  dropper ingen av dem.
 
 ---
 
@@ -237,6 +255,13 @@ hovedterskel.
   kjører `wrangler d1 execute --remote --file innlasting.sql`. Dette skriver
   til databasen ekte selgere ringer fra, og navnematchingen i steg 4 er
   heuristisk — verdt en ekstra stopp.
+- **Steg 10, hold speilingen i sync:** rett etter en vellykket
+  `wrangler d1 execute`, appender jeg de samme godkjente radene til
+  `leads-til-selgerportal.csv` (samme kolonner: `Bunke, Bedrift, Sted,
+  Telefon, Nettside, Bransje, Org.nr, Registrert, Nyetablert`). Dette er
+  grunnen til at spørsmålet ditt om denne fila var viktig å fange opp nå —
+  uten dette steget ville fila sakte gått ut av sync med D1 for hver ny
+  sourcing-runde, og fremtidige dedup-sjekk mot den ville blitt upålitelige.
 
 ---
 
@@ -298,3 +323,6 @@ Dette bygges **ikke** nå:
    gir 0 treff (bekrefter at selve innlastingen ikke skapte duplikater).
 5. Ingen lead lastes inn i D1 uten at Adrian har sett og godkjent
    godkjent/usikker-oppsummeringen først.
+6. `leads-til-selgerportal.csv` har like mange nye rader som faktisk ble
+   lastet inn i D1 etter kjøringen — speilingen er fortsatt til å stole på
+   for neste sourcing-runde.
