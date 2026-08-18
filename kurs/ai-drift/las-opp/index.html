@@ -264,7 +264,7 @@
         body: JSON.stringify({ _subject: 'AI-drift, ny interessent', email: epost || 'ukjent', melding: 'Kursdeltaker vil låse opp AI-drift-seksjonen.' })
       }).then(function (r) { return r.json(); }).then(function (d) {
         if (String(d.success) === 'false') throw new Error();
-        btn.textContent = 'Sendt! Vi tar kontakt ✓';
+        btn.textContent = 'Sendt! Vi tar kontakt';
       }).catch(function () {
         btn.disabled = false; btn.textContent = 'Noe gikk galt, send e-post til adrian@dmarketing.no';
       });
