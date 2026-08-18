@@ -13,4 +13,6 @@ window.AI_DRIFT_MODULER = [
   { slug: '12-kontrakter-og-dokumenter', tittel: 'Forstå enhver kontrakt før du signerer', desc: 'La AI oversette kontrakter til vanlig norsk, finne fristene som gjemmer seg i teksten, og lage egne avtaler.', min: 7 },
   { slug: '13-innkjop-og-leverandor', tittel: 'Sammenlign leverandører på minutter', desc: 'Lim inn flere tilbud, og la AI stille dem opp i en tabell du faktisk kan sammenligne.', min: 6 },
   { slug: '14-onboarding-nyansatte', tittel: 'Onboarding uten å bruke en hel dag', desc: 'Bygg én onboardingmappe med AI, gjenbruk den for hver nyansatt som begynner.', min: 7 },
+  { slug: '15-fra-ordre-til-faktura', tittel: 'Fakturaen lager seg selv', desc: 'Koble regnskapssystemet til Make, så ordre blir til faktura uten at du klikker deg gjennom hver en.', min: 9 },
+  { slug: '16-lese-leverandorfakturaer-med-ai', tittel: 'Slipp å taste inn hver leverandørfaktura for hånd', desc: 'La AI lese leverandørfakturaen og foreslå leverandør, beløp, mva og konto, du sjekker og limer inn.', min: 7 },
 ];
