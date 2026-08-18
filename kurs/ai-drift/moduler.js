@@ -12,4 +12,5 @@ window.AI_DRIFT_MODULER = [
   { slug: '11-innkjop-og-leverandor', tittel: 'Sammenlign leverandører på minutter', desc: 'Lim inn flere tilbud, og la AI stille dem opp i en tabell du faktisk kan sammenligne.', min: 6 },
   { slug: '12-onboarding-nyansatte', tittel: 'Onboarding uten å bruke en hel dag', desc: 'Bygg én onboardingmappe med AI, gjenbruk den for hver nyansatt som begynner.', min: 7 },
   { slug: '13-koble-appene-sammen', tittel: 'Ferdig arbeid venter hver morgen', desc: 'Sett skillene dine på en fast tidsplan med Claude Cowork, så ferdig arbeid venter på deg neste morgen.', min: 9 },
+  { slug: '14-varsler-og-oppfolging', tittel: 'Ingenting glipper, uten at du må sjekke selv', desc: 'Samme Cowork-mekanikk som i forrige modul, brukt til å varsle deg automatisk når noe avviker.', min: 8 },
 ];
