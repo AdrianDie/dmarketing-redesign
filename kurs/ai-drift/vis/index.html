@@ -54,6 +54,7 @@
           };
           frame.srcdoc = res.d.html;
           frame.style.display = 'block';
+          document.querySelector('.topbar').style.display = 'none';
         })
         .catch(function () { document.getElementById('feil').style.display = 'block'; });
     })();
