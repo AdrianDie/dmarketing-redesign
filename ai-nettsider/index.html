@@ -192,34 +192,41 @@
     .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; justify-content: center; }
     @media (max-width: 768px) { .hero-cta .hero-btn { width: 100%; justify-content: center; } }
 
-    /* Hero: asymmetrisk to-kolonne (tekst + video), erstatter sentrert-stabel */
-    .hero2-wrap {
-      max-width: 1280px; margin: 0 auto;
-      padding: clamp(56px,9vh,96px) clamp(20px,5vw,56px) clamp(64px,10vh,110px);
-      display: grid; grid-template-columns: 1fr 0.92fr; gap: clamp(40px,5vw,80px); align-items: center;
+    /* Hero: full-bleed foto med kobolt-duotone-tint og kurve i bunn */
+    .hero3 { position: relative; overflow: hidden; min-height: min(86vh,760px); display: flex; align-items: flex-end; }
+    .hero3-media { position: absolute; inset: 0; background-size: cover; background-position: center 35%; }
+    .hero3-media::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(155deg, #0B1F4A 0%, #1B34FF 100%);
+      mix-blend-mode: color; opacity: 0.9;
     }
-    .hero2-copy { text-align: left; }
-    .hero2-h1 {
-      font-family: 'neue-haas-grotesk-display','Archivo',sans-serif; font-weight: 800;
-      font-size: clamp(2.5rem,4.6vw,3.75rem); line-height: 1.02; letter-spacing: -0.035em;
-      color: #0E1116; margin-bottom: 24px;
+    .hero3-media::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(6,11,38,0.1) 0%, rgba(6,11,38,0.35) 45%, rgba(6,11,38,0.85) 100%);
     }
-    .hero2-lead { font-size: clamp(1rem,1.3vw,1.15rem); color: #5F6169; line-height: 1.6; max-width: 44ch; margin: 0; }
-    .hero2-cta { justify-content: flex-start; margin-top: 32px; }
-    .hero2-phone { display: flex; justify-content: flex-start; margin-top: 22px; }
-    .hero2-trust { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 28px; font-size: 0.8rem; color: #5F6169; }
-    .hero2-visual { position: relative; }
-    .hero2-visual::before {
-      content: ''; position: absolute; top: -16px; right: -16px; width: 65%; height: 65%;
-      background: radial-gradient(circle, rgba(27,52,255,0.18), transparent 70%);
-      filter: blur(24px); z-index: 0; pointer-events: none;
+    .hero3-curve {
+      position: absolute; left: 0; right: 0; bottom: -1px; height: clamp(40px,7vw,90px);
+      background: #FCFBF7; border-radius: 50% 50% 0 0 / 100% 100% 0 0; z-index: 1;
     }
-    .hero2-visual .video-frame { position: relative; z-index: 1; }
-    @media (max-width: 900px) {
-      .hero2-wrap { grid-template-columns: 1fr; padding-top: clamp(48px,8vh,72px); }
-      .hero2-copy { text-align: center; }
-      .hero2-lead { margin-left: auto; margin-right: auto; }
-      .hero2-cta, .hero2-phone, .hero2-trust { justify-content: center; }
+    .hero3-content {
+      position: relative; z-index: 2; width: 100%; max-width: 1240px; margin: 0 auto;
+      padding: clamp(64px,14vh,140px) clamp(20px,5vw,64px) clamp(96px,13vw,160px);
+    }
+    .hero3-h1 {
+      font-family: 'neue-haas-grotesk-display','Archivo',sans-serif; font-weight: 700;
+      font-size: clamp(2.75rem,6.4vw,5rem); line-height: 1.03; letter-spacing: -0.03em;
+      color: #FCFBF7; margin-bottom: 26px; max-width: 16ch;
+    }
+    .hero3-accent { color: transparent; -webkit-text-stroke: 2px #FCFBF7; paint-order: stroke fill; font-weight: 700; }
+    .hero3-lead { font-size: clamp(1rem,1.4vw,1.2rem); color: rgba(252,251,247,0.88); line-height: 1.6; max-width: 46ch; margin: 0 0 34px; }
+    .hero3-cta { justify-content: flex-start; margin-top: 0; }
+    .hero-btn.ghost-light { background: transparent; color: #fff; border-color: rgba(255,255,255,0.45); }
+    .hero-btn.ghost-light:hover { border-color: #fff; background: rgba(255,255,255,0.12); transform: translateY(-2px); }
+    .hero3-phone { display: flex; margin-top: 24px; }
+    .hero3-trust { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 30px; font-size: 0.8rem; color: rgba(252,251,247,0.85); }
+    @media (max-width: 640px) {
+      .hero3 { min-height: min(92vh,680px); }
+      .hero3-h1 { max-width: 100%; }
     }
 
     /* Chat-demo (kopiert fra style.css for sniktitt-seksjon) */
@@ -581,66 +588,70 @@
   <!-- ============================================== -->
   <!-- SEKSJON 1: HERO                                 -->
   <!-- ============================================== -->
-  <header class="dot-grid">
-    <div class="bg-gradient-to-b from-[#FCFBF7]/50 to-[#FCFBF7]">
-      <div class="hero2-wrap">
+  <header class="hero3">
+    <div class="hero3-media" style="background-image:url(../images/ai-nettsider-hero.jpg);"></div>
+    <div class="hero3-curve" aria-hidden="true"></div>
 
-        <div data-animate class="hero2-copy">
-          <h1 class="hero2-h1">
-            Kutt alle nettsidekostnader.<br>
-            <span class="outline-text">Få full kontroll selv.</span>
-          </h1>
+    <div class="hero3-content">
+      <div data-animate class="hero3-inner">
+        <h1 class="hero3-h1">
+          Kutt alle nettsidekostnader.<br>
+          <span class="hero3-accent">Få full kontroll selv.</span>
+        </h1>
 
-          <p class="hero2-lead">
-            Vi kopierer nettsiden du har eller bygger en helt ny. Du kan gjøre endringer på 60 sekunder med AI. Klar på under en uke.
-          </p>
+        <p class="hero3-lead">
+          Vi kopierer nettsiden du har eller bygger en helt ny. Du kan gjøre endringer på 60 sekunder med AI. Klar på under en uke.
+        </p>
 
-          <!-- CTA-knapper -->
-          <div class="hero-cta hero2-cta">
-            <a class="hero-btn primary" href="../kontakt/">Bestill gratis nettsideutkast
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </a>
-            <a class="hero-btn ghost" href="#demo-video" id="hero-play-btn">Se demovideo</a>
-          </div>
+        <!-- CTA-knapper -->
+        <div class="hero-cta hero3-cta">
+          <a class="hero-btn primary" href="../kontakt/">Bestill gratis nettsideutkast
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a class="hero-btn ghost-light" href="#demo-video">Se demovideo</a>
+        </div>
 
 <!-- Telefonnummer (Oppdatert til Alternativ 2) -->
-          <div class="hero2-phone">
-            <a href="tel:+4793439278" class="group inline-flex items-center gap-2.5 text-[0.95rem] font-medium text-[#1B34FF] hover:opacity-80 transition-all">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:rotate-12 group-hover:scale-110">
-                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
-              </svg>
-              <span>Eller ring oss direkte på 934 39 278</span>
-            </a>
-          </div>
-
-          <!-- Reassurance-strip -->
-          <div class="hero2-trust">
-            <span class="flex items-center gap-1.5">
-              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#16a34a" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
-              3+ års AI-utvikling
-            </span>
-            <span class="flex items-center gap-1.5">
-              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#16a34a" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
-              100&nbsp;% GDPR-sikret
-            </span>
-            <span class="flex items-center gap-1.5">
-              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#16a34a" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
-              0 skjulte kostnader
-            </span>
-          </div>
+        <div class="hero3-phone">
+          <a href="tel:+4793439278" class="group inline-flex items-center gap-2.5 text-[0.95rem] font-medium text-white hover:opacity-80 transition-all">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:rotate-12 group-hover:scale-110">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+            </svg>
+            <span>Eller ring oss direkte på 934 39 278</span>
+          </a>
         </div>
 
-        <div data-animate class="hero2-visual" id="demo-video">
-          <div class="video-frame lite-yt" id="lite-yt"
-               style="background-image:url(https://i.ytimg.com/vi/BvtSf8uGdMU/maxresdefault.jpg); background-size:cover; background-position:center;"
-               aria-label="Spill av demo-video">
-            <button class="play-btn" aria-label="Spill av"></button>
-          </div>
+        <!-- Reassurance-strip -->
+        <div class="hero3-trust">
+          <span class="flex items-center gap-1.5">
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#4ADE80" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
+            3+ års AI-utvikling
+          </span>
+          <span class="flex items-center gap-1.5">
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#4ADE80" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
+            100&nbsp;% GDPR-sikret
+          </span>
+          <span class="flex items-center gap-1.5">
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#4ADE80" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
+            0 skjulte kostnader
+          </span>
         </div>
-
       </div>
     </div>
   </header>
+
+  <!-- ============================================== -->
+  <!-- DEMO-VIDEO                                      -->
+  <!-- ============================================== -->
+  <section id="demo-video" class="px-6 pb-24 md:pb-32 pt-20 md:pt-28 bg-[#FCFBF7] scroll-mt-24">
+    <div class="max-w-[1000px] mx-auto">
+      <div data-animate class="video-frame lite-yt" id="lite-yt"
+           style="background-image:url(https://i.ytimg.com/vi/BvtSf8uGdMU/maxresdefault.jpg); background-size:cover; background-position:center;"
+           aria-label="Spill av demo-video">
+        <button class="play-btn" aria-label="Spill av"></button>
+      </div>
+    </div>
+  </section>
 
   <!-- ============================================== -->
   <!-- GRATIS HOSTING                                  -->
@@ -1298,15 +1309,6 @@
         yt.style.backgroundImage = 'none';
         yt.appendChild(iframe);
       }, { once: true });
-
-      const heroPlayBtn = document.getElementById('hero-play-btn');
-      if (heroPlayBtn) {
-        heroPlayBtn.addEventListener('click', function (e) {
-          e.preventDefault();
-          yt.click();
-          yt.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        });
-      }
     })();
 
     // Scroll-reveal (lettvekts IntersectionObserver — erstatter Motion.js)
