@@ -192,40 +192,23 @@
     .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; justify-content: center; }
     @media (max-width: 768px) { .hero-cta .hero-btn { width: 100%; justify-content: center; } }
 
-    /* Hero: full-bleed foto med kobolt-duotone-tint og kurve i bunn */
-    .hero3 { position: relative; overflow: hidden; min-height: min(86vh,760px); display: flex; align-items: flex-end; }
-    .hero3-media { position: absolute; inset: 0; background-size: cover; background-position: center 35%; }
-    .hero3-media::before {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(155deg, #0B1F4A 0%, #1B34FF 100%);
-      mix-blend-mode: color; opacity: 0.9;
+    /* Hero: sentrert tekst på varm papir, med tre sjekkpunkter under CTA */
+    .hero-intro { padding: clamp(72px,12vh,140px) clamp(20px,5vw,64px) clamp(64px,10vh,110px); }
+    .hero-intro-inner { max-width: 780px; margin: 0 auto; text-align: center; }
+    .hero-intro-h1 {
+      font-family: 'neue-haas-grotesk-display','Archivo',sans-serif; font-weight: 800;
+      font-size: clamp(2.5rem,6vw,4.25rem); line-height: 1.05; letter-spacing: -0.03em;
+      color: #1B34FF; margin-bottom: 24px;
     }
-    .hero3-media::after {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(180deg, rgba(6,11,38,0.1) 0%, rgba(6,11,38,0.35) 45%, rgba(6,11,38,0.85) 100%);
+    .hero-intro-lead { font-size: clamp(1.05rem,1.6vw,1.25rem); color: #5F6169; line-height: 1.6; max-width: 56ch; margin: 0 auto 40px; }
+    .hero-intro .hero-cta { justify-content: center; margin-top: 0; margin-bottom: 40px; }
+    .hero-intro-checks { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 32px; }
+    .hero-intro-check { display: inline-flex; align-items: center; gap: 10px; font-size: 0.95rem; font-weight: 500; color: #0E1116; }
+    .hero-intro-check .badge {
+      width: 24px; height: 24px; border-radius: 50%; background: #ECEEFF;
+      display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
-    .hero3-curve {
-      position: absolute; left: 0; right: 0; bottom: -1px; height: clamp(40px,7vw,90px);
-      background: #FCFBF7; border-radius: 50% 50% 0 0 / 100% 100% 0 0; z-index: 1;
-    }
-    .hero3-content {
-      position: relative; z-index: 2; width: 100%; max-width: 1240px; margin: 0 auto;
-      padding: clamp(64px,14vh,140px) clamp(20px,5vw,64px) clamp(96px,13vw,160px);
-    }
-    .hero3-h1 {
-      font-family: 'neue-haas-grotesk-display','Archivo',sans-serif; font-weight: 700;
-      font-size: clamp(2.75rem,6.4vw,5rem); line-height: 1.03; letter-spacing: -0.03em;
-      color: #FCFBF7; margin-bottom: 26px; max-width: 16ch;
-    }
-    .hero3-accent { color: transparent; -webkit-text-stroke: 2px #FCFBF7; paint-order: stroke fill; font-weight: 700; }
-    .hero3-lead { font-size: clamp(1rem,1.4vw,1.2rem); color: rgba(252,251,247,0.88); line-height: 1.6; max-width: 46ch; margin: 0 0 34px; }
-    .hero3-cta { justify-content: flex-start; margin-top: 0; }
-    .hero-btn.ghost-light { background: transparent; color: #fff; border-color: rgba(255,255,255,0.45); }
-    .hero-btn.ghost-light:hover { border-color: #fff; background: rgba(255,255,255,0.12); transform: translateY(-2px); }
-    @media (max-width: 640px) {
-      .hero3 { min-height: min(92vh,680px); }
-      .hero3-h1 { max-width: 100%; }
-    }
+    .hero-intro-check .badge svg { width: 13px; height: 13px; }
 
     /* Chat-demo (kopiert fra style.css for sniktitt-seksjon) */
     .demo-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(30px,5vw,72px); align-items: center; }
@@ -586,28 +569,38 @@
   <!-- ============================================== -->
   <!-- SEKSJON 1: HERO                                 -->
   <!-- ============================================== -->
-  <header class="hero3">
-    <div class="hero3-media" style="background-image:url(../images/ai-nettsider-hero.jpg);"></div>
-    <div class="hero3-curve" aria-hidden="true"></div>
+  <header class="hero-intro dot-grid">
+    <div class="hero-intro-inner" data-animate>
+      <h1 class="hero-intro-h1">
+        Bli helt selvgående<br>med nettsiden din.
+      </h1>
 
-    <div class="hero3-content">
-      <div data-animate class="hero3-inner">
-        <h1 class="hero3-h1">
-          Kutt alle nettsidekostnader.<br>
-          <span class="hero3-accent">Få full kontroll selv.</span>
-        </h1>
+      <p class="hero-intro-lead">
+        Vi bygger nettsiden din og lærer deg å oppdatere den selv med AI, på vanlig norsk. Betal én gang, og du trenger aldri et webbyrå igjen.
+      </p>
 
-        <p class="hero3-lead">
-          Vi kopierer nettsiden du har eller bygger en helt ny. Du kan gjøre endringer på 60 sekunder med AI. Klar på under en uke.
-        </p>
+      <!-- CTA-knapper -->
+      <div class="hero-cta">
+        <a class="hero-btn primary" href="../kontakt/">Bestill gratis nettsideutkast
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a class="hero-btn ghost" href="#demo-video">Se demovideo</a>
+      </div>
 
-        <!-- CTA-knapper -->
-        <div class="hero-cta hero3-cta">
-          <a class="hero-btn primary" href="../kontakt/">Bestill gratis nettsideutkast
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </a>
-          <a class="hero-btn ghost-light" href="#demo-video">Se demovideo</a>
-        </div>
+      <!-- Tre sjekkpunkter -->
+      <div class="hero-intro-checks">
+        <span class="hero-intro-check">
+          <i class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="#1B34FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></i>
+          Engangssum. Aldri mer å betale.
+        </span>
+        <span class="hero-intro-check">
+          <i class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="#1B34FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></i>
+          Endre selv, på minutter.
+        </span>
+        <span class="hero-intro-check">
+          <i class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="#1B34FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></i>
+          Live på eget domene på 15 min.
+        </span>
       </div>
     </div>
   </header>
