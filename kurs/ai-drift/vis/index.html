@@ -51,6 +51,23 @@
           var frame = document.getElementById('modulramme');
           frame.onload = function () {
             try { frame.style.height = frame.contentWindow.document.body.scrollHeight + 'px'; } catch (e) { frame.style.height = '100vh'; }
+            try {
+              frame.contentWindow.document.addEventListener('click', function (e) {
+                var a = e.target.closest && e.target.closest('a[href]');
+                if (!a) return;
+                var href = a.getAttribute('href');
+                if (href === '../' || href === '..') {
+                  e.preventDefault();
+                  window.top.location.href = '/kurs/ai-drift/';
+                  return;
+                }
+                var m = href.match(/^\.\.\/([a-z0-9-]+)\/?$/);
+                if (m) {
+                  e.preventDefault();
+                  window.top.location.href = '/kurs/ai-drift/vis/?modul=' + m[1];
+                }
+              }, true);
+            } catch (e) {}
           };
           frame.srcdoc = res.d.html;
           frame.style.display = 'block';
