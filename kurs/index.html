@@ -409,9 +409,11 @@
 
       <script src="/kurs/ai-drift/moduler.js?v=20260818"></script>
       <script>
-      (function () {
+      (async function () {
         var el = document.getElementById('ai-drift-seksjon');
         if (!el) return;
+        // Sjekk fersk tilgang mot serveren først, i tilfelle den ble gitt etter siste innlogging.
+        if (window.kursRefreshEntitlements) { await window.kursRefreshEntitlements(); }
         var moduler = window.AI_DRIFT_MODULER || [];
         var harTilgang = (typeof window.kursHarTilgang === 'function') && window.kursHarTilgang('ai-drift');
 

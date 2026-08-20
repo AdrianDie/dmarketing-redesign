@@ -23,10 +23,12 @@
   <iframe id="modulramme" title="Modulinnhold"></iframe>
 
   <script>
-    (function () {
+    (async function () {
       var WORKER = 'https://kurs-auth-worker.dietrichs-mkt.workers.dev';
       var s = window.kursSession;
 
+      // Sjekk fersk tilgang mot serveren først, i tilfelle den ble gitt etter siste innlogging.
+      if (window.kursRefreshEntitlements) { await window.kursRefreshEntitlements(); }
       if (!window.kursHarTilgang || !window.kursHarTilgang('ai-drift')) {
         window.location.replace('/kurs/ai-drift/las-opp/');
         return;

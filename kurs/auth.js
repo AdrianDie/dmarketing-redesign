@@ -54,4 +54,26 @@
   window.kursHarTilgang = function (ent) {
     return !!(session && Array.isArray(session.entitlements) && session.entitlements.indexOf(ent) !== -1);
   };
+
+  // Henter fersk rettighetsliste fra serveren og oppdaterer den mellomlagrede
+  // økten. Bruk denne rett før en kursHarTilgang-sjekk som avgjør om noe låses,
+  // sesjonen kan ellers være opptil 8 timer gammel og gjenspeile en tilgang
+  // som er gitt etter siste innlogging. Feiler kallet, beholdes eksisterende
+  // (mulig utdaterte) rettigheter uendret, ingen utlogging eller feilmelding.
+  window.kursRefreshEntitlements = function () {
+    if (!session || !session.email || !session.hash) return Promise.resolve(false);
+    return fetch('https://kurs-auth-worker.dietrichs-mkt.workers.dev/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: session.email, hash: session.hash })
+    })
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        if (!data.ok) return false;
+        session.entitlements = data.entitlements || [];
+        localStorage.setItem(TOKEN_KEY, JSON.stringify(session));
+        return true;
+      })
+      .catch(function () { return false; });
+  };
 })();

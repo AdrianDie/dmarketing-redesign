@@ -21,9 +21,13 @@
 <body>
   <script>
     // Port: uten ai-drift-tilgang → send til lås-opp-siden.
-    if (!window.kursHarTilgang || !window.kursHarTilgang('ai-drift')) {
-      window.location.replace('/kurs/ai-drift/las-opp/');
-    }
+    // Sjekk fersk tilgang mot serveren først, i tilfelle den ble gitt etter siste innlogging.
+    (async function () {
+      if (window.kursRefreshEntitlements) { await window.kursRefreshEntitlements(); }
+      if (!window.kursHarTilgang || !window.kursHarTilgang('ai-drift')) {
+        window.location.replace('/kurs/ai-drift/las-opp/');
+      }
+    })();
   </script>
 
   <header class="dot-grid border-b border-zinc-100">
