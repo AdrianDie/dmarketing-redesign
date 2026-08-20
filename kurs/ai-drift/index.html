@@ -52,9 +52,11 @@
           '<span class="ml-auto text-xs text-zinc-400">' + (m.min || 6) + ' min</span>' +
         '</div>' +
         '<h3 class="font-display font-bold text-xl text-ink mb-2"></h3>' +
-        '<p class="text-sm text-zinc-600"></p>';
+        '<p class="text-sm text-zinc-600" data-desc></p>' +
+        (m.teknologi ? '<p class="mt-2 text-xs text-zinc-400" data-tek></p>' : '');
       a.querySelector('h3').textContent = m.tittel;
-      a.querySelector('p').textContent = m.desc;
+      a.querySelector('[data-desc]').textContent = m.desc;
+      if (m.teknologi) { a.querySelector('[data-tek]').textContent = 'Teknologi: ' + m.teknologi; }
       grid.appendChild(a);
     });
   </script>
