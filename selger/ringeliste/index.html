@@ -265,6 +265,32 @@
     }
   });
 
+  // Bransjer der noe ved nettside-behovet er verdt et heads-up foer man ringer.
+  // To slags grunner: (1) trenger trolig en dynamisk loesning, ikke lov 3 900 kr
+  // blindt, (2) har ofte allerede en nettside fra en annen leverandoer, saa
+  // salget er tyngre enn vanlig. Sjekkes mot starten av bunkenavnet
+  // ("Bransje - Region"). Utvid ved behov.
+  var BRANSJE_VARSEL = {
+    'Blomster': {
+      label: 'Kan være dynamisk',
+      hvorfor: 'Mange selger med levering og kan trenge en nettbutikk. Ikke lov 3 900 kr uten å sjekke.'
+    },
+    'Treningssenter': {
+      label: 'Kan være dynamisk',
+      hvorfor: 'Medlemskap med betaling og timeplanbooking er vanlig her, kan trenge mer enn en statisk side. Ikke lov 3 900 kr uten å sjekke.'
+    },
+    'Frisør': {
+      label: 'Få interesserte',
+      hvorfor: 'Mange får en nettside inkludert fra bookingsystem-leverandøren sin (f.eks. Booqi, Timma). Tyngre salg, ikke umulig, spør hva de faktisk har i dag.'
+    }
+  };
+  function bransjeVarsel(navn) {
+    for (var pre in BRANSJE_VARSEL) {
+      if (navn.indexOf(pre) === 0) return BRANSJE_VARSEL[pre];
+    }
+    return null;
+  }
+
   function tegnBunker() {
     API.bunker().then(function (bunker) {
       var el = document.getElementById('bunkeliste');
@@ -290,6 +316,17 @@
           ? '<span class="inline-flex items-center text-[12px] font-medium text-brand bg-blue-50 border border-blue-200 rounded-md px-2 py-0.5 mb-2">Din bunke</span><br>'
           : '';
 
+        var varsel = bransjeVarsel(b.navn);
+        var dynVarsel = varsel
+          ? '<span class="inline-flex items-center gap-1 text-[12px] font-medium text-amber-800 bg-amber-50 ' +
+            'border border-amber-200 rounded-md px-2 py-0.5 mb-2" title="' + esc(varsel.hvorfor) + '">' +
+            '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" ' +
+            'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+            '<path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>' +
+            '<line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>' +
+            esc(varsel.label) + '</span><br>'
+          : '';
+
         return '<button type="button" data-bunke="' + esc(b.navn) + '" ' +
           (kanKlikke ? '' : 'disabled ') +
           'class="inn text-left rounded-2xl border p-5 transition-colors ' +
@@ -298,6 +335,7 @@
             : 'border-line bg-white opacity-50 cursor-not-allowed') + '" ' +
           'style="animation-delay:' + (i * 40) + 'ms">' +
             merke +
+            dynVarsel +
             '<span class="block font-display font-bold text-[17px] tracking-[-0.01em] mb-1">' + esc(b.navn) + '</span>' +
             '<span class="block text-sm text-mute mb-3 tall">' + undertekst + '</span>' +
             '<span class="block h-1.5 rounded-full ' + (laast ? 'bg-red-100' : 'bg-zinc-100') + ' overflow-hidden">' +
