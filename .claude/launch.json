@@ -108,6 +108,42 @@
       "runtimeExecutable": "python",
       "runtimeArgs": ["-m", "http.server", "8103", "--directory", "C:/Users/adria/website-mirrors/dmarketing-kurs-premium"],
       "port": 8103
+    },
+    {
+      "name": "skullerudflyttebyraa-redesign",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8104", "--directory", "C:/Users/adria/website-mirrors/skullerudflyttebyraa-redesign"],
+      "port": 8104
+    },
+    {
+      "name": "dinflytting-redesign",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8105", "--directory", "C:/Users/adria/website-mirrors/dinflytting-redesign"],
+      "port": 8105
+    },
+    {
+      "name": "haugesund-flyttebyraa-redesign",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8106", "--directory", "C:/Users/adria/website-mirrors/haugesund-flyttebyraa-redesign"],
+      "port": 8106
+    },
+    {
+      "name": "bergentransport-redesign",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8107", "--directory", "C:/Users/adria/website-mirrors/bergentransport-redesign"],
+      "port": 8107
+    },
+    {
+      "name": "jarle-boyum-flyttetjenester-redesign",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8108", "--directory", "C:/Users/adria/website-mirrors/jarle-boyum-flyttetjenester-redesign"],
+      "port": 8108
+    },
+    {
+      "name": "dmarketing-redesign-verify",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "5099", "--directory", "C:/Users/adria/website-mirrors/dmarketing-redesign"],
+      "port": 5099
     }
   ]
 }

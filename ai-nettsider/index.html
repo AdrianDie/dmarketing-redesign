@@ -14,10 +14,106 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Dietrichs Marketing",
-    "url": "https://dmarketing.no",
-    "logo": "https://dmarketing.no/assets/ms-icon-256x256.png"
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://dmarketing.no/#organization",
+        "name": "Dietrichs Marketing",
+        "url": "https://dmarketing.no",
+        "logo": "https://dmarketing.no/assets/ms-icon-256x256.png",
+        "description": "Dietrichs Marketing bygger AI-drevne nettsider og apputvikling for norske bedrifter. Vi gjør bedriften din mer lønnsom med moderne teknologi.",
+        "email": "adrian@dmarketing.no",
+        "telephone": "+47 93 43 92 78",
+        "founder": { "@id": "https://dmarketing.no/#adrian" },
+        "areaServed": "NO",
+        "sameAs": [
+          "https://share.google/fHS39JqgLBA2hwzly",
+          "https://no.linkedin.com/company/dietrichs-marketing",
+          "https://listings.no/b/928758737"
+        ]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://dmarketing.no/#adrian",
+        "name": "Adrian Dietrichs",
+        "jobTitle": "Daglig leder og teknisk ansvarlig",
+        "worksFor": { "@id": "https://dmarketing.no/#organization" },
+        "url": "https://dmarketing.no",
+        "sameAs": [
+          "https://www.linkedin.com/in/adrian-dietrichs/",
+          "https://www.dt.no/adrian-startet-eget-selskap-da-han-fylte-18-ar-foler-jeg-har-en-meningsfull-jobb/s/5-57-1923437"
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Hva er inkludert i engangsbetalingen?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Hele nettsiden, alle filer og design, ferdig satt opp og publisert på ditt eget domene, pluss tilgang til et kort kurs som lærer deg å styre og endre siden selv. Én betaling, uten bindinger."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Er det noen løpende kostnader?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Nei, ingen løpende kostnader til oss for hosting eller vedlikehold. Siden kjører på gratis, driftssikker hosting (samme infrastruktur som store teknologiselskaper bruker). Det eneste du fortsatt betaler for, er fornyelsen av ditt eget domene, noe du uansett betaler for i dag."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Hvordan kobles nettsiden til domenet mitt?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Eier du domenet fra før, peker vi det bare til den nye siden ved å endre en enkel DNS-innstilling hos domeneleverandøren din. Vi guider deg gjennom det, eller gjør det sammen på en telefon. Det tar noen få minutter."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Får jeg full eierskap til nettsiden og alle filene?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ja, 100 %. Du eier hver eneste fil, og alt ligger under din egen konto. Ingenting er låst til oss."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Hvis dere slutter å tilby tjenesten, vil siden fortsette å fungere?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ja. Fordi siden ligger på din egen konto og du eier alle filene, fortsetter den å kjøre som normalt uansett. Du er aldri avhengig av oss for å være på nett."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Hvor enkelt er det å gjøre endringer selv etter kurset?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Daglige endringer (tekst, priser, bilder, åpningstider) er enkelt, og kurset viser deg nøyaktig hvordan. De fleste kunder er komfortable etter å ha gått gjennom det én gang."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Kan jeg legge til nye sider eller funksjoner selv senere?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ja, du kan gjøre det selv med det du lærer i kurset. Og fordi siden er bygget på standard, åpen teknologi, ikke en låst plattform, kan du når som helst leie inn hvem du vil for større endringer. Du er aldri bundet til oss."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Hva er den største forskjellen på lang sikt?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Du betaler én gang, du eier alt, det er ingen løpende avgifter til oss, og du blir aldri låst inne, i motsetning til de fleste abonnementsbaserte løsninger."
+            }
+          }
+        ]
+      }
+    ]
   }
   </script>
 
