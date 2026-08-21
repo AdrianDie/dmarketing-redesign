@@ -172,6 +172,18 @@
     </div>
   </section>
 
+  <!-- MILEPAELER
+       Firmaets egne nyheter (nye partnere o.l.), atskilt fra ringeloggen over
+       saa den ikke blander seg med selgerens personlige takt. Skjult naar tom. -->
+  <section id="milepaeler" class="hidden mb-9" aria-labelledby="mile-h">
+    <h2 id="mile-h" class="font-display font-bold text-[13px] uppercase tracking-[0.1em] text-mute mb-3">
+      Milepæler
+    </h2>
+    <div class="kort rounded-2xl border border-line bg-white px-5 sm:px-6 py-1.5" style="animation-delay:70ms">
+      <ul id="mile-liste"></ul>
+    </div>
+  </section>
+
   <!-- AKTIVITET -->
   <section class="mb-9" aria-labelledby="aktivitet-h">
     <h2 id="aktivitet-h" class="font-display font-bold text-[13px] uppercase tracking-[0.1em] text-mute mb-3">Aktivitet</h2>
@@ -483,6 +495,34 @@
           liste.appendChild(li);
         });
         document.getElementById('kvittering').classList.remove('hidden');
+      }
+
+      // MILEPAELER. Firmaets egne nyheter, ikke selgerens ringeaktivitet.
+      var mileRader = t.milepaeler || [];
+      if (mileRader.length) {
+        var mileListe = document.getElementById('mile-liste');
+        mileRader.forEach(function (r, i) {
+          var li = document.createElement('li');
+          li.className = 'flex items-center gap-3 py-3.5' + (i ? ' border-t border-line' : '');
+
+          var prikk = document.createElement('span');
+          prikk.className = 'shrink-0 w-2 h-2 rounded-full bg-brand';
+          prikk.setAttribute('aria-hidden', 'true');
+          li.appendChild(prikk);
+
+          var tekst = document.createElement('span');
+          tekst.className = 'text-[15px] min-w-0';
+          tekst.textContent = r.tekst;
+          li.appendChild(tekst);
+
+          var tid = document.createElement('span');
+          tid.className = 'ml-auto shrink-0 text-[13px] text-mute tall';
+          tid.textContent = Fmt.pentDato(r.dato);
+          li.appendChild(tid);
+
+          mileListe.appendChild(li);
+        });
+        document.getElementById('milepaeler').classList.remove('hidden');
       }
     }).catch(function () {
       document.getElementById('undertekst').textContent =

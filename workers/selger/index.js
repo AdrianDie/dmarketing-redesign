@@ -548,6 +548,7 @@ async function hentTall(env, selger) {
   // velte selve dashbordet, saa alt her ligger bak try/catch med trygge nullverdier.
   let maalestokk = { naadd_totalt: 0, naadd_siden_booking: 0 };
   let hendelser = [];
+  let milepaeler = [];
   try {
     // Maalestokken er selgerens EGEN rytme, aldri lagets. Et felles snitt er en
     // skjult rangering: den svakeste ligger alltid over det, den sterkeste under.
@@ -574,6 +575,12 @@ async function hentTall(env, selger) {
     ).bind(e).all()).results.map(r => ({
       bedrift: r.bedrift, status: r.status, dato: r.naar || '',
     }));
+
+    // Firmaets egne nyheter (nye partnere o.l.), samme for alle selgere,
+    // ikke knyttet til selger-attribusjon slik bookinger er.
+    milepaeler = (await env.DB.prepare(
+      'SELECT dato, tekst FROM milepaeler ORDER BY dato DESC, id DESC LIMIT 6'
+    ).all()).results;
   } catch (_) {
     // en manglende status_dato-kolonne eller lignende skal bare gi tomme moduler
   }
@@ -597,6 +604,7 @@ async function hentTall(env, selger) {
     naadd_totalt: maalestokk.naadd_totalt,
     naadd_siden_booking: maalestokk.naadd_siden_booking,
     hendelser,
+    milepaeler,
   };
 }
 
