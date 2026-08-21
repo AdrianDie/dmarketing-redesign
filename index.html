@@ -136,7 +136,7 @@ section[class*="overflow-hidden"]{contain:paint;}
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Organization",
+      "@type": ["Organization", "LocalBusiness"],
       "@id": "https://dmarketing.no/#organization",
       "name": "Dietrichs Marketing",
       "url": "https://dmarketing.no",
@@ -144,6 +144,20 @@ section[class*="overflow-hidden"]{contain:paint;}
       "description": "Dietrichs Marketing bygger AI-drevne nettsider og apputvikling for norske bedrifter. Vi gjør bedriften din mer lønnsom med moderne teknologi.",
       "email": "adrian@dmarketing.no",
       "telephone": "+47 93 43 92 78",
+      "priceRange": "3900 kr",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "bestRating": "5",
+        "reviewCount": "6"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Sommerfrydveien 16",
+        "postalCode": "3014",
+        "addressLocality": "Drammen",
+        "addressCountry": "NO"
+      },
       "founder": { "@id": "https://dmarketing.no/#adrian" },
       "areaServed": "NO",
       "sameAs": [
