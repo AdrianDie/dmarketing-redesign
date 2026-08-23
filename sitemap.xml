@@ -25,6 +25,60 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://dmarketing.no/programvareutvikling/</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://dmarketing.no/personvern/</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://dmarketing.no/vilkar/</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://dmarketing.no/en/</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://dmarketing.no/en/ai-websites/</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://dmarketing.no/en/software-development/</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://dmarketing.no/en/contact/</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dmarketing.no/en/privacy-policy/</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://dmarketing.no/en/terms/</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
     <loc>https://dmarketing.no/artikler/bedrift-overst-google-lokalt-sok.html</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>monthly</changefreq>

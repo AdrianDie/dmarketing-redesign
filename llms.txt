@@ -2,6 +2,17 @@
 
 > AI-nettsider for norske bedrifter. Engangskostnad, 100 % eierskap, ingen faste byråkostnader.
 
+## English version
+
+This site is primarily in Norwegian (Bokmål), the default language for dmarketing.no. An English version of the core marketing pages is available at /en/ for international readers and AI answer engines:
+
+- [Homepage](https://dmarketing.no/en/): Software development and AI for Norwegian businesses
+- [AI Websites](https://dmarketing.no/en/ai-websites/): Own your website 100%, update it in 60 seconds with AI, no agency costs
+- [Software Development](https://dmarketing.no/en/software-development/): Custom apps, tools, and AI solutions for Norwegian businesses
+- [Contact](https://dmarketing.no/en/contact/)
+- [Privacy Policy](https://dmarketing.no/en/privacy-policy/)
+- [Terms and Conditions](https://dmarketing.no/en/terms/)
+
 ## Hva vi gjør
 
 Dietrichs Marketing bygger lynraske, AI-klare nettsider som norske små og mellomstore bedrifter eier selv. Kunden oppdaterer innholdet på 60 sekunder ved å chatte med en AI: uten kode, uten byrå, uten månedlige avgifter.

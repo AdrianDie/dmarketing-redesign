@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="no">
+<html lang="en">
 <head>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-9MZXTCLH1H"></script>
   <script>
@@ -28,8 +28,8 @@
           +'@media(max-width:640px){#dm-cc .dm-cc-in{flex-direction:column;align-items:flex-start;padding:16px 18px}#dm-cc .dm-cc-btns{width:100%}#dm-cc button{flex:1}}';
         var st=document.createElement('style'); st.textContent=css; document.head.appendChild(st);
         var bar=document.createElement('div'); bar.id='dm-cc';
-        bar.setAttribute('role','dialog'); bar.setAttribute('aria-label','Samtykke til informasjonskapsler');
-        bar.innerHTML='<div class="dm-cc-in"><p>Vi bruker informasjonskapsler for analyse og annonsering for å forbedre nettsiden. Nødvendige kapsler er alltid på. Les mer i <a href="https://dmarketing.no/personvern/">personvernerklæringen</a>.</p><div class="dm-cc-btns"><button type="button" class="dm-cc-no">Bare nødvendige</button><button type="button" class="dm-cc-yes">Godta alle</button></div></div>';
+        bar.setAttribute('role','dialog'); bar.setAttribute('aria-label','Cookie consent');
+        bar.innerHTML='<div class="dm-cc-in"><p>We use cookies for analytics and advertising to improve the website. Necessary cookies are always on. Read more in the <a href="https://dmarketing.no/en/privacy-policy/">privacy policy</a>.</p><div class="dm-cc-btns"><button type="button" class="dm-cc-no">Necessary only</button><button type="button" class="dm-cc-yes">Accept all</button></div></div>';
         document.body.appendChild(bar);
         function close(val){ try{localStorage.setItem(KEY,val);}catch(e){} if(val==='granted'){grant();} if(bar.parentNode){bar.parentNode.removeChild(bar);} }
         bar.querySelector('.dm-cc-yes').addEventListener('click',function(){close('granted');});
@@ -43,21 +43,21 @@
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Personvernerklæring | Dietrichs Marketing</title>
-  <meta name="description" content="Personvernerklæring for Dietrichs Marketing – hvordan vi samler inn og behandler personopplysninger." />
-  <link rel="canonical" href="https://dmarketing.no/personvern/" />
+  <title>Privacy Policy | Dietrichs Marketing</title>
+  <meta name="description" content="Privacy policy for Dietrichs Marketing: how we collect and process personal data." />
+  <link rel="canonical" href="https://dmarketing.no/en/privacy-policy/" />
   <link rel="alternate" hreflang="no" href="https://dmarketing.no/personvern/" />
   <link rel="alternate" hreflang="en" href="https://dmarketing.no/en/privacy-policy/" />
   <link rel="alternate" hreflang="x-default" href="https://dmarketing.no/personvern/" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Personvernerklæring | Dietrichs Marketing" />
-  <meta property="og:description" content="Hvordan Dietrichs Marketing samler inn og behandler personopplysninger." />
-  <meta property="og:url" content="https://dmarketing.no/personvern/" />
-  <link rel="stylesheet" href="../tailwind-compiled.css" />
+  <meta property="og:title" content="Privacy Policy | Dietrichs Marketing" />
+  <meta property="og:description" content="How Dietrichs Marketing collects and processes personal data." />
+  <meta property="og:url" content="https://dmarketing.no/en/privacy-policy/" />
+  <link rel="stylesheet" href="/tailwind-compiled.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link href="../assets/ms-icon-256x256.png" rel="shortcut icon" type="image/x-icon" />
+  <link href="/assets/ms-icon-256x256.png" rel="shortcut icon" type="image/x-icon" />
   <style>
     body { font-family: 'neue-haas-grotesk-text', 'Schibsted Grotesk', system-ui, sans-serif; background: #FAFAFA; color: #09090B; }
     .font-display { font-family: 'Archivo', sans-serif; }
@@ -134,24 +134,24 @@
   <link rel="stylesheet" href="/css/dm-chrome.css">
 </head>
 <body>
-<div class="dm-chrome"><header class="sticky top-0 z-40 bg-white/90 backdrop-blur-sm"><nav class="max-w-[1440px] mx-auto flex items-center justify-between px-4 h-16"><div class="flex items-center gap-10"><a href="/" class="flex items-center gap-2 group/logo flex-shrink-0"><img src="/assets/ms-icon-256x256.png" style="width:34px;height:34px;flex-shrink:0;" alt="Dietrichs Marketing logo"> <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:20px;letter-spacing:0.01em;text-transform:uppercase;color:#0E1116;white-space:nowrap;">Dietrichs <span style="color:#1B34FF;">marketing</span><span class="sr-only">Dietrichs Marketing</span></div></a></div> <div class="hidden md:flex items-center gap-4"><ul class="hidden md:flex items-center gap-6 text-sm text-nav"><li><a href="/programvareutvikling/" class="hover:text-grey-900 transition-colors">Programvareutvikling</a></li><li><a href="/ai-nettsider/" class="hover:text-grey-900 transition-colors">AI-nettsider</a></li><li><a href="https://dmarketing.no/en/privacy-policy/" class="hover:text-grey-900 transition-colors">EN</a></li></ul>  <!----><a href="/kontakt/" type="button" class="cursor-pointer transition-[background-color,border-color] duration-150 ease-out bg-blue-500 border-blue-500 hover:bg-blue-600 hover:border-blue-600 active:bg-blue-700 active:border-blue-700 text-white disabled:bg-grey-200 disabled:border-grey-200 disabled:text-grey-400 h-8 pl-3 pr-3 gap-2 text-xs focus-visible:outline-focus rounded-lg font-normal justify-center border inline-flex items-center whitespace-nowrap" disabled="false"><!--[-1--><!--]--> <!--[0--><!--[-1--><!---->Ta kontakt<!----><!--]--><!--]--> <!--[-1--><!--]--> <!--[-1--><!--]--><!----></a><!----><!----></div> <button type="button" class="md:hidden flex items-center justify-center size-8 -mr-1.5" aria-label="Open menu" aria-expanded="false"><!--[-1--><span class="flex flex-col gap-1.5"><span class="block h-0.5 w-6 bg-grey-900 rounded-sm"></span> <span class="block h-0.5 w-6 bg-grey-900 rounded-sm"></span> <span class="block h-0.5 w-6 bg-grey-900 rounded-sm"></span></span><!--]--></button></nav> <!--[-1--><!--]--></header></div>
+<div class="dm-chrome"><header class="sticky top-0 z-40 bg-white/90 backdrop-blur-sm"><nav class="max-w-[1440px] mx-auto flex items-center justify-between px-4 h-16"><div class="flex items-center gap-10"><a href="/en/" class="flex items-center gap-2 group/logo flex-shrink-0"><img src="/assets/ms-icon-256x256.png" style="width:34px;height:34px;flex-shrink:0;" alt="Dietrichs Marketing logo"> <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:20px;letter-spacing:0.01em;text-transform:uppercase;color:#0E1116;white-space:nowrap;">Dietrichs <span style="color:#1B34FF;">marketing</span><span class="sr-only">Dietrichs Marketing</span></div></a></div> <div class="hidden md:flex items-center gap-4"><ul class="hidden md:flex items-center gap-6 text-sm text-nav"><li><a href="/en/software-development/" class="hover:text-grey-900 transition-colors">Software Development</a></li><li><a href="/en/ai-websites/" class="hover:text-grey-900 transition-colors">AI Websites</a></li><li><a href="https://dmarketing.no/personvern/" class="hover:text-grey-900 transition-colors">NO</a></li></ul>  <!----><a href="/en/contact/" type="button" class="cursor-pointer transition-[background-color,border-color] duration-150 ease-out bg-blue-500 border-blue-500 hover:bg-blue-600 hover:border-blue-600 active:bg-blue-700 active:border-blue-700 text-white disabled:bg-grey-200 disabled:border-grey-200 disabled:text-grey-400 h-8 pl-3 pr-3 gap-2 text-xs focus-visible:outline-focus rounded-lg font-normal justify-center border inline-flex items-center whitespace-nowrap" disabled="false"><!--[-1--><!--]--> <!--[0--><!--[-1--><!---->Contact<!----><!--]--><!--]--> <!--[-1--><!--]--> <!--[-1--><!--]--><!----></a><!----><!----></div> <button type="button" class="md:hidden flex items-center justify-center size-8 -mr-1.5" aria-label="Open menu" aria-expanded="false"><!--[-1--><span class="flex flex-col gap-1.5"><span class="block h-0.5 w-6 bg-grey-900 rounded-sm"></span> <span class="block h-0.5 w-6 bg-grey-900 rounded-sm"></span> <span class="block h-0.5 w-6 bg-grey-900 rounded-sm"></span></span><!--]--></button></nav> <!--[-1--><!--]--></header></div>
 <div class="dmc-fs-menu" id="dmc-fs-menu" role="dialog" aria-modal="true" aria-hidden="true">
   <div class="dmc-fs-top">
-    <a class="dmc-fs-logo" href="/">
+    <a class="dmc-fs-logo" href="/en/">
       <img src="/assets/ms-icon-256x256.png" alt="">
       <span class="dmc-fs-logo-word">Dietrichs <b>marketing</b></span>
     </a>
-    <button class="dmc-fs-close" id="dmc-fs-close" aria-label="Lukk meny">
+    <button class="dmc-fs-close" id="dmc-fs-close" aria-label="Close menu">
       <svg viewBox="0 0 24 24" fill="none"><path d="M18 6 6 18M6 6l12 12" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/></svg>
     </button>
   </div>
   <nav class="dmc-fs-nav">
-    <a href="/programvareutvikling/">Programvareutvikling<svg width="1.5" viewBox="0 0 94 67" fill="currentColor"><path d="M60.7333 66.112L58.0667 63.5786L86.4667 35.1786H0.600006V31.4453H86.6L58.2 3.0453L60.7333 0.511963L93.5333 33.312L60.7333 66.112Z"/></svg></a>
-    <a href="/ai-nettsider/">AI-nettsider<svg width="1.5" viewBox="0 0 94 67" fill="currentColor"><path d="M60.7333 66.112L58.0667 63.5786L86.4667 35.1786H0.600006V31.4453H86.6L58.2 3.0453L60.7333 0.511963L93.5333 33.312L60.7333 66.112Z"/></svg></a>
-    <a href="https://dmarketing.no/en/privacy-policy/">English (EN)<svg width="1.5" viewBox="0 0 94 67" fill="currentColor"><path d="M60.7333 66.112L58.0667 63.5786L86.4667 35.1786H0.600006V31.4453H86.6L58.2 3.0453L60.7333 0.511963L93.5333 33.312L60.7333 66.112Z"/></svg></a>
+    <a href="/en/software-development/">Software Development<svg width="1.5" viewBox="0 0 94 67" fill="currentColor"><path d="M60.7333 66.112L58.0667 63.5786L86.4667 35.1786H0.600006V31.4453H86.6L58.2 3.0453L60.7333 0.511963L93.5333 33.312L60.7333 66.112Z"/></svg></a>
+    <a href="/en/ai-websites/">AI Websites<svg width="1.5" viewBox="0 0 94 67" fill="currentColor"><path d="M60.7333 66.112L58.0667 63.5786L86.4667 35.1786H0.600006V31.4453H86.6L58.2 3.0453L60.7333 0.511963L93.5333 33.312L60.7333 66.112Z"/></svg></a>
+    <a href="https://dmarketing.no/personvern/">Norsk (NO)<svg width="1.5" viewBox="0 0 94 67" fill="currentColor"><path d="M60.7333 66.112L58.0667 63.5786L86.4667 35.1786H0.600006V31.4453H86.6L58.2 3.0453L60.7333 0.511963L93.5333 33.312L60.7333 66.112Z"/></svg></a>
   </nav>
   <div class="dmc-fs-bottom">
-    <a class="dmc-fs-cta" href="/kontakt/">Ta kontakt<svg width="1.5" viewBox="0 0 94 67" fill="currentColor"><path d="M60.7333 66.112L58.0667 63.5786L86.4667 35.1786H0.600006V31.4453H86.6L58.2 3.0453L60.7333 0.511963L93.5333 33.312L60.7333 66.112Z"/></svg></a>
+    <a class="dmc-fs-cta" href="/en/contact/">Contact<svg width="1.5" viewBox="0 0 94 67" fill="currentColor"><path d="M60.7333 66.112L58.0667 63.5786L86.4667 35.1786H0.600006V31.4453H86.6L58.2 3.0453L60.7333 0.511963L93.5333 33.312L60.7333 66.112Z"/></svg></a>
   </div>
 </div>
 
@@ -183,66 +183,66 @@
 
   <div class="max-w-3xl mx-auto px-6 py-20 md:py-32">
 
-    <h1 class="font-display font-extrabold text-3xl md:text-4xl tracking-tight mb-8">Personvernerklæring</h1>
-    <p class="text-sm text-zinc-400 mb-10">Sist oppdatert: 28. juni 2026</p>
+    <h1 class="font-display font-extrabold text-3xl md:text-4xl tracking-tight mb-8">Privacy Policy</h1>
+    <p class="text-sm text-zinc-400 mb-10">Last updated: June 28, 2026</p>
 
     <div class="space-y-8 text-[15px] leading-relaxed text-zinc-700">
 
       <section>
-        <h2 class="font-display font-bold text-lg text-[#09090B] mb-3">1. Behandlingsansvarlig</h2>
-        <p>Dietrichs Marketing ved Adrian Dietrichs er behandlingsansvarlig for behandlingen av personopplysninger på denne nettsiden.</p>
-        <p class="mt-2"><strong>Kontakt:</strong> <a href="mailto:adrian@dmarketing.no" class="text-blue-600 hover:underline">adrian@dmarketing.no</a> · <a href="tel:+4793439278" class="text-blue-600 hover:underline">934 39 278</a><br>Org.nr: 928 758 737</p>
+        <h2 class="font-display font-bold text-lg text-[#09090B] mb-3">1. Data Controller</h2>
+        <p>Dietrichs Marketing, represented by Adrian Dietrichs, is the data controller for the processing of personal data on this website.</p>
+        <p class="mt-2"><strong>Contact:</strong> <a href="mailto:adrian@dmarketing.no" class="text-blue-600 hover:underline">adrian@dmarketing.no</a> · <a href="tel:+4793439278" class="text-blue-600 hover:underline">934 39 278</a><br>Org. no: 928 758 737</p>
       </section>
 
       <section>
-        <h2 class="font-display font-bold text-lg text-[#09090B] mb-3">2. Hvilke opplysninger vi samler inn</h2>
-        <p>Vi samler inn følgende opplysninger når du bruker kontaktskjemaet vårt:</p>
+        <h2 class="font-display font-bold text-lg text-[#09090B] mb-3">2. What Information We Collect</h2>
+        <p>We collect the following information when you use our contact form:</p>
         <ul class="list-disc pl-5 mt-2 space-y-1">
-          <li>Navn</li>
-          <li>Bedrift (valgfritt)</li>
-          <li>E-postadresse</li>
-          <li>Telefonnummer (valgfritt)</li>
-          <li>Nettadresse (valgfritt)</li>
-          <li>Meldingsinnhold</li>
+          <li>Name</li>
+          <li>Company (optional)</li>
+          <li>Email address</li>
+          <li>Phone number (optional)</li>
+          <li>Website address (optional)</li>
+          <li>Message content</li>
         </ul>
-        <p class="mt-2">I tillegg samler analyse- og annonseverktøy inn tekniske data om besøket (se punkt 4) – men kun dersom du har gitt samtykke.</p>
+        <p class="mt-2">In addition, analytics and advertising tools collect technical data about your visit (see point 4), but only if you have given consent.</p>
       </section>
 
       <section>
-        <h2 class="font-display font-bold text-lg text-[#09090B] mb-3">3. Formål og rettslig grunnlag</h2>
-        <p>Opplysningene fra kontaktskjemaet brukes utelukkende for å besvare din henvendelse og eventuelt gi deg et tilbud. Rettslig grunnlag er samtykke (GDPR art. 6 nr. 1 bokstav a) som du gir ved å sende inn skjemaet. For analyse- og annonsekapsler er rettslig grunnlag også samtykke, som du gir via samtykkebanneret.</p>
+        <h2 class="font-display font-bold text-lg text-[#09090B] mb-3">3. Purpose and Legal Basis</h2>
+        <p>Information from the contact form is used solely to respond to your inquiry and, where relevant, provide you with a quote. The legal basis is consent (GDPR Article 6(1)(a)), given by submitting the form. For analytics and advertising cookies, the legal basis is also consent, given via the consent banner.</p>
       </section>
 
       <section>
-        <h2 class="font-display font-bold text-lg text-[#09090B] mb-3">4. Informasjonskapsler (cookies)</h2>
-        <p>Vi deler informasjonskapsler i to kategorier:</p>
+        <h2 class="font-display font-bold text-lg text-[#09090B] mb-3">4. Cookies</h2>
+        <p>We split cookies into two categories:</p>
         <ul class="list-disc pl-5 mt-2 space-y-1">
-          <li><strong>Nødvendige</strong> – kreves for at nettsiden skal fungere og for å huske ditt cookie-valg. Disse settes alltid.</li>
-          <li><strong>Analyse og annonsering</strong> – Google Analytics og Google Ads konverteringssporing. Disse settes <strong>kun hvis du samtykker</strong> i samtykkebanneret. Inntil du samtykker, blokkeres disse kapslene som standard (Google Consent Mode – «denied»).</li>
+          <li><strong>Necessary</strong>: required for the website to function and to remember your cookie choice. These are always set.</li>
+          <li><strong>Analytics and advertising</strong>: Google Analytics and Google Ads conversion tracking. These are set <strong>only if you consent</strong> in the consent banner. Until you consent, these cookies are blocked by default (Google Consent Mode, "denied").</li>
         </ul>
-        <p class="mt-3">Du kan når som helst endre eller trekke tilbake samtykket ditt:</p>
-        <p class="mt-2"><button type="button" id="dm-endre-samtykke" class="inline-flex items-center gap-2 rounded-lg bg-[#0F172A] text-white text-sm font-medium px-4 py-2 hover:bg-[#1E293B] transition-colors">Endre cookie-samtykke</button></p>
+        <p class="mt-3">You can change or withdraw your consent at any time:</p>
+        <p class="mt-2"><button type="button" id="dm-endre-samtykke" class="inline-flex items-center gap-2 rounded-lg bg-[#0F172A] text-white text-sm font-medium px-4 py-2 hover:bg-[#1E293B] transition-colors">Change cookie consent</button></p>
       </section>
 
       <section>
-        <h2 class="font-display font-bold text-lg text-[#09090B] mb-3">5. Databehandlere og deling med tredjeparter</h2>
-        <p>Vi selger ikke personopplysninger. Vi bruker følgende databehandlere/tredjeparter for å levere tjenesten:</p>
+        <h2 class="font-display font-bold text-lg text-[#09090B] mb-3">5. Data Processors and Third-Party Sharing</h2>
+        <p>We do not sell personal data. We use the following data processors/third parties to deliver the service:</p>
         <ul class="list-disc pl-5 mt-2 space-y-1">
           <!-- Adrian: bekreft Supabase-region (EU vs. USA) og at databehandleravtale er signert. Hvis data lagres utenfor EØS, må overføringsgrunnlag (f.eks. EUs standardklausuler) oppgis her. -->
-          <li><strong>Supabase</strong> – database der henvendelser fra kontaktskjemaet lagres.</li>
-          <li><strong>Google</strong> – analyse- og annonsemåling (Google Analytics og Google Ads), kun ved samtykke.</li>
-          <li><strong>GitHub Pages (Microsoft)</strong> – drift/hosting av nettsiden.</li>
+          <li><strong>Supabase</strong>: database where inquiries from the contact form are stored.</li>
+          <li><strong>Google</strong>: analytics and advertising measurement (Google Analytics and Google Ads), only with consent.</li>
+          <li><strong>GitHub Pages (Microsoft)</strong>: hosting/operation of the website.</li>
         </ul>
       </section>
 
       <section>
-        <h2 class="font-display font-bold text-lg text-[#09090B] mb-3">6. Lagring og sletting</h2>
-        <p>Kontaktskjema-data lagres så lenge det er nødvendig for å følge opp henvendelsen, normalt inntil 12 måneder. Du kan når som helst be om sletting.</p>
+        <h2 class="font-display font-bold text-lg text-[#09090B] mb-3">6. Storage and Deletion</h2>
+        <p>Contact form data is stored for as long as necessary to follow up on the inquiry, normally up to 12 months. You may request deletion at any time.</p>
       </section>
 
       <section>
-        <h2 class="font-display font-bold text-lg text-[#09090B] mb-3">7. Dine rettigheter</h2>
-        <p>Du har rett til innsyn, retting, sletting og dataportabilitet, og rett til å trekke tilbake samtykke. Du kan også klage til Datatilsynet. Kontakt oss på e-postadressen over for å utøve dine rettigheter.</p>
+        <h2 class="font-display font-bold text-lg text-[#09090B] mb-3">7. Your Rights</h2>
+        <p>You have the right to access, correct, delete, and port your data, and the right to withdraw consent. You may also file a complaint with the Norwegian Data Protection Authority (Datatilsynet). Contact us at the email address above to exercise your rights.</p>
       </section>
 
     </div>
@@ -251,7 +251,7 @@
   
 
   <script>
-    // Lar brukeren åpne samtykkebanneret på nytt fra personvernsiden.
+    // Lets the user reopen the consent banner from the privacy policy page.
     document.getElementById('dm-endre-samtykke')?.addEventListener('click', function () {
       try { localStorage.removeItem('dm-cookie-consent'); } catch (e) {}
       location.reload();
@@ -284,6 +284,6 @@
   document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();});
 })();
 </script>
-<div class="dm-chrome"><footer class="bg-white px-6 pt-12 pb-7"><div class="max-w-[1140px] mx-auto flex flex-col gap-10"><div class="flex flex-col md:flex-row md:justify-between gap-10"><div class="flex flex-col gap-6"><div class="flex flex-col gap-4.5"><a href="/" class="flex items-center gap-2 flex-shrink-0" aria-label="Dietrichs Marketing"><img src="/assets/ms-icon-256x256.png" style="width:28px;height:28px;flex-shrink:0;" alt="Dietrichs Marketing logo"> <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:17px;letter-spacing:0.01em;text-transform:uppercase;color:#0E1116;white-space:nowrap;">Dietrichs <span style="color:#1B34FF;">marketing</span><span class="sr-only">Dietrichs Marketing</span></div></a> <p class="text-sm leading-relaxed text-ink-600">Dietrichs Marketing <br> Org.nr 928 758 737 <br> Norge <br> adrian@dmarketing.no</p> </div> <!----><a href="/kontakt/" type="button" class="cursor-pointer transition-[background-color,border-color] duration-150 ease-out bg-blue-500 border-blue-500 hover:bg-blue-600 hover:border-blue-600 active:bg-blue-700 active:border-blue-700 text-white disabled:bg-grey-200 disabled:border-grey-200 disabled:text-grey-400 h-9 pl-3 pr-3 gap-2 text-sm focus-visible:outline-focus rounded-lg font-normal justify-center border inline-flex items-center whitespace-nowrap" disabled="false"><!--[-1--><!--]--> <!--[0--><!--[-1--><!---->Ta kontakt<!----><!--]--><!--]--> <!--[-1--><!--]--> <!--[-1--><!--]--><!----></a><!----><!----></div> <div class="flex flex-col gap-3"><a href="/programvareutvikling/" class="text-sm text-ink-600 hover:text-grey-950 transition-colors">Programvareutvikling</a><a href="/ai-nettsider/" class="text-sm text-ink-600 hover:text-grey-950 transition-colors">AI-nettsider</a><a href="/kontakt/" class="text-sm text-ink-600 hover:text-grey-950 transition-colors">Kontakt</a></div></div> <div class="border-t border-grey-100 pt-7 flex flex-col sm:flex-row justify-between gap-4 text-sm text-black/60"><div class="flex gap-6"><a href="/personvern/" class="hover:text-grey-900 transition-colors">Personvern</a> <a href="/vilkar/" class="hover:text-grey-900 transition-colors">Vilkår</a></div> <p>© 2026 Dietrichs Marketing</p></div></div></footer></div>
+<div class="dm-chrome"><footer class="bg-white px-6 pt-12 pb-7"><div class="max-w-[1140px] mx-auto flex flex-col gap-10"><div class="flex flex-col md:flex-row md:justify-between gap-10"><div class="flex flex-col gap-6"><div class="flex flex-col gap-4.5"><a href="/en/" class="flex items-center gap-2 flex-shrink-0" aria-label="Dietrichs Marketing"><img src="/assets/ms-icon-256x256.png" style="width:28px;height:28px;flex-shrink:0;" alt="Dietrichs Marketing logo"> <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:17px;letter-spacing:0.01em;text-transform:uppercase;color:#0E1116;white-space:nowrap;">Dietrichs <span style="color:#1B34FF;">marketing</span><span class="sr-only">Dietrichs Marketing</span></div></a> <p class="text-sm leading-relaxed text-ink-600">Dietrichs Marketing <br> Org.nr 928 758 737 <br> Norway <br> adrian@dmarketing.no</p> </div> <!----><a href="/en/contact/" type="button" class="cursor-pointer transition-[background-color,border-color] duration-150 ease-out bg-blue-500 border-blue-500 hover:bg-blue-600 hover:border-blue-600 active:bg-blue-700 active:border-blue-700 text-white disabled:bg-grey-200 disabled:border-grey-200 disabled:text-grey-400 h-9 pl-3 pr-3 gap-2 text-sm focus-visible:outline-focus rounded-lg font-normal justify-center border inline-flex items-center whitespace-nowrap" disabled="false"><!--[-1--><!--]--> <!--[0--><!--[-1--><!---->Contact<!----><!--]--><!--]--> <!--[-1--><!--]--> <!--[-1--><!--]--><!----></a><!----><!----></div> <div class="flex flex-col gap-3"><a href="/en/software-development/" class="text-sm text-ink-600 hover:text-grey-950 transition-colors">Software Development</a><a href="/en/ai-websites/" class="text-sm text-ink-600 hover:text-grey-950 transition-colors">AI Websites</a><a href="/en/contact/" class="text-sm text-ink-600 hover:text-grey-950 transition-colors">Contact</a><a href="https://dmarketing.no/personvern/" class="text-sm text-ink-600 hover:text-grey-950 transition-colors">Norsk (NO)</a></div></div> <div class="border-t border-grey-100 pt-7 flex flex-col sm:flex-row justify-between gap-4 text-sm text-black/60"><div class="flex gap-6"><a href="/en/privacy-policy/" class="hover:text-grey-900 transition-colors">Privacy Policy</a> <a href="/en/terms/" class="hover:text-grey-900 transition-colors">Terms</a></div> <p>© 2026 Dietrichs Marketing</p></div></div></footer></div>
 </body>
 </html>
