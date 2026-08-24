@@ -127,16 +127,20 @@
   box-shadow:0 14px 44px rgba(255,255,255,0.32),0 4px 16px rgba(0,0,0,0.20);}
 .dm-fs-cta svg{width:18px;height:18px;flex-shrink:0;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;fill:none;}
 
-/* ── Samarbeidspartnere: partnerkort ────────────── */
-.sp-intro{margin-bottom:64px;}
+/* ── Samarbeidspartnere ──────────────────────────── */
+.sp-intro{margin-bottom:72px;}
 .sp-eyebrow{font-family:'Archivo',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#1B34FF;margin:0 0 16px;}
-.sp-badge{width:52px;height:52px;border-radius:50%;background:#1B34FF;color:#fff;font-family:'Archivo',sans-serif;font-weight:700;font-size:1.1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.sp-icon{width:44px;height:44px;border-radius:12px;background:#EEF1FF;color:#1B34FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.sp-icon svg{width:22px;height:22px;}
 .sp-tag{font-size:0.78rem;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:#1B34FF;}
-.sp-list{margin:0;padding:0;list-style:none;}
-.sp-list li{display:flex;gap:8px;padding:3px 0;font-size:0.9rem;line-height:1.6;color:#52525B;}
-.sp-list li::before{content:"";width:5px;height:5px;border-radius:50%;background:#1B34FF;flex-shrink:0;margin-top:8px;}
+.sp-logo-tile{width:100%;max-width:220px;height:104px;background:#fff;border:1px solid #E4E4E7;border-radius:14px;display:flex;align-items:center;justify-content:center;padding:18px;flex-shrink:0;}
+.sp-logo-tile img{max-width:100%;max-height:100%;object-fit:contain;}
+@media(min-width:768px){.sp-logo-tile{width:220px;}}
+.sp-pill{display:inline-flex;align-items:center;font-size:0.82rem;font-weight:500;color:#1B34FF;background:#EEF1FF;padding:6px 14px;border-radius:999px;}
 .sp-link{margin-top:auto;font-size:0.9rem;font-weight:600;color:#1B34FF;text-decoration:none;}
 .sp-link:hover{text-decoration:underline;}
+.sp-partner{padding:32px;display:flex;flex-direction:column;gap:32px;}
+@media(min-width:768px){.sp-partner{padding:40px;flex-direction:row;gap:40px;}}
 </style>
   <link rel="preconnect" href="https://use.typekit.net" crossorigin>
   <link rel="stylesheet" href="https://use.typekit.net/lfk6nyu.css">
@@ -194,53 +198,96 @@
   <div class="max-w-2xl mx-auto text-center sp-intro">
     <p class="sp-eyebrow">Samarbeid</p>
     <h1 class="font-display font-extrabold text-3xl md:text-5xl tracking-tight text-[#0E1116] leading-[1.1] mb-5">Samarbeidspartnere</h1>
-    <p class="text-base text-zinc-600 leading-relaxed">Dietrichs Marketing samarbeider med etablerte IT-driftsselskap flere steder i Norge. De kjenner bedriftene sine best, og velger å tilby AI-nettsidene våre videre til egne kunder fordi de stoler på teknologien og leveransen. Her er noen av dem.</p>
+    <p class="text-base text-zinc-600 leading-relaxed">Dietrichs Marketing samarbeider med etablerte IT-driftsselskap flere steder i Norge. De kjenner bedriftene sine best, og velger å tilby AI-nettsidene våre videre til egne kunder fordi de stoler på teknologien og leveransen.</p>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+  <div class="mb-10 md:mb-12">
+    <h2 class="font-display font-bold text-xl md:text-2xl text-[#0E1116] mb-2">Hva partnerne våre dekker</h2>
+    <p class="text-sm text-zinc-600">Til sammen dekker de tre samarbeidspartnerne dette spennet av IT-tjenester.</p>
+  </div>
 
-    <div class="bg-white border border-zinc-200 rounded-2xl p-7 flex flex-col">
-      <div class="sp-badge mb-5">L</div>
-      <h2 class="font-display font-bold text-lg text-[#0E1116] mb-1">Layer One IT Company</h2>
-      <p class="sp-tag mb-4">M365, Azure &amp; IT-rådgivning</p>
-      <p class="text-sm leading-relaxed text-zinc-600 mb-5">Layer One leverer sikre, standardiserte IT-løsninger på Microsoft 365 og Azure til små og mellomstore bedrifter, inkludert fast innleie og full outsourcing av IT-drift. De har også bistått med nettverksinfrastruktur for vindparker og fiberutbygging, og fungerer som en uavhengig rådgiver når bedrifter skal gjøre større IT-anskaffelser.</p>
-      <ul class="sp-list mb-6">
-        <li>Microsoft 365 &amp; Azure</li>
-        <li>Nettverk og infrastruktur</li>
-        <li>IT-rådgivning</li>
-        <li>Driftsavtaler og fast innleie</li>
-      </ul>
-      <a href="https://layerone.no" target="_blank" rel="noopener" class="sp-link">layerone.no ↗</a>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20 md:mb-28">
+
+    <div class="bg-white border border-zinc-200 rounded-2xl p-7">
+      <div class="sp-icon mb-5">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="7" rx="1.5"/><rect x="3" y="13" width="18" height="7" rx="1.5"/><circle cx="7" cy="7.5" r="0.6" fill="currentColor"/><circle cx="7" cy="16.5" r="0.6" fill="currentColor"/></svg>
+      </div>
+      <h3 class="font-display font-bold text-base text-[#0E1116] mb-2">IT-drift &amp; support</h3>
+      <p class="text-sm leading-relaxed text-zinc-600">Serverdrift, fjernhjelp og faste driftsavtaler som holder systemer oppe og tilgjengelige.</p>
     </div>
 
-    <div class="bg-white border border-zinc-200 rounded-2xl p-7 flex flex-col">
-      <div class="sp-badge mb-5">A</div>
-      <h2 class="font-display font-bold text-lg text-[#0E1116] mb-1">Agder IT</h2>
-      <p class="sp-tag mb-4">Serverdrift &amp; sikkerhet · Kristiansand</p>
-      <p class="text-sm leading-relaxed text-zinc-600 mb-5">Agder IT har over 25 års erfaring og leverer komplette IT-tjenester til små og mellomstore bedrifter i Kristiansand-området. De overvåker, oppdaterer og sikrer kundenes systemer proaktivt, med kort responstid og faste kontaktpunkter.</p>
-      <ul class="sp-list mb-6">
-        <li>Serverdrift</li>
-        <li>Microsoft 365</li>
-        <li>IT-sikkerhet</li>
-        <li>Nettverk og brannmur</li>
-        <li>Backup</li>
-      </ul>
-      <a href="https://agderit.no" target="_blank" rel="noopener" class="sp-link">agderit.no ↗</a>
+    <div class="bg-white border border-zinc-200 rounded-2xl p-7">
+      <div class="sp-icon mb-5">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18h10a4 4 0 0 0 .5-7.97A5.5 5.5 0 0 0 7.1 9.02 4 4 0 0 0 7 18Z"/></svg>
+      </div>
+      <h3 class="font-display font-bold text-base text-[#0E1116] mb-2">Microsoft 365 &amp; Azure</h3>
+      <p class="text-sm leading-relaxed text-zinc-600">Oppsett og daglig drift av Microsoft 365 og Azure, fra e-post og fildeling til virtuelle skrivebord.</p>
     </div>
 
-    <div class="bg-white border border-zinc-200 rounded-2xl p-7 flex flex-col">
-      <div class="sp-badge mb-5">T</div>
-      <h2 class="font-display font-bold text-lg text-[#0E1116] mb-1">TrønderData</h2>
-      <p class="sp-tag mb-4">Datahjelp &amp; serviceavtaler · Steinkjer</p>
-      <p class="text-sm leading-relaxed text-zinc-600 mb-5">TrønderData tilbyr rask og pålitelig datahjelp til bedrifter og privatpersoner i Steinkjer, Inderøy, Snåsa og resten av Trøndelag, enten som enkeltoppdrag eller som fast serviceavtale. De løser alt fra virus og e-postoppsett til nettverk, backup og Microsoft 365.</p>
-      <ul class="sp-list mb-6">
-        <li>Fjernhjelp</li>
-        <li>Virus- og malwarefjerning</li>
-        <li>Sikkerhetskopiering</li>
-        <li>Nettverksoppsett</li>
-        <li>Microsoft 365-støtte</li>
-      </ul>
-      <a href="https://tronderdata.no" target="_blank" rel="noopener" class="sp-link">tronderdata.no ↗</a>
+    <div class="bg-white border border-zinc-200 rounded-2xl p-7">
+      <div class="sp-icon mb-5">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3Z"/></svg>
+      </div>
+      <h3 class="font-display font-bold text-base text-[#0E1116] mb-2">Sikkerhet, nettverk &amp; backup</h3>
+      <p class="text-sm leading-relaxed text-zinc-600">Brannmur, sikkerhetskopiering og beskyttelse mot virus og malware, med nettverk som holder alt tilkoblet.</p>
+    </div>
+
+  </div>
+
+  <div class="mb-10 md:mb-12">
+    <h2 class="font-display font-bold text-xl md:text-2xl text-[#0E1116] mb-2">Møt partnerne</h2>
+  </div>
+
+  <div class="flex flex-col gap-6">
+
+    <div class="bg-white border border-zinc-200 rounded-2xl sp-partner">
+      <div class="sp-logo-tile"><img src="logos/layer-one.jpg" alt="Layer One IT Company logo"></div>
+      <div class="flex-1 flex flex-col">
+        <h3 class="font-display font-bold text-xl md:text-2xl text-[#0E1116] mb-1">Layer One IT Company</h3>
+        <p class="sp-tag mb-4">M365, Azure &amp; IT-rådgivning</p>
+        <p class="text-sm md:text-base leading-relaxed text-zinc-600 mb-5">Layer One leverer sikre, standardiserte IT-løsninger på Microsoft 365 og Azure til små og mellomstore bedrifter, med alt fra fast innleie til full outsourcing av IT-drift. De har blant annet levert nettverksinfrastruktur til vindparker og satt opp Azure-baserte virtuelle skrivebord for kunder med flere tusen brukere, og fungerer som en uavhengig rådgiver når bedrifter skal gjøre større IT-anskaffelser.</p>
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span class="sp-pill">Microsoft 365 &amp; Azure</span>
+          <span class="sp-pill">Nettverk og infrastruktur</span>
+          <span class="sp-pill">IT-rådgivning</span>
+          <span class="sp-pill">Driftsavtaler og fast innleie</span>
+        </div>
+        <a href="https://layerone.no" target="_blank" rel="noopener" class="sp-link">layerone.no ↗</a>
+      </div>
+    </div>
+
+    <div class="bg-white border border-zinc-200 rounded-2xl sp-partner">
+      <div class="sp-logo-tile"><img src="logos/agder-it.webp" alt="Agder IT logo"></div>
+      <div class="flex-1 flex flex-col">
+        <h3 class="font-display font-bold text-xl md:text-2xl text-[#0E1116] mb-1">Agder IT</h3>
+        <p class="sp-tag mb-4">Serverdrift &amp; sikkerhet · Kristiansand</p>
+        <p class="text-sm md:text-base leading-relaxed text-zinc-600 mb-5">Agder IT har over 25 års erfaring og leverer komplette IT-tjenester til små og mellomstore bedrifter i Kristiansand-området. De overvåker, oppdaterer og sikrer kundenes systemer proaktivt, blant annet med Zyxel-brannmurer og automatisert backup, og har kort responstid med faste kontaktpunkter.</p>
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span class="sp-pill">Serverdrift</span>
+          <span class="sp-pill">Microsoft 365</span>
+          <span class="sp-pill">IT-sikkerhet</span>
+          <span class="sp-pill">Nettverk og brannmur</span>
+          <span class="sp-pill">Backup</span>
+        </div>
+        <a href="https://agderit.no" target="_blank" rel="noopener" class="sp-link">agderit.no ↗</a>
+      </div>
+    </div>
+
+    <div class="bg-white border border-zinc-200 rounded-2xl sp-partner">
+      <div class="sp-logo-tile"><img src="logos/tronderdata.webp" alt="TrønderData logo"></div>
+      <div class="flex-1 flex flex-col">
+        <h3 class="font-display font-bold text-xl md:text-2xl text-[#0E1116] mb-1">TrønderData</h3>
+        <p class="sp-tag mb-4">Datahjelp &amp; serviceavtaler · Steinkjer</p>
+        <p class="text-sm md:text-base leading-relaxed text-zinc-600 mb-5">TrønderData tilbyr rask og pålitelig datahjelp til bedrifter og privatpersoner i Steinkjer, Inderøy, Snåsa og resten av Trøndelag, enten som enkeltoppdrag eller fast serviceavtale. De løser alt fra virus og e-postoppsett til nettverk, sikkerhetskopiering og Microsoft 365, med fjernhjelp når det haster.</p>
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span class="sp-pill">Fjernhjelp</span>
+          <span class="sp-pill">Virus- og malwarefjerning</span>
+          <span class="sp-pill">Sikkerhetskopiering</span>
+          <span class="sp-pill">Nettverksoppsett</span>
+          <span class="sp-pill">Microsoft 365-støtte</span>
+        </div>
+        <a href="https://tronderdata.no" target="_blank" rel="noopener" class="sp-link">tronderdata.no ↗</a>
+      </div>
     </div>
 
   </div>
