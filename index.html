@@ -239,11 +239,12 @@ section[class*="overflow-hidden"]{contain:paint;}
 .dm-h2{font-size:clamp(2rem,4.5vw,3rem);font-weight:500;letter-spacing:-0.02em;line-height:1.05;color:#0E1116;margin:14px 0 0;text-transform:none;}
 .dm-sub{margin:16px 0 0;color:var(--ink-soft);font-size:1.05rem;line-height:1.6;max-width:56ch;}
 .dm-team-section{padding:var(--sect) 0;}
-.dm-team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.dm-team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
 .dm-team-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:26px 24px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:12px;}
 .dm-team-card img{width:66px;height:66px;border-radius:50%;object-fit:cover;background:var(--line);}
 .dm-team-card h3{font-size:1.08rem;font-weight:700;color:var(--ink);margin:2px 0 0;line-height:1.2;}
 .dm-team-card p{font-size:0.9rem;line-height:1.55;color:var(--ink-soft);margin:2px 0 0;}
+.dm-team-avatar-placeholder{width:66px;height:66px;border-radius:50%;background:#1B34FF;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.05rem;font-weight:700;letter-spacing:0.02em;flex-shrink:0;}
 .dm-team-card .dm-team-role{font-size:0.74rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#1B34FF;margin:0;}
 @media(max-width:900px){.dm-team-grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:520px){.dm-team-grid{grid-template-columns:1fr;}}
@@ -254,6 +255,9 @@ section[class*="overflow-hidden"]{contain:paint;}
 <div class="dm-team-grid">
 <div class="dm-team-card"><img src="/assets/adrian-bw-modified.webp" alt="Adrian Dietrichs" width="66" height="66" loading="lazy"><h3>Adrian Dietrichs</h3><p class="dm-team-role">Daglig leder</p></div>
 <div class="dm-team-card"><img src="/assets/marte-bw.webp" alt="Marte Nyquist Fjelldal" width="66" height="66" loading="lazy"><h3>Marte Nyquist Fjelldal</h3><p class="dm-team-role">Salg</p></div>
+<div class="dm-team-card"><div class="dm-team-avatar-placeholder">SE</div><h3>Sigrid Evjen</h3><p class="dm-team-role">Salg</p></div>
+<div class="dm-team-card"><div class="dm-team-avatar-placeholder">KK</div><h3>Kevin Karlsen</h3><p class="dm-team-role">Salg</p></div>
+<div class="dm-team-card"><div class="dm-team-avatar-placeholder">RH</div><h3>Rasmus Hansen</h3><p class="dm-team-role">Salg</p></div>
 <div class="dm-team-card"><img src="/assets/espen-bw.webp" alt="Espen Dietrichs" width="66" height="66" loading="lazy"><h3>Espen Dietrichs</h3><p class="dm-team-role">Utvikler</p></div>
 <div class="dm-team-card"><img src="/assets/bjarte-bw.webp" alt="Bjarte Landråk" width="66" height="66" loading="lazy"><h3>Bjarte Landråk</h3><p class="dm-team-role">Utvikler</p></div>
 </div></div></section>
