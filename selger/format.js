@@ -99,19 +99,19 @@
   }
 
   /**
-   * Én linje i tidslinja: hva skjedde med en booking. Delt av hele laget, ikke
-   * bare den som booket -- "hvem" er navnet paa selgeren som booket, utelatt
-   * (eller null) for din egen, som fortsatt sier "Du".
+   * Én linje i tidslinja: hva skjedde med en booking. Delt av hele laget --
+   * "hvem" er alltid navnet paa selgeren som booket. Aldri "Du", uansett hvem
+   * som ser paa: en delt liste betyr det samme for alle som leser den.
    * Tom streng betyr "ingen nyhet" (fersk booking eller ukjent status), og de
    * linjene skal ikke vises.
    */
   function hendelseTekst(status, bedrift, hvem) {
     var navn = String(bedrift == null ? '' : bedrift);
-    var den = hvem == null ? 'Du' : String(hvem);
+    var selgerNavn = String(hvem == null ? '' : hvem);
     switch (status) {
       // booking hoerer hjemme i tidslinja: det er selve oyeblikket som skal
       // bekreftes, og uten den staar lista tom til Adrian rekker aa flytte noe
-      case 'sendt':           return den + ' booket ' + navn;
+      case 'sendt':           return selgerNavn + ' booket ' + navn;
       case 'utkast_laget':    return 'Adrian lager utkastet til ' + navn;
       case 'sendt_til_kunde': return 'Adrian sendte utkastet til ' + navn;
       case 'godtatt':         return navn + ' takket ja';

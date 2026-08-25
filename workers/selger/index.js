@@ -566,8 +566,8 @@ async function hentTall(env, selger) {
       : maalestokk.naadd_totalt;
 
     // FELLES tidslinje for hele laget, ikke bare hans egne bookinger -- alle skal
-    // se med en gang noen booker noe. "hvem" er null for hans egne (hendelseTekst
-    // i format.js sier da "Du"), navnet paa selgeren for alle andre sine.
+    // se med en gang noen booker noe. "hvem" er alltid selgerens navn, aldri
+    // "Du" -- en delt liste skal bety det samme uansett hvem som ser paa den.
     // Grensen er 10 (opp fra 6) siden fella naa deles av flere selgere samtidig.
     const navnMap = {};
     (await env.DB.prepare('SELECT epost, navn FROM selgere').all()).results
@@ -579,7 +579,7 @@ async function hentTall(env, selger) {
         ORDER BY naar DESC, id DESC LIMIT 10`
     ).all()).results.map(r => ({
       bedrift: r.bedrift, status: r.status, dato: r.naar || '',
-      hvem: r.selger === e ? null : (navnMap[r.selger] || r.selger),
+      hvem: navnMap[r.selger] || r.selger,
     }));
 
     // Firmaets egne nyheter (nye partnere o.l.), samme for alle selgere,

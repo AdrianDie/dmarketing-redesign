@@ -162,8 +162,8 @@ test('maalestokk: taaler soppel inn', function () {
 });
 
 /* ----------------------------------------------------------- hendelseTekst */
-test('hendelseTekst: egen booking vises i sloyfa', function () {
-  assert.strictEqual(Fmt.hendelseTekst('sendt', 'Blomsterbua'), 'Du booket Blomsterbua');
+test('hendelseTekst: booking vises i tidslinja', function () {
+  assert.strictEqual(Fmt.hendelseTekst('sendt', 'Blomsterbua', 'Kari'), 'Kari booket Blomsterbua');
 });
 test('hendelseTekst: ukjent status gir tom', function () {
   assert.strictEqual(Fmt.hendelseTekst('noe_rart', 'Blomsterbua'), '');
@@ -181,11 +181,11 @@ test('hendelseTekst: betalt', function () {
 test('hendelseTekst: tapt sies noytralt', function () {
   assert.strictEqual(Fmt.hendelseTekst('tapt', 'Kyrre Profil'), 'Kyrre Profil ble det ikke noe av');
 });
-test('hendelseTekst: andre sin booking navngis, ikke "Du"', function () {
+test('hendelseTekst: booking navngis med selgeren, aldri "Du"', function () {
   assert.strictEqual(Fmt.hendelseTekst('sendt', 'Blomsterbua', 'Marte'), 'Marte booket Blomsterbua');
 });
-test('hendelseTekst: null hvem gir fortsatt "Du" (egen booking)', function () {
-  assert.strictEqual(Fmt.hendelseTekst('sendt', 'Blomsterbua', null), 'Du booket Blomsterbua');
+test('hendelseTekst: ogsaa egen booking navngis (delt liste, ikke personlig "Du")', function () {
+  assert.strictEqual(Fmt.hendelseTekst('sendt', 'Blomsterbua', 'Adrian'), 'Adrian booket Blomsterbua');
 });
 
 /* -------------------------------------------------------------------- sum */
