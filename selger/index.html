@@ -165,7 +165,7 @@
        tok tak i den. Skjult naar ingen booking har flyttet seg ennaa. -->
   <section id="kvittering" class="hidden mb-9" aria-labelledby="kvit-h">
     <h2 id="kvit-h" class="font-display font-bold text-[13px] uppercase tracking-[0.1em] text-mute mb-3">
-      Det som skjedde mens du ringte
+      Tidslinje
     </h2>
     <div class="kort rounded-2xl border border-line bg-white px-5 sm:px-6 py-1.5" style="animation-delay:60ms">
       <ul id="kvit-liste"></ul>
@@ -341,6 +341,64 @@
     if (el) el.textContent = tekst;
   }
 
+  // TIDSLINJE. Felles for hele laget -- egen funksjon (ikke bare inlinet i
+  // DOMContentLoaded) fordi den kalles paa nytt av pollen under, ikke bare ved
+  // forste lasting. Tommer lista forst saa polling ikke hoper opp duplikater.
+  function tegnTidslinje(hendelser) {
+    var rader = (hendelser || []).map(function (h) {
+      return { tekst: Fmt.hendelseTekst(h.status, h.bedrift, h.hvem), status: h.status, dato: h.dato };
+    }).filter(function (r) { return r.tekst; });
+
+    var liste = document.getElementById('kvit-liste');
+    liste.innerHTML = '';
+    if (!rader.length) {
+      document.getElementById('kvittering').classList.add('hidden');
+      return;
+    }
+
+    var PRIKK = {
+      sendt: 'bg-amber-400',
+      godtatt: 'bg-emerald-500', betalt: 'bg-emerald-500',
+      utkast_laget: 'bg-brand', sendt_til_kunde: 'bg-brand', tapt: 'bg-mute'
+    };
+    rader.forEach(function (r, i) {
+      var li = document.createElement('li');
+      // border-line i stedet for divide-y, fordi tema.css bare demper border-line i moerk modus
+      li.className = 'flex items-center gap-3 py-3.5' + (i ? ' border-t border-line' : '');
+
+      var prikk = document.createElement('span');
+      prikk.className = 'shrink-0 w-2 h-2 rounded-full ' + (PRIKK[r.status] || 'bg-zinc-300');
+      prikk.setAttribute('aria-hidden', 'true');
+      li.appendChild(prikk);
+
+      var tekst = document.createElement('span');
+      tekst.className = 'text-[15px] min-w-0';
+      tekst.textContent = r.tekst;
+      li.appendChild(tekst);
+
+      var tid = document.createElement('span');
+      tid.className = 'ml-auto shrink-0 text-[13px] text-mute tall';
+      tid.textContent = Fmt.pentDato(r.dato);
+      li.appendChild(tid);
+
+      liste.appendChild(li);
+    });
+    document.getElementById('kvittering').classList.remove('hidden');
+  }
+
+  // holdes fersk saa alle ser en ny booking i tidslinja med en gang, ikke bare
+  // ved neste sideinnlasting. Samme 30s-mønster som bunkemenyen i ringelisten.
+  var tidslinjePollId = null;
+  function startTidslinjePoll() {
+    if (tidslinjePollId) return;
+    tidslinjePollId = setInterval(function () {
+      if (!document.hidden) API.tall().then(function (t) { tegnTidslinje(t.hendelser); }).catch(function () {});
+    }, 30000);
+  }
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden) API.tall().then(function (t) { tegnTidslinje(t.hendelser); }).catch(function () {});
+  });
+
   document.addEventListener('DOMContentLoaded', function () {
     if (window.SELGER) {
       var f = window.SELGER.navn.split(/[\s._-]/)[0];
@@ -460,42 +518,9 @@
         }, 120);
       }
 
-      // KVITTERINGSSLOYFA. Bedriftsnavn settes med textContent, aldri innerHTML.
-      var rader = (t.hendelser || []).map(function (h) {
-        return { tekst: Fmt.hendelseTekst(h.status, h.bedrift), status: h.status, dato: h.dato };
-      }).filter(function (r) { return r.tekst; });
-
-      if (rader.length) {
-        var PRIKK = {
-          sendt: 'bg-amber-400',
-          godtatt: 'bg-emerald-500', betalt: 'bg-emerald-500',
-          utkast_laget: 'bg-brand', sendt_til_kunde: 'bg-brand', tapt: 'bg-mute'
-        };
-        var liste = document.getElementById('kvit-liste');
-        rader.forEach(function (r, i) {
-          var li = document.createElement('li');
-          // border-line i stedet for divide-y, fordi tema.css bare demper border-line i moerk modus
-          li.className = 'flex items-center gap-3 py-3.5' + (i ? ' border-t border-line' : '');
-
-          var prikk = document.createElement('span');
-          prikk.className = 'shrink-0 w-2 h-2 rounded-full ' + (PRIKK[r.status] || 'bg-zinc-300');
-          prikk.setAttribute('aria-hidden', 'true');
-          li.appendChild(prikk);
-
-          var tekst = document.createElement('span');
-          tekst.className = 'text-[15px] min-w-0';
-          tekst.textContent = r.tekst;
-          li.appendChild(tekst);
-
-          var tid = document.createElement('span');
-          tid.className = 'ml-auto shrink-0 text-[13px] text-mute tall';
-          tid.textContent = Fmt.pentDato(r.dato);
-          li.appendChild(tid);
-
-          liste.appendChild(li);
-        });
-        document.getElementById('kvittering').classList.remove('hidden');
-      }
+      // TIDSLINJE. Bedriftsnavn settes med textContent, aldri innerHTML (i tegnTidslinje).
+      tegnTidslinje(t.hendelser);
+      startTidslinjePoll();
 
       // MILEPAELER. Firmaets egne nyheter, ikke selgerens ringeaktivitet.
       var mileRader = t.milepaeler || [];

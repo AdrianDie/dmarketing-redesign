@@ -99,16 +99,19 @@
   }
 
   /**
-   * Én linje i kvitteringssloyfa: hva skjedde med bookingen etter at den ble sendt.
+   * Én linje i tidslinja: hva skjedde med en booking. Delt av hele laget, ikke
+   * bare den som booket -- "hvem" er navnet paa selgeren som booket, utelatt
+   * (eller null) for din egen, som fortsatt sier "Du".
    * Tom streng betyr "ingen nyhet" (fersk booking eller ukjent status), og de
    * linjene skal ikke vises.
    */
-  function hendelseTekst(status, bedrift) {
+  function hendelseTekst(status, bedrift, hvem) {
     var navn = String(bedrift == null ? '' : bedrift);
+    var den = hvem == null ? 'Du' : String(hvem);
     switch (status) {
-      // egen booking hoerer hjemme i sloyfa: det er selve oyeblikket som skal
+      // booking hoerer hjemme i tidslinja: det er selve oyeblikket som skal
       // bekreftes, og uten den staar lista tom til Adrian rekker aa flytte noe
-      case 'sendt':           return 'Du booket ' + navn;
+      case 'sendt':           return den + ' booket ' + navn;
       case 'utkast_laget':    return 'Adrian lager utkastet til ' + navn;
       case 'sendt_til_kunde': return 'Adrian sendte utkastet til ' + navn;
       case 'godtatt':         return navn + ' takket ja';

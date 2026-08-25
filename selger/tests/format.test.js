@@ -181,6 +181,12 @@ test('hendelseTekst: betalt', function () {
 test('hendelseTekst: tapt sies noytralt', function () {
   assert.strictEqual(Fmt.hendelseTekst('tapt', 'Kyrre Profil'), 'Kyrre Profil ble det ikke noe av');
 });
+test('hendelseTekst: andre sin booking navngis, ikke "Du"', function () {
+  assert.strictEqual(Fmt.hendelseTekst('sendt', 'Blomsterbua', 'Marte'), 'Marte booket Blomsterbua');
+});
+test('hendelseTekst: null hvem gir fortsatt "Du" (egen booking)', function () {
+  assert.strictEqual(Fmt.hendelseTekst('sendt', 'Blomsterbua', null), 'Du booket Blomsterbua');
+});
 
 /* -------------------------------------------------------------------- sum */
 console.log('\n' + (antall - feil) + '/' + antall + ' tester passerte.');

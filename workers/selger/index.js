@@ -565,15 +565,21 @@ async function hentTall(env, selger) {
           e, sisteBooking.dato)).n
       : maalestokk.naadd_totalt;
 
-    // hele reisen til bookingene hans: egne bookinger OG det Adrian gjor med dem.
-    // Grensen er 6 saa ferske bookinger ikke skyver ut Adrians oppdateringer.
+    // FELLES tidslinje for hele laget, ikke bare hans egne bookinger -- alle skal
+    // se med en gang noen booker noe. "hvem" er null for hans egne (hendelseTekst
+    // i format.js sier da "Du"), navnet paa selgeren for alle andre sine.
+    // Grensen er 10 (opp fra 6) siden fella naa deles av flere selgere samtidig.
+    const navnMap = {};
+    (await env.DB.prepare('SELECT epost, navn FROM selgere').all()).results
+      .forEach(s => { navnMap[s.epost] = s.navn; });
     hendelser = (await env.DB.prepare(
-      `SELECT bedrift, status, COALESCE(status_dato, dato) AS naar
+      `SELECT bedrift, status, selger, COALESCE(status_dato, dato) AS naar
          FROM bookinger
-        WHERE selger = ? AND status IS NOT NULL AND status != ''
-        ORDER BY naar DESC, id DESC LIMIT 6`
-    ).bind(e).all()).results.map(r => ({
+        WHERE status IS NOT NULL AND status != ''
+        ORDER BY naar DESC, id DESC LIMIT 10`
+    ).all()).results.map(r => ({
       bedrift: r.bedrift, status: r.status, dato: r.naar || '',
+      hvem: r.selger === e ? null : (navnMap[r.selger] || r.selger),
     }));
 
     // Firmaets egne nyheter (nye partnere o.l.), samme for alle selgere,
