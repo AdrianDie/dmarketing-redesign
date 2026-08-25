@@ -195,6 +195,14 @@
 .dm-fs-cta:hover{transform:translateY(-2px) scale(1.025);
   box-shadow:0 14px 44px rgba(255,255,255,0.32),0 4px 16px rgba(0,0,0,0.20);}
 .dm-fs-cta svg{width:18px;height:18px;flex-shrink:0;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;fill:none;}
+.dm-team-grid{display:grid;grid-template-columns:repeat(4,minmax(0,260px));gap:20px;justify-content:start;}
+.dm-team-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:32px 24px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;}
+.dm-team-card img{width:104px;height:104px;border-radius:50%;object-fit:cover;background:var(--line);}
+.dm-team-card h3{font-size:1.08rem;font-weight:700;color:var(--ink);margin:2px 0 0;line-height:1.2;}
+.dm-team-avatar-placeholder{width:104px;height:104px;border-radius:50%;background:#1B34FF;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.65rem;font-weight:700;letter-spacing:0.02em;flex-shrink:0;}
+.dm-team-card .dm-team-role{font-size:0.74rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#1B34FF;margin:0;}
+@media(max-width:900px){.dm-team-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:520px){.dm-team-grid{grid-template-columns:1fr;}}
 </style>
 
   <!-- Typografi matchet til den nye forsiden (dmarketing.no): Neue Haas Grotesk.
@@ -296,56 +304,14 @@
         <h2 class="display reveal">The Team</h2>
         <p class="reveal">A small, technical team that builds and hands over AI websites to customers with no unnecessary middlemen.</p>
       </div>
-      <div class="team-grid">
-        <div class="member reveal">
-          <img class="avatar" src="/assets/adrian-bw-modified.webp" alt="Adrian Dietrichs" loading="lazy" />
-          <div class="m-body">
-            <h3>Adrian Dietrichs</h3>
-            <div class="role">CEO</div>
-          </div>
-        </div>
-        <div class="member reveal">
-          <img class="avatar" src="/assets/bjarte-bw.webp" alt="Bjarte Landråk" loading="lazy" />
-          <div class="m-body">
-            <h3>Bjarte Landråk</h3>
-            <div class="role">Developer</div>
-          </div>
-        </div>
-        <div class="member reveal">
-          <img class="avatar" src="/assets/espen-bw.webp" alt="Espen Dietrichs" loading="lazy" />
-          <div class="m-body">
-            <h3>Espen Dietrichs</h3>
-            <div class="role">Developer</div>
-          </div>
-        </div>
-        <div class="member reveal">
-          <img class="avatar" src="/assets/marte-bw.webp" alt="Marte Nyquist Fjelldal" loading="lazy" />
-          <div class="m-body">
-            <h3>Marte Nyquist Fjelldal</h3>
-            <div class="role">Sales</div>
-          </div>
-        </div>
-        <div class="member reveal">
-          <div class="mono">RH</div>
-          <div class="m-body">
-            <h3>Rasmus Hansen</h3>
-            <div class="role">Sales</div>
-          </div>
-        </div>
-        <div class="member reveal">
-          <div class="mono">KK</div>
-          <div class="m-body">
-            <h3>Kevin Karlsen</h3>
-            <div class="role">Sales</div>
-          </div>
-        </div>
-        <div class="member reveal">
-          <div class="mono">SE</div>
-          <div class="m-body">
-            <h3>Sigrid Evjen</h3>
-            <div class="role">Sales</div>
-          </div>
-        </div>
+      <div class="dm-team-grid">
+<div class="dm-team-card"><img src="/assets/adrian-bw-modified.webp" alt="Adrian Dietrichs" width="104" height="104" loading="lazy"><h3>Adrian Dietrichs</h3><p class="dm-team-role">CEO</p></div>
+<div class="dm-team-card"><img src="/assets/bjarte-bw.webp" alt="Bjarte Landråk" width="104" height="104" loading="lazy"><h3>Bjarte Landråk</h3><p class="dm-team-role">Developer</p></div>
+<div class="dm-team-card"><img src="/assets/espen-bw.webp" alt="Espen Dietrichs" width="104" height="104" loading="lazy"><h3>Espen Dietrichs</h3><p class="dm-team-role">Developer</p></div>
+<div class="dm-team-card"><img src="/assets/marte-bw.webp" alt="Marte Nyquist Fjelldal" width="104" height="104" loading="lazy"><h3>Marte Nyquist Fjelldal</h3><p class="dm-team-role">Sales</p></div>
+<div class="dm-team-card"><div class="dm-team-avatar-placeholder">RH</div><h3>Rasmus Hansen</h3><p class="dm-team-role">Sales</p></div>
+<div class="dm-team-card"><div class="dm-team-avatar-placeholder">KK</div><h3>Kevin Karlsen</h3><p class="dm-team-role">Sales</p></div>
+<div class="dm-team-card"><div class="dm-team-avatar-placeholder">SE</div><h3>Sigrid Evjen</h3><p class="dm-team-role">Sales</p></div>
       </div>
     </div>
   </section>
