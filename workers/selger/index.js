@@ -568,7 +568,6 @@ async function hentTall(env, selger) {
     // FELLES tidslinje for hele laget, ikke bare hans egne bookinger -- alle skal
     // se med en gang noen booker noe. "hvem" er alltid selgerens navn, aldri
     // "Du" -- en delt liste skal bety det samme uansett hvem som ser paa den.
-    // Grensen er 10 (opp fra 6) siden fella naa deles av flere selgere samtidig.
     const navnMap = {};
     (await env.DB.prepare('SELECT epost, navn FROM selgere').all()).results
       .forEach(s => { navnMap[s.epost] = s.navn; });
@@ -576,7 +575,7 @@ async function hentTall(env, selger) {
       `SELECT bedrift, status, selger, COALESCE(status_dato, dato) AS naar
          FROM bookinger
         WHERE status IS NOT NULL AND status != ''
-        ORDER BY naar DESC, id DESC LIMIT 10`
+        ORDER BY naar DESC, id DESC LIMIT 5`
     ).all()).results.map(r => ({
       bedrift: r.bedrift, status: r.status, dato: r.naar || '',
       hvem: navnMap[r.selger] || r.selger,
