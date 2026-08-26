@@ -278,9 +278,17 @@ async function settBookingStatus(env, { id, status }) {
       .bind(status, betaltDato, id).run();
   }
 
-  // flytt Jira-kortet tilsvarende
-  const b = await env.DB.prepare('SELECT jira_key FROM bookinger WHERE id = ?').bind(id).first();
+  // flytt Jira-kortet tilsvarende, og logg statusendringen som sin egen
+  // hendelse (se lagreBooking) saa tidligere steg blir staaende i tidslinja
+  const b = await env.DB.prepare('SELECT jira_key, bedrift, selger FROM bookinger WHERE id = ?').bind(id).first();
   if (b && b.jira_key) await jiraFlytt(env, b.jira_key, status);
+  if (b) {
+    try {
+      await env.DB.prepare(
+        'INSERT INTO hendelselogg (booking_id, bedrift, selger, status, dato) VALUES (?, ?, ?, ?, ?)'
+      ).bind(id, b.bedrift, b.selger, status, iDag()).run();
+    } catch (_) {}
+  }
   return { ok: true };
 }
 
@@ -474,6 +482,17 @@ async function lagreBooking(env, selger, d) {
          d.nettside || '', d.kontakt || '', d.epost || '', d.notat || '').run();
   const bookingId = res.meta.last_row_id;
 
+  // egen loggrad per hendelse (aldri overskrevet), saa "Det siste som har
+  // skjedd" ikke mister dette oyeblikket naar statusen senere endres videre
+  // -- se settBookingStatus, som logger hver senere overgang paa samme maate.
+  try {
+    await env.DB.prepare(
+      'INSERT INTO hendelselogg (booking_id, bedrift, selger, status, dato) VALUES (?, ?, ?, ?, ?)'
+    ).bind(bookingId, d.bedrift || '', selger.epost, 'sendt', iDag()).run();
+  } catch (_) {
+    // tidslinja er en ekstra motivasjonsflate, skal aldri velte selve bookingen
+  }
+
   if (d.lead_id) {
     await env.DB.prepare(
       'UPDATE leads SET status = ?, selger = ?, dato = ? WHERE id = ?'
@@ -565,19 +584,19 @@ async function hentTall(env, selger) {
           e, sisteBooking.dato)).n
       : maalestokk.naadd_totalt;
 
-    // FELLES tidslinje for hele laget, ikke bare hans egne bookinger -- alle skal
-    // se med en gang noen booker noe. "hvem" er alltid selgerens navn, aldri
-    // "Du" -- en delt liste skal bety det samme uansett hvem som ser paa den.
+    // FELLES tidslinje for hele laget, lest fra hendelselogg -- en egen tabell
+    // som kun faar INSERT (se lagreBooking/settBookingStatus), aldri UPDATE.
+    // Leser man i stedet bookinger sin naavaerende status, forsvinner tidligere
+    // steg (f.eks. "Marte booket X") naar Adrian senere flytter den videre.
+    // "hvem" er alltid selgerens navn, aldri "Du" -- en delt liste skal bety
+    // det samme uansett hvem som ser paa den.
     const navnMap = {};
     (await env.DB.prepare('SELECT epost, navn FROM selgere').all()).results
       .forEach(s => { navnMap[s.epost] = s.navn; });
     hendelser = (await env.DB.prepare(
-      `SELECT bedrift, status, selger, COALESCE(status_dato, dato) AS naar
-         FROM bookinger
-        WHERE status IS NOT NULL AND status != ''
-        ORDER BY naar DESC, id DESC LIMIT 5`
+      'SELECT bedrift, status, selger, dato FROM hendelselogg ORDER BY dato DESC, id DESC LIMIT 5'
     ).all()).results.map(r => ({
-      bedrift: r.bedrift, status: r.status, dato: r.naar || '',
+      bedrift: r.bedrift, status: r.status, dato: r.dato || '',
       hvem: navnMap[r.selger] || r.selger,
     }));
 

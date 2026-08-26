@@ -50,6 +50,16 @@ CREATE TABLE IF NOT EXISTS bookinger (
 );
 CREATE INDEX IF NOT EXISTS idx_bookinger_selger ON bookinger(selger);
 
+CREATE TABLE IF NOT EXISTS hendelselogg (
+  id         INTEGER PRIMARY KEY AUTOINCREMENT,
+  booking_id INTEGER,
+  bedrift    TEXT NOT NULL,
+  selger     TEXT,
+  status     TEXT NOT NULL,
+  dato       TEXT NOT NULL          -- naar DENNE hendelsen skjedde, kun INSERT, aldri UPDATE
+);
+CREATE INDEX IF NOT EXISTS idx_hendelselogg_dato ON hendelselogg(dato, id);
+
 CREATE TABLE IF NOT EXISTS milepaeler (
   id    INTEGER PRIMARY KEY AUTOINCREMENT,
   dato  TEXT,
