@@ -381,6 +381,21 @@ button { font: inherit; cursor: pointer; }
 .mailcard__draft p { margin: 0.4rem 0 0; font-size: 0.92rem; color: var(--ink); }
 
 /* ============================================================
+   Systemer (CRM / bestilling)
+   ============================================================ */
+.systems__grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: clamp(2rem, 1rem + 4vw, 5rem); align-items: center; }
+.systems__points { list-style: none; padding: 0; margin: 1.4rem 0 0; display: flex; flex-direction: column; gap: 0.7rem; }
+.systems__points li { display: flex; gap: 0.6rem; align-items: flex-start; font-size: var(--fs-0); }
+.systems__points li::before { content: ""; flex: none; width: 20px; height: 20px; border-radius: 50%; margin-top: 1px; background: var(--cobalt-tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231B34FF' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 13l4 4L19 7'/%3E%3C/svg%3E") center / 13px no-repeat; }
+
+.pipeline-visual { position: relative; width: 100%; max-width: 560px; margin-inline: auto; }
+.pipeline-visual svg { width: 100%; height: auto; display: block; overflow: visible; }
+@media (prefers-reduced-motion: no-preference) {
+  .pl-glow { animation: plPulse 6s ease-in-out infinite; transform-origin: 540px 120px; }
+}
+@keyframes plPulse { 0%,100% { opacity:.14; transform:scale(1); } 50% { opacity:.22; transform:scale(1.05); } }
+
+/* ============================================================
    Proof
    ============================================================ */
 /* Brukt av: E-Wheels — trust-stripe (samme treatment som voltio.no) */
@@ -531,7 +546,7 @@ button { font: inherit; cursor: pointer; }
 }
 
 @media (max-width: 1000px) {
-  .hero__grid, .problem__grid, .pricing__grid, .faq__grid, .epost__grid, .finalcta__grid { grid-template-columns: 1fr; }
+  .hero__grid, .problem__grid, .pricing__grid, .faq__grid, .epost__grid, .finalcta__grid, .systems__grid { grid-template-columns: 1fr; }
   /* Hide decorative floaters in single-column layout so they never sit on the heading */
   .hero .floaters, .finalcta .floaters { display: none; }
   .finalcta__copy { max-width: 56ch; }
