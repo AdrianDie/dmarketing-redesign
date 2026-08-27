@@ -26,6 +26,12 @@ med spamvern, egen merkevare/fargeprofil, sikker pålogging).
 - Teksten korrigert ned etter publisering: lead fra to setninger til én,
   punktlisten fra fem til tre punkter. Se «Seksjonsstruktur» for gjeldende
   tekst, ikke historikken i denne lista.
+- Cateringbedrift/allergier-referansene fjernet helt. Seksjonen ble for
+  bransjespesifikk, generalisert til "statistikk og varsler" i stedet.
+  Seksjonen er nå en generell kapabilitetsvisning, ikke lenger en konkret
+  case-study forankret i én navngitt bransje (fortsatt ingen kundenavn).
+  Mer margin lagt til mellom h2/lead/punktliste (`.systems__copy .lead`
+  margin-top 1.2rem, `.systems__points` margin-top 2rem, gap 0.85rem).
 
 ---
 
@@ -75,14 +81,13 @@ utility-klasse).
       <h2 class="h2">Vi bygger CRM-systemet bedriften din faktisk trenger.</h2>
       <p class="lead">
         De fleste byråer stopper når nettsiden er ferdig. Vi bygger
-        videre, senest et komplett bestillingssystem for en
-        cateringbedrift.
+        videre, med egne systemer bygget rundt hvordan bedriften din
+        drives.
       </p>
       <ul class="systems__points">
         <li>Egen status for hver bestilling, fra forespørsel til
             gjennomført</li>
-        <li>All info samlet på ett sted: gjester, allergier, levering,
-            pris</li>
+        <li>Statistikk og varsler, alt samlet på ett sted</li>
         <li>Skreddersydd i bedriftens egen merkevare, ikke en mal</li>
       </ul>
     </div>
@@ -101,10 +106,10 @@ Samme struktur, `id="systems"`, oversatt copy:
 
 - **H2:** "We build the CRM system your business actually needs."
 - **Lead:** "Most agencies stop once the website is done. We keep going,
-  most recently a complete booking system for a catering business."
+  with systems built around how your business actually runs."
 - **Punkter:**
   1. "A status for every order, from inquiry to completed"
-  2. "Everything in one place: guests, allergies, delivery, price"
+  2. "Statistics and alerts, everything in one place"
   3. "Tailored to the business's own brand, not a template"
 
 ---
@@ -211,7 +216,8 @@ Nye regler (etter `.epost`-blokken, før `.proof`-blokken):
 
 ```css
 .systems__grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: clamp(2rem, 1rem + 4vw, 5rem); align-items: center; }
-.systems__points { list-style: none; padding: 0; margin: 1.4rem 0 0; display: flex; flex-direction: column; gap: 0.7rem; }
+.systems__copy .lead { margin-top: 1.2rem; }
+.systems__points { list-style: none; padding: 0; margin: 2rem 0 0; display: flex; flex-direction: column; gap: 0.85rem; }
 .systems__points li { display: flex; gap: 0.6rem; align-items: flex-start; font-size: var(--fs-0); }
 .systems__points li::before { content: ""; flex: none; width: 20px; height: 20px; border-radius: 50%; margin-top: 1px; background: var(--cobalt-tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231B34FF' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 13l4 4L19 7'/%3E%3C/svg%3E") center / 13px no-repeat; }
 
