@@ -20,6 +20,12 @@ med spamvern, egen merkevare/fargeprofil, sikker pålogging).
 - Det live verktøyet nevnes ikke og lenkes ikke til. Avtalen er for fersk.
 - H2 skal ikke nevne «nettside» i det hele tatt (rettet etter første utkast).
 - H2 skal nevne CRM-system eksplisitt (rettet etter andre utkast).
+- Ingen animerte prikker mellom statusnodene i pipeline-illustrasjonen
+  (fjernet etter publisering, statiske koblingslinjer beholdt). Hero sitt
+  eget prog-visual er upåvirket, animerer fortsatt.
+- Teksten korrigert ned etter publisering: lead fra to setninger til én,
+  punktlisten fra fem til tre punkter. Se «Seksjonsstruktur» for gjeldende
+  tekst, ikke historikken i denne lista.
 
 ---
 
@@ -68,21 +74,16 @@ utility-klasse).
     <div class="systems__copy" data-reveal>
       <h2 class="h2">Vi bygger CRM-systemet bedriften din faktisk trenger.</h2>
       <p class="lead">
-        De fleste byråer stopper når nettsiden er ferdig. Vi bygger videre:
-        for en cateringbedrift endte det med et komplett bestillings- og
-        kundesystem, fra første henvendelse til gjennomført leveranse.
+        De fleste byråer stopper når nettsiden er ferdig. Vi bygger
+        videre, senest et komplett bestillingssystem for en
+        cateringbedrift.
       </p>
       <ul class="systems__points">
-        <li>Egen status for hvert steg, fra ny forespørsel til gjennomført,
-            inkludert avslått, avlyst og utløpt tilbud</li>
-        <li>Alt samlet per bestilling: adresse, antall gjester, allergier,
-            levering eller henting, valgte retter og pris</li>
-        <li>Kundeoversikt der du ser alle tidligere og kommende bestillinger
-            for én kunde med ett klikk</li>
-        <li>Bestillingsskjema på kundens egen nettside som går rett inn i
-            systemet, med automatisk spamvern</li>
-        <li>Skreddersydd i bedriftens egen merkevare og farger, ikke en
-            generisk mal</li>
+        <li>Egen status for hver bestilling, fra forespørsel til
+            gjennomført</li>
+        <li>All info samlet på ett sted: gjester, allergier, levering,
+            pris</li>
+        <li>Skreddersydd i bedriftens egen merkevare, ikke en mal</li>
       </ul>
     </div>
     <div class="systems__visual" data-reveal>
@@ -99,19 +100,12 @@ utility-klasse).
 Samme struktur, `id="systems"`, oversatt copy:
 
 - **H2:** "We build the CRM system your business actually needs."
-- **Lead:** "Most agencies stop once the website is done. We keep going: for a
-  catering business, that meant a complete booking and customer system, from
-  first inquiry to completed delivery."
+- **Lead:** "Most agencies stop once the website is done. We keep going,
+  most recently a complete booking system for a catering business."
 - **Punkter:**
-  1. "A dedicated status for every step, from new inquiry to completed,
-     including declined, cancelled and expired quotes"
-  2. "Everything tracked per order: address, guest count, allergies, delivery
-     or pickup, chosen dishes and price"
-  3. "A customer view where you see every past and upcoming order for one
-     customer in a click"
-  4. "A booking form on the customer's own website that goes straight into
-     the system, with automatic spam protection"
-  5. "Tailored to the business's own brand and colors, not a generic template"
+  1. "A status for every order, from inquiry to completed"
+  2. "Everything in one place: guests, allergies, delivery, price"
+  3. "Tailored to the business's own brand, not a template"
 
 ---
 
