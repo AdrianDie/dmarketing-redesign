@@ -574,9 +574,11 @@ button { font: inherit; cursor: pointer; }
 
 /* ---- Hero cobalt visual (erstatter .diagram) ---- */
 .prog-visual { position: relative; width: 100%; max-width: 460px; margin-inline: auto; }
-.prog-visual svg { width: 100%; height: auto; display: block; overflow: visible; }
-@media (prefers-reduced-motion: no-preference) {
-  /* Core "breathes"; the flowing data dots are spawned randomly by JS (see index.html) */
-  .pv-glow { animation: pvPulse 6s ease-in-out infinite; transform-origin: 244px 300px; }
+.prog-visual::before {
+  content: ""; position: absolute; inset: -12% -8%; z-index: 0; pointer-events: none;
+  background: radial-gradient(58% 52% at 50% 46%,
+    color-mix(in srgb, var(--cobalt) 9%, transparent) 0%,
+    color-mix(in srgb, var(--cobalt) 3%, transparent) 46%,
+    transparent 72%);
 }
-@keyframes pvPulse { 0%,100% { opacity:.11; transform:scale(1); } 50% { opacity:.18; transform:scale(1.05); } }
+.prog-visual img { position: relative; z-index: 1; width: 100%; height: auto; display: block; }
