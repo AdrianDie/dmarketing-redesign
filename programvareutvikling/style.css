@@ -573,7 +573,7 @@ button { font: inherit; cursor: pointer; }
 
 
 /* ---- Hero cobalt visual (erstatter .diagram) ---- */
-.prog-visual { position: relative; width: 100%; max-width: 620px; margin-inline: auto; }
+.prog-visual { position: relative; width: 100%; max-width: 496px; margin-inline: auto; }
 .prog-visual::before {
   content: ""; position: absolute; inset: -12% -8%; z-index: 0; pointer-events: none;
   background: radial-gradient(58% 52% at 50% 46%,
