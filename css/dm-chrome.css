@@ -215,6 +215,9 @@
 /* Manually added: arbitrary transition-property utility (comma escapes as \2c in TW, missed by extractor) */
 .dm-chrome .transition-\[background-color\2c border-color\]{transition-property:background-color,border-color;transition-timing-function:var(--tw-ease,ease);transition-duration:var(--tw-duration,0s)}
 
+/* Manually added: on very narrow phones (<360px) the "Dietrichs marketing" wordmark has no room next to the burger button and collides with it. Hide the wordmark and keep just the round logo mark. */
+@media (width<=359px){.dm-chrome header.sticky .group\/logo > div{display:none}}
+
 
 /* ---- Full-screen mobile menu (renamed dmc-fs-*) ---- */
 /* ── Full-screen mobile menu ──────────────────── */
