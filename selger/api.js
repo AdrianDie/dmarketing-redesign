@@ -137,6 +137,9 @@
     },
     settAdmin: function (epost, admin) {
       return be({ handling: 'sett_admin', epost: epost, admin: admin });
+    },
+    adminBooking: function (data) {
+      return be(Object.assign({ handling: 'admin_booking' }, data));
     }
   };
 })();

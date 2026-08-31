@@ -108,6 +108,60 @@
       <div class="skjelett h-[76px]"></div>
     </div>
 
+    <!-- LEGG TIL BOOKING -->
+    <p class="text-[11px] font-semibold uppercase tracking-[0.1em] text-mute mb-3">Legg til en booking</p>
+    <form id="nb-form" class="rounded-2xl border border-line bg-white p-5 sm:p-6 mb-8">
+      <p class="text-mute text-[15px] mb-4 max-w-xl leading-relaxed">
+        For bookinger som ikke kom via ringelista, f.eks. en kunde som booket deg direkte.
+      </p>
+      <div class="grid sm:grid-cols-2 gap-3 mb-3">
+        <div>
+          <label for="nb-bedrift" class="block text-sm font-medium mb-1.5">Bedrift</label>
+          <input id="nb-bedrift" type="text" autocomplete="off"
+                 class="w-full border border-zinc-300 rounded-xl px-4 min-h-[48px] text-[15px] focus:border-brand" />
+        </div>
+        <div>
+          <label for="nb-dato" class="block text-sm font-medium mb-1.5">Dato</label>
+          <input id="nb-dato" type="date"
+                 class="w-full border border-zinc-300 rounded-xl px-4 min-h-[48px] text-[15px] focus:border-brand" />
+        </div>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-3 mb-3">
+        <div>
+          <label for="nb-kontakt" class="block text-sm font-medium mb-1.5">Kontaktperson <span class="text-mute font-normal">(valgfritt)</span></label>
+          <input id="nb-kontakt" type="text" autocomplete="off"
+                 class="w-full border border-zinc-300 rounded-xl px-4 min-h-[48px] text-[15px] focus:border-brand" />
+        </div>
+        <div>
+          <label for="nb-telefon" class="block text-sm font-medium mb-1.5">Telefon <span class="text-mute font-normal">(valgfritt)</span></label>
+          <input id="nb-telefon" type="text" inputmode="tel" autocomplete="off"
+                 class="w-full border border-zinc-300 rounded-xl px-4 min-h-[48px] text-[15px] focus:border-brand" />
+        </div>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-3 mb-3">
+        <div>
+          <label for="nb-epost" class="block text-sm font-medium mb-1.5">E-post <span class="text-mute font-normal">(valgfritt)</span></label>
+          <input id="nb-epost" type="email" inputmode="email" autocomplete="off"
+                 class="w-full border border-zinc-300 rounded-xl px-4 min-h-[48px] text-[15px] focus:border-brand" />
+        </div>
+        <div>
+          <label for="nb-nettside" class="block text-sm font-medium mb-1.5">Nettside <span class="text-mute font-normal">(valgfritt)</span></label>
+          <input id="nb-nettside" type="text" inputmode="url" autocomplete="off" placeholder="f.eks. bedrift.no"
+                 class="w-full border border-zinc-300 rounded-xl px-4 min-h-[48px] text-[15px] focus:border-brand" />
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="nb-notat" class="block text-sm font-medium mb-1.5">Notat <span class="text-mute font-normal">(valgfritt)</span></label>
+        <textarea id="nb-notat" rows="3"
+                  class="w-full border border-zinc-300 rounded-xl px-4 py-3 text-[15px] focus:border-brand"></textarea>
+      </div>
+      <p id="nb-melding" class="hidden text-sm rounded-lg px-4 py-3 mb-3" role="alert"></p>
+      <button type="submit" id="nb-send"
+              class="inline-flex items-center justify-center bg-brand text-white font-semibold px-6 min-h-[48px] rounded-xl hover:bg-blue-700 transition-colors text-[15px]">
+        Legg til booking
+      </button>
+    </form>
+
     <!-- BOOKINGER -->
     <div class="flex items-center justify-between mb-1">
       <p class="text-[11px] font-semibold uppercase tracking-[0.1em] text-mute">Bookinger</p>
@@ -321,6 +375,47 @@
       document.getElementById('ny-melding').classList.remove('hidden');
     }).then(function () {
       knapp.disabled = false; knapp.textContent = 'Legg til og send invitasjon';
+    });
+  });
+
+  function idagISO() { return new Date().toLocaleDateString('sv-SE'); }
+
+  function nbMelding(tekst, feil) {
+    var m = document.getElementById('nb-melding');
+    m.textContent = tekst;
+    m.className = 'text-sm rounded-lg px-4 py-3 mb-3 ' +
+      (feil ? 'bg-red-50 border border-red-200 text-red-800' : 'bg-green-50 border border-green-200 text-green-800');
+    m.classList.remove('hidden');
+  }
+
+  document.getElementById('nb-dato').value = idagISO();
+
+  document.getElementById('nb-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var knapp = document.getElementById('nb-send');
+    var bedrift = document.getElementById('nb-bedrift').value.trim();
+    document.getElementById('nb-melding').classList.add('hidden');
+
+    if (!bedrift) { nbMelding('Fyll ut bedriftsnavn.', true); return; }
+
+    knapp.disabled = true; knapp.textContent = 'Legger til …';
+    API.adminBooking({
+      bedrift: bedrift,
+      dato: document.getElementById('nb-dato').value || idagISO(),
+      kontakt: document.getElementById('nb-kontakt').value.trim(),
+      telefon: document.getElementById('nb-telefon').value.trim(),
+      epost: document.getElementById('nb-epost').value.trim(),
+      nettside: document.getElementById('nb-nettside').value.trim(),
+      notat: document.getElementById('nb-notat').value.trim()
+    }).then(function () {
+      toast('Booking lagt til.');
+      document.getElementById('nb-form').reset();
+      document.getElementById('nb-dato').value = idagISO();
+      lastBookinger();
+    }).catch(function () {
+      nbMelding('Fikk ikke lagt til. Prøv igjen.', true);
+    }).then(function () {
+      knapp.disabled = false; knapp.textContent = 'Legg til booking';
     });
   });
 

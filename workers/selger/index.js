@@ -59,7 +59,7 @@ export default {
 
       // admin-handlinger, bare for administratorer
       if (['selgere', 'opprett_selger', 'sett_aktiv', 'sett_admin', 'oversikt',
-           'alle_bookinger', 'sett_booking_status'].indexOf(h) !== -1) {
+           'alle_bookinger', 'sett_booking_status', 'admin_booking'].indexOf(h) !== -1) {
         if (!(await erAdmin(env, selger.epost))) {
           return cors(j({ error: 'ikke_admin' }), 200, origin);
         }
@@ -70,6 +70,7 @@ export default {
         else if (h === 'sett_booking_status') ar = await settBookingStatus(env, body);
         else if (h === 'opprett_selger') ar = await opprettSelger(env, body);
         else if (h === 'sett_admin') ar = await settAdmin(env, selger, body);
+        else if (h === 'admin_booking') ar = await lagreBooking(env, selger, body);
         else ar = await settAktiv(env, selger, body);
         return cors(j(ar), 200, origin);
       }
@@ -475,10 +476,18 @@ async function loggUtfall(env, selger, { lead_id, status, notat }) {
 }
 
 async function lagreBooking(env, selger, d) {
+  // dato kan settes til noe annet enn i dag, men bare naar kalleren er admin
+  // (se admin_booking) -- gir Adrian mulighet til aa etterregistrere en
+  // booking paa riktig dag i stedet for at den alltid stemples med i dag.
+  let dato = iDag();
+  if (d.dato && /^\d{4}-\d{2}-\d{2}$/.test(d.dato) && await erAdmin(env, selger.epost)) {
+    dato = d.dato;
+  }
+
   const res = await env.DB.prepare(
     `INSERT INTO bookinger (dato, selger, bedrift, telefon, nettside, kontakt, epost, notat, status)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'sendt')`
-  ).bind(iDag(), selger.epost, d.bedrift || '', String(d.telefon || ''),
+  ).bind(dato, selger.epost, d.bedrift || '', String(d.telefon || ''),
          d.nettside || '', d.kontakt || '', d.epost || '', d.notat || '').run();
   const bookingId = res.meta.last_row_id;
 
@@ -488,7 +497,7 @@ async function lagreBooking(env, selger, d) {
   try {
     await env.DB.prepare(
       'INSERT INTO hendelselogg (booking_id, bedrift, selger, status, dato) VALUES (?, ?, ?, ?, ?)'
-    ).bind(bookingId, d.bedrift || '', selger.epost, 'sendt', iDag()).run();
+    ).bind(bookingId, d.bedrift || '', selger.epost, 'sendt', dato).run();
   } catch (_) {
     // tidslinja er en ekstra motivasjonsflate, skal aldri velte selve bookingen
   }
