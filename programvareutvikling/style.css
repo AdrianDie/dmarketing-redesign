@@ -84,7 +84,7 @@ button { font: inherit; cursor: pointer; }
 .wrap { width: 100%; max-width: var(--wrap); margin-inline: auto; padding-inline: clamp(1.1rem, 0.6rem + 2vw, 2.2rem); }
 
 .skip-link {
-  position: absolute; left: 12px; top: -48px; z-index: 200;
+  position: absolute; left: 12px; top: -60px; z-index: 200;
   background: var(--cobalt); color: #fff; padding: 10px 16px; border-radius: var(--r-sm);
   transition: top 0.2s var(--ease);
 }
