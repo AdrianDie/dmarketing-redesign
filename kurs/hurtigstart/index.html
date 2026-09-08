@@ -397,6 +397,7 @@
         <div class="step-content">
           <h3>Rydd i DNS-postene</h3>
           <p>Cloudflare viser deg alle postene den fant. Dette er det viktigste steget, så les nøye: <strong>du skal ikke slette alt, bare de gamle A-postene og CNAME-postene som peker på den forrige nettsiden din.</strong> Alt annet, spesielt e-postpostene, skal stå.</p>
+          <p>Ta gjerne en kontroll av DNS-postene i Cloudflare opp mot de du har hos leverandøren, for å sjekke at du ikke mangler noe. Mangler du noe, legger du det til i Cloudflare.</p>
           <p><strong style="color:#0339f8;">a.</strong> <strong>Fjern A-postene</strong> som peker på din forrige nettside: <code>A</code> (og evt. <code>AAAA</code>) på selve domenet. Klikk <strong>Delete</strong> på hver. De byttes ut med den nye siden. Da trykker du delete på de radene der Type står som <code>A</code> og Name er ditt domene. På bildet er det raden med røde bokser. Har du en <code>A</code>-rad der Name er <code>www</code>, slett den også.</p>
           <p><strong style="color:#0339f8;">b.</strong> Har du en gammel <code>CNAME www</code> til den gamle siden, fjern den også. Da trykker du delete på de radene der Type står som <code>CNAME</code> og Name er <code>www</code>. På bildet er det raden med gule bokser.</p>
           <img src="../images/cloudflare-edit-dns-records.png" alt="Fjern de gamle A- og CNAME-postene, behold e-postpostene" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
