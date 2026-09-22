@@ -512,6 +512,7 @@ Her er DNS-lista:
           </div>
 
           <p><strong style="color:#0339f8;">c.</strong> Slett de gamle navnetjenerne (f.eks. <code>ns.datacenter.no</code>) så bare Cloudflares to står igjen, og lagre. Rør ikke noe annet hos leverandøren.</p>
+          <p><strong style="color:#0339f8;">d.</strong> Sjekk en ting til før du lagrer: <strong>DNSSEC</strong> må være <strong>av</strong>. Dette er ikke en record du skal legge til eller slette, det er en bryter (en av/på-knapp) et annet sted i domene-innstillingene hos leverandøren din, ofte under noe som heter <strong>«DNSSEC»</strong> eller <strong>«DNS-sikkerhet»</strong>. Let etter den, og har den blitt aktivert av deg selv (den er som regel av som standard), skru den av. Grunnen: står den på mens du bytter navnetjenere, kan domenet slutte å virke helt til den er skrudd av. Du kan skru den på igjen senere inne i Cloudflare, hvis du vil.</p>
           <div class="callout-ok callout not-prose">
             <p><strong>Usikker på hvordan?</strong> Kopier teksten under og lim inn i <a href="https://aistudio.google.com" target="_blank" rel="noopener" style="color:#14532D;font-weight:600;">Google AI Studio</a> (eller ChatGPT/Claude). Du kan også ta et skjermbilde av navnetjener-skjermen og laste det opp. Den guider deg gjennom akkurat din leverandør.</p>
           </div>
