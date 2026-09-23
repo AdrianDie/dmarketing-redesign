@@ -1,0 +1,41 @@
+{
+  "instantly_kampanje_url": "https://app.instantly.ai/app/campaign/92e38c05-fe12-41cb-b0f0-13a3ba34f467/leads",
+  "aktiv_index": 0,
+  "bransjer": [
+    {
+      "navn": "Kajakkutleie",
+      "kilde": "places",
+      "sok": ["kajakkutleie", "kanoutleie"],
+      "maxLeadsPerKjoring": 240,
+      "terskelForTom": 60
+    },
+    {
+      "navn": "Campingplasser",
+      "kilde": "osm",
+      "osmTag": "tourism=camp_site",
+      "maxLeadsPerKjoring": 240,
+      "terskelForTom": 150
+    },
+    {
+      "navn": "Hagesentre",
+      "kilde": "osm",
+      "osmTag": "shop=garden_centre",
+      "maxLeadsPerKjoring": 240,
+      "terskelForTom": 150
+    },
+    {
+      "navn": "Fjordcruise og sightseeing",
+      "kilde": "places",
+      "sok": ["fjordcruise", "sightseeing selskap", "fjordtur"],
+      "maxLeadsPerKjoring": 240,
+      "terskelForTom": 100
+    },
+    {
+      "navn": "Iskrembutikker og strandkiosker",
+      "kilde": "places",
+      "sok": ["iskrembutikk", "strandkiosk"],
+      "maxLeadsPerKjoring": 240,
+      "terskelForTom": 100
+    }
+  ]
+}
