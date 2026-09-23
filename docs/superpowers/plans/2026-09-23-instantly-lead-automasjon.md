@@ -646,7 +646,7 @@ git commit -m "Legg til generalisert Google Places lead-henter parameterisert pe
 
 ```json
 {
-  "instantly_kampanje": "Sesongbaserte leads (roterende)",
+  "instantly_kampanje_url": "https://app.instantly.ai/app/campaign/92e38c05-fe12-41cb-b0f0-13a3ba34f467/leads",
   "aktiv_index": 0,
   "bransjer": [
     {
@@ -707,7 +707,7 @@ const { lastKo, aktivBransje, byttTilNesteBransje } = require('./bransje-ko');
 function lagTestKo(dir) {
   const fil = path.join(dir, 'bransje-ko.json');
   fs.writeFileSync(fil, JSON.stringify({
-    instantly_kampanje: 'Test',
+    instantly_kampanje_url: 'https://app.instantly.ai/app/campaign/test/leads',
     aktiv_index: 0,
     bransjer: [
       { navn: 'Foerste', kilde: 'osm', osmTag: 'a=b', maxLeadsPerKjoring: 240, terskelForTom: 100 },
@@ -825,15 +825,15 @@ Dette er research, ikke kode — ingen commit for dette steget.
 // scripts/lead-sourcing/instantly-sync.js
 // Playwright-automatisering mot Instantly sitt web-UI (API-nøkkelen er
 // 401 Unauthorized, se spec). Sletter leads som har fullført sekvensen uten
-// svar, eksporterer en backup FØR sletting, og laster opp nye leads.
+// svar, og laster opp nye leads. Ingen egen backup her, med vilje —
+// leads-med-nettside-DISSE_ER_OPPBRUKT.csv ER registeret (Adrians valg
+// 23.09.2026, se feedback-instantly-slett-riktig-filter i minnet).
 // Bruk: node instantly-sync.js <nye-leads.csv> <bransjenavn>
 require('dotenv').config();
 const { chromium } = require('playwright');
-const path = require('path');
 
 const INSTANTLY_EMAIL = process.env.INSTANTLY_EMAIL;
 const INSTANTLY_PASSWORD = process.env.INSTANTLY_PASSWORD;
-const BACKUP_DIR = 'C:\\Users\\adria\\OneDrive\\Dietrichs Marketing\\Leads\\Instantly leads\\backups';
 
 async function loggInn(page) {
   await page.goto('https://app.instantly.ai/auth/login');
@@ -844,30 +844,65 @@ async function loggInn(page) {
   await page.waitForURL('**/app/**');
 }
 
-async function slettFullforteLeads(page, kampanjeNavn, bransjenavn) {
-  // SELEKTORER MÅ ERSTATTES MED DE EKTE FRA TASK 6 STEP 2.
-  // 1. Naviger til kampanjen (via søk/navigasjon i UI-et)
-  // 2. Filtrer på "Completed" / fullført uten svar
-  // 3. Eksporter filtrert visning til CSV FØR sletting:
-  const dato = new Date().toISOString().slice(0, 10);
-  const backupFil = path.join(BACKUP_DIR, `${dato}-${bransjenavn.toLowerCase()}-slettet.csv`);
-  // await page.click('[data-testid="export-leads"]'); ... lagre til backupFil
-  // 4. Velg alle filtrerte og slett:
-  // await page.click('[data-testid="select-all"]');
-  // await page.click('[data-testid="delete-selected"]');
-  // await page.click('button:has-text("Confirm")');
-  return { backupFil, antallSlettet: 0 }; // returverdi oppdateres når selektorene er på plass
+async function slettFullforteLeads(page, kampanjeUrl) {
+  await page.goto(kampanjeUrl);
+  // Verifisert manuelt 23.09.2026 mot ekte Instantly-UI (New Experience):
+  await page.getByRole('button', { name: 'Filters' }).click();
+  await page.getByRole('button', { name: 'All statuses' }).click();
+  await page.getByRole('menuitem', { name: 'Completed, No reply' }).click();
+  await page.keyboard.press('Escape'); // lukk filterpanelet
+
+  // KRITISK (se feedback-instantly-slett-riktig-filter i minnet): bekreft at
+  // filteret faktisk har redusert antallet FØR select-all+delete, ellers
+  // avbryt i stedet for å risikere å slette leads som har svart. 23.09.2026
+  // ble ALLE 586 leads slettet ved et uhell fordi dette steget manglet og
+  // "select all" ble trykket i en visning uten filter - se hendelsen i minnet.
+  const totalLeads = await page.locator('[data-testid="lead-count-total"]').textContent();
+  const filteredLeads = await page.locator('[data-testid="lead-count-filtered"]').textContent();
+  if (Number(filteredLeads) === Number(totalLeads) && Number(totalLeads) > 0) {
+    throw new Error(`Filter ga ingen reduksjon (${filteredLeads}/${totalLeads}) - avbryter i stedet for å risikere å slette leads som har svart. Sjekk selektorene over mot dagens Instantly-UI.`);
+  }
+
+  await page.getByRole('checkbox', { name: 'primary checkbox' }).click();
+  await page.getByText(/Select all results \(\d+\)/).click();
+  await page.getByRole('button', { name: /Row actions/ }).click();
+  await page.getByRole('menuitem', { name: 'Delete selected' }).click();
+  await page.getByRole('button', { name: 'Yes, delete' }).click();
+  await page.waitForSelector('text=Leads deleted');
+
+  return { antallSlettet: Number(filteredLeads) };
 }
 
 async function lastOppNyeLeads(page, csvFil) {
-  // SELEKTORER MÅ ERSTATTES MED DE EKTE FRA TASK 6 STEP 2.
-  // await page.click('[data-testid="add-leads"]');
-  // await page.setInputFiles('input[type="file"]', csvFil);
-  // await page.click('button:has-text("Upload")');
-  return { antallLastetOpp: 0 };
+  await page.getByRole('button', { name: 'Upload CSV' }).click();
+  const fileInput = page.locator('input[type="file"]');
+  await fileInput.setInputFiles(csvFil);
+  await page.waitForSelector('text=/Detected \\d+ data rows/');
+
+  // Kolonnemapping - rekkefølgen matcher CSV-headeren fra kjor-runde.js
+  // ("navn","adresse","telefon","nettside","by","epost"), verifisert manuelt
+  // 23.09.2026. Bruker synlig kolonnenavn i UI-et for å velge riktig
+  // dropdown, ikke posisjon, i tilfelle Instantly endrer kolonnerekkefølgen.
+  const mapping = [
+    ['navn', 'Company Name'],
+    ['telefon', 'Phone'],
+    ['nettside', 'Website'],
+    ['by', 'Location'],
+    ['epost', 'Email'],
+  ];
+  for (const [kolonne, type] of mapping) {
+    await page.getByText(kolonne, { exact: true }).locator('..').getByRole('button', { name: 'Do not import' }).click();
+    await page.getByRole('option', { name: type, exact: true }).click();
+  }
+
+  await page.getByRole('button', { name: 'UPLOAD ALL' }).click();
+  await page.waitForSelector('text=Contacts uploaded!');
+
+  const leadCountText = await page.locator('[data-testid="lead-count-total"]').textContent();
+  return { antallLastetOpp: Number(leadCountText) };
 }
 
-async function kjorSync(csvFil, bransjenavn, kampanjeNavn) {
+async function kjorSync(csvFil, kampanjeUrl) {
   if (!INSTANTLY_EMAIL || !INSTANTLY_PASSWORD) {
     throw new Error('Mangler INSTANTLY_EMAIL/INSTANTLY_PASSWORD i .env');
   }
@@ -875,9 +910,9 @@ async function kjorSync(csvFil, bransjenavn, kampanjeNavn) {
   const page = await browser.newPage();
   try {
     await loggInn(page);
-    const { backupFil, antallSlettet } = await slettFullforteLeads(page, kampanjeNavn, bransjenavn);
+    const { antallSlettet } = await slettFullforteLeads(page, kampanjeUrl);
     const { antallLastetOpp } = await lastOppNyeLeads(page, csvFil);
-    return { backupFil, antallSlettet, antallLastetOpp };
+    return { antallSlettet, antallLastetOpp };
   } finally {
     await browser.close();
   }
@@ -886,31 +921,34 @@ async function kjorSync(csvFil, bransjenavn, kampanjeNavn) {
 module.exports = { kjorSync };
 
 if (require.main === module) {
-  const [, , csvFil, bransjenavn] = process.argv;
-  if (!csvFil || !bransjenavn) {
-    console.error('Bruk: node instantly-sync.js <nye-leads.csv> <bransjenavn>');
+  const [, , csvFil, kampanjeUrl] = process.argv;
+  if (!csvFil || !kampanjeUrl) {
+    console.error('Bruk: node instantly-sync.js <nye-leads.csv> <kampanje-url>');
     process.exit(1);
   }
-  kjorSync(csvFil, bransjenavn, process.env.INSTANTLY_KAMPANJE || '')
+  kjorSync(csvFil, kampanjeUrl)
     .then((r) => console.log('Ferdig:', r))
     .catch((err) => { console.error(err); process.exit(1); });
 }
 ```
 
-> **Merk til den som utfører denne oppgaven:** de tre funksjonene
-> `loggInn`/`slettFullforteLeads`/`lastOppNyeLeads` har kommenterte
-> plassholder-linjer der de ekte Playwright-kommandoene skal inn, basert på
-> selektorene notert i Step 2. Dette er bevisst — de faktiske selektorene
-> finnes ikke før noen faktisk har sett Instantly sitt UI (research-steget i
-> Step 2 er en forutsetning for denne koden, ikke noe som kan skrives fra
-> dokumentasjon). Fjern plassholder-kommentarene og skriv inn de ekte
-> kommandoene før denne oppgaven regnes som ferdig.
+> **Merk til den som utfører denne oppgaven:** selektorene over
+> (`Filters`, `Completed, No reply`, `primary checkbox`,
+> `Select all results (N)`, `Row actions`, `Delete selected`, `Yes, delete`,
+> `Upload CSV`, kolonnemappingen, `UPLOAD ALL`) er verifisert manuelt mot
+> ekte Instantly-UI 23.09.2026 (New Experience-visningen) og bør fungere som
+> de står. De to `[data-testid="lead-count-..."]`-selektorene er derimot
+> **gjetning** — de faktiske `data-testid`-attributtene (om de finnes i det
+> hele tatt) må verifiseres i nettleserens DevTools før denne oppgaven regnes
+> som ferdig, siden hele poenget med denne sjekken er å IKKE slette for mye
+> (se advarselen i koden og [[feedback-instantly-slett-riktig-filter]] i
+> minnet for hvorfor dette steget er kritisk, ikke valgfritt).
 
 - [ ] **Step 4: Manuell verifisering med et lite test-lead**
 
 Lag en minimal test-CSV med én ekte eller falsk lead, kjør:
-Run: `node scripts/lead-sourcing/instantly-sync.js test-leads.csv Test`
-Expected: scriptet logger inn, viser `Ferdig: { backupFil: ..., antallSlettet: N, antallLastetOpp: 1 }`. Bekreft manuelt i Instantly sitt UI at leaden faktisk dukket opp, og at en eventuell "Completed"-lead faktisk ble slettet OG finnes i backup-CSV-en.
+Run: `node scripts/lead-sourcing/instantly-sync.js test-leads.csv "https://app.instantly.ai/app/campaign/<id>/leads"`
+Expected: scriptet logger inn, viser `Ferdig: { antallSlettet: N, antallLastetOpp: 1 }`. Bekreft manuelt i Instantly sitt UI at leaden faktisk dukket opp, og at KUN "Completed, No reply"-leads ble slettet — sjekk spesifikt at ingen lead med "Reply received" eller "Interested" er borte.
 
 - [ ] **Step 5: Commit**
 
@@ -988,13 +1026,13 @@ async function kjorRunde() {
 
   let instantlyResultat;
   try {
-    instantlyResultat = await kjorSync(medEpostFil, bransje.navn, ko.instantly_kampanje);
+    instantlyResultat = await kjorSync(medEpostFil, ko.instantly_kampanje_url);
   } catch (err) {
     logg(dato, `FEIL under Instantly-sync: ${err.message}. Leadsene ligger fortsatt i ${medEpostFil} og plukkes opp neste kjøring siden dedup-registeret ikke oppdateres før vellykket opplasting.`);
     return;
   }
 
-  logg(dato, `Instantly: slettet ${instantlyResultat.antallSlettet}, lastet opp ${instantlyResultat.antallLastetOpp}. Backup: ${instantlyResultat.backupFil}`);
+  logg(dato, `Instantly: slettet ${instantlyResultat.antallSlettet}, lastet opp ${instantlyResultat.antallLastetOpp}.`);
 
   registrerNyeLeads(leads);
   logg(dato, `Registrerte ${leads.length} nye leads i dedup-registeret`);
@@ -1062,18 +1100,23 @@ Expected: en ny loggfil dukker opp i `scripts/lead-sourcing/logs/` innen kort ti
 - Google Places som fallback for tynt dekkede bransjer → Task 4. ✅
 - Bransjekø med auto-bytte ved terskel → Task 5. ✅
 - Playwright-basert Instantly-sync (slett fullførte + last opp nye) → Task 6. ✅
-- Backup-CSV før sletting → Task 6 (`slettFullforteLeads`). ✅
+- Ingen backup-steg i automatiseringen (Adrians eksplisitte valg 23.09.2026,
+  oppbrukt-fila er registeret) → Task 6, `slettFullforteLeads` tar ingen
+  backup-eksport. ✅
 - Orkestrering + logging → Task 7. ✅
 - Windows Task Scheduler annenhver dag → Task 8. ✅
 - `.env`-sikkerhet (aldri i git) → verifisert i spec, gjenbrukt i Task 6 uten endring i `.gitignore` (allerede dekket).
 - 240 leads/kjøring (Adrians oppdaterte krav 23.09.2026) → `maxLeadsPerKjoring` i `bransje-ko.json`, brukt av alle fetch-kall i Task 7.
 
-**Kjent, akseptert hull:** Task 6 sine tre Playwright-funksjoner inneholder
-plassholder-kommentarer for de faktiske DOM-selektorene, siden de ikke kan
-skrives korrekt uten først å ha sett Instantly sitt live UI (Step 2 i Task 6
-er research som må gjøres av den som utfører oppgaven — ikke noe som kan
-forhåndsutfylles i en plan). Dette er det ENESTE stedet i planen med
-plassholdere, og det er eksplisitt markert med hvorfor og hva som må gjøres.
+**Kjent, akseptert hull:** de fleste selektorene i Task 6 er verifisert manuelt
+mot ekte Instantly-UI 23.09.2026 (samme økt som den manuelle første
+kajakkutleie-runden), men de to `[data-testid="lead-count-..."]`-selektorene
+brukt i "har filteret faktisk redusert antallet"-sjekken er gjetning og MÅ
+verifiseres i DevTools før Task 6 regnes som ferdig — det er nettopp denne
+sjekken som skal forhindre gjentakelse av hendelsen 23.09.2026 der et manglende
+filter i "New Experience"-visningen førte til at alle 586 leads (inkl. 67 som
+hadde svart) ble slettet i stedet for bare de fullførte. Se
+[[feedback-instantly-slett-riktig-filter]] i minnet.
 
 **Type-konsistens:** `lead`-objektet har konsekvent feltene
 `{ navn, adresse, telefon, nettside, by, epost }` (epost valgfri, kun satt av

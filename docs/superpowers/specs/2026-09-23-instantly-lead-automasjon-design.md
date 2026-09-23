@@ -79,11 +79,10 @@ dag. Den gjør, i rekkefølge:
    selv mot `dedup-register.js` (se under) før det skriver ut CSV-en.
 3. Kjør `scrape-emails.js` på resultatet.
 4. Kjør `instantly-sync.js`:
-   a. Eksporter backup-CSV av leads som skal slettes, til
-      `OneDrive...\Instantly leads\backups\<dato>-<bransje>-slettet.csv`.
-   b. Logg inn på Instantly, filtrer aktiv kampanje på "fullført uten svar",
-      slett de leadsene.
-   c. Last opp CSV med de nye leadsene til samme kampanje.
+   a. Logg inn på Instantly, filtrer aktiv kampanje på "fullført uten svar",
+      slett de leadsene. Ingen egen backup tas før sletting — se
+      Sikkerhet-avsnittet for hvorfor.
+   b. Last opp CSV med de nye leadsene til samme kampanje.
 5. Oppdater `dedup-register.js` sin master-fil med de nye leadsene (telefon +
    nettside + epost) — de skal aldri sources på nytt, uansett bransje.
 6. Hvis antall NYE leads denne kjøringen er **under 150**: marker aktiv
@@ -231,12 +230,11 @@ gjøres helt automatisk med epost+passord fra `.env`.
    bransje som er aktiv, kun leadsene inni byttes ut, per Adrians valg om
    "én bransje av gangen".
 3. Filtrer leads-visningen på "Completed" / fullført sekvens uten svar.
-4. **Eksporter disse til backup-CSV FØR sletting** —
-   `OneDrive...\Instantly leads\backups\<ISO-dato>-<bransje>-slettet.csv`.
-5. Bulk-velg og slett de filtrerte leadsene.
-6. Last opp den nye CSV-en (fra steg 3 i hovedflyten) via Instantly sin
+4. Bulk-velg og slett de filtrerte leadsene. Ingen egen backup-eksport her —
+   se Sikkerhet-avsnittet for hvorfor det er trygt uten.
+5. Last opp den nye CSV-en (fra steg 3 i hovedflyten) via Instantly sin
    CSV-importflyt i UI-et.
-7. Returner antall slettet / antall lastet opp til `kjor-runde.js` for
+6. Returner antall slettet / antall lastet opp til `kjor-runde.js` for
    loggføring.
 
 **Skjørhet, akseptert bevisst:** dette scriptet er avhengig av Instantly sitt
@@ -254,9 +252,12 @@ tydelig ved feil (se feilhåndtering under) i stedet for å feile stille.
   (`git check-ignore -v` bekrefter), så dette er trygt i det offentlige
   repoet uten ytterligere `.gitignore`-endring.
 - Ingen credentials hardkodes i noen `.js`-fil.
-- Backup-CSV-en i steg 4 over (`instantly-sync.js`) er sikkerhetsnettet mot
-  at en bug i slette-logikken mister leads for godt — alt som slettes i
-  Instantly finnes fortsatt lokalt i OneDrive-mappa.
+- **Ingen egen backup tas før sletting i Instantly** (Adrians eksplisitte
+  valg 23.09.2026) — `leads-med-nettside-DISSE_ER_OPPBRUKT.csv` er allerede
+  det varige registeret over hvem som er kontaktet, og dekker samme behov.
+  Det som slettes i Instantly er uansett alltid leads som har fullført
+  sekvensen (se dedup-nøkkel-registreringen i steg 5), så de finnes allerede
+  der.
 
 ---
 
@@ -335,10 +336,7 @@ Dette bygges **ikke** nå:
 2. Ingen lead med telefon, nettside ELLER epost som allerede finnes i
    `leads-med-nettside-DISSE_ER_OPPBRUKT.csv` blir noensinne lastet opp til
    Instantly igjen.
-3. Hver sletting i Instantly har en tilsvarende backup-CSV i
-   `Instantly leads\backups\` fra samme kjøring, daterbar til nøyaktig
-   hvilken runde som slettet dem.
-4. Campingplasser sources med $0 i Places API-kostnad (kun OSM brukt).
-5. Loggfila i `logs/` gjør det mulig for Adrian å se, uten å kjøre noe selv,
+3. Campingplasser sources med $0 i Places API-kostnad (kun OSM brukt).
+4. Loggfila i `logs/` gjør det mulig for Adrian å se, uten å kjøre noe selv,
    hva som skjedde i enhver tidligere kjøring: bransje, antall funnet/lastet
    opp/slettet, og eventuelle feil.
