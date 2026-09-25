@@ -552,6 +552,10 @@ Vennligst:
           <p>Gjenta det samme for <code>www</code>-versjonen: <strong>Domains</strong> → <strong>Add Domain</strong> → trykk på domenet ditt slik som den røde sirkelen på bildet over → skriv <code>www</code> slik at det ser ut som på bildet under → klikk <strong>Add Domain</strong>.</p>
           <img src="../images/cloudflare-www-domene.png" alt="Legg til www-versjonen av domenet" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
           <p><strong style="color:#0339f8;">b.</strong> Dette er siste steg. Så snart navnetjenerne er <strong>Active</strong> og domenet er lagt til, publiseres siden på domenet <strong>helt automatisk</strong>, du trenger ikke gjøre noe mer. <strong>Cloudflare sender deg en e-post når det er klart.</strong> Det kan ta rundt en time før den er oppe, så søk opp <code>dittfirma.no</code> om et par timer eller dagen etter for å se den live.</p>
+
+          <div class="callout-warn callout not-prose" style="margin-top:1.25rem;">
+            <p><strong>Får du «Ikke sikker» i nettleseren når du åpner domenet?</strong> Sertifikatet kan være helt fint, problemet er ofte at Cloudflare ikke automatisk sender besøkende videre fra <code>http://</code> til <code>https://</code>. Fiks: gå til domenet ditt i Cloudflare → <strong>SSL/TLS</strong> → fanen <strong>Edge Certificates</strong> → skru på <strong>«Always Use HTTPS»</strong> (og gjerne <strong>«Automatic HTTPS Rewrites»</strong> rett under). Ingen lagre-knapp, det slår inn med en gang.</p>
+          </div>
         </div>
       </div>
 
