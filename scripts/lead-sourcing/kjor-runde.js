@@ -7,6 +7,22 @@ const { lastKo, aktivBransje, byttTilNesteBransje } = require('./bransje-ko');
 const { hentLeadsForBransje: hentFraOsm } = require('./fetch-osm-leads');
 const { hentLeadsForBransje: hentFraPlaces } = require('./fetch-places-leads');
 const { registrerNyeLeads } = require('./dedup-register');
+
+function lesMedEpostRader(filePath) {
+  const text = fs.readFileSync(filePath, 'utf-8').replace(/^﻿/, '');
+  const lines = text.split(/\r?\n/).filter(Boolean);
+  const header = lines[0].split('","').map((h) => h.replace(/^"|"$/g, ''));
+  const idx = (col) => header.indexOf(col);
+  return lines.slice(1).map((line) => {
+    const cols = line.split('","').map((c) => c.replace(/^"|"$/g, ''));
+    return {
+      navn: cols[idx('navn')] || '',
+      telefon: cols[idx('telefon')] || '',
+      nettside: cols[idx('nettside')] || '',
+      epost: cols[idx('epost')] || '',
+    };
+  });
+}
 const { kjorSync } = require('./instantly-sync');
 
 const KO_FIL = path.join(__dirname, 'bransje-ko.json');
@@ -66,6 +82,21 @@ async function kjorRunde() {
   const medEpostFilPending = path.join(PENDING_DIR, `${bransje.navn.toLowerCase()}-leads-${dato}-med-epost.csv`);
   execFileSync('node', [path.join(__dirname, 'scrape-emails.js'), rawFilPending, medEpostFilPending], { stdio: 'inherit' });
 
+  const medEpostRader = lesMedEpostRader(medEpostFilPending);
+  const raderMedEpost = medEpostRader.filter((r) => r.epost.trim());
+  logg(dato, `E-post-scraping: ${raderMedEpost.length}/${medEpostRader.length} fikk epost`);
+
+  // Sikkerhetssjekk (hendelsen 25.-27.09.2026, se feedback-instantly-slett-
+  // riktig-filter i minnet): hvis nesten ingen fikk epost, er det sannsynligvis
+  // et nettverksproblem i kjøremiljøet (ikke reelt 0% treff på ekte nettsider),
+  // og Instantly vil uansett avvise fila ("No leads to upload"). Avbryt tidlig
+  // i stedet for å bruke Instantly-tid på noe som garantert feiler - fila blir
+  // liggende i PENDING_DIR og plukkes opp på nytt neste kjøring.
+  if (raderMedEpost.length === 0) {
+    logg(dato, `INGEN fikk epost - avbryter runden uten å røre Instantly eller bransjekøen. Sjekk nettverkstilgangen i kjøremiljøet (se Windows Task Scheduler-loggen).`);
+    return;
+  }
+
   let instantlyResultat;
   try {
     instantlyResultat = await kjorSync(medEpostFilPending, ko.instantly_kampanje_url);
@@ -81,13 +112,13 @@ async function kjorRunde() {
   fs.renameSync(medEpostFilPending, path.join(LEADS_DIR, `${bransje.navn.toLowerCase()}-leads-${dato}-med-epost.csv`));
   fs.renameSync(rawFilPending, path.join(LEADS_DIR, `${bransje.navn.toLowerCase()}-leads-${dato}.csv`));
 
-  registrerNyeLeads(leads);
-  logg(dato, `Registrerte ${leads.length} nye leads i dedup-registeret`);
+  registrerNyeLeads(raderMedEpost);
+  logg(dato, `Registrerte ${raderMedEpost.length} nye leads (med epost) i dedup-registeret`);
 
-  if (leads.length < bransje.terskelForTom) {
+  if (raderMedEpost.length < bransje.terskelForTom) {
     byttTilNesteBransje(KO_FIL);
     const nyKo = lastKo(KO_FIL);
-    logg(dato, `${bransje.navn} regnes som tom (${leads.length} < terskel ${bransje.terskelForTom}). Bytter til: ${aktivBransje(nyKo).navn}`);
+    logg(dato, `${bransje.navn} regnes som tom (${raderMedEpost.length} med epost < terskel ${bransje.terskelForTom}). Bytter til: ${aktivBransje(nyKo).navn}`);
   }
 }
 
