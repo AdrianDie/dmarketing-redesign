@@ -11,6 +11,13 @@ const { kjorSync } = require('./instantly-sync');
 
 const KO_FIL = path.join(__dirname, 'bransje-ko.json');
 const LEADS_DIR = 'C:\\Users\\adria\\OneDrive\\Dietrichs Marketing\\Leads\\Instantly leads';
+// Mellomlagring FØR Instantly-opplasting lykkes. dedup-register.js sin
+// loadUsedKeys() skanner kun *filer direkte i* LEADS_DIR (readdirSync er ikke
+// rekursiv), så en underkatalog her blir ALDRI telt som "allerede brukt" -
+// bevisst, se feilen 25.-27.09.2026 i minnet (project-instantly-lead-automasjon):
+// leads som ble hentet men aldri sendt pga manglende INSTANTLY-credentials
+// blokkerte seg selv for alltid fordi CSV-en lå direkte i LEADS_DIR.
+const PENDING_DIR = path.join(LEADS_DIR, 'pending-ikke-sendt-enna');
 const LOG_DIR = path.join(__dirname, 'logs');
 
 function logg(dato, linje) {
@@ -52,21 +59,27 @@ async function kjorRunde() {
     return;
   }
 
-  const rawFil = path.join(LEADS_DIR, `${bransje.navn.toLowerCase()}-leads-${dato}.csv`);
-  skrivCsv(leads, rawFil);
+  fs.mkdirSync(PENDING_DIR, { recursive: true });
+  const rawFilPending = path.join(PENDING_DIR, `${bransje.navn.toLowerCase()}-leads-${dato}.csv`);
+  skrivCsv(leads, rawFilPending);
 
-  const medEpostFil = path.join(LEADS_DIR, `${bransje.navn.toLowerCase()}-leads-${dato}-med-epost.csv`);
-  execFileSync('node', [path.join(__dirname, 'scrape-emails.js'), rawFil, medEpostFil], { stdio: 'inherit' });
+  const medEpostFilPending = path.join(PENDING_DIR, `${bransje.navn.toLowerCase()}-leads-${dato}-med-epost.csv`);
+  execFileSync('node', [path.join(__dirname, 'scrape-emails.js'), rawFilPending, medEpostFilPending], { stdio: 'inherit' });
 
   let instantlyResultat;
   try {
-    instantlyResultat = await kjorSync(medEpostFil, ko.instantly_kampanje_url);
+    instantlyResultat = await kjorSync(medEpostFilPending, ko.instantly_kampanje_url);
   } catch (err) {
-    logg(dato, `FEIL under Instantly-sync: ${err.message}. Leadsene ligger fortsatt i ${medEpostFil} og plukkes opp neste kjøring siden dedup-registeret ikke oppdateres før vellykket opplasting.`);
+    logg(dato, `FEIL under Instantly-sync: ${err.message}. Leadsene ligger fortsatt i ${medEpostFilPending} (mellomlager, telles IKKE som brukt) og plukkes opp på nytt neste kjøring.`);
     return;
   }
 
   logg(dato, `Instantly: slettet ${instantlyResultat.antallSlettet}, lastet opp ${instantlyResultat.antallLastetOpp}.`);
+
+  // Flytt til LEADS_DIR (der dedup-register.js faktisk ser filer) FØRST etter
+  // vellykket opplasting - dette er selve fiksen for feilen 25.-27.09.2026.
+  fs.renameSync(medEpostFilPending, path.join(LEADS_DIR, `${bransje.navn.toLowerCase()}-leads-${dato}-med-epost.csv`));
+  fs.renameSync(rawFilPending, path.join(LEADS_DIR, `${bransje.navn.toLowerCase()}-leads-${dato}.csv`));
 
   registrerNyeLeads(leads);
   logg(dato, `Registrerte ${leads.length} nye leads i dedup-registeret`);
