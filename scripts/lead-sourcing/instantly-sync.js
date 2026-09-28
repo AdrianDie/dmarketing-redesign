@@ -3,19 +3,59 @@
 // svar, og laster opp nye leads. Ingen egen backup her, med vilje -
 // leads-med-nettside-DISSE_ER_OPPBRUKT.csv ER registeret (Adrians valg
 // 23.09.2026).
+//
+// Innlogging: kontoen (dietrichs.mkt@gmail.com) bruker KUN "Log in with
+// Google", ikke epost+passord (oppdaget 28.09.2026 - se
+// feedback-instantly-automasjon-lardommer i minnet). Det finnes derfor intet
+// passord å skripte innlogging med. Løsningen er en lagret, gjenbrukt
+// nettleserøkt: kjør `node login-setup.js` ÉN gang manuelt (Adrian logger inn
+// selv med Google i et synlig vindu), det lagrer en instantly-session.json
+// som denne fila leser her. Ingen credentials lagres noe sted.
+//
 // Bruk: node instantly-sync.js <nye-leads.csv> <kampanje-url>
-require('dotenv').config();
 const { chromium } = require('playwright');
+const path = require('path');
+const fs = require('fs');
 
-const INSTANTLY_EMAIL = process.env.INSTANTLY_EMAIL;
-const INSTANTLY_PASSWORD = process.env.INSTANTLY_PASSWORD;
+const SESSION_FIL = path.join(__dirname, 'instantly-session.json');
 
-async function loggInn(page) {
-  await page.goto('https://app.instantly.ai/auth/login');
-  await page.fill('input[name="email"]', INSTANTLY_EMAIL);
-  await page.fill('input[name="password"]', INSTANTLY_PASSWORD);
-  await page.click('button[type="submit"]');
-  await page.waitForURL('**/app/**', { timeout: 30000 });
+function sjekkOektFinnes() {
+  if (!fs.existsSync(SESSION_FIL)) {
+    throw new Error(
+      `Mangler ${SESSION_FIL}. Kjør "node login-setup.js" én gang manuelt ` +
+      '(logg inn med "Log in with Google", dietrichs.mkt@gmail.com) før automasjonen kan kjøre.'
+    );
+  }
+}
+
+async function nyKontekstMedOekt(browser) {
+  sjekkOektFinnes();
+  const context = await browser.newContext({ storageState: SESSION_FIL });
+  return context;
+}
+
+// Returnerer true hvis kampanjen har fullført sending til alle nåværende
+// leads (statusmerket "Completed" i UI-et), false hvis den fortsatt sender
+// ("Active"). Brukes til å gate slette+fyll-på-syklusen - se Adrians krav
+// 28.09.2026 om at en batch skal fullføre sin sekvens (240 leads x 2 mailer
+// over 2 dager) før neste batch lastes inn, i stedet for å stole blindt på
+// at Task Scheduler sitt 2-dagers-intervall alltid stemmer.
+async function erKampanjeFerdigMedSending(kampanjeUrl) {
+  const browser = await chromium.launch({ headless: true });
+  try {
+    const context = await nyKontekstMedOekt(browser);
+    const page = await context.newPage();
+    await page.goto(kampanjeUrl);
+    await page.waitForSelector('text=Leads', { timeout: 30000 });
+    const harRedirigertTilLogin = page.url().includes('/auth/login');
+    if (harRedirigertTilLogin) {
+      throw new Error('Økten (instantly-session.json) er utløpt - kjør "node login-setup.js" på nytt.');
+    }
+    const antallCompleted = await page.getByText('Completed', { exact: true }).count();
+    return antallCompleted > 0;
+  } finally {
+    await browser.close();
+  }
 }
 
 async function slettFullforteLeads(page, kampanjeUrl) {
@@ -101,13 +141,14 @@ async function lastOppNyeLeads(page, csvFil) {
 }
 
 async function kjorSync(csvFil, kampanjeUrl) {
-  if (!INSTANTLY_EMAIL || !INSTANTLY_PASSWORD) {
-    throw new Error('Mangler INSTANTLY_EMAIL/INSTANTLY_PASSWORD i .env');
-  }
   const browser = await chromium.launch({ headless: true });
-  const page = await browser.newPage();
   try {
-    await loggInn(page);
+    const context = await nyKontekstMedOekt(browser);
+    const page = await context.newPage();
+    await page.goto(kampanjeUrl);
+    if (page.url().includes('/auth/login')) {
+      throw new Error('Økten (instantly-session.json) er utløpt - kjør "node login-setup.js" på nytt.');
+    }
     const { antallSlettet } = await slettFullforteLeads(page, kampanjeUrl);
     const { antallLastetOpp } = await lastOppNyeLeads(page, csvFil);
     return { antallSlettet, antallLastetOpp };
@@ -116,7 +157,7 @@ async function kjorSync(csvFil, kampanjeUrl) {
   }
 }
 
-module.exports = { kjorSync };
+module.exports = { kjorSync, erKampanjeFerdigMedSending };
 
 if (require.main === module) {
   const [, , csvFil, kampanjeUrl] = process.argv;

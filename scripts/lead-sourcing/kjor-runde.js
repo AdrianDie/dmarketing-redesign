@@ -9,7 +9,7 @@ const { hentLeadsForBransje: hentFraPlaces } = require('./fetch-places-leads');
 const {
   registrerNyeLeads, normalizePhone, normalizeWebsite, normalizeEmail,
 } = require('./dedup-register');
-const { kjorSync } = require('./instantly-sync');
+const { kjorSync, erKampanjeFerdigMedSending } = require('./instantly-sync');
 
 const KO_FIL = path.join(__dirname, 'bransje-ko.json');
 const LEADS_DIR = 'C:\\Users\\adria\\OneDrive\\Dietrichs Marketing\\Leads\\Instantly leads';
@@ -123,6 +123,25 @@ async function kjorRunde() {
   const dato = new Date().toISOString().slice(0, 10);
   const ko = lastKo(KO_FIL);
   const bransje = aktivBransje(ko);
+
+  // Adrians krav 28.09.2026: en batch (240 leads x 2 mailer over 2 dager)
+  // skal fullføre sekvensen sin FØR neste batch lastes inn - ikke bare stole
+  // på at Task Scheduler sitt 2-dagers-intervall alltid stemmer (en forsinket
+  // eller feilet forrige kjøring kan gjøre at kampanjen ikke er ferdig ennå).
+  // Sjekkes FØR noe hentes, for å unngå å bruke Places API-kall/OSM-tid på en
+  // runde som uansett skal avbrytes.
+  let ferdig;
+  try {
+    ferdig = await erKampanjeFerdigMedSending(ko.instantly_kampanje_url);
+  } catch (err) {
+    logg(dato, `FEIL under statussjekk mot Instantly: ${err.message}. Avbryter runden, rører ingenting.`);
+    return;
+  }
+  if (!ferdig) {
+    logg(dato, `Kampanjen har ikke fullført sending til gjeldende leads ennå ("Active", ikke "Completed") - venter til neste kjøring.`);
+    return;
+  }
+
   logg(dato, `Starter runde for bransje: ${bransje.navn} (kilde: ${bransje.kilde}, mål: ${bransje.maxLeadsPerKjoring} med epost)`);
 
   const { medEpost, alleRaw, tomt } = await hentTilMaalNaadd(dato, bransje);

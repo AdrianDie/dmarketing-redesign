@@ -4,6 +4,7 @@ node_modules/
 # Env / secrets
 .env
 .env.*
+scripts/lead-sourcing/instantly-session.json
 
 # Lokale MCP-koblinger og nøkler (aldri publiser)
 .mcp.json
