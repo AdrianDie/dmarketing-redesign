@@ -34,30 +34,6 @@ async function nyKontekstMedOekt(browser) {
   return context;
 }
 
-// Returnerer true hvis kampanjen har fullført sending til alle nåværende
-// leads (statusmerket "Completed" i UI-et), false hvis den fortsatt sender
-// ("Active"). Brukes til å gate slette+fyll-på-syklusen - se Adrians krav
-// 28.09.2026 om at en batch skal fullføre sin sekvens (240 leads x 2 mailer
-// over 2 dager) før neste batch lastes inn, i stedet for å stole blindt på
-// at Task Scheduler sitt 2-dagers-intervall alltid stemmer.
-async function erKampanjeFerdigMedSending(kampanjeUrl) {
-  const browser = await chromium.launch({ headless: true });
-  try {
-    const context = await nyKontekstMedOekt(browser);
-    const page = await context.newPage();
-    await page.goto(kampanjeUrl);
-    await page.waitForSelector('text=Leads', { timeout: 30000 });
-    const harRedirigertTilLogin = page.url().includes('/auth/login');
-    if (harRedirigertTilLogin) {
-      throw new Error('Økten (instantly-session.json) er utløpt - kjør "node login-setup.js" på nytt.');
-    }
-    const antallCompleted = await page.getByText('Completed', { exact: true }).count();
-    return antallCompleted > 0;
-  } finally {
-    await browser.close();
-  }
-}
-
 async function slettFullforteLeads(page, kampanjeUrl) {
   await page.goto(kampanjeUrl);
   await page.waitForSelector('text=Leads', { timeout: 30000 });
@@ -157,7 +133,7 @@ async function kjorSync(csvFil, kampanjeUrl) {
   }
 }
 
-module.exports = { kjorSync, erKampanjeFerdigMedSending };
+module.exports = { kjorSync };
 
 if (require.main === module) {
   const [, , csvFil, kampanjeUrl] = process.argv;
