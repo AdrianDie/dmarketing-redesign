@@ -77,8 +77,15 @@ function byggAdresse(tags) {
   return [gate, resten].filter(Boolean).join(', ');
 }
 
-async function hentLeadsForBransje(tagFilter, maxLeads = Infinity) {
+async function hentLeadsForBransje(tagFilter, maxLeads = Infinity, ekstraNokler) {
   const nokler = loadUsedKeys(LEADS_DIR);
+  if (ekstraNokler) {
+    // Se tilsvarende kommentar i fetch-places-leads.js - topp-opp-runder
+    // innad i samme kjør-runde.js-kjøring må ekskludere forrige rundes treff.
+    ekstraNokler.telefoner.forEach((v) => nokler.telefoner.add(v));
+    ekstraNokler.nettsider.forEach((v) => nokler.nettsider.add(v));
+    ekstraNokler.eposter.forEach((v) => nokler.eposter.add(v));
+  }
   console.log(`Dedup-nokler lastet: ${nokler.telefoner.size} telefon, ${nokler.nettsider.size} nettside, ${nokler.eposter.size} epost`);
 
   const data = await hentFraOverpass(tagFilter);

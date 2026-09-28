@@ -34,8 +34,16 @@ async function searchText(query, apiKey, pageToken) {
   return res.json();
 }
 
-async function hentLeadsForBransje(sokeord, maxLeads, apiKey) {
+async function hentLeadsForBransje(sokeord, maxLeads, apiKey, ekstraNokler) {
   const nokler = loadUsedKeys(LEADS_DIR);
+  if (ekstraNokler) {
+    // Brukes for topp-opp-runder innad i samme kjøring (kjor-runde.js), der
+    // forrige rundes treff ennå ikke er skrevet til LEADS_DIR (se
+    // pending-ikke-sendt-enna-mappa) og derfor ikke fanges av loadUsedKeys().
+    ekstraNokler.telefoner.forEach((v) => nokler.telefoner.add(v));
+    ekstraNokler.nettsider.forEach((v) => nokler.nettsider.add(v));
+    ekstraNokler.eposter.forEach((v) => nokler.eposter.add(v));
+  }
   console.log(`Dedup-nokler lastet: ${nokler.telefoner.size} telefon, ${nokler.nettsider.size} nettside, ${nokler.eposter.size} epost`);
 
   const seenIds = new Set();
