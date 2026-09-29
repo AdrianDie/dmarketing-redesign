@@ -1,0 +1,227 @@
+/* mck-theme.css - McKinsey-inspirert lag oppå eksisterende stilark.
+   Lastes SIST på hver side. Endrer bare uttrykk (geometri, typografi, farge), aldri innhold.
+   Illustrasjoner (integrasjonsbilder, dashboard-mockups) er bevisst urørt. */
+
+:root {
+  --mck-ink: #333333;
+  --mck-black: #000000;
+  --mck-navy: #051c2c;
+  --mck-indigo: #2251ff;
+  --mck-cyan: #00a9f4;
+  --mck-line: #cccccc;
+  --mck-serif: Georgia, "Times New Roman", serif;
+  --mck-sans: neue-haas-grotesk-text, "Helvetica Neue", Calibri, Helvetica, Arial, sans-serif;
+
+  /* style.css (undersider) styres via variabler */
+  --paper: #ffffff;
+  --paper-2: #f4f5f6;
+  --ink: #000000;
+  --ink-soft: #333333;
+  --ink-faint: #6b6b6b;
+  --cobalt: #2251ff;
+  --cobalt-700: #051c2c;
+  --cobalt-050: #eef1ff;
+  --cobalt-ink: #051c2c;
+  --line: #cccccc;
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-cta: none;
+  --r-lg: 0;
+  --r-md: 0;
+  --r-sm: 0;
+}
+
+html { background: #fff; }
+body { background: #fff; color: var(--mck-ink); font-weight: 300; }
+
+/* ---------- Geometri: null radius, null skygge ---------- */
+/* Tailwind-klasser (forside, ai-nettsider, samarbeidspartnere) */
+[class*="rounded-sm"], [class*="rounded-md"], [class*="rounded-lg"], [class*="rounded-xl"],
+[class*="rounded-2xl"], [class*="rounded-3xl"], [class*="rounded-["] { border-radius: 0 !important; }
+[class*="shadow-"] { box-shadow: none !important; }
+/* Runde ikon-/avatar-elementer beholdes runde (McKinsey bruker sirkulære ikonknapper) */
+img[class*="rounded-full"], .rounded-full:not(a):not(button) { border-radius: 50% !important; }
+
+/* Egne klasser på forsiden og undersider */
+.t-card, .dm-team-card, .review-card, .freedom, .step, .mal, .price, .pay-item, .pay-note,
+.member, .ap-card, .chat, .bubble, .btn, .dm-hero-btn, .dm-cc, .dm-cc-yes, .dm-cc-no,
+.step .ic, .freedom .ic, .live-pill, .step .branch span, .price .badge, input, textarea, select, button {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+.dm-hero-img, .dm-hero-bg, .dm-hero-scrim,
+.relative.overflow-hidden.rounded-xl { border-radius: 0 !important; }
+
+/* Kort får tynn strek i stedet for skygge */
+.t-card, .dm-team-card, .review-card, .freedom, .step, .mal, .price, .pay-item, .member,
+.ap-card, article[class*="shadow-"], a.group[class*="rounded-"] {
+  border: 1px solid var(--mck-line) !important;
+  background: #fff;
+}
+
+/* ---------- Typografi ---------- */
+h1, h2, h3, h4 { font-weight: 300; letter-spacing: -0.01em; }
+
+/* Store deklarative seksjonsoverskrifter: serif, lett vekt */
+h1, h2, .display, .dm-hero-title, .hero-title, .sect-head h2, .final h2, .stats-lead h2,
+.pay-note h3, .review blockquote, main > section > h2, section h2.h2 {
+  font-family: var(--mck-serif) !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.015em !important;
+  text-transform: none !important;
+}
+/* Header/footer og meny beholder sans */
+.dm-chrome h1, .dm-chrome h2, .dmc-footer-rich h2, .dm-fs-menu h2 { font-family: var(--mck-sans) !important; font-weight: 400 !important; }
+/* Mindre kort- og kortoverskrifter forblir sans */
+.step h3, .freedom h3, .member h3, .ap-card h3, .mal .mt, .price .pname, .pay-item h4,
+article h3, .t-card h3, .dm-team-card h3 {
+  font-family: var(--mck-sans) !important;
+  font-weight: 500 !important;
+  text-transform: none !important;
+}
+.accent, .display .accent { color: var(--mck-indigo) !important; }
+.outline { -webkit-text-stroke-color: var(--mck-indigo); }
+
+/* Kicker-etiketter (REPORT-stil): små, uppercase, sans */
+.label, .dm-eyebrow, .ap-tag, .mal .mn, .member .role {
+  font-family: var(--mck-sans) !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mck-black);
+}
+.label .num, .label .bar { color: var(--mck-indigo); }
+
+p, li { font-weight: 300; }
+a { transition: color .12s linear, background-color .12s linear, border-color .12s linear; }
+/* Tekstlenker i brødtekst: indigo */
+main p a, article p a, .prose a { color: var(--mck-indigo); }
+
+/* ---------- Knapper ---------- */
+.btn, .dm-hero-btn, .dmc-fr-cta, .dmc-fs-cta {
+  border-radius: 0 !important;
+  font-family: var(--mck-sans);
+  font-weight: 400 !important;
+  transition: background-color .12s linear, color .12s linear, border-color .12s linear !important;
+}
+/* Primær handling på lys bunn: cyan fyll */
+.btn-primary, .dm-hero-btn--primary {
+  background: var(--mck-cyan) !important;
+  border-color: var(--mck-cyan) !important;
+  color: var(--mck-navy) !important;
+}
+.btn-primary:hover, .dm-hero-btn--primary:hover { background: var(--mck-navy) !important; border-color: var(--mck-navy) !important; color: #fff !important; }
+.btn-ghost, .dm-hero-btn--ghost { background: transparent !important; color: var(--mck-black) !important; border: 1px solid var(--mck-black) !important; }
+.btn-ghost:hover, .dm-hero-btn--ghost:hover { background: var(--mck-black) !important; color: #fff !important; }
+/* Knapper på foto/mørk bunn: hvit fyll, svart tekst */
+.btn-light, .dm-hero .dm-hero-btn--primary, .final .btn-primary, .stats .btn-primary {
+  background: #fff !important; color: var(--mck-black) !important; border-color: #fff !important;
+}
+.btn-ghost-light { background: transparent !important; color: #fff !important; border: 1px solid #fff !important; }
+.btn-ghost-light:hover { background: #fff !important; color: var(--mck-black) !important; }
+/* Hero-knapper ligger alltid på foto: primær hvit, ghost hvit kontur */
+.dm-hero-ctas .dm-hero-btn--primary { background: #fff !important; border-color: #fff !important; color: var(--mck-black) !important; }
+.dm-hero-ctas .dm-hero-btn--primary:hover { background: var(--mck-cyan) !important; border-color: var(--mck-cyan) !important; color: var(--mck-navy) !important; }
+.dm-hero-ctas .dm-hero-btn--ghost { background: transparent !important; color: #fff !important; border: 1px solid #fff !important; }
+.dm-hero-ctas .dm-hero-btn--ghost:hover { background: #fff !important; color: var(--mck-black) !important; }
+
+/* Header-CTA (Tailwind, bg-blue-500) */
+.dm-chrome a.bg-blue-500, .dm-chrome button.bg-blue-500, header a.bg-blue-500, a.bg-blue-500[href="/kontakt/"] {
+  background: var(--mck-cyan) !important; border-color: var(--mck-cyan) !important; color: var(--mck-navy) !important;
+}
+header a.bg-blue-500:hover, .dm-chrome a.bg-blue-500:hover { background: var(--mck-navy) !important; border-color: var(--mck-navy) !important; color: #fff !important; }
+.dm-chrome header { background: #fff !important; backdrop-filter: none !important; border-bottom: 1px solid var(--mck-line); }
+.dm-chrome .text-nav a::after, .text-nav a::after { background: var(--mck-black) !important; height: 1px !important; }
+.dm-chrome header nav a { font-weight: 300; }
+
+/* ---------- Mørke flater: McKinsey-navy ---------- */
+.stats, .final, .dmc-footer-rich, .bg-blue-600, .bg-blue-700, .bg-blue-800, .bg-grey-900, .bg-grey-950,
+.css-dm-gradient, .dm-gradient, .preloader-top, .preloader-bottom, .dm-cta {
+  background: var(--mck-navy) !important;
+  background-image: none !important;
+}
+.dm-tjenester .t-card.cobalt, .t-card.cobalt { background: var(--mck-navy) !important; }
+.preloader { --preloader-secondary: #051c2c; }
+
+/* Hero: mørk navy-scrim over eksisterende foto (fotoet beholdes) */
+.dm-hero-scrim { background: linear-gradient(90deg, rgba(5,28,44,.88) 0%, rgba(5,28,44,.55) 55%, rgba(5,28,44,.25) 100%) !important; }
+.dm-hero-title, .dm-hero-lead { color: #fff; }
+
+/* Gråtoner på lyse seksjoner: flat hvit/lysegrå i stedet for varm beige */
+.bg-grey-50 { background: #f4f5f6 !important; }
+.bg-linear-180 { background-image: none !important; background-color: #fff !important; }
+
+/* Tynne skillelinjer mellom seksjoner */
+main > section + section, .section + .section { border-top: 1px solid var(--mck-line); }
+
+/* Dekor-sirkler/prikker fjernes fra undersidene (rene flater) */
+.decor, .decor-ring, .decor-dot { display: none !important; }
+
+/* Fokus */
+:focus-visible { outline: 2px solid var(--mck-indigo); outline-offset: 2px; }
+
+/* ---------- Footer på navy ---------- */
+.dmc-footer-rich .dmc-fr-logo, .dmc-footer-rich .dmc-fr-logo * { color: #fff !important; }
+.dmc-footer-rich .dmc-fr-logo span { color: var(--mck-cyan) !important; }
+.dmc-footer-rich a, .dmc-footer-rich p, .dmc-footer-rich li { color: rgba(255,255,255,.82); }
+.dmc-footer-rich .dmc-fr-col h3, .dmc-footer-rich .dmc-fr-col h4, .dmc-footer-rich [class*="uppercase"] { color: #fff; letter-spacing: .14em; }
+.dmc-footer-rich a:hover { color: #fff; text-decoration: underline; }
+.dmc-footer-rich .dmc-fr-cta, .dmc-footer-rich a.bg-blue-500 {
+  background: #fff !important; border-color: #fff !important; color: var(--mck-black) !important; border-radius: 0 !important;
+}
+.dmc-footer-rich .dmc-fr-cta:hover, .dmc-footer-rich a.bg-blue-500:hover { background: var(--mck-cyan) !important; border-color: var(--mck-cyan) !important; color: var(--mck-navy) !important; text-decoration: none; }
+
+/* ---------- Tillegg: flytende kontakt-sirkel ("Ask McKinsey"-chip) ---------- */
+.mck-chip {
+  position: fixed; right: 24px; bottom: 24px; z-index: 39;
+  width: 64px; height: 64px; border-radius: 50% !important;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--mck-indigo); color: #fff !important; box-shadow: none !important;
+  transition: background-color .12s linear, transform .12s linear;
+}
+.mck-chip:hover { background: var(--mck-navy); }
+.mck-chip svg { width: 26px; height: 26px; }
+.mck-chip .mck-chip-label {
+  position: absolute; right: 74px; white-space: nowrap; background: #fff; color: var(--mck-black);
+  border: 1px solid var(--mck-line); padding: 8px 14px; font: 300 14px/1 var(--mck-sans);
+  opacity: 0; pointer-events: none; transition: opacity .12s linear;
+}
+.mck-chip:hover .mck-chip-label, .mck-chip:focus-visible .mck-chip-label { opacity: 1; }
+
+/* ---------- Tillegg: avsluttende CTA-bånd (forsiden) ---------- */
+.mck-cta { background: #fff; border-top: 1px solid var(--mck-line); padding: clamp(64px, 10vw, 128px) 0; }
+.mck-cta-inner {
+  max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 64px);
+  display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap;
+}
+.mck-cta-kicker { font: 500 12px/1 var(--mck-sans); letter-spacing: .14em; text-transform: uppercase; color: var(--mck-black); margin-bottom: 20px; }
+.mck-cta h2 {
+  margin: 0; max-width: 18ch; color: var(--mck-indigo) !important;
+  font-family: var(--mck-serif) !important; font-weight: 400 !important;
+  font-size: clamp(2rem, 4.6vw, 3.5rem); line-height: 1.1; letter-spacing: -0.015em;
+}
+.mck-cta-btn {
+  flex: none; width: 88px; height: 88px; border-radius: 50% !important;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--mck-cyan); color: var(--mck-navy) !important;
+  transition: background-color .12s linear, color .12s linear;
+}
+.mck-cta-btn:hover { background: var(--mck-navy); color: #fff !important; }
+.mck-cta-btn svg { width: 32px; height: 32px; }
+
+@media (max-width: 640px) {
+  .mck-chip { right: 16px; bottom: 16px; width: 56px; height: 56px; }
+  .mck-chip .mck-chip-label { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition-duration: 0s !important; } }
+
+/* Finjusteringer forside */
+.dmc-footer-rich h5, .dmc-footer-rich h3, .dmc-footer-rich h4 { color: #fff !important; font-family: var(--mck-sans) !important; font-weight: 500 !important; letter-spacing: .14em; text-transform: uppercase; }
+.r-btn, .r-section a, .r-section button { border-radius: 0 !important; box-shadow: none !important; }
+.r-btn { border: 1px solid var(--mck-black) !important; background: #fff !important; color: var(--mck-black) !important; transition: background-color .12s linear, color .12s linear; }
+.r-btn:hover { background: var(--mck-black) !important; color: #fff !important; }
+.r-section { background: #fff !important; }
+.dm-team-section { background: #f4f5f6 !important; }
+.r-section [class*="pill"], .r-section [class*="chip"], .r-section [class*="tag"] { border-radius: 0 !important; }
+[style*="#FAF8F2"], [style*="#FBFAF6"], [style*="#FCFBF7"], [style*="#F5F3EA"] { background: #fff !important; }
+.floater { display: none !important; }
