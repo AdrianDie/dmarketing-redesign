@@ -25,7 +25,7 @@ Dietrichs Marketing bygger lynraske, AI-klare nettsider som norske små og mello
 - **Premium Skreddersøm** (24 900–39 000 kr): Inntil 15 undersider, spesialdesign, CRM-integrasjon, dedikert prosjektleder
 
 Eget produkt, ikke nettside:
-- **CRM og bestillingssystem for catering** (400 kr i måneden eks. mva): Samler henvendelser, tilbud, bestillinger og kunder for cateringbedrifter. Drift og videre justeringer inkludert. https://dmarketing.no/crm-for-catering/
+- **CRM og bestillingssystem for catering** (400 kr i måneden eks. mva): Norsk og enkelt system som samler henvendelser, tilbud, bestillinger og kunder for cateringbedrifter. Du betaler bare for det du trenger. Drift og videre justeringer inkludert. https://dmarketing.no/crm-for-catering/
 
 Alle pakker: engangskostnad, 0 kr/mnd til oss, rentefri delbetaling mulig.
 
@@ -105,3 +105,4 @@ Rørlegger, elektriker, snekker, malerfirma, bilverksted, tannlege, psykolog, re
 - [Hva koster et bestillingssystem for catering?](https://dmarketing.no/artikler/hva-koster-bestillingssystem-catering.html): Vårt bestillings- og tilbudssystem for catering koster 400 kr i måneden eks. mva. Se hva som er inkludert og hva du bør sjekke hos andre leverandører.
 - [Skreddersydd system eller HubSpot: hva passer et lite cateringfirma?](https://dmarketing.no/artikler/skreddersydd-crm-eller-hubspot-catering.html): Ferdig CRM som HubSpot eller et skreddersydd system? Slik vurderer et lite cateringfirma fordeler, ulemper og hva som passer best.
 - [Hvordan får jeg flere faste firmakunder og gjenkjøp i catering?](https://dmarketing.no/artikler/firmakunder-gjenkjop-catering.html): Slik bygger du faste firmakunder og gjenkjøp i catering: svar raskt, følg opp, husk kunden og gjør det enkelt å bestille igjen.
+- [Finnes det et norsk CRM-system for små bedrifter?](https://dmarketing.no/artikler/norsk-crm-system-smabedrifter.html): Ja, det finnes norske alternativer. Se hva «norsk» bør bety, hva du bør spørre om, og hvorfor et enkelt system kan spare deg penger.
