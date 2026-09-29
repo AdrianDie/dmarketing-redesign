@@ -24,6 +24,9 @@ Dietrichs Marketing bygger lynraske, AI-klare nettsider som norske små og mello
 - **Autopilot Pro** (12 900–13 900 kr): Inntil 7 undersider, integrasjoner (booking, Google Maps), skreddersydd AI, 1 mnd gratis support
 - **Premium Skreddersøm** (24 900–39 000 kr): Inntil 15 undersider, spesialdesign, CRM-integrasjon, dedikert prosjektleder
 
+Eget produkt, ikke nettside:
+- **CRM og bestillingssystem for catering** (400 kr i måneden eks. mva): Samler henvendelser, tilbud, bestillinger og kunder for cateringbedrifter. Drift og videre justeringer inkludert. https://dmarketing.no/crm-for-catering/
+
 Alle pakker: engangskostnad, 0 kr/mnd til oss, rentefri delbetaling mulig.
 
 ## Slik fungerer det
@@ -89,3 +92,16 @@ Rørlegger, elektriker, snekker, malerfirma, bilverksted, tannlege, psykolog, re
 - [Hva er SEO og hvorfor trenger bedriften min det?](https://dmarketing.no/artikler/hva-er-seo-hvorfor-trenger-bedriften-det.html): SEO-introduksjon uten fagsjargong
 - [Hva er Google My Business og hvordan hjelper det bedriften min?](https://dmarketing.no/artikler/hva-er-google-my-business-bedrift.html): Google Business Profile forklart, oppsett og rangering
 - [Bør jeg ha blogg på bedriftsnettsiden min?](https://dmarketing.no/artikler/bor-jeg-ha-blogg-pa-bedriftsnettsiden.html): Hvem som bør blogge, hva du bør skrive om, og hva som ikke fungerer
+
+## CRM og bestillingssystem for catering
+
+- [CRM og bestillingssystem for catering](https://dmarketing.no/crm-for-catering/): Produktside med funksjoner, pris (400 kr i måneden eks. mva) og hva systemet ikke gjør
+- [Er Excel nok for et cateringfirma, eller trenger jeg et bestillingssystem?](https://dmarketing.no/artikler/excel-eller-bestillingssystem-catering.html): Excel holder når du har få bestillinger og er alene om jobben. Slik ser du når et bestillingssystem lønner seg for et cateringfirma.
+- [Hvordan holder jeg oversikt over cateringbestillinger?](https://dmarketing.no/artikler/oversikt-cateringbestillinger.html): Slik samler du bestillinger fra telefon, e-post og nettside på ett sted og ser hva som skal leveres. Praktisk guide for cateringbedrifter.
+- [Hvordan sender jeg tilbud på catering raskt, og følger jeg opp uten å glemme noe?](https://dmarketing.no/artikler/sende-tilbud-catering.html): Hva et cateringtilbud bør inneholde, og hvordan du følger opp uten å glemme noen. Slik svarer du raskt og vinner flere bestillinger.
+- [Hvordan tar jeg imot cateringbestillinger på nettsiden?](https://dmarketing.no/artikler/bestillingsskjema-catering-nettside.html): Slik lager du et bestillingsskjema for catering som gir deg komplette bestillinger og som havner rett i oversikten din uten spam.
+- [Hva bør et CRM for catering kunne?](https://dmarketing.no/artikler/hva-bor-crm-for-catering-kunne.html): Sjekkliste over funksjonene et lite cateringfirma faktisk trenger i et CRM og bestillingssystem, og hva du kan la ligge.
+- [Hva er et CRM-system, og trenger en liten bedrift det?](https://dmarketing.no/artikler/crm-system-smabedrifter-hva-er-det.html): CRM-system forklart enkelt: hva det er, hva det koster på et overordnet nivå, og når en liten bedrift faktisk har bruk for det.
+- [Hva koster et bestillingssystem for catering?](https://dmarketing.no/artikler/hva-koster-bestillingssystem-catering.html): Vårt bestillings- og tilbudssystem for catering koster 400 kr i måneden eks. mva. Se hva som er inkludert og hva du bør sjekke hos andre leverandører.
+- [Skreddersydd system eller HubSpot: hva passer et lite cateringfirma?](https://dmarketing.no/artikler/skreddersydd-crm-eller-hubspot-catering.html): Ferdig CRM som HubSpot eller et skreddersydd system? Slik vurderer et lite cateringfirma fordeler, ulemper og hva som passer best.
+- [Hvordan får jeg flere faste firmakunder og gjenkjøp i catering?](https://dmarketing.no/artikler/firmakunder-gjenkjop-catering.html): Slik bygger du faste firmakunder og gjenkjøp i catering: svar raskt, følg opp, husk kunden og gjør det enkelt å bestille igjen.
