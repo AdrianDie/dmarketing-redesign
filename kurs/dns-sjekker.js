@@ -338,13 +338,13 @@
       h += section('slett', 'Slett disse i Cloudflare', 'Dette er den gamle nettsiden. Klikk <b>Delete</b> på hver av dem.',
         res.slett, d, 'Fant ingen gamle nettsideposter. Du trenger ikke slette noe.');
     }
-    h += section('behold', 'Behold disse', 'Sjekk at hver av dem står i Cloudflare-lista. Mangler en, klikk <b>Add record</b> og legg den inn med nøyaktig samme Type, Name og verdi. Cloudflare får ofte ikke med seg postene som slutter på <b>_domainkey</b>, så sjekk dem ekstra nøye. Står det <b>Proxied</b> (oransje sky) ved en post merket «grå sky», klikk <b>Edit</b> og bytt til <b>DNS only</b>.',
+    h += section('behold', 'Behold disse', 'Alle må stå i Cloudflare-lista. Mangler en, klikk <b>Add record</b> og legg den inn med samme Type, Name og verdi. Poster som slutter på <b>_domainkey</b> blir ofte borte, så sjekk dem ekstra. Er en «grå sky»-post satt til <b>Proxied</b> (oransje sky), klikk <b>Edit</b> og bytt til <b>DNS only</b>.',
       res.behold, d, 'Fant ingen e-postposter eller andre poster som må stå.');
     if (res.lastaa.length) {
-      h += section('la', 'La disse stå', 'De peker til samme sted som den gamle nettsiden, men kan være i bruk av e-post eller andre tjenester. De skader ikke den nye nettsiden, så ikke slett dem.',
+      h += section('la', 'La disse stå', 'De kan være i bruk av e-post eller andre tjenester, og skader ikke den nye nettsiden.',
         res.lastaa, d, '');
     }
-    h += '<p class="dns-foot">Ser du poster i Cloudflare som ikke står på noen av listene? La dem stå. Vi finner bare poster med vanlige navn, så det kan finnes flere, for eksempel fra et nyhetsbrevverktøy. Det eneste du skal slette er de røde.</p>';
+    h += '<p class="dns-foot">Ser du poster i Cloudflare som ikke står her? La dem stå. Det eneste du skal slette er de røde.</p>';
     return h;
   }
 
@@ -372,12 +372,12 @@
   var TEXT = {
     'for': {
       title: 'Få din personlige DNS-liste',
-      intro: 'Skriv inn domenet ditt, så slår vi opp postene som ligger hos leverandøren din i dag. Du får en liste over nøyaktig hvilke du skal slette og hvilke som må stå. Gjør dette før du bytter navnetjenere i steg 3.',
+      intro: 'Skriv inn domenet ditt, så får du vite nøyaktig hvilke poster du skal slette og hvilke som må stå.',
       btn: 'Sjekk domenet'
     },
     etter: {
       title: 'Sjekk at alt virker',
-      intro: 'Når du har byttet navnetjenere og lagt til domenet, sjekker vi her at Cloudflare har tatt over, at e-posten fortsatt virker, og at domenet peker til den nye nettsiden. Du kan kjøre sjekken så mange ganger du vil.',
+      intro: 'Sjekker at Cloudflare har tatt over, at e-posten virker og at domenet viser den nye nettsiden. Kjør den så ofte du vil.',
       btn: 'Sjekk nå'
     }
   };
