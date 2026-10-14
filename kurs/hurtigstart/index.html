@@ -13,6 +13,7 @@
   <link href="../../assets/ms-icon-256x256.png" rel="shortcut icon" type="image/x-icon" />
   <script src="/kurs/auth.js?v=2"></script>
   <script src="/kurs/kurs-progress.js" defer></script>
+  <script src="/kurs/dns-sjekker.js" defer></script>
   <style>
     body { font-family: 'Inter', sans-serif; background: #FAFAFA; color: #09090B; }
     .font-display { font-family: 'Archivo', sans-serif; }
@@ -397,12 +398,13 @@
         <div class="step-content">
           <h3>Rydd i DNS-postene</h3>
           <p>Cloudflare viser deg alle postene den fant. Dette er det viktigste steget, så les nøye: <strong>du skal ikke slette alt, bare de gamle A-postene og CNAME-postene som peker på den forrige nettsiden din.</strong> Alt annet, spesielt e-postpostene, skal stå.</p>
-          <p>Ta gjerne en kontroll av DNS-postene i Cloudflare opp mot de du har hos leverandøren, for å sjekke at du ikke mangler noe. Mangler du noe, legger du det til i Cloudflare.</p>
+          <p>Den enkleste måten: skriv inn domenet ditt i verktøyet under, så får du en personlig liste over hva du skal slette og hva som må stå. Forklaringen i punkt a til c under gjelder hvis du heller vil gjøre det på egen hånd.</p>
+          <div data-dns-sjekker="for"></div>
           <p><strong style="color:#0339f8;">a.</strong> <strong>Fjern A-postene</strong> som peker på din forrige nettside: <code>A</code> (og evt. <code>AAAA</code>) på selve domenet. Klikk <strong>Delete</strong> på hver. De byttes ut med den nye siden. Da trykker du delete på de radene der Type står som <code>A</code> og Name er ditt domene. På bildet er det raden med røde bokser. Har du en <code>A</code>-rad der Name er <code>www</code>, slett den også.</p>
           <p><strong style="color:#0339f8;">b.</strong> Har du en gammel <code>CNAME www</code> til den gamle siden, fjern den også. Da trykker du delete på de radene der Type står som <code>CNAME</code> og Name er <code>www</code>. På bildet er det raden med gule bokser.</p>
           <img src="../images/cloudflare-edit-dns-records.png" alt="Fjern de gamle A- og CNAME-postene, behold e-postpostene" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
           <p><strong style="color:#0339f8;">c.</strong> <strong>Behold</strong> alle e-postposter: <code>MX</code>, <code>TXT</code> (SPF, DKIM, DMARC) og <code>autoconfig</code>/<code>autodiscover</code>. <strong>Ikke slett dem.</strong></p>
-          <p><strong style="color:#0339f8;">d.</strong> Hvis du følger disse stegene nøye, går det fint. Vil du likevel ha en ekstra bekreftelse på at det blir riktig? Ikke gjør noe enda.</p>
+          <p><strong style="color:#0339f8;">d.</strong> Hvis du følger lista fra verktøyet eller disse stegene nøye, går det fint. Fortsatt usikker? Ikke gjør noe enda.</p>
 
           <div class="not-prose" style="margin:1.25rem 0;">
             <details style="background:white;border:1.5px solid #E4E4E7;border-radius:12px;overflow:hidden;">
@@ -552,6 +554,8 @@ Vennligst:
           <p>Gjenta det samme for <code>www</code>-versjonen: <strong>Domains</strong> → <strong>Add Domain</strong> → trykk på domenet ditt slik som den røde sirkelen på bildet over → skriv <code>www</code> slik at det ser ut som på bildet under → klikk <strong>Add Domain</strong>.</p>
           <img src="../images/cloudflare-www-domene.png" alt="Legg til www-versjonen av domenet" style="width:100%;border-radius:10px;border:1px solid #E4E4E7;margin:0.75rem 0;" />
           <p><strong style="color:#0339f8;">b.</strong> Dette er siste steg. Så snart navnetjenerne er <strong>Active</strong> og domenet er lagt til, publiseres siden på domenet <strong>helt automatisk</strong>, du trenger ikke gjøre noe mer. <strong>Cloudflare sender deg en e-post når det er klart.</strong> Det kan ta rundt en time før den er oppe, så søk opp <code>dittfirma.no</code> om et par timer eller dagen etter for å se den live.</p>
+
+          <div data-dns-sjekker="etter"></div>
 
           <div class="callout-warn callout not-prose" style="margin-top:1.25rem;">
             <p><strong>Får du «Ikke sikker» i nettleseren når du åpner domenet?</strong> Sertifikatet kan være helt fint, problemet er ofte at Cloudflare ikke automatisk sender besøkende videre fra <code>http://</code> til <code>https://</code>. Fiks: gå til domenet ditt i Cloudflare → <strong>SSL/TLS</strong> → fanen <strong>Edge Certificates</strong> → skru på <strong>«Always Use HTTPS»</strong> (og gjerne <strong>«Automatic HTTPS Rewrites»</strong> rett under). Ingen lagre-knapp, det slår inn med en gang.</p>
